@@ -120,6 +120,8 @@ async function prerender() {
 }
 
 prerender().catch((err) => {
-  console.error('[prerender] Failed:', err.message);
-  process.exit(1);
+  console.warn('[prerender] Skipped:', err.message);
+  console.warn('[prerender] App will still work as an SPA without prerendered HTML.');
+  // Don't exit(1) — let the build succeed without prerendering
+  // (Vercel's build env lacks Puppeteer dependencies)
 });
