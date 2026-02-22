@@ -1,0 +1,57 @@
+# India Budget Explorer
+
+> Interactive visualization of India's Union Budget 2025-26. Open government data made accessible.
+
+## What this site does
+
+India Budget Explorer visualises the Union Budget 2025-26 (Rs 50.65 lakh crore total expenditure). It answers: where does India's money come from, and where does it go?
+
+## Pages
+
+- / — Scrollytelling overview: animated budget summary, revenue breakdown (waffle chart), ministry-wise expenditure (treemap), money flow (Sankey diagram), state-wise allocation (choropleth map)
+- /explore — Sortable data table of all ministry expenditures with expandable scheme-level detail. CSV export available.
+- /calculator — Personal tax calculator (FY 2025-26). Enter income, choose Old/New regime, see tax breakdown and how your tax rupees are allocated across ministries.
+- /methodology — Data sources, tax computation methodology, number formatting conventions, limitations.
+
+## Key data points
+
+- Total expenditure: Rs 50,65,345 crore (Budget Estimate 2025-26)
+- Revenue receipts: Rs 34,20,905 crore
+- Capital expenditure: Rs 11,21,059 crore
+- Fiscal deficit target: 4.4% of GDP
+- Population estimate used: 145 crore (1.45 billion)
+
+## Data sources
+
+- Open Budgets India (openbudgetsindia.org) — structured budget data via CKAN API
+- Union Budget documents (indiabudget.gov.in) — Expenditure Budget Vol. 1 & 2, Receipt Budget, Finance Bill
+- Census projections and RBI reports for population estimates
+
+## Downloadable datasets (JSON)
+
+- /data/budget/2025-26/summary.json — Budget headline numbers
+- /data/budget/2025-26/receipts.json — Revenue breakdown by category
+- /data/budget/2025-26/expenditure.json — Ministry-wise expenditure with sub-schemes
+- /data/budget/2025-26/sankey.json — Revenue-to-expenditure flow data
+- /data/budget/2025-26/statewise.json — State-wise budget allocation
+- /data/budget/2025-26/schemes.json — Major government schemes
+- /data/budget/2025-26/treemap.json — Hierarchical expenditure data
+- /data/tax-calculator/slabs.json — Income tax slab rates (Old and New regime)
+- /data/tax-calculator/expenditure-shares.json — Ministry spending shares for tax allocation
+
+## Tax calculator details
+
+Supports both Old and New tax regimes for AY 2026-27 (FY 2025-26):
+- Standard deduction: Rs 75,000 (New) / Rs 50,000 (Old)
+- Section 87A rebate applied
+- Surcharge slabs for high incomes
+- 4% Health and Education Cess
+- Does not include HRA, 80C, 80D or other specific deductions
+
+## License
+
+Budget data released under Government Open Data License - India (GODL). This project is not affiliated with or endorsed by the Government of India.
+
+## Contact
+
+This is an open-source civic tech project.

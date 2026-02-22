@@ -6,10 +6,10 @@
   "capitalReceipts": 722582,
   "fiscalDeficit": 1620483,
   "fiscalDeficitPercentGDP": 4.4,
-  "population": 1450000000,
-  "perCapitaExpenditure": 34631,
-  "perCapitaDailyExpenditure": 94.88,
   "gdp": 36822024,
-  "lastUpdated": "2025-02-01",
+  "population": 1450000000,
+  "perCapitaExpenditure": 34631.0,
+  "perCapitaDailyExpenditure": 94.88,
+  "lastUpdated": "2026-02-22",
   "source": "https://openbudgetsindia.org/"
 }

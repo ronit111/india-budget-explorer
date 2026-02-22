@@ -1,0 +1,26 @@
+# India Budget Explorer — https://indiabudgetexplorer.in
+# All crawlers welcome. We publish open government data.
+
+User-agent: *
+Allow: /
+
+# AI crawlers — explicitly welcomed
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+Sitemap: https://indiabudgetexplorer.in/sitemap.xml
