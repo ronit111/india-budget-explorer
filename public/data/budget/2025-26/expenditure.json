@@ -1,0 +1,159 @@
+{
+  "year": "2025-26",
+  "total": 5021536,
+  "ministries": [
+    {
+      "id": "interest-payments",
+      "name": "Interest Payments",
+      "budgetEstimate": 1080000,
+      "revisedEstimate": null,
+      "actualExpenditure": null,
+      "percentOfTotal": 21.5,
+      "yoyChange": 8.2,
+      "perCapita": 7448,
+      "humanContext": "Rs 20 per citizen per day goes to paying interest on past debt",
+      "schemes": []
+    },
+    {
+      "id": "defence",
+      "name": "Ministry of Defence",
+      "budgetEstimate": 681000,
+      "revisedEstimate": null,
+      "actualExpenditure": null,
+      "percentOfTotal": 13.6,
+      "yoyChange": 4.5,
+      "perCapita": 4697,
+      "humanContext": "Enough to buy 1,362 Tejas fighter jets",
+      "schemes": [
+        { "id": "defence-revenue", "name": "Revenue Expenditure", "amount": 314000 },
+        { "id": "defence-capital", "name": "Capital Expenditure", "amount": 367000 }
+      ]
+    },
+    {
+      "id": "rural-development",
+      "name": "Ministry of Rural Development",
+      "budgetEstimate": 178482,
+      "revisedEstimate": null,
+      "actualExpenditure": null,
+      "percentOfTotal": 3.6,
+      "yoyChange": 12.1,
+      "perCapita": 1231,
+      "humanContext": "Covers MGNREGA, rural housing, and road construction",
+      "schemes": [
+        { "id": "mgnrega", "name": "MGNREGA", "amount": 86000 },
+        { "id": "pmay-g", "name": "PMAY-G (Rural Housing)", "amount": 54500 },
+        { "id": "pmgsy", "name": "PMGSY (Rural Roads)", "amount": 19000 }
+      ]
+    },
+    {
+      "id": "agriculture",
+      "name": "Ministry of Agriculture",
+      "budgetEstimate": 135000,
+      "revisedEstimate": null,
+      "actualExpenditure": null,
+      "percentOfTotal": 2.7,
+      "yoyChange": 6.3,
+      "perCapita": 931,
+      "humanContext": "PM-KISAN alone puts Rs 6,000/year in 80 million farmer accounts",
+      "schemes": [
+        { "id": "pm-kisan", "name": "PM-KISAN", "amount": 60000 },
+        { "id": "crop-insurance", "name": "PM Fasal Bima Yojana", "amount": 15500 }
+      ]
+    },
+    {
+      "id": "education",
+      "name": "Ministry of Education",
+      "budgetEstimate": 125638,
+      "revisedEstimate": null,
+      "actualExpenditure": null,
+      "percentOfTotal": 2.5,
+      "yoyChange": 5.8,
+      "perCapita": 867,
+      "humanContext": "About Rs 2.4 per citizen per day on education",
+      "schemes": [
+        { "id": "samagra-shiksha", "name": "Samagra Shiksha", "amount": 37500 },
+        { "id": "mid-day-meal", "name": "PM POSHAN (Mid-Day Meal)", "amount": 12800 },
+        { "id": "higher-education", "name": "Higher Education", "amount": 44500 }
+      ]
+    },
+    {
+      "id": "health",
+      "name": "Ministry of Health & Family Welfare",
+      "budgetEstimate": 90959,
+      "revisedEstimate": null,
+      "actualExpenditure": null,
+      "percentOfTotal": 1.8,
+      "yoyChange": 7.2,
+      "perCapita": 627,
+      "humanContext": "Rs 1.72 per citizen per day on public healthcare",
+      "schemes": [
+        { "id": "ayushman-bharat", "name": "Ayushman Bharat", "amount": 7500 },
+        { "id": "nhm", "name": "National Health Mission", "amount": 36000 }
+      ]
+    },
+    {
+      "id": "railways",
+      "name": "Ministry of Railways",
+      "budgetEstimate": 265200,
+      "revisedEstimate": null,
+      "actualExpenditure": null,
+      "percentOfTotal": 5.3,
+      "yoyChange": 3.1,
+      "perCapita": 1829,
+      "humanContext": "India runs 13,500+ trains daily, carrying 24 million passengers",
+      "schemes": []
+    },
+    {
+      "id": "home-affairs",
+      "name": "Ministry of Home Affairs",
+      "budgetEstimate": 221049,
+      "revisedEstimate": null,
+      "actualExpenditure": null,
+      "percentOfTotal": 4.4,
+      "yoyChange": 5.6,
+      "perCapita": 1525,
+      "humanContext": "Covers police, border security, and disaster response",
+      "schemes": []
+    },
+    {
+      "id": "road-transport",
+      "name": "Ministry of Road Transport & Highways",
+      "budgetEstimate": 278000,
+      "revisedEstimate": null,
+      "actualExpenditure": null,
+      "percentOfTotal": 5.5,
+      "yoyChange": 2.8,
+      "perCapita": 1917,
+      "humanContext": "Building 27 km of highway per day",
+      "schemes": []
+    },
+    {
+      "id": "transfers-to-states",
+      "name": "Transfers to States & UTs",
+      "budgetEstimate": 1200000,
+      "revisedEstimate": null,
+      "actualExpenditure": null,
+      "percentOfTotal": 23.9,
+      "yoyChange": 6.5,
+      "perCapita": 8276,
+      "humanContext": "Nearly 1 in 4 rupees goes directly to state governments",
+      "schemes": []
+    },
+    {
+      "id": "subsidies",
+      "name": "Subsidies (Food, Fertilizer, Fuel)",
+      "budgetEstimate": 396000,
+      "revisedEstimate": null,
+      "actualExpenditure": null,
+      "percentOfTotal": 7.9,
+      "yoyChange": -8.3,
+      "perCapita": 2731,
+      "humanContext": "Provides subsidized food to 80 crore people under NFSA",
+      "schemes": [
+        { "id": "food-subsidy", "name": "Food Subsidy", "amount": 205000 },
+        { "id": "fertilizer-subsidy", "name": "Fertilizer Subsidy", "amount": 145000 },
+        { "id": "fuel-subsidy", "name": "Petroleum Subsidy", "amount": 11500 }
+      ]
+    }
+  ]
+}

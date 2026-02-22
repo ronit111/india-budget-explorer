@@ -1,0 +1,15 @@
+{
+  "year": "2025-26",
+  "totalExpenditure": 5021536,
+  "totalReceipts": 3401053,
+  "revenueReceipts": 2678471,
+  "capitalReceipts": 722582,
+  "fiscalDeficit": 1620483,
+  "fiscalDeficitPercentGDP": 4.4,
+  "population": 1450000000,
+  "perCapitaExpenditure": 34631,
+  "perCapitaDailyExpenditure": 94.88,
+  "gdp": 36822024,
+  "lastUpdated": "2025-02-01",
+  "source": "https://openbudgetsindia.org/"
+}
