@@ -25,8 +25,8 @@ const COLORS: Record<string, string> = {
 export function SpendingAllocation({ totalTax, shares }: SpendingAllocationProps) {
   if (totalTax === 0) {
     return (
-      <div className="bg-[var(--color-bg-raised)] rounded-xl p-6 text-center">
-        <p className="text-[var(--color-text-muted)]">
+      <div className="rounded-lg p-6 text-center" style={{ background: 'var(--bg-raised)' }}>
+        <p style={{ color: 'var(--text-muted)' }}>
           No tax payable at this income level. Increase your income to see allocation.
         </p>
       </div>
@@ -37,38 +37,51 @@ export function SpendingAllocation({ totalTax, shares }: SpendingAllocationProps
 
   return (
     <div className="space-y-3">
-      <p className="text-sm text-[var(--color-text-muted)] mb-4">
+      <p className="text-annotation mb-4">
         Your Rs {formatIndianNumber(totalTax)} in taxes funds:
       </p>
 
-      {shares.shares.map((share) => {
+      {shares.shares.map((share, i) => {
         const amount = Math.round(totalTax * (share.percentOfExpenditure / 100));
+        const color = COLORS[share.id] || '#6B7280';
+        const barPct = (share.percentOfExpenditure / maxPercent) * 100;
 
         return (
-          <div key={share.id} className="group">
-            <div className="flex items-center justify-between text-sm mb-1">
-              <span className="text-[var(--color-text-secondary)] font-medium">
+          <div key={share.id}>
+            <div className="flex items-center justify-between text-sm mb-1.5">
+              <span className="font-medium" style={{ color: 'var(--text-secondary)' }}>
                 {share.name}
               </span>
-              <span className="font-mono text-[var(--color-text-primary)]">
+              <span className="font-mono text-xs" style={{ color: 'var(--text-primary)' }}>
                 Rs {formatIndianNumber(amount)}
               </span>
             </div>
-            <div className="relative h-6 bg-[var(--color-bg-raised)] rounded-full overflow-hidden">
+
+            {/* 32px bar with % inside */}
+            <div
+              className="relative h-8 rounded-md overflow-hidden"
+              style={{ background: 'var(--bg-raised)' }}
+            >
               <motion.div
-                className="absolute left-0 top-0 h-full rounded-full"
-                style={{ backgroundColor: COLORS[share.id] || '#6B7280' }}
+                className="absolute left-0 top-0 h-full rounded-md flex items-center"
+                style={{ backgroundColor: color }}
                 initial={{ width: 0 }}
-                animate={{ width: `${(share.percentOfExpenditure / maxPercent) * 100}%` }}
-                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-              />
-              <span className="absolute left-2 top-1/2 -translate-y-1/2 text-[10px] text-white font-medium z-10">
-                {share.percentOfExpenditure}%
-              </span>
+                animate={{ width: `${barPct}%` }}
+                transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: i * 0.04 }}
+              >
+                <span className="text-xs font-medium text-white ml-3 whitespace-nowrap">
+                  {share.percentOfExpenditure}%
+                </span>
+              </motion.div>
             </div>
+
+            {/* humanContext as annotation chip */}
             {share.humanContext && share.humanContextMultiplier > 0 && amount > 0 && (
-              <p className="text-xs text-[var(--color-text-muted)] mt-0.5 ml-1">
-                ={' '}
+              <p
+                className="text-xs mt-1 ml-1 inline-block px-2 py-0.5 rounded-full"
+                style={{ color: 'var(--text-muted)', background: 'var(--bg-raised)' }}
+              >
+                ≈{' '}
                 {Math.round(
                   (amount / totalTax) * share.humanContextMultiplier * totalTax * 0.00001
                 ) || '~'}{' '}

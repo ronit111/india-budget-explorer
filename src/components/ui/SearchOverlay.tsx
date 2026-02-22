@@ -102,11 +102,15 @@ export function SearchOverlay() {
     >
       <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" />
       <div
-        className="relative w-full max-w-lg mx-4 bg-[var(--color-bg-surface)] border border-[rgba(255,255,255,0.1)] rounded-xl shadow-2xl overflow-hidden"
+        className="relative w-full max-w-lg mx-4 rounded-xl shadow-2xl overflow-hidden"
+        style={{
+          background: 'var(--bg-surface)',
+          border: 'var(--border-subtle)',
+        }}
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="flex items-center px-4 border-b border-[rgba(255,255,255,0.05)]">
-          <svg className="w-5 h-5 text-[var(--color-text-muted)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <div className="flex items-center px-4" style={{ borderBottom: 'var(--border-divider)' }}>
+          <svg className="w-5 h-5" style={{ color: 'var(--text-muted)' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
           </svg>
           <input
@@ -115,16 +119,20 @@ export function SearchOverlay() {
             value={query}
             onChange={(e) => handleSearch(e.target.value)}
             placeholder="Search ministries, schemes, pages..."
-            className="w-full px-3 py-4 bg-transparent text-[var(--color-text-primary)] placeholder-[var(--color-text-muted)] border-none outline-none text-sm"
+            className="w-full px-3 py-4 bg-transparent border-none outline-none text-sm"
+            style={{ color: 'var(--text-primary)' }}
           />
-          <kbd className="text-xs text-[var(--color-text-muted)] bg-[var(--color-bg-raised)] px-2 py-0.5 rounded font-mono">
+          <kbd
+            className="text-xs px-2 py-0.5 rounded font-mono"
+            style={{ color: 'var(--text-muted)', background: 'var(--bg-raised)' }}
+          >
             Esc
           </kbd>
         </div>
 
         <div className="max-h-80 overflow-y-auto p-2">
           {results.length === 0 && query.length > 0 && (
-            <p className="text-sm text-[var(--color-text-muted)] px-3 py-4 text-center">
+            <p className="text-sm px-3 py-4 text-center" style={{ color: 'var(--text-muted)' }}>
               No results found
             </p>
           )}
@@ -135,22 +143,30 @@ export function SearchOverlay() {
                 navigate(item.route);
                 setSearchOpen(false);
               }}
-              className="w-full text-left px-3 py-2.5 rounded-lg hover:bg-[var(--color-bg-raised)] transition-colors flex items-start gap-3 cursor-pointer bg-transparent border-none"
+              className="w-full text-left px-3 py-2.5 rounded-lg transition-colors flex items-start gap-3 cursor-pointer bg-transparent border-none"
+              onMouseEnter={(e) => (e.currentTarget.style.background = 'var(--bg-raised)')}
+              onMouseLeave={(e) => (e.currentTarget.style.background = 'transparent')}
             >
               <span
-                className={`mt-0.5 text-[10px] font-mono uppercase px-1.5 py-0.5 rounded ${
-                  item.type === 'ministry'
-                    ? 'bg-[rgba(255,107,53,0.15)] text-[var(--color-saffron)]'
+                className="mt-0.5 text-[10px] font-mono uppercase px-1.5 py-0.5 rounded"
+                style={{
+                  background: item.type === 'ministry'
+                    ? 'var(--saffron-dim)'
                     : item.type === 'scheme'
-                    ? 'bg-[rgba(5,150,105,0.15)] text-[var(--color-green)]'
-                    : 'bg-[rgba(59,130,246,0.15)] text-[var(--color-blue)]'
-                }`}
+                    ? 'rgba(16,185,129,0.15)'
+                    : 'rgba(59,130,246,0.15)',
+                  color: item.type === 'ministry'
+                    ? 'var(--saffron)'
+                    : item.type === 'scheme'
+                    ? 'var(--positive)'
+                    : '#3B82F6',
+                }}
               >
                 {item.type}
               </span>
               <div>
-                <p className="text-sm font-medium text-[var(--color-text-primary)]">{item.name}</p>
-                <p className="text-xs text-[var(--color-text-muted)] mt-0.5">{item.subtitle}</p>
+                <p className="text-sm font-medium" style={{ color: 'var(--text-primary)' }}>{item.name}</p>
+                <p className="text-xs mt-0.5" style={{ color: 'var(--text-muted)' }}>{item.subtitle}</p>
               </div>
             </button>
           ))}

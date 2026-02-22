@@ -1,6 +1,8 @@
 import { useState, useMemo, useCallback } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import type { MinistryExpenditure, ExpenditureData } from '../../lib/data/schema.ts';
-import { formatRsCrore, formatPercent, formatYoYChange, formatPerCapita } from '../../lib/format.ts';
+import { formatRsCrore, formatPercent, formatPerCapita } from '../../lib/format.ts';
+import { YoYBadge } from '../ui/Badge.tsx';
 
 interface DataTableProps {
   data: ExpenditureData;
@@ -31,30 +33,13 @@ export function DataTable({ data }: DataTableProps) {
     arr.sort((a, b) => {
       let av: string | number = 0;
       let bv: string | number = 0;
-
       switch (sortKey) {
-        case 'name':
-          av = a.name;
-          bv = b.name;
-          break;
-        case 'budgetEstimate':
-          av = a.budgetEstimate;
-          bv = b.budgetEstimate;
-          break;
-        case 'percentOfTotal':
-          av = a.percentOfTotal;
-          bv = b.percentOfTotal;
-          break;
-        case 'yoyChange':
-          av = a.yoyChange ?? 0;
-          bv = b.yoyChange ?? 0;
-          break;
-        case 'perCapita':
-          av = a.perCapita;
-          bv = b.perCapita;
-          break;
+        case 'name': av = a.name; bv = b.name; break;
+        case 'budgetEstimate': av = a.budgetEstimate; bv = b.budgetEstimate; break;
+        case 'percentOfTotal': av = a.percentOfTotal; bv = b.percentOfTotal; break;
+        case 'yoyChange': av = a.yoyChange ?? 0; bv = b.yoyChange ?? 0; break;
+        case 'perCapita': av = a.perCapita; bv = b.perCapita; break;
       }
-
       if (typeof av === 'string' && typeof bv === 'string') {
         return sortDir === 'asc' ? av.localeCompare(bv) : bv.localeCompare(av);
       }
@@ -66,13 +51,8 @@ export function DataTable({ data }: DataTableProps) {
   const exportCSV = useCallback(() => {
     const headers = ['Ministry', 'Budget Estimate (Rs Cr)', '% of Total', 'YoY Change %', 'Per Capita (Rs)'];
     const rows = sorted.map((m) => [
-      m.name,
-      m.budgetEstimate,
-      m.percentOfTotal,
-      m.yoyChange ?? 'N/A',
-      m.perCapita,
+      m.name, m.budgetEstimate, m.percentOfTotal, m.yoyChange ?? 'N/A', m.perCapita,
     ]);
-
     const csv = [headers, ...rows].map((r) => r.join(',')).join('\n');
     const blob = new Blob([csv], { type: 'text/csv' });
     const url = URL.createObjectURL(blob);
@@ -83,15 +63,16 @@ export function DataTable({ data }: DataTableProps) {
     URL.revokeObjectURL(url);
   }, [sorted, data.year]);
 
-  const SortHeader = ({ label, field }: { label: string; field: SortKey }) => (
+  const SortHeader = ({ label, field, className = '' }: { label: string; field: SortKey; className?: string }) => (
     <th
-      className="px-4 py-3 text-left text-xs font-semibold text-[var(--color-text-muted)] uppercase tracking-wider cursor-pointer hover:text-[var(--color-text-primary)] transition-colors select-none"
+      className={`px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider cursor-pointer select-none transition-colors ${className}`}
+      style={{ color: sortKey === field ? 'var(--text-secondary)' : 'var(--text-muted)' }}
       onClick={() => handleSort(field)}
     >
       <span className="flex items-center gap-1">
         {label}
         {sortKey === field && (
-          <span className="text-[var(--color-saffron)]">
+          <span style={{ color: 'var(--saffron)' }}>
             {sortDir === 'asc' ? '\u2191' : '\u2193'}
           </span>
         )}
@@ -102,20 +83,24 @@ export function DataTable({ data }: DataTableProps) {
   return (
     <div>
       <div className="flex justify-between items-center mb-4">
-        <p className="text-sm text-[var(--color-text-muted)]">
-          {sorted.length} ministries / departments
-        </p>
+        <p className="text-caption">{sorted.length} ministries / departments</p>
         <button
           onClick={exportCSV}
-          className="px-4 py-2 rounded-lg text-sm font-medium bg-[var(--color-bg-raised)] text-[var(--color-text-secondary)] border border-[rgba(255,255,255,0.08)] hover:border-[var(--color-saffron)] transition-colors cursor-pointer"
+          className="px-4 py-2 rounded-lg text-sm font-medium cursor-pointer transition-colors"
+          style={{
+            background: 'var(--bg-raised)',
+            color: 'var(--text-secondary)',
+            border: 'var(--border-subtle)',
+          }}
         >
           Export CSV
         </button>
       </div>
 
-      <div className="overflow-x-auto rounded-xl border border-[rgba(255,255,255,0.05)]">
+      {/* Desktop: table */}
+      <div className="hidden md:block overflow-x-auto rounded-lg" style={{ border: 'var(--border-subtle)' }}>
         <table className="w-full">
-          <thead className="bg-[var(--color-bg-raised)]">
+          <thead style={{ background: 'var(--bg-raised)' }}>
             <tr>
               <SortHeader label="Ministry" field="name" />
               <SortHeader label="Budget (Rs Cr)" field="budgetEstimate" />
@@ -124,20 +109,31 @@ export function DataTable({ data }: DataTableProps) {
               <SortHeader label="Per Capita" field="perCapita" />
             </tr>
           </thead>
-          <tbody className="divide-y divide-[rgba(255,255,255,0.03)]">
+          <tbody>
             {sorted.map((ministry) => (
               <MinistryRow
                 key={ministry.id}
                 ministry={ministry}
                 total={data.total}
                 expanded={expandedId === ministry.id}
-                onToggle={() =>
-                  setExpandedId(expandedId === ministry.id ? null : ministry.id)
-                }
+                onToggle={() => setExpandedId(expandedId === ministry.id ? null : ministry.id)}
               />
             ))}
           </tbody>
         </table>
+      </div>
+
+      {/* Mobile: cards */}
+      <div className="md:hidden space-y-3">
+        {sorted.map((ministry) => (
+          <MinistryCard
+            key={ministry.id}
+            ministry={ministry}
+            total={data.total}
+            expanded={expandedId === ministry.id}
+            onToggle={() => setExpandedId(expandedId === ministry.id ? null : ministry.id)}
+          />
+        ))}
       </div>
     </div>
   );
@@ -154,23 +150,28 @@ function MinistryRow({
   expanded: boolean;
   onToggle: () => void;
 }) {
-  const yoy = formatYoYChange(ministry.yoyChange);
   const hasSchemes = ministry.schemes.length > 0;
+  const barWidth = (ministry.budgetEstimate / total) * 100;
 
   return (
     <>
       <tr
-        className={`hover:bg-[var(--color-bg-raised)] transition-colors ${
-          hasSchemes ? 'cursor-pointer' : ''
-        }`}
+        className="transition-colors cursor-pointer"
+        style={{
+          borderBottom: 'var(--border-divider)',
+          borderLeft: expanded ? '2px solid var(--saffron)' : '2px solid transparent',
+        }}
         onClick={hasSchemes ? onToggle : undefined}
+        onMouseEnter={(e) => (e.currentTarget.style.background = 'var(--bg-raised)')}
+        onMouseLeave={(e) => (e.currentTarget.style.background = '')}
       >
         <td className="px-4 py-3">
           <div className="flex items-center gap-2">
             {hasSchemes && (
               <span
-                className="text-[var(--color-text-muted)] text-xs transition-transform"
+                className="text-xs transition-transform"
                 style={{
+                  color: 'var(--text-muted)',
                   transform: expanded ? 'rotate(90deg)' : 'rotate(0deg)',
                 }}
               >
@@ -178,10 +179,8 @@ function MinistryRow({
               </span>
             )}
             <div>
-              <p className="text-sm font-medium text-[var(--color-text-primary)]">
-                {ministry.name}
-              </p>
-              <p className="text-xs text-[var(--color-text-muted)] mt-0.5 max-w-xs truncate">
+              <p className="text-sm font-medium" style={{ color: 'var(--text-primary)' }}>{ministry.name}</p>
+              <p className="text-xs mt-0.5 max-w-xs truncate" style={{ color: 'var(--text-muted)' }}>
                 {ministry.humanContext}
               </p>
             </div>
@@ -190,53 +189,111 @@ function MinistryRow({
         <td className="px-4 py-3 font-mono text-sm">{formatRsCrore(ministry.budgetEstimate)}</td>
         <td className="px-4 py-3">
           <div className="flex items-center gap-2">
-            <div className="w-16 h-1.5 bg-[var(--color-bg-hover)] rounded-full overflow-hidden">
+            <div className="flex-1 max-w-32 h-1.5 rounded-full overflow-hidden" style={{ background: 'var(--bg-hover)' }}>
               <div
-                className="h-full bg-[var(--color-saffron)] rounded-full"
-                style={{ width: `${(ministry.budgetEstimate / total) * 100 * 2}%` }}
+                className="h-full rounded-full"
+                style={{ width: `${barWidth * 2}%`, background: 'var(--saffron)' }}
               />
             </div>
-            <span className="text-sm font-mono">{formatPercent(ministry.percentOfTotal)}</span>
+            <span className="font-mono text-sm">{formatPercent(ministry.percentOfTotal)}</span>
           </div>
         </td>
         <td className="px-4 py-3">
-          <span
-            className={`text-sm font-mono ${
-              yoy.isNeutral
-                ? 'text-[var(--color-text-muted)]'
-                : yoy.isPositive
-                ? 'text-[var(--color-green)]'
-                : 'text-[var(--color-red)]'
-            }`}
-          >
-            {yoy.text}
-          </span>
+          <YoYBadge value={ministry.yoyChange ?? 0} />
         </td>
         <td className="px-4 py-3 font-mono text-sm">{formatPerCapita(ministry.perCapita)}</td>
       </tr>
 
-      {expanded && hasSchemes && (
-        <tr>
-          <td colSpan={5} className="bg-[rgba(255,107,53,0.02)] px-4 py-2">
-            <div className="pl-8 space-y-2">
-              <p className="text-xs font-semibold text-[var(--color-text-muted)] uppercase tracking-wider mb-2">
-                Major Schemes
-              </p>
-              {ministry.schemes.map((scheme) => (
-                <div
-                  key={scheme.id}
-                  className="flex items-center justify-between text-sm py-1"
-                >
-                  <span className="text-[var(--color-text-secondary)]">{scheme.name}</span>
-                  <span className="font-mono text-[var(--color-text-muted)]">
-                    {formatRsCrore(scheme.amount)}
-                  </span>
-                </div>
-              ))}
-            </div>
-          </td>
-        </tr>
-      )}
+      <AnimatePresence>
+        {expanded && hasSchemes && (
+          <motion.tr
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+          >
+            <td colSpan={5} style={{ background: 'var(--bg-raised)' }} className="px-4 py-3">
+              <div className="pl-8 space-y-2">
+                <p className="text-caption uppercase tracking-wider mb-2">Major Schemes</p>
+                {ministry.schemes.map((scheme) => (
+                  <div key={scheme.id} className="flex items-center justify-between text-sm py-1">
+                    <span style={{ color: 'var(--text-secondary)' }}>{scheme.name}</span>
+                    <span className="font-mono" style={{ color: 'var(--text-muted)' }}>
+                      {formatRsCrore(scheme.amount)}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </td>
+          </motion.tr>
+        )}
+      </AnimatePresence>
     </>
+  );
+}
+
+function MinistryCard({
+  ministry,
+  total,
+  expanded,
+  onToggle,
+}: {
+  ministry: MinistryExpenditure;
+  total: number;
+  expanded: boolean;
+  onToggle: () => void;
+}) {
+  const hasSchemes = ministry.schemes.length > 0;
+  const barWidth = (ministry.budgetEstimate / total) * 100;
+
+  return (
+    <div
+      className="rounded-lg p-4 cursor-pointer"
+      style={{
+        background: 'var(--bg-raised)',
+        border: expanded ? '1px solid var(--saffron)' : 'var(--border-subtle)',
+      }}
+      onClick={hasSchemes ? onToggle : undefined}
+    >
+      <div className="flex justify-between items-start mb-2">
+        <div className="flex-1">
+          <p className="text-sm font-semibold" style={{ color: 'var(--text-primary)' }}>{ministry.name}</p>
+          <p className="text-xs mt-0.5" style={{ color: 'var(--text-muted)' }}>{ministry.humanContext}</p>
+        </div>
+        <YoYBadge value={ministry.yoyChange ?? 0} />
+      </div>
+
+      <div className="flex items-center justify-between mt-3">
+        <span className="font-mono text-sm font-bold">{formatRsCrore(ministry.budgetEstimate)}</span>
+        <span className="font-mono text-xs" style={{ color: 'var(--text-muted)' }}>
+          {formatPercent(ministry.percentOfTotal)} &middot; {formatPerCapita(ministry.perCapita)}
+        </span>
+      </div>
+
+      <div className="w-full h-1.5 rounded-full mt-2 overflow-hidden" style={{ background: 'var(--bg-hover)' }}>
+        <div className="h-full rounded-full" style={{ width: `${barWidth * 2}%`, background: 'var(--saffron)' }} />
+      </div>
+
+      <AnimatePresence>
+        {expanded && hasSchemes && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            className="mt-3 pt-3"
+            style={{ borderTop: 'var(--border-divider)' }}
+          >
+            <p className="text-caption uppercase tracking-wider mb-2">Major Schemes</p>
+            {ministry.schemes.map((scheme) => (
+              <div key={scheme.id} className="flex justify-between text-sm py-1">
+                <span style={{ color: 'var(--text-secondary)' }}>{scheme.name}</span>
+                <span className="font-mono" style={{ color: 'var(--text-muted)' }}>
+                  {formatRsCrore(scheme.amount)}
+                </span>
+              </div>
+            ))}
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
   );
 }

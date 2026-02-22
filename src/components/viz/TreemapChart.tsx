@@ -1,8 +1,9 @@
 import { useMemo, useState, useCallback } from 'react';
 import * as d3 from 'd3-hierarchy';
-import { motion, AnimatePresence } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import type { TreemapNode } from '../../lib/data/schema.ts';
 import { formatRsCrore, formatPercent } from '../../lib/format.ts';
+import { Tooltip, TooltipTitle, TooltipRow, TooltipHint, useTooltip } from '../ui/Tooltip.tsx';
 
 interface TreemapChartProps {
   root: TreemapNode;
@@ -11,15 +12,35 @@ interface TreemapChartProps {
   isVisible: boolean;
 }
 
-const COLORS = [
-  '#FF6B35', '#3B82F6', '#8B5CF6', '#10B981', '#F59E0B',
-  '#EC4899', '#6366F1', '#14B8A6', '#F97316', '#06B6D4',
-  '#EF4444', '#84CC16',
-];
+/**
+ * Deterministic color map: warm saffron tints for domestic spending,
+ * cool teal for transfers/interest. Children inherit parent tint.
+ */
+const NODE_COLORS: Record<string, string> = {
+  'transfers-to-states': '#3BA5A0',
+  'interest-payments': '#4AAAA5',
+  'defence': '#FF6B35',
+  'road-transport': '#FF8C5A',
+  'railways': '#FF9E70',
+  'subsidies': '#E0813C',
+  'home-affairs': '#FFB088',
+  'rural-development': '#C75E28',
+  'agriculture': '#D47040',
+  'education': '#E8844A',
+  'health': '#F09555',
+  'pensions': '#5BBFB5',
+};
 
-export function TreemapChart({ root, width = 800, height = 500, isVisible }: TreemapChartProps) {
-  const [drillNode, setDrillNode] = useState<TreemapNode | null>(null);
-  const activeRoot = drillNode || root;
+const DEFAULT_COLOR = '#FF8C5A';
+
+function getNodeColor(id: string, parentId?: string): string {
+  return NODE_COLORS[id] || NODE_COLORS[parentId || ''] || DEFAULT_COLOR;
+}
+
+export function TreemapChart({ root, width = 960, height = 600, isVisible }: TreemapChartProps) {
+  const [drillPath, setDrillPath] = useState<TreemapNode[]>([]);
+  const activeRoot = drillPath.length > 0 ? drillPath[drillPath.length - 1] : root;
+  const tooltip = useTooltip<{ name: string; value: number; pct?: number; hasChildren: boolean }>();
 
   const layout = useMemo(() => {
     const hierarchy = d3
@@ -27,39 +48,55 @@ export function TreemapChart({ root, width = 800, height = 500, isVisible }: Tre
       .sum((d) => (d.children ? 0 : d.value || 0))
       .sort((a, b) => (b.value || 0) - (a.value || 0));
 
-    d3
-      .treemap<TreemapNode>()
+    d3.treemap<TreemapNode>()
       .size([width, height])
       .paddingInner(2)
-      .paddingOuter(4)
+      .paddingOuter(3)
       .round(true)(hierarchy);
 
     return hierarchy.leaves();
   }, [activeRoot, width, height]);
 
   const handleClick = useCallback(
-    (node: TreemapNode) => {
-      if (drillNode) {
-        setDrillNode(null);
-      } else if (node.children && node.children.length > 0) {
-        setDrillNode(node);
+    (node: TreemapNode, parent?: TreemapNode) => {
+      const target = node.children ? node : parent;
+      if (target?.children && target.children.length > 0) {
+        setDrillPath((prev) => [...prev, target]);
       }
     },
-    [drillNode]
+    []
   );
+
+  const handleBreadcrumb = useCallback((index: number) => {
+    setDrillPath((prev) => prev.slice(0, index));
+  }, []);
 
   return (
     <div className="w-full">
-      {drillNode && (
-        <button
-          onClick={() => setDrillNode(null)}
-          className="mb-3 px-3 py-1.5 text-xs font-medium text-[var(--color-saffron)] bg-[rgba(255,107,53,0.1)] rounded-lg hover:bg-[rgba(255,107,53,0.2)] transition-colors cursor-pointer border-none"
-        >
-          &larr; Back to overview
-        </button>
+      {/* Breadcrumb */}
+      {drillPath.length > 0 && (
+        <div className="flex items-center gap-1 mb-3 text-sm">
+          <button
+            onClick={() => handleBreadcrumb(0)}
+            className="text-caption hover:text-[var(--text-secondary)] transition-colors cursor-pointer bg-transparent border-none p-0"
+          >
+            All Spending
+          </button>
+          {drillPath.map((node, i) => (
+            <span key={node.id} className="flex items-center gap-1">
+              <span className="text-caption">&rsaquo;</span>
+              <button
+                onClick={() => handleBreadcrumb(i + 1)}
+                className="text-caption hover:text-[var(--text-secondary)] transition-colors cursor-pointer bg-transparent border-none p-0"
+              >
+                {node.name}
+              </button>
+            </span>
+          ))}
+        </div>
       )}
 
-      <div className="relative w-full overflow-hidden rounded-xl" style={{ aspectRatio: `${width}/${height}` }}>
+      <div className="relative w-full overflow-hidden rounded-lg" style={{ aspectRatio: `${width}/${height}` }}>
         <svg viewBox={`0 0 ${width} ${height}`} className="w-full h-full">
           <AnimatePresence mode="wait">
             {layout.map((leaf, i) => {
@@ -70,14 +107,14 @@ export function TreemapChart({ root, width = 800, height = 500, isVisible }: Tre
               const w = x1 - x0;
               const h = y1 - y0;
               const parent = leaf.parent?.data;
-              const colorIdx = root.children
-                ? root.children.findIndex(
-                    (c) => c.id === (drillNode ? drillNode.id : parent?.id || leaf.data.id)
-                  )
-                : i;
-              const color = COLORS[colorIdx >= 0 ? colorIdx % COLORS.length : i % COLORS.length];
-              const showLabel = w > 60 && h > 30;
-              const showValue = w > 80 && h > 50;
+              const color = getNodeColor(
+                drillPath.length > 0 ? (parent?.id || leaf.data.id) : leaf.data.id,
+                parent?.id
+              );
+              const showLabel = w > 60 && h > 28;
+              const showValue = w > 80 && h > 48;
+              const hasChildren = !!(leaf.data.children && leaf.data.children.length > 0);
+              const maxChars = Math.floor(w / 7.5);
 
               return (
                 <motion.g
@@ -85,7 +122,7 @@ export function TreemapChart({ root, width = 800, height = 500, isVisible }: Tre
                   initial={{ opacity: 0 }}
                   animate={isVisible ? { opacity: 1 } : { opacity: 0 }}
                   exit={{ opacity: 0 }}
-                  transition={{ delay: i * 0.03, duration: 0.4 }}
+                  transition={{ delay: i * 0.025, duration: 0.4 }}
                 >
                   <rect
                     className="treemap-rect"
@@ -94,13 +131,22 @@ export function TreemapChart({ root, width = 800, height = 500, isVisible }: Tre
                     width={w}
                     height={h}
                     fill={color}
-                    rx={4}
-                    onClick={() => handleClick(leaf.data.children ? leaf.data : parent || leaf.data)}
-                  >
-                    <title>
-                      {leaf.data.name}: {formatRsCrore(leaf.value || 0)}
-                    </title>
-                  </rect>
+                    rx={3}
+                    onClick={() => handleClick(leaf.data, parent || undefined)}
+                    onMouseEnter={(e) =>
+                      tooltip.show(
+                        {
+                          name: leaf.data.name,
+                          value: leaf.value || 0,
+                          pct: leaf.data.percentOfTotal,
+                          hasChildren,
+                        },
+                        e
+                      )
+                    }
+                    onMouseMove={tooltip.move}
+                    onMouseLeave={tooltip.hide}
+                  />
                   {showLabel && (
                     <text
                       x={x0 + 6}
@@ -111,8 +157,8 @@ export function TreemapChart({ root, width = 800, height = 500, isVisible }: Tre
                       fontFamily="var(--font-body)"
                       style={{ pointerEvents: 'none' }}
                     >
-                      {leaf.data.name.length > Math.floor(w / 7)
-                        ? leaf.data.name.slice(0, Math.floor(w / 7)) + '...'
+                      {leaf.data.name.length > maxChars
+                        ? leaf.data.name.slice(0, maxChars) + '...'
                         : leaf.data.name}
                     </text>
                   )}
@@ -136,6 +182,26 @@ export function TreemapChart({ root, width = 800, height = 500, isVisible }: Tre
           </AnimatePresence>
         </svg>
       </div>
+
+      <Tooltip
+        content={
+          tooltip.data && (
+            <>
+              <TooltipTitle>{tooltip.data.name}</TooltipTitle>
+              {tooltip.data.pct && (
+                <TooltipRow label="Share" value={formatPercent(tooltip.data.pct)} />
+              )}
+              <TooltipRow label="Amount" value={formatRsCrore(tooltip.data.value)} />
+              {tooltip.data.hasChildren && (
+                <TooltipHint>Click to drill down</TooltipHint>
+              )}
+            </>
+          )
+        }
+        visible={tooltip.visible}
+        x={tooltip.position.x}
+        y={tooltip.position.y}
+      />
     </div>
   );
 }

@@ -1,0 +1,47 @@
+{
+  "hero": {
+    "overline": "Union Budget 2025-26",
+    "tagline": "Where every rupee goes",
+    "perCapita": "That's Rs {{amount}} per citizen per day"
+  },
+  "narratives": {
+    "revenueIntro": "The government collects revenue from taxes, borrowings, and non-tax sources. Let's see where each rupee comes from.",
+    "expenditureIntro": "Now let's trace where this money goes. Every ministry, every scheme, every crore.",
+    "flowIntro": "Follow the flow from your pocket through the Central Government to the spending that shapes the country.",
+    "mapIntro": "Nearly one in four rupees flows directly to states and union territories. Here's where it lands."
+  },
+  "revenue": {
+    "heading": "Where the money comes from",
+    "totalReceipts": "Total receipts:",
+    "borrowingAnnotation": "Each square = 1%. For every rupee earned, the government borrows {{paise}} paise more.",
+    "source": "Source: Union Budget 2025-26, Receipt Budget"
+  },
+  "expenditure": {
+    "heading": "Where the money goes",
+    "annotation": "45 paisa of every rupee goes to state transfers + interest payments. Area = budget size. Click any block to drill down.",
+    "source": "Source: Union Budget 2025-26, Expenditure Budget"
+  },
+  "flow": {
+    "heading": "Follow the money",
+    "annotation": "Revenue sources flow through the Central Government to spending heads. Wider flows = larger amounts. Hover to trace connections.",
+    "source": "Source: Union Budget 2025-26, Budget at a Glance"
+  },
+  "map": {
+    "heading": "{{amount}} to states",
+    "annotation": "Nearly 1 in 4 rupees of central spending flows directly to state governments. Hover over states to see the breakdown.",
+    "largestTotal": "Largest total",
+    "highestPerCapita": "Highest per capita",
+    "source": "Source: Union Budget 2025-26, Finance Commission"
+  },
+  "cta": {
+    "heading": "Go deeper",
+    "calculator": {
+      "title": "Find Your Share",
+      "description": "Enter your income. See where your tax rupees go."
+    },
+    "explorer": {
+      "title": "Data Explorer",
+      "description": "Full dataset. Sortable tables, scheme breakdowns, CSV export."
+    }
+  }
+}

@@ -1,5 +1,7 @@
 import { Link, useLocation } from 'react-router-dom';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { useUIStore } from '../../store/uiStore.ts';
+import { LanguageSwitcher } from '../i18n/LanguageSwitcher.tsx';
 
 const navLinks = [
   { to: '/', label: 'Home' },
@@ -11,40 +13,84 @@ const navLinks = [
 export function Header() {
   const location = useLocation();
   const toggleSearch = useUIStore((s) => s.toggleSearch);
+  const { scrollY } = useScroll();
+
+  const bgOpacity = useTransform(scrollY, [0, 100], [0, 1]);
+  const borderOpacity = useTransform(scrollY, [0, 100], [0, 0.06]);
 
   return (
-    <header className="glass fixed top-0 left-0 right-0 z-50">
-      <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+    <motion.header
+      className="fixed top-0 left-0 right-0 z-50"
+      style={{
+        backdropFilter: 'blur(16px)',
+        WebkitBackdropFilter: 'blur(16px)',
+      }}
+    >
+      <motion.div
+        className="absolute inset-0"
+        style={{
+          backgroundColor: 'var(--bg-void)',
+          opacity: bgOpacity,
+        }}
+      />
+      <motion.div
+        className="absolute bottom-0 left-0 right-0 h-px"
+        style={{
+          backgroundColor: 'white',
+          opacity: borderOpacity,
+        }}
+      />
+
+      <div className="relative max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2 no-underline">
-          <span className="text-xl font-bold gradient-text-saffron">
+          <span className="text-lg font-bold gradient-text-saffron">
             India Budget Explorer
           </span>
         </Link>
 
         <nav className="hidden md:flex items-center gap-1">
-          {navLinks.map((link) => (
-            <Link
-              key={link.to}
-              to={link.to}
-              className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors no-underline ${
-                location.pathname === link.to
-                  ? 'text-[var(--color-saffron)] bg-[rgba(255,107,53,0.1)]'
-                  : 'text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] hover:bg-[var(--color-bg-raised)]'
-              }`}
-            >
-              {link.label}
-            </Link>
-          ))}
+          {navLinks.map((link) => {
+            const isActive = location.pathname === link.to;
+            return (
+              <Link
+                key={link.to}
+                to={link.to}
+                className="relative px-3 py-2 text-sm font-medium transition-colors no-underline"
+                style={{
+                  color: isActive
+                    ? 'var(--text-primary)'
+                    : 'var(--text-muted)',
+                }}
+              >
+                {link.label}
+                {isActive && (
+                  <motion.div
+                    layoutId="nav-underline"
+                    className="absolute bottom-0 left-3 right-3 h-0.5 rounded-full"
+                    style={{ backgroundColor: 'var(--saffron)' }}
+                    transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+                  />
+                )}
+              </Link>
+            );
+          })}
 
           <button
             onClick={toggleSearch}
-            className="ml-2 px-3 py-1.5 rounded-lg text-xs text-[var(--color-text-muted)] bg-[var(--color-bg-raised)] border border-[rgba(255,255,255,0.08)] hover:border-[var(--color-saffron)] transition-colors cursor-pointer"
+            className="ml-3 px-3 py-1.5 rounded-lg text-xs font-mono cursor-pointer transition-colors"
+            style={{
+              color: 'var(--text-muted)',
+              background: 'var(--bg-raised)',
+              border: 'var(--border-subtle)',
+            }}
             aria-label="Search"
           >
-            <span className="font-mono">Cmd+K</span>
+            Cmd+K
           </button>
+
+          <LanguageSwitcher />
         </nav>
       </div>
-    </header>
+    </motion.header>
   );
 }

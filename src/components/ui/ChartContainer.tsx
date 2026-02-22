@@ -9,13 +9,16 @@ interface ChartContainerProps {
 
 export function ChartContainer({ title, subtitle, children, className = '' }: ChartContainerProps) {
   return (
-    <div className={`bg-[var(--color-bg-surface)] rounded-2xl border border-[rgba(255,255,255,0.05)] overflow-hidden ${className}`}>
+    <div
+      className={`rounded-2xl overflow-hidden ${className}`}
+      style={{ background: 'var(--bg-surface)', border: 'var(--border-subtle)' }}
+    >
       <div className="px-6 pt-6 pb-2">
-        <h3 className="text-lg md:text-xl font-semibold text-[var(--color-text-primary)]">
+        <h3 className="text-lg md:text-xl font-semibold" style={{ color: 'var(--text-primary)' }}>
           {title}
         </h3>
         {subtitle && (
-          <p className="text-sm text-[var(--color-text-muted)] mt-1">{subtitle}</p>
+          <p className="text-sm mt-1" style={{ color: 'var(--text-muted)' }}>{subtitle}</p>
         )}
       </div>
       <div className="px-4 pb-6">{children}</div>

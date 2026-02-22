@@ -12,21 +12,20 @@ export function MobileNav() {
 
   return (
     <nav className="md:hidden fixed bottom-0 left-0 right-0 z-50 glass mobile-nav-safe">
-      <div className="flex justify-around items-center h-16">
+      <div className="flex justify-around items-center h-14">
         {tabs.map((tab) => {
           const isActive = location.pathname === tab.to;
           return (
             <Link
               key={tab.to}
               to={tab.to}
-              className={`flex flex-col items-center gap-0.5 px-3 py-1 no-underline transition-colors ${
-                isActive
-                  ? 'text-[var(--color-saffron)]'
-                  : 'text-[var(--color-text-muted)]'
-              }`}
+              className="flex flex-col items-center gap-1 px-3 py-1 no-underline transition-colors"
+              style={{
+                color: isActive ? 'var(--saffron)' : 'var(--text-muted)',
+              }}
             >
               <svg
-                className="w-5 h-5"
+                className="w-6 h-6"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -35,6 +34,12 @@ export function MobileNav() {
                 <path strokeLinecap="round" strokeLinejoin="round" d={tab.icon} />
               </svg>
               <span className="text-[10px] font-medium">{tab.label}</span>
+              {isActive && (
+                <div
+                  className="absolute bottom-1 w-1 h-1 rounded-full"
+                  style={{ backgroundColor: 'var(--saffron)' }}
+                />
+              )}
             </Link>
           );
         })}

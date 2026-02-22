@@ -1,0 +1,37 @@
+{
+  "siteName": "India Budget Explorer",
+  "nav": {
+    "home": "Home",
+    "explore": "Explore",
+    "calculator": "Your Share",
+    "methodology": "Methods"
+  },
+  "header": {
+    "search": "Cmd+K",
+    "searchAriaLabel": "Search"
+  },
+  "footer": {
+    "dataFrom": "Data from",
+    "openBudgetsIndia": "Open Budgets India",
+    "godl": "GODL",
+    "notAffiliated": "Not affiliated with GoI",
+    "budgetYear": "Union Budget 2025-26"
+  },
+  "loading": "Loading...",
+  "error": {
+    "failedToLoad": "Failed to load data",
+    "tryRefreshing": "Budget data could not be fetched. Try refreshing.",
+    "refresh": "Refresh"
+  },
+  "units": {
+    "rs": "Rs",
+    "crore": "crore",
+    "cr": "Cr",
+    "lakhCrore": "lakh crore",
+    "lpa": "LPA",
+    "paise": "paise",
+    "percent": "%"
+  },
+  "ministriesCount": "{{count}} ministries / departments",
+  "exportCSV": "Export CSV"
+}

@@ -1,6 +1,8 @@
-import { useIntersection } from '../../hooks/useIntersection.ts';
-import { WaffleChart } from '../viz/WaffleChart.tsx';
-import { ChartContainer } from '../ui/ChartContainer.tsx';
+import { useState } from 'react';
+import { motion } from 'framer-motion';
+import { useScrollTrigger } from '../../hooks/useScrollTrigger.ts';
+import { WaffleChart, WaffleLegend } from '../viz/WaffleChart.tsx';
+import { SectionNumber } from '../ui/SectionNumber.tsx';
 import type { ReceiptsData } from '../../lib/data/schema.ts';
 import { formatLakhCrore } from '../../lib/format.ts';
 
@@ -9,36 +11,75 @@ interface RevenueSectionProps {
 }
 
 export function RevenueSection({ receipts }: RevenueSectionProps) {
-  const { ref, isVisible } = useIntersection({ threshold: 0.15 });
+  const [ref, isVisible] = useScrollTrigger({ threshold: 0.1 });
+  const [hoveredCat, setHoveredCat] = useState<string | null>(null);
+
+  const borrowingPct = receipts.categories.find((c) => c.id === 'borrowings')?.percentOfTotal || 0;
 
   return (
-    <section ref={ref} className="py-20 md:py-32 px-4">
-      <div className="max-w-6xl mx-auto">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          <div>
-            <p className="text-sm font-medium text-[var(--color-saffron)] tracking-widest uppercase mb-4">
+    <section ref={ref} className="composition">
+      <div className="max-w-6xl mx-auto px-4">
+        <SectionNumber number={1} className="mb-6 block" />
+
+        <div className="grid md:grid-cols-[1fr_1.5fr] gap-12 items-start">
+          {/* Annotation panel */}
+          <div className="md:sticky md:top-24">
+            <motion.h2
+              initial={{ opacity: 0, y: 16 }}
+              animate={isVisible ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+              className="text-composition mb-4"
+            >
               Where the money comes from
-            </p>
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">
-              Income Tax and Corporate Tax fund{' '}
-              <span className="gradient-text-saffron">65%</span> of receipts
-            </h2>
-            <p className="text-[var(--color-text-secondary)] mb-4 text-lg">
-              The government collects {formatLakhCrore(receipts.total)} in total receipts.
-              Each square represents 1% of where the money comes from.
-            </p>
-            <p className="text-sm text-[var(--color-text-muted)]">
-              Borrowings account for nearly a third. That means for every rupee
-              earned, the government borrows another 32 paise to cover spending.
+            </motion.h2>
+
+            <motion.p
+              initial={{ opacity: 0, y: 12 }}
+              animate={isVisible ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
+              className="text-annotation mb-3"
+            >
+              Total receipts: <span className="font-mono font-bold" style={{ color: 'var(--text-primary)' }}>
+                {formatLakhCrore(receipts.total)}
+              </span>
+            </motion.p>
+
+            <motion.p
+              initial={{ opacity: 0, y: 12 }}
+              animate={isVisible ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
+              className="text-annotation mb-6"
+            >
+              Each square = 1%. For every rupee earned, the government borrows{' '}
+              <span className="font-mono font-bold" style={{ color: 'var(--cyan)' }}>
+                {Math.round(borrowingPct)} paise
+              </span>{' '}
+              more.
+            </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={isVisible ? { opacity: 1 } : {}}
+              transition={{ duration: 0.6, delay: 0.3 }}
+            >
+              <WaffleLegend
+                categories={receipts.categories}
+                hoveredCat={hoveredCat}
+                onHover={setHoveredCat}
+              />
+            </motion.div>
+
+            <p className="source-attribution mt-8">
+              Source: Union Budget 2025-26, Receipt Budget
             </p>
           </div>
 
-          <ChartContainer
-            title="Revenue Rupee: each square = 1%"
-            subtitle="Where does each rupee of government revenue come from?"
-          >
-            <WaffleChart categories={receipts.categories} isVisible={isVisible} />
-          </ChartContainer>
+          {/* Waffle chart — fills the right side */}
+          <WaffleChart
+            categories={receipts.categories}
+            isVisible={isVisible}
+            highlightCategory={hoveredCat}
+          />
         </div>
       </div>
     </section>

@@ -1,5 +1,6 @@
-import { useIntersection } from '../../hooks/useIntersection.ts';
+import { motion } from 'framer-motion';
 import { AnimatedCounter } from '../viz/AnimatedCounter.tsx';
+import { useScrollTrigger } from '../../hooks/useScrollTrigger.ts';
 import type { BudgetSummary } from '../../lib/data/schema.ts';
 
 interface HeroSectionProps {
@@ -7,77 +8,92 @@ interface HeroSectionProps {
 }
 
 export function HeroSection({ summary }: HeroSectionProps) {
-  const { ref, isVisible } = useIntersection({ threshold: 0.2 });
+  const [ref, isVisible] = useScrollTrigger({ threshold: 0.2 });
 
   return (
     <section
       ref={ref}
       className="min-h-screen flex items-center justify-center relative overflow-hidden"
     >
-      {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[var(--color-bg-deepest)] via-[rgba(255,107,53,0.03)] to-[var(--color-bg-deepest)]" />
-
-      {/* Subtle grid pattern */}
+      {/* Radial glow behind the counter */}
       <div
-        className="absolute inset-0 opacity-[0.02]"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full pointer-events-none"
         style={{
-          backgroundImage:
-            'linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)',
-          backgroundSize: '60px 60px',
+          background: 'radial-gradient(circle, rgba(255,107,53,0.08) 0%, transparent 70%)',
         }}
       />
 
       <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
-        <p className="text-sm md:text-base font-medium text-[var(--color-saffron)] tracking-widest uppercase mb-6">
+        {/* Overline */}
+        <motion.p
+          initial={{ opacity: 0, y: 12 }}
+          animate={isVisible ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0 }}
+          className="text-section-num tracking-[0.2em] uppercase mb-8"
+        >
           Union Budget 2025-26
-        </p>
+        </motion.p>
 
-        <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold leading-tight mb-8">
-          <span className="text-[var(--color-text-primary)]">The Government spends</span>
-          <br />
-          <span className="gradient-text-saffron text-5xl md:text-7xl lg:text-8xl">
-            Rs{' '}
+        {/* Tagline */}
+        <motion.p
+          initial={{ opacity: 0, y: 12 }}
+          animate={isVisible ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
+          className="text-lg md:text-xl mb-6"
+          style={{ color: 'var(--text-secondary)' }}
+        >
+          Where every rupee goes
+        </motion.p>
+
+        {/* Hero counter — physically enormous */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isVisible ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
+        >
+          <div className="text-hero gradient-text-saffron">
+            <span className="text-[0.5em] font-semibold mr-1">Rs</span>
             <AnimatedCounter
               target={summary.totalExpenditure}
               duration={2.5}
               trigger={isVisible}
               className="gradient-text-saffron"
             />
-          </span>
-          <br />
-          <span className="text-[var(--color-text-primary)]">crore</span>
-        </h1>
-
-        <p className="text-lg md:text-2xl text-[var(--color-text-secondary)] max-w-2xl mx-auto mb-4">
-          That&apos;s{' '}
-          <span className="font-mono font-bold text-[var(--color-text-primary)]">
-            Rs {summary.perCapitaDailyExpenditure.toFixed(2)}
-          </span>{' '}
-          per citizen per day
-        </p>
-
-        <p className="text-sm md:text-base text-[var(--color-text-muted)] max-w-xl mx-auto mb-12">
-          Where does this money come from? Where does it go?
-          <br />
-          Scroll to explore.
-        </p>
-
-        {/* Scroll indicator */}
-        <div className="animate-bounce mt-8">
-          <svg
-            className="w-6 h-6 mx-auto text-[var(--color-text-muted)]"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
+          </div>
+          <p
+            className="text-xl md:text-2xl font-medium mt-2"
+            style={{ color: 'var(--text-secondary)' }}
           >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M19 14l-7 7m0 0l-7-7m7 7V3"
-            />
-          </svg>
-        </div>
+            crore
+          </p>
+        </motion.div>
+
+        {/* Per-capita pill */}
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          animate={isVisible ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.45 }}
+          className="mt-8 inline-flex items-center gap-2 px-4 py-2 rounded-full"
+          style={{
+            background: 'var(--bg-raised)',
+            border: 'var(--border-subtle)',
+          }}
+        >
+          <span className="text-caption">That's</span>
+          <span className="font-mono font-bold text-sm" style={{ color: 'var(--text-primary)' }}>
+            Rs {summary.perCapitaDailyExpenditure.toFixed(2)}
+          </span>
+          <span className="text-caption">per citizen per day</span>
+        </motion.div>
+
+        {/* Growing line scroll indicator */}
+        <motion.div
+          initial={{ scaleY: 0 }}
+          animate={isVisible ? { scaleY: 1 } : {}}
+          transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.8 }}
+          className="mt-16 mx-auto w-px h-16 origin-top"
+          style={{ backgroundColor: 'var(--text-muted)' }}
+        />
       </div>
     </section>
   );

@@ -20,14 +20,14 @@ export function ShareCard({ breakdown, regime }: ShareCardProps) {
     canvas.width = 1200;
     canvas.height = 630;
 
-    // Background
+    // Background — matches --bg-void
     const gradient = ctx.createLinearGradient(0, 0, 1200, 630);
-    gradient.addColorStop(0, '#0a0e1a');
-    gradient.addColorStop(1, '#111827');
+    gradient.addColorStop(0, '#06080f');
+    gradient.addColorStop(1, '#0e1420');
     ctx.fillStyle = gradient;
     ctx.fillRect(0, 0, 1200, 630);
 
-    // Accent line
+    // Saffron accent line
     ctx.fillStyle = '#FF6B35';
     ctx.fillRect(0, 0, 1200, 4);
 
@@ -37,7 +37,7 @@ export function ShareCard({ breakdown, regime }: ShareCardProps) {
     ctx.fillText('India Budget Explorer', 60, 60);
 
     // Income
-    ctx.fillStyle = '#f5f0eb';
+    ctx.fillStyle = '#f0ece6';
     ctx.font = 'bold 36px Inter, sans-serif';
     ctx.fillText(
       `On an income of Rs ${formatIndianNumber(breakdown.grossIncome)} (${formatLPA(breakdown.grossIncome)})`,
@@ -45,12 +45,12 @@ export function ShareCard({ breakdown, regime }: ShareCardProps) {
       130
     );
 
-    // Tax
+    // Tax — hero number
     ctx.fillStyle = '#FF6B35';
     ctx.font = 'bold 64px JetBrains Mono, monospace';
     ctx.fillText(`Rs ${formatIndianNumber(breakdown.totalTax)}`, 60, 230);
 
-    ctx.fillStyle = '#9ca3af';
+    ctx.fillStyle = '#5c6a7e';
     ctx.font = '28px Inter, sans-serif';
     ctx.fillText(
       `in taxes under ${regime === 'new' ? 'New' : 'Old'} Regime (${formatPercent(
@@ -61,9 +61,9 @@ export function ShareCard({ breakdown, regime }: ShareCardProps) {
     );
 
     // Footer
-    ctx.fillStyle = '#6B7280';
+    ctx.fillStyle = '#5c6a7e';
     ctx.font = '20px Inter, sans-serif';
-    ctx.fillText('See where your taxes go at budgetexplorer.in/calculator', 60, 580);
+    ctx.fillText('See where your taxes go at indiabudgetexplorer.in/calculator', 60, 580);
 
     // Download
     const link = document.createElement('a');
@@ -73,18 +73,16 @@ export function ShareCard({ breakdown, regime }: ShareCardProps) {
   }, [breakdown, regime]);
 
   return (
-    <div className="mt-8">
+    <div>
       <canvas ref={canvasRef} className="hidden" />
       <button
         onClick={generateImage}
-        className="w-full py-3 px-6 rounded-xl font-semibold text-white cursor-pointer border-none transition-all"
-        style={{ background: 'linear-gradient(135deg, #FF6B35, #ff8c5a)' }}
+        className="w-full py-3 px-6 rounded-lg font-semibold text-white cursor-pointer border-none transition-all hover:opacity-90"
+        style={{ background: 'linear-gradient(135deg, var(--saffron), #ff8c5a)' }}
       >
-        Download Share Card (1200x630)
+        Download Share Card
       </button>
-      <p className="text-xs text-[var(--color-text-muted)] text-center mt-2">
-        Share on social media with your tax breakdown
-      </p>
+      <p className="text-caption text-center mt-2">1200 × 630 PNG for social media</p>
     </div>
   );
 }

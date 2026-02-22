@@ -1,0 +1,39 @@
+{
+  "title": "Find Your Share",
+  "description": "Enter your annual income. See exactly how much tax you pay and where those rupees go.",
+  "income": {
+    "label": "Your Annual Income",
+    "sliderAriaLabel": "Annual income",
+    "min": "Rs 0",
+    "max": "Rs 1 Cr"
+  },
+  "regime": {
+    "new": "New Regime",
+    "old": "Old Regime"
+  },
+  "breakdown": {
+    "heading": "Tax Breakdown",
+    "totalTax": "Total Tax",
+    "effectiveRate": "Effective Rate",
+    "rebate": "Section 87A rebate applied. No tax payable.",
+    "slabBreakdown": "Slab-by-slab Breakdown",
+    "standardDeduction": "Standard Deduction",
+    "taxableIncome": "Taxable Income",
+    "slabRange": "Rs {{from}} – {{to}} @ {{rate}}%",
+    "slabAbove": "Above Rs {{from}} @ {{rate}}%",
+    "surcharge": "Surcharge",
+    "cess": "Health & Education Cess (4%)"
+  },
+  "spending": {
+    "heading": "Where Your Tax Goes",
+    "yourTaxFunds": "Your Rs {{amount}} in taxes funds:",
+    "noTax": "No tax payable at this income level. Increase your income to see allocation."
+  },
+  "share": {
+    "heading": "Share Your Breakdown",
+    "description": "Generate an image card for social media.",
+    "download": "Download Share Card",
+    "dimensions": "1200 × 630 PNG for social media"
+  },
+  "source": "Source: Income Tax Act slab rates AY 2026-27 (FY 2025-26), Union Budget 2025-26"
+}

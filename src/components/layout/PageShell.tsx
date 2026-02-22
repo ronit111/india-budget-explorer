@@ -1,14 +1,36 @@
 import type { ReactNode } from 'react';
+import { useLocation } from 'react-router-dom';
+import { motion, useScroll, useSpring } from 'framer-motion';
 import { Header } from './Header.tsx';
 import { MobileNav } from './MobileNav.tsx';
 import { Footer } from './Footer.tsx';
 import { SearchOverlay } from '../ui/SearchOverlay.tsx';
+import { useLenis } from '../../lib/smooth-scroll.ts';
 
 export function PageShell({ children }: { children: ReactNode }) {
+  const location = useLocation();
+  const isHome = location.pathname === '/';
+
+  useLenis();
+
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, { stiffness: 100, damping: 30, restDelta: 0.001 });
+
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
       <SearchOverlay />
+
+      {isHome && (
+        <motion.div
+          className="fixed top-16 left-0 right-0 h-0.5 z-40 origin-left"
+          style={{
+            scaleX,
+            backgroundColor: 'var(--saffron)',
+          }}
+        />
+      )}
+
       <main className="flex-1 pt-16">{children}</main>
       <Footer />
       <MobileNav />

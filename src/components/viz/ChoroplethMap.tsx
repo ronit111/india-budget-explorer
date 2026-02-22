@@ -1,140 +1,188 @@
-import { useMemo, useState } from 'react';
-import { scaleQuantize } from 'd3-scale';
+import { useMemo, useState, useEffect } from 'react';
+import { geoMercator, geoPath } from 'd3-geo';
+import { scaleSequential } from 'd3-scale';
+import { interpolateRgb } from 'd3-interpolate';
+import * as topojson from 'topojson-client';
 import type { StateTransfer } from '../../lib/data/schema.ts';
 import { formatRsCrore, formatIndianNumber } from '../../lib/format.ts';
+import { TOPO_NAME_TO_BUDGET_CODE, NE_STATES, STATES_WITHOUT_BUDGET_DATA } from '../../lib/stateMapping.ts';
+import { Tooltip, TooltipTitle, TooltipRow, useTooltip } from '../ui/Tooltip.tsx';
+import type { Topology, GeometryCollection } from 'topojson-specification';
+import type { FeatureCollection, Feature, Geometry } from 'geojson';
 
 interface ChoroplethMapProps {
   states: StateTransfer[];
   isVisible: boolean;
 }
 
-// Simplified India state paths (inline SVG approach)
-// Using approximate boundaries for the major states
-const STATE_PATHS: Record<string, string> = {
-  JK: 'M185,30 L210,15 L235,25 L240,50 L225,65 L205,70 L185,55 Z',
-  HP: 'M205,70 L225,65 L235,80 L220,95 L200,90 Z',
-  PB: 'M180,75 L205,70 L200,90 L185,100 L170,90 Z',
-  UK: 'M220,95 L240,85 L260,95 L250,110 L225,110 Z',
-  HR: 'M170,90 L200,90 L200,115 L180,125 L165,110 Z',
-  RJ: 'M100,110 L170,90 L180,125 L175,170 L145,195 L90,180 L80,140 Z',
-  UP: 'M200,115 L250,110 L290,120 L300,150 L275,170 L240,175 L200,165 L180,125 Z',
-  BH: 'M290,150 L330,145 L340,165 L310,175 L290,170 Z',
-  WB: 'M330,145 L355,140 L365,170 L350,210 L330,220 L320,190 L310,175 L340,165 Z',
-  JH: 'M290,170 L310,175 L320,190 L305,210 L280,200 L275,180 Z',
-  OR: 'M280,200 L305,210 L330,220 L325,250 L300,265 L270,245 L265,215 Z',
-  CG: 'M240,195 L275,180 L280,200 L265,215 L270,245 L250,250 L230,225 Z',
-  MP: 'M145,145 L200,140 L240,175 L240,195 L230,225 L185,230 L140,210 L130,175 Z',
-  GJ: 'M60,155 L100,140 L130,175 L140,210 L120,230 L80,230 L50,210 L40,180 Z',
-  MH: 'M80,230 L140,210 L185,230 L200,260 L180,295 L140,310 L100,290 L75,265 Z',
-  TS: 'M180,295 L200,260 L230,270 L245,295 L225,315 L195,310 Z',
-  AP: 'M195,310 L225,315 L260,300 L280,330 L260,360 L220,350 L200,330 Z',
-  KA: 'M100,290 L140,310 L180,295 L195,310 L200,330 L180,370 L140,380 L110,350 L95,320 Z',
-  KL: 'M110,350 L140,380 L135,420 L120,440 L105,420 L100,380 Z',
-  TN: 'M140,380 L180,370 L200,330 L220,350 L210,390 L180,420 L155,430 L135,420 Z',
-  NE: 'M355,120 L400,100 L420,120 L415,150 L390,160 L370,155 L355,140 Z',
-  AS: 'M340,130 L380,115 L400,125 L395,145 L365,150 L345,145 Z',
-};
+interface StateProperties {
+  st_nm: string;
+  st_code: string;
+}
+
+type TopoData = Topology<{ states: GeometryCollection<StateProperties> }>;
 
 export function ChoroplethMap({ states, isVisible }: ChoroplethMapProps) {
-  const [hovered, setHovered] = useState<string | null>(null);
+  const [topoData, setTopoData] = useState<TopoData | null>(null);
+  const [hoveredState, setHoveredState] = useState<string | null>(null);
+  const tooltip = useTooltip<StateTransfer & { topoName: string }>();
 
-  const colorScale = useMemo(() => {
-    const perCapitas = states.map((s) => s.perCapita);
-    return scaleQuantize<string>()
-      .domain([Math.min(...perCapitas), Math.max(...perCapitas)])
-      .range([
-        '#0c2340',
-        '#0f3460',
-        '#1a4f80',
-        '#256ba0',
-        '#3B82F6',
-        '#60a5fa',
-        '#93c5fd',
-      ]);
-  }, [states]);
+  // Load TopoJSON
+  useEffect(() => {
+    fetch('/data/geo/india-states.topo.json')
+      .then((r) => r.json())
+      .then((data: TopoData) => setTopoData(data))
+      .catch(() => {
+        // Fallback: try alternate path
+        fetch('/data/geo/india-states.topojson')
+          .then((r) => r.json())
+          .then((data: TopoData) => setTopoData(data));
+      });
+  }, []);
 
+  // Build state data lookup
   const stateMap = useMemo(
     () => new Map(states.map((s) => [s.id, s])),
     [states]
   );
 
-  const hoveredState = hovered ? stateMap.get(hovered) : null;
+  // NE combined data
+  const neData = stateMap.get('NE');
+
+  // Convert TopoJSON to GeoJSON features
+  const { features, projection, pathGenerator } = useMemo(() => {
+    if (!topoData) return { features: [] as Feature<Geometry, StateProperties>[], projection: null, pathGenerator: null };
+
+    const geoJSON = topojson.feature(topoData, topoData.objects.states) as FeatureCollection<Geometry, StateProperties>;
+    const width = 600;
+    const height = 700;
+
+    const proj = geoMercator().fitSize([width, height], geoJSON);
+    const path = geoPath(proj);
+
+    return { features: geoJSON.features, projection: proj, pathGenerator: path };
+  }, [topoData]);
+
+  // Color scale: diverging saffron → neutral → cyan
+  const colorScale = useMemo(() => {
+    const perCapitas = states.map((s) => s.perCapita);
+    const min = Math.min(...perCapitas);
+    const max = Math.max(...perCapitas);
+    const mid = (min + max) / 2;
+
+    return (value: number) => {
+      if (value <= mid) {
+        const t = (value - min) / (mid - min || 1);
+        return interpolateRgb('#4AEADC', '#1a2230')(1 - t);
+      } else {
+        const t = (value - mid) / (max - mid || 1);
+        return interpolateRgb('#1a2230', '#FF6B35')(t);
+      }
+    };
+  }, [states]);
+
+  // Lookup budget data for a TopoJSON state
+  function getStateData(stName: string): StateTransfer | undefined {
+    const budgetCode = TOPO_NAME_TO_BUDGET_CODE[stName];
+    if (budgetCode) return stateMap.get(budgetCode);
+    if (NE_STATES.includes(stName) && neData) return neData;
+    return undefined;
+  }
+
+  if (!topoData || !pathGenerator) {
+    return (
+      <div className="w-full aspect-[6/7] flex items-center justify-center">
+        <div className="skeleton w-full h-full rounded-lg" />
+      </div>
+    );
+  }
+
+  // Sort features by latitude (north to south) for stagger animation
+  const sortedFeatures = [...features].sort((a, b) => {
+    const centA = pathGenerator.centroid(a);
+    const centB = pathGenerator.centroid(b);
+    return (centA[1] || 0) - (centB[1] || 0);
+  });
+
+  const perCapitas = states.map((s) => s.perCapita);
+  const minPC = Math.min(...perCapitas);
+  const maxPC = Math.max(...perCapitas);
 
   return (
-    <div className="w-full max-w-2xl mx-auto relative">
-      <div className="relative" style={{ paddingBottom: '100%' }}>
-        <svg
-          viewBox="0 0 450 470"
-          className="absolute inset-0 w-full h-full"
-          aria-label="Choropleth map of India showing state transfers"
-        >
-          {Object.entries(STATE_PATHS).map(([stateId, path]) => {
-            const stateData = stateMap.get(stateId);
+    <div className="w-full">
+      <div className="relative w-full" style={{ aspectRatio: '6/7' }}>
+        <svg viewBox="0 0 600 700" className="absolute inset-0 w-full h-full">
+          {sortedFeatures.map((feature, i) => {
+            const stName = feature.properties.st_nm;
+            const d = pathGenerator(feature) || '';
+            const stateData = getStateData(stName);
+            const isNE = NE_STATES.includes(stName);
+            const noData = STATES_WITHOUT_BUDGET_DATA.includes(stName);
             const fill = stateData
               ? colorScale(stateData.perCapita)
-              : '#1f2937';
+              : noData
+                ? '#151c28'
+                : '#1a2230';
+            const isHovered = hoveredState === stName;
 
             return (
               <path
-                key={stateId}
-                d={path}
+                key={stName}
+                d={d}
                 fill={fill}
-                stroke="var(--color-bg-deepest)"
-                strokeWidth={1.5}
-                opacity={isVisible ? (hovered && hovered !== stateId ? 0.4 : 1) : 0}
+                stroke={isHovered ? 'white' : 'var(--bg-void)'}
+                strokeWidth={isHovered ? 1.5 : 0.5}
+                opacity={isVisible ? (hoveredState && !isHovered ? 0.5 : 1) : 0}
                 style={{
-                  transition: 'opacity 0.5s ease, fill 0.3s ease',
-                  transitionDelay: isVisible ? `${Math.random() * 0.5}s` : '0s',
+                  transition: `opacity 0.5s ease ${i * 0.03}s, stroke 0.15s ease, stroke-width 0.15s ease`,
                   cursor: stateData ? 'pointer' : 'default',
+                  filter: isHovered ? 'drop-shadow(0 0 6px rgba(255,255,255,0.15))' : 'none',
                 }}
-                onMouseEnter={() => setHovered(stateId)}
-                onMouseLeave={() => setHovered(null)}
-              >
-                {stateData && (
-                  <title>
-                    {stateData.name}: {formatRsCrore(stateData.transfer)} (
-                    Rs {formatIndianNumber(stateData.perCapita)}/person)
-                  </title>
-                )}
-              </path>
+                onMouseEnter={(e) => {
+                  setHoveredState(stName);
+                  if (stateData) {
+                    tooltip.show({ ...stateData, topoName: isNE ? `${stName} (NE Combined)` : stName }, e);
+                  }
+                }}
+                onMouseMove={tooltip.move}
+                onMouseLeave={() => {
+                  setHoveredState(null);
+                  tooltip.hide();
+                }}
+              />
             );
           })}
         </svg>
       </div>
 
-      {/* Tooltip */}
-      {hoveredState && (
-        <div className="absolute top-4 right-4 bg-[var(--color-bg-raised)] border border-[rgba(255,255,255,0.1)] rounded-lg px-4 py-3 shadow-xl">
-          <p className="font-semibold text-sm">{hoveredState.name}</p>
-          <p className="text-xs text-[var(--color-text-muted)] mt-1">
-            Transfer: {formatRsCrore(hoveredState.transfer)}
-          </p>
-          <p className="text-xs text-[var(--color-text-muted)]">
-            Per capita: Rs {formatIndianNumber(hoveredState.perCapita)}
-          </p>
-          <p className="text-xs text-[var(--color-text-muted)]">
-            Share: {hoveredState.percentOfTotal}%
-          </p>
-        </div>
-      )}
-
-      {/* Legend */}
-      <div className="flex items-center justify-center gap-1 mt-4">
-        <span className="text-xs text-[var(--color-text-muted)]">Low</span>
-        {['#0c2340', '#0f3460', '#1a4f80', '#256ba0', '#3B82F6', '#60a5fa', '#93c5fd'].map(
-          (c) => (
-            <div
-              key={c}
-              className="w-6 h-3 rounded-sm"
-              style={{ backgroundColor: c }}
-            />
-          )
-        )}
-        <span className="text-xs text-[var(--color-text-muted)]">High</span>
-        <span className="text-xs text-[var(--color-text-muted)] ml-2">
-          (per capita transfer)
-        </span>
+      {/* Continuous gradient legend */}
+      <div className="flex items-center gap-2 mt-4 justify-center">
+        <span className="text-caption">Rs {formatIndianNumber(minPC)}</span>
+        <div
+          className="h-2 rounded-full flex-1 max-w-48"
+          style={{
+            background: `linear-gradient(to right, #4AEADC, #1a2230, #FF6B35)`,
+          }}
+        />
+        <span className="text-caption">Rs {formatIndianNumber(maxPC)}</span>
+        <span className="text-caption ml-1">(per capita)</span>
       </div>
+
+      <Tooltip
+        content={
+          tooltip.data && (
+            <>
+              <TooltipTitle>{tooltip.data.topoName || tooltip.data.name}</TooltipTitle>
+              <TooltipRow label="Transfer" value={formatRsCrore(tooltip.data.transfer)} />
+              <TooltipRow label="Per capita" value={`Rs ${formatIndianNumber(tooltip.data.perCapita)}`} />
+              <TooltipRow label="Share" value={`${tooltip.data.percentOfTotal}%`} />
+            </>
+          )
+        }
+        visible={tooltip.visible}
+        x={tooltip.position.x}
+        y={tooltip.position.y}
+      />
     </div>
   );
 }

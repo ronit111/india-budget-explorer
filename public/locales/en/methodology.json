@@ -1,0 +1,41 @@
+{
+  "title": "Methodology",
+  "description": "Data sources, calculation methodology, and known limitations.",
+  "sections": {
+    "dataSources": {
+      "title": "Data Sources",
+      "intro": "All budget figures are sourced from the Union Budget 2025-26 documents published by the Ministry of Finance. The primary data pipeline pulls from:",
+      "openBudgets": "Open Budgets India for structured budget data",
+      "unionBudget": "Union Budget documents (Expenditure Budget Vol. 1 & 2, Receipt Budget, Finance Bill) from indiabudget.gov.in",
+      "population": "Population estimates from Census projections and RBI reports"
+    },
+    "taxCalculator": {
+      "title": "Tax Calculator",
+      "intro": "The tax computation follows the Income Tax Act slab rates for AY 2026-27 (FY 2025-26). Both Old and New regime rates are implemented with:",
+      "standardDeduction": "Standard deduction (Rs 75,000 new / Rs 50,000 old)",
+      "rebate": "Section 87A rebate",
+      "surcharge": "Surcharge slabs for high incomes",
+      "cess": "4% Health and Education Cess",
+      "note": "The calculator does not account for HRA, 80C, 80D, or other specific deductions under the Old Regime. It uses gross income and standard deduction only."
+    },
+    "numberFormatting": {
+      "title": "Number Formatting",
+      "content": "All numbers use the Indian numbering system (lakhs and crores), formatted as per convention: 50,21,536 (not 5,021,536). Large amounts are displayed in \"lakh crore\" where appropriate."
+    },
+    "perCapita": {
+      "title": "Per-Capita Calculations",
+      "content": "Per-capita figures use an estimated population of 145 crore (1.45 billion) for 2025-26. This is an approximation based on Census projections and may differ from the actual figure when the next Census is conducted."
+    },
+    "license": {
+      "title": "Open Data License",
+      "content": "Budget data is released by the Government of India under the Government Open Data License - India (GODL). This project uses that data for public-interest visualization. The project is not affiliated with or endorsed by the Government of India."
+    },
+    "limitations": {
+      "title": "Limitations",
+      "budgetEstimates": "Budget Estimates only. Revised Estimates and Actuals are not yet available for 2025-26.",
+      "ministryAggregation": "Ministry-level aggregation simplifies the actual 100+ demand-for-grants structure.",
+      "stateTransfers": "State transfer figures are approximations. Actual Finance Commission devolution follows a complex formula."
+    }
+  },
+  "source": "Source: Union Budget 2025-26, Ministry of Finance, Government of India"
+}

@@ -23,6 +23,13 @@
       ]
     },
     {
+      "source": "/locales/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=3600" },
+        { "key": "Access-Control-Allow-Origin", "value": "*" }
+      ]
+    },
+    {
       "source": "/llms.txt",
       "headers": [
         { "key": "Cache-Control", "value": "public, max-age=86400" },
@@ -31,6 +38,6 @@
     }
   ],
   "rewrites": [
-    { "source": "/((?!assets|data|.*\\..*).*)", "destination": "/index.html" }
+    { "source": "/((?!assets|data|locales|.*\\..*).*)", "destination": "/index.html" }
   ]
 }

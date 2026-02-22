@@ -1,0 +1,17 @@
+{
+  "title": "Data Explorer",
+  "description": "Every ministry, every major scheme. Click headers to sort. Expand rows. Export to CSV.",
+  "summary": {
+    "total": "Total",
+    "ministries": "Ministries",
+    "year": "Year"
+  },
+  "table": {
+    "ministry": "Ministry",
+    "budget": "Budget (Rs Cr)",
+    "percentTotal": "% Total",
+    "yoy": "YoY",
+    "perCapita": "Per Capita",
+    "majorSchemes": "Major Schemes"
+  }
+}

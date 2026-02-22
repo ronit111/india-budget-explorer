@@ -1,14 +1,23 @@
+import { motion } from 'framer-motion';
 import { useBudgetStore } from '../store/budgetStore.ts';
 import { useBudgetData } from '../hooks/useBudgetData.ts';
 import { SEOHead } from '../components/seo/SEOHead.tsx';
 import { DataTable } from '../components/explore/DataTable.tsx';
+import { SkeletonText } from '../components/ui/Skeleton.tsx';
+import { formatLakhCrore } from '../lib/format.ts';
 
 export default function ExplorePage() {
   const year = useBudgetStore((s) => s.selectedYear);
   const { expenditure, loading, error } = useBudgetData(year);
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-8 md:py-12">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.3 }}
+      className="max-w-7xl mx-auto px-4 py-8 md:py-12"
+    >
       <SEOHead
         title="Budget Data Explorer — Ministry-wise Spending | India Budget Explorer"
         description="Explore India's Union Budget 2025-26 ministry by ministry. Sortable data table with scheme-level detail for all government expenditure. Export to CSV."
@@ -29,25 +38,51 @@ export default function ExplorePage() {
           },
         }}
       />
+
       <div className="mb-8">
-        <h1 className="text-3xl md:text-4xl font-bold mb-2">Data Explorer</h1>
-        <p className="text-[var(--color-text-secondary)] max-w-2xl">
-          Every ministry, every major scheme. Click column headers to sort.
-          Expand rows with sub-schemes. Export to CSV for your own analysis.
+        <h1 className="text-composition mb-2">Data Explorer</h1>
+        <p className="text-annotation max-w-2xl">
+          Every ministry, every major scheme. Click headers to sort. Expand rows. Export to CSV.
         </p>
       </div>
 
-      {loading && (
-        <div className="flex items-center justify-center py-20">
-          <div className="w-8 h-8 border-2 border-[var(--color-saffron)] border-t-transparent rounded-full animate-spin" />
+      {/* Summary bar */}
+      {expenditure && (
+        <div
+          className="flex flex-wrap gap-6 mb-6 px-4 py-3 rounded-lg"
+          style={{ background: 'var(--bg-raised)', border: 'var(--border-subtle)' }}
+        >
+          <div>
+            <span className="text-caption block">Total</span>
+            <span className="font-mono text-sm font-bold">{formatLakhCrore(expenditure.total)}</span>
+          </div>
+          <div>
+            <span className="text-caption block">Ministries</span>
+            <span className="font-mono text-sm font-bold">{expenditure.ministries.length}</span>
+          </div>
+          <div>
+            <span className="text-caption block">Year</span>
+            <span className="font-mono text-sm font-bold">{expenditure.year}</span>
+          </div>
         </div>
       )}
 
+      {loading && <SkeletonText lines={8} className="mt-8" />}
+
       {error && (
-        <p className="text-[var(--color-red)] py-8">Failed to load data. {error}</p>
+        <div className="py-8 text-center">
+          <p className="text-annotation mb-4">Failed to load data. {error}</p>
+          <button
+            onClick={() => window.location.reload()}
+            className="px-4 py-2 rounded-lg text-sm font-medium cursor-pointer"
+            style={{ background: 'var(--saffron)', color: 'white', border: 'none' }}
+          >
+            Refresh
+          </button>
+        </div>
       )}
 
       {expenditure && <DataTable data={expenditure} />}
-    </div>
+    </motion.div>
   );
 }

@@ -1,0 +1,29 @@
+{
+  "waffle": {
+    "ariaLabel": "Waffle chart showing revenue breakdown",
+    "legend": {
+      "directTax": "Direct Tax",
+      "indirectTax": "Indirect Tax",
+      "borrowings": "Borrowings",
+      "nonTax": "Non-Tax"
+    }
+  },
+  "treemap": {
+    "allSpending": "All Spending",
+    "drillDown": "Click to drill down"
+  },
+  "sankey": {
+    "linkLabel": "{{source}} → {{target}}"
+  },
+  "choropleth": {
+    "perCapita": "per capita",
+    "transfer": "Transfer",
+    "share": "Share of total",
+    "noData": "No data"
+  },
+  "tooltip": {
+    "share": "Share",
+    "amount": "Amount",
+    "perCapita": "Per capita"
+  }
+}

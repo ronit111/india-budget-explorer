@@ -8,6 +8,7 @@ import {
 } from 'd3-sankey';
 import type { SankeyData } from '../../lib/data/schema.ts';
 import { formatRsCrore } from '../../lib/format.ts';
+import { Tooltip, TooltipTitle, TooltipRow, useTooltip } from '../ui/Tooltip.tsx';
 
 interface SankeyDiagramProps {
   data: SankeyData;
@@ -28,49 +29,40 @@ type SLink = D3SankeyLink<NodeExtra, object>;
 const GROUP_COLORS: Record<string, string> = {
   revenue: '#3B82F6',
   center: '#FF6B35',
-  expenditure: '#10B981',
+  expenditure: '#4AEADC',
 };
 
 export function SankeyDiagram({ data, width = 900, height = 600, isVisible }: SankeyDiagramProps) {
   const [hoveredNode, setHoveredNode] = useState<string | null>(null);
   const [pathLengths, setPathLengths] = useState<Map<number, number>>(new Map());
   const pathRefs = useRef<Map<number, SVGPathElement>>(new Map());
+  const tooltip = useTooltip<{ name: string; value: number; type: 'node' | 'link'; from?: string; to?: string }>();
 
   const graph = useMemo(() => {
     const nodeIds = new Set(data.nodes.map((n) => n.id));
-
     const nodes: NodeExtra[] = data.nodes.map((n) => ({
       id: n.id,
       name: n.name,
       group: n.group,
     }));
-
     const links = data.links
       .filter((l) => nodeIds.has(l.source) && nodeIds.has(l.target))
-      .map((l) => ({
-        source: l.source,
-        target: l.target,
-        value: l.value,
-      }));
+      .map((l) => ({ source: l.source, target: l.target, value: l.value }));
 
     const layout = d3Sankey<NodeExtra, object>()
       .nodeId((d: SNode) => (d as unknown as NodeExtra).id)
-      .nodeWidth(20)
-      .nodePadding(12)
+      .nodeWidth(14)
+      .nodePadding(14)
       .extent([
-        [40, 20],
-        [width - 40, height - 20],
+        [80, 20],
+        [width - 100, height - 20],
       ]);
 
-    return layout({
-      nodes,
-      links,
-    } as SankeyGraph<NodeExtra, object>);
+    return layout({ nodes, links } as SankeyGraph<NodeExtra, object>);
   }, [data, width, height]);
 
   const pathGen = sankeyLinkHorizontal();
 
-  // Measure path lengths after render
   useEffect(() => {
     const lengths = new Map<number, number>();
     pathRefs.current.forEach((el, idx) => {
@@ -99,18 +91,36 @@ export function SankeyDiagram({ data, width = 900, height = 600, isVisible }: Sa
     return src.id === hoveredNode || tgt.id === hoveredNode;
   };
 
+  /** Unique gradient IDs for link gradients */
+  const gradientId = (i: number) => `sankey-grad-${i}`;
+
   return (
     <div className="w-full overflow-x-auto">
-      <svg
-        viewBox={`0 0 ${width} ${height}`}
-        className="w-full"
-        style={{ minWidth: 600 }}
-      >
-        {/* Links */}
+      <svg viewBox={`0 0 ${width} ${height}`} className="w-full" style={{ minWidth: 600 }}>
+        <defs>
+          {graph.links.map((link, i) => {
+            const srcColor =
+              GROUP_COLORS[((link.source as SNode) as unknown as NodeExtra).group] || '#6B7280';
+            const tgtColor =
+              GROUP_COLORS[((link.target as SNode) as unknown as NodeExtra).group] || '#6B7280';
+            return (
+              <linearGradient key={i} id={gradientId(i)} gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stopColor={srcColor} />
+                <stop offset="100%" stopColor={tgtColor} />
+              </linearGradient>
+            );
+          })}
+        </defs>
+
+        {/* Links with gradients */}
         {graph.links.map((link, i) => {
           const pathD = pathGen(link as never) || '';
           const pLen = pathLengths.get(i) || 1000;
           const connected = isLinkConnected(link);
+          const src = (link.source as SNode) as unknown as NodeExtra;
+          const tgt = (link.target as SNode) as unknown as NodeExtra;
+          const isRevenue = src.group === 'revenue';
+          const waveDelay = isRevenue ? i * 0.04 : 0.8 + i * 0.04;
 
           return (
             <path
@@ -120,32 +130,27 @@ export function SankeyDiagram({ data, width = 900, height = 600, isVisible }: Sa
               }}
               d={pathD}
               fill="none"
-              stroke={
-                GROUP_COLORS[
-                  ((link.source as SNode) as unknown as NodeExtra).group
-                ] || '#6B7280'
-              }
+              stroke={`url(#${gradientId(i)})`}
               strokeWidth={Math.max(1, (link as unknown as { width?: number }).width || 1)}
-              strokeOpacity={connected ? 0.25 : 0.04}
+              strokeOpacity={connected ? 0.22 : 0.04}
               style={
                 isVisible
                   ? {
                       strokeDasharray: pLen,
                       strokeDashoffset: 0,
-                      transition: `stroke-dashoffset 1.5s cubic-bezier(0.16, 1, 0.3, 1) ${i * 0.05}s, stroke-opacity 0.3s ease`,
+                      transition: `stroke-dashoffset 1.2s cubic-bezier(0.16, 1, 0.3, 1) ${waveDelay}s, stroke-opacity 0.3s ease`,
                     }
                   : {
                       strokeDasharray: pLen,
                       strokeDashoffset: pLen,
                     }
               }
-            >
-              <title>
-                {((link.source as SNode) as unknown as NodeExtra).name} →{' '}
-                {((link.target as SNode) as unknown as NodeExtra).name}:{' '}
-                {formatRsCrore(link.value || 0)}
-              </title>
-            </path>
+              onMouseEnter={(e) =>
+                tooltip.show({ name: `${src.name} → ${tgt.name}`, value: link.value || 0, type: 'link', from: src.name, to: tgt.name }, e)
+              }
+              onMouseMove={tooltip.move}
+              onMouseLeave={tooltip.hide}
+            />
           );
         })}
 
@@ -158,12 +163,20 @@ export function SankeyDiagram({ data, width = 900, height = 600, isVisible }: Sa
           const y0 = (n as unknown as { y0: number }).y0 || 0;
           const y1 = (n as unknown as { y1: number }).y1 || 0;
           const connected = isConnected(extra.id);
+          const nodeValue = (n as unknown as { value?: number }).value || 0;
 
           return (
             <g
               key={extra.id}
-              onMouseEnter={() => setHoveredNode(extra.id)}
-              onMouseLeave={() => setHoveredNode(null)}
+              onMouseEnter={(e) => {
+                setHoveredNode(extra.id);
+                tooltip.show({ name: extra.name, value: nodeValue, type: 'node' }, e);
+              }}
+              onMouseMove={tooltip.move}
+              onMouseLeave={() => {
+                setHoveredNode(null);
+                tooltip.hide();
+              }}
               style={{ cursor: 'pointer' }}
             >
               <rect
@@ -172,27 +185,59 @@ export function SankeyDiagram({ data, width = 900, height = 600, isVisible }: Sa
                 width={x1 - x0}
                 height={y1 - y0}
                 fill={GROUP_COLORS[extra.group] || '#6B7280'}
-                rx={3}
-                opacity={isVisible ? (connected ? 1 : 0.2) : 0}
+                rx={2}
+                opacity={isVisible ? (connected ? 1 : 0.15) : 0}
                 style={{ transition: 'opacity 0.3s ease' }}
               />
+              {/* Node label */}
               <text
                 x={extra.group === 'revenue' ? x0 - 6 : x1 + 6}
-                y={(y0 + y1) / 2}
+                y={(y0 + y1) / 2 - 4}
                 dy="0.35em"
                 textAnchor={extra.group === 'revenue' ? 'end' : 'start'}
-                fill={connected ? 'var(--color-text-secondary)' : 'var(--color-text-muted)'}
-                fontSize={11}
+                fill={connected ? 'var(--text-secondary)' : 'var(--text-muted)'}
+                fontSize={12}
+                fontWeight={600}
                 fontFamily="var(--font-body)"
                 opacity={isVisible ? 1 : 0}
                 style={{ transition: 'opacity 0.6s ease, fill 0.3s ease' }}
               >
                 {extra.name}
               </text>
+              {/* Value below label */}
+              {nodeValue > 0 && (
+                <text
+                  x={extra.group === 'revenue' ? x0 - 6 : x1 + 6}
+                  y={(y0 + y1) / 2 + 10}
+                  dy="0.35em"
+                  textAnchor={extra.group === 'revenue' ? 'end' : 'start'}
+                  fill="var(--text-muted)"
+                  fontSize={10}
+                  fontFamily="var(--font-mono)"
+                  opacity={isVisible ? (connected ? 0.8 : 0.3) : 0}
+                  style={{ transition: 'opacity 0.6s ease' }}
+                >
+                  {formatRsCrore(nodeValue)}
+                </text>
+              )}
             </g>
           );
         })}
       </svg>
+
+      <Tooltip
+        content={
+          tooltip.data && (
+            <>
+              <TooltipTitle>{tooltip.data.name}</TooltipTitle>
+              <TooltipRow label="Amount" value={formatRsCrore(tooltip.data.value)} />
+            </>
+          )
+        }
+        visible={tooltip.visible}
+        x={tooltip.position.x}
+        y={tooltip.position.y}
+      />
     </div>
   );
 }
