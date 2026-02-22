@@ -11,7 +11,7 @@
       "percentOfTotal": 21.5,
       "yoyChange": 8.2,
       "perCapita": 7448.0,
-      "humanContext": "Rs 20 per citizen per day goes to paying interest on past debt",
+      "humanContext": "₹20 per citizen per day goes to paying interest on past debt",
       "schemes": []
     },
     {
@@ -74,7 +74,7 @@
       "percentOfTotal": 2.7,
       "yoyChange": 6.3,
       "perCapita": 935.0,
-      "humanContext": "PM-KISAN alone puts Rs 6,000/year in 80 million farmer accounts",
+      "humanContext": "PM-KISAN alone puts ₹6,000/year in 80 million farmer accounts",
       "schemes": [
         {
           "id": "pm-kisan",
@@ -97,7 +97,7 @@
       "percentOfTotal": 2.5,
       "yoyChange": 5.8,
       "perCapita": 866.0,
-      "humanContext": "About Rs 2.4 per citizen per day on education",
+      "humanContext": "About ₹2.4 per citizen per day on education",
       "schemes": [
         {
           "id": "samagra-shiksha",
@@ -125,7 +125,7 @@
       "percentOfTotal": 1.8,
       "yoyChange": 7.2,
       "perCapita": 627.0,
-      "humanContext": "Rs 1.72 per citizen per day on public healthcare",
+      "humanContext": "₹1.72 per citizen per day on public healthcare",
       "schemes": [
         {
           "id": "ayushman-bharat",
