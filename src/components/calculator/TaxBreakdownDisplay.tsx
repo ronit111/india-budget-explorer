@@ -14,11 +14,13 @@ export function TaxBreakdownDisplay({ breakdown }: TaxBreakdownDisplayProps) {
         <div
           className="rounded-lg p-4"
           style={{
-            background: 'var(--bg-raised)',
+            background: 'var(--bg-surface)',
             borderLeft: '3px solid var(--saffron)',
           }}
         >
-          <p className="text-caption uppercase tracking-wider mb-1">Total Tax</p>
+          <p className="text-xs uppercase tracking-wider mb-1" style={{ color: 'var(--text-muted)' }}>
+            Total Tax
+          </p>
           <p className="text-xl md:text-2xl font-bold font-mono" style={{ color: 'var(--saffron)' }}>
             Rs {formatIndianNumber(breakdown.totalTax)}
           </p>
@@ -26,11 +28,13 @@ export function TaxBreakdownDisplay({ breakdown }: TaxBreakdownDisplayProps) {
         <div
           className="rounded-lg p-4"
           style={{
-            background: 'var(--bg-raised)',
+            background: 'var(--bg-surface)',
             borderLeft: '3px solid var(--cyan)',
           }}
         >
-          <p className="text-caption uppercase tracking-wider mb-1">Effective Rate</p>
+          <p className="text-xs uppercase tracking-wider mb-1" style={{ color: 'var(--text-muted)' }}>
+            Effective Rate
+          </p>
           <p className="text-xl md:text-2xl font-bold font-mono" style={{ color: 'var(--cyan)' }}>
             {formatPercent(breakdown.effectiveRate)}
           </p>
@@ -54,7 +58,7 @@ export function TaxBreakdownDisplay({ breakdown }: TaxBreakdownDisplayProps) {
       )}
 
       {/* Slab breakdown */}
-      <div className="rounded-lg overflow-hidden" style={{ background: 'var(--bg-raised)' }}>
+      <div className="rounded-lg overflow-hidden" style={{ background: 'var(--bg-surface)' }}>
         <div className="px-4 py-3" style={{ borderBottom: 'var(--border-divider)' }}>
           <p className="text-sm font-semibold" style={{ color: 'var(--text-primary)' }}>
             Slab-by-slab Breakdown
@@ -111,15 +115,15 @@ function SlabRow({
 }) {
   return (
     <div
-      className="px-4 py-2.5 flex justify-between text-xs"
+      className="px-4 py-3 flex justify-between items-center text-sm"
       style={{ borderBottom: 'var(--border-divider)' }}
     >
-      <span style={{ color: highlight ? 'var(--text-secondary)' : 'var(--text-muted)' }}>
+      <span style={{ color: highlight ? 'var(--text-primary)' : 'var(--text-secondary)' }}>
         {label}
       </span>
       <span
-        className="font-mono"
-        style={{ color: valueColor || 'var(--text-secondary)' }}
+        className="font-mono font-medium"
+        style={{ color: valueColor || 'var(--text-primary)' }}
       >
         {value}
       </span>

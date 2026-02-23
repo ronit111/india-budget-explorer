@@ -13,7 +13,7 @@ export function ExpenditureSection({ treemap }: ExpenditureSectionProps) {
 
   return (
     <section ref={ref} className="composition" style={{ background: 'var(--bg-surface)' }}>
-      <div className="max-w-6xl mx-auto px-4">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8">
         <SectionNumber number={2} className="mb-6 block" />
 
         <motion.h2

@@ -4,29 +4,31 @@ import { SEOHead } from '../components/seo/SEOHead.tsx';
 const SECTIONS = [
   {
     title: 'Data Sources',
+    icon: '📊',
     content: (
       <>
         <p>
           All budget figures are sourced from the Union Budget 2025-26 documents published by the
           Ministry of Finance. The primary data pipeline pulls from:
         </p>
-        <ul className="mt-3 space-y-2">
-          <li className="flex gap-3">
-            <span style={{ color: 'var(--saffron)' }}>&#8226;</span>
+        <ul className="mt-4 space-y-3">
+          <li className="flex gap-3 items-start">
+            <span className="mt-1 w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: 'var(--saffron)' }} />
             <span>
               <a
                 href="https://openbudgetsindia.org/"
                 target="_blank"
                 rel="noopener noreferrer"
+                className="font-medium"
                 style={{ color: 'var(--cyan)' }}
               >
                 Open Budgets India
               </a>{' '}
-              for structured budget data
+              — structured budget data
             </span>
           </li>
-          <li className="flex gap-3">
-            <span style={{ color: 'var(--saffron)' }}>&#8226;</span>
+          <li className="flex gap-3 items-start">
+            <span className="mt-1 w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: 'var(--saffron)' }} />
             <span>
               Union Budget documents (Expenditure Budget Vol. 1 & 2, Receipt Budget, Finance Bill)
               from{' '}
@@ -34,14 +36,15 @@ const SECTIONS = [
                 href="https://www.indiabudget.gov.in/"
                 target="_blank"
                 rel="noopener noreferrer"
+                className="font-medium"
                 style={{ color: 'var(--cyan)' }}
               >
                 indiabudget.gov.in
               </a>
             </span>
           </li>
-          <li className="flex gap-3">
-            <span style={{ color: 'var(--saffron)' }}>&#8226;</span>
+          <li className="flex gap-3 items-start">
+            <span className="mt-1 w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: 'var(--saffron)' }} />
             <span>Population estimates from Census projections and RBI reports</span>
           </li>
         </ul>
@@ -50,35 +53,37 @@ const SECTIONS = [
   },
   {
     title: 'Tax Calculator',
+    icon: '🧮',
     content: (
       <>
         <p>
           The tax computation follows the Income Tax Act slab rates for AY 2026-27 (FY 2025-26).
           Both Old and New regime rates are implemented with:
         </p>
-        <ul className="mt-3 space-y-2">
-          <li className="flex gap-3">
-            <span style={{ color: 'var(--saffron)' }}>&#8226;</span>
+        <ul className="mt-4 space-y-3">
+          <li className="flex gap-3 items-start">
+            <span className="mt-1 w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: 'var(--saffron)' }} />
             <span>Standard deduction (Rs 75,000 new / Rs 50,000 old)</span>
           </li>
-          <li className="flex gap-3">
-            <span style={{ color: 'var(--saffron)' }}>&#8226;</span>
+          <li className="flex gap-3 items-start">
+            <span className="mt-1 w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: 'var(--saffron)' }} />
             <span>Section 87A rebate</span>
           </li>
-          <li className="flex gap-3">
-            <span style={{ color: 'var(--saffron)' }}>&#8226;</span>
+          <li className="flex gap-3 items-start">
+            <span className="mt-1 w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: 'var(--saffron)' }} />
             <span>Surcharge slabs for high incomes</span>
           </li>
-          <li className="flex gap-3">
-            <span style={{ color: 'var(--saffron)' }}>&#8226;</span>
+          <li className="flex gap-3 items-start">
+            <span className="mt-1 w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: 'var(--saffron)' }} />
             <span>4% Health and Education Cess</span>
           </li>
         </ul>
         <div
-          className="mt-4 rounded-lg px-4 py-3"
-          style={{ background: 'var(--bg-raised)', borderLeft: '3px solid var(--gold)' }}
+          className="mt-5 rounded-lg px-5 py-4"
+          style={{ background: 'var(--bg-surface)', borderLeft: '3px solid var(--gold)' }}
         >
-          <p className="text-xs" style={{ color: 'var(--text-muted)' }}>
+          <p className="text-sm font-medium mb-1" style={{ color: 'var(--gold)' }}>Note</p>
+          <p className="text-sm" style={{ color: 'var(--text-secondary)' }}>
             The calculator does not account for HRA, 80C, 80D, or other specific deductions
             under the Old Regime. It uses gross income and standard deduction only.
           </p>
@@ -88,6 +93,7 @@ const SECTIONS = [
   },
   {
     title: 'Number Formatting',
+    icon: '#️⃣',
     content: (
       <p>
         All numbers use the Indian numbering system (lakhs and crores), formatted as per
@@ -98,6 +104,7 @@ const SECTIONS = [
   },
   {
     title: 'Per-Capita Calculations',
+    icon: '👤',
     content: (
       <p>
         Per-capita figures use an estimated population of 145 crore (1.45 billion) for 2025-26.
@@ -108,6 +115,7 @@ const SECTIONS = [
   },
   {
     title: 'Open Data License',
+    icon: '📜',
     content: (
       <p>
         Budget data is released by the Government of India under the{' '}
@@ -115,6 +123,7 @@ const SECTIONS = [
           href="https://data.gov.in/government-open-data-license-india"
           target="_blank"
           rel="noopener noreferrer"
+          className="font-medium"
           style={{ color: 'var(--cyan)' }}
         >
           Government Open Data License - India (GODL)
@@ -126,23 +135,24 @@ const SECTIONS = [
   },
   {
     title: 'Limitations',
+    icon: '⚠️',
     content: (
-      <ul className="space-y-2">
-        <li className="flex gap-3">
-          <span style={{ color: 'var(--saffron)' }}>&#8226;</span>
+      <ul className="space-y-3">
+        <li className="flex gap-3 items-start">
+          <span className="mt-1 w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: 'var(--saffron)' }} />
           <span>
             Budget Estimates only. Revised Estimates and Actuals are not yet available for
             2025-26.
           </span>
         </li>
-        <li className="flex gap-3">
-          <span style={{ color: 'var(--saffron)' }}>&#8226;</span>
+        <li className="flex gap-3 items-start">
+          <span className="mt-1 w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: 'var(--saffron)' }} />
           <span>
             Ministry-level aggregation simplifies the actual 100+ demand-for-grants structure.
           </span>
         </li>
-        <li className="flex gap-3">
-          <span style={{ color: 'var(--saffron)' }}>&#8226;</span>
+        <li className="flex gap-3 items-start">
+          <span className="mt-1 w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: 'var(--saffron)' }} />
           <span>
             State transfer figures are approximations. Actual Finance Commission devolution
             follows a complex formula.
@@ -160,7 +170,7 @@ export default function MethodologyPage() {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.3 }}
-      className="max-w-3xl mx-auto px-4 py-8 md:py-12"
+      className="min-h-screen"
     >
       <SEOHead
         title="Methodology — India Budget Explorer"
@@ -168,33 +178,49 @@ export default function MethodologyPage() {
         path="/methodology"
       />
 
-      <h1 className="text-composition mb-2">Methodology</h1>
-      <p className="text-annotation mb-10">
-        Data sources, calculation methodology, and known limitations.
-      </p>
+      {/* Page header */}
+      <div className="max-w-3xl mx-auto px-6 sm:px-8 pt-10 pb-8 md:pt-14 md:pb-10">
+        <h1
+          className="text-3xl md:text-4xl font-bold mb-3"
+          style={{ color: 'var(--text-primary)' }}
+        >
+          Methodology
+        </h1>
+        <p className="text-base max-w-xl" style={{ color: 'var(--text-secondary)' }}>
+          Data sources, calculation methodology, and known limitations.
+        </p>
+      </div>
 
-      <div className="space-y-10">
+      {/* Content cards */}
+      <div className="max-w-3xl mx-auto px-6 sm:px-8 pb-16 space-y-6">
         {SECTIONS.map((section, i) => (
           <motion.section
             key={section.title}
-            initial={{ opacity: 0, y: 12 }}
+            initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: i * 0.06 }}
+            className="rounded-xl p-6 md:p-8"
+            style={{ background: 'var(--bg-raised)', border: 'var(--border-subtle)' }}
           >
-            <h2
-              className="text-lg font-semibold mb-3"
-              style={{ color: 'var(--text-primary)' }}
-            >
-              {section.title}
-            </h2>
-            <div className="text-annotation leading-relaxed">{section.content}</div>
+            <div className="flex items-center gap-3 mb-4">
+              <span className="text-lg">{section.icon}</span>
+              <h2
+                className="text-lg font-semibold"
+                style={{ color: 'var(--text-primary)' }}
+              >
+                {section.title}
+              </h2>
+            </div>
+            <div className="text-sm leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
+              {section.content}
+            </div>
           </motion.section>
         ))}
-      </div>
 
-      <p className="source-attribution mt-12">
-        Source: Union Budget 2025-26, Ministry of Finance, Government of India
-      </p>
+        <p className="text-xs text-center pt-4" style={{ color: 'var(--text-muted)' }}>
+          Source: Union Budget 2025-26, Ministry of Finance, Government of India
+        </p>
+      </div>
     </motion.div>
   );
 }

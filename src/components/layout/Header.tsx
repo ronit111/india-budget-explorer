@@ -48,25 +48,33 @@ export function Header() {
           </span>
         </Link>
 
-        <nav className="hidden md:flex items-center gap-1">
+        <nav className="hidden md:flex items-center gap-2">
           {navLinks.map((link) => {
             const isActive = location.pathname === link.to;
             return (
               <Link
                 key={link.to}
                 to={link.to}
-                className="relative px-3 py-2 text-sm font-medium transition-colors no-underline"
+                className="relative px-4 py-2 text-sm font-medium transition-colors no-underline rounded-lg"
                 style={{
                   color: isActive
                     ? 'var(--text-primary)'
-                    : 'var(--text-muted)',
+                    : 'var(--text-secondary)',
+                }}
+                onMouseEnter={(e) => {
+                  if (!isActive) e.currentTarget.style.color = 'var(--text-primary)';
+                  e.currentTarget.style.background = 'var(--bg-raised)';
+                }}
+                onMouseLeave={(e) => {
+                  if (!isActive) e.currentTarget.style.color = 'var(--text-secondary)';
+                  e.currentTarget.style.background = '';
                 }}
               >
                 {link.label}
                 {isActive && (
                   <motion.div
                     layoutId="nav-underline"
-                    className="absolute bottom-0 left-3 right-3 h-0.5 rounded-full"
+                    className="absolute bottom-0 left-4 right-4 h-0.5 rounded-full"
                     style={{ backgroundColor: 'var(--saffron)' }}
                     transition={{ type: 'spring', stiffness: 400, damping: 30 }}
                   />
@@ -75,9 +83,11 @@ export function Header() {
             );
           })}
 
+          <div className="w-px h-5 mx-2" style={{ background: 'rgba(255,255,255,0.08)' }} />
+
           <button
             onClick={toggleSearch}
-            className="ml-3 px-3 py-1.5 rounded-lg text-xs font-mono cursor-pointer transition-colors"
+            className="px-3 py-1.5 rounded-lg text-xs font-mono cursor-pointer transition-colors"
             style={{
               color: 'var(--text-muted)',
               background: 'var(--bg-raised)',

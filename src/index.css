@@ -3,6 +3,7 @@
 @import "tailwindcss";
 
 /* ─── Design Tokens (IIB-Inspired) ─────────────────────────────── */
+/* :root is fine outside layers — it only sets custom properties */
 :root {
   /* Backgrounds — deep navy-black like Information is Beautiful */
   --bg-void:     #06080f;
@@ -68,7 +69,7 @@
   --container-max:    1200px;
   --container-narrow: 768px;
 
-  /* Motion — Kasia Siwosz-quality timing */
+  /* Motion */
   --ease-out-expo:   cubic-bezier(0.16, 1, 0.3, 1);
   --ease-out-quart:  cubic-bezier(0.25, 1, 0.5, 1);
   --ease-in-out:     cubic-bezier(0.4, 0, 0.2, 1);
@@ -81,73 +82,254 @@
   /* Borders */
   --border-subtle: 1px solid rgba(255, 255, 255, 0.06);
   --border-divider: 1px solid rgba(255, 255, 255, 0.04);
-
 }
 
-/* ─── Base ──────────────────────────────────────────────────────── */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+/* ─── Base reset (in @layer base so utilities win) ─────────────── */
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    font-family: var(--font-body);
+    background-color: var(--bg-void);
+    color: var(--text-primary);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--bg-void);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--bg-hover);
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--text-muted);
+  }
+
+  /* Focus */
+  :focus-visible {
+    outline: 2px solid var(--saffron);
+    outline-offset: 2px;
+  }
+
+  /* Selection */
+  ::selection {
+    background-color: rgba(255, 107, 53, 0.3);
+    color: var(--text-primary);
+  }
 }
 
-html {
-  /* Lenis handles smooth scroll — disable native */
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* ─── Component classes (in @layer components — between base & utilities) ── */
+@layer components {
+  /* Typography */
+  .font-mono {
+    font-family: var(--font-mono);
+  }
+
+  .text-hero {
+    font-size: var(--text-hero);
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+
+  .text-composition {
+    font-size: var(--text-composition);
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+  }
+
+  .text-stat {
+    font-size: var(--text-stat);
+    font-weight: 700;
+    font-family: var(--font-mono);
+    line-height: 1.2;
+  }
+
+  .text-annotation {
+    font-size: var(--text-annotation);
+    color: var(--text-secondary);
+    line-height: 1.5;
+  }
+
+  .text-caption {
+    font-size: var(--text-caption);
+    color: var(--text-muted);
+    line-height: 1.4;
+    letter-spacing: 0.02em;
+  }
+
+  .text-section-num {
+    font-size: var(--text-section-num);
+    font-family: var(--font-mono);
+    color: var(--text-muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  /* Gradient text */
+  .gradient-text-saffron {
+    background: linear-gradient(135deg, var(--saffron), var(--gold));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .gradient-text-cyan {
+    background: linear-gradient(135deg, var(--cyan), #7CF5E9);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Glass */
+  .glass {
+    background: var(--bg-glass);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: var(--border-subtle);
+  }
+
+  /* Section */
+  .composition {
+    position: relative;
+    padding: var(--section-gap) 0;
+  }
+
+  .composition-divider {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.06) 20%,
+      rgba(255, 255, 255, 0.06) 80%,
+      transparent
+    );
+  }
+
+  .source-attribution {
+    font-size: var(--text-caption);
+    color: var(--text-muted);
+    margin-top: var(--space-8);
+  }
+
+  /* Skeleton */
+  .skeleton {
+    background: linear-gradient(
+      90deg,
+      var(--bg-raised) 25%,
+      var(--bg-hover) 50%,
+      var(--bg-raised) 75%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s ease-in-out infinite;
+    border-radius: 4px;
+  }
+
+  /* Sankey */
+  .sankey-link {
+    transition: opacity var(--duration-normal) ease;
+  }
+  .sankey-link.dimmed {
+    opacity: 0.06;
+  }
+
+  /* Treemap */
+  .treemap-rect {
+    transition: opacity 0.2s ease, stroke-width 0.2s ease;
+    cursor: pointer;
+  }
+  .treemap-rect:hover {
+    opacity: 0.85;
+  }
+
+  /* Waffle Chart */
+  .waffle-cell {
+    transition: opacity var(--duration-fast) ease;
+  }
+  .waffle-cell[data-highlighted="true"] {
+    opacity: 1;
+  }
+  .waffle-cell[data-dimmed="true"] {
+    opacity: 0.15;
+  }
+  .waffle-cell-enter {
+    animation: waffleFadeIn 0.4s var(--ease-out-expo) forwards;
+  }
+
+  /* Income Slider */
+  .income-slider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 6px;
+    border-radius: 3px;
+    outline: none;
+    cursor: pointer;
+    background: linear-gradient(
+      to right,
+      var(--saffron) var(--fill-pct, 0%),
+      var(--bg-raised) var(--fill-pct, 0%)
+    );
+  }
+  .income-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--saffron);
+    border: 3px solid var(--bg-void);
+    box-shadow: 0 0 0 2px var(--saffron), 0 2px 8px rgba(255, 107, 53, 0.3);
+    cursor: grab;
+    transition: box-shadow 0.15s ease;
+  }
+  .income-slider::-webkit-slider-thumb:active {
+    cursor: grabbing;
+    box-shadow: 0 0 0 3px var(--saffron), 0 2px 12px rgba(255, 107, 53, 0.5);
+  }
+  .income-slider::-moz-range-thumb {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--saffron);
+    border: 3px solid var(--bg-void);
+    box-shadow: 0 0 0 2px var(--saffron), 0 2px 8px rgba(255, 107, 53, 0.3);
+    cursor: grab;
+  }
+  .income-slider::-moz-range-track {
+    height: 6px;
+    border-radius: 3px;
+    background: var(--bg-raised);
+  }
+  .income-slider::-moz-range-progress {
+    height: 6px;
+    border-radius: 3px;
+    background: var(--saffron);
+  }
+
+  /* Fade-in animation class */
+  .animate-fade-in-up {
+    animation: fadeInUp 0.6s var(--ease-out-expo) forwards;
+  }
 }
 
-html.lenis, html.lenis body {
-  height: auto;
-}
-
-.lenis.lenis-smooth {
-  scroll-behavior: auto !important;
-}
-
-.lenis.lenis-smooth [data-lenis-prevent] {
-  overscroll-behavior: contain;
-}
-
-body {
-  font-family: var(--font-body);
-  background-color: var(--bg-void);
-  color: var(--text-primary);
-  line-height: 1.6;
-  overflow-x: hidden;
-}
-
-/* ─── Scrollbar ─────────────────────────────────────────────────── */
-::-webkit-scrollbar {
-  width: 6px;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--bg-void);
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--bg-hover);
-  border-radius: 3px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--text-muted);
-}
-
-/* ─── Focus ─────────────────────────────────────────────────────── */
-:focus-visible {
-  outline: 2px solid var(--saffron);
-  outline-offset: 2px;
-}
-
-/* ─── Selection ─────────────────────────────────────────────────── */
-::selection {
-  background-color: rgba(255, 107, 53, 0.3);
-  color: var(--text-primary);
-}
-
-/* ─── Animations ────────────────────────────────────────────────── */
+/* ─── Keyframes (outside layers — they don't affect cascade) ───── */
 @keyframes fadeInUp {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
@@ -168,212 +350,12 @@ body {
   50% { opacity: 0.8; }
 }
 
-.animate-fade-in-up {
-  animation: fadeInUp 0.6s var(--ease-out-expo) forwards;
-}
-
-/* ─── Typography Utilities ─────────────────────────────────────── */
-.font-mono {
-  font-family: var(--font-mono);
-}
-
-.text-hero {
-  font-size: var(--text-hero);
-  font-weight: 800;
-  line-height: 1;
-  letter-spacing: -0.02em;
-}
-
-.text-composition {
-  font-size: var(--text-composition);
-  font-weight: 700;
-  line-height: 1.2;
-  letter-spacing: -0.01em;
-}
-
-.text-stat {
-  font-size: var(--text-stat);
-  font-weight: 700;
-  font-family: var(--font-mono);
-  line-height: 1.2;
-}
-
-.text-annotation {
-  font-size: var(--text-annotation);
-  color: var(--text-secondary);
-  line-height: 1.5;
-}
-
-.text-caption {
-  font-size: var(--text-caption);
-  color: var(--text-muted);
-  line-height: 1.4;
-  letter-spacing: 0.02em;
-}
-
-.text-section-num {
-  font-size: var(--text-section-num);
-  font-family: var(--font-mono);
-  color: var(--text-muted);
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-}
-
-/* ─── Gradient Text ────────────────────────────────────────────── */
-.gradient-text-saffron {
-  background: linear-gradient(135deg, var(--saffron), var(--gold));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.gradient-text-cyan {
-  background: linear-gradient(135deg, var(--cyan), #7CF5E9);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-/* ─── Glass ─────────────────────────────────────────────────────── */
-.glass {
-  background: var(--bg-glass);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-bottom: var(--border-subtle);
-}
-
-/* ─── Section Composition ──────────────────────────────────────── */
-.composition {
-  position: relative;
-  padding: var(--section-gap) 0;
-}
-
-.composition-divider {
-  width: 100%;
-  height: 1px;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.06) 20%,
-    rgba(255, 255, 255, 0.06) 80%,
-    transparent
-  );
-}
-
-.source-attribution {
-  font-size: var(--text-caption);
-  color: var(--text-muted);
-  margin-top: var(--space-8);
-}
-
-/* ─── Skeleton Loading ─────────────────────────────────────────── */
-.skeleton {
-  background: linear-gradient(
-    90deg,
-    var(--bg-raised) 25%,
-    var(--bg-hover) 50%,
-    var(--bg-raised) 75%
-  );
-  background-size: 200% 100%;
-  animation: shimmer 1.5s ease-in-out infinite;
-  border-radius: 4px;
-}
-
-/* ─── Sankey ────────────────────────────────────────────────────── */
-.sankey-link {
-  transition: opacity var(--duration-normal) ease;
-}
-.sankey-link.dimmed {
-  opacity: 0.06;
-}
-
-/* ─── Treemap ───────────────────────────────────────────────────── */
-.treemap-rect {
-  transition: opacity 0.2s ease, stroke-width 0.2s ease;
-  cursor: pointer;
-}
-.treemap-rect:hover {
-  opacity: 0.85;
-}
-
-/* ─── Waffle Chart ─────────────────────────────────────────────── */
-.waffle-cell {
-  transition: opacity var(--duration-fast) ease;
-}
-
-.waffle-cell[data-highlighted="true"] {
-  opacity: 1;
-}
-
-.waffle-cell[data-dimmed="true"] {
-  opacity: 0.15;
-}
-
 @keyframes waffleFadeIn {
   from { opacity: 0; transform: scale(0.8); }
   to { opacity: 1; transform: scale(1); }
 }
 
-.waffle-cell-enter {
-  animation: waffleFadeIn 0.4s var(--ease-out-expo) forwards;
-}
-
-/* ─── Income Slider ───────────────────────────────────────────── */
-.income-slider {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 100%;
-  height: 6px;
-  border-radius: 3px;
-  outline: none;
-  cursor: pointer;
-  background: linear-gradient(
-    to right,
-    var(--saffron) var(--fill-pct, 0%),
-    var(--bg-raised) var(--fill-pct, 0%)
-  );
-}
-
-.income-slider::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  background: var(--saffron);
-  border: 3px solid var(--bg-void);
-  box-shadow: 0 0 0 2px var(--saffron), 0 2px 8px rgba(255, 107, 53, 0.3);
-  cursor: grab;
-  transition: box-shadow 0.15s ease;
-}
-
-.income-slider::-webkit-slider-thumb:active {
-  cursor: grabbing;
-  box-shadow: 0 0 0 3px var(--saffron), 0 2px 12px rgba(255, 107, 53, 0.5);
-}
-
-.income-slider::-moz-range-thumb {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  background: var(--saffron);
-  border: 3px solid var(--bg-void);
-  box-shadow: 0 0 0 2px var(--saffron), 0 2px 8px rgba(255, 107, 53, 0.3);
-  cursor: grab;
-}
-
-.income-slider::-moz-range-track {
-  height: 6px;
-  border-radius: 3px;
-  background: var(--bg-raised);
-}
-
-.income-slider::-moz-range-progress {
-  height: 6px;
-  border-radius: 3px;
-  background: var(--saffron);
-}
-
-/* ─── Mobile safe area ──────────────────────────────────────────── */
+/* ─── Mobile safe area ─────────────────────────────────────────── */
 @supports (padding-bottom: env(safe-area-inset-bottom)) {
   .mobile-nav-safe {
     padding-bottom: env(safe-area-inset-bottom, 0px);
@@ -386,9 +368,5 @@ body {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
-  }
-
-  .lenis.lenis-smooth {
-    scroll-behavior: smooth !important;
   }
 }

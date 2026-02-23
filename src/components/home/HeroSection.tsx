@@ -15,11 +15,25 @@ export function HeroSection({ summary }: HeroSectionProps) {
       ref={ref}
       className="min-h-screen flex items-center justify-center relative overflow-hidden"
     >
-      {/* Radial glow behind the counter */}
+      {/* Radial glow behind the counter — Structify.ai-style */}
       <div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full pointer-events-none"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none"
         style={{
-          background: 'radial-gradient(circle, rgba(255,107,53,0.08) 0%, transparent 70%)',
+          width: '900px',
+          height: '900px',
+          borderRadius: '50%',
+          background: 'radial-gradient(circle, rgba(255,107,53,0.14) 0%, rgba(255,200,87,0.06) 40%, transparent 70%)',
+          animation: 'pulseGlow 4s ease-in-out infinite',
+        }}
+      />
+      {/* Secondary subtle cyan halo */}
+      <div
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none"
+        style={{
+          width: '1200px',
+          height: '1200px',
+          borderRadius: '50%',
+          background: 'radial-gradient(circle, rgba(74,234,220,0.03) 0%, transparent 60%)',
         }}
       />
 

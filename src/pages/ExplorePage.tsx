@@ -16,7 +16,7 @@ export default function ExplorePage() {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.3 }}
-      className="max-w-7xl mx-auto px-4 py-8 md:py-12"
+      className="min-h-screen"
     >
       <SEOHead
         title="Budget Data Explorer — Ministry-wise Spending | India Budget Explorer"
@@ -39,50 +39,69 @@ export default function ExplorePage() {
         }}
       />
 
-      <div className="mb-8">
-        <h1 className="text-composition mb-2">Data Explorer</h1>
-        <p className="text-annotation max-w-2xl">
+      {/* Page header */}
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 pt-10 pb-6 md:pt-14 md:pb-8">
+        <h1
+          className="text-3xl md:text-4xl font-bold mb-3"
+          style={{ color: 'var(--text-primary)' }}
+        >
+          Data Explorer
+        </h1>
+        <p className="text-base max-w-2xl" style={{ color: 'var(--text-secondary)' }}>
           Every ministry, every major scheme. Click headers to sort. Expand rows. Export to CSV.
         </p>
       </div>
 
       {/* Summary bar */}
-      {expenditure && (
-        <div
-          className="flex flex-wrap gap-6 mb-6 px-4 py-3 rounded-lg"
-          style={{ background: 'var(--bg-raised)', border: 'var(--border-subtle)' }}
-        >
-          <div>
-            <span className="text-caption block">Total</span>
-            <span className="font-mono text-sm font-bold">{formatLakhCrore(expenditure.total)}</span>
-          </div>
-          <div>
-            <span className="text-caption block">Ministries</span>
-            <span className="font-mono text-sm font-bold">{expenditure.ministries.length}</span>
-          </div>
-          <div>
-            <span className="text-caption block">Year</span>
-            <span className="font-mono text-sm font-bold">{expenditure.year}</span>
-          </div>
-        </div>
-      )}
-
-      {loading && <SkeletonText lines={8} className="mt-8" />}
-
-      {error && (
-        <div className="py-8 text-center">
-          <p className="text-annotation mb-4">Failed to load data. {error}</p>
-          <button
-            onClick={() => window.location.reload()}
-            className="px-4 py-2 rounded-lg text-sm font-medium cursor-pointer"
-            style={{ background: 'var(--saffron)', color: 'white', border: 'none' }}
+      <div className="max-w-7xl mx-auto px-6 sm:px-8">
+        {expenditure && (
+          <div
+            className="flex flex-wrap gap-8 mb-8 px-6 py-4 rounded-xl"
+            style={{ background: 'var(--bg-raised)', border: 'var(--border-subtle)' }}
           >
-            Refresh
-          </button>
-        </div>
-      )}
+            <div>
+              <span className="text-xs uppercase tracking-wider block mb-1" style={{ color: 'var(--text-muted)' }}>Total</span>
+              <span className="font-mono text-lg font-bold" style={{ color: 'var(--text-primary)' }}>
+                {formatLakhCrore(expenditure.total)}
+              </span>
+            </div>
+            <div>
+              <span className="text-xs uppercase tracking-wider block mb-1" style={{ color: 'var(--text-muted)' }}>Ministries</span>
+              <span className="font-mono text-lg font-bold" style={{ color: 'var(--text-primary)' }}>
+                {expenditure.ministries.length}
+              </span>
+            </div>
+            <div>
+              <span className="text-xs uppercase tracking-wider block mb-1" style={{ color: 'var(--text-muted)' }}>Year</span>
+              <span className="font-mono text-lg font-bold" style={{ color: 'var(--text-primary)' }}>
+                {expenditure.year}
+              </span>
+            </div>
+          </div>
+        )}
+      </div>
 
-      {expenditure && <DataTable data={expenditure} />}
+      {/* Table content */}
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 pb-16">
+        {loading && <SkeletonText lines={8} className="mt-4" />}
+
+        {error && (
+          <div className="py-8 text-center">
+            <p className="text-base mb-4" style={{ color: 'var(--text-secondary)' }}>
+              Failed to load data. {error}
+            </p>
+            <button
+              onClick={() => window.location.reload()}
+              className="px-5 py-2.5 rounded-lg text-sm font-medium cursor-pointer"
+              style={{ background: 'var(--saffron)', color: 'white', border: 'none' }}
+            >
+              Refresh
+            </button>
+          </div>
+        )}
+
+        {expenditure && <DataTable data={expenditure} />}
+      </div>
     </motion.div>
   );
 }

@@ -13,7 +13,7 @@ export function FlowSection({ sankey }: FlowSectionProps) {
 
   return (
     <section ref={ref} className="composition">
-      <div className="max-w-6xl mx-auto px-4">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8">
         <SectionNumber number={3} className="mb-6 block" />
 
         <motion.h2

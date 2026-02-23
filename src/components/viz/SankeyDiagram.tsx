@@ -32,6 +32,11 @@ const GROUP_COLORS: Record<string, string> = {
   expenditure: '#4AEADC',
 };
 
+/** Truncate long node names to prevent SVG overflow */
+function truncateLabel(name: string, maxLen = 22): string {
+  return name.length > maxLen ? name.slice(0, maxLen - 1).trimEnd() + '…' : name;
+}
+
 export function SankeyDiagram({ data, width = 900, height = 600, isVisible }: SankeyDiagramProps) {
   const [hoveredNode, setHoveredNode] = useState<string | null>(null);
   const [pathLengths, setPathLengths] = useState<Map<number, number>>(new Map());
@@ -54,8 +59,8 @@ export function SankeyDiagram({ data, width = 900, height = 600, isVisible }: Sa
       .nodeWidth(14)
       .nodePadding(14)
       .extent([
-        [80, 20],
-        [width - 100, height - 20],
+        [160, 20],
+        [width - 190, height - 20],
       ]);
 
     return layout({ nodes, links } as SankeyGraph<NodeExtra, object>);
@@ -132,7 +137,7 @@ export function SankeyDiagram({ data, width = 900, height = 600, isVisible }: Sa
               fill="none"
               stroke={`url(#${gradientId(i)})`}
               strokeWidth={Math.max(1, (link as unknown as { width?: number }).width || 1)}
-              strokeOpacity={connected ? 0.22 : 0.04}
+              strokeOpacity={connected ? (hoveredNode ? 0.55 : 0.35) : 0.06}
               style={
                 isVisible
                   ? {
@@ -202,7 +207,7 @@ export function SankeyDiagram({ data, width = 900, height = 600, isVisible }: Sa
                 opacity={isVisible ? 1 : 0}
                 style={{ transition: 'opacity 0.6s ease, fill 0.3s ease' }}
               >
-                {extra.name}
+                {truncateLabel(extra.name)}
               </text>
               {/* Value below label */}
               {nodeValue > 0 && (

@@ -35,7 +35,7 @@ export default function FindYourSharePage() {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        className="max-w-5xl mx-auto px-4 py-8 md:py-12"
+        className="max-w-5xl mx-auto px-6 sm:px-8 py-10 md:py-14"
       >
         <SkeletonChart height={200} />
         <div className="grid lg:grid-cols-2 gap-8 mt-8">
@@ -52,7 +52,7 @@ export default function FindYourSharePage() {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.3 }}
-      className="max-w-5xl mx-auto px-4 py-8 md:py-12"
+      className="min-h-screen"
     >
       <SEOHead
         title="Income Tax Calculator FY 2025-26 — Where Your Tax Rupees Go"
@@ -60,65 +60,96 @@ export default function FindYourSharePage() {
         path="/calculator"
       />
 
-      <div className="text-center mb-10">
-        <h1 className="text-composition mb-2">Find Your Share</h1>
-        <p className="text-annotation max-w-xl mx-auto">
-          Enter your annual income. See exactly how much tax you pay and where those rupees go.
+      {/* Page header */}
+      <div className="max-w-5xl mx-auto px-6 sm:px-8 pt-10 md:pt-14">
+        <div className="text-center mb-10">
+          <h1
+            className="text-3xl md:text-4xl font-bold mb-3"
+            style={{ color: 'var(--text-primary)' }}
+          >
+            Find Your Share
+          </h1>
+          <p className="text-base max-w-xl mx-auto" style={{ color: 'var(--text-secondary)' }}>
+            Enter your annual income. See exactly how much tax you pay and where those rupees go.
+          </p>
+        </div>
+      </div>
+
+      {/* Income input card */}
+      <div className="max-w-5xl mx-auto px-6 sm:px-8">
+        <div
+          className="rounded-xl p-6 md:p-8 mb-8"
+          style={{ background: 'var(--bg-raised)', border: 'var(--border-subtle)' }}
+        >
+          <IncomeInput />
+        </div>
+      </div>
+
+      {/* Results grid */}
+      <div className="max-w-5xl mx-auto px-6 sm:px-8 pb-16">
+        <div className="grid lg:grid-cols-2 gap-8">
+          {/* Left: Tax Breakdown */}
+          <div>
+            {breakdown && (
+              <div
+                className="rounded-xl p-6 md:p-8"
+                style={{ background: 'var(--bg-raised)', border: 'var(--border-subtle)' }}
+              >
+                <h2
+                  className="text-sm font-semibold uppercase tracking-wider mb-5 flex items-center gap-2"
+                  style={{ color: 'var(--text-muted)' }}
+                >
+                  <span className="w-2 h-2 rounded-full" style={{ background: 'var(--saffron)' }} />
+                  Tax Breakdown
+                </h2>
+                <TaxBreakdownDisplay breakdown={breakdown} />
+              </div>
+            )}
+          </div>
+
+          {/* Right: Spending + Share */}
+          <div className="space-y-8">
+            {breakdown && shares && (
+              <div
+                className="rounded-xl p-6 md:p-8"
+                style={{ background: 'var(--bg-raised)', border: 'var(--border-subtle)' }}
+              >
+                <h2
+                  className="text-sm font-semibold uppercase tracking-wider mb-5 flex items-center gap-2"
+                  style={{ color: 'var(--text-muted)' }}
+                >
+                  <span className="w-2 h-2 rounded-full" style={{ background: 'var(--cyan)' }} />
+                  Where Your Tax Goes
+                </h2>
+                <SpendingAllocation totalTax={breakdown.totalTax} shares={shares} />
+              </div>
+            )}
+
+            {breakdown && (
+              <div
+                className="rounded-xl p-6 md:p-8"
+                style={{ background: 'var(--bg-raised)', border: 'var(--border-subtle)' }}
+              >
+                <h2
+                  className="text-sm font-semibold uppercase tracking-wider mb-1 flex items-center gap-2"
+                  style={{ color: 'var(--text-muted)' }}
+                >
+                  <span className="w-2 h-2 rounded-full" style={{ background: 'var(--gold)' }} />
+                  Share Your Breakdown
+                </h2>
+                <p className="text-xs mb-4" style={{ color: 'var(--text-muted)' }}>
+                  Generate an image card for social media.
+                </p>
+                <ShareCard breakdown={breakdown} regime={regime} />
+              </div>
+            )}
+          </div>
+        </div>
+
+        <p className="text-xs text-center mt-12" style={{ color: 'var(--text-muted)' }}>
+          Source: Income Tax Act slab rates AY 2026-27 (FY 2025-26), Union Budget 2025-26
         </p>
       </div>
-
-      {/* Income input — full width hero */}
-      <div
-        className="rounded-xl p-6 md:p-8 mb-8"
-        style={{ background: 'var(--bg-surface)', border: 'var(--border-subtle)' }}
-      >
-        <IncomeInput />
-      </div>
-
-      <div className="grid lg:grid-cols-2 gap-8">
-        {/* Left: Tax Breakdown */}
-        <div className="space-y-8">
-          {breakdown && (
-            <div>
-              <h2 className="text-sm font-semibold uppercase tracking-wider mb-4" style={{ color: 'var(--text-muted)' }}>
-                Tax Breakdown
-              </h2>
-              <TaxBreakdownDisplay breakdown={breakdown} />
-            </div>
-          )}
-        </div>
-
-        {/* Right: Spending + Share */}
-        <div className="space-y-8">
-          {breakdown && shares && (
-            <div>
-              <h2 className="text-sm font-semibold uppercase tracking-wider mb-4" style={{ color: 'var(--text-muted)' }}>
-                Where Your Tax Goes
-              </h2>
-              <SpendingAllocation totalTax={breakdown.totalTax} shares={shares} />
-            </div>
-          )}
-
-          {breakdown && (
-            <div
-              className="rounded-xl p-6"
-              style={{ background: 'var(--bg-surface)', border: 'var(--border-subtle)' }}
-            >
-              <h2 className="text-sm font-semibold uppercase tracking-wider mb-1" style={{ color: 'var(--text-muted)' }}>
-                Share Your Breakdown
-              </h2>
-              <p className="text-caption mb-4">
-                Generate an image card for social media.
-              </p>
-              <ShareCard breakdown={breakdown} regime={regime} />
-            </div>
-          )}
-        </div>
-      </div>
-
-      <p className="source-attribution mt-12 text-center">
-        Source: Income Tax Act slab rates AY 2026-27 (FY 2025-26), Union Budget 2025-26
-      </p>
     </motion.div>
   );
 }

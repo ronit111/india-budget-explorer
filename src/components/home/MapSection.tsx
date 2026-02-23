@@ -23,11 +23,22 @@ export function MapSection({ statewise }: MapSectionProps) {
   );
 
   return (
-    <section ref={ref} className="composition" style={{ background: 'var(--bg-surface)' }}>
-      <div className="max-w-6xl mx-auto px-4">
+    <section ref={ref} className="composition relative overflow-hidden" style={{ background: 'var(--bg-surface)' }}>
+      {/* Atmospheric glow behind the map */}
+      <div
+        className="absolute top-1/2 right-1/4 -translate-y-1/2 pointer-events-none"
+        style={{
+          width: '800px',
+          height: '800px',
+          borderRadius: '50%',
+          background: 'radial-gradient(circle, rgba(74,234,220,0.06) 0%, rgba(255,107,53,0.03) 40%, transparent 70%)',
+        }}
+      />
+
+      <div className="max-w-7xl mx-auto px-6 sm:px-8">
         <SectionNumber number={4} className="mb-6 block" />
 
-        <div className="grid md:grid-cols-[1fr_1.8fr] gap-12 items-start">
+        <div className="grid md:grid-cols-[1fr_2.2fr] gap-12 items-start">
           {/* Annotation panel */}
           <div className="md:sticky md:top-24">
             <motion.h2
@@ -56,17 +67,17 @@ export function MapSection({ statewise }: MapSectionProps) {
               className="space-y-4"
             >
               <div className="rounded-lg p-4" style={{ background: 'var(--bg-raised)', border: 'var(--border-subtle)' }}>
-                <p className="text-caption uppercase tracking-wider mb-1">Largest total</p>
-                <p className="font-semibold text-sm">{topState.name}</p>
-                <p className="font-mono text-xs" style={{ color: 'var(--text-muted)' }}>
+                <p className="text-caption uppercase tracking-wider mb-1">Largest total transfer</p>
+                <p className="font-semibold text-base" style={{ color: 'var(--saffron)' }}>{topState.name}</p>
+                <p className="font-mono text-sm" style={{ color: 'var(--text-secondary)' }}>
                   Rs {formatIndianNumber(topState.transfer)} Cr
                 </p>
               </div>
 
               <div className="rounded-lg p-4" style={{ background: 'var(--bg-raised)', border: 'var(--border-subtle)' }}>
                 <p className="text-caption uppercase tracking-wider mb-1">Highest per capita</p>
-                <p className="font-semibold text-sm">{topPerCapita.name}</p>
-                <p className="font-mono text-xs" style={{ color: 'var(--text-muted)' }}>
+                <p className="font-semibold text-base" style={{ color: 'var(--cyan)' }}>{topPerCapita.name}</p>
+                <p className="font-mono text-sm" style={{ color: 'var(--text-secondary)' }}>
                   Rs {formatIndianNumber(topPerCapita.perCapita)}/person
                 </p>
               </div>
