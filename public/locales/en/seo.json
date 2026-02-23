@@ -1,10 +1,10 @@
 {
   "home": {
-    "title": "India Budget Explorer — Where Your Tax Money Goes",
+    "title": "Indian Data Project — Where Your Tax Money Goes",
     "description": "Interactive visualization of India's Union Budget 2025-26. See where Rs 50 lakh crore goes — revenue breakdown, ministry-wise spending, state allocations, and a personal tax calculator."
   },
   "explore": {
-    "title": "Budget Data Explorer — Ministry-wise Spending | India Budget Explorer",
+    "title": "Budget Data Explorer — Ministry-wise Spending | Indian Data Project",
     "description": "Explore India's Union Budget 2025-26 ministry by ministry. Sortable data table with scheme-level detail for all government expenditure. Export to CSV."
   },
   "calculator": {
@@ -12,7 +12,7 @@
     "description": "Calculate your income tax under Old and New regimes for FY 2025-26. See exactly how your tax money is allocated across Defence, Education, Health, and other ministries."
   },
   "methodology": {
-    "title": "Methodology — India Budget Explorer",
-    "description": "Data sources, tax calculation methodology, number formatting, per-capita estimates, and limitations of the India Budget Explorer. Data under GODL license."
+    "title": "Methodology — Indian Data Project",
+    "description": "Data sources, tax calculation methodology, number formatting, per-capita estimates, and limitations of the Indian Data Project. Data under GODL license."
   }
 }

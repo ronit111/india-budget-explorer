@@ -1,4 +1,4 @@
-# India Budget Explorer — Brand & Visual Identity
+# Indian Data Project — Brand & Visual Identity
 
 A reference document for maintaining visual and tonal consistency across the project. Share this with any designer, developer, or AI agent working on the codebase.
 

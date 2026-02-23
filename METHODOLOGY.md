@@ -2,7 +2,7 @@
 
 ## About This Portal
 
-India Budget Explorer makes Union Budget data accessible, visual, and shareable. We take publicly available government data, process it into structured formats, and present it through interactive visualizations.
+Indian Data Project makes Union Budget data accessible, visual, and shareable. We take publicly available government data, process it into structured formats, and present it through interactive visualizations.
 
 ## Data Sources
 

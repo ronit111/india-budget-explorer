@@ -173,8 +173,8 @@ export default function MethodologyPage() {
       className="min-h-screen"
     >
       <SEOHead
-        title="Methodology — India Budget Explorer"
-        description="Data sources, tax calculation methodology, number formatting, per-capita estimates, and limitations of the India Budget Explorer. Data under GODL license."
+        title="Methodology — Indian Data Project"
+        description="Data sources, tax calculation methodology, number formatting, per-capita estimates, and limitations of the Indian Data Project. Data under GODL license."
         path="/methodology"
       />
 

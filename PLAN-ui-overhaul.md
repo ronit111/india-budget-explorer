@@ -1,4 +1,4 @@
-# UI/UX Overhaul Plan — India Budget Explorer
+# UI/UX Overhaul Plan — Indian Data Project
 
 ## Current Problems (rated 3-4/10 by user)
 

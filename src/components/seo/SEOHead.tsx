@@ -25,7 +25,7 @@ export function SEOHead({ title, description, path, type = 'website', jsonLd }: 
       <meta property="og:url" content={url} />
       <meta property="og:type" content={type} />
       <meta property="og:locale" content="en_IN" />
-      <meta property="og:site_name" content="India Budget Explorer" />
+      <meta property="og:site_name" content="Indian Data Project" />
 
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />

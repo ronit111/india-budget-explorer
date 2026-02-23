@@ -34,7 +34,7 @@ export function ShareCard({ breakdown, regime }: ShareCardProps) {
     // Title
     ctx.fillStyle = '#FF6B35';
     ctx.font = 'bold 24px Inter, sans-serif';
-    ctx.fillText('India Budget Explorer', 60, 60);
+    ctx.fillText('Indian Data Project', 60, 60);
 
     // Income
     ctx.fillStyle = '#f0ece6';

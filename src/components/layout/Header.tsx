@@ -44,7 +44,7 @@ export function Header() {
       <div className="relative max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2 no-underline">
           <span className="text-lg font-bold gradient-text-saffron">
-            India Budget Explorer
+            Indian Data Project
           </span>
         </Link>
 

@@ -1,10 +1,10 @@
-# India Budget Explorer
+# Indian Data Project
 
 > Interactive visualization of India's Union Budget 2025-26. Open government data made accessible.
 
 ## What this site does
 
-India Budget Explorer visualises the Union Budget 2025-26 (Rs 50.65 lakh crore total expenditure). It answers: where does India's money come from, and where does it go?
+Indian Data Project visualises the Union Budget 2025-26 (Rs 50.65 lakh crore total expenditure). It answers: where does India's money come from, and where does it go?
 
 ## Pages
 

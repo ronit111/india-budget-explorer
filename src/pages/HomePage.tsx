@@ -66,7 +66,7 @@ export default function HomePage() {
       transition={{ duration: 0.3 }}
     >
       <SEOHead
-        title="India Budget Explorer — Where Your Tax Money Goes"
+        title="Indian Data Project — Where Your Tax Money Goes"
         description="Interactive visualization of India's Union Budget 2025-26. See where Rs 50 lakh crore goes — revenue breakdown, ministry-wise spending, state allocations, and a personal tax calculator."
         path="/"
       />

@@ -1,4 +1,4 @@
-# India Budget Explorer — https://indiabudgetexplorer.in
+# Indian Data Project — https://indiabudgetexplorer.in
 # All crawlers welcome. We publish open government data.
 
 User-agent: *

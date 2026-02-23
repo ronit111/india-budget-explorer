@@ -1,4 +1,4 @@
-# i18n Implementation Plan — India Budget Explorer
+# i18n Implementation Plan — Indian Data Project
 
 ## Goal
 
