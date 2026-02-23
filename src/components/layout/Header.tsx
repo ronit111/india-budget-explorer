@@ -55,19 +55,11 @@ export function Header() {
               <Link
                 key={link.to}
                 to={link.to}
-                className="relative px-4 py-2 text-sm font-medium transition-colors no-underline rounded-lg"
+                className="relative px-4 py-2 text-sm font-medium no-underline rounded-lg transition-all duration-150 hover:bg-[var(--bg-raised)]"
                 style={{
                   color: isActive
                     ? 'var(--text-primary)'
                     : 'var(--text-secondary)',
-                }}
-                onMouseEnter={(e) => {
-                  if (!isActive) e.currentTarget.style.color = 'var(--text-primary)';
-                  e.currentTarget.style.background = 'var(--bg-raised)';
-                }}
-                onMouseLeave={(e) => {
-                  if (!isActive) e.currentTarget.style.color = 'var(--text-secondary)';
-                  e.currentTarget.style.background = '';
                 }}
               >
                 {link.label}

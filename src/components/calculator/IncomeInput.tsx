@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+import { useSpring, useTransform, motion } from 'framer-motion';
 import { useCalculatorStore } from '../../store/calculatorStore.ts';
 import { SegmentedControl } from '../ui/SegmentedControl.tsx';
 import { formatLPA, formatIndianNumber } from '../../lib/format.ts';
@@ -13,6 +15,14 @@ export function IncomeInput() {
   const { income, regime, setIncome, setRegime } = useCalculatorStore();
   const pct = (income / 10000000) * 100;
 
+  // Smooth spring animation for the displayed income number
+  const springIncome = useSpring(income, { stiffness: 120, damping: 20 });
+  const displayIncome = useTransform(springIncome, (v) => formatIndianNumber(Math.round(v)));
+
+  useEffect(() => {
+    springIncome.set(income);
+  }, [income, springIncome]);
+
   return (
     <div className="space-y-8">
       {/* Hero income display */}
@@ -25,7 +35,7 @@ export function IncomeInput() {
           <span className="text-annotation" style={{ fontSize: '0.45em', verticalAlign: 'baseline' }}>
             Rs{' '}
           </span>
-          {formatIndianNumber(income)}
+          <motion.span>{displayIncome}</motion.span>
         </p>
         <p className="text-annotation mt-2">{formatLPA(income)}</p>
       </div>
@@ -59,7 +69,7 @@ export function IncomeInput() {
           <button
             key={preset}
             onClick={() => setIncome(preset)}
-            className="px-3 py-1.5 rounded-lg text-xs font-medium transition-all cursor-pointer"
+            className="px-3 py-1.5 rounded-lg text-xs font-medium transition-all duration-150 cursor-pointer"
             style={{
               background: income === preset ? 'var(--bg-hover)' : 'var(--bg-raised)',
               color: income === preset ? 'var(--text-primary)' : 'var(--text-secondary)',

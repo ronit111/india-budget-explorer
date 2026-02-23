@@ -9,8 +9,8 @@ interface BadgeProps {
 }
 
 const VARIANT_STYLES: Record<BadgeVariant, string> = {
-  positive: 'bg-emerald-500/15 text-emerald-400',
-  negative: 'bg-red-500/15 text-red-400',
+  positive: 'bg-[var(--positive-dim)] text-[var(--positive)]',
+  negative: 'bg-[var(--negative-dim)] text-[var(--negative)]',
   neutral: 'bg-white/8 text-[var(--text-secondary)]',
   saffron: 'bg-[var(--saffron-dim)] text-[var(--saffron)]',
 };

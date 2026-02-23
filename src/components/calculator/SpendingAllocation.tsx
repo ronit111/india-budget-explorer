@@ -13,18 +13,18 @@ interface SpendingAllocationProps {
  * Max 4-5 distinct hues — IIB approach.
  */
 const COLORS: Record<string, string> = {
-  'transfers-to-states': '#4AEADC',     // cyan — obligation
-  'interest-payments': '#5BBFB5',       // teal — obligation
-  defence: '#FF6B35',                   // saffron — ministry
-  subsidies: '#6BA8A0',                 // muted teal — obligation
-  'road-transport': '#ff8c5a',          // saffron-light — ministry
-  railways: '#FFC857',                  // gold — ministry
-  'home-affairs': '#e0854a',            // warm amber — ministry
-  'rural-development': '#d4a44a',       // warm gold — ministry
-  agriculture: '#c4944a',              // earthy gold — ministry
-  education: '#FFB347',                // soft amber — ministry
-  health: '#7CE8D8',                   // light cyan — social
-  other: '#8896A8',                    // muted blue-gray — remainder
+  'transfers-to-states': 'var(--cyan)',
+  'interest-payments': 'var(--expenditure-cool)',
+  defence: 'var(--saffron)',
+  subsidies: '#6BA8A0',
+  'road-transport': 'var(--saffron-light)',
+  railways: 'var(--gold)',
+  'home-affairs': 'var(--expenditure-warm)',
+  'rural-development': '#d4a44a',
+  agriculture: '#c4944a',
+  education: '#FFB347',
+  health: '#7CE8D8',
+  other: 'var(--text-muted)',
 };
 
 export function SpendingAllocation({ totalTax, shares }: SpendingAllocationProps) {
@@ -81,18 +81,18 @@ export function SpendingAllocation({ totalTax, shares }: SpendingAllocationProps
             </div>
 
             {/* humanContext as annotation chip */}
-            {share.humanContext && share.humanContextMultiplier > 0 && amount > 0 && (
-              <p
-                className="text-xs mt-1 ml-1 inline-block px-2 py-0.5 rounded-full"
-                style={{ color: 'var(--text-muted)', background: 'var(--bg-raised)' }}
-              >
-                ≈{' '}
-                {Math.round(
-                  (amount / totalTax) * share.humanContextMultiplier * totalTax * 0.00001
-                ) || '~'}{' '}
-                {share.humanContext}
-              </p>
-            )}
+            {share.humanContext && share.humanContextMultiplier > 0 && amount > 0 && (() => {
+              const count = Math.round(amount * share.humanContextMultiplier * 0.00001);
+              if (count < 1) return null;
+              return (
+                <p
+                  className="text-xs mt-1 ml-1 inline-block px-2 py-0.5 rounded-full"
+                  style={{ color: 'var(--text-muted)', background: 'var(--bg-raised)' }}
+                >
+                  ≈ {count} {share.humanContext}
+                </p>
+              );
+            })()}
           </div>
         );
       })}

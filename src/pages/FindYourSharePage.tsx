@@ -11,12 +11,24 @@ import { TaxBreakdownDisplay } from '../components/calculator/TaxBreakdownDispla
 import { SpendingAllocation } from '../components/calculator/SpendingAllocation.tsx';
 import { ShareCard } from '../components/calculator/ShareCard.tsx';
 import { SkeletonChart, SkeletonText } from '../components/ui/Skeleton.tsx';
+import { useScrollTrigger } from '../hooks/useScrollTrigger.ts';
+
+const stagger = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.1 } },
+};
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 16 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] as const } },
+};
 
 export default function FindYourSharePage() {
   const { income, regime } = useCalculatorStore();
   const [slabs, setSlabs] = useState<TaxSlabsData | null>(null);
   const [shares, setShares] = useState<ExpenditureSharesData | null>(null);
   const [loading, setLoading] = useState(true);
+  const [resultsRef, resultsVisible] = useScrollTrigger({ threshold: 0.1 });
 
   useEffect(() => {
     Promise.all([loadTaxSlabs(), loadExpenditureShares()]).then(([s, sh]) => {
@@ -61,30 +73,45 @@ export default function FindYourSharePage() {
         path="/calculator"
       />
 
-      {/* Page header */}
-      <div className="max-w-5xl mx-auto px-6 sm:px-8 pt-10 md:pt-14">
+      {/* Page header — Pattern A */}
+      <motion.div
+        className="max-w-5xl mx-auto px-6 sm:px-8 pt-10 md:pt-14"
+        variants={stagger}
+        initial="hidden"
+        animate="show"
+      >
         <div className="text-center mb-10">
-          <h1
-            className="text-3xl md:text-4xl font-bold mb-3"
+          <motion.h1
+            className="text-composition font-bold mb-3"
             style={{ color: 'var(--text-primary)' }}
+            variants={fadeUp}
           >
             Find Your Share
-          </h1>
-          <p className="text-base max-w-xl mx-auto" style={{ color: 'var(--text-secondary)' }}>
+          </motion.h1>
+          <motion.p
+            className="text-base max-w-xl mx-auto"
+            style={{ color: 'var(--text-secondary)' }}
+            variants={fadeUp}
+          >
             Enter your annual income. See exactly how much tax you pay and where those rupees go.
-          </p>
+          </motion.p>
         </div>
-      </div>
+      </motion.div>
 
       {/* Income input card */}
-      <div className="max-w-5xl mx-auto px-6 sm:px-8">
+      <motion.div
+        className="max-w-5xl mx-auto px-6 sm:px-8"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+      >
         <div
           className="rounded-xl p-6 md:p-8 mb-8"
           style={{ background: 'var(--bg-raised)', border: 'var(--border-subtle)' }}
         >
           <IncomeInput />
         </div>
-      </div>
+      </motion.div>
 
       {/* Share bar — sticky, compact, always visible when breakdown exists */}
       {breakdown && (
@@ -116,11 +143,15 @@ export default function FindYourSharePage() {
         </div>
       )}
 
-      {/* Results grid */}
-      <div className="max-w-5xl mx-auto px-6 sm:px-8 pb-16">
+      {/* Results grid — scroll-triggered stagger */}
+      <div className="max-w-5xl mx-auto px-6 sm:px-8 pb-16" ref={resultsRef}>
         <div className="grid lg:grid-cols-2 gap-8">
           {/* Left: Tax Breakdown */}
-          <div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={resultsVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+          >
             {breakdown && (
               <div
                 className="rounded-xl p-6 md:p-8"
@@ -136,10 +167,14 @@ export default function FindYourSharePage() {
                 <TaxBreakdownDisplay breakdown={breakdown} />
               </div>
             )}
-          </div>
+          </motion.div>
 
           {/* Right: Spending Allocation */}
-          <div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={resultsVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            transition={{ duration: 0.5, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+          >
             {breakdown && shares && (
               <div
                 className="rounded-xl p-6 md:p-8"
@@ -155,7 +190,7 @@ export default function FindYourSharePage() {
                 <SpendingAllocation totalTax={breakdown.totalTax} shares={shares} />
               </div>
             )}
-          </div>
+          </motion.div>
         </div>
 
         <p className="text-xs text-center mt-12" style={{ color: 'var(--text-muted)' }}>

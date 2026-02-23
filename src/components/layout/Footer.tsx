@@ -14,10 +14,8 @@ export function Footer() {
             href="https://openbudgetsindia.org/"
             target="_blank"
             rel="noopener noreferrer"
-            className="transition-colors"
-            style={{ color: 'var(--text-muted)', textDecoration: 'underline', textDecorationColor: 'transparent' }}
-            onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--text-secondary)'; e.currentTarget.style.textDecorationColor = 'var(--text-muted)'; }}
-            onMouseLeave={(e) => { e.currentTarget.style.color = 'var(--text-muted)'; e.currentTarget.style.textDecorationColor = 'transparent'; }}
+            className="link-hover"
+            style={{ color: 'var(--text-muted)' }}
           >
             Open Budgets India
           </a>
@@ -26,10 +24,8 @@ export function Footer() {
             href="https://data.gov.in/government-open-data-license-india"
             target="_blank"
             rel="noopener noreferrer"
-            className="transition-colors"
-            style={{ color: 'var(--text-muted)', textDecoration: 'underline', textDecorationColor: 'transparent' }}
-            onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--text-secondary)'; e.currentTarget.style.textDecorationColor = 'var(--text-muted)'; }}
-            onMouseLeave={(e) => { e.currentTarget.style.color = 'var(--text-muted)'; e.currentTarget.style.textDecorationColor = 'transparent'; }}
+            className="link-hover"
+            style={{ color: 'var(--text-muted)' }}
           >
             GODL
           </a>

@@ -1,4 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 const tabs = [
   { to: '/', label: 'Home', icon: 'M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6' },
@@ -19,7 +20,7 @@ export function MobileNav() {
             <Link
               key={tab.to}
               to={tab.to}
-              className="flex flex-col items-center gap-1 px-3 py-1 no-underline transition-colors"
+              className="relative flex flex-col items-center gap-1 px-3 py-1 no-underline transition-colors"
               style={{
                 color: isActive ? 'var(--saffron)' : 'var(--text-muted)',
               }}
@@ -35,9 +36,11 @@ export function MobileNav() {
               </svg>
               <span className="text-[10px] font-medium">{tab.label}</span>
               {isActive && (
-                <div
-                  className="absolute bottom-1 w-1 h-1 rounded-full"
+                <motion.div
+                  layoutId="mobile-nav-dot"
+                  className="absolute bottom-0 w-1 h-1 rounded-full"
                   style={{ backgroundColor: 'var(--saffron)' }}
+                  transition={{ type: 'spring', stiffness: 400, damping: 30 }}
                 />
               )}
             </Link>

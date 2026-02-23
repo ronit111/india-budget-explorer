@@ -1,4 +1,4 @@
-import { useCallback, useRef } from 'react';
+import { useCallback, useRef, useState } from 'react';
 import type { TaxBreakdown } from '../../lib/taxEngine.ts';
 import { formatIndianNumber, formatPercent, formatLPA } from '../../lib/format.ts';
 
@@ -9,6 +9,7 @@ interface ShareCardProps {
 
 export function ShareCard({ breakdown, regime }: ShareCardProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const [downloaded, setDownloaded] = useState(false);
 
   const generateImage = useCallback(() => {
     const canvas = canvasRef.current;
@@ -73,6 +74,10 @@ export function ShareCard({ breakdown, regime }: ShareCardProps) {
     link.download = 'my-tax-share.png';
     link.href = canvas.toDataURL('image/png');
     link.click();
+
+    // Show feedback
+    setDownloaded(true);
+    setTimeout(() => setDownloaded(false), 1500);
   }, [breakdown, regime]);
 
   return (
@@ -80,28 +85,29 @@ export function ShareCard({ breakdown, regime }: ShareCardProps) {
       <canvas ref={canvasRef} className="hidden" />
       <button
         onClick={generateImage}
-        className="py-2 px-4 rounded-lg text-sm font-medium cursor-pointer transition-all whitespace-nowrap"
+        className="py-2 px-4 rounded-lg text-sm font-medium cursor-pointer transition-all duration-150 whitespace-nowrap hover:border-[var(--cyan)] hover:bg-[var(--cyan-dim)]"
         style={{
-          background: 'transparent',
-          color: 'var(--text-secondary)',
-          border: '1px solid rgba(255, 255, 255, 0.10)',
-        }}
-        onMouseEnter={(e) => {
-          e.currentTarget.style.borderColor = 'var(--cyan)';
-          e.currentTarget.style.background = 'var(--cyan-dim)';
-          e.currentTarget.style.color = 'var(--text-primary)';
-        }}
-        onMouseLeave={(e) => {
-          e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.10)';
-          e.currentTarget.style.background = 'transparent';
-          e.currentTarget.style.color = 'var(--text-secondary)';
+          background: downloaded ? 'var(--positive-dim)' : 'transparent',
+          color: downloaded ? 'var(--positive)' : 'var(--text-secondary)',
+          border: downloaded ? '1px solid rgba(52, 211, 153, 0.3)' : '1px solid rgba(255, 255, 255, 0.10)',
         }}
       >
         <span className="flex items-center gap-2">
-          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M8 2v8m0 0L5 7m3 3l3-3M3 12h10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
-          Share Card
+          {downloaded ? (
+            <>
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+                <path d="M3 8.5l3.5 3.5L13 4.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+              Downloaded
+            </>
+          ) : (
+            <>
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M8 2v8m0 0L5 7m3 3l3-3M3 12h10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+              Share Card
+            </>
+          )}
         </span>
       </button>
     </>

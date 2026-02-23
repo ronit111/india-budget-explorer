@@ -89,7 +89,7 @@ export function DataTable({ data }: DataTableProps) {
         <p className="text-caption">{ministryCount} ministries · {categoryCount} other expenditure heads</p>
         <button
           onClick={exportCSV}
-          className="px-4 py-2 rounded-lg text-sm font-medium cursor-pointer transition-colors"
+          className="px-4 py-2 rounded-lg text-sm font-medium cursor-pointer transition-all duration-150 hover:scale-[1.02] hover:border-[var(--saffron)]"
           style={{
             background: 'var(--bg-raised)',
             color: 'var(--text-secondary)',
@@ -103,7 +103,7 @@ export function DataTable({ data }: DataTableProps) {
       {/* Desktop: table */}
       <div className="hidden md:block overflow-x-auto rounded-lg" style={{ border: 'var(--border-subtle)' }}>
         <table className="w-full">
-          <thead style={{ background: 'var(--bg-raised)' }}>
+          <thead className="sticky top-16 z-10" style={{ background: 'var(--bg-raised)' }}>
             <tr>
               <SortHeader label="Expenditure Head" field="name" />
               <SortHeader label="Budget (Rs Cr)" field="budgetEstimate" />
@@ -168,14 +168,12 @@ function MinistryRow({
   return (
     <>
       <tr
-        className="transition-colors cursor-pointer"
+        className="cursor-pointer transition-all duration-150 hover:bg-[var(--bg-raised)]"
         style={{
           borderBottom: 'var(--border-divider)',
           borderLeft: expanded ? '2px solid var(--saffron)' : '2px solid transparent',
         }}
         onClick={hasSchemes ? onToggle : undefined}
-        onMouseEnter={(e) => (e.currentTarget.style.background = 'var(--bg-raised)')}
-        onMouseLeave={(e) => (e.currentTarget.style.background = '')}
       >
         <td className="px-4 py-3">
           <div className="flex items-center gap-2">
@@ -211,7 +209,7 @@ function MinistryRow({
         <td className="px-4 py-3 font-mono text-sm">{formatRsCrore(ministry.budgetEstimate)}</td>
         <td className="px-4 py-3">
           <div className="flex items-center gap-2">
-            <div className="flex-1 max-w-32 h-1.5 rounded-full overflow-hidden" style={{ background: 'var(--bg-hover)' }}>
+            <div className="flex-1 max-w-48 h-2 rounded-full overflow-hidden" style={{ background: 'var(--bg-hover)' }}>
               <div
                 className="h-full rounded-full"
                 style={{ width: `${Math.min(barWidth * 4, 100)}%`, background: 'var(--cyan)' }}
@@ -232,6 +230,7 @@ function MinistryRow({
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
           >
             <td colSpan={5} style={{ background: 'var(--bg-raised)' }} className="px-4 py-3">
               <div className="pl-8 space-y-2">
@@ -312,6 +311,7 @@ function MinistryCard({
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
             className="mt-3 pt-3"
             style={{ borderTop: 'var(--border-divider)' }}
           >

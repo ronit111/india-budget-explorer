@@ -1,10 +1,21 @@
 import { motion } from 'framer-motion';
 import { SEOHead } from '../components/seo/SEOHead.tsx';
+import { SectionNumber } from '../components/ui/SectionNumber.tsx';
+import { useScrollTrigger } from '../hooks/useScrollTrigger.ts';
+
+/** Dot color per section — consistent color language */
+const SECTION_COLORS: Record<string, string> = {
+  'Data Sources': 'var(--saffron)',
+  'Tax Calculator': 'var(--saffron)',
+  'Number Formatting': 'var(--cyan)',
+  'Per-Capita Calculations': 'var(--cyan)',
+  'Open Data License': 'var(--cyan)',
+  'Limitations': 'var(--gold)',
+};
 
 const SECTIONS = [
   {
     title: 'Data Sources',
-    icon: '📊',
     content: (
       <>
         <p>
@@ -13,13 +24,13 @@ const SECTIONS = [
         </p>
         <ul className="mt-4 space-y-3">
           <li className="flex gap-3 items-start">
-            <span className="mt-1 w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: 'var(--saffron)' }} />
+            <span className="mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: 'var(--saffron)' }} />
             <span>
               <a
                 href="https://openbudgetsindia.org/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-medium"
+                className="font-medium link-hover"
                 style={{ color: 'var(--cyan)' }}
               >
                 Open Budgets India
@@ -28,7 +39,7 @@ const SECTIONS = [
             </span>
           </li>
           <li className="flex gap-3 items-start">
-            <span className="mt-1 w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: 'var(--saffron)' }} />
+            <span className="mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: 'var(--saffron)' }} />
             <span>
               Union Budget documents (Expenditure Budget Vol. 1 & 2, Receipt Budget, Finance Bill)
               from{' '}
@@ -36,7 +47,7 @@ const SECTIONS = [
                 href="https://www.indiabudget.gov.in/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-medium"
+                className="font-medium link-hover"
                 style={{ color: 'var(--cyan)' }}
               >
                 indiabudget.gov.in
@@ -44,7 +55,7 @@ const SECTIONS = [
             </span>
           </li>
           <li className="flex gap-3 items-start">
-            <span className="mt-1 w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: 'var(--saffron)' }} />
+            <span className="mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: 'var(--saffron)' }} />
             <span>Population estimates from Census projections and RBI reports</span>
           </li>
         </ul>
@@ -53,7 +64,6 @@ const SECTIONS = [
   },
   {
     title: 'Tax Calculator',
-    icon: '🧮',
     content: (
       <>
         <p>
@@ -62,19 +72,19 @@ const SECTIONS = [
         </p>
         <ul className="mt-4 space-y-3">
           <li className="flex gap-3 items-start">
-            <span className="mt-1 w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: 'var(--saffron)' }} />
+            <span className="mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: 'var(--saffron)' }} />
             <span>Standard deduction (Rs 75,000 new / Rs 50,000 old)</span>
           </li>
           <li className="flex gap-3 items-start">
-            <span className="mt-1 w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: 'var(--saffron)' }} />
+            <span className="mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: 'var(--saffron)' }} />
             <span>Section 87A rebate</span>
           </li>
           <li className="flex gap-3 items-start">
-            <span className="mt-1 w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: 'var(--saffron)' }} />
+            <span className="mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: 'var(--saffron)' }} />
             <span>Surcharge slabs for high incomes</span>
           </li>
           <li className="flex gap-3 items-start">
-            <span className="mt-1 w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: 'var(--saffron)' }} />
+            <span className="mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: 'var(--saffron)' }} />
             <span>4% Health and Education Cess</span>
           </li>
         </ul>
@@ -93,7 +103,6 @@ const SECTIONS = [
   },
   {
     title: 'Number Formatting',
-    icon: '#️⃣',
     content: (
       <p>
         All numbers use the Indian numbering system (lakhs and crores), formatted as per
@@ -104,7 +113,6 @@ const SECTIONS = [
   },
   {
     title: 'Per-Capita Calculations',
-    icon: '👤',
     content: (
       <p>
         Per-capita figures use an estimated population of 145 crore (1.45 billion) for 2025-26.
@@ -115,7 +123,6 @@ const SECTIONS = [
   },
   {
     title: 'Open Data License',
-    icon: '📜',
     content: (
       <p>
         Budget data is released by the Government of India under the{' '}
@@ -123,7 +130,7 @@ const SECTIONS = [
           href="https://data.gov.in/government-open-data-license-india"
           target="_blank"
           rel="noopener noreferrer"
-          className="font-medium"
+          className="font-medium link-hover"
           style={{ color: 'var(--cyan)' }}
         >
           Government Open Data License - India (GODL)
@@ -135,24 +142,23 @@ const SECTIONS = [
   },
   {
     title: 'Limitations',
-    icon: '⚠️',
     content: (
       <ul className="space-y-3">
         <li className="flex gap-3 items-start">
-          <span className="mt-1 w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: 'var(--saffron)' }} />
+          <span className="mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: 'var(--gold)' }} />
           <span>
             Budget Estimates only. Revised Estimates and Actuals are not yet available for
             2025-26.
           </span>
         </li>
         <li className="flex gap-3 items-start">
-          <span className="mt-1 w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: 'var(--saffron)' }} />
+          <span className="mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: 'var(--gold)' }} />
           <span>
             Ministry-level aggregation simplifies the actual 100+ demand-for-grants structure.
           </span>
         </li>
         <li className="flex gap-3 items-start">
-          <span className="mt-1 w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: 'var(--saffron)' }} />
+          <span className="mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: 'var(--gold)' }} />
           <span>
             State transfer figures are approximations. Actual Finance Commission devolution
             follows a complex formula.
@@ -162,6 +168,41 @@ const SECTIONS = [
     ),
   },
 ];
+
+function MethodologyCard({ section, index }: { section: typeof SECTIONS[number]; index: number }) {
+  const [ref, isVisible] = useScrollTrigger({ threshold: 0.1 });
+  const dotColor = SECTION_COLORS[section.title] || 'var(--text-muted)';
+  const isLimitations = section.title === 'Limitations';
+
+  return (
+    <motion.section
+      ref={ref}
+      initial={{ opacity: 0, y: 16 }}
+      animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
+      transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+      className="rounded-xl p-6 md:p-8"
+      style={{
+        background: 'var(--bg-raised)',
+        border: 'var(--border-subtle)',
+        borderLeft: isLimitations ? '3px solid var(--gold)' : undefined,
+      }}
+    >
+      <div className="flex items-center gap-3 mb-4">
+        <SectionNumber number={index + 1} isVisible={isVisible} />
+        <span className="w-2 h-2 rounded-full flex-shrink-0" style={{ background: dotColor }} />
+        <h2
+          className="text-lg font-semibold"
+          style={{ color: 'var(--text-primary)' }}
+        >
+          {section.title}
+        </h2>
+      </div>
+      <div className="text-sm leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
+        {section.content}
+      </div>
+    </motion.section>
+  );
+}
 
 export default function MethodologyPage() {
   return (
@@ -178,10 +219,15 @@ export default function MethodologyPage() {
         path="/methodology"
       />
 
-      {/* Page header */}
-      <div className="max-w-3xl mx-auto px-6 sm:px-8 pt-10 pb-8 md:pt-14 md:pb-10">
+      {/* Page header — Pattern A */}
+      <motion.div
+        className="max-w-3xl mx-auto px-6 sm:px-8 pt-10 pb-8 md:pt-14 md:pb-10"
+        initial={{ opacity: 0, y: 16 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+      >
         <h1
-          className="text-3xl md:text-4xl font-bold mb-3"
+          className="text-composition font-bold mb-3"
           style={{ color: 'var(--text-primary)' }}
         >
           Methodology
@@ -189,32 +235,12 @@ export default function MethodologyPage() {
         <p className="text-base max-w-xl" style={{ color: 'var(--text-secondary)' }}>
           Data sources, calculation methodology, and known limitations.
         </p>
-      </div>
+      </motion.div>
 
-      {/* Content cards */}
+      {/* Content cards — scroll-triggered */}
       <div className="max-w-3xl mx-auto px-6 sm:px-8 pb-16 space-y-6">
         {SECTIONS.map((section, i) => (
-          <motion.section
-            key={section.title}
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, delay: i * 0.06 }}
-            className="rounded-xl p-6 md:p-8"
-            style={{ background: 'var(--bg-raised)', border: 'var(--border-subtle)' }}
-          >
-            <div className="flex items-center gap-3 mb-4">
-              <span className="text-lg">{section.icon}</span>
-              <h2
-                className="text-lg font-semibold"
-                style={{ color: 'var(--text-primary)' }}
-              >
-                {section.title}
-              </h2>
-            </div>
-            <div className="text-sm leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
-              {section.content}
-            </div>
-          </motion.section>
+          <MethodologyCard key={section.title} section={section} index={i} />
         ))}
 
         <p className="text-xs text-center pt-4" style={{ color: 'var(--text-muted)' }}>

@@ -6,6 +6,16 @@ import { DataTable } from '../components/explore/DataTable.tsx';
 import { SkeletonText } from '../components/ui/Skeleton.tsx';
 import { formatLakhCrore } from '../lib/format.ts';
 
+const stagger = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.08 } },
+};
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 16 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] as const } },
+};
+
 export default function ExplorePage() {
   const year = useBudgetStore((s) => s.selectedYear);
   const { expenditure, loading, error } = useBudgetData(year);
@@ -39,45 +49,69 @@ export default function ExplorePage() {
         }}
       />
 
-      {/* Page header */}
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 pt-10 pb-6 md:pt-14 md:pb-8">
-        <h1
-          className="text-3xl md:text-4xl font-bold mb-3"
+      {/* Page header — Pattern A */}
+      <motion.div
+        className="max-w-7xl mx-auto px-6 sm:px-8 pt-10 pb-6 md:pt-14 md:pb-8"
+        variants={stagger}
+        initial="hidden"
+        animate="show"
+      >
+        <motion.h1
+          className="text-composition font-bold mb-3"
           style={{ color: 'var(--text-primary)' }}
+          variants={fadeUp}
         >
           Data Explorer
-        </h1>
-        <p className="text-base max-w-2xl" style={{ color: 'var(--text-secondary)' }}>
+        </motion.h1>
+        <motion.p
+          className="text-base max-w-2xl"
+          style={{ color: 'var(--text-secondary)' }}
+          variants={fadeUp}
+        >
           Every ministry, every major scheme. Click headers to sort. Expand rows. Export to CSV.
-        </p>
-      </div>
+        </motion.p>
+      </motion.div>
 
-      {/* Summary bar */}
+      {/* Summary bar — Pattern C */}
       <div className="max-w-7xl mx-auto px-6 sm:px-8">
         {expenditure && (
-          <div
-            className="flex flex-wrap gap-8 mb-8 px-6 py-4 rounded-xl"
-            style={{ background: 'var(--bg-raised)', border: 'var(--border-subtle)' }}
+          <motion.div
+            className="flex flex-wrap gap-6 mb-8"
+            variants={stagger}
+            initial="hidden"
+            animate="show"
           >
-            <div>
+            <motion.div
+              className="rounded-lg px-5 py-4"
+              style={{ background: 'var(--bg-raised)', borderLeft: '3px solid var(--saffron)' }}
+              variants={fadeUp}
+            >
               <span className="text-xs uppercase tracking-wider block mb-1" style={{ color: 'var(--text-muted)' }}>Total</span>
-              <span className="font-mono text-lg font-bold" style={{ color: 'var(--text-primary)' }}>
+              <span className="font-mono text-2xl font-bold" style={{ color: 'var(--saffron)' }}>
                 {formatLakhCrore(expenditure.total)}
               </span>
-            </div>
-            <div>
+            </motion.div>
+            <motion.div
+              className="rounded-lg px-5 py-4"
+              style={{ background: 'var(--bg-raised)', borderLeft: '3px solid var(--cyan)' }}
+              variants={fadeUp}
+            >
               <span className="text-xs uppercase tracking-wider block mb-1" style={{ color: 'var(--text-muted)' }}>Expenditure Heads</span>
-              <span className="font-mono text-lg font-bold" style={{ color: 'var(--text-primary)' }}>
+              <span className="font-mono text-2xl font-bold" style={{ color: 'var(--cyan)' }}>
                 {expenditure.ministries.length}
               </span>
-            </div>
-            <div>
+            </motion.div>
+            <motion.div
+              className="rounded-lg px-5 py-4"
+              style={{ background: 'var(--bg-raised)', borderLeft: '3px solid var(--gold)' }}
+              variants={fadeUp}
+            >
               <span className="text-xs uppercase tracking-wider block mb-1" style={{ color: 'var(--text-muted)' }}>Year</span>
-              <span className="font-mono text-lg font-bold" style={{ color: 'var(--text-primary)' }}>
+              <span className="font-mono text-2xl font-bold" style={{ color: 'var(--text-primary)' }}>
                 {expenditure.year}
               </span>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         )}
       </div>
 
@@ -86,16 +120,27 @@ export default function ExplorePage() {
         {loading && <SkeletonText lines={8} className="mt-4" />}
 
         {error && (
-          <div className="py-8 text-center">
-            <p className="text-base mb-4" style={{ color: 'var(--text-secondary)' }}>
-              Failed to load data. {error}
+          <div
+            className="py-12 px-8 text-center rounded-xl max-w-md mx-auto"
+            style={{ background: 'var(--bg-raised)', border: 'var(--border-subtle)' }}
+          >
+            <div className="w-12 h-12 rounded-full mx-auto mb-4 flex items-center justify-center" style={{ background: 'var(--saffron-dim)' }}>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--saffron)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="12" cy="12" r="10" /><line x1="12" y1="8" x2="12" y2="12" /><line x1="12" y1="16" x2="12.01" y2="16" />
+              </svg>
+            </div>
+            <p className="text-base font-medium mb-2" style={{ color: 'var(--text-primary)' }}>
+              Failed to load data
+            </p>
+            <p className="text-sm mb-6" style={{ color: 'var(--text-muted)' }}>
+              {error}
             </p>
             <button
               onClick={() => window.location.reload()}
-              className="px-5 py-2.5 rounded-lg text-sm font-medium cursor-pointer"
+              className="px-5 py-2.5 rounded-lg text-sm font-medium cursor-pointer transition-all"
               style={{ background: 'var(--saffron)', color: 'white', border: 'none' }}
             >
-              Refresh
+              Try Again
             </button>
           </div>
         )}

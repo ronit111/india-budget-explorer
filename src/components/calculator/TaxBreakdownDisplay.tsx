@@ -6,6 +6,11 @@ interface TaxBreakdownDisplayProps {
   breakdown: TaxBreakdown;
 }
 
+const rowFade = {
+  hidden: { opacity: 0, x: -8 },
+  show: { opacity: 1, x: 0 },
+};
+
 export function TaxBreakdownDisplay({ breakdown }: TaxBreakdownDisplayProps) {
   return (
     <div className="space-y-5">
@@ -45,58 +50,72 @@ export function TaxBreakdownDisplay({ breakdown }: TaxBreakdownDisplayProps) {
         <motion.div
           initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
           className="rounded-lg px-4 py-3"
           style={{
-            background: 'rgba(16, 185, 129, 0.08)',
-            border: '1px solid rgba(16, 185, 129, 0.2)',
+            background: 'var(--positive-dim)',
+            border: '1px solid rgba(52, 211, 153, 0.2)',
           }}
         >
-          <p className="text-sm" style={{ color: '#6ee7b7' }}>
+          <p className="text-sm" style={{ color: 'var(--positive)' }}>
             Section 87A rebate applied. No tax payable.
           </p>
         </motion.div>
       )}
 
-      {/* Slab breakdown */}
+      {/* Slab breakdown — staggered entrance */}
       <div className="rounded-lg overflow-hidden" style={{ background: 'var(--bg-surface)' }}>
         <div className="px-4 py-3" style={{ borderBottom: 'var(--border-divider)' }}>
           <p className="text-sm font-semibold" style={{ color: 'var(--text-primary)' }}>
             Slab-by-slab Breakdown
           </p>
         </div>
-        <div>
-          <SlabRow
-            label="Standard Deduction"
-            value={`- Rs ${formatIndianNumber(breakdown.standardDeduction)}`}
-            valueColor="var(--cyan)"
-          />
-          <SlabRow
-            label="Taxable Income"
-            value={`Rs ${formatIndianNumber(breakdown.taxableIncome)}`}
-            highlight
-          />
-          {breakdown.slabwiseTax.map(({ slab, taxOnSlab }, i) => (
+        <motion.div
+          initial="hidden"
+          animate="show"
+          variants={{ show: { transition: { staggerChildren: 0.04 } } }}
+        >
+          <motion.div variants={rowFade}>
             <SlabRow
-              key={i}
-              label={
-                slab.to
-                  ? `Rs ${formatIndianNumber(slab.from)} – ${formatIndianNumber(slab.to)} @ ${slab.rate}%`
-                  : `Above Rs ${formatIndianNumber(slab.from)} @ ${slab.rate}%`
-              }
-              value={`Rs ${formatIndianNumber(Math.round(taxOnSlab))}`}
+              label="Standard Deduction"
+              value={`- Rs ${formatIndianNumber(breakdown.standardDeduction)}`}
+              valueColor="var(--cyan)"
             />
+          </motion.div>
+          <motion.div variants={rowFade}>
+            <SlabRow
+              label="Taxable Income"
+              value={`Rs ${formatIndianNumber(breakdown.taxableIncome)}`}
+              highlight
+            />
+          </motion.div>
+          {breakdown.slabwiseTax.map(({ slab, taxOnSlab }, i) => (
+            <motion.div key={i} variants={rowFade}>
+              <SlabRow
+                label={
+                  slab.to
+                    ? `Rs ${formatIndianNumber(slab.from)} – ${formatIndianNumber(slab.to)} @ ${slab.rate}%`
+                    : `Above Rs ${formatIndianNumber(slab.from)} @ ${slab.rate}%`
+                }
+                value={`Rs ${formatIndianNumber(Math.round(taxOnSlab))}`}
+              />
+            </motion.div>
           ))}
           {breakdown.surcharge > 0 && (
-            <SlabRow
-              label="Surcharge"
-              value={`Rs ${formatIndianNumber(Math.round(breakdown.surcharge))}`}
-            />
+            <motion.div variants={rowFade}>
+              <SlabRow
+                label="Surcharge"
+                value={`Rs ${formatIndianNumber(Math.round(breakdown.surcharge))}`}
+              />
+            </motion.div>
           )}
-          <SlabRow
-            label="Health & Education Cess (4%)"
-            value={`Rs ${formatIndianNumber(Math.round(breakdown.cess))}`}
-          />
-        </div>
+          <motion.div variants={rowFade}>
+            <SlabRow
+              label="Health & Education Cess (4%)"
+              value={`Rs ${formatIndianNumber(Math.round(breakdown.cess))}`}
+            />
+          </motion.div>
+        </motion.div>
       </div>
     </div>
   );

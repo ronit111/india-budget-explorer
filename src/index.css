@@ -28,7 +28,9 @@
 
   /* Semantic */
   --positive: #34d399;
+  --positive-dim: rgba(52, 211, 153, 0.1);
   --negative: #f87171;
+  --negative-dim: rgba(248, 113, 113, 0.1);
 
   /* Per-composition palettes (McCandless approach) */
   --revenue-tax:       var(--saffron);
@@ -311,6 +313,7 @@
   .income-slider::-webkit-slider-thumb:active {
     cursor: grabbing;
     box-shadow: 0 0 0 3px var(--saffron), 0 2px 12px rgba(255, 107, 53, 0.5);
+    transform: scale(1.15);
   }
   .income-slider::-moz-range-thumb {
     width: 32px;
@@ -330,6 +333,17 @@
     height: 6px;
     border-radius: 3px;
     background: var(--saffron);
+  }
+
+  /* Link hover — underline transition */
+  .link-hover {
+    text-decoration: underline;
+    text-decoration-color: transparent;
+    text-underline-offset: 2px;
+    transition: text-decoration-color 0.2s ease, color 0.2s ease;
+  }
+  .link-hover:hover {
+    text-decoration-color: currentColor;
   }
 
   /* Fade-in animation class */
