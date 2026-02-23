@@ -1,4 +1,6 @@
 {
+  "buildCommand": "npm run build:no-prerender",
+  "outputDirectory": "dist",
   "headers": [
     {
       "source": "/(.*)\\.html",
