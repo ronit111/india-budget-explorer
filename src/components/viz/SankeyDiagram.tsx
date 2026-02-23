@@ -60,7 +60,7 @@ export function SankeyDiagram({ data, width = 900, height = 600, isVisible }: Sa
       .nodePadding(14)
       .extent([
         [160, 20],
-        [width - 190, height - 20],
+        [width - 220, height - 20],
       ]);
 
     return layout({ nodes, links } as SankeyGraph<NodeExtra, object>);
@@ -137,7 +137,7 @@ export function SankeyDiagram({ data, width = 900, height = 600, isVisible }: Sa
               fill="none"
               stroke={`url(#${gradientId(i)})`}
               strokeWidth={Math.max(1, (link as unknown as { width?: number }).width || 1)}
-              strokeOpacity={connected ? (hoveredNode ? 0.55 : 0.35) : 0.06}
+              strokeOpacity={connected ? (hoveredNode ? 0.65 : 0.45) : 0.06}
               style={
                 isVisible
                   ? {
@@ -160,7 +160,7 @@ export function SankeyDiagram({ data, width = 900, height = 600, isVisible }: Sa
         })}
 
         {/* Nodes */}
-        {graph.nodes.map((node) => {
+        {graph.nodes.map((node, nodeIdx) => {
           const n = node as SNode;
           const extra = n as unknown as NodeExtra;
           const x0 = (n as unknown as { x0: number }).x0 || 0;
@@ -169,6 +169,10 @@ export function SankeyDiagram({ data, width = 900, height = 600, isVisible }: Sa
           const y1 = (n as unknown as { y1: number }).y1 || 0;
           const connected = isConnected(extra.id);
           const nodeValue = (n as unknown as { value?: number }).value || 0;
+          // Slide direction: revenue from left, expenditure from right, center from below
+          const slideX = extra.group === 'revenue' ? -20 : extra.group === 'expenditure' ? 20 : 0;
+          const slideY = extra.group === 'center' ? 15 : 0;
+          const nodeDelay = extra.group === 'revenue' ? nodeIdx * 0.04 : extra.group === 'center' ? 0.5 : 0.7 + nodeIdx * 0.04;
 
           return (
             <g
@@ -192,7 +196,10 @@ export function SankeyDiagram({ data, width = 900, height = 600, isVisible }: Sa
                 fill={GROUP_COLORS[extra.group] || '#6B7280'}
                 rx={2}
                 opacity={isVisible ? (connected ? 1 : 0.15) : 0}
-                style={{ transition: 'opacity 0.3s ease' }}
+                style={{
+                  transition: `opacity 0.3s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) ${nodeDelay}s`,
+                  transform: isVisible ? 'translate(0, 0)' : `translate(${slideX}px, ${slideY}px)`,
+                }}
               />
               {/* Node label */}
               <text
@@ -234,8 +241,16 @@ export function SankeyDiagram({ data, width = 900, height = 600, isVisible }: Sa
         content={
           tooltip.data && (
             <>
-              <TooltipTitle>{tooltip.data.name}</TooltipTitle>
+              <TooltipTitle>
+                {tooltip.data.type === 'link' ? `${tooltip.data.from} → ${tooltip.data.to}` : tooltip.data.name}
+              </TooltipTitle>
               <TooltipRow label="Amount" value={formatRsCrore(tooltip.data.value)} />
+              {tooltip.data.value > 0 && (
+                <TooltipRow
+                  label="Share"
+                  value={`${((tooltip.data.value / (data.nodes.find(n => n.id === 'central-govt')?.value || 1)) * 100).toFixed(1)}%`}
+                />
+              )}
             </>
           )
         }

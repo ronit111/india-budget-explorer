@@ -36,7 +36,7 @@ export function MapSection({ statewise }: MapSectionProps) {
       />
 
       <div className="max-w-7xl mx-auto px-6 sm:px-8">
-        <SectionNumber number={4} className="mb-6 block" />
+        <SectionNumber number={4} className="mb-6 block" isVisible={isVisible} />
 
         <div className="grid md:grid-cols-[1fr_2.2fr] gap-12 items-start">
           {/* Annotation panel */}
@@ -57,7 +57,7 @@ export function MapSection({ statewise }: MapSectionProps) {
               className="text-annotation mb-8"
             >
               Nearly 1 in 4 rupees of central spending flows directly to state governments.
-              Hover over states to see the breakdown.
+              Colour intensity shows per-capita transfer — what each citizen's share looks like.
             </motion.p>
 
             <motion.div

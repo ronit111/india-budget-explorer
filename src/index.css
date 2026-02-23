@@ -217,10 +217,18 @@
     background: linear-gradient(
       90deg,
       transparent,
-      rgba(255, 255, 255, 0.06) 20%,
-      rgba(255, 255, 255, 0.06) 80%,
+      rgba(255, 255, 255, 0.08) 20%,
+      rgba(255, 255, 255, 0.08) 80%,
       transparent
     );
+    transform: scaleX(0);
+    animation: dividerGrow 0.8s var(--ease-out-expo) forwards;
+    animation-play-state: paused;
+  }
+
+  /* Trigger animation when scrolled into viewport */
+  .composition-divider {
+    animation-play-state: running;
   }
 
   .source-attribution {
@@ -252,11 +260,12 @@
 
   /* Treemap */
   .treemap-rect {
-    transition: opacity 0.2s ease, stroke-width 0.2s ease;
+    transition: opacity 0.2s ease, stroke-width 0.2s ease, filter 0.25s ease;
     cursor: pointer;
   }
   .treemap-rect:hover {
-    opacity: 0.85;
+    opacity: 0.9;
+    filter: brightness(1.15) drop-shadow(0 0 8px rgba(255,255,255,0.08));
   }
 
   /* Waffle Chart */
@@ -353,6 +362,11 @@
 @keyframes waffleFadeIn {
   from { opacity: 0; transform: scale(0.8); }
   to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes dividerGrow {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
 }
 
 /* ─── Mobile safe area ─────────────────────────────────────────── */

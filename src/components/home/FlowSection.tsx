@@ -14,7 +14,7 @@ export function FlowSection({ sankey }: FlowSectionProps) {
   return (
     <section ref={ref} className="composition">
       <div className="max-w-7xl mx-auto px-6 sm:px-8">
-        <SectionNumber number={3} className="mb-6 block" />
+        <SectionNumber number={3} className="mb-6 block" isVisible={isVisible} />
 
         <motion.h2
           initial={{ opacity: 0, y: 16 }}
@@ -32,7 +32,7 @@ export function FlowSection({ sankey }: FlowSectionProps) {
           className="text-annotation mb-8 max-w-xl"
         >
           Revenue sources flow through the Central Government to spending heads.
-          Wider flows = larger amounts. Hover to trace connections.
+          Wider bands mean larger amounts.
         </motion.p>
 
         <SankeyDiagram data={sankey} isVisible={isVisible} />

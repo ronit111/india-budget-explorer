@@ -134,9 +134,11 @@ export function ChoroplethMap({ states, isVisible }: ChoroplethMapProps) {
                 strokeWidth={isHovered ? 1.5 : 0.5}
                 opacity={isVisible ? (hoveredState && !isHovered ? 0.5 : 1) : 0}
                 style={{
-                  transition: `opacity 0.5s ease ${i * 0.03}s, stroke 0.15s ease, stroke-width 0.15s ease`,
+                  transition: `opacity 0.5s ease ${i * 0.03}s, stroke 0.15s ease, stroke-width 0.15s ease, filter 0.2s ease`,
                   cursor: stateData ? 'pointer' : 'default',
-                  filter: isHovered ? 'drop-shadow(0 0 6px rgba(255,255,255,0.15))' : 'none',
+                  filter: isHovered
+                    ? 'drop-shadow(0 0 10px rgba(255,255,255,0.2)) brightness(1.1)'
+                    : 'none',
                 }}
                 onMouseEnter={(e) => {
                   setHoveredState(stName);

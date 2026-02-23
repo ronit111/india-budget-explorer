@@ -74,25 +74,37 @@ export default function HomePage() {
       <HeroSection summary={summary} />
 
       <div className="composition-divider" />
-      <NarrativeBridge text="The government collects revenue from taxes, borrowings, and non-tax sources. Let's see where each rupee comes from." />
+      <NarrativeBridge
+        text="The government raises revenue from taxes, borrowings, and non-tax sources. Let's see where each rupee comes from."
+        highlights={{ taxes: 'var(--saffron)', borrowings: 'var(--cyan)', rupee: 'var(--gold)' }}
+      />
       <div className="composition-divider" />
 
       <RevenueSection receipts={receipts} />
 
       <div className="composition-divider" />
-      <NarrativeBridge text="Now let's trace where this money goes. Every ministry, every scheme, every crore." />
+      <NarrativeBridge
+        text="Now let's trace where this money goes. Every ministry, every scheme, every crore."
+        highlights={{ ministry: 'var(--saffron)', scheme: 'var(--gold)', crore: 'var(--cyan)' }}
+      />
       <div className="composition-divider" />
 
       <ExpenditureSection treemap={treemap} />
 
       <div className="composition-divider" />
-      <NarrativeBridge text="Follow the flow from your pocket through the Central Government to the spending that shapes the country." />
+      <NarrativeBridge
+        text="Follow the flow from your pocket through the Central Government to the spending that shapes the country."
+        highlights={{ flow: 'var(--cyan)', pocket: 'var(--gold)', spending: 'var(--saffron)' }}
+      />
       <div className="composition-divider" />
 
       <FlowSection sankey={sankey} />
 
       <div className="composition-divider" />
-      <NarrativeBridge text="Nearly one in four rupees flows directly to states and union territories. Here's where it lands." />
+      <NarrativeBridge
+        text="Nearly one in four rupees flows directly to states and union territories. Here's where it lands."
+        highlights={{ states: 'var(--cyan)', rupees: 'var(--gold)' }}
+      />
       <div className="composition-divider" />
 
       <MapSection statewise={statewise} />

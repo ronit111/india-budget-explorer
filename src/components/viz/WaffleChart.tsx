@@ -70,6 +70,8 @@ export function WaffleChart({ categories, isVisible, highlightCategory }: Waffle
   }, [sorted]);
 
   const activeCat = highlightCategory || hoveredCat;
+  // Group-aware: when a category is active, highlight all categories in the same group
+  const activeGroup = activeCat ? CATEGORY_GROUP[activeCat] : null;
 
   const handleMouseEnter = useCallback((catId: string, cat: RevenueCategory, e: React.MouseEvent) => {
     setHoveredCat(catId);
@@ -99,8 +101,9 @@ export function WaffleChart({ categories, isVisible, highlightCategory }: Waffle
           {cells.map((cell) => {
             const row = Math.floor(cell.index / GRID);
             const col = cell.index % GRID;
-            const isDimmed = activeCat && cell.catId !== activeCat;
-            const isHighlighted = activeCat && cell.catId === activeCat;
+            const cellGroup = CATEGORY_GROUP[cell.catId];
+            const isDimmed = activeGroup && cellGroup !== activeGroup;
+            const isHighlighted = activeGroup && cellGroup === activeGroup;
 
             return (
               <rect
@@ -124,6 +127,24 @@ export function WaffleChart({ categories, isVisible, highlightCategory }: Waffle
               />
             );
           })}
+
+          {/* IIB-style inline annotations on the chart */}
+          {isVisible && !activeCat && (
+            <g className="pointer-events-none">
+              <WaffleAnnotation
+                x={95} y={15}
+                text={`${Math.round(categories.filter(c => ['income-tax','corporate-tax'].includes(c.id)).reduce((s,c) => s + c.percentOfTotal, 0))}% from direct taxes`}
+                color="var(--saffron)"
+                anchor="end"
+              />
+              <WaffleAnnotation
+                x={95} y={95}
+                text={`${Math.round(categories.find(c => c.id === 'borrowings')?.percentOfTotal || 0)} paise borrowed`}
+                color="var(--cyan)"
+                anchor="end"
+              />
+            </g>
+          )}
         </svg>
       </div>
 
@@ -142,6 +163,26 @@ export function WaffleChart({ categories, isVisible, highlightCategory }: Waffle
         y={tooltip.position.y}
       />
     </div>
+  );
+}
+
+/** IIB-style inline annotation positioned on the chart */
+function WaffleAnnotation({ x, y, text, color, anchor = 'start' }: {
+  x: number; y: number; text: string; color: string; anchor?: 'start' | 'middle' | 'end';
+}) {
+  return (
+    <text
+      x={x} y={y}
+      textAnchor={anchor}
+      fill={color}
+      fontSize={3.2}
+      fontFamily="var(--font-body)"
+      fontWeight={600}
+      opacity={0.95}
+      style={{ filter: 'drop-shadow(0 0 2px rgba(6,8,15,0.9))' }}
+    >
+      {text}
+    </text>
   );
 }
 
@@ -175,7 +216,7 @@ export function WaffleLegend({
             onMouseEnter={() => onHover(g.ids[0])}
             onMouseLeave={() => onHover(null)}
             style={{
-              color: hoveredCat && !g.ids.includes(hoveredCat)
+              color: hoveredCat && !g.ids.some(id => CATEGORY_GROUP[id] === CATEGORY_GROUP[hoveredCat])
                 ? 'var(--text-muted)'
                 : 'var(--text-secondary)',
               transition: 'color 150ms ease',

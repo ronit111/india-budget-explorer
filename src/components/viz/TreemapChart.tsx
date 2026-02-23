@@ -119,10 +119,11 @@ export function TreemapChart({ root, width = 960, height = 600, isVisible }: Tre
               return (
                 <motion.g
                   key={leaf.data.id}
-                  initial={{ opacity: 0 }}
-                  animate={isVisible ? { opacity: 1 } : { opacity: 0 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ delay: i * 0.025, duration: 0.4 }}
+                  initial={{ opacity: 0, scale: 0.85 }}
+                  animate={isVisible ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.85 }}
+                  exit={{ opacity: 0, scale: 0.9 }}
+                  transition={{ delay: i * 0.03, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                  style={{ transformOrigin: `${x0 + w / 2}px ${y0 + h / 2}px` }}
                 >
                   <rect
                     className="treemap-rect"

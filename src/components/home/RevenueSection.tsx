@@ -19,7 +19,7 @@ export function RevenueSection({ receipts }: RevenueSectionProps) {
   return (
     <section ref={ref} className="composition">
       <div className="max-w-7xl mx-auto px-6 sm:px-8">
-        <SectionNumber number={1} className="mb-6 block" />
+        <SectionNumber number={1} className="mb-6 block" isVisible={isVisible} />
 
         <div className="grid md:grid-cols-[1fr_1.5fr] gap-12 items-start">
           {/* Annotation panel */}
