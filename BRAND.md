@@ -90,7 +90,7 @@ The IIB pattern: the key number is physically enormous, supporting text scaled p
 
 | Class | Size | Weight | Usage |
 |-------|------|--------|-------|
-| `.text-hero` | `clamp(3rem, 8vw, 7rem)` | 800 | The one hero number per page (e.g., Rs 50,21,536) |
+| `.text-hero` | `clamp(3rem, 8vw, 7rem)` | 800 | The one hero number per page (e.g., Rs 50,65,345) |
 | `.text-composition` | `clamp(1.5rem, 3vw, 2.5rem)` | 700 | Section titles ("Where the money goes") |
 | `.text-stat` | `1.75rem` mono | 700 | Inline stats within visualizations |
 | `.text-annotation` | `0.9375rem` (15px) | 400 | Descriptive text beside visualizations |

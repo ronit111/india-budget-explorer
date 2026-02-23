@@ -76,7 +76,7 @@ Indian users universally read Latin digits for financial data, even on Hindi-lan
 
 **Example output in Hindi:**
 ```
-सरकार खर्च करती है Rs 50,21,536 करोड़
+सरकार खर्च करती है Rs 50,65,345 करोड़
 ```
 (Hindi text wrapping Latin-digit numbers with Hindi unit label "करोड़")
 

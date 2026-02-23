@@ -41,7 +41,8 @@
         }
       ],
       "standardDeduction": 75000,
-      "rebateLimit": 1200000
+      "rebateLimit": 1200000,
+      "surchargeMaxRate": 25
     },
     "old": {
       "slabs": [
@@ -67,7 +68,8 @@
         }
       ],
       "standardDeduction": 50000,
-      "rebateLimit": 500000
+      "rebateLimit": 500000,
+      "surchargeMaxRate": 37
     }
   },
   "cess": 4,

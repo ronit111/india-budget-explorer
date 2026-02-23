@@ -43,13 +43,14 @@ function computeSlabTax(
 function computeSurcharge(
   taxableIncome: number,
   baseTax: number,
-  surchargeSlabs: TaxSlab[]
+  surchargeSlabs: TaxSlab[],
+  maxRate: number
 ): number {
   let rate = 0;
   for (const slab of surchargeSlabs) {
     const upper = slab.to ?? Infinity;
     if (taxableIncome >= slab.from && taxableIncome <= upper) {
-      rate = slab.rate;
+      rate = Math.min(slab.rate, maxRate);
       break;
     }
   }
@@ -71,7 +72,8 @@ export function calculateTax(
   const rebateApplied = taxableIncome <= regime.rebateLimit && baseTax > 0;
   const taxAfterRebate = rebateApplied ? 0 : baseTax;
 
-  const surcharge = computeSurcharge(taxableIncome, taxAfterRebate, slabsData.surchargeSlabs);
+  const surchargeMaxRate = regime.surchargeMaxRate ?? 37;
+  const surcharge = computeSurcharge(taxableIncome, taxAfterRebate, slabsData.surchargeSlabs, surchargeMaxRate);
   const taxPlusSurcharge = taxAfterRebate + surcharge;
   const cess = taxPlusSurcharge * (slabsData.cess / 100);
   const totalTax = Math.round(taxPlusSurcharge + cess);

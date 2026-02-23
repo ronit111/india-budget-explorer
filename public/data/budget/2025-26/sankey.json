@@ -1,241 +1,48 @@
 {
   "year": "2025-26",
   "nodes": [
-    {
-      "id": "income-tax",
-      "name": "Income Tax",
-      "group": "revenue",
-      "value": 1225000
-    },
-    {
-      "id": "gst",
-      "name": "GST",
-      "group": "revenue",
-      "value": 975000
-    },
-    {
-      "id": "corporate-tax",
-      "name": "Corporate Tax",
-      "group": "revenue",
-      "value": 1010000
-    },
-    {
-      "id": "customs",
-      "name": "Customs Duty",
-      "group": "revenue",
-      "value": 230000
-    },
-    {
-      "id": "excise",
-      "name": "Excise Duty",
-      "group": "revenue",
-      "value": 310000
-    },
-    {
-      "id": "non-tax-revenue",
-      "name": "Non-Tax Revenue",
-      "group": "revenue",
-      "value": 385000
-    },
-    {
-      "id": "borrowings",
-      "name": "Borrowings & Other Liabilities",
-      "group": "revenue",
-      "value": 1620483
-    },
-    {
-      "id": "central-govt",
-      "name": "Central Government",
-      "group": "center",
-      "value": 5021536
-    },
-    {
-      "id": "interest-payments",
-      "name": "Interest Payments",
-      "group": "expenditure",
-      "value": 1080000
-    },
-    {
-      "id": "defence",
-      "name": "Defence",
-      "group": "expenditure",
-      "value": 681210
-    },
-    {
-      "id": "rural-development",
-      "name": "Rural Development",
-      "group": "expenditure",
-      "value": 178482
-    },
-    {
-      "id": "agriculture",
-      "name": "Agriculture & Farmers Welfare",
-      "group": "expenditure",
-      "value": 135580
-    },
-    {
-      "id": "education",
-      "name": "Education",
-      "group": "expenditure",
-      "value": 125638
-    },
-    {
-      "id": "health",
-      "name": "Health & Family Welfare",
-      "group": "expenditure",
-      "value": 90959
-    },
-    {
-      "id": "railways",
-      "name": "Railways",
-      "group": "expenditure",
-      "value": 265200
-    },
-    {
-      "id": "home-affairs",
-      "name": "Home Affairs",
-      "group": "expenditure",
-      "value": 221049
-    },
-    {
-      "id": "road-transport",
-      "name": "Road Transport & Highways",
-      "group": "expenditure",
-      "value": 278000
-    },
-    {
-      "id": "transfers-to-states",
-      "name": "Transfers to States & UTs",
-      "group": "expenditure",
-      "value": 1200000
-    },
-    {
-      "id": "subsidies",
-      "name": "Subsidies",
-      "group": "expenditure",
-      "value": 396000
-    },
-    {
-      "id": "other-expenditure",
-      "name": "Other",
-      "group": "expenditure",
-      "value": 369418
-    }
+    { "id": "income-tax", "name": "Income Tax", "group": "revenue", "value": 1438000 },
+    { "id": "corporate-tax", "name": "Corporate Tax", "group": "revenue", "value": 1082000 },
+    { "id": "gst", "name": "GST", "group": "revenue", "value": 1178000 },
+    { "id": "excise", "name": "Excise Duty", "group": "revenue", "value": 317000 },
+    { "id": "customs", "name": "Customs Duty", "group": "revenue", "value": 240000 },
+    { "id": "non-tax-revenue", "name": "Non-Tax Revenue", "group": "revenue", "value": 659000 },
+    { "id": "borrowings", "name": "Borrowings", "group": "revenue", "value": 1568936 },
+    { "id": "central-govt", "name": "Central Government", "group": "center", "value": 6482936 },
+    { "id": "states-share", "name": "States' Share of Taxes", "group": "expenditure", "value": 1417591 },
+    { "id": "interest-payments", "name": "Interest Payments", "group": "expenditure", "value": 1276338 },
+    { "id": "transfers-to-states", "name": "Grants to States", "group": "expenditure", "value": 1137320 },
+    { "id": "defence", "name": "Defence", "group": "expenditure", "value": 681210 },
+    { "id": "subsidies", "name": "Subsidies", "group": "expenditure", "value": 426216 },
+    { "id": "road-transport", "name": "Road Transport & Highways", "group": "expenditure", "value": 272000 },
+    { "id": "railways", "name": "Railways", "group": "expenditure", "value": 252000 },
+    { "id": "home-affairs", "name": "Home Affairs", "group": "expenditure", "value": 233210 },
+    { "id": "rural-development", "name": "Rural Development", "group": "expenditure", "value": 190405 },
+    { "id": "agriculture", "name": "Agriculture", "group": "expenditure", "value": 137756 },
+    { "id": "education", "name": "Education", "group": "expenditure", "value": 128650 },
+    { "id": "health", "name": "Health", "group": "expenditure", "value": 99858 },
+    { "id": "other-expenditure", "name": "Other", "group": "expenditure", "value": 230382 }
   ],
   "links": [
-    {
-      "source": "income-tax",
-      "target": "central-govt",
-      "value": 1225000,
-      "verified": true
-    },
-    {
-      "source": "gst",
-      "target": "central-govt",
-      "value": 975000,
-      "verified": true
-    },
-    {
-      "source": "corporate-tax",
-      "target": "central-govt",
-      "value": 1010000,
-      "verified": true
-    },
-    {
-      "source": "customs",
-      "target": "central-govt",
-      "value": 230000,
-      "verified": true
-    },
-    {
-      "source": "excise",
-      "target": "central-govt",
-      "value": 310000,
-      "verified": true
-    },
-    {
-      "source": "non-tax-revenue",
-      "target": "central-govt",
-      "value": 385000,
-      "verified": true
-    },
-    {
-      "source": "borrowings",
-      "target": "central-govt",
-      "value": 1620483,
-      "verified": true
-    },
-    {
-      "source": "central-govt",
-      "target": "interest-payments",
-      "value": 1080000,
-      "verified": true
-    },
-    {
-      "source": "central-govt",
-      "target": "defence",
-      "value": 681210,
-      "verified": true
-    },
-    {
-      "source": "central-govt",
-      "target": "rural-development",
-      "value": 178482,
-      "verified": true
-    },
-    {
-      "source": "central-govt",
-      "target": "agriculture",
-      "value": 135580,
-      "verified": true
-    },
-    {
-      "source": "central-govt",
-      "target": "education",
-      "value": 125638,
-      "verified": true
-    },
-    {
-      "source": "central-govt",
-      "target": "health",
-      "value": 90959,
-      "verified": true
-    },
-    {
-      "source": "central-govt",
-      "target": "railways",
-      "value": 265200,
-      "verified": true
-    },
-    {
-      "source": "central-govt",
-      "target": "home-affairs",
-      "value": 221049,
-      "verified": true
-    },
-    {
-      "source": "central-govt",
-      "target": "road-transport",
-      "value": 278000,
-      "verified": true
-    },
-    {
-      "source": "central-govt",
-      "target": "transfers-to-states",
-      "value": 1200000,
-      "verified": true
-    },
-    {
-      "source": "central-govt",
-      "target": "subsidies",
-      "value": 396000,
-      "verified": true
-    },
-    {
-      "source": "central-govt",
-      "target": "other-expenditure",
-      "value": 369418,
-      "verified": true
-    }
+    { "source": "income-tax", "target": "central-govt", "value": 1438000 },
+    { "source": "corporate-tax", "target": "central-govt", "value": 1082000 },
+    { "source": "gst", "target": "central-govt", "value": 1178000 },
+    { "source": "excise", "target": "central-govt", "value": 317000 },
+    { "source": "customs", "target": "central-govt", "value": 240000 },
+    { "source": "non-tax-revenue", "target": "central-govt", "value": 659000 },
+    { "source": "borrowings", "target": "central-govt", "value": 1568936 },
+    { "source": "central-govt", "target": "states-share", "value": 1417591 },
+    { "source": "central-govt", "target": "interest-payments", "value": 1276338 },
+    { "source": "central-govt", "target": "transfers-to-states", "value": 1137320 },
+    { "source": "central-govt", "target": "defence", "value": 681210 },
+    { "source": "central-govt", "target": "subsidies", "value": 426216 },
+    { "source": "central-govt", "target": "road-transport", "value": 272000 },
+    { "source": "central-govt", "target": "railways", "value": 252000 },
+    { "source": "central-govt", "target": "home-affairs", "value": 233210 },
+    { "source": "central-govt", "target": "rural-development", "value": 190405 },
+    { "source": "central-govt", "target": "agriculture", "value": 137756 },
+    { "source": "central-govt", "target": "education", "value": 128650 },
+    { "source": "central-govt", "target": "health", "value": 99858 },
+    { "source": "central-govt", "target": "other-expenditure", "value": 230382 }
   ]
 }

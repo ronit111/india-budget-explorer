@@ -56,13 +56,13 @@ def get_curated_receipts_data() -> pd.DataFrame:
     Based on Budget at a Glance / Receipt Budget.
     """
     data = [
-        ("income-tax", "Income Tax", 1225000, 1138000),
-        ("gst", "GST", 975000, 910000),
-        ("corporate-tax", "Corporate Tax", 1010000, 920000),
-        ("customs", "Customs Duty", 230000, 218000),
-        ("excise", "Excise Duty", 310000, 295000),
-        ("non-tax-revenue", "Non-Tax Revenue", 385000, 370000),
-        ("borrowings", "Borrowings & Other Liabilities", 1620483, 1718000),
+        ("income-tax", "Income Tax", 1438000, 1256000),
+        ("corporate-tax", "Corporate Tax", 1082000, 980000),
+        ("gst", "GST", 1178000, 1062000),
+        ("excise", "Excise Duty", 317000, 300000),
+        ("customs", "Customs Duty", 240000, 223000),
+        ("non-tax-revenue", "Non-Tax Revenue", 659000, 600000),
+        ("borrowings", "Borrowings & Other Liabilities", 1568936, 1586000),
     ]
 
     df = pd.DataFrame(data, columns=[
@@ -75,13 +75,13 @@ def get_curated_summary() -> dict:
     """Key summary numbers from Union Budget 2025-26."""
     return {
         "year": "2025-26",
-        "totalExpenditure": 5021536,
-        "totalReceipts": 3401053,
-        "revenueReceipts": 2678471,
-        "capitalReceipts": 722582,
-        "fiscalDeficit": 1620483,
+        "totalExpenditure": 5065345,
+        "totalReceipts": 3496409,
+        "revenueReceipts": 3420409,
+        "capitalReceipts": 76000,
+        "fiscalDeficit": 1568936,
         "fiscalDeficitPercentGDP": 4.4,
-        "gdp": 36822024,
+        "gdp": 35698000,
     }
 
 

@@ -97,7 +97,7 @@ const SECTIONS = [
     content: (
       <p>
         All numbers use the Indian numbering system (lakhs and crores), formatted as per
-        convention: 50,21,536 (not 5,021,536). Large amounts are displayed in "lakh crore" where
+        convention: 50,65,345 (not 5,021,536). Large amounts are displayed in "lakh crore" where
         appropriate.
       </p>
     ),

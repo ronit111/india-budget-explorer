@@ -147,6 +147,7 @@ const NON_MINISTRY_IDS = new Set([
   'interest-payments',
   'transfers-to-states',
   'subsidies',
+  'other-expenditure',
 ]);
 
 function MinistryRow({

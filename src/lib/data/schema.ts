@@ -77,7 +77,7 @@ export interface SankeyLink {
   source: string                 // node id
   target: string                 // node id
   value: number                  // Rs crore
-  verified: boolean
+  verified?: boolean
 }
 
 export interface SankeyData {
@@ -144,6 +144,7 @@ export interface TaxRegime {
   slabs: TaxSlab[]
   standardDeduction: number
   rebateLimit: number
+  surchargeMaxRate?: number
 }
 
 export interface TaxSlabsData {

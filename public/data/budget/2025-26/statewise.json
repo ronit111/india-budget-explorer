@@ -1,190 +1,30 @@
 {
   "year": "2025-26",
-  "totalTransfers": 1200000,
+  "totalTransfers": 1137320,
+  "note": "Grants and transfers from Centre to States/UTs. Excludes tax devolution of Rs 14,22,444 crore (states' automatic share of central taxes).",
   "states": [
-    {
-      "id": "UP",
-      "name": "Uttar Pradesh",
-      "transfer": 210000,
-      "perCapita": 9354,
-      "percentOfTotal": 17.5,
-      "population": 224500000
-    },
-    {
-      "id": "BH",
-      "name": "Bihar",
-      "transfer": 120000,
-      "perCapita": 9724,
-      "percentOfTotal": 10.0,
-      "population": 123400000
-    },
-    {
-      "id": "MP",
-      "name": "Madhya Pradesh",
-      "transfer": 96000,
-      "perCapita": 11034,
-      "percentOfTotal": 8.0,
-      "population": 87000000
-    },
-    {
-      "id": "WB",
-      "name": "West Bengal",
-      "transfer": 90000,
-      "perCapita": 9298,
-      "percentOfTotal": 7.5,
-      "population": 96800000
-    },
-    {
-      "id": "MH",
-      "name": "Maharashtra",
-      "transfer": 84000,
-      "perCapita": 6640,
-      "percentOfTotal": 7.0,
-      "population": 126500000
-    },
-    {
-      "id": "RJ",
-      "name": "Rajasthan",
-      "transfer": 72000,
-      "perCapita": 8989,
-      "percentOfTotal": 6.0,
-      "population": 80100000
-    },
-    {
-      "id": "TN",
-      "name": "Tamil Nadu",
-      "transfer": 54000,
-      "perCapita": 6968,
-      "percentOfTotal": 4.5,
-      "population": 77500000
-    },
-    {
-      "id": "KA",
-      "name": "Karnataka",
-      "transfer": 48000,
-      "perCapita": 7132,
-      "percentOfTotal": 4.0,
-      "population": 67300000
-    },
-    {
-      "id": "GJ",
-      "name": "Gujarat",
-      "transfer": 42000,
-      "perCapita": 5932,
-      "percentOfTotal": 3.5,
-      "population": 70800000
-    },
-    {
-      "id": "AP",
-      "name": "Andhra Pradesh",
-      "transfer": 48000,
-      "perCapita": 9160,
-      "percentOfTotal": 4.0,
-      "population": 52400000
-    },
-    {
-      "id": "OR",
-      "name": "Odisha",
-      "transfer": 54000,
-      "perCapita": 11563,
-      "percentOfTotal": 4.5,
-      "population": 46700000
-    },
-    {
-      "id": "TS",
-      "name": "Telangana",
-      "transfer": 30000,
-      "perCapita": 7500,
-      "percentOfTotal": 2.5,
-      "population": 40000000
-    },
-    {
-      "id": "KL",
-      "name": "Kerala",
-      "transfer": 24000,
-      "perCapita": 6818,
-      "percentOfTotal": 2.0,
-      "population": 35200000
-    },
-    {
-      "id": "JH",
-      "name": "Jharkhand",
-      "transfer": 42000,
-      "perCapita": 11053,
-      "percentOfTotal": 3.5,
-      "population": 38000000
-    },
-    {
-      "id": "CG",
-      "name": "Chhattisgarh",
-      "transfer": 42000,
-      "perCapita": 14000,
-      "percentOfTotal": 3.5,
-      "population": 30000000
-    },
-    {
-      "id": "AS",
-      "name": "Assam",
-      "transfer": 42000,
-      "perCapita": 11966,
-      "percentOfTotal": 3.5,
-      "population": 35100000
-    },
-    {
-      "id": "PB",
-      "name": "Punjab",
-      "transfer": 18000,
-      "perCapita": 5902,
-      "percentOfTotal": 1.5,
-      "population": 30500000
-    },
-    {
-      "id": "HR",
-      "name": "Haryana",
-      "transfer": 12000,
-      "perCapita": 4124,
-      "percentOfTotal": 1.0,
-      "population": 29100000
-    },
-    {
-      "id": "JK",
-      "name": "Jammu & Kashmir",
-      "transfer": 18000,
-      "perCapita": 13235,
-      "percentOfTotal": 1.5,
-      "population": 13600000
-    },
-    {
-      "id": "UK",
-      "name": "Uttarakhand",
-      "transfer": 12000,
-      "perCapita": 10714,
-      "percentOfTotal": 1.0,
-      "population": 11200000
-    },
-    {
-      "id": "HP",
-      "name": "Himachal Pradesh",
-      "transfer": 10800,
-      "perCapita": 14400,
-      "percentOfTotal": 0.9,
-      "population": 7500000
-    },
-    {
-      "id": "GA",
-      "name": "Goa",
-      "transfer": 3600,
-      "perCapita": 22500,
-      "percentOfTotal": 0.3,
-      "population": 1600000
-    },
-    {
-      "id": "NE",
-      "name": "Other NE States",
-      "transfer": 27600,
-      "perCapita": 13800,
-      "percentOfTotal": 2.3,
-      "population": 20000000
-    }
+    { "id": "UP", "name": "Uttar Pradesh", "transfer": 199023, "perCapita": 8864, "percentOfTotal": 17.5, "population": 224500000 },
+    { "id": "BH", "name": "Bihar", "transfer": 113732, "perCapita": 9216, "percentOfTotal": 10.0, "population": 123400000 },
+    { "id": "MP", "name": "Madhya Pradesh", "transfer": 90986, "perCapita": 10456, "percentOfTotal": 8.0, "population": 87000000 },
+    { "id": "WB", "name": "West Bengal", "transfer": 85299, "perCapita": 8812, "percentOfTotal": 7.5, "population": 96800000 },
+    { "id": "MH", "name": "Maharashtra", "transfer": 79612, "perCapita": 6293, "percentOfTotal": 7.0, "population": 126500000 },
+    { "id": "RJ", "name": "Rajasthan", "transfer": 68239, "perCapita": 8519, "percentOfTotal": 6.0, "population": 80100000 },
+    { "id": "TN", "name": "Tamil Nadu", "transfer": 51179, "perCapita": 6604, "percentOfTotal": 4.5, "population": 77500000 },
+    { "id": "AP", "name": "Andhra Pradesh", "transfer": 45493, "perCapita": 8681, "percentOfTotal": 4.0, "population": 52400000 },
+    { "id": "OR", "name": "Odisha", "transfer": 51179, "perCapita": 10960, "percentOfTotal": 4.5, "population": 46700000 },
+    { "id": "KA", "name": "Karnataka", "transfer": 45493, "perCapita": 6759, "percentOfTotal": 4.0, "population": 67300000 },
+    { "id": "JH", "name": "Jharkhand", "transfer": 39806, "perCapita": 10475, "percentOfTotal": 3.5, "population": 38000000 },
+    { "id": "CG", "name": "Chhattisgarh", "transfer": 39806, "perCapita": 13269, "percentOfTotal": 3.5, "population": 30000000 },
+    { "id": "AS", "name": "Assam", "transfer": 39806, "perCapita": 11340, "percentOfTotal": 3.5, "population": 35100000 },
+    { "id": "GJ", "name": "Gujarat", "transfer": 39806, "perCapita": 5623, "percentOfTotal": 3.5, "population": 70800000 },
+    { "id": "TS", "name": "Telangana", "transfer": 28433, "perCapita": 7108, "percentOfTotal": 2.5, "population": 40000000 },
+    { "id": "KL", "name": "Kerala", "transfer": 22746, "perCapita": 6462, "percentOfTotal": 2.0, "population": 35200000 },
+    { "id": "NE", "name": "Other NE States", "transfer": 26147, "perCapita": 13074, "percentOfTotal": 2.3, "population": 20000000 },
+    { "id": "PB", "name": "Punjab", "transfer": 17060, "perCapita": 5594, "percentOfTotal": 1.5, "population": 30500000 },
+    { "id": "JK", "name": "Jammu & Kashmir", "transfer": 17060, "perCapita": 12544, "percentOfTotal": 1.5, "population": 13600000 },
+    { "id": "UK", "name": "Uttarakhand", "transfer": 11373, "perCapita": 10155, "percentOfTotal": 1.0, "population": 11200000 },
+    { "id": "HR", "name": "Haryana", "transfer": 11373, "perCapita": 3908, "percentOfTotal": 1.0, "population": 29100000 },
+    { "id": "HP", "name": "Himachal Pradesh", "transfer": 10236, "perCapita": 13648, "percentOfTotal": 0.9, "population": 7500000 },
+    { "id": "GA", "name": "Goa", "transfer": 3412, "perCapita": 21325, "percentOfTotal": 0.3, "population": 1600000 }
   ]
 }

@@ -2,58 +2,58 @@
   "year": "2025-26",
   "shares": [
     {
-      "id": "transfers-to-states",
-      "name": "State Transfers",
-      "percentOfExpenditure": 23.9,
-      "humanContext": "Funding your state's roads, schools, and hospitals",
+      "id": "interest-payments",
+      "name": "Interest Payments",
+      "percentOfExpenditure": 25.2,
+      "humanContext": "Servicing past government debt",
       "humanContextMultiplier": 0
     },
     {
-      "id": "interest-payments",
-      "name": "Interest Payments",
-      "percentOfExpenditure": 21.5,
-      "humanContext": "Servicing past government debt",
+      "id": "transfers-to-states",
+      "name": "State Transfers",
+      "percentOfExpenditure": 22.5,
+      "humanContext": "Funding your state's roads, schools, and hospitals",
       "humanContextMultiplier": 0
     },
     {
       "id": "defence",
       "name": "Defence",
-      "percentOfExpenditure": 13.6,
+      "percentOfExpenditure": 13.4,
       "humanContext": "school mid-day meals",
       "humanContextMultiplier": 167
     },
     {
       "id": "subsidies",
       "name": "Subsidies",
-      "percentOfExpenditure": 7.9,
+      "percentOfExpenditure": 8.4,
       "humanContext": "months of subsidized ration for one family",
       "humanContextMultiplier": 4
     },
     {
       "id": "road-transport",
       "name": "Roads & Highways",
-      "percentOfExpenditure": 5.5,
+      "percentOfExpenditure": 5.4,
       "humanContext": "toll-free highway trips",
       "humanContextMultiplier": 750
     },
     {
       "id": "railways",
       "name": "Railways",
-      "percentOfExpenditure": 5.3,
+      "percentOfExpenditure": 5.0,
       "humanContext": "train journeys (sleeper class)",
       "humanContextMultiplier": 12
     },
     {
       "id": "home-affairs",
       "name": "Home Affairs",
-      "percentOfExpenditure": 4.4,
+      "percentOfExpenditure": 4.6,
       "humanContext": "police and border security",
       "humanContextMultiplier": 0
     },
     {
       "id": "rural-development",
       "name": "Rural Development",
-      "percentOfExpenditure": 3.6,
+      "percentOfExpenditure": 3.8,
       "humanContext": "days of MGNREGA wages",
       "humanContextMultiplier": 8
     },
@@ -74,15 +74,15 @@
     {
       "id": "health",
       "name": "Health",
-      "percentOfExpenditure": 1.8,
+      "percentOfExpenditure": 2.0,
       "humanContext": "basic health checkups",
       "humanContextMultiplier": 5
     },
     {
       "id": "other",
       "name": "Everything Else",
-      "percentOfExpenditure": 7.3,
-      "humanContext": "science, environment, culture, and more",
+      "percentOfExpenditure": 4.5,
+      "humanContext": "housing, science, environment, culture, and more",
       "humanContextMultiplier": 0
     }
   ]
