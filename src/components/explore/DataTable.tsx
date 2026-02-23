@@ -49,7 +49,7 @@ export function DataTable({ data }: DataTableProps) {
   }, [data.ministries, sortKey, sortDir]);
 
   const exportCSV = useCallback(() => {
-    const headers = ['Ministry', 'Budget Estimate (Rs Cr)', '% of Total', 'YoY Change %', 'Per Capita (Rs)'];
+    const headers = ['Expenditure Head', 'Budget Estimate (Rs Cr)', '% of Total', 'YoY Change %', 'Per Capita (Rs)'];
     const rows = sorted.map((m) => [
       m.name, m.budgetEstimate, m.percentOfTotal, m.yoyChange ?? 'N/A', m.perCapita,
     ]);
@@ -62,6 +62,9 @@ export function DataTable({ data }: DataTableProps) {
     a.click();
     URL.revokeObjectURL(url);
   }, [sorted, data.year]);
+
+  const ministryCount = sorted.filter((m) => m.name.startsWith('Ministry')).length;
+  const categoryCount = sorted.length - ministryCount;
 
   const SortHeader = ({ label, field, className = '' }: { label: string; field: SortKey; className?: string }) => (
     <th
@@ -83,7 +86,7 @@ export function DataTable({ data }: DataTableProps) {
   return (
     <div>
       <div className="flex justify-between items-center mb-4">
-        <p className="text-caption">{sorted.length} ministries / departments</p>
+        <p className="text-caption">{ministryCount} ministries · {categoryCount} other expenditure heads</p>
         <button
           onClick={exportCSV}
           className="px-4 py-2 rounded-lg text-sm font-medium cursor-pointer transition-colors"
@@ -102,7 +105,7 @@ export function DataTable({ data }: DataTableProps) {
         <table className="w-full">
           <thead style={{ background: 'var(--bg-raised)' }}>
             <tr>
-              <SortHeader label="Ministry" field="name" />
+              <SortHeader label="Expenditure Head" field="name" />
               <SortHeader label="Budget (Rs Cr)" field="budgetEstimate" />
               <SortHeader label="% Total" field="percentOfTotal" />
               <SortHeader label="YoY" field="yoyChange" />
@@ -139,6 +142,13 @@ export function DataTable({ data }: DataTableProps) {
   );
 }
 
+/** Non-ministry expenditure heads (obligations, not discretionary ministry spending) */
+const NON_MINISTRY_IDS = new Set([
+  'interest-payments',
+  'transfers-to-states',
+  'subsidies',
+]);
+
 function MinistryRow({
   ministry,
   total,
@@ -152,6 +162,7 @@ function MinistryRow({
 }) {
   const hasSchemes = ministry.schemes.length > 0;
   const barWidth = (ministry.budgetEstimate / total) * 100;
+  const isObligation = NON_MINISTRY_IDS.has(ministry.id);
 
   return (
     <>
@@ -179,7 +190,17 @@ function MinistryRow({
               </span>
             )}
             <div>
-              <p className="text-sm font-medium" style={{ color: 'var(--text-primary)' }}>{ministry.name}</p>
+              <div className="flex items-center gap-2">
+                <p className="text-sm font-medium" style={{ color: 'var(--text-primary)' }}>{ministry.name}</p>
+                {isObligation && (
+                  <span
+                    className="text-[10px] font-medium px-1.5 py-0.5 rounded"
+                    style={{ color: 'var(--cyan)', background: 'var(--cyan-dim)' }}
+                  >
+                    Obligation
+                  </span>
+                )}
+              </div>
               <p className="text-xs mt-0.5 max-w-xs truncate" style={{ color: 'var(--text-muted)' }}>
                 {ministry.humanContext}
               </p>
@@ -192,7 +213,7 @@ function MinistryRow({
             <div className="flex-1 max-w-32 h-1.5 rounded-full overflow-hidden" style={{ background: 'var(--bg-hover)' }}>
               <div
                 className="h-full rounded-full"
-                style={{ width: `${barWidth * 2}%`, background: 'var(--saffron)' }}
+                style={{ width: `${Math.min(barWidth * 4, 100)}%`, background: 'var(--cyan)' }}
               />
             </div>
             <span className="font-mono text-sm">{formatPercent(ministry.percentOfTotal)}</span>
@@ -244,19 +265,30 @@ function MinistryCard({
 }) {
   const hasSchemes = ministry.schemes.length > 0;
   const barWidth = (ministry.budgetEstimate / total) * 100;
+  const isObligation = NON_MINISTRY_IDS.has(ministry.id);
 
   return (
     <div
       className="rounded-lg p-4 cursor-pointer"
       style={{
         background: 'var(--bg-raised)',
-        border: expanded ? '1px solid var(--saffron)' : 'var(--border-subtle)',
+        border: expanded ? '1px solid var(--cyan)' : 'var(--border-subtle)',
       }}
       onClick={hasSchemes ? onToggle : undefined}
     >
       <div className="flex justify-between items-start mb-2">
         <div className="flex-1">
-          <p className="text-sm font-semibold" style={{ color: 'var(--text-primary)' }}>{ministry.name}</p>
+          <div className="flex items-center gap-2">
+            <p className="text-sm font-semibold" style={{ color: 'var(--text-primary)' }}>{ministry.name}</p>
+            {isObligation && (
+              <span
+                className="text-[10px] font-medium px-1.5 py-0.5 rounded"
+                style={{ color: 'var(--cyan)', background: 'var(--cyan-dim)' }}
+              >
+                Obligation
+              </span>
+            )}
+          </div>
           <p className="text-xs mt-0.5" style={{ color: 'var(--text-muted)' }}>{ministry.humanContext}</p>
         </div>
         <YoYBadge value={ministry.yoyChange ?? 0} />
@@ -270,7 +302,7 @@ function MinistryCard({
       </div>
 
       <div className="w-full h-1.5 rounded-full mt-2 overflow-hidden" style={{ background: 'var(--bg-hover)' }}>
-        <div className="h-full rounded-full" style={{ width: `${barWidth * 2}%`, background: 'var(--saffron)' }} />
+        <div className="h-full rounded-full" style={{ width: `${Math.min(barWidth * 4, 100)}%`, background: 'var(--cyan)' }} />
       </div>
 
       <AnimatePresence>

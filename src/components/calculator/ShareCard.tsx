@@ -27,14 +27,17 @@ export function ShareCard({ breakdown, regime }: ShareCardProps) {
     ctx.fillStyle = gradient;
     ctx.fillRect(0, 0, 1200, 630);
 
-    // Saffron accent line
-    ctx.fillStyle = '#FF6B35';
-    ctx.fillRect(0, 0, 1200, 4);
+    // Subtle accent line — warm gold, not saffron
+    const accentGrad = ctx.createLinearGradient(0, 0, 1200, 0);
+    accentGrad.addColorStop(0, '#FF6B35');
+    accentGrad.addColorStop(1, '#FFC857');
+    ctx.fillStyle = accentGrad;
+    ctx.fillRect(0, 0, 1200, 3);
 
     // Title
-    ctx.fillStyle = '#FF6B35';
-    ctx.font = 'bold 24px Inter, sans-serif';
-    ctx.fillText('Indian Data Project', 60, 60);
+    ctx.fillStyle = '#b0b8c4';
+    ctx.font = '500 20px Inter, sans-serif';
+    ctx.fillText('Indian Data Project', 60, 52);
 
     // Income
     ctx.fillStyle = '#f0ece6';
@@ -45,8 +48,8 @@ export function ShareCard({ breakdown, regime }: ShareCardProps) {
       130
     );
 
-    // Tax — hero number
-    ctx.fillStyle = '#FF6B35';
+    // Tax — hero number with warm gold, not harsh orange
+    ctx.fillStyle = '#FFC857';
     ctx.font = 'bold 64px JetBrains Mono, monospace';
     ctx.fillText(`Rs ${formatIndianNumber(breakdown.totalTax)}`, 60, 230);
 
@@ -63,7 +66,7 @@ export function ShareCard({ breakdown, regime }: ShareCardProps) {
     // Footer
     ctx.fillStyle = '#5c6a7e';
     ctx.font = '20px Inter, sans-serif';
-    ctx.fillText('See where your taxes go at indiabudgetexplorer.in/calculator', 60, 580);
+    ctx.fillText('indian-data-project.vercel.app/calculator', 60, 580);
 
     // Download
     const link = document.createElement('a');
@@ -73,16 +76,34 @@ export function ShareCard({ breakdown, regime }: ShareCardProps) {
   }, [breakdown, regime]);
 
   return (
-    <div>
+    <>
       <canvas ref={canvasRef} className="hidden" />
       <button
         onClick={generateImage}
-        className="w-full py-3 px-6 rounded-lg font-semibold text-white cursor-pointer border-none transition-all hover:opacity-90"
-        style={{ background: 'linear-gradient(135deg, var(--saffron), #ff8c5a)' }}
+        className="py-2 px-4 rounded-lg text-sm font-medium cursor-pointer transition-all whitespace-nowrap"
+        style={{
+          background: 'transparent',
+          color: 'var(--text-secondary)',
+          border: '1px solid rgba(255, 255, 255, 0.10)',
+        }}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.borderColor = 'var(--cyan)';
+          e.currentTarget.style.background = 'var(--cyan-dim)';
+          e.currentTarget.style.color = 'var(--text-primary)';
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.10)';
+          e.currentTarget.style.background = 'transparent';
+          e.currentTarget.style.color = 'var(--text-secondary)';
+        }}
       >
-        Download Share Card
+        <span className="flex items-center gap-2">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8 2v8m0 0L5 7m3 3l3-3M3 12h10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+          Share Card
+        </span>
       </button>
-      <p className="text-caption text-center mt-2">1200 × 630 PNG for social media</p>
-    </div>
+    </>
   );
 }

@@ -66,7 +66,7 @@ export default function ExplorePage() {
               </span>
             </div>
             <div>
-              <span className="text-xs uppercase tracking-wider block mb-1" style={{ color: 'var(--text-muted)' }}>Ministries</span>
+              <span className="text-xs uppercase tracking-wider block mb-1" style={{ color: 'var(--text-muted)' }}>Expenditure Heads</span>
               <span className="font-mono text-lg font-bold" style={{ color: 'var(--text-primary)' }}>
                 {expenditure.ministries.length}
               </span>

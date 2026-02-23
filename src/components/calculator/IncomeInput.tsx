@@ -61,9 +61,9 @@ export function IncomeInput() {
             onClick={() => setIncome(preset)}
             className="px-3 py-1.5 rounded-lg text-xs font-medium transition-all cursor-pointer"
             style={{
-              background: income === preset ? 'var(--saffron)' : 'var(--bg-raised)',
-              color: income === preset ? 'white' : 'var(--text-secondary)',
-              border: income === preset ? '1px solid var(--saffron)' : 'var(--border-subtle)',
+              background: income === preset ? 'var(--bg-hover)' : 'var(--bg-raised)',
+              color: income === preset ? 'var(--text-primary)' : 'var(--text-secondary)',
+              border: income === preset ? '1px solid var(--cyan)' : 'var(--border-subtle)',
             }}
           >
             {formatLPA(preset)}

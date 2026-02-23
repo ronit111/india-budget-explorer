@@ -26,7 +26,7 @@ function GlowCard({
     >
       <Link
         to={to}
-        className="group block relative rounded-xl p-px no-underline overflow-hidden"
+        className="group block relative rounded-xl p-px no-underline overflow-hidden h-full"
         style={{ transition: 'transform 0.3s ease' }}
         onMouseEnter={(e) => {
           e.currentTarget.style.transform = 'translateY(-4px)';
@@ -56,13 +56,13 @@ function GlowCard({
         />
         {/* Card content */}
         <div
-          className="relative rounded-xl px-8 py-8"
+          className="relative rounded-xl px-8 py-8 h-full flex flex-col"
           style={{ background: 'var(--bg-surface)' }}
         >
           <h3 className="text-xl font-bold mb-2" style={{ color: 'var(--text-primary)' }}>
             {title}
           </h3>
-          <p className="text-sm leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
+          <p className="text-sm leading-relaxed flex-1" style={{ color: 'var(--text-secondary)' }}>
             {description}
           </p>
           <div

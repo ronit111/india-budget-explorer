@@ -7,19 +7,24 @@ interface SpendingAllocationProps {
   shares: ExpenditureSharesData;
 }
 
+/**
+ * Cohesive palette: warm saffron family for domestic/ministry spending,
+ * cool cyan family for obligations (transfers, interest, subsidies).
+ * Max 4-5 distinct hues — IIB approach.
+ */
 const COLORS: Record<string, string> = {
-  'transfers-to-states': '#3B82F6',
-  'interest-payments': '#6B7280',
-  defence: '#EF4444',
-  subsidies: '#F59E0B',
-  'road-transport': '#8B5CF6',
-  railways: '#06B6D4',
-  'home-affairs': '#EC4899',
-  'rural-development': '#10B981',
-  agriculture: '#84CC16',
-  education: '#F97316',
-  health: '#14B8A6',
-  other: '#6366F1',
+  'transfers-to-states': '#4AEADC',     // cyan — obligation
+  'interest-payments': '#5BBFB5',       // teal — obligation
+  defence: '#FF6B35',                   // saffron — ministry
+  subsidies: '#6BA8A0',                 // muted teal — obligation
+  'road-transport': '#ff8c5a',          // saffron-light — ministry
+  railways: '#FFC857',                  // gold — ministry
+  'home-affairs': '#e0854a',            // warm amber — ministry
+  'rural-development': '#d4a44a',       // warm gold — ministry
+  agriculture: '#c4944a',              // earthy gold — ministry
+  education: '#FFB347',                // soft amber — ministry
+  health: '#7CE8D8',                   // light cyan — social
+  other: '#8896A8',                    // muted blue-gray — remainder
 };
 
 export function SpendingAllocation({ totalTax, shares }: SpendingAllocationProps) {
