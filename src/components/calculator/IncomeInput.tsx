@@ -51,7 +51,7 @@ export function IncomeInput() {
           type="range"
           min={0}
           max={100000000}
-          step={100000}
+          step={50000}
           value={income}
           onChange={(e) => setIncome(Number(e.target.value))}
           className="income-slider"
