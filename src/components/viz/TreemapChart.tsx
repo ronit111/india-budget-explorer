@@ -54,18 +54,17 @@ export function TreemapChart({ root, width = 960, height = 600, isVisible }: Tre
       .paddingOuter(3)
       .round(true)(hierarchy);
 
-    return hierarchy.leaves();
+    // Show one level at a time — direct children, not all leaves
+    return hierarchy.children || [];
   }, [activeRoot, width, height]);
 
   const handleClick = useCallback(
-    (node: TreemapNode, parent?: TreemapNode) => {
-      const target = node.children ? node : parent;
-      if (!target?.children || target.children.length === 0) return;
-      // Don't drill into the same node we're already viewing
-      if (target.id === activeRoot.id) return;
-      setDrillPath((prev) => [...prev, target]);
+    (node: TreemapNode) => {
+      // Only drill into nodes that themselves have children
+      if (!node.children || node.children.length === 0) return;
+      setDrillPath((prev) => [...prev, node]);
     },
-    [activeRoot]
+    []
   );
 
   const handleBreadcrumb = useCallback((index: number) => {
@@ -97,26 +96,25 @@ export function TreemapChart({ root, width = 960, height = 600, isVisible }: Tre
 
       <div className="relative w-full overflow-hidden rounded-lg" style={{ aspectRatio: `${width}/${height}` }}>
         <svg viewBox={`0 0 ${width} ${height}`} className="w-full h-full" key={activeRoot.id || activeRoot.name || 'root'}>
-            {layout.map((leaf, i) => {
-              const x0 = (leaf as unknown as { x0: number }).x0;
-              const y0 = (leaf as unknown as { y0: number }).y0;
-              const x1 = (leaf as unknown as { x1: number }).x1;
-              const y1 = (leaf as unknown as { y1: number }).y1;
+            {layout.map((child, i) => {
+              const x0 = (child as unknown as { x0: number }).x0;
+              const y0 = (child as unknown as { y0: number }).y0;
+              const x1 = (child as unknown as { x1: number }).x1;
+              const y1 = (child as unknown as { y1: number }).y1;
               const w = x1 - x0;
               const h = y1 - y0;
-              const parent = leaf.parent?.data;
               const color = getNodeColor(
-                drillPath.length > 0 ? (parent?.id || leaf.data.id) : leaf.data.id,
-                parent?.id
+                child.data.id,
+                drillPath.length > 0 ? activeRoot.id : undefined
               );
               const showLabel = w > 60 && h > 28;
               const showValue = w > 80 && h > 48;
-              const hasChildren = !!(leaf.data.children && leaf.data.children.length > 0);
+              const hasChildren = !!(child.data.children && child.data.children.length > 0);
               const maxChars = Math.floor(w / 7.5);
 
               return (
                 <motion.g
-                  key={leaf.data.id}
+                  key={child.data.id}
                   initial={{ opacity: 0, scale: 0.85 }}
                   animate={isVisible ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.85 }}
                   exit={{ opacity: 0, scale: 0.9 }}
@@ -131,13 +129,13 @@ export function TreemapChart({ root, width = 960, height = 600, isVisible }: Tre
                     height={h}
                     fill={color}
                     rx={3}
-                    onClick={() => handleClick(leaf.data, parent || undefined)}
+                    onClick={() => handleClick(child.data)}
                     onMouseEnter={(e) =>
                       tooltip.show(
                         {
-                          name: leaf.data.name,
-                          value: leaf.value || 0,
-                          pct: leaf.data.percentOfTotal,
+                          name: child.data.name,
+                          value: child.value || 0,
+                          pct: child.data.percentOfTotal,
                           hasChildren,
                         },
                         e
@@ -156,9 +154,9 @@ export function TreemapChart({ root, width = 960, height = 600, isVisible }: Tre
                       fontFamily="var(--font-body)"
                       style={{ pointerEvents: 'none' }}
                     >
-                      {leaf.data.name.length > maxChars
-                        ? leaf.data.name.slice(0, maxChars) + '...'
-                        : leaf.data.name}
+                      {child.data.name.length > maxChars
+                        ? child.data.name.slice(0, maxChars) + '...'
+                        : child.data.name}
                     </text>
                   )}
                   {showValue && (
@@ -170,9 +168,9 @@ export function TreemapChart({ root, width = 960, height = 600, isVisible }: Tre
                       fontFamily="var(--font-mono)"
                       style={{ pointerEvents: 'none' }}
                     >
-                      {leaf.data.percentOfTotal
-                        ? formatPercent(leaf.data.percentOfTotal)
-                        : formatRsCrore(leaf.value || 0)}
+                      {child.data.percentOfTotal
+                        ? formatPercent(child.data.percentOfTotal)
+                        : formatRsCrore(child.value || 0)}
                     </text>
                   )}
                 </motion.g>

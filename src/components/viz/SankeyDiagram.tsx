@@ -57,7 +57,7 @@ export function SankeyDiagram({ data, width = 900, height = 600, isVisible }: Sa
     const layout = d3Sankey<NodeExtra, object>()
       .nodeId((d: SNode) => (d as unknown as NodeExtra).id)
       .nodeWidth(14)
-      .nodePadding(14)
+      .nodePadding(22)
       .extent([
         [160, 40],
         [width - 220, height - 20],
@@ -167,6 +167,7 @@ export function SankeyDiagram({ data, width = 900, height = 600, isVisible }: Sa
           const x1 = (n as unknown as { x1: number }).x1 || 0;
           const y0 = (n as unknown as { y0: number }).y0 || 0;
           const y1 = (n as unknown as { y1: number }).y1 || 0;
+          const nodeHeight = y1 - y0;
           const connected = isConnected(extra.id);
           const nodeValue = (n as unknown as { value?: number }).value || 0;
           // Slide direction: revenue from left, expenditure from right, center from below
@@ -217,7 +218,7 @@ export function SankeyDiagram({ data, width = 900, height = 600, isVisible }: Sa
                 {truncateLabel(extra.name)}
               </text>
               {/* Value below label */}
-              {nodeValue > 0 && (
+              {nodeValue > 0 && nodeHeight >= 20 && (
                 <text
                   x={extra.group === 'revenue' ? x0 - 6 : x1 + 6}
                   y={(y0 + y1) / 2 + 10}
