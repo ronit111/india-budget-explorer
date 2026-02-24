@@ -59,7 +59,7 @@ export function SankeyDiagram({ data, width = 900, height = 600, isVisible }: Sa
       .nodeWidth(14)
       .nodePadding(14)
       .extent([
-        [160, 20],
+        [160, 40],
         [width - 220, height - 20],
       ]);
 
