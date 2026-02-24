@@ -10,7 +10,7 @@ Indian Data Project visualises the Union Budget 2025-26 (Rs 50.65 lakh crore tot
 
 - / — Scrollytelling overview: animated budget summary, revenue breakdown (waffle chart), ministry-wise expenditure (treemap), money flow (Sankey diagram), state-wise allocation (choropleth map)
 - /explore — Sortable data table of all ministry expenditures with expandable scheme-level detail. CSV export available.
-- /calculator — Personal tax calculator (FY 2025-26). Enter income, choose Old/New regime, see tax breakdown and how your tax rupees are allocated across ministries.
+- /calculator — Personal tax calculator (FY 2025-26). Enter income, choose Old/New regime with full deductions support (80C, 80D, HRA, 24b, NPS, 80TTA), see slab-by-slab tax breakdown and how your tax rupees are allocated across ministries. Shareable image card.
 - /methodology — Data sources, tax computation methodology, number formatting conventions, limitations.
 
 ## Key data points
@@ -43,15 +43,19 @@ Indian Data Project visualises the Union Budget 2025-26 (Rs 50.65 lakh crore tot
 
 Supports both Old and New tax regimes for AY 2026-27 (FY 2025-26):
 - Standard deduction: Rs 75,000 (New) / Rs 50,000 (Old)
+- Old Regime deductions: Section 80C (Rs 1.5L cap), 80D health insurance (Rs 25K self + Rs 25K parents), 80CCD(1B) NPS (Rs 50K), Section 24(b) home loan interest (Rs 2L), HRA exemption, 80TTA savings interest (Rs 10K)
+- Quick presets: "Salaried basics", "With home loan", "Max deductions"
 - Section 87A rebate applied
 - Surcharge slabs for high incomes
 - 4% Health and Education Cess
-- Does not include HRA, 80C, 80D or other specific deductions
 
 ## License
 
-Budget data released under Government Open Data License - India (GODL). This project is not affiliated with or endorsed by the Government of India.
+Code: GNU Affero General Public License v3.0 (AGPL-3.0)
+Data: Government Open Data License - India (GODL)
+
+This project is not affiliated with or endorsed by the Government of India.
 
 ## Contact
 
-This is an open-source civic tech project.
+Open-source civic tech project: https://github.com/RonitChidara/indian-data-project

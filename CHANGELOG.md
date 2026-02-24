@@ -1,5 +1,41 @@
 # Changelog
 
+## [0.2.0] - 2026-02-24
+
+### Design Overhaul & Features
+
+**IIB-Inspired Visual Redesign**
+- Complete UI/UX overhaul inspired by Information is Beautiful, Visual Cinnamon, and Kasia Siwosz
+- New design system: deep navy-black backgrounds, saffron/gold/cyan accent palette
+- Numbered narrative sections (01, 02, 03...) with scroll-triggered word reveals
+- Glass header with scroll-aware opacity and layoutId nav animation
+- Composition dividers and NarrativeBridge components for storytelling flow
+- Brand guide documented in BRAND.md
+
+**Old Regime Tax Deductions**
+- Full deduction support for Old Regime: 80C, 80D (self + parents), 80CCD(1B), 24(b), HRA, 80TTA
+- Accordion UI with collapsible sections, cap enforcement, and progress bars
+- Quick presets: "Salaried basics", "With home loan", "Max deductions"
+- Deduction breakdown in tax calculation display (gold-colored rows)
+- Share card updated with deduction summary
+
+**Data Explorer Fixes**
+- Fixed sticky header overlap bug (overflow-x: clip instead of overflow-x: auto)
+- Fixed calculator results not visible (scroll trigger threshold issue)
+
+**Infrastructure**
+- Domain migration to indiandataproject.org (all SEO, canonical URLs, JSON-LD updated)
+- Fixed stale data serving: CDN-only caching (s-maxage) with browser revalidation
+- Added README.md with architecture docs, setup guide, and roadmap
+- Added AGPL-3.0 license
+- Updated llms.txt with deduction details
+
+### Known Issues
+- Choropleth map uses approximate hardcoded SVG paths instead of real TopoJSON geometry
+- Homepage prerender shows React #418 hydration warnings (cosmetic, doesn't affect end users)
+
+---
+
 ## [0.1.0] - 2026-02-22
 
 ### Initial Release — MVP
