@@ -64,10 +64,21 @@ export function ShareCard({ breakdown, regime }: ShareCardProps) {
       280
     );
 
+    // Deductions line (Old Regime only)
+    if (breakdown.totalDeductions > 0) {
+      ctx.fillStyle = '#FFC857';
+      ctx.font = '24px Inter, sans-serif';
+      ctx.fillText(
+        `after Rs ${formatIndianNumber(breakdown.totalDeductions)} in deductions`,
+        60,
+        330
+      );
+    }
+
     // Footer
     ctx.fillStyle = '#5c6a7e';
     ctx.font = '20px Inter, sans-serif';
-    ctx.fillText('indian-data-project.vercel.app/calculator', 60, 580);
+    ctx.fillText('indiandataproject.org/calculator', 60, 580);
 
     // Download
     const link = document.createElement('a');

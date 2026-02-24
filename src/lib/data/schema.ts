@@ -147,6 +147,23 @@ export interface TaxRegime {
   surchargeMaxRate?: number
 }
 
+export interface DeductionDetail {
+  section: string              // "80C", "80D", "24(b)", etc.
+  label: string                // "Investments & Savings"
+  claimed: number
+  allowed: number              // after cap applied
+}
+
+export interface OldRegimeDeductions {
+  section80C: number           // cap: 150000
+  section80D_self: number      // cap: 25000
+  section80D_parents: number   // cap: 25000
+  section80CCD1B: number       // cap: 50000
+  section24b: number           // cap: 200000
+  hra: number                  // no cap (user-computed)
+  section80TTA: number         // cap: 10000
+}
+
 export interface TaxSlabsData {
   assessmentYear: string         // "2026-27"
   financialYear: string          // "2025-26"

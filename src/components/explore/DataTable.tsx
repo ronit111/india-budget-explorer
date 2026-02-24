@@ -101,7 +101,7 @@ export function DataTable({ data }: DataTableProps) {
       </div>
 
       {/* Desktop: table */}
-      <div className="hidden md:block overflow-x-auto rounded-lg" style={{ border: 'var(--border-subtle)' }}>
+      <div className="hidden md:block rounded-lg" style={{ border: 'var(--border-subtle)', overflowX: 'clip' }}>
         <table className="w-full">
           <thead className="sticky top-16 z-10" style={{ background: 'var(--bg-raised)' }}>
             <tr>

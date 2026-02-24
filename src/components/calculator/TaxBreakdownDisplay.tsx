@@ -78,10 +78,29 @@ export function TaxBreakdownDisplay({ breakdown }: TaxBreakdownDisplayProps) {
           <motion.div variants={rowFade}>
             <SlabRow
               label="Standard Deduction"
-              value={`- Rs ${formatIndianNumber(breakdown.standardDeduction)}`}
+              value={`− Rs ${formatIndianNumber(breakdown.standardDeduction)}`}
               valueColor="var(--cyan)"
             />
           </motion.div>
+          {breakdown.deductions.map((d, i) => (
+            <motion.div key={`ded-${i}`} variants={rowFade}>
+              <SlabRow
+                label={`${d.section} (${d.label})`}
+                value={`− Rs ${formatIndianNumber(d.allowed)}`}
+                valueColor="var(--gold)"
+              />
+            </motion.div>
+          ))}
+          {breakdown.totalDeductions > 0 && (
+            <motion.div variants={rowFade}>
+              <SlabRow
+                label="Total Deductions"
+                value={`− Rs ${formatIndianNumber(breakdown.standardDeduction + breakdown.totalDeductions)}`}
+                highlight
+                valueColor="var(--gold)"
+              />
+            </motion.div>
+          )}
           <motion.div variants={rowFade}>
             <SlabRow
               label="Taxable Income"

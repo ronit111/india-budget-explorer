@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useCalculatorStore } from '../store/calculatorStore.ts';
 import { loadTaxSlabs, loadExpenditureShares } from '../lib/dataLoader.ts';
 import { calculateTax } from '../lib/taxEngine.ts';
@@ -7,6 +7,7 @@ import type { TaxSlabsData, ExpenditureSharesData } from '../lib/data/schema.ts'
 import { formatIndianNumber, formatPercent } from '../lib/format.ts';
 import { SEOHead } from '../components/seo/SEOHead.tsx';
 import { IncomeInput } from '../components/calculator/IncomeInput.tsx';
+import { DeductionsPanel } from '../components/calculator/DeductionsPanel.tsx';
 import { TaxBreakdownDisplay } from '../components/calculator/TaxBreakdownDisplay.tsx';
 import { SpendingAllocation } from '../components/calculator/SpendingAllocation.tsx';
 import { ShareCard } from '../components/calculator/ShareCard.tsx';
@@ -22,7 +23,7 @@ const fadeUp = {
 };
 
 export default function FindYourSharePage() {
-  const { income, regime } = useCalculatorStore();
+  const { income, regime, deductions } = useCalculatorStore();
   const [slabs, setSlabs] = useState<TaxSlabsData | null>(null);
   const [shares, setShares] = useState<ExpenditureSharesData | null>(null);
   const [loading, setLoading] = useState(true);
@@ -36,8 +37,8 @@ export default function FindYourSharePage() {
 
   const breakdown = useMemo(() => {
     if (!slabs) return null;
-    return calculateTax(income, regime, slabs);
-  }, [income, regime, slabs]);
+    return calculateTax(income, regime, slabs, deductions);
+  }, [income, regime, slabs, deductions]);
 
   if (loading) {
     return (
@@ -108,6 +109,27 @@ export default function FindYourSharePage() {
           <IncomeInput />
         </div>
       </motion.div>
+
+      {/* Deductions panel — only visible for Old Regime */}
+      <AnimatePresence mode="wait">
+        {regime === 'old' && (
+          <motion.div
+            key="deductions"
+            className="max-w-5xl mx-auto px-6 sm:px-8"
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] as const }}
+          >
+            <div
+              className="rounded-xl p-6 md:p-8 mb-8"
+              style={{ background: 'var(--bg-raised)', border: 'var(--border-subtle)' }}
+            >
+              <DeductionsPanel />
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Share bar — sticky, compact, always visible when breakdown exists */}
       {breakdown && (
