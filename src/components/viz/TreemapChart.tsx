@@ -60,11 +60,12 @@ export function TreemapChart({ root, width = 960, height = 600, isVisible }: Tre
   const handleClick = useCallback(
     (node: TreemapNode, parent?: TreemapNode) => {
       const target = node.children ? node : parent;
-      if (target?.children && target.children.length > 0) {
-        setDrillPath((prev) => [...prev, target]);
-      }
+      if (!target?.children || target.children.length === 0) return;
+      // Don't drill into the same node we're already viewing
+      if (target.id === activeRoot.id) return;
+      setDrillPath((prev) => [...prev, target]);
     },
-    []
+    [activeRoot]
   );
 
   const handleBreadcrumb = useCallback((index: number) => {
