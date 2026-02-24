@@ -11,8 +11,6 @@ import { TaxBreakdownDisplay } from '../components/calculator/TaxBreakdownDispla
 import { SpendingAllocation } from '../components/calculator/SpendingAllocation.tsx';
 import { ShareCard } from '../components/calculator/ShareCard.tsx';
 import { SkeletonChart, SkeletonText } from '../components/ui/Skeleton.tsx';
-import { useScrollTrigger } from '../hooks/useScrollTrigger.ts';
-
 const stagger = {
   hidden: {},
   show: { transition: { staggerChildren: 0.1 } },
@@ -28,8 +26,6 @@ export default function FindYourSharePage() {
   const [slabs, setSlabs] = useState<TaxSlabsData | null>(null);
   const [shares, setShares] = useState<ExpenditureSharesData | null>(null);
   const [loading, setLoading] = useState(true);
-  const [resultsRef, resultsVisible] = useScrollTrigger({ threshold: 0.1 });
-
   useEffect(() => {
     Promise.all([loadTaxSlabs(), loadExpenditureShares()]).then(([s, sh]) => {
       setSlabs(s);
@@ -143,14 +139,14 @@ export default function FindYourSharePage() {
         </div>
       )}
 
-      {/* Results grid — scroll-triggered stagger */}
-      <div className="max-w-5xl mx-auto px-6 sm:px-8 pb-16" ref={resultsRef}>
+      {/* Results grid — staggered entrance */}
+      <div className="max-w-5xl mx-auto px-6 sm:px-8 pb-16">
         <div className="grid lg:grid-cols-2 gap-8">
           {/* Left: Tax Breakdown */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
-            animate={resultsVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
           >
             {breakdown && (
               <div
@@ -172,8 +168,8 @@ export default function FindYourSharePage() {
           {/* Right: Spending Allocation */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
-            animate={resultsVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-            transition={{ duration: 0.5, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.45, ease: [0.16, 1, 0.3, 1] }}
           >
             {breakdown && shares && (
               <div
