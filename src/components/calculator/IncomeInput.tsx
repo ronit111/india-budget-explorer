@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useSpring, useTransform, motion } from 'framer-motion';
+import { useSpring, useTransform, motion, AnimatePresence } from 'framer-motion';
 import { useCalculatorStore } from '../../store/calculatorStore.ts';
 import { SegmentedControl } from '../ui/SegmentedControl.tsx';
 import { formatLPA, formatIndianNumber } from '../../lib/format.ts';
@@ -12,7 +12,7 @@ const REGIME_OPTIONS: { value: 'new' | 'old'; label: string }[] = [
 ];
 
 export function IncomeInput() {
-  const { income, regime, setIncome, setRegime } = useCalculatorStore();
+  const { income, regime, oldRegimeDeductions, setIncome, setRegime, setOldRegimeDeductions } = useCalculatorStore();
   const pct = (income / 10000000) * 100;
 
   // Smooth spring animation for the displayed income number
@@ -22,6 +22,11 @@ export function IncomeInput() {
   useEffect(() => {
     springIncome.set(income);
   }, [income, springIncome]);
+
+  const handleDeductionsChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const raw = e.target.value.replace(/[^0-9]/g, '');
+    setOldRegimeDeductions(raw === '' ? 0 : parseInt(raw, 10));
+  };
 
   return (
     <div className="space-y-8">
@@ -85,6 +90,56 @@ export function IncomeInput() {
       <div className="flex justify-center">
         <SegmentedControl options={REGIME_OPTIONS} value={regime} onChange={setRegime} />
       </div>
+
+      {/* Old Regime: total deductions input */}
+      <AnimatePresence>
+        {regime === 'old' && (
+          <motion.div
+            key="deductions-input"
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            className="overflow-hidden"
+          >
+            <div
+              className="rounded-lg p-4 flex items-center gap-4"
+              style={{ background: 'var(--bg-surface)', border: 'var(--border-subtle)' }}
+            >
+              <div className="flex-1">
+                <label className="text-xs font-medium uppercase tracking-wider block mb-2" style={{ color: 'var(--text-muted)' }}>
+                  Total Deductions
+                </label>
+                <div className="relative">
+                  <span
+                    className="absolute left-3 top-1/2 -translate-y-1/2 text-xs"
+                    style={{ color: 'var(--text-muted)' }}
+                  >
+                    Rs
+                  </span>
+                  <input
+                    type="text"
+                    inputMode="numeric"
+                    value={oldRegimeDeductions === 0 ? '' : formatIndianNumber(oldRegimeDeductions)}
+                    onChange={handleDeductionsChange}
+                    placeholder="0"
+                    className="w-full pl-9 pr-3 py-2.5 rounded-lg font-mono text-sm outline-none transition-colors"
+                    style={{
+                      background: 'var(--bg-void)',
+                      color: 'var(--text-primary)',
+                      border: 'var(--border-subtle)',
+                    }}
+                    aria-label="Total deductions under Old Regime"
+                  />
+                </div>
+                <p className="text-xs mt-2" style={{ color: 'var(--text-muted)' }}>
+                  Add up your 80C + 80D + HRA + 24(b) + other deductions
+                </p>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
