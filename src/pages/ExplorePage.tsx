@@ -37,14 +37,14 @@ export default function ExplorePage() {
           '@type': 'Dataset',
           name: 'India Union Budget Expenditure Data 2025-26',
           description: 'Ministry-wise expenditure data from India Union Budget 2025-26, including sub-scheme breakdowns.',
-          url: 'https://indiabudgetexplorer.in/explore',
+          url: 'https://indiandataproject.org/explore',
           license: 'https://data.gov.in/government-open-data-license-india',
           creator: { '@type': 'Organization', name: 'Ministry of Finance, Government of India' },
           temporalCoverage: '2025/2026',
           distribution: {
             '@type': 'DataDownload',
             encodingFormat: 'application/json',
-            contentUrl: 'https://indiabudgetexplorer.in/data/budget/2025-26/expenditure.json',
+            contentUrl: 'https://indiandataproject.org/data/budget/2025-26/expenditure.json',
           },
         }}
       />

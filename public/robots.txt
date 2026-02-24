@@ -1,4 +1,4 @@
-# Indian Data Project — https://indiabudgetexplorer.in
+# Indian Data Project — https://indiandataproject.org
 # All crawlers welcome. We publish open government data.
 
 User-agent: *
@@ -23,4 +23,4 @@ Allow: /
 User-agent: Bingbot
 Allow: /
 
-Sitemap: https://indiabudgetexplorer.in/sitemap.xml
+Sitemap: https://indiandataproject.org/sitemap.xml
