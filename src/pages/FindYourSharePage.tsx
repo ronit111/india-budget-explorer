@@ -133,7 +133,7 @@ export default function FindYourSharePage() {
                   {formatPercent(breakdown.effectiveRate)} effective
                 </span>
               </div>
-              <ShareCard breakdown={breakdown} regime={regime} />
+              <ShareCard breakdown={breakdown} regime={regime} shares={shares || undefined} />
             </div>
           </div>
         </div>
