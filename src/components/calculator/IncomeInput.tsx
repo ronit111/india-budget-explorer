@@ -4,7 +4,7 @@ import { useCalculatorStore } from '../../store/calculatorStore.ts';
 import { SegmentedControl } from '../ui/SegmentedControl.tsx';
 import { formatLPA, formatIndianNumber } from '../../lib/format.ts';
 
-const PRESETS = [500000, 1000000, 1500000, 2500000, 5000000];
+const PRESETS = [500000, 1000000, 2500000, 5000000, 10000000, 50000000];
 
 const REGIME_OPTIONS: { value: 'new' | 'old'; label: string }[] = [
   { value: 'new', label: 'New Regime' },
@@ -13,7 +13,7 @@ const REGIME_OPTIONS: { value: 'new' | 'old'; label: string }[] = [
 
 export function IncomeInput() {
   const { income, regime, oldRegimeDeductions, setIncome, setRegime, setOldRegimeDeductions } = useCalculatorStore();
-  const pct = (income / 10000000) * 100;
+  const pct = (income / 100000000) * 100;
 
   // Smooth spring animation for the displayed income number
   const springIncome = useSpring(income, { stiffness: 120, damping: 20 });
@@ -50,8 +50,8 @@ export function IncomeInput() {
         <input
           type="range"
           min={0}
-          max={10000000}
-          step={50000}
+          max={100000000}
+          step={100000}
           value={income}
           onChange={(e) => setIncome(Number(e.target.value))}
           className="income-slider"
@@ -64,7 +64,7 @@ export function IncomeInput() {
         />
         <div className="flex justify-between text-caption font-mono mt-2">
           <span>Rs 0</span>
-          <span>Rs 1 Cr</span>
+          <span>Rs 10 Cr</span>
         </div>
       </div>
 
