@@ -91,7 +91,11 @@ export function ShareCard({ breakdown, regime, shares }: ShareCardProps) {
         ctx.fillStyle = barColors[i] || '#5c6a7e';
         ctx.globalAlpha = 0.25;
         ctx.beginPath();
-        ctx.roundRect(startX, y, barWidth, 24, 4);
+        if (ctx.roundRect) {
+          ctx.roundRect(startX, y, barWidth, 24, 4);
+        } else {
+          ctx.rect(startX, y, barWidth, 24);
+        }
         ctx.fill();
         ctx.globalAlpha = 1;
 
