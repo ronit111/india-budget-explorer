@@ -1,5 +1,67 @@
 # Changelog
 
+## [0.4.1] - 2026-02-28
+
+### SEO Overhaul + Viz Fixes
+
+**SEO: Duplicate Meta Tag Cleanup**
+- Removed static OG/Twitter/description/canonical tags from `index.html` that duplicated per-route tags from react-helmet-async — crawlers were seeing hub meta on every page
+- Added `og:image` and `twitter:image` support to SEOHead component
+- Fixed JSON-LD breadcrumb paths, added Economy Dataset schema for Google Dataset Search
+- Updated sitemap.xml with correct `/budget/*` routes + all economy routes (8 pages + 12 data files)
+- Economy routes added to Puppeteer prerender script (8 routes total)
+- Expanded `llms.txt` and noscript fallback with economy content
+- Fixed `useRef<T>()` TypeScript error for React 19 compatibility
+
+**Visualization Fixes**
+- Tooltip scroll persistence: added scroll debounce to `useTooltip` hook preventing phantom re-triggers during scroll (SVG hover rects fire mouseEnter as they pass under cursor)
+- Area chart contrast: increased gradient opacity (0.5/0.08) for better export/import distinction on dark backgrounds
+- HorizontalBarChart: widened right margin when annotations present to prevent text clipping
+
+**Data Integrity (Codex Review)**
+- Treemap rebuilt from expenditure.json (was 43,810 Cr gap between treemap sum and source)
+- Scheme allocations synced to expenditure.json (7 mismatches corrected)
+- Paise denominator fix: borrowings/earned not borrowings/total (24→32 paise)
+- Removed synthetic food/core CPI from inflation data — kept only Economic Survey sourced values
+- Pipeline cross-file invariants added: treemap sum, scheme consistency, receipt percentages, statewise totals
+- CSV export: proper RFC 4180 quoting for fields containing commas
+
+---
+
+## [0.4.0] - 2026-02-27
+
+### Economic Survey 2025-26 — Second Data Domain
+
+**Economy Scrollytelling** (`/economy`)
+- Six-section narrative: GDP growth trends, inflation tracking (CPI/WPI), fiscal deficit position, trade balance, sectoral composition, outlook projections
+- All data sourced from World Bank API and Economic Survey 2025-26 — no mock data
+
+**New Visualization Components**
+- `LineChart`: time series with dot markers, gradient area fill, responsive axes
+- `AreaChart`: stacked/layered areas with configurable gradients, used for trade balance (exports vs imports)
+- `HorizontalBarChart`: labeled bars with optional annotations and configurable `labelWidth` prop
+
+**Economy Data Pipeline** (Python)
+- World Bank API client with country/indicator fetching
+- 5 transform modules: GDP, inflation, fiscal, external trade, sectors
+- Pydantic validation schemas for all economy data shapes
+- 7 verified JSON outputs in `public/data/economy/2025-26/`
+
+**Economy Sub-Pages**
+- `/economy/explore`: searchable indicator table with year-over-year comparisons
+- `/economy/methodology`: data sources, indicator definitions, survey methodology, limitations
+
+**Hub Integration**
+- Economy domain card on hub with sparkline visualization and stat pills
+- Context-aware navigation: header, mobile tabs, and footer adapt for economy routes
+
+**Bug Fixes**
+- Tax engine: fixed slab off-by-one boundary + added Section 87A marginal relief
+- Schema: economy TypeScript interfaces, `cpiFood` nullable, `note` fields on `ReceiptsData` and `StatewiseData`
+- Removed redundant "Indian Data Project" overline from hub hero
+
+---
+
 ## [0.3.1] - 2026-02-24
 
 ### Navigation Overhaul + i18n Removal
