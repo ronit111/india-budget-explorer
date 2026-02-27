@@ -216,7 +216,7 @@ export default function MethodologyPage() {
       <SEOHead
         title="Methodology — Indian Data Project"
         description="Data sources, tax calculation methodology, number formatting, per-capita estimates, and limitations of the Indian Data Project. Data under GODL license."
-        path="/methodology"
+        path="/budget/methodology"
       />
 
       {/* Page header — Pattern A */}

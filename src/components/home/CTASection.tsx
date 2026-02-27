@@ -86,7 +86,7 @@ export function CTASection() {
   return (
     <section ref={ref} className="composition">
       <div className="max-w-4xl mx-auto px-6 sm:px-8 text-center">
-        <SectionNumber number={5} className="mb-6 block text-center" isVisible={isVisible} />
+        <SectionNumber number={7} className="mb-6 block text-center" isVisible={isVisible} />
 
         <motion.h2
           initial={{ opacity: 0, y: 16 }}
@@ -99,7 +99,7 @@ export function CTASection() {
 
         <div className="grid md:grid-cols-2 gap-8">
           <GlowCard
-            to="/calculator"
+            to="/budget/calculator"
             title="Find Your Share"
             description="Enter your income. See exactly where your tax rupees go across Defence, Education, Health, and every ministry."
             accentColor="var(--saffron)"
@@ -107,7 +107,7 @@ export function CTASection() {
             isVisible={isVisible}
           />
           <GlowCard
-            to="/explore"
+            to="/budget/explore"
             title="Data Explorer"
             description="Full dataset. Sortable tables, scheme-level breakdowns, per-capita numbers. Export to CSV."
             accentColor="var(--cyan)"

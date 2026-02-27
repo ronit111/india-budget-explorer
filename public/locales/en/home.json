@@ -1,14 +1,40 @@
 {
+  "hub": {
+    "overline": "Indian Data Project",
+    "title1": "Government",
+    "title2": "data,",
+    "title3": "made visible",
+    "subtitle": "Dense PDFs and buried spreadsheets turned into interactive visual stories.",
+    "tagline": "Real data. No spin. Open source.",
+    "dataStories": "Data Stories",
+    "domainLabel": "01 — Data Story",
+    "budgetTitle": "Union Budget 2025-26",
+    "budgetDescription": "Where Rs 50 lakh crore goes. Revenue sources, ministry-wise spending, state transfers, and your personal tax share.",
+    "exploreBudget": "Explore the budget",
+    "totalExpenditure": "Total Expenditure",
+    "perCitizenPerDay": "Per Citizen Per Day",
+    "fiscalDeficit": "Fiscal Deficit",
+    "onTheHorizon": "On the horizon",
+    "horizonItems": {
+      "economicSurvey": "Economic Survey",
+      "stateFinances": "State Finances",
+      "rbiData": "RBI Data",
+      "census": "Census & Demographics"
+    }
+  },
   "hero": {
     "overline": "Union Budget 2025-26",
     "tagline": "Where every rupee goes",
+    "unit": "crore",
     "perCapita": "That's Rs {{amount}} per citizen per day"
   },
   "narratives": {
-    "revenueIntro": "The government collects revenue from taxes, borrowings, and non-tax sources. Let's see where each rupee comes from.",
+    "revenueIntro": "The government raises revenue from taxes, borrowings, and non-tax sources. Let's see where each rupee comes from.",
+    "deficitIntro": "But revenue alone doesn't cover the bill. The government borrows to bridge the gap.",
     "expenditureIntro": "Now let's trace where this money goes. Every ministry, every scheme, every crore.",
     "flowIntro": "Follow the flow from your pocket through the Central Government to the spending that shapes the country.",
-    "mapIntro": "Nearly one in four rupees flows directly to states and union territories. Here's where it lands."
+    "mapIntro": "Nearly one in four rupees flows directly to states and union territories. Here's where it lands.",
+    "perCapitaIntro": "What does all this mean for a single citizen? Here's what the government spends on you every day."
   },
   "revenue": {
     "heading": "Where the money comes from",
@@ -16,32 +42,49 @@
     "borrowingAnnotation": "Each square = 1%. For every rupee earned, the government borrows {{paise}} paise more.",
     "source": "Source: Union Budget 2025-26, Receipt Budget"
   },
+  "deficit": {
+    "paiseBorrowed": "{{count}} paise",
+    "ofEveryRupee": "of every rupee is borrowed",
+    "annotation": "The fiscal deficit stands at {{percent}}% of GDP. For every rupee the government spends, it earns {{earned}} paise from taxes and other revenue. The rest is debt.",
+    "totalReceipts": "Total Receipts",
+    "fiscalDeficit": "Fiscal Deficit",
+    "percentGDP": "% of GDP",
+    "earnedLabel": "{{count}}p earned",
+    "borrowedLabel": "{{count}}p borrowed",
+    "source": "Source: Union Budget 2025-26, Budget at a Glance"
+  },
   "expenditure": {
     "heading": "Where the money goes",
-    "annotation": "45 paisa of every rupee goes to state transfers + interest payments. Area = budget size. Click any block to drill down.",
+    "annotation": "Nearly half of every rupee goes to state transfers and interest payments. The rest funds defence, infrastructure, welfare, and more.",
     "source": "Source: Union Budget 2025-26, Expenditure Budget"
   },
   "flow": {
     "heading": "Follow the money",
-    "annotation": "Revenue sources flow through the Central Government to spending heads. Wider flows = larger amounts. Hover to trace connections.",
+    "annotation": "Revenue sources flow through the Central Government to spending heads. Wider bands mean larger amounts.",
     "source": "Source: Union Budget 2025-26, Budget at a Glance"
   },
   "map": {
     "heading": "{{amount}} to states",
-    "annotation": "Nearly 1 in 4 rupees of central spending flows directly to state governments. Hover over states to see the breakdown.",
-    "largestTotal": "Largest total",
+    "annotation": "Nearly 1 in 4 rupees of central spending flows directly to state governments. Colour intensity shows per-capita transfer — what each citizen's share looks like.",
+    "largestTotal": "Largest total transfer",
     "highestPerCapita": "Highest per capita",
     "source": "Source: Union Budget 2025-26, Finance Commission"
+  },
+  "perCapita": {
+    "onYouEveryDay": "on you, every day",
+    "annotation": "The government spends Rs {{annual}} per citizen per year. Here's how a single day breaks down across the top spending areas.",
+    "source": "Source: Union Budget 2025-26, Expenditure Budget. Population estimate: 145 crore."
   },
   "cta": {
     "heading": "Go deeper",
     "calculator": {
       "title": "Find Your Share",
-      "description": "Enter your income. See where your tax rupees go."
+      "description": "Enter your income. See exactly where your tax rupees go across Defence, Education, Health, and every ministry."
     },
     "explorer": {
       "title": "Data Explorer",
-      "description": "Full dataset. Sortable tables, scheme breakdowns, CSV export."
-    }
+      "description": "Full dataset. Sortable tables, scheme-level breakdowns, per-capita numbers. Export to CSV."
+    },
+    "explore": "Explore"
   }
 }

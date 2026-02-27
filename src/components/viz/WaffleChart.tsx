@@ -20,7 +20,7 @@ const CATEGORY_TO_COLOR: Record<string, string> = {
   'customs': 'var(--gold)',
   'excise': 'var(--gold)',
   'borrowings': 'var(--cyan)',
-  'non-tax-revenue': '#8B95A5',
+  'non-tax-revenue': 'var(--text-muted)',
 };
 
 const CATEGORY_GROUP: Record<string, string> = {
@@ -40,13 +40,7 @@ export function WaffleChart({ categories, isVisible, highlightCategory }: Waffle
   const tooltip = useTooltip<RevenueCategory>();
 
   const sorted = useMemo(() => {
-    const groupOrder = ['direct-tax', 'indirect-tax', 'borrowings', 'non-tax'];
-    const s = [...categories].sort((a, b) => {
-      const ga = groupOrder.indexOf(CATEGORY_GROUP[a.id] || 'non-tax');
-      const gb = groupOrder.indexOf(CATEGORY_GROUP[b.id] || 'non-tax');
-      if (ga !== gb) return ga - gb;
-      return b.percentOfTotal - a.percentOfTotal;
-    });
+    const s = [...categories].sort((a, b) => b.percentOfTotal - a.percentOfTotal);
     let remaining = TOTAL;
     return s.map((cat, i) => {
       const squares =
@@ -206,7 +200,7 @@ export function WaffleLegend({
     { label: 'Direct Tax', color: 'var(--saffron)', ids: ['income-tax', 'corporate-tax'] },
     { label: 'Indirect Tax', color: 'var(--gold)', ids: ['gst', 'customs', 'excise'] },
     { label: 'Borrowings', color: 'var(--cyan)', ids: ['borrowings'] },
-    { label: 'Non-Tax', color: '#8B95A5', ids: ['non-tax-revenue'] },
+    { label: 'Non-Tax', color: 'var(--text-muted)', ids: ['non-tax-revenue'] },
   ];
 
   return (

@@ -1,0 +1,29 @@
+{
+  "waffle": {
+    "ariaLabel": "राजस्व विभाजन दर्शाने वाला वैफ़ल चार्ट",
+    "legend": {
+      "directTax": "प्रत्यक्ष कर",
+      "indirectTax": "अप्रत्यक्ष कर",
+      "borrowings": "उधार",
+      "nonTax": "गैर-कर"
+    }
+  },
+  "treemap": {
+    "allSpending": "सम्पूर्ण व्यय",
+    "drillDown": "विवरण देखने के लिए क्लिक करें"
+  },
+  "sankey": {
+    "linkLabel": "{{source}} → {{target}}"
+  },
+  "choropleth": {
+    "perCapita": "प्रति व्यक्ति",
+    "transfer": "हस्तांतरण",
+    "share": "कुल का हिस्सा",
+    "noData": "डेटा उपलब्ध नहीं"
+  },
+  "tooltip": {
+    "share": "हिस्सा",
+    "amount": "राशि",
+    "perCapita": "प्रति व्यक्ति"
+  }
+}

@@ -66,7 +66,7 @@ export default function FindYourSharePage() {
       <SEOHead
         title="Income Tax Calculator FY 2025-26 — Where Your Tax Rupees Go"
         description="Calculate your income tax under Old and New regimes for FY 2025-26. See exactly how your tax money is allocated across Defence, Education, Health, and other ministries."
-        path="/calculator"
+        path="/budget/calculator"
       />
 
       {/* Page header — Pattern A */}

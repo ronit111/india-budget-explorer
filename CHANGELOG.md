@@ -1,5 +1,59 @@
 # Changelog
 
+## [0.3.1] - 2026-02-24
+
+### Navigation Overhaul + i18n Removal
+
+**Navigation UX**
+- Context-aware header title: shows "Indian Data Project" on hub, "Budget 2025-26" inside budget section
+- Back chevron in header on budget pages, linking to `/#stories` on the hub
+- Back-to-hub link in footer on budget pages (`‹ Indian Data Project`)
+- Hub header shows no nav links (DomainCard is the sole CTA)
+- Budget header shows Story / Explore / Your Share / Methodology tabs
+- Search icon (SVG magnifying glass) replaces "Cmd+K" text button; shortcut preserved in tooltip
+- `id="stories"` anchor on hub Data Stories section with `scroll-mt-20` and hash-scroll effect
+
+**i18n: Wired Then Deliberately Removed**
+- Full react-i18next integration completed across all 13 UI components with Hindi locale files
+- Fixed LanguageProvider bug: `useParams()` doesn't work outside `<Routes>` — switched to pathname parsing
+- Decision: browser auto-translate covers ~80% of use cases; i18n overhead slows platform expansion
+- All `useTranslation()` calls and LanguageSwitcher removed from UI
+- Infrastructure preserved for future reactivation: `i18n.ts`, `LanguageSwitcher.tsx`, `LanguageProvider.tsx`, 7 Hindi locale files
+
+**Documentation**
+- README roadmap updated: removed i18n phase, added Expand Scope phase (Economic Survey, State Finances, RBI Data, Census)
+
+---
+
+## [0.3.0] - 2026-02-24
+
+### Hub Architecture + New Compositions
+
+**Site Architecture**
+- New hub homepage at `/` — visual portal with project mission, data domain cards with live summary stats
+- Budget scrollytelling moved from `/` to `/budget` with sub-routes (`/budget/explore`, `/budget/calculator`, `/budget/methodology`)
+- Context-aware navigation: header and mobile nav switch between hub links and budget sub-nav based on current route
+- Permanent redirects for old routes (`/explore` → `/budget/explore`, etc.) in vercel.json
+- Prerender routes updated to match new structure
+
+**New Compositions**
+- Deficit section (02): rupee bar visualization showing 69p earned (saffron) / 31p borrowed (dashed cyan), three stat cards (Total Receipts, Fiscal Deficit, % of GDP), all values computed from real data
+- Per-capita section (06): horizontal segmented bar of daily per-citizen spending by top 8 ministries, semantic color grouping (warm for sovereign, cool for welfare), 4-column legend grid
+- Two new narrative bridges connecting Revenue → Deficit and Map → Per-capita sections
+- Section numbering updated: Revenue(01), Deficit(02), Expenditure(03), Flow(04), Map(05), PerCapita(06), CTA(07)
+
+**Documentation**
+- Added "Creative License" section to BRAND.md — explicit permission for unconventional design choices
+- Added "Data Integrity — Non-Negotiable" section to CLAUDE.md
+- Added "Site Architecture — Hub + Data Domains" section to CLAUDE.md
+- Updated README with current project structure and roadmap status
+
+**Cleanup**
+- Removed dead HomePage.tsx (replaced by HubPage.tsx + BudgetPage.tsx)
+- Fixed AnimatedCounter rounding bug in PerCapitaSection (showed "Rs 96" instead of "Rs 95.71")
+
+---
+
 ## [0.2.0] - 2026-02-24
 
 ### Design Overhaul & Features

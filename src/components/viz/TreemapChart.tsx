@@ -1,6 +1,6 @@
 import { useMemo, useState, useCallback } from 'react';
 import * as d3 from 'd3-hierarchy';
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import type { TreemapNode } from '../../lib/data/schema.ts';
 import { formatRsCrore, formatPercent } from '../../lib/format.ts';
 import { Tooltip, TooltipTitle, TooltipRow, TooltipHint, useTooltip } from '../ui/Tooltip.tsx';
@@ -74,28 +74,31 @@ export function TreemapChart({ root, width = 960, height = 600, isVisible }: Tre
   return (
     <div className="w-full">
       {/* Breadcrumb */}
-      <div className="flex items-center gap-1 mb-3 text-sm" style={{ minHeight: 24 }}>
-        <span className="text-caption" style={{ color: drillPath.length > 0 ? undefined : 'var(--text-secondary)' }}>
-          {drillPath.length > 0 ? (
-            <button onClick={() => handleBreadcrumb(0)} className="text-caption hover:text-[var(--text-secondary)] transition-colors cursor-pointer bg-transparent border-none p-0">
-              All Spending
-            </button>
-          ) : 'All Spending'}
-        </span>
-        <span className="text-caption">&rsaquo;</span>
-        <span className="text-caption">Union Budget 2025-26</span>
-        {drillPath.map((node, i) => (
-          <span key={node.id} className="flex items-center gap-1">
-            <span className="text-caption">&rsaquo;</span>
-            <button onClick={() => handleBreadcrumb(i + 1)} className="text-caption hover:text-[var(--text-secondary)] transition-colors cursor-pointer bg-transparent border-none p-0">
-              {node.name}
-            </button>
-          </span>
-        ))}
-      </div>
+      {drillPath.length > 0 && (
+        <div className="flex items-center gap-1 mb-3 text-sm">
+          <button
+            onClick={() => handleBreadcrumb(0)}
+            className="text-caption hover:text-[var(--text-secondary)] transition-colors cursor-pointer bg-transparent border-none p-0"
+          >
+            All Spending
+          </button>
+          {drillPath.map((node, i) => (
+            <span key={node.id} className="flex items-center gap-1">
+              <span className="text-caption">&rsaquo;</span>
+              <button
+                onClick={() => handleBreadcrumb(i + 1)}
+                className="text-caption hover:text-[var(--text-secondary)] transition-colors cursor-pointer bg-transparent border-none p-0"
+              >
+                {node.name}
+              </button>
+            </span>
+          ))}
+        </div>
+      )}
 
       <div className="relative w-full overflow-hidden rounded-lg" style={{ aspectRatio: `${width}/${height}` }}>
-        <svg viewBox={`0 0 ${width} ${height}`} className="w-full h-full" key={activeRoot.id || activeRoot.name || 'root'}>
+        <svg viewBox={`0 0 ${width} ${height}`} className="w-full h-full">
+          <AnimatePresence mode="wait">
             {layout.map((child, i) => {
               const x0 = (child as unknown as { x0: number }).x0;
               const y0 = (child as unknown as { y0: number }).y0;
@@ -176,6 +179,7 @@ export function TreemapChart({ root, width = 960, height = 600, isVisible }: Tre
                 </motion.g>
               );
             })}
+          </AnimatePresence>
         </svg>
       </div>
 

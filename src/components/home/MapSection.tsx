@@ -36,7 +36,7 @@ export function MapSection({ statewise }: MapSectionProps) {
       />
 
       <div className="max-w-7xl mx-auto px-6 sm:px-8">
-        <SectionNumber number={4} className="mb-6 block" isVisible={isVisible} />
+        <SectionNumber number={5} className="mb-6 block" isVisible={isVisible} />
 
         <div className="grid md:grid-cols-[1fr_2.2fr] gap-12 items-start">
           {/* Annotation panel */}
@@ -47,7 +47,7 @@ export function MapSection({ statewise }: MapSectionProps) {
               transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
               className="text-composition mb-4"
             >
-              {formatLakhCrore(statewise.totalTransfers)} to states
+              {`${formatLakhCrore(statewise.totalTransfers)} to states`}
             </motion.h2>
 
             <motion.p
@@ -56,8 +56,7 @@ export function MapSection({ statewise }: MapSectionProps) {
               transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
               className="text-annotation mb-8"
             >
-              Nearly 1 in 4 rupees of central spending flows directly to state governments.
-              Colour intensity shows per-capita transfer — what each citizen's share looks like.
+              {"Nearly 1 in 4 rupees of central spending flows directly to state governments. Colour intensity shows per-capita transfer — what each citizen's share looks like."}
             </motion.p>
 
             <motion.div
@@ -67,7 +66,7 @@ export function MapSection({ statewise }: MapSectionProps) {
               className="space-y-4"
             >
               <div className="rounded-lg p-4" style={{ background: 'var(--bg-raised)', border: 'var(--border-subtle)' }}>
-                <p className="text-caption uppercase tracking-wider mb-1">Largest total transfer</p>
+                <p className="text-caption uppercase tracking-wider mb-1">{'Largest total transfer'}</p>
                 <p className="font-semibold text-base" style={{ color: 'var(--saffron)' }}>{topState.name}</p>
                 <p className="font-mono text-sm" style={{ color: 'var(--text-secondary)' }}>
                   Rs {formatIndianNumber(topState.transfer)} Cr
@@ -75,7 +74,7 @@ export function MapSection({ statewise }: MapSectionProps) {
               </div>
 
               <div className="rounded-lg p-4" style={{ background: 'var(--bg-raised)', border: 'var(--border-subtle)' }}>
-                <p className="text-caption uppercase tracking-wider mb-1">Highest per capita</p>
+                <p className="text-caption uppercase tracking-wider mb-1">{'Highest per capita'}</p>
                 <p className="font-semibold text-base" style={{ color: 'var(--cyan)' }}>{topPerCapita.name}</p>
                 <p className="font-mono text-sm" style={{ color: 'var(--text-secondary)' }}>
                   Rs {formatIndianNumber(topPerCapita.perCapita)}/person
@@ -84,7 +83,7 @@ export function MapSection({ statewise }: MapSectionProps) {
             </motion.div>
 
             <p className="source-attribution mt-8">
-              Source: Union Budget 2025-26, Finance Commission
+              {'Source: Union Budget 2025-26, Finance Commission'}
             </p>
           </div>
 

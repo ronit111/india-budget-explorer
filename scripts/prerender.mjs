@@ -20,7 +20,7 @@ const __dirname = fileURLToPath(new URL('.', import.meta.url));
 const DIST = join(__dirname, '..', 'dist');
 const PORT = 4173;
 
-const ROUTES = ['/', '/explore', '/calculator', '/methodology'];
+const ROUTES = ['/', '/budget', '/budget/explore', '/budget/calculator', '/budget/methodology'];
 
 const MIME_TYPES = {
   '.html': 'text/html; charset=utf-8',

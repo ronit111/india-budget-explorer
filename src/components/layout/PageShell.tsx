@@ -8,7 +8,7 @@ import { SearchOverlay } from '../ui/SearchOverlay.tsx';
 
 export function PageShell({ children }: { children: ReactNode }) {
   const location = useLocation();
-  const isHome = location.pathname === '/';
+  const isBudgetStory = location.pathname === '/budget';
 
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, { stiffness: 100, damping: 30, restDelta: 0.001 });
@@ -18,7 +18,7 @@ export function PageShell({ children }: { children: ReactNode }) {
       <Header />
       <SearchOverlay />
 
-      {isHome && (
+      {isBudgetStory && (
         <motion.div
           className="fixed top-16 left-0 right-0 h-0.5 z-40 origin-left"
           style={{
@@ -28,7 +28,7 @@ export function PageShell({ children }: { children: ReactNode }) {
         />
       )}
 
-      <main className="flex-1 pt-16 pb-16 md:pb-0 overflow-y-auto">{children}</main>
+      <main className="flex-1 pt-16 overflow-y-auto">{children}</main>
       <Footer />
       <MobileNav />
     </div>

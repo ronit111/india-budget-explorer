@@ -1,10 +1,14 @@
 {
   "siteName": "Indian Data Project",
   "nav": {
+    "hub": "Hub",
     "home": "Home",
+    "budget": "Budget 2025-26",
+    "story": "Story",
     "explore": "Explore",
     "calculator": "Your Share",
-    "methodology": "Methods"
+    "methodology": "Methodology",
+    "methods": "Methods"
   },
   "header": {
     "search": "Cmd+K",
@@ -15,7 +19,9 @@
     "openBudgetsIndia": "Open Budgets India",
     "godl": "GODL",
     "notAffiliated": "Not affiliated with GoI",
-    "budgetYear": "Union Budget 2025-26"
+    "budgetYear": "Union Budget 2025-26",
+    "hubTagline": "Open-source civic tech. Real government data, made accessible.",
+    "license": "AGPL-3.0 · Open Source"
   },
   "loading": "Loading...",
   "error": {
@@ -24,14 +30,18 @@
     "refresh": "Refresh"
   },
   "units": {
-    "rs": "₹",
+    "rs": "Rs",
+    "rupeeSymbol": "₹",
     "crore": "crore",
     "cr": "Cr",
     "lakhCrore": "lakh crore",
     "lpa": "LPA",
     "paise": "paise",
-    "percent": "%"
+    "percent": "%",
+    "ofGDP": "of GDP"
   },
   "ministriesCount": "{{count}} ministries / departments",
-  "exportCSV": "Export CSV"
+  "exportCSV": "Export CSV",
+  "source": "Source:",
+  "comingSoon": "On the horizon"
 }

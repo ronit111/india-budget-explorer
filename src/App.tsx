@@ -1,17 +1,26 @@
-import { Routes, Route, useLocation } from 'react-router-dom';
+import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import { PageShell } from './components/layout/PageShell.tsx';
 import { LanguageProvider } from './components/i18n/LanguageProvider.tsx';
-import HomePage from './pages/HomePage.tsx';
+import HubPage from './pages/HubPage.tsx';
+import BudgetPage from './pages/BudgetPage.tsx';
 import ExplorePage from './pages/ExplorePage.tsx';
 import FindYourSharePage from './pages/FindYourSharePage.tsx';
 import MethodologyPage from './pages/MethodologyPage.tsx';
 
 const PAGE_ROUTES = [
-  { path: '/', element: <HomePage /> },
-  { path: '/explore', element: <ExplorePage /> },
-  { path: '/calculator', element: <FindYourSharePage /> },
-  { path: '/methodology', element: <MethodologyPage /> },
+  { path: '/', element: <HubPage /> },
+  { path: '/budget', element: <BudgetPage /> },
+  { path: '/budget/explore', element: <ExplorePage /> },
+  { path: '/budget/calculator', element: <FindYourSharePage /> },
+  { path: '/budget/methodology', element: <MethodologyPage /> },
+] as const;
+
+// Old routes redirect to new /budget/* paths
+const REDIRECTS = [
+  { from: '/explore', to: '/budget/explore' },
+  { from: '/calculator', to: '/budget/calculator' },
+  { from: '/methodology', to: '/budget/methodology' },
 ] as const;
 
 export default function App() {
@@ -22,11 +31,21 @@ export default function App() {
       <LanguageProvider>
         <AnimatePresence mode="wait">
           <Routes location={location} key={location.pathname}>
-            {/* Default (English) routes */}
+            {/* Main routes */}
             {PAGE_ROUTES.map((r) => (
               <Route key={r.path} path={r.path} element={r.element} />
             ))}
-            {/* Language-prefixed routes: /hi/explore, /te/calculator, etc. */}
+
+            {/* Backward-compatible redirects */}
+            {REDIRECTS.map((r) => (
+              <Route
+                key={r.from}
+                path={r.from}
+                element={<Navigate to={r.to} replace />}
+              />
+            ))}
+
+            {/* Language-prefixed routes: /hi/budget, /te/budget/explore, etc. */}
             {PAGE_ROUTES.map((r) => (
               <Route
                 key={`lang-${r.path}`}

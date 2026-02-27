@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&family=JetBrains+Mono:wght@500&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    width: 1200px;
+    height: 630px;
+    background: #06080f;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+  }
+
+  /* Subtle radial glow behind logo */
+  .glow {
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    left: 50%;
+    top: 45%;
+    transform: translate(-50%, -50%);
+    background: radial-gradient(circle, rgba(255,107,53,0.06) 0%, rgba(255,200,87,0.03) 40%, transparent 70%);
+    border-radius: 50%;
+  }
+
+  .card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+  }
+
+  .logo-row {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+  }
+
+  .title {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-weight: 800;
+    font-size: 52px;
+    letter-spacing: -0.03em;
+    background: linear-gradient(135deg, #FF6B35, #FFC857);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .tagline {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-weight: 400;
+    font-size: 22px;
+    color: #b0b8c4;
+    letter-spacing: -0.01em;
+  }
+
+  .url {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 500;
+    font-size: 14px;
+    color: #5c6a7e;
+    letter-spacing: 0.02em;
+  }
+
+  /* Corner accent lines */
+  .corner {
+    position: absolute;
+    width: 48px;
+    height: 48px;
+  }
+  .corner-tl { top: 48px; left: 48px; border-top: 1px solid rgba(255,107,53,0.2); border-left: 1px solid rgba(255,107,53,0.2); }
+  .corner-br { bottom: 48px; right: 48px; border-bottom: 1px solid rgba(74,234,220,0.2); border-right: 1px solid rgba(74,234,220,0.2); }
+</style>
+</head>
+<body>
+  <div class="glow"></div>
+  <div class="corner corner-tl"></div>
+  <div class="corner corner-br"></div>
+
+  <div class="card">
+    <div class="logo-row">
+      <svg width="72" height="72" viewBox="0 0 100 100">
+        <rect x="5" y="5" width="26" height="26" rx="3" fill="#FF6B35"/>
+        <rect x="37" y="5" width="26" height="26" rx="3" fill="#FF6B35"/>
+        <rect x="69" y="5" width="26" height="26" rx="3" fill="#FF6B35"/>
+        <rect x="5" y="37" width="26" height="26" rx="3" fill="#FFC857"/>
+        <rect x="37" y="37" width="26" height="26" rx="3" fill="#FFC857"/>
+        <rect x="69" y="37" width="26" height="26" rx="3" fill="#FFC857"/>
+        <rect x="5" y="69" width="26" height="26" rx="3" fill="#4AEADC"/>
+        <rect x="37" y="69" width="26" height="26" rx="3" fill="#4AEADC"/>
+        <rect x="69" y="69" width="26" height="26" rx="3" fill="#4AEADC"/>
+      </svg>
+      <span class="title">Indian Data Project</span>
+    </div>
+    <p class="tagline">Open government data, made accessible and visual</p>
+    <p class="url">indiandataproject.org</p>
+  </div>
+</body>
+</html>

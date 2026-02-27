@@ -1,52 +1,47 @@
 # Indian Data Project — Claude Instructions
 
 ## Project Overview
-Open data platform for Indian citizens. React 19 + TypeScript + Vite 7 + Tailwind v4. Deployed on Vercel via GitHub push to `main`.
+Open data platform for Indian citizens. V1 of the broader **India Truth Engine** vision — a platform that cross-references Indian government data against primary sources (RBI, World Bank, IMF, NSO, budget documents) and presents evidence in clear, shareable formats. Budget is the starting dataset, not the whole product.
 
-**Stack**: Zustand (state), Framer Motion (animation), D3 (visualizations: treemap, sankey, waffle), Canvas API (share card generation).
+**Stack**: React 19 + TypeScript + Vite 7 + Tailwind v4. Zustand (state), Framer Motion (animation), D3 (visualizations: treemap, sankey, waffle), Canvas API (share card generation). Deployed on Vercel via GitHub push to `main`.
 
-## QA Protocol — MANDATORY after UI/Interaction Changes
+## Site Architecture — Hub + Data Domains
+- **`/` (Hub)**: Visual portal showcasing all data domains. Not a dashboard — a curated data story showcase.
+- **`/budget` (Budget Domain)**: Union Budget 2025-26 scrollytelling. Sub-routes: `/budget/explore`, `/budget/calculator`, `/budget/methodology`.
+- **Future domains** each get their own top-level route (e.g., `/economy`, `/states`) with self-contained sub-pages.
+- Header is **context-aware**: hub title + search on `/`, domain title + sub-nav tabs inside a domain.
+- **Back links** (header chevron + footer link) point to `/#stories`. New domains should follow this convention.
+- Old routes (`/explore`, `/calculator`, `/methodology`) redirect to `/budget/*` equivalents.
 
-**"Build passing" is NOT a product check.** TypeScript compilation verifies types, not behavior. After any change to visual components, interactions, or layouts:
+## Deliberate Decisions
+- **i18n removed**: Infrastructure exists (i18n.ts, LanguageSwitcher, LanguageProvider, Hindi locale files) but is not wired. Browser auto-translate preferred over dev overhead. Don't re-wire without explicit ask.
+- **No decorative chrome**: Data IS the design. No card wrappers around visualizations, no unnecessary UI furniture.
+- **Hub loads only `summary.json`**. Do NOT use `useBudgetData` (loads 7 files) on the hub page.
+- **All derived values computed at runtime** from source data, never hardcoded (e.g., "31 paise borrowed per rupee").
 
-### 1. Browser Verification (use `mcp__claude-in-chrome__*` tools)
-- Open the deployed/local page in Chrome
-- Navigate to the specific section that changed
-- **Interact with it**: click buttons, hover tooltips, drill into charts, scroll, resize
-- Screenshot the result and visually verify against intent
-- Test on both wide viewport and narrow viewport if layout changed
-
-### 2. Interaction Checklist for Visualizations
-- **Treemap**: Click each category. Verify breadcrumb updates correctly. Click breadcrumb to go back. Verify no duplicate entries in drill path.
-- **Sankey**: Scroll full diagram. Verify no label overlap at any viewport size. Hover nodes to confirm tooltip positions.
-- **Waffle chart**: Verify grouping order and color contrast of all legend items.
-- **Calculator**: Toggle regime, adjust slider, check share card generation, test share/download flow.
-
-### 3. What Counts as "Sanity Check"
-A real sanity check includes ALL of:
-- [ ] `npm run build` passes (compilation)
-- [ ] `grep` for stale imports/references from deleted code (linkage)
-- [ ] Browser open + visual inspection of changed pages (visual)
-- [ ] Click/interact with changed elements (behavioral)
-- [ ] Screenshot evidence before reporting "fixed" to user
-
-Never report a fix as complete based only on build + grep.
+## Data Integrity — Non-Negotiable
+- **NEVER create mock, fake, placeholder, or hardcoded data.** Every number must trace to an authoritative source (indiabudget.gov.in, Open Budgets India, RBI, etc.).
+- If data doesn't exist for a planned feature, the feature waits. No exceptions.
 
 ## Design Identity
 - Dark theme: void (#06080f) / raised (#0e1420) / surface (#131b27)
 - Accents: saffron (#FF6B35), cyan (#4AEADC), gold (#FFC857)
 - Typography: Inter (body), JetBrains Mono (data)
-- Pattern: IIB-inspired minimal, data-forward, no decorative clutter
+- IIB-inspired minimal, data-forward. Creative latitude encouraged — see BRAND.md.
 
-## Architecture Notes
-- Tax data is hardcoded in `pipeline/src/main.py` and `src/lib/taxEngine.ts` (not from API)
-- Budget data comes from CKAN API via pipeline
-- Tax calculator is back-of-the-envelope, not ITR-level. Single "total deductions" input for Old Regime.
-- Treemap uses one-level-at-a-time drill-down (`hierarchy.children`, not `hierarchy.leaves()`)
+## QA Protocol — MANDATORY after UI Changes
 
-## Common Pitfalls (learned the hard way)
-- **Treemap drill-down**: Never use `hierarchy.leaves()` with parent-fallback click logic. Show one level at a time via `hierarchy.children`. Only drill when the clicked node itself has children.
-- **Sankey spacing**: With 12+ expenditure nodes, `nodePadding` below 20 causes label overlap. Hide value text for nodes shorter than 20px.
-- **AnimatePresence + keyed SVGs**: `mode="wait"` on AnimatePresence with frequently re-keyed SVGs causes double-render. Remove `mode="wait"` or avoid AnimatePresence for chart containers.
-- **Sticky positioning**: `overflow-x-auto` breaks `position: sticky`. Use `overflow-x: clip` instead.
-- **Mobile nav**: Fixed bottom nav is h-14. Page content needs `pb-16 md:pb-0` to avoid clipping.
+**"Build passing" is NOT a product check.** After any visual/interaction change:
+
+1. **Browser verify** (use `mcp__claude-in-chrome__*`): open page, navigate to changed section, interact, screenshot
+2. **Viz checklist**: Treemap drill-down + breadcrumb, Sankey label overlap, Waffle grouping, Calculator regime toggle + share card
+3. **Full sanity** = build passes + grep for stale imports + browser inspection + interaction test + screenshot evidence
+
+Never report a fix as complete based only on build + grep.
+
+## Common Pitfalls
+- **Treemap**: Never use `hierarchy.leaves()`. Show one level at a time via `hierarchy.children`.
+- **Sankey**: `nodePadding` below 20 causes label overlap with 12+ nodes. Hide value text for nodes < 20px.
+- **AnimatePresence + keyed SVGs**: `mode="wait"` causes double-render. Avoid for chart containers.
+- **Sticky headers**: `overflow-x-auto` breaks `position: sticky`. Use `overflow-x: clip`.
+- **Mobile nav**: Fixed bottom h-14. Content needs `pb-16 md:pb-0`.

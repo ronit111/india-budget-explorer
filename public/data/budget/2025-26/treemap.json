@@ -5,6 +5,12 @@
     "id": "root",
     "children": [
       {
+        "name": "State Transfers",
+        "id": "transfers-to-states",
+        "value": 1200000,
+        "percentOfTotal": 23.9
+      },
+      {
         "name": "Interest Payments",
         "id": "interest-payments",
         "value": 1080000,
@@ -13,122 +19,29 @@
       {
         "name": "Defence",
         "id": "defence",
-        "value": 681210,
+        "value": 681000,
         "percentOfTotal": 13.6,
         "children": [
-          {
-            "name": "Revenue Expenditure",
-            "id": "defence-revenue",
-            "value": 314000
-          },
-          {
-            "name": "Capital Expenditure",
-            "id": "defence-capital",
-            "value": 367210
-          }
+          { "name": "Capital (Equipment)", "id": "defence-capital", "value": 367000 },
+          { "name": "Revenue (Salaries)", "id": "defence-revenue", "value": 314000 }
         ]
       },
       {
-        "name": "Rural Development",
-        "id": "rural-development",
-        "value": 178482,
-        "percentOfTotal": 3.6,
+        "name": "Subsidies",
+        "id": "subsidies",
+        "value": 396000,
+        "percentOfTotal": 7.9,
         "children": [
-          {
-            "name": "MGNREGA",
-            "id": "mgnrega",
-            "value": 86000
-          },
-          {
-            "name": "PMAY-G (Rural Housing)",
-            "id": "pmay-g",
-            "value": 54500
-          },
-          {
-            "name": "PMGSY (Rural Roads)",
-            "id": "pmgsy",
-            "value": 19000
-          },
-          {
-            "name": "Other",
-            "id": "rural-other",
-            "value": 18982
-          }
+          { "name": "Food Subsidy", "id": "food-subsidy", "value": 205000 },
+          { "name": "Fertilizer Subsidy", "id": "fertilizer-subsidy", "value": 145000 },
+          { "name": "Fuel Subsidy", "id": "fuel-subsidy", "value": 11500 }
         ]
       },
       {
-        "name": "Agriculture & Farmers Welfare",
-        "id": "agriculture",
-        "value": 135580,
-        "percentOfTotal": 2.7,
-        "children": [
-          {
-            "name": "PM-KISAN",
-            "id": "pm-kisan",
-            "value": 60000
-          },
-          {
-            "name": "PM Fasal Bima Yojana",
-            "id": "crop-insurance",
-            "value": 15500
-          },
-          {
-            "name": "Other",
-            "id": "agriculture-other",
-            "value": 60080
-          }
-        ]
-      },
-      {
-        "name": "Education",
-        "id": "education",
-        "value": 125638,
-        "percentOfTotal": 2.5,
-        "children": [
-          {
-            "name": "Samagra Shiksha",
-            "id": "samagra-shiksha",
-            "value": 37500
-          },
-          {
-            "name": "PM POSHAN (Mid-Day Meal)",
-            "id": "mid-day-meal",
-            "value": 12800
-          },
-          {
-            "name": "Higher Education",
-            "id": "higher-education",
-            "value": 44500
-          },
-          {
-            "name": "Other",
-            "id": "education-other",
-            "value": 30838
-          }
-        ]
-      },
-      {
-        "name": "Health & Family Welfare",
-        "id": "health",
-        "value": 90959,
-        "percentOfTotal": 1.8,
-        "children": [
-          {
-            "name": "Ayushman Bharat",
-            "id": "ayushman-bharat",
-            "value": 7500
-          },
-          {
-            "name": "National Health Mission",
-            "id": "nhm",
-            "value": 36000
-          },
-          {
-            "name": "Other",
-            "id": "health-other",
-            "value": 47459
-          }
-        ]
+        "name": "Roads & Highways",
+        "id": "road-transport",
+        "value": 278000,
+        "percentOfTotal": 5.5
       },
       {
         "name": "Railways",
@@ -143,49 +56,55 @@
         "percentOfTotal": 4.4
       },
       {
-        "name": "Road Transport & Highways",
-        "id": "road-transport",
-        "value": 278000,
-        "percentOfTotal": 5.5
-      },
-      {
-        "name": "Transfers to States & UTs",
-        "id": "transfers-to-states",
-        "value": 1200000,
-        "percentOfTotal": 23.9
-      },
-      {
-        "name": "Subsidies",
-        "id": "subsidies",
-        "value": 396000,
-        "percentOfTotal": 7.9,
+        "name": "Rural Development",
+        "id": "rural-development",
+        "value": 178482,
+        "percentOfTotal": 3.6,
         "children": [
-          {
-            "name": "Food Subsidy",
-            "id": "food-subsidy",
-            "value": 205000
-          },
-          {
-            "name": "Fertilizer Subsidy",
-            "id": "fertilizer-subsidy",
-            "value": 145000
-          },
-          {
-            "name": "Petroleum Subsidy",
-            "id": "fuel-subsidy",
-            "value": 11500
-          },
-          {
-            "name": "Other",
-            "id": "subsidies-other",
-            "value": 34500
-          }
+          { "name": "MGNREGA", "id": "mgnrega", "value": 86000 },
+          { "name": "Rural Housing", "id": "pmay-g", "value": 54500 },
+          { "name": "Rural Roads", "id": "pmgsy", "value": 19000 },
+          { "name": "Other", "id": "rural-other", "value": 18982 }
+        ]
+      },
+      {
+        "name": "Agriculture",
+        "id": "agriculture",
+        "value": 135000,
+        "percentOfTotal": 2.7,
+        "children": [
+          { "name": "PM-KISAN", "id": "pm-kisan", "value": 60000 },
+          { "name": "Crop Insurance", "id": "crop-insurance", "value": 15500 },
+          { "name": "Other Agri", "id": "agri-other", "value": 59500 }
+        ]
+      },
+      {
+        "name": "Education",
+        "id": "education",
+        "value": 125638,
+        "percentOfTotal": 2.5,
+        "children": [
+          { "name": "Higher Education", "id": "higher-education", "value": 44500 },
+          { "name": "School Education", "id": "samagra-shiksha", "value": 37500 },
+          { "name": "Mid-Day Meals", "id": "mid-day-meal", "value": 12800 },
+          { "name": "Other Education", "id": "edu-other", "value": 30838 }
+        ]
+      },
+      {
+        "name": "Health",
+        "id": "health",
+        "value": 90959,
+        "percentOfTotal": 1.8,
+        "children": [
+          { "name": "National Health Mission", "id": "nhm", "value": 36000 },
+          { "name": "Ayushman Bharat", "id": "ayushman-bharat", "value": 7500 },
+          { "name": "Other Health", "id": "health-other", "value": 47459 }
         ]
       },
       {
         "name": "Other Expenditure",
         "id": "other-expenditure",
-        "value": 369418,
+        "value": 370207,
         "percentOfTotal": 7.4
       }
     ]

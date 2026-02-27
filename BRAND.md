@@ -14,6 +14,21 @@ Three principles guide every visual decision:
 
 **3. Analytical beauty.** Inspired by Visual Cinnamon (Nadieh Bremer) and Truth & Beauty (Moritz Stefaner) — bespoke SVG visualizations, scrollytelling where the data transforms on scroll, analytical clarity meets aesthetic beauty. Also draws from Structify.ai for the modern dark landing aesthetic: glowing accents, smooth motion, premium feel.
 
+### Creative License — Dare to Be Different
+
+The brand philosophy is a guardrail, not a cage. Within its boundaries, **unconventional and unique choices are explicitly encouraged** — especially at the granular interaction and composition level.
+
+What this means in practice:
+- **Typography can be architecture.** A number doesn't have to sit politely in a card — it can fill the viewport, bleed across sections, layer over visualizations. If the data warrants spectacle, give it spectacle.
+- **Whitespace is a design material.** A section with three words and 400px of breathing room can communicate more than a dense infographic. Don't fill space out of obligation.
+- **Layout conventions are optional.** Cascading diagonal lists, asymmetric grids, text that steps across the page, sections with no clear "container" — all valid when they serve the narrative. The Kasia Siwosz reference (kasiasiwosz.com) demonstrates this: curly-brace list markers, progressive opacity text reveals, 3D typographic blocks, hard contrast shifts between dark and light sections.
+- **Micro-interactions can be opinionated.** A hover state doesn't have to be a color change. A scroll transition doesn't have to be a fade-in. If a visualization wants to "breathe" or a number wants to "land" with weight, explore that.
+- **Break patterns when a section demands it.** Not every composition needs the same SectionNumber → Title → Annotation → Visualization anatomy. If a data point is so striking it deserves its own full-viewport moment with nothing else, do that.
+
+The constraint: every unconventional choice must serve the **data narrative**. Bold for the sake of bold is decoration. Bold because "31 paise of every rupee is borrowed" deserves to hit you in the chest — that's design.
+
+**Living reference**: [kasiasiwosz.com](https://www.kasiasiwosz.com/) — study the typography-as-hero approach, the hard light/dark section shifts, the diagonal cascading layouts, and how section numbering with margin annotations creates wayfinding without traditional navigation.
+
 ### What this is NOT
 
 - Not a government website aesthetic (no tricolor bars, no serif fonts, no busy layouts)

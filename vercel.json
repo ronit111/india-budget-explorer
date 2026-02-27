@@ -39,6 +39,11 @@
       ]
     }
   ],
+  "redirects": [
+    { "source": "/explore", "destination": "/budget/explore", "permanent": true },
+    { "source": "/calculator", "destination": "/budget/calculator", "permanent": true },
+    { "source": "/methodology", "destination": "/budget/methodology", "permanent": true }
+  ],
   "rewrites": [
     { "source": "/((?!assets|data|locales|.*\\..*).*)", "destination": "/index.html" }
   ]

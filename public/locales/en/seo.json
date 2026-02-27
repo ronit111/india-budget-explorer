@@ -1,6 +1,10 @@
 {
+  "hub": {
+    "title": "Indian Data Project — Government Data, Made Visible",
+    "description": "Interactive visualizations of Indian government data. Budget breakdowns, spending analysis, and tax calculators. Real data from official sources, made accessible for every citizen."
+  },
   "home": {
-    "title": "Indian Data Project — Where Your Tax Money Goes",
+    "title": "Union Budget 2025-26 — Indian Data Project",
     "description": "Interactive visualization of India's Union Budget 2025-26. See where Rs 50 lakh crore goes — revenue breakdown, ministry-wise spending, state allocations, and a personal tax calculator."
   },
   "explore": {

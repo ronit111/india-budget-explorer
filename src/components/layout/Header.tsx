@@ -1,14 +1,6 @@
 import { Link, useLocation } from 'react-router-dom';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useUIStore } from '../../store/uiStore.ts';
-import { LanguageSwitcher } from '../i18n/LanguageSwitcher.tsx';
-
-const navLinks = [
-  { to: '/', label: 'Home' },
-  { to: '/explore', label: 'Explore' },
-  { to: '/calculator', label: 'Your Share' },
-  { to: '/methodology', label: 'Methodology' },
-];
 
 export function Header() {
   const location = useLocation();
@@ -17,6 +9,27 @@ export function Header() {
 
   const bgOpacity = useTransform(scrollY, [0, 100], [0, 1]);
   const borderOpacity = useTransform(scrollY, [0, 100], [0, 0.06]);
+
+  const isBudgetSection = location.pathname.startsWith('/budget');
+
+  // Context-aware title: show story name when inside a data story
+  const headerTitle = isBudgetSection ? 'Budget 2025-26' : 'Indian Data Project';
+  const headerLink = isBudgetSection ? '/budget' : '/';
+
+  // Only show nav links inside a data story (budget sub-pages)
+  const navLinks = isBudgetSection
+    ? [
+        { to: '/budget', label: 'Story' },
+        { to: '/budget/explore', label: 'Explore' },
+        { to: '/budget/calculator', label: 'Your Share' },
+        { to: '/budget/methodology', label: 'Methodology' },
+      ]
+    : [];
+
+  const isActiveLink = (linkTo: string) => {
+    if (linkTo === '/budget') return location.pathname === '/budget';
+    return location.pathname === linkTo;
+  };
 
   return (
     <motion.header
@@ -42,15 +55,29 @@ export function Header() {
       />
 
       <div className="relative max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
-        <Link to="/" className="flex items-center gap-2 no-underline">
-          <span className="text-lg font-bold gradient-text-saffron">
-            Indian Data Project
-          </span>
-        </Link>
+        <div className="flex items-center gap-3">
+          {isBudgetSection && (
+            <Link
+              to="/#stories"
+              className="flex items-center no-underline p-1.5 -ml-1.5 rounded-md transition-colors hover:bg-[var(--bg-raised)]"
+              style={{ color: 'var(--text-muted)' }}
+              aria-label="Back to hub"
+            >
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M10 3L5 8l5 5" />
+              </svg>
+            </Link>
+          )}
+          <Link to={headerLink} className="flex items-center gap-2 no-underline">
+            <span className="text-lg font-bold gradient-text-saffron">
+              {headerTitle}
+            </span>
+          </Link>
+        </div>
 
         <nav className="hidden md:flex items-center gap-2">
           {navLinks.map((link) => {
-            const isActive = location.pathname === link.to;
+            const isActive = isActiveLink(link.to);
             return (
               <Link
                 key={link.to}
@@ -75,22 +102,26 @@ export function Header() {
             );
           })}
 
-          <div className="w-px h-5 mx-2" style={{ background: 'rgba(255,255,255,0.08)' }} />
+          {navLinks.length > 0 && (
+            <div className="w-px h-5 mx-2" style={{ background: 'rgba(255,255,255,0.08)' }} />
+          )}
 
           <button
             onClick={toggleSearch}
-            className="px-3 py-1.5 rounded-lg text-xs font-mono cursor-pointer transition-colors"
+            className="p-2 rounded-lg cursor-pointer transition-colors hover:bg-[var(--bg-raised)]"
             style={{
               color: 'var(--text-muted)',
-              background: 'var(--bg-raised)',
-              border: 'var(--border-subtle)',
+              background: 'transparent',
+              border: 'none',
             }}
             aria-label="Search"
+            title="Search (Cmd+K)"
           >
-            Cmd+K
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+              <circle cx="11" cy="11" r="7" />
+              <path d="M21 21l-4.35-4.35" />
+            </svg>
           </button>
-
-          <LanguageSwitcher />
         </nav>
       </div>
     </motion.header>

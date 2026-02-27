@@ -45,7 +45,7 @@ export function HeroSection({ summary }: HeroSectionProps) {
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0 }}
           className="text-section-num tracking-[0.2em] uppercase mb-8"
         >
-          Union Budget 2025-26
+          {'Union Budget 2025-26'}
         </motion.p>
 
         {/* Tagline */}
@@ -56,7 +56,7 @@ export function HeroSection({ summary }: HeroSectionProps) {
           className="text-lg md:text-xl mb-6"
           style={{ color: 'var(--text-secondary)' }}
         >
-          Where every rupee goes
+          {'Where every rupee goes'}
         </motion.p>
 
         {/* Hero counter — physically enormous */}
@@ -78,7 +78,7 @@ export function HeroSection({ summary }: HeroSectionProps) {
             className="text-xl md:text-2xl font-medium mt-2"
             style={{ color: 'var(--text-secondary)' }}
           >
-            crore
+            {'crore'}
           </p>
         </motion.div>
 
@@ -93,11 +93,9 @@ export function HeroSection({ summary }: HeroSectionProps) {
             border: 'var(--border-subtle)',
           }}
         >
-          <span className="text-caption">That's</span>
-          <span className="font-mono font-bold text-sm" style={{ color: 'var(--text-primary)' }}>
-            Rs {summary.perCapitaDailyExpenditure.toFixed(2)}
+          <span className="text-caption font-mono font-bold" style={{ color: 'var(--text-primary)' }}>
+            {`That's Rs ${summary.perCapitaDailyExpenditure.toFixed(2)} per citizen per day`}
           </span>
-          <span className="text-caption">per citizen per day</span>
         </motion.div>
 
         {/* Growing line scroll indicator */}

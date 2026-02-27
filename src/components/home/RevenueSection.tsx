@@ -30,7 +30,7 @@ export function RevenueSection({ receipts }: RevenueSectionProps) {
               transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
               className="text-composition mb-4"
             >
-              Where the money comes from
+              {'Where the money comes from'}
             </motion.h2>
 
             <motion.p
@@ -39,7 +39,7 @@ export function RevenueSection({ receipts }: RevenueSectionProps) {
               transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
               className="text-annotation mb-3"
             >
-              Total receipts: <span className="font-mono font-bold" style={{ color: 'var(--text-primary)' }}>
+              {'Total receipts:'} <span className="font-mono font-bold" style={{ color: 'var(--text-primary)' }}>
                 {formatLakhCrore(receipts.total)}
               </span>
             </motion.p>
@@ -50,11 +50,7 @@ export function RevenueSection({ receipts }: RevenueSectionProps) {
               transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
               className="text-annotation mb-6"
             >
-              Each square = 1%. For every rupee earned, the government borrows{' '}
-              <span className="font-mono font-bold" style={{ color: 'var(--cyan)' }}>
-                {Math.round(borrowingPct)} paise
-              </span>{' '}
-              more.
+              {`Each square = 1%. For every rupee earned, the government borrows ${Math.round(borrowingPct)} paise more.`}
             </motion.p>
 
             <motion.div
@@ -70,7 +66,7 @@ export function RevenueSection({ receipts }: RevenueSectionProps) {
             </motion.div>
 
             <p className="source-attribution mt-8">
-              Source: Union Budget 2025-26, Receipt Budget
+              {'Source: Union Budget 2025-26, Receipt Budget'}
             </p>
           </div>
 

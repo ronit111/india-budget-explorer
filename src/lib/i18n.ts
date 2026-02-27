@@ -33,7 +33,7 @@ i18n
     fallbackLng: DEFAULT_LANGUAGE,
     supportedLngs: LANGUAGE_CODES,
     defaultNS: 'common',
-    ns: ['common'],
+    ns: ['common', 'seo'],
 
     backend: {
       loadPath: '/locales/{{lng}}/{{ns}}.json',

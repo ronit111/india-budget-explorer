@@ -14,7 +14,7 @@ export function ExpenditureSection({ treemap }: ExpenditureSectionProps) {
   return (
     <section ref={ref} className="composition" style={{ background: 'var(--bg-surface)' }}>
       <div className="max-w-7xl mx-auto px-6 sm:px-8">
-        <SectionNumber number={2} className="mb-6 block" isVisible={isVisible} />
+        <SectionNumber number={3} className="mb-6 block" isVisible={isVisible} />
 
         <motion.h2
           initial={{ opacity: 0, y: 16 }}
@@ -22,7 +22,7 @@ export function ExpenditureSection({ treemap }: ExpenditureSectionProps) {
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           className="text-composition mb-2"
         >
-          Where the money goes
+          {'Where the money goes'}
         </motion.h2>
 
         <motion.p
@@ -31,15 +31,14 @@ export function ExpenditureSection({ treemap }: ExpenditureSectionProps) {
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
           className="text-annotation mb-8 max-w-xl"
         >
-          Nearly half of every rupee goes to state transfers and interest payments.
-          The rest funds defence, infrastructure, welfare, and more.
+          {'Nearly half of every rupee goes to state transfers and interest payments. The rest funds defence, infrastructure, welfare, and more.'}
         </motion.p>
 
         {/* Full-width treemap — no ChartContainer */}
         <TreemapChart root={treemap.root} isVisible={isVisible} />
 
         <p className="source-attribution">
-          Source: Union Budget 2025-26, Expenditure Budget
+          {'Source: Union Budget 2025-26, Expenditure Budget'}
         </p>
       </div>
     </section>

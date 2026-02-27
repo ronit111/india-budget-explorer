@@ -133,6 +133,17 @@ export interface SchemesData {
   schemes: GovernmentScheme[]
 }
 
+// ─── Old Regime Deductions ─────────────────────────────────────────
+export interface OldRegimeDeductions {
+  section80C: number;
+  section80D_self: number;
+  section80D_parents: number;
+  section80CCD1B: number;
+  section24b: number;
+  hra: number;
+  section80TTA: number;
+}
+
 // ─── Tax Calculator ────────────────────────────────────────────────
 export interface TaxSlab {
   from: number

@@ -14,7 +14,7 @@ export function FlowSection({ sankey }: FlowSectionProps) {
   return (
     <section ref={ref} className="composition">
       <div className="max-w-7xl mx-auto px-6 sm:px-8">
-        <SectionNumber number={3} className="mb-6 block" isVisible={isVisible} />
+        <SectionNumber number={4} className="mb-6 block" isVisible={isVisible} />
 
         <motion.h2
           initial={{ opacity: 0, y: 16 }}
@@ -22,7 +22,7 @@ export function FlowSection({ sankey }: FlowSectionProps) {
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           className="text-composition mb-2"
         >
-          Follow the money
+          {'Follow the money'}
         </motion.h2>
 
         <motion.p
@@ -31,14 +31,13 @@ export function FlowSection({ sankey }: FlowSectionProps) {
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
           className="text-annotation mb-8 max-w-xl"
         >
-          Revenue sources flow through the Central Government to spending heads.
-          Wider bands mean larger amounts.
+          {'Revenue sources flow through the Central Government to spending heads. Wider bands mean larger amounts.'}
         </motion.p>
 
         <SankeyDiagram data={sankey} isVisible={isVisible} />
 
         <p className="source-attribution">
-          Source: Union Budget 2025-26, Budget at a Glance
+          {'Source: Union Budget 2025-26, Budget at a Glance'}
         </p>
       </div>
     </section>

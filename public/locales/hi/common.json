@@ -1,0 +1,47 @@
+{
+  "siteName": "इंडियन डेटा प्रोजेक्ट",
+  "nav": {
+    "hub": "हब",
+    "home": "होम",
+    "budget": "बजट 2025-26",
+    "story": "कहानी",
+    "explore": "डेटा",
+    "calculator": "आपका हिस्सा",
+    "methodology": "कार्यप्रणाली",
+    "methods": "विधि"
+  },
+  "header": {
+    "search": "Cmd+K",
+    "searchAriaLabel": "खोजें"
+  },
+  "footer": {
+    "dataFrom": "डेटा स्रोत:",
+    "openBudgetsIndia": "Open Budgets India",
+    "godl": "GODL",
+    "notAffiliated": "भारत सरकार से असम्बद्ध",
+    "budgetYear": "केंद्रीय बजट 2025-26",
+    "hubTagline": "ओपन-सोर्स सिविक टेक। असली सरकारी डेटा, सबके लिए सुलभ।",
+    "license": "AGPL-3.0 · ओपन सोर्स"
+  },
+  "loading": "लोड हो रहा है...",
+  "error": {
+    "failedToLoad": "डेटा लोड नहीं हो सका",
+    "tryRefreshing": "बजट डेटा प्राप्त नहीं हो सका। पेज रिफ़्रेश करें।",
+    "refresh": "रिफ़्रेश"
+  },
+  "units": {
+    "rs": "₹",
+    "rupeeSymbol": "₹",
+    "crore": "करोड़",
+    "cr": "करोड़",
+    "lakhCrore": "लाख करोड़",
+    "lpa": "LPA",
+    "paise": "पैसे",
+    "percent": "%",
+    "ofGDP": "GDP का"
+  },
+  "ministriesCount": "{{count}} मंत्रालय / विभाग",
+  "exportCSV": "CSV डाउनलोड",
+  "source": "स्रोत:",
+  "comingSoon": "जल्द आ रहा है"
+}

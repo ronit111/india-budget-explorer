@@ -1,6 +1,6 @@
 # Indian Data Project
 
-Interactive visualization of India's Union Budget 2025-26. Open government data made accessible, searchable, and shareable.
+Open Indian government data made accessible, visual, and shareable. Starting with the Union Budget, expanding to economic indicators, state finances, and more.
 
 **Live:** [indiandataproject.org](https://indiandataproject.org)
 
@@ -8,16 +8,17 @@ Interactive visualization of India's Union Budget 2025-26. Open government data 
 
 ## What It Does
 
-Indian Data Project turns dense government budget PDFs into an interactive visual experience. It answers two questions: *where does India's money come from?* and *where does it go?*
+Indian Data Project turns dense government data into interactive visual experiences. The site is a hub — each data domain (budget, economic survey, state finances) gets its own self-contained visual story with explorable breakdowns. Budget 2025-26 is the first domain live, answering: *where does India's money come from?* and *where does it go?*
 
-**Four pages, one story:**
+**Hub + data domains:**
 
 | Page | What it shows |
 |------|---------------|
-| **Home** (`/`) | Scrollytelling overview — animated budget headline, revenue waffle chart, expenditure treemap with drill-down, Sankey money flow, state-wise choropleth map |
-| **Data Explorer** (`/explore`) | Sortable ministry-level expenditure table with expandable scheme detail, CSV export |
-| **Tax Calculator** (`/calculator`) | Personal tax breakdown for FY 2025-26 — Old/New regime with deductions (80C, 80D, HRA, 24b, NPS), spending allocation per ministry, shareable image card |
-| **Methodology** (`/methodology`) | Data sources, computation methods, formatting conventions, limitations |
+| **Hub** (`/`) | Visual portal — project mission, data domain cards with live stats, gateway to all datasets |
+| **Budget Story** (`/budget`) | Scrollytelling narrative — 7 compositions: animated headline, revenue waffle chart, deficit rupee bar, expenditure treemap, Sankey money flow, state choropleth, per-capita breakdown |
+| **Data Explorer** (`/budget/explore`) | Sortable ministry-level expenditure table with expandable scheme detail, CSV export |
+| **Tax Calculator** (`/budget/calculator`) | Personal tax breakdown for FY 2025-26 — Old/New regime with deductions (80C, 80D, HRA, 24b, NPS), spending allocation per ministry, shareable image card |
+| **Methodology** (`/budget/methodology`) | Data sources, computation methods, formatting conventions, limitations |
 
 ---
 
@@ -32,7 +33,7 @@ Indian Data Project turns dense government budget PDFs into an interactive visua
 | Visualizations | D3.js (layout) + React (rendering) — waffle, treemap, sankey, choropleth |
 | Animation | Framer Motion |
 | Search | Fuse.js (Cmd+K overlay) |
-| i18n | react-i18next (infrastructure ready, English only for now) |
+| i18n | react-i18next (infrastructure preserved but unwired — relying on browser auto-translate) |
 | SEO | react-helmet-async + Puppeteer prerendering |
 | Hosting | Vercel |
 
@@ -75,12 +76,14 @@ npm run preview
 ```
 src/
 ├── pages/                  # Route-level components
-│   ├── HomePage.tsx         # Scrollytelling with 5 visualization sections
+│   ├── HubPage.tsx          # Visual portal — data domain showcase
+│   ├── BudgetPage.tsx       # Budget scrollytelling with 7 composition sections
 │   ├── ExplorePage.tsx      # Ministry-wise data table
 │   ├── FindYourSharePage.tsx # Tax calculator
 │   └── MethodologyPage.tsx  # Documentation page
 ├── components/
-│   ├── home/               # Homepage compositions (Hero, Revenue, Expenditure, Flow, Map, CTA)
+│   ├── home/               # Budget story compositions (Hero, Revenue, Expenditure, Flow, Map, CTA)
+│   ├── budget/             # Budget-specific compositions (DeficitSection, PerCapitaSection)
 │   ├── calculator/         # Tax calculator UI (IncomeInput, DeductionsPanel, TaxBreakdown, ShareCard, SpendingAllocation)
 │   ├── explore/            # DataTable with expandable rows
 │   ├── viz/                # D3 visualizations (TreemapChart, SankeyDiagram, ChoroplethMap, WaffleChart, AnimatedCounter)
@@ -156,7 +159,12 @@ The site is built for maximum discoverability:
 
 ### Completed
 
-- [x] Scrollytelling homepage with 5 visualization sections
+- [x] Scrollytelling budget story with 7 composition sections
+- [x] Hub homepage at `/` with data domain portal
+- [x] Hub + domain routing (`/` → `/budget` → `/budget/explore`, etc.) with redirects for old URLs
+- [x] Context-aware navigation (hub links vs budget sub-nav)
+- [x] Deficit visualization (rupee bar: 69p earned / 31p borrowed, stat cards)
+- [x] Per-capita breakdown (segmented bar, 8 ministries, daily spending)
 - [x] Ministry-wise data explorer with CSV export
 - [x] Tax calculator with Old/New regime and deductions (80C, 80D, HRA, 24b, NPS, 80TTA)
 - [x] Share card generation for social media
@@ -166,15 +174,11 @@ The site is built for maximum discoverability:
 
 ### Next Steps
 
-**Phase 1: Homepage Compositions**
-- [ ] New narrative sections for the homepage (budget trends over years, per-capita breakdowns, debt visualization)
-- [ ] Scrollytelling refinements and mobile-specific compositions
-
-**Phase 2: Multi-Language Support**
-- [ ] Hindi translation (infrastructure already in place via react-i18next)
-- [ ] Telugu, Tamil, Kannada, Malayalam
-- [ ] Script-specific font loading on demand
-- [ ] Per-language prerendering and hreflang tags
+**Phase 2: Expand Scope** (priority)
+- [ ] New data domain: Economic Survey
+- [ ] New data domain: State Finances
+- [ ] New data domain: RBI Data
+- [ ] New data domain: Census & Demographics
 
 **Phase 3: Automated Data Pipeline**
 - [ ] Python ETL pipeline for automated budget data extraction
