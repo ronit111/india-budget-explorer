@@ -7,6 +7,9 @@ import BudgetPage from './pages/BudgetPage.tsx';
 import ExplorePage from './pages/ExplorePage.tsx';
 import FindYourSharePage from './pages/FindYourSharePage.tsx';
 import MethodologyPage from './pages/MethodologyPage.tsx';
+import EconomyPage from './pages/EconomyPage.tsx';
+import EconomyExplorePage from './pages/EconomyExplorePage.tsx';
+import EconomyMethodologyPage from './pages/EconomyMethodologyPage.tsx';
 
 const PAGE_ROUTES = [
   { path: '/', element: <HubPage /> },
@@ -14,6 +17,9 @@ const PAGE_ROUTES = [
   { path: '/budget/explore', element: <ExplorePage /> },
   { path: '/budget/calculator', element: <FindYourSharePage /> },
   { path: '/budget/methodology', element: <MethodologyPage /> },
+  { path: '/economy', element: <EconomyPage /> },
+  { path: '/economy/explore', element: <EconomyExplorePage /> },
+  { path: '/economy/methodology', element: <EconomyMethodologyPage /> },
 ] as const;
 
 // Old routes redirect to new /budget/* paths

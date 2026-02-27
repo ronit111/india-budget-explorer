@@ -3,6 +3,8 @@ import { Link, useLocation } from 'react-router-dom';
 export function Footer() {
   const location = useLocation();
   const isBudget = location.pathname.startsWith('/budget');
+  const isEconomy = location.pathname.startsWith('/economy');
+  const isDataDomain = isBudget || isEconomy;
 
   return (
     <footer className="relative py-8 pb-24 md:pb-8" style={{ background: 'var(--bg-surface)' }}>
@@ -13,7 +15,7 @@ export function Footer() {
         }}
       />
       <div className="max-w-7xl mx-auto px-6 sm:px-8">
-        {isBudget && (
+        {isDataDomain && (
           <div className="flex justify-center mb-6">
             <Link
               to="/#stories"
@@ -52,6 +54,30 @@ export function Footer() {
             </a>
             {' '}&middot; Not affiliated with GoI
           </p>
+        ) : isEconomy ? (
+          <p className="text-caption text-center md:text-left">
+            Data from{' '}
+            <a
+              href="https://www.indiabudget.gov.in/economicsurvey/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="link-hover"
+              style={{ color: 'var(--text-muted)' }}
+            >
+              Economic Survey of India
+            </a>
+            {' '}&middot;{' '}
+            <a
+              href="https://data.gov.in/government-open-data-license-india"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="link-hover"
+              style={{ color: 'var(--text-muted)' }}
+            >
+              GODL
+            </a>
+            {' '}&middot; Not affiliated with GoI
+          </p>
         ) : (
           <p className="text-caption text-center md:text-left">
             Open-source civic tech. Real government data, made accessible.
@@ -60,6 +86,8 @@ export function Footer() {
         <p className="text-caption font-mono" style={{ color: 'var(--text-muted)' }}>
           {isBudget ? (
             'Union Budget 2025-26'
+          ) : isEconomy ? (
+            'Economic Survey 2025-26'
           ) : (
             <a
               href="https://github.com/RonitChidara/indian-data-project"

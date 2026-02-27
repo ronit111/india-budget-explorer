@@ -11,12 +11,22 @@ export function Header() {
   const borderOpacity = useTransform(scrollY, [0, 100], [0, 0.06]);
 
   const isBudgetSection = location.pathname.startsWith('/budget');
+  const isEconomySection = location.pathname.startsWith('/economy');
+  const isDataDomain = isBudgetSection || isEconomySection;
 
   // Context-aware title: show story name when inside a data story
-  const headerTitle = isBudgetSection ? 'Budget 2025-26' : 'Indian Data Project';
-  const headerLink = isBudgetSection ? '/budget' : '/';
+  const headerTitle = isBudgetSection
+    ? 'Budget 2025-26'
+    : isEconomySection
+      ? 'Economic Survey 2025-26'
+      : 'Indian Data Project';
+  const headerLink = isBudgetSection
+    ? '/budget'
+    : isEconomySection
+      ? '/economy'
+      : '/';
 
-  // Only show nav links inside a data story (budget sub-pages)
+  // Only show nav links inside a data story (domain sub-pages)
   const navLinks = isBudgetSection
     ? [
         { to: '/budget', label: 'Story' },
@@ -24,10 +34,17 @@ export function Header() {
         { to: '/budget/calculator', label: 'Your Share' },
         { to: '/budget/methodology', label: 'Methodology' },
       ]
-    : [];
+    : isEconomySection
+      ? [
+          { to: '/economy', label: 'Story' },
+          { to: '/economy/explore', label: 'Explore' },
+          { to: '/economy/methodology', label: 'Methodology' },
+        ]
+      : [];
 
   const isActiveLink = (linkTo: string) => {
     if (linkTo === '/budget') return location.pathname === '/budget';
+    if (linkTo === '/economy') return location.pathname === '/economy';
     return location.pathname === linkTo;
   };
 
@@ -56,7 +73,7 @@ export function Header() {
 
       <div className="relative max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
         <div className="flex items-center gap-3">
-          {isBudgetSection && (
+          {isDataDomain && (
             <Link
               to="/#stories"
               className="flex items-center no-underline p-1.5 -ml-1.5 rounded-md transition-colors hover:bg-[var(--bg-raised)]"

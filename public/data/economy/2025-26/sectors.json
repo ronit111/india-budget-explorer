@@ -1,0 +1,41 @@
+{
+  "year": "2025-26",
+  "sectors": [
+    {
+      "id": "agriculture",
+      "name": "Agriculture & Allied",
+      "currentGrowth": 3.8,
+      "fiveYearAvg": 4.5,
+      "gvaShare": 16.3
+    },
+    {
+      "id": "industry",
+      "name": "Industry",
+      "currentGrowth": 6.2,
+      "fiveYearAvg": 5.4,
+      "gvaShare": 24.6
+    },
+    {
+      "id": "services",
+      "name": "Services",
+      "currentGrowth": 7.2,
+      "fiveYearAvg": 7.8,
+      "gvaShare": 49.9
+    },
+    {
+      "id": "construction",
+      "name": "Construction",
+      "currentGrowth": 8.6,
+      "fiveYearAvg": 8.1,
+      "gvaShare": 8.0
+    },
+    {
+      "id": "manufacturing",
+      "name": "Manufacturing",
+      "currentGrowth": 5.8,
+      "fiveYearAvg": 4.2,
+      "gvaShare": 15.2
+    }
+  ],
+  "source": "https://www.indiabudget.gov.in/economicsurvey/ (Ch.1, Table 1.1) + World Bank GDP indicators"
+}

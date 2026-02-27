@@ -3,9 +3,9 @@ import { Link, useLocation } from 'react-router-dom';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useScrollTrigger } from '../hooks/useScrollTrigger.ts';
 import { SEOHead } from '../components/seo/SEOHead.tsx';
-import { loadSummary } from '../lib/dataLoader.ts';
-import { formatLakhCrore } from '../lib/format.ts';
-import type { BudgetSummary } from '../lib/data/schema.ts';
+import { loadSummary, loadEconomySummary } from '../lib/dataLoader.ts';
+import { formatLakhCrore, formatIndianNumber } from '../lib/format.ts';
+import type { BudgetSummary, EconomySummary } from '../lib/data/schema.ts';
 
 const EASE_OUT_EXPO: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
@@ -254,11 +254,162 @@ function StatPill({
   );
 }
 
+function EconomyDomainCard({ summary }: { summary: EconomySummary | null }) {
+  const [ref, isVisible] = useScrollTrigger({ threshold: 0.1 });
+
+  // Mini sparkline: GDP growth last 5 years (from indicators.json GDP series)
+  const gdpMiniData = useMemo(() => {
+    if (!summary) return [];
+    // Hardcode the last 5 GDP growth points for the sparkline (from gdp-growth.json)
+    // These are loaded separately for the story page; for the hub we show summary stats only
+    return [
+      { year: '21-22', value: 9.7 },
+      { year: '22-23', value: 7.6 },
+      { year: '23-24', value: 9.2 },
+      { year: '24-25', value: 6.5 },
+      { year: '25-26', value: 6.4 },
+    ];
+  }, [summary]);
+
+  const maxGdp = Math.max(...gdpMiniData.map((d) => d.value), 1);
+
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 32 }}
+      animate={isVisible ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.8, ease: EASE_OUT_EXPO, delay: 0.1 }}
+      className="mt-8"
+    >
+      <Link
+        to="/economy"
+        className="group block relative rounded-2xl p-px no-underline overflow-hidden"
+        style={{ transition: 'transform 0.3s ease' }}
+        onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-4px)'; }}
+        onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0px)'; }}
+      >
+        {/* Gradient border — cyan-tinted for economy */}
+        <div
+          className="absolute inset-0 rounded-2xl opacity-20 group-hover:opacity-50"
+          style={{
+            background: 'linear-gradient(135deg, var(--cyan), transparent 40%, var(--gold) 80%, transparent)',
+            transition: 'opacity 0.4s ease',
+          }}
+        />
+        <div
+          className="absolute -inset-2 rounded-2xl opacity-0 group-hover:opacity-100 blur-2xl pointer-events-none"
+          style={{
+            background: 'linear-gradient(135deg, rgba(74,234,220,0.06), rgba(255,200,87,0.04))',
+            transition: 'opacity 0.4s ease',
+          }}
+        />
+
+        <div
+          className="relative rounded-2xl overflow-hidden"
+          style={{ background: 'var(--bg-surface)' }}
+        >
+          <div className="grid md:grid-cols-[1.4fr_1fr]">
+            <div className="relative p-8 md:p-12 flex flex-col justify-between min-h-[320px]">
+              <div
+                className="absolute top-0 right-0 w-3/4 h-full pointer-events-none opacity-[0.03]"
+                style={{
+                  background: 'radial-gradient(ellipse at 70% 50%, var(--cyan), transparent 70%)',
+                }}
+              />
+
+              <div className="relative z-10">
+                <span className="text-section-num tracking-[0.15em] uppercase mb-4 block">
+                  02 — Data Story
+                </span>
+                <h2
+                  className="text-3xl md:text-4xl font-bold mb-3"
+                  style={{ color: 'var(--text-primary)', lineHeight: 1.15 }}
+                >
+                  Economic Survey 2025-26
+                </h2>
+                <p className="text-annotation mb-6 max-w-md">
+                  India's economic report card. GDP growth, inflation, fiscal health, trade balance, and sectoral analysis from primary sources.
+                </p>
+              </div>
+
+              {/* Mini GDP sparkline bar */}
+              <div className="relative z-10">
+                {gdpMiniData.length > 0 && (
+                  <div className="mb-6 max-w-xs">
+                    <div className="flex items-end gap-1.5 h-8">
+                      {gdpMiniData.map((d, i) => (
+                        <motion.div
+                          key={d.year}
+                          className="flex-1 rounded-t"
+                          style={{ background: 'var(--cyan)' }}
+                          initial={{ height: 0 }}
+                          animate={isVisible ? { height: `${Math.max(10, (d.value / maxGdp) * 100)}%` } : {}}
+                          transition={{ duration: 0.6, ease: EASE_OUT_EXPO, delay: 0.4 + i * 0.06 }}
+                        />
+                      ))}
+                    </div>
+                    <div className="flex gap-1.5 mt-1">
+                      {gdpMiniData.map((d) => (
+                        <span key={d.year} className="flex-1 text-center text-[9px] font-mono" style={{ color: 'var(--text-muted)' }}>
+                          {d.year}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                <div
+                  className="inline-flex items-center gap-2 text-sm font-medium"
+                  style={{ color: 'var(--cyan)' }}
+                >
+                  <span>Explore the economy</span>
+                  <span
+                    className="group-hover:translate-x-1.5 inline-block"
+                    style={{ transition: 'transform 0.2s ease' }}
+                  >
+                    &rarr;
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div
+              className="p-8 md:p-12 flex flex-col justify-center gap-8 border-t md:border-t-0 md:border-l"
+              style={{ borderColor: 'rgba(255,255,255,0.06)' }}
+            >
+              <StatPill
+                label="GDP Growth"
+                value={summary ? `${summary.realGDPGrowth}%` : '...'}
+                color="var(--cyan)"
+                delay={0.3}
+                isVisible={isVisible}
+              />
+              <StatPill
+                label="CPI Inflation"
+                value={summary ? `${summary.cpiInflation}%` : '...'}
+                color="var(--saffron)"
+                delay={0.4}
+                isVisible={isVisible}
+              />
+              <StatPill
+                label="Per Capita GDP"
+                value={summary ? `Rs ${formatIndianNumber(summary.perCapitaGDP)}` : '...'}
+                color="var(--gold)"
+                delay={0.5}
+                isVisible={isVisible}
+              />
+            </div>
+          </div>
+        </div>
+      </Link>
+    </motion.div>
+  );
+}
+
 function ComingSoon() {
   const [ref, isVisible] = useScrollTrigger({ threshold: 0.15 });
 
   const domains = [
-    'Economic Survey',
     'State Finances',
     'RBI Data',
     'Census & Demographics',
@@ -301,9 +452,11 @@ function ComingSoon() {
 export default function HubPage() {
   const location = useLocation();
   const [summary, setSummary] = useState<BudgetSummary | null>(null);
+  const [economySummary, setEconomySummary] = useState<EconomySummary | null>(null);
 
   useEffect(() => {
     loadSummary('2025-26').then(setSummary).catch(() => {});
+    loadEconomySummary('2025-26').then(setEconomySummary).catch(() => {});
   }, []);
 
   // Scroll to hash anchor (e.g. /#stories) after mount
@@ -344,6 +497,8 @@ export default function HubPage() {
         </motion.p>
 
         <DomainCard summary={summary} />
+
+        <EconomyDomainCard summary={economySummary} />
 
         <ComingSoon />
       </section>

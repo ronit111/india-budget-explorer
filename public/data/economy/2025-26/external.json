@@ -1,0 +1,70 @@
+{
+  "year": "2025-26",
+  "series": [
+    {
+      "year": "2018-19",
+      "exports": 19.9,
+      "imports": 23.7,
+      "tradeBalance": -3.8,
+      "cadPctGDP": -2.1,
+      "forexReserves": 413
+    },
+    {
+      "year": "2019-20",
+      "exports": 18.7,
+      "imports": 21.2,
+      "tradeBalance": -2.6,
+      "cadPctGDP": -0.9,
+      "forexReserves": 478
+    },
+    {
+      "year": "2020-21",
+      "exports": 18.7,
+      "imports": 19.1,
+      "tradeBalance": -0.4,
+      "cadPctGDP": 0.9,
+      "forexReserves": 577
+    },
+    {
+      "year": "2021-22",
+      "exports": 21.4,
+      "imports": 24.0,
+      "tradeBalance": -2.6,
+      "cadPctGDP": -1.2,
+      "forexReserves": 607
+    },
+    {
+      "year": "2022-23",
+      "exports": 23.3,
+      "imports": 26.8,
+      "tradeBalance": -3.6,
+      "cadPctGDP": -2.0,
+      "forexReserves": 579
+    },
+    {
+      "year": "2023-24",
+      "exports": 21.4,
+      "imports": 23.5,
+      "tradeBalance": -2.1,
+      "cadPctGDP": -0.7,
+      "forexReserves": 646
+    },
+    {
+      "year": "2024-25",
+      "exports": 21.2,
+      "imports": 23.5,
+      "tradeBalance": -2.3,
+      "cadPctGDP": -1.1,
+      "forexReserves": 658
+    },
+    {
+      "year": "2025-26",
+      "exports": 22.5,
+      "imports": 25.3,
+      "tradeBalance": -2.8,
+      "cadPctGDP": -0.8,
+      "forexReserves": 670
+    }
+  ],
+  "source": "https://api.worldbank.org/v2/country/ind + Economic Survey 2025-26 Ch.4 + RBI BoP data"
+}

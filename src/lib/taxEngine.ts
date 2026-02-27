@@ -18,24 +18,19 @@ function computeSlabTax(
   taxableIncome: number,
   regime: TaxRegime
 ): { slabwiseTax: { slab: TaxSlab; taxOnSlab: number }[]; baseTax: number } {
-  let remaining = taxableIncome;
   let baseTax = 0;
   const slabwiseTax: { slab: TaxSlab; taxOnSlab: number }[] = [];
 
   for (const slab of regime.slabs) {
-    if (remaining <= 0) {
-      slabwiseTax.push({ slab, taxOnSlab: 0 });
-      continue;
-    }
-
     const upper = slab.to ?? Infinity;
-    const slabWidth = upper - slab.from + 1;
-    const taxableInSlab = Math.min(remaining, slabWidth);
-    const taxOnSlab = taxableInSlab * (slab.rate / 100);
+    // Slab boundaries use +1 encoding (0→400000, 400001→800000, ...).
+    // Convert to continuous monetary range: effective lower = max(0, from - 1).
+    const lowerBound = Math.max(0, slab.from - 1);
+    const incomeInSlab = Math.max(0, Math.min(taxableIncome, upper) - lowerBound);
+    const taxOnSlab = incomeInSlab * (slab.rate / 100);
 
     slabwiseTax.push({ slab, taxOnSlab });
     baseTax += taxOnSlab;
-    remaining -= taxableInSlab;
   }
 
   return { slabwiseTax, baseTax };
@@ -73,9 +68,28 @@ export function calculateTax(
 
   const { slabwiseTax, baseTax } = computeSlabTax(taxableIncome, regime);
 
-  // Rebate under Section 87A
-  const rebateApplied = taxableIncome <= regime.rebateLimit && baseTax > 0;
-  const taxAfterRebate = rebateApplied ? 0 : baseTax;
+  // Rebate under Section 87A + marginal relief
+  let rebateApplied = false;
+  let taxAfterRebate: number;
+
+  if (regime.rebateLimit && baseTax > 0) {
+    if (taxableIncome <= regime.rebateLimit) {
+      // Full rebate: income within threshold
+      rebateApplied = true;
+      taxAfterRebate = 0;
+    } else {
+      // Marginal relief: tax cannot exceed income above rebate limit
+      const excess = taxableIncome - regime.rebateLimit;
+      if (baseTax > excess) {
+        rebateApplied = true;
+        taxAfterRebate = excess;
+      } else {
+        taxAfterRebate = baseTax;
+      }
+    }
+  } else {
+    taxAfterRebate = baseTax;
+  }
 
   const surchargeMaxRate = regime.surchargeMaxRate ?? 37;
   const surcharge = computeSurcharge(taxableIncome, taxAfterRebate, slabsData.surchargeSlabs, surchargeMaxRate);

@@ -9,6 +9,13 @@ import type {
   TaxSlabsData,
   ExpenditureSharesData,
   YearIndex,
+  EconomySummary,
+  GDPGrowthData,
+  InflationData,
+  FiscalData,
+  ExternalData,
+  SectorsData,
+  IndicatorsData,
 } from './data/schema.ts';
 
 const cache = new Map<string, unknown>();
@@ -50,3 +57,25 @@ export const loadTaxSlabs = () =>
 
 export const loadExpenditureShares = () =>
   fetchJson<ExpenditureSharesData>('/data/tax-calculator/expenditure-shares.json');
+
+// ─── Economy Domain ──────────────────────────────────────────────
+export const loadEconomySummary = (year: string) =>
+  fetchJson<EconomySummary>(`/data/economy/${year}/summary.json`);
+
+export const loadGDPGrowth = (year: string) =>
+  fetchJson<GDPGrowthData>(`/data/economy/${year}/gdp-growth.json`);
+
+export const loadInflation = (year: string) =>
+  fetchJson<InflationData>(`/data/economy/${year}/inflation.json`);
+
+export const loadFiscal = (year: string) =>
+  fetchJson<FiscalData>(`/data/economy/${year}/fiscal.json`);
+
+export const loadExternal = (year: string) =>
+  fetchJson<ExternalData>(`/data/economy/${year}/external.json`);
+
+export const loadSectors = (year: string) =>
+  fetchJson<SectorsData>(`/data/economy/${year}/sectors.json`);
+
+export const loadIndicators = (year: string) =>
+  fetchJson<IndicatorsData>(`/data/economy/${year}/indicators.json`);

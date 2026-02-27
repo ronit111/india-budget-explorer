@@ -50,7 +50,10 @@ export function SearchOverlay() {
     { type: 'page', id: 'home', name: 'Home', subtitle: 'Budget overview and visualizations', route: '/' },
     { type: 'page', id: 'explore', name: 'Data Explorer', subtitle: 'Sortable table of all ministries', route: '/explore' },
     { type: 'page', id: 'calculator', name: 'Tax Calculator', subtitle: 'Find where your taxes go', route: '/calculator' },
-    { type: 'page', id: 'methodology', name: 'Methodology', subtitle: 'How we process the data', route: '/methodology' }
+    { type: 'page', id: 'methodology', name: 'Methodology', subtitle: 'How we process the data', route: '/methodology' },
+    { type: 'page', id: 'economy', name: 'Economic Survey', subtitle: 'GDP, inflation, fiscal, trade analysis', route: '/economy' },
+    { type: 'page', id: 'economy-explore', name: 'Indicator Explorer', subtitle: 'Browse economic indicators across years', route: '/economy/explore' },
+    { type: 'page', id: 'economy-methodology', name: 'Economy Methodology', subtitle: 'Economic Survey data sources and notes', route: '/economy/methodology' },
   );
 
   const fuse = new Fuse(searchItems, {

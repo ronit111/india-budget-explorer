@@ -1,0 +1,69 @@
+import { useMemo } from 'react';
+import { motion } from 'framer-motion';
+import { useScrollTrigger } from '../../hooks/useScrollTrigger.ts';
+import { SectionNumber } from '../ui/SectionNumber.tsx';
+import { HorizontalBarChart, type BarItem } from '../viz/HorizontalBarChart.tsx';
+import type { SectorsData } from '../../lib/data/schema.ts';
+
+interface SectorsSectionProps {
+  sectors: SectorsData;
+}
+
+export function SectorsSection({ sectors }: SectorsSectionProps) {
+  const [ref, isVisible] = useScrollTrigger({ threshold: 0.08 });
+
+  const items: BarItem[] = useMemo(() =>
+    sectors.sectors.map((s) => ({
+      id: s.id,
+      label: s.name,
+      value: s.currentGrowth,
+      secondaryValue: s.fiveYearAvg,
+      color: 'var(--cyan)',
+      secondaryColor: 'var(--text-muted)',
+      annotation: s.id === 'construction' || s.id === 'manufacturing'
+        ? `${s.gvaShare}% of GDP (within Industry)`
+        : `${s.gvaShare}% of GDP`,
+    })),
+  [sectors]);
+
+  return (
+    <section ref={ref} className="composition" style={{ background: 'var(--bg-surface)' }}>
+      <div className="max-w-7xl mx-auto px-6 sm:px-8">
+        <SectionNumber number={5} className="mb-6 block" isVisible={isVisible} />
+
+        <motion.h2
+          initial={{ opacity: 0, y: 16 }}
+          animate={isVisible ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          className="text-composition mb-2"
+        >
+          Sector scorecard
+        </motion.h2>
+
+        <motion.p
+          initial={{ opacity: 0, y: 12 }}
+          animate={isVisible ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
+          className="text-annotation mb-8 max-w-xl"
+        >
+          Services dominate India's economy at nearly half of GDP. Construction leads growth this year, while manufacturing is outpacing its 5-year average.
+        </motion.p>
+
+        <HorizontalBarChart
+          items={items}
+          isVisible={isVisible}
+          formatValue={(v) => v.toFixed(1)}
+          unit="%"
+          showSecondary
+          primaryLabel="Current Growth"
+          secondaryLabel="5-Year Average"
+          labelWidth={150}
+        />
+
+        <p className="source-attribution">
+          Source: {sectors.source}
+        </p>
+      </div>
+    </section>
+  );
+}

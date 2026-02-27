@@ -1,0 +1,57 @@
+{
+  "year": "2025-26",
+  "indicator": "Real GDP Growth Rate",
+  "unit": "percent",
+  "series": [
+    {
+      "year": "2014-15",
+      "value": 7.4
+    },
+    {
+      "year": "2015-16",
+      "value": 8.0
+    },
+    {
+      "year": "2016-17",
+      "value": 8.3
+    },
+    {
+      "year": "2017-18",
+      "value": 6.8
+    },
+    {
+      "year": "2018-19",
+      "value": 6.5
+    },
+    {
+      "year": "2019-20",
+      "value": 3.9
+    },
+    {
+      "year": "2020-21",
+      "value": -5.8
+    },
+    {
+      "year": "2021-22",
+      "value": 9.7
+    },
+    {
+      "year": "2022-23",
+      "value": 7.6
+    },
+    {
+      "year": "2023-24",
+      "value": 9.2
+    },
+    {
+      "year": "2024-25",
+      "value": 6.5
+    },
+    {
+      "year": "2025-26",
+      "value": 6.4,
+      "label": "Advance estimate"
+    }
+  ],
+  "source": "https://api.worldbank.org/v2/country/ind/indicator/NY.GDP.MKTP.KD.ZG + Economic Survey 2025-26"
+}

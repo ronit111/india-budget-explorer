@@ -9,6 +9,8 @@ import { SearchOverlay } from '../ui/SearchOverlay.tsx';
 export function PageShell({ children }: { children: ReactNode }) {
   const location = useLocation();
   const isBudgetStory = location.pathname === '/budget';
+  const isEconomyStory = location.pathname === '/economy';
+  const showScrollProgress = isBudgetStory || isEconomyStory;
 
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, { stiffness: 100, damping: 30, restDelta: 0.001 });
@@ -18,12 +20,12 @@ export function PageShell({ children }: { children: ReactNode }) {
       <Header />
       <SearchOverlay />
 
-      {isBudgetStory && (
+      {showScrollProgress && (
         <motion.div
           className="fixed top-16 left-0 right-0 h-0.5 z-40 origin-left"
           style={{
             scaleX,
-            backgroundColor: 'var(--saffron)',
+            backgroundColor: isEconomyStory ? 'var(--cyan)' : 'var(--saffron)',
           }}
         />
       )}

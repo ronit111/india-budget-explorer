@@ -58,7 +58,9 @@ export function TaxBreakdownDisplay({ breakdown }: TaxBreakdownDisplayProps) {
           }}
         >
           <p className="text-sm" style={{ color: 'var(--positive)' }}>
-            Section 87A rebate applied. No tax payable.
+            {breakdown.totalTax === 0
+              ? 'Section 87A rebate applied. No tax payable.'
+              : `Marginal relief applied. Tax capped at Rs ${formatIndianNumber(breakdown.totalTax)} (income above rebate threshold).`}
           </p>
         </motion.div>
       )}

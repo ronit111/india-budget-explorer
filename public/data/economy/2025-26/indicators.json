@@ -1,0 +1,459 @@
+{
+  "year": "2025-26",
+  "indicators": [
+    {
+      "id": "gdp-growth",
+      "name": "Real GDP Growth Rate",
+      "category": "growth",
+      "unit": "percent",
+      "series": [
+        {
+          "year": "2014-15",
+          "value": 7.4
+        },
+        {
+          "year": "2015-16",
+          "value": 8.0
+        },
+        {
+          "year": "2016-17",
+          "value": 8.3
+        },
+        {
+          "year": "2017-18",
+          "value": 6.8
+        },
+        {
+          "year": "2018-19",
+          "value": 6.5
+        },
+        {
+          "year": "2019-20",
+          "value": 3.9
+        },
+        {
+          "year": "2020-21",
+          "value": -5.8
+        },
+        {
+          "year": "2021-22",
+          "value": 9.7
+        },
+        {
+          "year": "2022-23",
+          "value": 7.6
+        },
+        {
+          "year": "2023-24",
+          "value": 9.2
+        },
+        {
+          "year": "2024-25",
+          "value": 6.5
+        },
+        {
+          "year": "2025-26",
+          "value": 6.4,
+          "label": "Advance estimate"
+        }
+      ],
+      "source": "https://api.worldbank.org/v2/country/ind/indicator/NY.GDP.MKTP.KD.ZG + Economic Survey 2025-26"
+    },
+    {
+      "id": "cpi-inflation",
+      "name": "CPI Inflation (Annual Average)",
+      "category": "prices",
+      "unit": "percent",
+      "series": [
+        {
+          "year": "2014-15",
+          "value": 6.7
+        },
+        {
+          "year": "2015-16",
+          "value": 4.9
+        },
+        {
+          "year": "2016-17",
+          "value": 4.9
+        },
+        {
+          "year": "2017-18",
+          "value": 3.3
+        },
+        {
+          "year": "2018-19",
+          "value": 3.9
+        },
+        {
+          "year": "2019-20",
+          "value": 3.7
+        },
+        {
+          "year": "2020-21",
+          "value": 6.6
+        },
+        {
+          "year": "2021-22",
+          "value": 5.1
+        },
+        {
+          "year": "2022-23",
+          "value": 6.7
+        },
+        {
+          "year": "2023-24",
+          "value": 5.6
+        },
+        {
+          "year": "2024-25",
+          "value": 5.0
+        },
+        {
+          "year": "2025-26",
+          "value": 4.2
+        }
+      ],
+      "source": "https://api.worldbank.org/v2/country/ind/indicator/FP.CPI.TOTL.ZG + Economic Survey 2025-26 Ch.5"
+    },
+    {
+      "id": "fiscal-deficit",
+      "name": "Fiscal Deficit (% of GDP)",
+      "category": "fiscal",
+      "unit": "percent",
+      "series": [
+        {
+          "year": "2019-20",
+          "value": 4.6
+        },
+        {
+          "year": "2020-21",
+          "value": 9.2
+        },
+        {
+          "year": "2021-22",
+          "value": 6.7
+        },
+        {
+          "year": "2022-23",
+          "value": 6.4
+        },
+        {
+          "year": "2023-24",
+          "value": 5.6
+        },
+        {
+          "year": "2024-25",
+          "value": 4.8
+        },
+        {
+          "year": "2025-26",
+          "value": 4.4
+        }
+      ],
+      "source": "https://www.indiabudget.gov.in/economicsurvey/ (Ch.2) + Budget at a Glance"
+    },
+    {
+      "id": "revenue-deficit",
+      "name": "Revenue Deficit (% of GDP)",
+      "category": "fiscal",
+      "unit": "percent",
+      "series": [
+        {
+          "year": "2019-20",
+          "value": 3.3
+        },
+        {
+          "year": "2020-21",
+          "value": 7.3
+        },
+        {
+          "year": "2021-22",
+          "value": 4.4
+        },
+        {
+          "year": "2022-23",
+          "value": 3.9
+        },
+        {
+          "year": "2023-24",
+          "value": 2.6
+        },
+        {
+          "year": "2024-25",
+          "value": 1.8
+        },
+        {
+          "year": "2025-26",
+          "value": 1.5
+        }
+      ],
+      "source": "https://www.indiabudget.gov.in/economicsurvey/ (Ch.2) + Budget at a Glance"
+    },
+    {
+      "id": "exports-pct-gdp",
+      "name": "Exports (% of GDP)",
+      "category": "external",
+      "unit": "percent",
+      "series": [
+        {
+          "year": "2014-15",
+          "value": 23.0
+        },
+        {
+          "year": "2015-16",
+          "value": 19.8
+        },
+        {
+          "year": "2016-17",
+          "value": 19.2
+        },
+        {
+          "year": "2017-18",
+          "value": 18.8
+        },
+        {
+          "year": "2018-19",
+          "value": 19.9
+        },
+        {
+          "year": "2019-20",
+          "value": 18.7
+        },
+        {
+          "year": "2020-21",
+          "value": 18.7
+        },
+        {
+          "year": "2021-22",
+          "value": 21.4
+        },
+        {
+          "year": "2022-23",
+          "value": 23.3
+        },
+        {
+          "year": "2023-24",
+          "value": 21.4
+        },
+        {
+          "year": "2024-25",
+          "value": 21.2
+        }
+      ],
+      "source": "https://api.worldbank.org/v2/country/ind/indicator (World Bank)"
+    },
+    {
+      "id": "imports-pct-gdp",
+      "name": "Imports (% of GDP)",
+      "category": "external",
+      "unit": "percent",
+      "series": [
+        {
+          "year": "2014-15",
+          "value": 26.0
+        },
+        {
+          "year": "2015-16",
+          "value": 22.1
+        },
+        {
+          "year": "2016-17",
+          "value": 20.9
+        },
+        {
+          "year": "2017-18",
+          "value": 22.0
+        },
+        {
+          "year": "2018-19",
+          "value": 23.7
+        },
+        {
+          "year": "2019-20",
+          "value": 21.2
+        },
+        {
+          "year": "2020-21",
+          "value": 19.1
+        },
+        {
+          "year": "2021-22",
+          "value": 24.0
+        },
+        {
+          "year": "2022-23",
+          "value": 26.8
+        },
+        {
+          "year": "2023-24",
+          "value": 23.5
+        },
+        {
+          "year": "2024-25",
+          "value": 23.5
+        }
+      ],
+      "source": "https://api.worldbank.org/v2/country/ind/indicator (World Bank)"
+    },
+    {
+      "id": "agri-va-pct-gdp",
+      "name": "Agriculture Value Added (% of GDP)",
+      "category": "growth",
+      "unit": "percent",
+      "series": [
+        {
+          "year": "2014-15",
+          "value": 16.8
+        },
+        {
+          "year": "2015-16",
+          "value": 16.2
+        },
+        {
+          "year": "2016-17",
+          "value": 16.4
+        },
+        {
+          "year": "2017-18",
+          "value": 16.6
+        },
+        {
+          "year": "2018-19",
+          "value": 16.0
+        },
+        {
+          "year": "2019-20",
+          "value": 16.8
+        },
+        {
+          "year": "2020-21",
+          "value": 18.7
+        },
+        {
+          "year": "2021-22",
+          "value": 17.4
+        },
+        {
+          "year": "2022-23",
+          "value": 16.5
+        },
+        {
+          "year": "2023-24",
+          "value": 16.2
+        },
+        {
+          "year": "2024-25",
+          "value": 16.3
+        }
+      ],
+      "source": "https://api.worldbank.org/v2/country/ind/indicator (World Bank)"
+    },
+    {
+      "id": "industry-va-pct-gdp",
+      "name": "Industry Value Added (% of GDP)",
+      "category": "growth",
+      "unit": "percent",
+      "series": [
+        {
+          "year": "2014-15",
+          "value": 27.7
+        },
+        {
+          "year": "2015-16",
+          "value": 27.3
+        },
+        {
+          "year": "2016-17",
+          "value": 26.6
+        },
+        {
+          "year": "2017-18",
+          "value": 26.5
+        },
+        {
+          "year": "2018-19",
+          "value": 26.4
+        },
+        {
+          "year": "2019-20",
+          "value": 24.6
+        },
+        {
+          "year": "2020-21",
+          "value": 25.1
+        },
+        {
+          "year": "2021-22",
+          "value": 26.5
+        },
+        {
+          "year": "2022-23",
+          "value": 25.4
+        },
+        {
+          "year": "2023-24",
+          "value": 25.3
+        },
+        {
+          "year": "2024-25",
+          "value": 24.6
+        }
+      ],
+      "source": "https://api.worldbank.org/v2/country/ind/indicator (World Bank)"
+    },
+    {
+      "id": "services-va-pct-gdp",
+      "name": "Services Value Added (% of GDP)",
+      "category": "growth",
+      "unit": "percent",
+      "series": [
+        {
+          "year": "2014-15",
+          "value": 47.8
+        },
+        {
+          "year": "2015-16",
+          "value": 47.8
+        },
+        {
+          "year": "2016-17",
+          "value": 47.7
+        },
+        {
+          "year": "2017-18",
+          "value": 47.7
+        },
+        {
+          "year": "2018-19",
+          "value": 48.4
+        },
+        {
+          "year": "2019-20",
+          "value": 50.1
+        },
+        {
+          "year": "2020-21",
+          "value": 47.9
+        },
+        {
+          "year": "2021-22",
+          "value": 47.8
+        },
+        {
+          "year": "2022-23",
+          "value": 49.7
+        },
+        {
+          "year": "2023-24",
+          "value": 49.5
+        },
+        {
+          "year": "2024-25",
+          "value": 49.9
+        }
+      ],
+      "source": "https://api.worldbank.org/v2/country/ind/indicator (World Bank)"
+    }
+  ]
+}

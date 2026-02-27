@@ -36,6 +36,7 @@ export interface RevenueCategory {
 export interface ReceiptsData {
   year: string
   total: number
+  note?: string
   categories: RevenueCategory[]
 }
 
@@ -113,6 +114,7 @@ export interface StateTransfer {
 export interface StatewiseData {
   year: string
   totalTransfers: number
+  note?: string
   states: StateTransfer[]
 }
 
@@ -186,4 +188,113 @@ export interface ExpenditureSharesData {
 export interface YearIndex {
   years: string[]                // ["2025-26", "2024-25", ...]
   latest: string
+}
+
+// ─── Economic Survey Summary ──────────────────────────────────────
+export interface EconomySummary {
+  year: string;
+  surveyDate: string;
+  realGDPGrowth: number;
+  nominalGDP: number;
+  projectedGrowthLow: number;
+  projectedGrowthHigh: number;
+  cpiInflation: number;
+  fiscalDeficitPercentGDP: number;
+  currentAccountDeficitPercentGDP: number;
+  population: number;
+  perCapitaGDP: number;
+  lastUpdated: string;
+  source: string;
+}
+
+// ─── Time Series (shared) ─────────────────────────────────────────
+export interface TimeSeriesPoint {
+  year: string;
+  value: number;
+  label?: string;
+}
+
+// ─── GDP Growth ───────────────────────────────────────────────────
+export interface GDPGrowthData {
+  year: string;
+  indicator: string;
+  unit: string;
+  series: TimeSeriesPoint[];
+  source: string;
+}
+
+// ─── Inflation ────────────────────────────────────────────────────
+export interface InflationSeries {
+  period: string;
+  cpiHeadline: number;
+  cpiFood: number | null;
+  cpiCore: number | null;
+}
+
+export interface InflationData {
+  year: string;
+  targetBand: { lower: number; upper: number };
+  series: InflationSeries[];
+  source: string;
+}
+
+// ─── Fiscal ───────────────────────────────────────────────────────
+export interface FiscalYearData {
+  year: string;
+  fiscalDeficitPctGDP: number;
+  revenueDeficitPctGDP: number;
+  primaryDeficitPctGDP: number;
+}
+
+export interface FiscalData {
+  year: string;
+  targetFiscalDeficit: number;
+  series: FiscalYearData[];
+  source: string;
+}
+
+// ─── External Sector ──────────────────────────────────────────────
+export interface ExternalYearData {
+  year: string;
+  exports: number;
+  imports: number;
+  tradeBalance: number;
+  cadPctGDP: number;
+  forexReserves: number;
+}
+
+export interface ExternalData {
+  year: string;
+  series: ExternalYearData[];
+  source: string;
+}
+
+// ─── Sectors ──────────────────────────────────────────────────────
+export interface SectorGrowth {
+  id: string;
+  name: string;
+  currentGrowth: number;
+  fiveYearAvg: number;
+  gvaShare: number;
+}
+
+export interface SectorsData {
+  year: string;
+  sectors: SectorGrowth[];
+  source: string;
+}
+
+// ─── Economic Indicators (Explorer) ──────────────────────────────
+export interface EconomicIndicator {
+  id: string;
+  name: string;
+  category: string;
+  unit: string;
+  series: TimeSeriesPoint[];
+  source: string;
+}
+
+export interface IndicatorsData {
+  year: string;
+  indicators: EconomicIndicator[];
 }

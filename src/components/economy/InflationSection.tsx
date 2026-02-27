@@ -1,0 +1,85 @@
+import { useMemo } from 'react';
+import { motion } from 'framer-motion';
+import { useScrollTrigger } from '../../hooks/useScrollTrigger.ts';
+import { SectionNumber } from '../ui/SectionNumber.tsx';
+import { LineChart, type LineSeries } from '../viz/LineChart.tsx';
+import type { InflationData } from '../../lib/data/schema.ts';
+
+interface InflationSectionProps {
+  inflation: InflationData;
+}
+
+export function InflationSection({ inflation }: InflationSectionProps) {
+  const [ref, isVisible] = useScrollTrigger({ threshold: 0.08 });
+
+  const series: LineSeries[] = useMemo(() => [
+    {
+      id: 'cpi-headline',
+      name: 'CPI Headline',
+      color: 'var(--saffron)',
+      data: inflation.series.map((d) => ({ year: d.period, value: d.cpiHeadline })),
+    },
+    {
+      id: 'cpi-food',
+      name: 'Food CPI',
+      color: 'var(--gold)',
+      data: inflation.series.filter((d) => d.cpiFood !== null).map((d) => ({
+        year: d.period,
+        value: d.cpiFood!,
+      })),
+    },
+    {
+      id: 'cpi-core',
+      name: 'Core CPI',
+      color: 'var(--cyan)',
+      data: inflation.series.filter((d) => d.cpiCore !== null).map((d) => ({
+        year: d.period,
+        value: d.cpiCore!,
+      })),
+      dashed: true,
+    },
+  ], [inflation]);
+
+  return (
+    <section ref={ref} className="composition" style={{ background: 'var(--bg-surface)' }}>
+      <div className="max-w-7xl mx-auto px-6 sm:px-8">
+        <SectionNumber number={2} className="mb-6 block" isVisible={isVisible} />
+
+        <motion.h2
+          initial={{ opacity: 0, y: 16 }}
+          animate={isVisible ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          className="text-composition mb-2"
+        >
+          Taming inflation
+        </motion.h2>
+
+        <motion.p
+          initial={{ opacity: 0, y: 12 }}
+          animate={isVisible ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
+          className="text-annotation mb-8 max-w-xl"
+        >
+          The RBI targets CPI inflation between 2-6%. Food prices remain the most volatile component, while core inflation has been steadily declining.
+        </motion.p>
+
+        <LineChart
+          series={series}
+          band={{
+            lower: inflation.targetBand.lower,
+            upper: inflation.targetBand.upper,
+            color: '#4AEADC',
+            label: 'RBI target (2-6%)',
+          }}
+          isVisible={isVisible}
+          formatValue={(v) => v.toFixed(1)}
+          unit="%"
+        />
+
+        <p className="source-attribution">
+          Source: {inflation.source}
+        </p>
+      </div>
+    </section>
+  );
+}
