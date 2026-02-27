@@ -14,7 +14,11 @@ export function RevenueSection({ receipts }: RevenueSectionProps) {
   const [ref, isVisible] = useScrollTrigger({ threshold: 0.1 });
   const [hoveredCat, setHoveredCat] = useState<string | null>(null);
 
-  const borrowingPct = receipts.categories.find((c) => c.id === 'borrowings')?.percentOfTotal || 0;
+  // "Per rupee earned" = borrowings / non-borrowing receipts (taxes + non-tax revenue).
+  // Denominator is what the govt earns, not total including borrowings.
+  const borrowingAmt = receipts.categories.find((c) => c.id === 'borrowings')?.amount || 0;
+  const earnedRevenue = receipts.total - borrowingAmt;
+  const borrowingPaise = earnedRevenue > 0 ? Math.round((borrowingAmt / earnedRevenue) * 100) : 0;
 
   return (
     <section ref={ref} className="composition">
@@ -50,7 +54,7 @@ export function RevenueSection({ receipts }: RevenueSectionProps) {
               transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
               className="text-annotation mb-6"
             >
-              {`Each square = 1%. For every rupee earned, the government borrows ${Math.round(borrowingPct)} paise more.`}
+              {`Each square = 1%. For every rupee earned, the government borrows ${borrowingPaise} paise.`}
             </motion.p>
 
             <motion.div

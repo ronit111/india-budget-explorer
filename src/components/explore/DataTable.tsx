@@ -53,7 +53,9 @@ export function DataTable({ data }: DataTableProps) {
     const rows = sorted.map((m) => [
       m.name, m.budgetEstimate, m.percentOfTotal, m.yoyChange ?? 'N/A', m.perCapita,
     ]);
-    const csv = [headers, ...rows].map((r) => r.join(',')).join('\n');
+    const csv = [headers, ...rows]
+      .map((r) => r.map((f) => `"${String(f).replace(/"/g, '""')}"`).join(','))
+      .join('\n');
     const blob = new Blob([csv], { type: 'text/csv' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');

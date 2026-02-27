@@ -36,6 +36,7 @@ class RevenueCategory(BaseModel):
 class ReceiptsData(BaseModel):
     year: str
     total: float
+    note: str | None = None
     categories: list[RevenueCategory]
 
 
@@ -120,6 +121,7 @@ class StateTransfer(BaseModel):
 class StatewiseData(BaseModel):
     year: str
     totalTransfers: float
+    note: str | None = None
     states: list[StateTransfer]
 
 

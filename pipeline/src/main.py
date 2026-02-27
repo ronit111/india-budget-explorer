@@ -53,6 +53,7 @@ from src.validate.schemas import (
     TreemapData,
     YearIndex,
 )
+from src.validate.invariants import run_all_invariants
 from src.publish.writer import publish_all
 
 logging.basicConfig(
@@ -332,6 +333,21 @@ def run_pipeline():
         for err in errors:
             logger.error(f"  - {err}")
         sys.exit(1)
+
+    # Cross-file invariants
+    invariant_errors = run_all_invariants(
+        treemap=treemap_data,
+        expenditure=expenditure_data,
+        schemes=schemes_data,
+        receipts=receipts_data,
+        statewise=statewise_data,
+    )
+    if invariant_errors:
+        logger.error(f"Cross-file invariants failed with {len(invariant_errors)} error(s):")
+        for err in invariant_errors:
+            logger.error(f"  - {err}")
+        sys.exit(1)
+    logger.info("  All cross-file invariants passed ✓")
 
     # ── Stage 5: PUBLISH ────────────────────────────────────────
     logger.info("Stage 5: PUBLISH")
