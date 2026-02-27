@@ -30,15 +30,6 @@ function HubHero() {
       />
 
       <div className="relative z-10 px-6 sm:px-8 max-w-7xl mx-auto w-full">
-        <motion.p
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: EASE_OUT_EXPO, delay: 0.1 }}
-          className="text-section-num tracking-[0.2em] uppercase mb-8"
-        >
-          {'Indian Data Project'}
-        </motion.p>
-
         {/* Viewport-filling title — typography as architecture */}
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
