@@ -53,7 +53,8 @@ export function HorizontalBarChart({
 }: HorizontalBarChartProps) {
   const tooltip = useTooltip<BarItem>();
 
-  const MARGIN = { ...DEFAULT_MARGIN, left: labelWidth };
+  const hasAnnotations = items.some((i) => i.annotation);
+  const MARGIN = { ...DEFAULT_MARGIN, left: labelWidth, right: hasAnnotations ? 160 : DEFAULT_MARGIN.right };
   const innerW = width - MARGIN.left - MARGIN.right;
   const rowHeight = showSecondary ? barHeight * 2 + BAR_GAP + 12 : barHeight + 12;
   const totalH = MARGIN.top + items.length * rowHeight + MARGIN.bottom;

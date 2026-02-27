@@ -166,8 +166,8 @@ export function AreaChart({
         <defs>
           {series.map((s) => (
             <linearGradient key={s.id} id={`area-grad-${s.id}`} x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor={s.color} stopOpacity={0.35} />
-              <stop offset="100%" stopColor={s.color} stopOpacity={0.03} />
+              <stop offset="0%" stopColor={s.color} stopOpacity={0.5} />
+              <stop offset="100%" stopColor={s.color} stopOpacity={0.08} />
             </linearGradient>
           ))}
         </defs>
