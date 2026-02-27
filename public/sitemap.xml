@@ -1,59 +1,131 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <!-- Pages -->
+  <!-- Hub -->
   <url>
     <loc>https://indiandataproject.org/</loc>
-    <lastmod>2025-02-01</lastmod>
-    <changefreq>yearly</changefreq>
+    <lastmod>2025-07-01</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
+
+  <!-- Budget domain -->
   <url>
-    <loc>https://indiandataproject.org/explore</loc>
-    <lastmod>2025-02-01</lastmod>
+    <loc>https://indiandataproject.org/budget</loc>
+    <lastmod>2025-07-01</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://indiandataproject.org/calculator</loc>
-    <lastmod>2025-02-01</lastmod>
+    <loc>https://indiandataproject.org/budget/explore</loc>
+    <lastmod>2025-07-01</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://indiandataproject.org/methodology</loc>
-    <lastmod>2025-02-01</lastmod>
+    <loc>https://indiandataproject.org/budget/calculator</loc>
+    <lastmod>2025-07-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://indiandataproject.org/budget/methodology</loc>
+    <lastmod>2025-07-01</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
 
-  <!-- Downloadable datasets -->
+  <!-- Economy domain -->
+  <url>
+    <loc>https://indiandataproject.org/economy</loc>
+    <lastmod>2025-07-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://indiandataproject.org/economy/explore</loc>
+    <lastmod>2025-07-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://indiandataproject.org/economy/methodology</loc>
+    <lastmod>2025-07-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <!-- Budget data endpoints -->
   <url>
     <loc>https://indiandataproject.org/data/budget/2025-26/summary.json</loc>
-    <lastmod>2025-02-01</lastmod>
+    <lastmod>2025-07-01</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://indiandataproject.org/data/budget/2025-26/receipts.json</loc>
-    <lastmod>2025-02-01</lastmod>
+    <lastmod>2025-07-01</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://indiandataproject.org/data/budget/2025-26/expenditure.json</loc>
-    <lastmod>2025-02-01</lastmod>
+    <lastmod>2025-07-01</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://indiandataproject.org/data/budget/2025-26/sankey.json</loc>
-    <lastmod>2025-02-01</lastmod>
+    <lastmod>2025-07-01</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>
   </url>
   <url>
     <loc>https://indiandataproject.org/data/budget/2025-26/statewise.json</loc>
-    <lastmod>2025-02-01</lastmod>
+    <lastmod>2025-07-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+  </url>
+
+  <!-- Economy data endpoints -->
+  <url>
+    <loc>https://indiandataproject.org/data/economy/2025-26/summary.json</loc>
+    <lastmod>2025-07-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://indiandataproject.org/data/economy/2025-26/gdp-growth.json</loc>
+    <lastmod>2025-07-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://indiandataproject.org/data/economy/2025-26/inflation.json</loc>
+    <lastmod>2025-07-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://indiandataproject.org/data/economy/2025-26/fiscal.json</loc>
+    <lastmod>2025-07-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://indiandataproject.org/data/economy/2025-26/external.json</loc>
+    <lastmod>2025-07-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://indiandataproject.org/data/economy/2025-26/sectors.json</loc>
+    <lastmod>2025-07-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://indiandataproject.org/data/economy/2025-26/indicators.json</loc>
+    <lastmod>2025-07-01</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>
   </url>

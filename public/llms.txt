@@ -1,34 +1,54 @@
 # Indian Data Project
 
-> Interactive visualization of India's Union Budget 2025-26. Open government data made accessible.
+> Open Indian government data made accessible, visual, and shareable. Dense PDFs and buried spreadsheets turned into interactive visual stories.
 
 ## What this site does
 
-Indian Data Project visualises the Union Budget 2025-26 (Rs 50.65 lakh crore total expenditure). It answers: where does India's money come from, and where does it go?
+Indian Data Project is a hub for Indian government data visualization. Each data domain (budget, economic survey, state finances) gets its own visual story with explorable breakdowns. Two domains are live: Union Budget 2025-26 and Economic Survey 2025-26.
 
 ## Pages
 
-- / — Scrollytelling overview: animated budget summary, revenue breakdown (waffle chart), ministry-wise expenditure (treemap), money flow (Sankey diagram), state-wise allocation (choropleth map)
-- /explore — Sortable data table of all ministry expenditures with expandable scheme-level detail. CSV export available.
-- /calculator — Personal tax calculator (FY 2025-26). Enter income, choose Old/New regime with full deductions support (80C, 80D, HRA, 24b, NPS, 80TTA), see slab-by-slab tax breakdown and how your tax rupees are allocated across ministries. Shareable image card.
-- /methodology — Data sources, tax computation methodology, number formatting conventions, limitations.
+### Hub
+- / — Visual portal showcasing all data domains with live stats from each dataset
+
+### Budget Domain
+- /budget — Scrollytelling narrative: animated headline, revenue waffle chart, deficit rupee bar, expenditure treemap, Sankey money flow, state choropleth, per-capita breakdown
+- /budget/explore — Sortable ministry-wise expenditure table with expandable scheme detail. CSV export available.
+- /budget/calculator — Personal tax calculator (FY 2025-26). Enter income, choose Old/New regime with deductions support (80C, 80D, HRA, 24b, NPS, 80TTA), see slab-by-slab tax breakdown and ministry-wise allocation of your tax. Shareable image card.
+- /budget/methodology — Data sources, tax computation methodology, formatting conventions, limitations.
+
+### Economy Domain
+- /economy — Scrollytelling visual breakdown: GDP growth trend (line chart), inflation tracking (CPI/WPI line chart), trade balance (area chart), fiscal position, sectoral composition (horizontal bar chart with annotations)
+- /economy/explore — Searchable table of all economic indicators with year-over-year comparisons
+- /economy/methodology — Data sources, indicator definitions, survey methodology, limitations
 
 ## Key data points
 
-- Total expenditure: Rs 50,65,345 crore (Budget Estimate 2025-26)
+### Budget (Budget Estimate 2025-26)
+- Total expenditure: Rs 50,65,345 crore
 - Revenue receipts: Rs 34,20,905 crore
 - Capital expenditure: Rs 11,21,059 crore
 - Fiscal deficit target: 4.4% of GDP
 - Population estimate used: 145 crore (1.45 billion)
 
+### Economic Survey (2025-26)
+- Real GDP growth: 6.4% (2024-25 estimate)
+- Projected growth: 6.3-6.8% (2025-26)
+- CPI inflation: 4.2%
+- Nominal GDP: Rs 3,56,98,000 crore
+- Current account deficit: -0.8% of GDP
+- Per capita GDP: Rs 2,46,034
+
 ## Data sources
 
-- Open Budgets India (openbudgetsindia.org) — structured budget data via CKAN API
+- Open Budgets India (openbudgetsindia.org) — structured budget data
 - Union Budget documents (indiabudget.gov.in) — Expenditure Budget Vol. 1 & 2, Receipt Budget, Finance Bill
+- Economic Survey of India (indiabudget.gov.in/economicsurvey/) — annual economic review
 - Census projections and RBI reports for population estimates
 
 ## Downloadable datasets (JSON)
 
+### Budget
 - /data/budget/2025-26/summary.json — Budget headline numbers
 - /data/budget/2025-26/receipts.json — Revenue breakdown by category
 - /data/budget/2025-26/expenditure.json — Ministry-wise expenditure with sub-schemes
@@ -38,6 +58,15 @@ Indian Data Project visualises the Union Budget 2025-26 (Rs 50.65 lakh crore tot
 - /data/budget/2025-26/treemap.json — Hierarchical expenditure data
 - /data/tax-calculator/slabs.json — Income tax slab rates (Old and New regime)
 - /data/tax-calculator/expenditure-shares.json — Ministry spending shares for tax allocation
+
+### Economy
+- /data/economy/2025-26/summary.json — Economic headline numbers
+- /data/economy/2025-26/gdp-growth.json — GDP growth time series
+- /data/economy/2025-26/inflation.json — CPI and WPI inflation data
+- /data/economy/2025-26/fiscal.json — Fiscal deficit and government finances
+- /data/economy/2025-26/external.json — Trade balance, exports, imports
+- /data/economy/2025-26/sectors.json — Sectoral GDP composition
+- /data/economy/2025-26/indicators.json — Key economic indicators
 
 ## Tax calculator details
 

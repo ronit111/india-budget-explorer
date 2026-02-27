@@ -3,8 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Indian Data Project — Where Your Tax Money Goes</title>
-    <meta name="description" content="Interactive visualization of India's Union Budget 2025-26. See where Rs 50 lakh crore goes, calculate your personal tax breakdown, and explore ministry-wise spending." />
+
+    <!-- Fallback title — Helmet overrides per-route after React renders.
+         Prerendered pages already have the correct per-route title baked in. -->
+    <title>Indian Data Project</title>
 
     <!-- Favicon -->
     <link rel="icon" href="/logo.svg" type="image/svg+xml" />
@@ -13,28 +15,12 @@
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
 
-    <!-- Open Graph -->
-    <meta property="og:title" content="Indian Data Project — Where Your Tax Money Goes" />
-    <meta property="og:description" content="Where does India spend Rs 50 lakh crore? Interactive budget visualization and tax calculator." />
-    <meta property="og:type" content="website" />
-    <meta property="og:locale" content="en_IN" />
-    <meta property="og:url" content="https://indiandataproject.org/" />
-    <meta property="og:site_name" content="Indian Data Project" />
-    <meta property="og:image" content="https://indiandataproject.org/og-logo.png" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Indian Data Project" />
-    <meta name="twitter:description" content="Where does India spend Rs 50 lakh crore? Interactive budget visualization and tax calculator." />
-    <meta name="twitter:image" content="https://indiandataproject.org/og-logo.png" />
+    <!-- Per-route meta tags (description, OG, Twitter, canonical) are managed
+         by react-helmet-async via the SEOHead component. No static duplicates
+         here — they caused crawlers to see hub tags on every page. -->
 
     <!-- Theme color for mobile browsers -->
     <meta name="theme-color" content="#0a0e1a" />
-
-    <!-- Canonical -->
-    <link rel="canonical" href="https://indiandataproject.org/" />
 
     <!-- DNS prefetch for external data sources -->
     <link rel="dns-prefetch" href="https://data.gov.in" />
@@ -47,7 +33,7 @@
       "@type": "WebApplication",
       "name": "Indian Data Project",
       "url": "https://indiandataproject.org",
-      "description": "Interactive visualization of India's Union Budget 2025-26. Explore revenue sources, ministry-wise expenditure, state allocations, and calculate your personal tax breakdown.",
+      "description": "Open Indian government data made accessible and visual. Interactive stories for Union Budget 2025-26, Economic Survey 2025-26, and more.",
       "applicationCategory": "GovernmentApplication",
       "operatingSystem": "Any",
       "offers": {
@@ -61,20 +47,22 @@
         "Revenue-to-expenditure Sankey flow diagram",
         "State-wise allocation choropleth map",
         "Income tax calculator (Old and New regime)",
-        "Sortable data explorer with CSV export"
+        "Sortable data explorer with CSV export",
+        "Economic Survey visual breakdown (GDP, inflation, trade, sectors)",
+        "Economic indicators explorer with year-over-year comparisons"
       ],
-      "dateModified": "2025-02-01"
+      "dateModified": "2025-07-01"
     }
     </script>
 
-    <!-- JSON-LD: Dataset -->
+    <!-- JSON-LD: Dataset (Budget) -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Dataset",
       "name": "India Union Budget 2025-26 Data",
       "description": "Structured JSON datasets for India's Union Budget 2025-26: revenue receipts, ministry expenditure, state allocations, scheme details, Sankey flows, and treemap hierarchy.",
-      "url": "https://indiandataproject.org/explore",
+      "url": "https://indiandataproject.org/budget/explore",
       "license": "https://data.gov.in/government-open-data-license-india",
       "creator": {
         "@type": "GovernmentOrganization",
@@ -106,7 +94,50 @@
           "name": "Revenue Receipts"
         }
       ],
-      "dateModified": "2025-02-01"
+      "dateModified": "2025-07-01"
+    }
+    </script>
+
+    <!-- JSON-LD: Dataset (Economic Survey) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Dataset",
+      "name": "India Economic Survey 2025-26 Data",
+      "description": "Structured JSON datasets for India's Economic Survey 2025-26: GDP growth, inflation trends, fiscal position, trade balance, and sectoral composition.",
+      "url": "https://indiandataproject.org/economy/explore",
+      "license": "https://data.gov.in/government-open-data-license-india",
+      "creator": {
+        "@type": "GovernmentOrganization",
+        "name": "Ministry of Finance, Government of India",
+        "url": "https://www.indiabudget.gov.in/economicsurvey/"
+      },
+      "temporalCoverage": "2025/2026",
+      "spatialCoverage": {
+        "@type": "Place",
+        "name": "India"
+      },
+      "distribution": [
+        {
+          "@type": "DataDownload",
+          "encodingFormat": "application/json",
+          "contentUrl": "https://indiandataproject.org/data/economy/2025-26/summary.json",
+          "name": "Economic Summary"
+        },
+        {
+          "@type": "DataDownload",
+          "encodingFormat": "application/json",
+          "contentUrl": "https://indiandataproject.org/data/economy/2025-26/gdp-growth.json",
+          "name": "GDP Growth"
+        },
+        {
+          "@type": "DataDownload",
+          "encodingFormat": "application/json",
+          "contentUrl": "https://indiandataproject.org/data/economy/2025-26/inflation.json",
+          "name": "Inflation Data"
+        }
+      ],
+      "dateModified": "2025-07-01"
     }
     </script>
 
@@ -117,9 +148,13 @@
       "@type": "BreadcrumbList",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://indiandataproject.org/" },
-        { "@type": "ListItem", "position": 2, "name": "Data Explorer", "item": "https://indiandataproject.org/explore" },
-        { "@type": "ListItem", "position": 3, "name": "Tax Calculator", "item": "https://indiandataproject.org/calculator" },
-        { "@type": "ListItem", "position": 4, "name": "Methodology", "item": "https://indiandataproject.org/methodology" }
+        { "@type": "ListItem", "position": 2, "name": "Union Budget 2025-26", "item": "https://indiandataproject.org/budget" },
+        { "@type": "ListItem", "position": 3, "name": "Budget Data Explorer", "item": "https://indiandataproject.org/budget/explore" },
+        { "@type": "ListItem", "position": 4, "name": "Tax Calculator", "item": "https://indiandataproject.org/budget/calculator" },
+        { "@type": "ListItem", "position": 5, "name": "Budget Methodology", "item": "https://indiandataproject.org/budget/methodology" },
+        { "@type": "ListItem", "position": 6, "name": "Economic Survey 2025-26", "item": "https://indiandataproject.org/economy" },
+        { "@type": "ListItem", "position": 7, "name": "Economy Data Explorer", "item": "https://indiandataproject.org/economy/explore" },
+        { "@type": "ListItem", "position": 8, "name": "Economy Methodology", "item": "https://indiandataproject.org/economy/methodology" }
       ]
     }
     </script>
@@ -132,21 +167,33 @@
     <noscript>
       <div style="max-width:800px;margin:0 auto;padding:2rem;font-family:system-ui,sans-serif;color:#f5f0eb;background:#0a0e1a">
         <h1>Indian Data Project</h1>
-        <p>Interactive visualization of India's Union Budget 2025-26.</p>
+        <p>Open Indian government data made accessible, visual, and shareable.</p>
 
-        <h2>Key Numbers (Budget Estimate 2025-26)</h2>
+        <h2>Union Budget 2025-26</h2>
         <ul>
           <li>Total Expenditure: Rs 50,65,345 crore</li>
           <li>Revenue Receipts: Rs 34,20,905 crore</li>
           <li>Capital Expenditure: Rs 11,21,059 crore</li>
           <li>Fiscal Deficit: 4.4% of GDP</li>
         </ul>
-
-        <h2>Explore the Data</h2>
         <ul>
-          <li><a href="/explore">Ministry-wise Spending Data</a> — Sortable table with CSV export</li>
-          <li><a href="/calculator">Tax Calculator</a> — See where your income tax goes</li>
-          <li><a href="/methodology">Methodology</a> — Data sources and processing details</li>
+          <li><a href="/budget">Budget Visual Story</a></li>
+          <li><a href="/budget/explore">Ministry-wise Spending Data</a> — Sortable table with CSV export</li>
+          <li><a href="/budget/calculator">Tax Calculator</a> — See where your income tax goes</li>
+          <li><a href="/budget/methodology">Methodology</a> — Data sources and processing details</li>
+        </ul>
+
+        <h2>Economic Survey 2025-26</h2>
+        <ul>
+          <li>Real GDP Growth: 6.4% (2024-25 estimate)</li>
+          <li>Projected Growth: 6.3-6.8% (2025-26)</li>
+          <li>CPI Inflation: 4.2%</li>
+          <li>Current Account Deficit: -0.8% of GDP</li>
+        </ul>
+        <ul>
+          <li><a href="/economy">Economy Visual Story</a></li>
+          <li><a href="/economy/explore">Economic Indicators Data</a></li>
+          <li><a href="/economy/methodology">Methodology</a></li>
         </ul>
 
         <h2>Download Data (JSON)</h2>
@@ -154,10 +201,12 @@
           <li><a href="/data/budget/2025-26/summary.json">Budget Summary</a></li>
           <li><a href="/data/budget/2025-26/expenditure.json">Ministry Expenditure</a></li>
           <li><a href="/data/budget/2025-26/receipts.json">Revenue Receipts</a></li>
-          <li><a href="/data/budget/2025-26/statewise.json">State-wise Allocations</a></li>
+          <li><a href="/data/economy/2025-26/summary.json">Economic Summary</a></li>
+          <li><a href="/data/economy/2025-26/gdp-growth.json">GDP Growth Data</a></li>
+          <li><a href="/data/economy/2025-26/inflation.json">Inflation Data</a></li>
         </ul>
 
-        <p>Data sourced from <a href="https://openbudgetsindia.org">Open Budgets India</a> and <a href="https://www.indiabudget.gov.in">indiabudget.gov.in</a> under the <a href="https://data.gov.in/government-open-data-license-india">Government Open Data License - India</a>.</p>
+        <p>Data sourced from <a href="https://openbudgetsindia.org">Open Budgets India</a>, <a href="https://www.indiabudget.gov.in">indiabudget.gov.in</a>, and the <a href="https://www.indiabudget.gov.in/economicsurvey/">Economic Survey</a> under the <a href="https://data.gov.in/government-open-data-license-india">Government Open Data License - India</a>.</p>
       </div>
     </noscript>
   </body>

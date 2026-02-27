@@ -7,11 +7,13 @@ interface SEOHeadProps {
   description: string;
   path: string;
   type?: string;
+  image?: string;
   jsonLd?: Record<string, unknown>;
 }
 
-export function SEOHead({ title, description, path, type = 'website', jsonLd }: SEOHeadProps) {
+export function SEOHead({ title, description, path, type = 'website', image = '/og-logo.png', jsonLd }: SEOHeadProps) {
   const url = `${BASE_URL}${path}`;
+  const imageUrl = image.startsWith('http') ? image : `${BASE_URL}${image}`;
 
   return (
     <Helmet>
@@ -26,11 +28,15 @@ export function SEOHead({ title, description, path, type = 'website', jsonLd }: 
       <meta property="og:type" content={type} />
       <meta property="og:locale" content="en_IN" />
       <meta property="og:site_name" content="Indian Data Project" />
+      <meta property="og:image" content={imageUrl} />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
 
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
+      <meta name="twitter:image" content={imageUrl} />
 
       {/* Per-route JSON-LD */}
       {jsonLd && (

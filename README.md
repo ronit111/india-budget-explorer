@@ -16,9 +16,12 @@ Indian Data Project turns dense government data into interactive visual experien
 |------|---------------|
 | **Hub** (`/`) | Visual portal — project mission, data domain cards with live stats, gateway to all datasets |
 | **Budget Story** (`/budget`) | Scrollytelling narrative — 7 compositions: animated headline, revenue waffle chart, deficit rupee bar, expenditure treemap, Sankey money flow, state choropleth, per-capita breakdown |
-| **Data Explorer** (`/budget/explore`) | Sortable ministry-level expenditure table with expandable scheme detail, CSV export |
+| **Budget Explorer** (`/budget/explore`) | Sortable ministry-level expenditure table with expandable scheme detail, CSV export |
 | **Tax Calculator** (`/budget/calculator`) | Personal tax breakdown for FY 2025-26 — Old/New regime with deductions (80C, 80D, HRA, 24b, NPS), spending allocation per ministry, shareable image card |
-| **Methodology** (`/budget/methodology`) | Data sources, computation methods, formatting conventions, limitations |
+| **Budget Methodology** (`/budget/methodology`) | Data sources, computation methods, formatting conventions, limitations |
+| **Economy Story** (`/economy`) | Scrollytelling visual breakdown — GDP growth trends, inflation tracking (CPI/WPI), trade balance area chart, fiscal position, sectoral composition |
+| **Economy Explorer** (`/economy/explore`) | Searchable table of economic indicators with year-over-year comparisons |
+| **Economy Methodology** (`/economy/methodology`) | Data sources, indicator definitions, survey methodology, limitations |
 
 ---
 
@@ -64,7 +67,7 @@ npm run preview
 | Command | What it does |
 |---------|-------------|
 | `npm run dev` | Start Vite dev server with HMR |
-| `npm run build` | TypeScript check + Vite build + Puppeteer prerender (all 4 routes) |
+| `npm run build` | TypeScript check + Vite build + Puppeteer prerender (all 8 routes) |
 | `npm run build:no-prerender` | Build without prerendering (used by Vercel) |
 | `npm run lint` | ESLint check |
 | `npm run preview` | Preview production build locally |
@@ -80,16 +83,20 @@ src/
 │   ├── BudgetPage.tsx       # Budget scrollytelling with 7 composition sections
 │   ├── ExplorePage.tsx      # Ministry-wise data table
 │   ├── FindYourSharePage.tsx # Tax calculator
-│   └── MethodologyPage.tsx  # Documentation page
+│   ├── MethodologyPage.tsx  # Budget methodology
+│   ├── EconomyPage.tsx      # Economy scrollytelling (GDP, inflation, trade, sectors)
+│   ├── EconomyExplorePage.tsx # Economy indicators table
+│   └── EconomyMethodologyPage.tsx # Economy methodology
 ├── components/
 │   ├── home/               # Budget story compositions (Hero, Revenue, Expenditure, Flow, Map, CTA)
 │   ├── budget/             # Budget-specific compositions (DeficitSection, PerCapitaSection)
+│   ├── economy/            # Economy compositions (GrowthSection, InflationSection, TradeSection, etc.)
 │   ├── calculator/         # Tax calculator UI (IncomeInput, DeductionsPanel, TaxBreakdown, ShareCard, SpendingAllocation)
 │   ├── explore/            # DataTable with expandable rows
-│   ├── viz/                # D3 visualizations (TreemapChart, SankeyDiagram, ChoroplethMap, WaffleChart, AnimatedCounter)
+│   ├── viz/                # D3 visualizations (TreemapChart, SankeyDiagram, ChoroplethMap, WaffleChart, LineChart, AreaChart, HorizontalBarChart, AnimatedCounter)
 │   ├── ui/                 # Shared UI (Tooltip, NarrativeBridge, SearchOverlay, Skeleton, etc.)
 │   ├── layout/             # Header, Footer, MobileNav, PageShell
-│   ├── seo/                # SEOHead (per-route meta tags + JSON-LD)
+│   ├── seo/                # SEOHead (per-route meta tags + OG images + JSON-LD)
 │   └── i18n/               # Language provider and switcher
 ├── lib/
 │   ├── data/schema.ts      # TypeScript interfaces for all data shapes
@@ -98,14 +105,15 @@ src/
 │   ├── dataLoader.ts       # Fetch + cache layer for JSON data
 │   ├── stateMapping.ts     # India state ID → name mapping
 │   └── i18n.ts             # i18next configuration
-├── hooks/                  # useScrollTrigger, useIntersection, useBudgetData, etc.
-├── store/                  # Zustand stores (budgetStore, calculatorStore, uiStore)
+├── hooks/                  # useScrollTrigger, useIntersection, useBudgetData, useEconomyData, etc.
+├── store/                  # Zustand stores (budgetStore, economyStore, calculatorStore, uiStore)
 └── index.css               # Design tokens, CSS layers, keyframes
 
 public/
-├── data/budget/2025-26/    # 7 structured JSON datasets
+├── data/budget/2025-26/    # 7 structured JSON budget datasets
+├── data/economy/2025-26/   # 7 structured JSON economy datasets
 ├── locales/en/             # Translation files
-├── sitemap.xml             # All routes + data endpoints
+├── sitemap.xml             # All routes + data endpoints (8 pages + 12 data files)
 ├── robots.txt              # All bots welcomed (including AI crawlers)
 └── llms.txt                # AI-readable site summary
 ```
@@ -114,7 +122,9 @@ public/
 
 ## Data
 
-All budget data lives in `public/data/budget/2025-26/` as JSON files:
+### Budget Data
+
+Budget data lives in `public/data/budget/2025-26/`:
 
 | File | Contents |
 |------|----------|
@@ -126,7 +136,21 @@ All budget data lives in `public/data/budget/2025-26/` as JSON files:
 | `statewise.json` | State-wise budget allocations with per-capita figures |
 | `schemes.json` | Major government scheme details |
 
-Data sourced from [Open Budgets India](https://openbudgetsindia.org) and [indiabudget.gov.in](https://www.indiabudget.gov.in) under the [Government Open Data License — India](https://data.gov.in/government-open-data-license-india).
+### Economy Data
+
+Economy data lives in `public/data/economy/2025-26/`:
+
+| File | Contents |
+|------|----------|
+| `summary.json` | Headline economic indicators (GDP growth, inflation, deficit) |
+| `gdp-growth.json` | Real and nominal GDP growth time series |
+| `inflation.json` | CPI and WPI inflation data |
+| `fiscal.json` | Fiscal deficit and government finance trends |
+| `external.json` | Trade balance, exports, imports |
+| `sectors.json` | Sectoral GDP composition (agriculture, industry, services) |
+| `indicators.json` | Key economic indicators with year-over-year data |
+
+Data sourced from [Open Budgets India](https://openbudgetsindia.org), [indiabudget.gov.in](https://www.indiabudget.gov.in), and the [Economic Survey](https://www.indiabudget.gov.in/economicsurvey/) under the [Government Open Data License — India](https://data.gov.in/government-open-data-license-india).
 
 ---
 
@@ -145,13 +169,13 @@ See [BRAND.md](./BRAND.md) for the full visual identity guide. Key principles:
 
 The site is built for maximum discoverability:
 
-- **Prerendered HTML** for all routes (Puppeteer at build time)
-- **JSON-LD** structured data: `WebApplication`, `Dataset` (Google Dataset Search), `BreadcrumbList`
-- **Per-route meta tags** via react-helmet-async (title, description, OG, Twitter, canonical)
-- **sitemap.xml** covering pages + downloadable data endpoints
+- **Prerendered HTML** for all 8 routes (Puppeteer at build time)
+- **JSON-LD** structured data: `WebApplication`, `Dataset` x2 (Budget + Economy for Google Dataset Search), `BreadcrumbList`
+- **Per-route meta tags** via react-helmet-async (title, description, OG image, Twitter card, canonical)
+- **sitemap.xml** covering 8 pages + 12 downloadable data endpoints
 - **robots.txt** explicitly welcoming AI crawlers (GPTBot, ClaudeBot, PerplexityBot, Google-Extended)
-- **llms.txt** for AI model discoverability
-- **Noscript fallback** with real budget content for crawlers that don't execute JS
+- **llms.txt** for AI model discoverability (budget + economy content)
+- **Noscript fallback** with real budget and economy content for crawlers that don't execute JS
 
 ---
 
@@ -168,17 +192,25 @@ The site is built for maximum discoverability:
 - [x] Ministry-wise data explorer with CSV export
 - [x] Tax calculator with Old/New regime and deductions (80C, 80D, HRA, 24b, NPS, 80TTA)
 - [x] Share card generation for social media
-- [x] Full SEO layer (prerendering, structured data, sitemap)
+- [x] Full SEO layer (prerendering, structured data, sitemap, OG tags)
 - [x] IIB-inspired design system with brand guide
 - [x] CDN-friendly caching strategy
+- [x] Economic Survey 2025-26 data domain (scrollytelling, explorer, methodology)
+- [x] New viz components: LineChart, AreaChart, HorizontalBarChart
+- [x] Economy data pipeline (7 structured JSON datasets from Economic Survey)
 
 ### Next Steps
 
-**Phase 2: Expand Scope** (priority)
-- [ ] New data domain: Economic Survey
+**Phase 2: Expand Scope**
 - [ ] New data domain: State Finances
 - [ ] New data domain: RBI Data
 - [ ] New data domain: Census & Demographics
+
+**Phase 2.5: UX & Discoverability**
+- [ ] Per-domain glossary tabs (economic terms in simple language, alongside Methodology in nav)
+- [ ] Data feedback strip (persistent ribbon for users to report incorrect data via GitHub issues)
+- [ ] Per-domain OG images for social sharing
+- [ ] Cmd+K search indexing for glossary terms
 
 **Phase 3: Automated Data Pipeline**
 - [ ] Python ETL pipeline for automated budget data extraction
@@ -189,7 +221,6 @@ The site is built for maximum discoverability:
 **Phase 4: Expanded Datasets**
 - [ ] Historical budget data (multi-year comparisons)
 - [ ] State budget data (starting with major states)
-- [ ] Economic Survey data integration
 - [ ] RBI monetary policy data
 
 **Phase 5: Community & API**

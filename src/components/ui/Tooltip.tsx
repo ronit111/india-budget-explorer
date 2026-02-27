@@ -91,7 +91,7 @@ export function useTooltip<T = unknown>() {
   const [data, setData] = useState<T | null>(null);
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const scrollingRef = useRef(false);
-  const scrollTimer = useRef<ReturnType<typeof setTimeout>>();
+  const scrollTimer = useRef<ReturnType<typeof setTimeout>>(undefined);
 
   const show = useCallback((item: T, e: React.MouseEvent) => {
     if (scrollingRef.current) return;
