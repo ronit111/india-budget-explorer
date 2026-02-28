@@ -12,33 +12,37 @@ interface InflationSectionProps {
 export function InflationSection({ inflation }: InflationSectionProps) {
   const [ref, isVisible] = useScrollTrigger({ threshold: 0.08 });
 
-  const series: LineSeries[] = useMemo(() => [
-    {
-      id: 'cpi-headline',
-      name: 'CPI Headline',
-      color: 'var(--saffron)',
-      data: inflation.series.map((d) => ({ year: d.period, value: d.cpiHeadline })),
-    },
-    {
-      id: 'cpi-food',
-      name: 'Food CPI',
-      color: 'var(--gold)',
-      data: inflation.series.filter((d) => d.cpiFood !== null).map((d) => ({
-        year: d.period,
-        value: d.cpiFood!,
-      })),
-    },
-    {
-      id: 'cpi-core',
-      name: 'Core CPI',
-      color: 'var(--cyan)',
-      data: inflation.series.filter((d) => d.cpiCore !== null).map((d) => ({
-        year: d.period,
-        value: d.cpiCore!,
-      })),
-      dashed: true,
-    },
-  ], [inflation]);
+  const MIN_POINTS = 3;
+
+  const series: LineSeries[] = useMemo(() => {
+    const foodData = inflation.series
+      .filter((d) => d.cpiFood !== null)
+      .map((d) => ({ year: d.period, value: d.cpiFood! }));
+
+    const coreData = inflation.series
+      .filter((d) => d.cpiCore !== null)
+      .map((d) => ({ year: d.period, value: d.cpiCore! }));
+
+    const all: LineSeries[] = [
+      {
+        id: 'cpi-headline',
+        name: 'CPI Headline',
+        color: 'var(--saffron)',
+        data: inflation.series.map((d) => ({ year: d.period, value: d.cpiHeadline })),
+      },
+    ];
+
+    if (foodData.length >= MIN_POINTS) {
+      all.push({ id: 'cpi-food', name: 'Food CPI', color: 'var(--gold)', data: foodData });
+    }
+    if (coreData.length >= MIN_POINTS) {
+      all.push({ id: 'cpi-core', name: 'Core CPI', color: 'var(--cyan)', data: coreData, dashed: true });
+    }
+
+    return all;
+  }, [inflation]);
+
+  const hasBreakdown = series.length > 1;
 
   return (
     <section ref={ref} className="composition" style={{ background: 'var(--bg-surface)' }}>
@@ -60,7 +64,9 @@ export function InflationSection({ inflation }: InflationSectionProps) {
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
           className="text-annotation mb-8 max-w-xl"
         >
-          The RBI targets CPI inflation between 2-6%. Food prices remain the most volatile component, while core inflation has been steadily declining.
+          {hasBreakdown
+            ? 'The RBI targets CPI inflation between 2-6%. Food prices remain the most volatile component, while core inflation has been steadily declining.'
+            : 'The RBI targets CPI inflation between 2-6%. After peaking in 2020, headline inflation has moved back within the target band.'}
         </motion.p>
 
         <LineChart

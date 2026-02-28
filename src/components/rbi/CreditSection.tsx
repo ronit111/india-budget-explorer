@@ -31,17 +31,11 @@ export function CreditSection({ data }: CreditSectionProps) {
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
           className="text-annotation mb-8 max-w-xl"
         >
-          Domestic credit measures total lending by the financial sector. Private sector credit tracks how much flows to businesses and individuals, the engine of economic growth.
+          Private sector credit tracks how much bank lending flows to businesses and individuals — the engine of economic growth. At over 50% of GDP, India's credit-to-GDP ratio reflects a deepening financial system.
         </motion.p>
 
         <LineChart
           series={[
-            {
-              id: 'domestic-credit',
-              name: 'Domestic Credit (% GDP)',
-              color: 'var(--gold)',
-              data: data.domesticCreditPctGDP.series,
-            },
             {
               id: 'private-credit',
               name: 'Private Sector Credit (% GDP)',

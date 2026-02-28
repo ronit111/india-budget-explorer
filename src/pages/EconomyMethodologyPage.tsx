@@ -266,6 +266,7 @@ export default function EconomyMethodologyPage() {
         title="Methodology — Economic Survey — Indian Data Project"
         description="Data sources, methodology, and known limitations for the Economic Survey data on Indian Data Project."
         path="/economy/methodology"
+        image="/og-economy.png"
       />
 
       <motion.div

@@ -232,15 +232,16 @@ The site is built for maximum discoverability:
 - [x] Automated pipeline infrastructure (GitHub Actions cron jobs for Economy, RBI, data freshness)
 - [x] Data accuracy overhaul — truth-verified all figures against authoritative sources
 - [x] RBI chart QA fixes — x-axis alignment (fiscal years), liquidity section split, empty series cleanup
+- [x] Phase 3 polish — sparse series filtering, GDP projection display fix, credit narrative alignment, per-domain OG images
 
 ### Next Steps
 
-**Phase 3: Polish Existing Domains**
-- [ ] Economy inflation chart: Food CPI / Core CPI show as disconnected 1-2 point segments (sparse World Bank data) — either hide when < 3 points or source fuller series
-- [ ] Economy GDP projection card shows "7.4–7.4%" — needs proper range or single value display
-- [ ] RBI credit section: domestic credit series empty (World Bank `FS.AST.DOMS.GD.ZS` returned no data) — try alternative WB indicator or DBIE source
-- [ ] RBI credit section: deposit rate series empty (`FR.INR.DPST`) — same issue
-- [ ] Per-domain OG images for social sharing (currently generic)
+**Phase 3: Polish Existing Domains** ✓
+- [x] Economy inflation chart: sparse Food/Core CPI series (< 3 points) hidden with MIN_POINTS threshold; annotation adapts
+- [x] Economy GDP projection: single value display when low === high (was "7.4–7.4%", now "7.4%")
+- [x] RBI credit section: narrative updated to focus on private sector credit (domestic credit series empty from WB); dead series removed from chart
+- [x] RBI credit section: deposit rate empty — noted in methodology; DBIE integration deferred to Phase 5
+- [x] Per-domain OG images: 4 variants (hub, budget, economy, rbi) generated via Puppeteer, wired into SEOHead on all 11 routes
 
 **Phase 3.5: UX & Discoverability**
 - [ ] Per-domain glossary tabs (economic terms in simple language, alongside Methodology in nav)

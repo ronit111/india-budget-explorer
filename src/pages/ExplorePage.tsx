@@ -32,6 +32,7 @@ export default function ExplorePage() {
         title="Budget Data Explorer — Ministry-wise Spending | Indian Data Project"
         description="Explore India's Union Budget 2025-26 ministry by ministry. Sortable data table with scheme-level detail for all government expenditure. Export to CSV."
         path="/budget/explore"
+        image="/og-budget.png"
         jsonLd={{
           '@context': 'https://schema.org',
           '@type': 'Dataset',

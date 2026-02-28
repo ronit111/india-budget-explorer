@@ -1,5 +1,33 @@
 # Changelog
 
+## [0.5.1] - 2026-02-28
+
+### Phase 3: Polish Existing Domains
+
+**Economy Inflation Chart**
+- Sparse series filtering: Food CPI and Core CPI hidden when < 3 data points (World Bank doesn't provide food/core CPI breakdown for India — only 2 curated Economic Survey values existed)
+- Annotation text adapts: shows headline-only description when breakdown series are hidden
+
+**Economy GDP Projection**
+- Fixed "7.4–7.4%" display in OutlookSection — now shows single "7.4%" when `projectedGrowthLow === projectedGrowthHigh`
+- Schema unchanged (supports real ranges when future surveys provide them)
+
+**RBI Credit Section**
+- Updated narrative to focus on private sector credit (what's actually rendered) instead of mentioning domestic credit (World Bank `FS.AST.DOMS.GD.ZS` returns no data for India)
+- Removed phantom domestic credit series from chart definition — was silently filtered at runtime, now removed at source
+
+**Per-Domain OG Images**
+- 4 domain-specific OG cards generated via Puppeteer: hub (`og-logo.png`), budget (`og-budget.png`), economy (`og-economy.png`), rbi (`og-rbi.png`)
+- OG generation script (`generate-og.mjs`) rewritten as parametric — add variants to `VARIANTS` array
+- `<SEOHead image>` prop wired on all 11 routes (story, explore, calculator, methodology per domain)
+- Domain-specific accent color gradients: saffron→gold (budget), cyan→gold (economy), gold→saffron (rbi)
+
+**Documentation**
+- Added "Polish Hygiene" section to CLAUDE.md — reusable patterns for narrative↔data alignment, sparse series handling, OG images, and World Bank data gaps
+- README roadmap: Phase 3 marked complete
+
+---
+
 ## [0.5.0] - 2026-02-28
 
 ### RBI Data Domain + Data Accuracy Overhaul + Automation

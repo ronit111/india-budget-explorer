@@ -71,6 +71,7 @@ export default function BudgetPage() {
         title="Union Budget 2025-26 — Where Your Tax Money Goes"
         description="Interactive visual breakdown of India's Union Budget 2025-26. Revenue sources, ministry-wise spending, state transfers, and your personal tax share."
         path="/budget"
+        image="/og-budget.png"
       />
 
       {/* Hero — the headline number */}

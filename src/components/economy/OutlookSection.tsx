@@ -13,7 +13,9 @@ export function OutlookSection({ summary }: OutlookSectionProps) {
   const cards = [
     {
       label: 'GDP Growth Projection',
-      value: `${summary.projectedGrowthLow}-${summary.projectedGrowthHigh}%`,
+      value: summary.projectedGrowthLow === summary.projectedGrowthHigh
+        ? `${summary.projectedGrowthLow}%`
+        : `${summary.projectedGrowthLow}–${summary.projectedGrowthHigh}%`,
       note: 'FY 2025-26 advance estimate',
       color: 'var(--cyan)',
     },

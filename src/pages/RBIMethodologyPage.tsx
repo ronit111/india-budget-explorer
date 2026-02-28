@@ -271,6 +271,7 @@ export default function RBIMethodologyPage() {
         title="Methodology — RBI Data — Indian Data Project"
         description="Data sources, methodology, indicator definitions, and known limitations for the RBI data on Indian Data Project."
         path="/rbi/methodology"
+        image="/og-rbi.png"
       />
 
       <motion.div

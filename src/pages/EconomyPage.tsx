@@ -71,6 +71,7 @@ export default function EconomyPage() {
         title="Economic Survey 2025-26 — India's Economic Report Card"
         description="Interactive visual breakdown of India's Economic Survey 2025-26. GDP growth, inflation trends, fiscal consolidation, trade balance, and sectoral analysis."
         path="/economy"
+        image="/og-economy.png"
       />
 
       {/* Hero — the headline GDP growth number */}

@@ -73,6 +73,7 @@ export default function EconomyExplorePage() {
         title="Explore Economic Indicators — Indian Data Project"
         description="Browse and compare India's key economic indicators. GDP, inflation, trade, fiscal data from the Economic Survey 2025-26."
         path="/economy/explore"
+        image="/og-economy.png"
       />
 
       {/* Page header */}

@@ -217,6 +217,7 @@ export default function MethodologyPage() {
         title="Methodology — Indian Data Project"
         description="Data sources, tax calculation methodology, number formatting, per-capita estimates, and limitations of the Indian Data Project. Data under GODL license."
         path="/budget/methodology"
+        image="/og-budget.png"
       />
 
       {/* Page header — Pattern A */}

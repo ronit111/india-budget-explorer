@@ -52,6 +52,7 @@ export default function RBIPage() {
         title="RBI Data — India's Central Banker | Indian Data Project"
         description="Reserve Bank of India monetary policy, repo rate decisions, inflation targeting, money supply, credit growth, and forex reserves — visualized from primary sources."
         path="/rbi"
+        image="/og-rbi.png"
       />
 
       <RBIHeroSection summary={summary} />

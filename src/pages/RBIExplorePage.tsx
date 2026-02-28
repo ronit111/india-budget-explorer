@@ -84,6 +84,7 @@ export default function RBIExplorePage() {
         title="Explore RBI Indicators — Indian Data Project"
         description="Browse and compare RBI monetary policy, liquidity, credit, and forex indicators across a decade of data."
         path="/rbi/explore"
+        image="/og-rbi.png"
       />
 
       {/* Page header */}
