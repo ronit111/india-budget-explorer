@@ -7,9 +7,13 @@ import {
   loadTreemap,
   loadStatewise,
   loadSchemes,
+  loadBudgetTrends,
+  loadBudgetVsActual,
 } from '../lib/dataLoader.ts';
 import type {
   BudgetSummary,
+  BudgetTrendsData,
+  BudgetVsActualData,
   ReceiptsData,
   ExpenditureData,
   SankeyData,
@@ -26,6 +30,8 @@ interface BudgetData {
   treemap: TreemapData | null;
   statewise: StatewiseData | null;
   schemes: SchemesData | null;
+  trends: BudgetTrendsData | null;
+  budgetVsActual: BudgetVsActualData | null;
   loading: boolean;
   error: string | null;
 }
@@ -39,6 +45,8 @@ export function useBudgetData(year: string): BudgetData {
     treemap: null,
     statewise: null,
     schemes: null,
+    trends: null,
+    budgetVsActual: null,
     loading: true,
     error: null,
   });
@@ -55,8 +63,10 @@ export function useBudgetData(year: string): BudgetData {
       loadTreemap(year),
       loadStatewise(year),
       loadSchemes(year),
+      loadBudgetTrends(year),
+      loadBudgetVsActual(year),
     ])
-      .then(([summary, receipts, expenditure, sankey, treemap, statewise, schemes]) => {
+      .then(([summary, receipts, expenditure, sankey, treemap, statewise, schemes, trends, budgetVsActual]) => {
         if (!cancelled) {
           setData({
             summary,
@@ -66,6 +76,8 @@ export function useBudgetData(year: string): BudgetData {
             treemap,
             statewise,
             schemes,
+            trends,
+            budgetVsActual,
             loading: false,
             error: null,
           });

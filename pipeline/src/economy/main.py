@@ -66,7 +66,7 @@ def run_economy_pipeline():
             "population",
             "gdp_current_usd",
         ],
-        start_year=2014,
+        start_year=2000,
         end_year=2025,
     )
 

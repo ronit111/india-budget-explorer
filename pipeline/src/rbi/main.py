@@ -76,7 +76,7 @@ def run_rbi_pipeline():
             "deposit_rate",
             "bank_branches",
         ],
-        start_year=2014,
+        start_year=2000,
         end_year=2025,
     )
 

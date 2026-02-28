@@ -35,8 +35,12 @@ from src.transform.derive import (
 )
 from src.transform.sankey import build_sankey
 from src.transform.treemap import build_treemap
+from src.transform.budget_trends import build_budget_trends
+from src.transform.budget_vs_actual import build_budget_vs_actual
 from src.validate.schemas import (
     BudgetSummary,
+    BudgetTrendsData,
+    BudgetVsActualData,
     ExpenditureData,
     ExpenditureShare,
     ExpenditureSharesData,
@@ -254,6 +258,14 @@ def run_pipeline():
         ],
     }
 
+    # 3j. Budget Trends (20-year historical)
+    trends_data = build_budget_trends(YEAR)
+    logger.info(f"  trends.json: {len(trends_data['series'])} years")
+
+    # 3k. Budget vs Actual (ministry-level)
+    bva_data = build_budget_vs_actual(YEAR)
+    logger.info(f"  budget-vs-actual.json: {len(bva_data['ministries'])} ministries")
+
     # Years index
     years_data = {"years": ["2025-26"], "latest": "2025-26"}
 
@@ -317,6 +329,20 @@ def run_pipeline():
         errors.append(f"years: {e}")
         logger.error(f"  years.json FAILED: {e}")
 
+    try:
+        BudgetTrendsData(**trends_data)
+        logger.info("  trends.json ✓")
+    except Exception as e:
+        errors.append(f"trends: {e}")
+        logger.error(f"  trends.json FAILED: {e}")
+
+    try:
+        BudgetVsActualData(**bva_data)
+        logger.info("  budget-vs-actual.json ✓")
+    except Exception as e:
+        errors.append(f"budget-vs-actual: {e}")
+        logger.error(f"  budget-vs-actual.json FAILED: {e}")
+
     # Integrity checks
     ministry_sum = sum(m["budgetEstimate"] for m in ministries)
     pct_covered = ministry_sum / total_expenditure * 100
@@ -359,6 +385,8 @@ def run_pipeline():
         f"budget/{YEAR}/treemap.json": treemap_data,
         f"budget/{YEAR}/statewise.json": statewise_data,
         f"budget/{YEAR}/schemes.json": schemes_data,
+        f"budget/{YEAR}/trends.json": trends_data,
+        f"budget/{YEAR}/budget-vs-actual.json": bva_data,
         "tax-calculator/slabs.json": tax_slabs_data,
         "tax-calculator/expenditure-shares.json": expenditure_shares_data,
         "years.json": years_data,

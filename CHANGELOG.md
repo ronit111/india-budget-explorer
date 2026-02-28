@@ -1,5 +1,48 @@
 # Changelog
 
+## [0.10.0] - 2026-03-01
+
+### Phase 6: Historical Data & Depth
+
+**Budget 20-Year Historical Trends** (Section 03)
+- New "Trends" scrollytelling section showing India's budget evolution from FY 2005-06 to FY 2025-26
+- Dual-chart visualization: expenditure vs receipts (Rs lakh crore) + fiscal/revenue deficit as % of GDP
+- 21 curated data points from Budget at a Glance documents (indiabudget.gov.in/budget_archive/)
+- Dynamic narrative: spending growth multiple, COVID-year spike, and the persistent deficit gap
+- Pipeline: `pipeline/src/transform/budget_trends.py` → `public/data/budget/2025-26/trends.json`
+
+**Budget vs Actual Tracker** (Section 04)
+- New "Promises vs Reality" scrollytelling section showing ministry-level execution accuracy
+- Custom SVG deviation chart: % deviation from Budget Estimate per ministry, color-coded (green ±5%, saffron overspend, cyan underspend)
+- 10 top ministries tracked across 7 fiscal years (FY 2019-20 through FY 2025-26) with BE/RE/Actual data
+- Year selector for historical comparison; insight cards highlighting biggest over/underspends
+- Pipeline: `pipeline/src/transform/budget_vs_actual.py` → `public/data/budget/2025-26/budget-vs-actual.json`
+- Source: Expenditure Budget statements (indiabudget.gov.in)
+
+**Budget Story Expanded**
+- Budget scrollytelling now has 9 sections (was 7): Hero, 01-Revenue, 02-Deficit, **03-Trends (new)**, **04-Budget vs Actual (new)**, 05-Expenditure, 06-Flow, 07-Map, 08-PerCapita, 09-CTA
+- Narrative bridges added between Deficit→Trends and Trends→BvA sections
+
+**World Bank Historical Extension**
+- Economy and RBI pipelines now fetch data from year 2000 (was 2014), giving 25+ years of time series for macro charts
+- Modified: `economy/sources/world_bank.py`, `economy/main.py`, `rbi/sources/world_bank.py`, `rbi/main.py`
+
+**State GSDP 3-Year History**
+- Top 10 states by GSDP now include historical data (FY 2020-21, 2021-22, 2022-23)
+- `gsdpHistory` added to `gsdp.json` output (additive, no breaking changes)
+- Source: RBI Handbook of Statistics on Indian States (same handbook, prior year tables)
+
+**Pipeline Validation**
+- 5 new Pydantic models: `BudgetTrendYear`, `BudgetTrendsData`, `BudgetVsActualYear`, `MinistryBudgetHistory`, `BudgetVsActualData`
+- 2 new TypeScript interfaces matching pipeline schemas
+- State schemas extended with `StateGSDPHistoryPoint`, `StateGSDPHistory`
+- All pipelines pass validation; `npm run build` passes with zero errors
+
+**SEO**
+- Sitemap updated with 2 new data file URLs (trends.json, budget-vs-actual.json)
+
+---
+
 ## [0.9.0] - 2026-03-01
 
 ### Phase 5: Education, Employment & Healthcare Domains

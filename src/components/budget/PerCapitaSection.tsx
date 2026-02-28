@@ -78,7 +78,7 @@ export function PerCapitaSection({ summary, expenditure }: PerCapitaSectionProps
   return (
     <section ref={ref} className="composition" style={{ background: 'var(--bg-surface)' }}>
       <div className="max-w-7xl mx-auto px-6 sm:px-8">
-        <SectionNumber number={6} className="mb-6 block" isVisible={isVisible} />
+        <SectionNumber number={8} className="mb-6 block" isVisible={isVisible} />
 
         {/* Hero treatment — the daily amount, large and personal */}
         <div className="mb-3">

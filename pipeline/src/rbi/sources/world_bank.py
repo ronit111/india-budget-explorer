@@ -38,7 +38,7 @@ INDICATORS = {
 
 def fetch_indicator(
     code: str,
-    start_year: int = 2014,
+    start_year: int = 2000,
     end_year: int = 2025,
 ) -> list[dict[str, Any]]:
     """
@@ -119,7 +119,7 @@ def fetch_indicator(
 
 def fetch_multiple(
     indicator_keys: list[str],
-    start_year: int = 2014,
+    start_year: int = 2000,
     end_year: int = 2025,
 ) -> dict[str, list[dict[str, Any]]]:
     """

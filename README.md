@@ -15,7 +15,7 @@ Indian Data Project turns dense government data into interactive visual experien
 | Page | What it shows |
 |------|---------------|
 | **Hub** (`/`) | Visual portal — project mission, data domain cards with live stats, gateway to all datasets |
-| **Budget Story** (`/budget`) | Scrollytelling narrative — 7 compositions: animated headline, revenue waffle chart, deficit rupee bar, expenditure treemap, Sankey money flow, state choropleth, per-capita breakdown |
+| **Budget Story** (`/budget`) | Scrollytelling narrative — 9 compositions: animated headline, revenue waffle chart, deficit rupee bar, 20-year trends (expenditure vs receipts + deficit % GDP), budget vs actual deviation chart, expenditure treemap, Sankey money flow, state choropleth, per-capita breakdown |
 | **Budget Explorer** (`/budget/explore`) | Sortable ministry-level expenditure table with expandable scheme detail, CSV export |
 | **Tax Calculator** (`/budget/calculator`) | Personal tax breakdown for FY 2025-26 — Old/New regime with deductions (80C, 80D, HRA, 24b, NPS), spending allocation per ministry, shareable image card |
 | **Budget Methodology** (`/budget/methodology`) | Data sources, computation methods, formatting conventions, limitations |
@@ -142,7 +142,7 @@ src/
 │   └── HealthcareGlossaryPage.tsx # Healthcare glossary wrapper
 ├── components/
 │   ├── home/               # Budget story compositions (Hero, Revenue, Expenditure, Flow, Map, CTA)
-│   ├── budget/             # Budget-specific compositions (DeficitSection, PerCapitaSection)
+│   ├── budget/             # Budget-specific compositions (DeficitSection, TrendsSection, BudgetVsActualSection, PerCapitaSection)
 │   ├── economy/            # Economy compositions (GrowthSection, InflationSection, TradeSection, etc.)
 │   ├── rbi/                # RBI compositions (HeroSection, MonetaryPolicySection, ForexSection, etc.)
 │   ├── states/             # States compositions (GSDPSection, GrowthSection, RevenueSection, FiscalHealthSection, PerCapitaSection)
@@ -169,7 +169,7 @@ src/
 └── index.css               # Design tokens, CSS layers, keyframes
 
 public/
-├── data/budget/2025-26/    # 7 structured JSON budget datasets
+├── data/budget/2025-26/    # 9 structured JSON budget datasets
 ├── data/economy/2025-26/   # 7 structured JSON economy datasets
 ├── data/rbi/2025-26/       # 6 structured JSON RBI datasets
 ├── data/states/2025-26/    # 6 structured JSON state finance datasets
@@ -213,6 +213,8 @@ Budget data lives in `public/data/budget/2025-26/`:
 | `treemap.json` | Hierarchical expenditure for treemap visualization |
 | `statewise.json` | State-wise budget allocations with per-capita figures |
 | `schemes.json` | Major government scheme details |
+| `trends.json` | 20-year historical budget trends (FY 2005-06 to 2025-26) |
+| `budget-vs-actual.json` | Ministry-level BE/RE/Actual across 7 fiscal years |
 | `glossary.json` | 13 budget terms with plain-language explanations |
 
 ### Economy Data
@@ -251,7 +253,7 @@ States data lives in `public/data/states/2025-26/`:
 | File | Contents |
 |------|----------|
 | `summary.json` | Headline state finance numbers (top GSDP state, national total, growth range) |
-| `gsdp.json` | 31 state entries: GSDP current/constant prices, growth rate, per capita |
+| `gsdp.json` | 31 state entries: GSDP current/constant prices, growth rate, per capita + 3-year history for top 10 |
 | `revenue.json` | 31 state entries: own tax revenue, central transfers, self-sufficiency ratio |
 | `fiscal-health.json` | 31 state entries: fiscal deficit %, debt-to-GSDP |
 | `indicators.json` | All state indicators across 4 categories |
@@ -332,7 +334,7 @@ The site is built for maximum discoverability:
 - **Prerendered HTML** for all 34 routes (Puppeteer at build time)
 - **JSON-LD** structured data: `WebApplication`, `Dataset` x8 (Budget + Economy + RBI + States + Census + Education + Employment + Healthcare for Google Dataset Search), `BreadcrumbList`
 - **Per-route meta tags** via react-helmet-async (title, description, OG image, Twitter card, canonical)
-- **sitemap.xml** covering 34 pages + 43 downloadable data endpoints
+- **sitemap.xml** covering 34 pages + 45 downloadable data endpoints
 - **robots.txt** explicitly welcoming AI crawlers (GPTBot, ClaudeBot, PerplexityBot, Google-Extended)
 - **llms.txt** for AI model discoverability (all 8 domains + glossary terms)
 - **Noscript fallback** with real content across all eight domains for crawlers that don't execute JS
@@ -406,13 +408,12 @@ The site is built for maximum discoverability:
 - [x] Full SEO layer for all 3 domains (prerender, sitemap, JSON-LD, OG images, llms.txt, noscript)
 - [x] 42 new glossary terms across 3 domains (14 education, 15 employment, 13 healthcare)
 
-**Phase 6: Historical Data & Depth (all domains)**
-- [ ] Historical budget data (multi-year comparisons, trend lines across union budgets)
-- [ ] Budget vs. Actual tracker (CAG data — promised allocations vs actual expenditure)
-- [ ] Historical economy data (GDP, inflation, trade over multiple survey periods)
-- [ ] Historical RBI data (extend MPC decision history, fill World Bank data gaps via DBIE)
-- [ ] RBI DBIE direct API integration (bypass World Bank lag for monetary indicators)
-- [ ] State-level historical data (starting with major states)
+**Phase 6: Historical Data & Depth** ✓
+- [x] Budget 20-year historical trends (FY 2005-06 to 2025-26: expenditure, receipts, fiscal/revenue deficit % GDP)
+- [x] Budget vs Actual tracker (10 ministries, 7 fiscal years of BE/RE/Actual, deviation chart)
+- [x] World Bank historical extension: Economy + RBI pipelines now fetch from year 2000 (was 2014)
+- [x] State GSDP 3-year history for top 10 states (FY 2020-21 through 2022-23)
+- [ ] RBI DBIE direct API integration (bypass World Bank lag for monetary indicators) — deferred
 
 **Phase 7: Chart Shareability & Distribution Infrastructure**
 - [ ] `<ChartActions>` overlay on every chart (PNG download, CSV export, permalink, embed iframe code)

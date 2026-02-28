@@ -58,6 +58,28 @@ const SECTIONS = [
             <span className="mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: 'var(--saffron)' }} />
             <span>Population estimates from Census projections and RBI reports</span>
           </li>
+          <li className="flex gap-3 items-start">
+            <span className="mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: 'var(--saffron)' }} />
+            <span>
+              <a
+                href="https://www.indiabudget.gov.in/budget_archive/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-medium link-hover"
+                style={{ color: 'var(--cyan)' }}
+              >
+                Budget at a Glance
+              </a>{' '}
+              (FY 2005-06 to 2025-26) — historical trends in expenditure, receipts, and deficits
+            </span>
+          </li>
+          <li className="flex gap-3 items-start">
+            <span className="mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: 'var(--saffron)' }} />
+            <span>
+              Expenditure Budget statements (Demand for Grants) — ministry-level Budget Estimates,
+              Revised Estimates, and Actuals for Budget vs Actual tracking
+            </span>
+          </li>
         </ul>
       </>
     ),
@@ -147,8 +169,8 @@ const SECTIONS = [
         <li className="flex gap-3 items-start">
           <span className="mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: 'var(--gold)' }} />
           <span>
-            Budget Estimates only. Revised Estimates and Actuals are not yet available for
-            2025-26.
+            Current-year figures are Budget Estimates. Revised Estimates and Actuals are shown
+            for prior years in the Budget vs Actual section (latest actuals: FY 2023-24).
           </span>
         </li>
         <li className="flex gap-3 items-start">

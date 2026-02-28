@@ -18,10 +18,20 @@ class StateGSDPEntry(BaseModel):
     population: float      # lakhs
 
 
+class StateGSDPHistoryPoint(BaseModel):
+    year: str
+    value: float
+
+class StateGSDPHistory(BaseModel):
+    id: str
+    name: str
+    gsdp: list[StateGSDPHistoryPoint]
+
 class GSDPData(BaseModel):
     year: str
     baseYear: str          # e.g. "2011-12"
     states: list[StateGSDPEntry]
+    gsdpHistory: list[StateGSDPHistory] | None = None
     source: str
 
 

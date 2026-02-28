@@ -1,5 +1,7 @@
 import type {
   BudgetSummary,
+  BudgetTrendsData,
+  BudgetVsActualData,
   ReceiptsData,
   ExpenditureData,
   SankeyData,
@@ -84,6 +86,12 @@ export const loadStatewise = (year: string) =>
 
 export const loadSchemes = (year: string) =>
   fetchJson<SchemesData>(`/data/budget/${year}/schemes.json`);
+
+export const loadBudgetTrends = (year: string) =>
+  fetchJson<BudgetTrendsData>(`/data/budget/${year}/trends.json`);
+
+export const loadBudgetVsActual = (year: string) =>
+  fetchJson<BudgetVsActualData>(`/data/budget/${year}/budget-vs-actual.json`);
 
 export const loadTaxSlabs = () =>
   fetchJson<TaxSlabsData>('/data/tax-calculator/slabs.json');

@@ -184,6 +184,42 @@ export interface ExpenditureSharesData {
   shares: ExpenditureShare[]
 }
 
+// ─── Budget Trends (20-Year Historical) ───────────────────────────
+export interface BudgetTrendYear {
+  year: string;
+  expenditure: number;           // Rs crore
+  receipts: number;              // Rs crore
+  fiscalDeficit: number;         // Rs crore
+  fiscalDeficitPctGDP: number;   // %
+  revenueDeficitPctGDP: number;  // %
+}
+
+export interface BudgetTrendsData {
+  year: string;
+  series: BudgetTrendYear[];
+  source: string;
+}
+
+// ─── Budget vs Actual ─────────────────────────────────────────────
+export interface BudgetVsActualYear {
+  year: string;
+  be: number;                    // Budget Estimate, Rs crore
+  re: number | null;             // Revised Estimate
+  actual: number | null;         // Actual expenditure
+}
+
+export interface MinistryBudgetHistory {
+  id: string;
+  name: string;
+  history: BudgetVsActualYear[];
+}
+
+export interface BudgetVsActualData {
+  year: string;
+  ministries: MinistryBudgetHistory[];
+  source: string;
+}
+
 // ─── Available Years ───────────────────────────────────────────────
 export interface YearIndex {
   years: string[]                // ["2025-26", "2024-25", ...]
@@ -383,10 +419,22 @@ export interface StateGSDPEntry {
   population: number;         // lakhs
 }
 
+export interface StateGSDPHistoryPoint {
+  year: string;
+  value: number;
+}
+
+export interface StateGSDPHistory {
+  id: string;
+  name: string;
+  gsdp: StateGSDPHistoryPoint[];
+}
+
 export interface GSDPData {
   year: string;
   baseYear: string;
   states: StateGSDPEntry[];
+  gsdpHistory?: StateGSDPHistory[];
   source: string;
 }
 

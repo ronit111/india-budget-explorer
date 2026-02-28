@@ -86,7 +86,7 @@ export function CTASection() {
   return (
     <section ref={ref} className="composition">
       <div className="max-w-4xl mx-auto px-6 sm:px-8 text-center">
-        <SectionNumber number={7} className="mb-6 block text-center" isVisible={isVisible} />
+        <SectionNumber number={9} className="mb-6 block text-center" isVisible={isVisible} />
 
         <motion.h2
           initial={{ opacity: 0, y: 16 }}

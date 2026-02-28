@@ -12,7 +12,7 @@ Indian Data Project is a hub for Indian government data visualization. Each data
 - / — Visual portal showcasing all data domains with live stats from each dataset
 
 ### Budget Domain
-- /budget — Scrollytelling narrative: animated headline, revenue waffle chart, deficit rupee bar, expenditure treemap, Sankey money flow, state choropleth, per-capita breakdown
+- /budget — Scrollytelling narrative (9 sections): animated headline, revenue waffle chart, deficit rupee bar, 20-year budget trends (expenditure vs receipts + deficit % GDP), budget vs actual deviation chart (10 ministries), expenditure treemap, Sankey money flow, state choropleth, per-capita breakdown
 - /budget/explore — Sortable ministry-wise expenditure table with expandable scheme detail. CSV export available.
 - /budget/calculator — Personal tax calculator (FY 2025-26). Enter income, choose Old/New regime with deductions support (80C, 80D, HRA, 24b, NPS, 80TTA), see slab-by-slab tax breakdown and ministry-wise allocation of your tax. Shareable image card.
 - /budget/methodology — Data sources, tax computation methodology, formatting conventions, limitations.
@@ -164,6 +164,8 @@ Indian Data Project is a hub for Indian government data visualization. Each data
 - /data/budget/2025-26/statewise.json — State-wise budget allocation
 - /data/budget/2025-26/schemes.json — Major government schemes
 - /data/budget/2025-26/treemap.json — Hierarchical expenditure data
+- /data/budget/2025-26/trends.json — 20-year historical budget trends (FY 2005-06 to 2025-26): expenditure, receipts, fiscal deficit, fiscal deficit % GDP, revenue deficit % GDP
+- /data/budget/2025-26/budget-vs-actual.json — Ministry-level Budget Estimate vs Revised Estimate vs Actual for 10 top ministries across 7 fiscal years (FY 2019-20 to 2025-26)
 - /data/tax-calculator/slabs.json — Income tax slab rates (Old and New regime)
 - /data/tax-calculator/expenditure-shares.json — Ministry spending shares for tax allocation
 
@@ -186,7 +188,7 @@ Indian Data Project is a hub for Indian government data visualization. Each data
 
 ### State Finances
 - /data/states/2025-26/summary.json — State finances headline numbers
-- /data/states/2025-26/gsdp.json — State-wise GSDP, growth rate, per capita
+- /data/states/2025-26/gsdp.json — State-wise GSDP, growth rate, per capita + 3-year GSDP history for top 10 states
 - /data/states/2025-26/revenue.json — Own tax revenue, central transfers, self-sufficiency ratio
 - /data/states/2025-26/fiscal-health.json — Fiscal deficit and debt-to-GSDP by state
 - /data/states/2025-26/indicators.json — All state indicators across 4 categories

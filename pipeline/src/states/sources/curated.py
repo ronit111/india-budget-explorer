@@ -74,6 +74,64 @@ STATE_GSDP_DATA: list[dict] = [
 ]
 
 
+# ── STATE GSDP HISTORY (Top 10 by GSDP, 3 Years) ──────────────────────────
+# Source: RBI Handbook of Statistics on Indian States, Table 21
+# GSDP at current prices (Rs crore) for FY 2020-21, 2021-22, 2022-23
+# Used for trend visibility on the States domain
+STATE_GSDP_HISTORY: list[dict] = [
+    {"id": "MH", "name": "Maharashtra", "gsdp": [
+        {"year": "2020-21", "value": 2502881.85},
+        {"year": "2021-22", "value": 3031774.39},
+        {"year": "2022-23", "value": 3527922.12},
+    ]},
+    {"id": "TN", "name": "Tamil Nadu", "gsdp": [
+        {"year": "2020-21", "value": 1968827.80},
+        {"year": "2021-22", "value": 2428412.51},
+        {"year": "2022-23", "value": 2721572.22},
+    ]},
+    {"id": "UP", "name": "Uttar Pradesh", "gsdp": [
+        {"year": "2020-21", "value": 1750133.08},
+        {"year": "2021-22", "value": 2182794.78},
+        {"year": "2022-23", "value": 2439203.03},
+    ]},
+    {"id": "KA", "name": "Karnataka", "gsdp": [
+        {"year": "2020-21", "value": 1640513.81},
+        {"year": "2021-22", "value": 1974918.00},
+        {"year": "2022-23", "value": 2241368.80},
+    ]},
+    {"id": "GJ", "name": "Gujarat", "gsdp": [
+        {"year": "2020-21", "value": 1573858.89},
+        {"year": "2021-22", "value": 1850756.25},
+        {"year": "2022-23", "value": 2084274.05},
+    ]},
+    {"id": "WB", "name": "West Bengal", "gsdp": [
+        {"year": "2020-21", "value": 1322474.17},
+        {"year": "2021-22", "value": 1596765.26},
+        {"year": "2022-23", "value": 1759368.53},
+    ]},
+    {"id": "RJ", "name": "Rajasthan", "gsdp": [
+        {"year": "2020-21", "value": 1019458.31},
+        {"year": "2021-22", "value": 1242372.69},
+        {"year": "2022-23", "value": 1413620.35},
+    ]},
+    {"id": "TS", "name": "Telangana", "gsdp": [
+        {"year": "2020-21", "value": 1055757.98},
+        {"year": "2021-22", "value": 1254607.46},
+        {"year": "2022-23", "value": 1404860.89},
+    ]},
+    {"id": "AP", "name": "Andhra Pradesh", "gsdp": [
+        {"year": "2020-21", "value": 988620.89},
+        {"year": "2021-22", "value": 1179393.00},
+        {"year": "2022-23", "value": 1309463.97},
+    ]},
+    {"id": "DL", "name": "Delhi", "gsdp": [
+        {"year": "2020-21", "value": 824610.00},
+        {"year": "2021-22", "value": 1077898.00},
+        {"year": "2022-23", "value": 1108914.85},
+    ]},
+]
+
+
 # ── STATE REVENUE DATA ──────────────────────────────────────────────────
 # Source: RBI Handbook of Statistics on Indian States, Tables 24-28
 # Own tax revenue, central transfers, total revenue (Rs crore)

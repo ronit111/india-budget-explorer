@@ -5,6 +5,8 @@ import { SEOHead } from '../components/seo/SEOHead.tsx';
 import { HeroSection } from '../components/home/HeroSection.tsx';
 import { RevenueSection } from '../components/home/RevenueSection.tsx';
 import { DeficitSection } from '../components/budget/DeficitSection.tsx';
+import { TrendsSection } from '../components/budget/TrendsSection.tsx';
+import { BudgetVsActualSection } from '../components/budget/BudgetVsActualSection.tsx';
 import { ExpenditureSection } from '../components/home/ExpenditureSection.tsx';
 import { FlowSection } from '../components/home/FlowSection.tsx';
 import { MapSection } from '../components/home/MapSection.tsx';
@@ -15,7 +17,7 @@ import { SkeletonChart } from '../components/ui/Skeleton.tsx';
 
 export default function BudgetPage() {
   const year = useBudgetStore((s) => s.selectedYear);
-  const { summary, receipts, expenditure, treemap, sankey, statewise, loading, error } =
+  const { summary, receipts, expenditure, treemap, sankey, statewise, trends, budgetVsActual, loading, error } =
     useBudgetData(year);
 
   if (loading) {
@@ -97,7 +99,35 @@ export default function BudgetPage() {
 
       <DeficitSection summary={summary} />
 
-      {/* 03 Expenditure — where money goes */}
+      {/* 03 Trends — 20-year perspective */}
+      {trends && (
+        <>
+          <div className="composition-divider" />
+          <NarrativeBridge
+            text="This borrowing pattern isn't new. Zoom out to see two decades of budgets and how the gap has evolved."
+            highlights={{ decades: 'var(--saffron)', gap: 'var(--cyan)', evolved: 'var(--gold)' }}
+          />
+          <div className="composition-divider" />
+
+          <TrendsSection trends={trends} />
+        </>
+      )}
+
+      {/* 04 Budget vs Actual — execution accountability */}
+      {budgetVsActual && (
+        <>
+          <div className="composition-divider" />
+          <NarrativeBridge
+            text="Planning a budget is one thing. Executing it is another. How well do ministries stick to their plans?"
+            highlights={{ plans: 'var(--gold)', ministries: 'var(--saffron)' }}
+          />
+          <div className="composition-divider" />
+
+          <BudgetVsActualSection data={budgetVsActual} />
+        </>
+      )}
+
+      {/* 05 Expenditure — where money goes */}
       <div className="composition-divider" />
       <NarrativeBridge
         text="Now let's trace where this money goes. Every ministry, every scheme, every crore."
@@ -107,7 +137,7 @@ export default function BudgetPage() {
 
       <ExpenditureSection treemap={treemap} />
 
-      {/* 04 Flow — the complete picture */}
+      {/* 06 Flow — the complete picture */}
       <div className="composition-divider" />
       <NarrativeBridge
         text="Follow the flow from your pocket through the Central Government to the spending that shapes the country."
@@ -117,7 +147,7 @@ export default function BudgetPage() {
 
       <FlowSection sankey={sankey} />
 
-      {/* 05 Map — where it lands geographically */}
+      {/* 07 Map — where it lands geographically */}
       <div className="composition-divider" />
       <NarrativeBridge
         text="Nearly one in four rupees flows directly to states and union territories. Here's where it lands."
@@ -127,7 +157,7 @@ export default function BudgetPage() {
 
       <MapSection statewise={statewise} />
 
-      {/* 06 Per Capita — what it means for you */}
+      {/* 08 Per Capita — what it means for you */}
       <div className="composition-divider" />
       <NarrativeBridge
         text="What does all this mean for a single citizen? Here's what the government spends on you every day."
@@ -137,7 +167,7 @@ export default function BudgetPage() {
 
       <PerCapitaSection summary={summary} expenditure={expenditure} />
 
-      {/* 07 CTA — go deeper */}
+      {/* 09 CTA — go deeper */}
       <div className="composition-divider" />
 
       <CTASection />

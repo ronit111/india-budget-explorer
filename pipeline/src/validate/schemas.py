@@ -184,6 +184,42 @@ class ExpenditureSharesData(BaseModel):
     shares: list[ExpenditureShare]
 
 
+# ─── Budget Trends (20-Year Historical) ──────────────────────────
+class BudgetTrendYear(BaseModel):
+    year: str
+    expenditure: float           # Rs crore
+    receipts: float              # Rs crore
+    fiscalDeficit: float         # Rs crore
+    fiscalDeficitPctGDP: float   # %
+    revenueDeficitPctGDP: float  # %
+
+
+class BudgetTrendsData(BaseModel):
+    year: str
+    series: list[BudgetTrendYear]
+    source: str
+
+
+# ─── Budget vs Actual ────────────────────────────────────────────
+class BudgetVsActualYear(BaseModel):
+    year: str
+    be: float                    # Budget Estimate, Rs crore
+    re: float | None = None      # Revised Estimate (may be absent for oldest years)
+    actual: float | None = None  # Actual expenditure (may be absent for current year)
+
+
+class MinistryBudgetHistory(BaseModel):
+    id: str
+    name: str
+    history: list[BudgetVsActualYear]
+
+
+class BudgetVsActualData(BaseModel):
+    year: str
+    ministries: list[MinistryBudgetHistory]
+    source: str
+
+
 # ─── Year Index ──────────────────────────────────────────────────
 class YearIndex(BaseModel):
     years: list[str]

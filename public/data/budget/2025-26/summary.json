@@ -8,8 +8,8 @@
   "fiscalDeficitPercentGDP": 4.4,
   "gdp": 35698000,
   "population": 1450000000,
-  "perCapitaExpenditure": 34934,
+  "perCapitaExpenditure": 34933.0,
   "perCapitaDailyExpenditure": 95.71,
-  "lastUpdated": "2026-02-23",
-  "source": "https://www.indiabudget.gov.in/"
+  "lastUpdated": "2026-03-01",
+  "source": "https://openbudgetsindia.org/"
 }

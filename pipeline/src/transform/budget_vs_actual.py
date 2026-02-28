@@ -1,0 +1,185 @@
+"""
+Transform curated ministry-level Budget vs Actual data.
+
+Tracks Budget Estimate (BE) vs Revised Estimate (RE) vs Actuals for
+top ministries over 5 fiscal years, revealing execution gaps.
+
+Source: Expenditure Budget Volume 1, Statement 3A (various years)
+        Union Budget documents on indiabudget.gov.in
+
+Data notes:
+  - FY 2019-20 through FY 2023-24: Actuals available
+  - FY 2024-25: RE available (Actuals not yet published)
+  - FY 2025-26: BE only
+  - All values in Rs crore
+"""
+
+import logging
+
+logger = logging.getLogger(__name__)
+
+
+# ── Ministry BE/RE/Actual Data ──────────────────────────────────────────
+# Source: Expenditure Budget Vol-1, Statement 3A
+# Cross-referenced across Union Budget 2021-22 through 2025-26 documents
+# to compile Actuals (from subsequent years' budgets)
+#
+# Methodology: Each Union Budget document reports:
+#   - Actuals for (FY-2)
+#   - RE for (FY-1)
+#   - BE for (FY)
+# So Budget 2025-26 gives: Actuals 2023-24, RE 2024-25, BE 2025-26
+
+MINISTRY_DATA: list[dict] = [
+    {
+        "id": "defence",
+        "name": "Ministry of Defence",
+        "history": [
+            {"year": "2019-20", "be": 431010, "re": 440366, "actual": 432065},
+            {"year": "2020-21", "be": 471378, "re": 475921, "actual": 470193},
+            {"year": "2021-22", "be": 478195, "re": 502408, "actual": 499430},
+            {"year": "2022-23", "be": 525166, "re": 571954, "actual": 585464},
+            {"year": "2023-24", "be": 593537, "re": 607614, "actual": 612436},
+            {"year": "2024-25", "be": 621541, "re": 630336, "actual": None},
+            {"year": "2025-26", "be": 680000, "re": None, "actual": None},
+        ],
+    },
+    {
+        "id": "rural-dev",
+        "name": "Ministry of Rural Development",
+        "history": [
+            {"year": "2019-20", "be": 119874, "re": 126009, "actual": 122975},
+            {"year": "2020-21", "be": 122398, "re": 166185, "actual": 161386},
+            {"year": "2021-22", "be": 131490, "re": 157521, "actual": 156054},
+            {"year": "2022-23", "be": 138203, "re": 149968, "actual": 151899},
+            {"year": "2023-24", "be": 159005, "re": 165866, "actual": 163738},
+            {"year": "2024-25", "be": 171952, "re": 169467, "actual": None},
+            {"year": "2025-26", "be": 178351, "re": None, "actual": None},
+        ],
+    },
+    {
+        "id": "road-transport",
+        "name": "Ministry of Road Transport & Highways",
+        "history": [
+            {"year": "2019-20", "be": 83016, "re": 68568, "actual": 65754},
+            {"year": "2020-21", "be": 91823, "re": 118101, "actual": 115424},
+            {"year": "2021-22", "be": 118101, "re": 178617, "actual": 170798},
+            {"year": "2022-23", "be": 199108, "re": 242608, "actual": 228714},
+            {"year": "2023-24", "be": 271508, "re": 275008, "actual": 267727},
+            {"year": "2024-25", "be": 278000, "re": 265200, "actual": None},
+            {"year": "2025-26", "be": 275000, "re": None, "actual": None},
+        ],
+    },
+    {
+        "id": "railways",
+        "name": "Ministry of Railways",
+        "history": [
+            {"year": "2019-20", "be": 65837, "re": 69967, "actual": 68291},
+            {"year": "2020-21", "be": 72216, "re": 103000, "actual": 99390},
+            {"year": "2021-22", "be": 110055, "re": 120956, "actual": 117268},
+            {"year": "2022-23", "be": 140367, "re": 167100, "actual": 168093},
+            {"year": "2023-24", "be": 241268, "re": 257864, "actual": 252300},
+            {"year": "2024-25", "be": 262200, "re": 255600, "actual": None},
+            {"year": "2025-26", "be": 267200, "re": None, "actual": None},
+        ],
+    },
+    {
+        "id": "home-affairs",
+        "name": "Ministry of Home Affairs",
+        "history": [
+            {"year": "2019-20", "be": 115053, "re": 121339, "actual": 117539},
+            {"year": "2020-21", "be": 122077, "re": 127281, "actual": 125826},
+            {"year": "2021-22", "be": 166547, "re": 178659, "actual": 175257},
+            {"year": "2022-23", "be": 185776, "re": 189418, "actual": 185002},
+            {"year": "2023-24", "be": 196035, "re": 197748, "actual": 196100},
+            {"year": "2024-25", "be": 208876, "re": 212671, "actual": None},
+            {"year": "2025-26", "be": 219643, "re": None, "actual": None},
+        ],
+    },
+    {
+        "id": "education",
+        "name": "Ministry of Education",
+        "history": [
+            {"year": "2019-20", "be": 94854, "re": 91839, "actual": 88693},
+            {"year": "2020-21", "be": 99312, "re": 83624, "actual": 81908},
+            {"year": "2021-22", "be": 93224, "re": 88002, "actual": 85582},
+            {"year": "2022-23", "be": 104278, "re": 99856, "actual": 98520},
+            {"year": "2023-24", "be": 112899, "re": 108499, "actual": 107320},
+            {"year": "2024-25", "be": 121540, "re": 115820, "actual": None},
+            {"year": "2025-26", "be": 125638, "re": None, "actual": None},
+        ],
+    },
+    {
+        "id": "health",
+        "name": "Ministry of Health & Family Welfare",
+        "history": [
+            {"year": "2019-20", "be": 64559, "re": 65282, "actual": 63800},
+            {"year": "2020-21", "be": 67112, "re": 78866, "actual": 77266},
+            {"year": "2021-22", "be": 73931, "re": 83000, "actual": 82921},
+            {"year": "2022-23", "be": 86201, "re": 79145, "actual": 76736},
+            {"year": "2023-24", "be": 89155, "re": 79290, "actual": 77710},
+            {"year": "2024-25", "be": 90659, "re": 82070, "actual": None},
+            {"year": "2025-26", "be": 99858, "re": None, "actual": None},
+        ],
+    },
+    {
+        "id": "agriculture",
+        "name": "Ministry of Agriculture & Farmers Welfare",
+        "history": [
+            {"year": "2019-20", "be": 130485, "re": 110301, "actual": 101032},
+            {"year": "2020-21", "be": 142621, "re": 127371, "actual": 117282},
+            {"year": "2021-22", "be": 131531, "re": 111683, "actual": 105834},
+            {"year": "2022-23", "be": 132514, "re": 111768, "actual": 106530},
+            {"year": "2023-24", "be": 126821, "re": 115529, "actual": 114483},
+            {"year": "2024-25", "be": 135553, "re": 118570, "actual": None},
+            {"year": "2025-26", "be": 141936, "re": None, "actual": None},
+        ],
+    },
+    {
+        "id": "consumer-affairs",
+        "name": "Dept. of Food & Public Distribution",
+        "history": [
+            {"year": "2019-20", "be": 184220, "re": 210636, "actual": 182021},
+            {"year": "2020-21", "be": 116312, "re": 420270, "actual": 382893},
+            {"year": "2021-22", "be": 252694, "re": 286469, "actual": 286219},
+            {"year": "2022-23", "be": 210430, "re": 294645, "actual": 271956},
+            {"year": "2023-24", "be": 213210, "re": 211160, "actual": 206020},
+            {"year": "2024-25", "be": 212324, "re": 206660, "actual": None},
+            {"year": "2025-26", "be": 208480, "re": None, "actual": None},
+        ],
+    },
+    {
+        "id": "housing-urban",
+        "name": "Ministry of Housing & Urban Affairs",
+        "history": [
+            {"year": "2019-20", "be": 48032, "re": 45255, "actual": 41461},
+            {"year": "2020-21", "be": 50040, "re": 58116, "actual": 57083},
+            {"year": "2021-22", "be": 54581, "re": 66620, "actual": 63741},
+            {"year": "2022-23", "be": 76431, "re": 74921, "actual": 70975},
+            {"year": "2023-24", "be": 76797, "re": 72291, "actual": 67380},
+            {"year": "2024-25", "be": 82577, "re": 78400, "actual": None},
+            {"year": "2025-26", "be": 87210, "re": None, "actual": None},
+        ],
+    },
+]
+
+
+def build_budget_vs_actual(year: str) -> dict:
+    """
+    Build budget-vs-actual.json from curated ministry-level data.
+
+    Returns ministry list with BE/RE/Actual history, sorted by latest BE descending.
+    """
+    sorted_ministries = sorted(
+        MINISTRY_DATA,
+        key=lambda m: m["history"][-1]["be"],
+        reverse=True,
+    )
+
+    logger.info(f"  budget-vs-actual.json: {len(sorted_ministries)} ministries")
+
+    return {
+        "year": year,
+        "ministries": sorted_ministries,
+        "source": "https://indiabudget.gov.in/ — Expenditure Budget Vol-1, Statement 3A (various years)",
+    }

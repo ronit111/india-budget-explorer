@@ -22,6 +22,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent))
 
 from src.states.sources.curated import (
     STATE_GSDP_DATA,
+    STATE_GSDP_HISTORY,
     STATE_REVENUE_DATA,
     STATE_FISCAL_DATA,
     DATA_YEAR,
@@ -63,7 +64,7 @@ def run_states_pipeline():
     # ── Stage 2: TRANSFORM ──────────────────────────────────────
     logger.info("Stage 2: TRANSFORM")
 
-    gsdp_data = build_gsdp(STATE_GSDP_DATA, SURVEY_YEAR, BASE_YEAR)
+    gsdp_data = build_gsdp(STATE_GSDP_DATA, SURVEY_YEAR, BASE_YEAR, STATE_GSDP_HISTORY)
     revenue_data = build_revenue(STATE_REVENUE_DATA, SURVEY_YEAR)
     fiscal_data = build_fiscal_health(STATE_FISCAL_DATA, SURVEY_YEAR)
     summary_data = _build_summary(STATE_GSDP_DATA)
