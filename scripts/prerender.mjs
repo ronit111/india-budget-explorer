@@ -26,6 +26,7 @@ const ROUTES = [
   '/economy', '/economy/explore', '/economy/methodology', '/economy/glossary',
   '/rbi', '/rbi/explore', '/rbi/methodology', '/rbi/glossary',
   '/states', '/states/explore', '/states/methodology', '/states/glossary',
+  '/census', '/census/explore', '/census/methodology', '/census/glossary',
 ];
 
 const MIME_TYPES = {

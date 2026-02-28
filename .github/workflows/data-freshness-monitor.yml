@@ -77,6 +77,12 @@ jobs:
                 staleAfterDays: 75,   // Bi-monthly refresh cycle (~60 days + buffer)
                 pipelineWorkflow: 'rbi-pipeline.yml',
               },
+              {
+                name: 'Census',
+                file: 'public/data/census/2025-26/summary.json',
+                staleAfterDays: 120,  // Quarterly refresh — mostly static data
+                pipelineWorkflow: 'census-pipeline.yml',
+              },
             ];
 
             for (const domain of domains) {

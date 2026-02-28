@@ -55,6 +55,16 @@ const VARIANTS = [
     cornerBR: 'rgba(134,239,172,0.2)',
     glowColor: 'rgba(74,222,128,0.08)',
   },
+  {
+    filename: 'og-census.png',
+    title: 'Census & Demographics',
+    tagline: '1.45 billion people — population, literacy, health, and urbanization',
+    accentFrom: '#8B5CF6',
+    accentTo: '#A78BFA',
+    cornerTL: 'rgba(139,92,246,0.25)',
+    cornerBR: 'rgba(167,139,250,0.2)',
+    glowColor: 'rgba(139,92,246,0.08)',
+  },
 ];
 
 function buildHTML(variant) {

@@ -14,7 +14,8 @@ export function Header() {
   const isEconomySection = location.pathname.startsWith('/economy');
   const isRBISection = location.pathname.startsWith('/rbi');
   const isStatesSection = location.pathname.startsWith('/states');
-  const isDataDomain = isBudgetSection || isEconomySection || isRBISection || isStatesSection;
+  const isCensusSection = location.pathname.startsWith('/census');
+  const isDataDomain = isBudgetSection || isEconomySection || isRBISection || isStatesSection || isCensusSection;
 
   // Context-aware title: show story name when inside a data story
   const headerTitle = isBudgetSection
@@ -25,7 +26,9 @@ export function Header() {
         ? 'RBI Data'
         : isStatesSection
           ? 'State Finances'
-          : 'Indian Data Project';
+          : isCensusSection
+            ? 'Census & Demographics'
+            : 'Indian Data Project';
   const headerLink = isBudgetSection
     ? '/budget'
     : isEconomySection
@@ -34,7 +37,9 @@ export function Header() {
         ? '/rbi'
         : isStatesSection
           ? '/states'
-          : '/';
+          : isCensusSection
+            ? '/census'
+            : '/';
 
   // Only show nav links inside a data story (domain sub-pages)
   const navLinks = isBudgetSection
@@ -66,13 +71,21 @@ export function Header() {
               { to: '/states/methodology', label: 'Methodology' },
               { to: '/states/glossary', label: 'Glossary' },
             ]
-          : [];
+          : isCensusSection
+            ? [
+                { to: '/census', label: 'Story' },
+                { to: '/census/explore', label: 'Explore' },
+                { to: '/census/methodology', label: 'Methodology' },
+                { to: '/census/glossary', label: 'Glossary' },
+              ]
+            : [];
 
   const isActiveLink = (linkTo: string) => {
     if (linkTo === '/budget') return location.pathname === '/budget';
     if (linkTo === '/economy') return location.pathname === '/economy';
     if (linkTo === '/rbi') return location.pathname === '/rbi';
     if (linkTo === '/states') return location.pathname === '/states';
+    if (linkTo === '/census') return location.pathname === '/census';
     return location.pathname === linkTo;
   };
 

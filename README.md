@@ -1,6 +1,6 @@
 # Indian Data Project
 
-Open Indian government data made accessible, visual, and shareable. Four data domains live: Union Budget 2025-26, Economic Survey 2025-26, RBI Data, and State Finances. Each gets its own visual story with explorable breakdowns.
+Open Indian government data made accessible, visual, and shareable. Five data domains live: Union Budget 2025-26, Economic Survey 2025-26, RBI Data, State Finances, and Census & Demographics. Each gets its own visual story with explorable breakdowns.
 
 **Live:** [indiandataproject.org](https://indiandataproject.org)
 
@@ -10,7 +10,7 @@ Open Indian government data made accessible, visual, and shareable. Four data do
 
 Indian Data Project turns dense government data into interactive visual experiences. The site is a hub — each data domain gets its own self-contained visual story with explorable breakdowns.
 
-**Hub + data domains:**
+**Hub + 5 data domains:**
 
 | Page | What it shows |
 |------|---------------|
@@ -32,6 +32,10 @@ Indian Data Project turns dense government data into interactive visual experien
 | **States Explorer** (`/states/explore`) | Indicator explorer with 4 categories (GSDP, Revenue, Fiscal, Per Capita), `HorizontalBarChart` per indicator |
 | **States Methodology** (`/states/methodology`) | Data sources (RBI Handbook, Finance Commission), indicator definitions, data freshness, limitations |
 | **States Glossary** (`/states/glossary`) | 12 state finance terms — GSDP, per capita income, own tax revenue, central transfers, devolution, FRBM Act, debt-to-GSDP, etc. |
+| **Census Story** (`/census`) | Scrollytelling narrative — population growth, age structure waffle, vital statistics (birth/death/fertility/life expectancy), health outcomes (IMR + NFHS-5), literacy gender gap butterfly chart, urbanization |
+| **Census Explorer** (`/census/explore`) | Indicator explorer with 5 categories (All, Population, Demographics, Literacy, Health), `HorizontalBarChart` per indicator |
+| **Census Methodology** (`/census/methodology`) | Data sources (Census 2011, World Bank, NFHS-5, SRS 2023, NPC), multi-vintage strategy, limitations |
+| **Census Glossary** (`/census/glossary`) | Demographic terms — census, decadal growth, sex ratio, dependency ratio, IMR, TFR, literacy rate, urbanization, etc. |
 
 ---
 
@@ -77,7 +81,7 @@ npm run preview
 | Command | What it does |
 |---------|-------------|
 | `npm run dev` | Start Vite dev server with HMR |
-| `npm run build` | TypeScript check + Vite build + Puppeteer prerender (all 18 routes) |
+| `npm run build` | TypeScript check + Vite build + Puppeteer prerender (all 22 routes) |
 | `npm run build:no-prerender` | Build without prerendering (used by Vercel) |
 | `npm run lint` | ESLint check |
 | `npm run preview` | Preview production build locally |
@@ -103,17 +107,22 @@ src/
 │   ├── StatesPage.tsx        # States scrollytelling (GSDP, revenue, fiscal health)
 │   ├── StatesExplorePage.tsx  # States indicator explorer with category filters
 │   ├── StatesMethodologyPage.tsx # States methodology
+│   ├── CensusPage.tsx          # Census scrollytelling (population, age, health, literacy, urbanization)
+│   ├── CensusExplorePage.tsx   # Census indicator explorer with category filters
+│   ├── CensusMethodologyPage.tsx # Census methodology
 │   ├── GlossaryPage.tsx      # Shared glossary component (parameterized by domain)
 │   ├── BudgetGlossaryPage.tsx # Budget glossary wrapper
 │   ├── EconomyGlossaryPage.tsx # Economy glossary wrapper
 │   ├── RBIGlossaryPage.tsx   # RBI glossary wrapper
-│   └── StatesGlossaryPage.tsx # States glossary wrapper
+│   ├── StatesGlossaryPage.tsx # States glossary wrapper
+│   └── CensusGlossaryPage.tsx # Census glossary wrapper
 ├── components/
 │   ├── home/               # Budget story compositions (Hero, Revenue, Expenditure, Flow, Map, CTA)
 │   ├── budget/             # Budget-specific compositions (DeficitSection, PerCapitaSection)
 │   ├── economy/            # Economy compositions (GrowthSection, InflationSection, TradeSection, etc.)
 │   ├── rbi/                # RBI compositions (HeroSection, MonetaryPolicySection, ForexSection, etc.)
 │   ├── states/             # States compositions (GSDPSection, GrowthSection, RevenueSection, FiscalHealthSection, PerCapitaSection)
+│   ├── census/             # Census compositions (PopulationSection, AgeDemographicsSection, VitalStatsSection, HealthSection, LiteracySection, UrbanizationSection)
 │   ├── calculator/         # Tax calculator UI (IncomeInput, DeductionsPanel, TaxBreakdown, ShareCard, SpendingAllocation)
 │   ├── explore/            # DataTable with expandable rows
 │   ├── viz/                # D3 visualizations (TreemapChart, SankeyDiagram, ChoroplethMap, WaffleChart, LineChart, AreaChart, HorizontalBarChart, StepChart, AnimatedCounter)
@@ -122,14 +131,14 @@ src/
 │   ├── seo/                # SEOHead (per-route meta tags + OG images + JSON-LD)
 │   └── i18n/               # Language provider and switcher
 ├── lib/
-│   ├── data/schema.ts      # TypeScript interfaces for all data shapes (Budget, Economy, RBI, States)
+│   ├── data/schema.ts      # TypeScript interfaces for all data shapes (Budget, Economy, RBI, States, Census)
 │   ├── taxEngine.ts        # Tax computation engine (Old/New regime, deductions, slabs)
 │   ├── format.ts           # Indian number formatting (lakhs/crores)
 │   ├── dataLoader.ts       # Fetch + cache layer for JSON data (all domains)
 │   ├── stateMapping.ts     # India state ID → name mapping
 │   └── i18n.ts             # i18next configuration
-├── hooks/                  # useScrollTrigger, useIntersection, useBudgetData, useEconomyData, useRBIData, useStatesData, etc.
-├── store/                  # Zustand stores (budgetStore, economyStore, rbiStore, statesStore, calculatorStore, uiStore)
+├── hooks/                  # useScrollTrigger, useIntersection, useBudgetData, useEconomyData, useRBIData, useStatesData, useCensusData, etc.
+├── store/                  # Zustand stores (budgetStore, economyStore, rbiStore, statesStore, censusStore, calculatorStore, uiStore)
 └── index.css               # Design tokens, CSS layers, keyframes
 
 public/
@@ -137,8 +146,9 @@ public/
 ├── data/economy/2025-26/   # 7 structured JSON economy datasets
 ├── data/rbi/2025-26/       # 6 structured JSON RBI datasets
 ├── data/states/2025-26/    # 6 structured JSON state finance datasets
+├── data/census/2025-26/    # 7 structured JSON census & demographics datasets
 ├── locales/en/             # Translation files
-├── sitemap.xml             # All routes + data endpoints (18 pages + 22 data files)
+├── sitemap.xml             # All routes + data endpoints (22 pages + 28 data files)
 ├── robots.txt              # All bots welcomed (including AI crawlers)
 └── llms.txt                # AI-readable site summary
 
@@ -148,6 +158,7 @@ pipeline/
 │   ├── economy/            # Economy pipeline (World Bank API → JSON)
 │   ├── rbi/                # RBI pipeline (World Bank + curated MPC data → JSON)
 │   ├── states/             # States pipeline (curated RBI Handbook data → JSON)
+│   ├── census/             # Census pipeline (World Bank API + curated Census/NFHS/SRS → JSON)
 │   └── publish/            # Shared JSON writer
 └── pyproject.toml          # Python dependencies
 ```
@@ -213,7 +224,21 @@ States data lives in `public/data/states/2025-26/`:
 | `indicators.json` | All state indicators across 4 categories |
 | `glossary.json` | 12 state finance terms with plain-language explanations |
 
-Data sourced from [Open Budgets India](https://openbudgetsindia.org), [indiabudget.gov.in](https://www.indiabudget.gov.in), [Economic Survey](https://www.indiabudget.gov.in/economicsurvey/), [RBI DBIE](https://data.rbi.org.in), [RBI Monetary Policy Statements](https://www.rbi.org.in), [RBI Handbook of Statistics on Indian States](https://www.rbi.org.in), and [World Bank Open Data API](https://data.worldbank.org) under the [Government Open Data License — India](https://data.gov.in/government-open-data-license-india).
+### Census & Demographics Data
+
+Census data lives in `public/data/census/2025-26/`:
+
+| File | Contents |
+|------|----------|
+| `summary.json` | Headline census numbers (population, literacy, sex ratio, urbanization) |
+| `population.json` | State-wise population, density, urban/rural split, decadal growth, national time series |
+| `demographics.json` | Age structure (young/working/elderly %), dependency ratio, vital stats (birth/death/fertility/life expectancy), urbanization trend |
+| `literacy.json` | State-wise literacy by gender, national time series |
+| `health.json` | IMR time series, state-level IMR, NFHS-5 state health (TFR, IMR, U5MR, stunting, wasting, immunization) |
+| `indicators.json` | All census indicators across 4 categories |
+| `glossary.json` | Demographic terms with plain-language explanations |
+
+Data sourced from [Open Budgets India](https://openbudgetsindia.org), [indiabudget.gov.in](https://www.indiabudget.gov.in), [Economic Survey](https://www.indiabudget.gov.in/economicsurvey/), [RBI DBIE](https://data.rbi.org.in), [RBI Monetary Policy Statements](https://www.rbi.org.in), [RBI Handbook of Statistics on Indian States](https://www.rbi.org.in), [Census of India](https://censusindia.gov.in), [NFHS](http://rchiips.org/nfhs/), and [World Bank Open Data API](https://data.worldbank.org) under the [Government Open Data License — India](https://data.gov.in/government-open-data-license-india).
 
 ---
 
@@ -232,13 +257,13 @@ See [BRAND.md](./BRAND.md) for the full visual identity guide. Key principles:
 
 The site is built for maximum discoverability:
 
-- **Prerendered HTML** for all 18 routes (Puppeteer at build time)
-- **JSON-LD** structured data: `WebApplication`, `Dataset` x4 (Budget + Economy + RBI + States for Google Dataset Search), `BreadcrumbList`
+- **Prerendered HTML** for all 22 routes (Puppeteer at build time)
+- **JSON-LD** structured data: `WebApplication`, `Dataset` x5 (Budget + Economy + RBI + States + Census for Google Dataset Search), `BreadcrumbList`
 - **Per-route meta tags** via react-helmet-async (title, description, OG image, Twitter card, canonical)
-- **sitemap.xml** covering 18 pages + 22 downloadable data endpoints
+- **sitemap.xml** covering 22 pages + 28 downloadable data endpoints
 - **robots.txt** explicitly welcoming AI crawlers (GPTBot, ClaudeBot, PerplexityBot, Google-Extended)
-- **llms.txt** for AI model discoverability (budget + economy + RBI content + glossary terms)
-- **Noscript fallback** with real content across all four domains for crawlers that don't execute JS
+- **llms.txt** for AI model discoverability (all 5 domains + glossary terms)
+- **Noscript fallback** with real content across all five domains for crawlers that don't execute JS
 
 ---
 
@@ -292,20 +317,62 @@ The site is built for maximum discoverability:
 - [x] Hub integration with emerald domain card, mini bar chart, stat pills
 - [x] Full SEO layer (prerender, sitemap, JSON-LD Dataset, OG image, llms.txt, noscript)
 
-**Phase 4B: Census & Demographics**
-- [ ] New data domain: Census & Demographics (population, literacy, urbanization, sex ratio)
+**Phase 4B: Census & Demographics** ✓
+- [x] Census & Demographics domain (scrollytelling with 6 sections, indicator explorer, methodology, glossary)
+- [x] Multi-vintage pipeline: World Bank API (national time series) + curated Census 2011 (state-level) + NFHS-5 (health) + SRS 2023 (vital stats)
+- [x] Custom visualizations: AgeWaffle (10x10 grid), GenderGapChart (butterfly), IMR color gradient bars
+- [x] Hub integration with violet domain card, mini population bars, stat pills
+- [x] Full SEO layer (prerender, sitemap, JSON-LD Dataset, OG image, llms.txt, noscript)
+- [x] GitHub Actions: `census-pipeline.yml` (quarterly) + freshness monitor updated
 
-**Phase 5: Historical Data (all domains)**
+**Phase 5: New Domains — Education, Healthcare, Employment**
+- [ ] Education domain (UDISE+ data — enrollment, pupil-teacher ratio, infrastructure, dropout rates)
+- [ ] Healthcare domain (NHM data — hospital beds, immunization, maternal health, disease burden)
+- [ ] Employment domain (PLFS data — unemployment rate, labor force participation, sectoral employment)
+
+**Phase 6: Historical Data & Depth (all domains)**
 - [ ] Historical budget data (multi-year comparisons, trend lines across union budgets)
+- [ ] Budget vs. Actual tracker (CAG data — promised allocations vs actual expenditure)
 - [ ] Historical economy data (GDP, inflation, trade over multiple survey periods)
 - [ ] Historical RBI data (extend MPC decision history, fill World Bank data gaps via DBIE)
-- [ ] State budget data (starting with major states)
 - [ ] RBI DBIE direct API integration (bypass World Bank lag for monetary indicators)
+- [ ] State-level historical data (starting with major states)
 
-**Phase 6: Community & API**
-- [ ] Public REST API for all datasets
-- [ ] Embeddable chart widgets
-- [ ] Contributor guide for data journalists
+**Phase 7: Chart Shareability & Distribution Infrastructure**
+- [ ] `<ChartActions>` overlay on every chart (PNG download, CSV export, permalink, embed iframe code)
+- [ ] Embed routes (`/embed/{domain}/{section}`) rendering standalone charts for journalist/blogger embedding
+- [ ] WhatsApp-optimized share cards (one stat + source, under 100KB) with deep link sharing
+- [ ] URL-encoded chart state (filters and selections reflected in shareable URLs)
+
+**Phase 8: "Make It Personal" Engine**
+- [ ] Persistent user context (state, household size) in localStorage — transforms numbers across all domains
+- [ ] RBI EMI impact calculator (repo rate → monthly payment change on home/car loans)
+- [ ] Economy cost-of-living calculator (input expenses, see change vs CPI over time)
+- [ ] States "Your state's report card" (per-capita spending vs national average)
+- [ ] Census "Your district profile" (population, literacy, health metrics for your area)
+
+**Phase 9: Key Insights & Question-First Search**
+- [ ] "Key Takeaways" card at top of each story page (3-5 stat pills with one-line annotations before scrollytelling)
+- [ ] Question-first search: curate 100 citizen questions mapped to section anchors + one-sentence answers
+- [ ] Add questions to Fuse.js search index ("Why are prices rising?" → Economy/Inflation section)
+
+**Phase 10: New Domains — Environment, Elections**
+- [ ] Environment domain (CPCB air quality, MOEFCC forest cover, CEA energy mix, CWC water resources)
+- [ ] Elections domain (Election Commission data — constituency results overlaid with development indicators)
+
+**Phase 11: Topic-Based Cross-Domain Views**
+- [ ] `/topics` page with 10-15 cross-domain topic cards (Agriculture, Borrowing Costs, Education Spending, etc.)
+- [ ] Each topic pulls relevant indicators from multiple domains into a single coherent view
+- [ ] Topic tags on individual story sections linking to cross-domain views
+
+**Phase 12: Multiplier Infrastructure**
+- [ ] Public REST API for all datasets with OpenAPI documentation
+- [ ] "For Journalists" section (citation-ready text, high-res chart downloads, embed snippets)
+- [ ] "For Teachers" section (lesson plans, classroom mode with larger fonts and slide-by-slide navigation)
+- [ ] Contributor guide for data journalists and civic organizations
+
+**Final: Citizen-Perspective QA**
+- [ ] Full product review from the perspective of an average Indian citizen (per CLAUDE.md Final QA protocol)
 
 ---
 
@@ -344,5 +411,6 @@ The underlying budget data is published by the Government of India under the [Go
 - Economy data from [Economic Survey](https://www.indiabudget.gov.in/economicsurvey/) and [World Bank Open Data](https://data.worldbank.org)
 - RBI data from [RBI DBIE](https://data.rbi.org.in), [RBI Monetary Policy Statements](https://www.rbi.org.in), and [World Bank Open Data](https://data.worldbank.org)
 - States data from [RBI Handbook of Statistics on Indian States](https://www.rbi.org.in) and [Finance Commission of India](https://fincomindia.nic.in)
+- Census data from [Census of India](https://censusindia.gov.in), [NFHS-5](http://rchiips.org/nfhs/), [Sample Registration System](https://censusindia.gov.in/census.website/data/srs), and [World Bank Open Data](https://data.worldbank.org)
 - Design inspired by [Information is Beautiful](https://informationisbeautiful.net), [Visual Cinnamon](https://www.visualcinnamon.com), and [Kasia Siwosz](https://kasiasiwosz.com)
 - Built with React, D3, Framer Motion, and Tailwind CSS

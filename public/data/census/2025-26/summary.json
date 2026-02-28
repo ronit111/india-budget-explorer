@@ -1,0 +1,32 @@
+{
+  "year": "2025-26",
+  "totalPopulation": 1450935791,
+  "populationGrowthRate": 0.89,
+  "literacyRate": 72.82,
+  "urbanizationRate": 35.38,
+  "sexRatio": 943,
+  "topPopulousStates": [
+    {
+      "name": "Uttar Pradesh",
+      "population": 199812341
+    },
+    {
+      "name": "Maharashtra",
+      "population": 112374333
+    },
+    {
+      "name": "Bihar",
+      "population": 104099452
+    },
+    {
+      "name": "West Bengal",
+      "population": 91276115
+    },
+    {
+      "name": "Madhya Pradesh",
+      "population": 72626809
+    }
+  ],
+  "lastUpdated": "2026-02-28",
+  "source": "World Bank + Census of India 2011"
+}

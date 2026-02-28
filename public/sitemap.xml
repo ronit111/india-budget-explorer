@@ -150,6 +150,32 @@
     <priority>0.6</priority>
   </url>
 
+  <!-- Census & Demographics domain -->
+  <url>
+    <loc>https://indiandataproject.org/census</loc>
+    <lastmod>2026-02-28</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://indiandataproject.org/census/explore</loc>
+    <lastmod>2026-02-28</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://indiandataproject.org/census/methodology</loc>
+    <lastmod>2026-02-28</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://indiandataproject.org/census/glossary</loc>
+    <lastmod>2026-02-28</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
   <!-- Economy data endpoints -->
   <url>
     <loc>https://indiandataproject.org/data/economy/2025-26/summary.json</loc>
@@ -253,6 +279,44 @@
   </url>
   <url>
     <loc>https://indiandataproject.org/data/states/2025-26/indicators.json</loc>
+    <lastmod>2026-02-28</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+  </url>
+
+  <!-- Census & Demographics data endpoints -->
+  <url>
+    <loc>https://indiandataproject.org/data/census/2025-26/summary.json</loc>
+    <lastmod>2026-02-28</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://indiandataproject.org/data/census/2025-26/population.json</loc>
+    <lastmod>2026-02-28</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://indiandataproject.org/data/census/2025-26/demographics.json</loc>
+    <lastmod>2026-02-28</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://indiandataproject.org/data/census/2025-26/literacy.json</loc>
+    <lastmod>2026-02-28</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://indiandataproject.org/data/census/2025-26/health.json</loc>
+    <lastmod>2026-02-28</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://indiandataproject.org/data/census/2025-26/indicators.json</loc>
     <lastmod>2026-02-28</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>

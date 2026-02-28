@@ -4,7 +4,7 @@
 
 ## What this site does
 
-Indian Data Project is a hub for Indian government data visualization. Each data domain (budget, economic survey, RBI data, state finances) gets its own visual story with explorable breakdowns. Four domains are live: Union Budget 2025-26, Economic Survey 2025-26, RBI Data, and State Finances.
+Indian Data Project is a hub for Indian government data visualization. Each data domain (budget, economic survey, RBI data, state finances, census & demographics) gets its own visual story with explorable breakdowns. Five domains are live: Union Budget 2025-26, Economic Survey 2025-26, RBI Data, State Finances, and Census & Demographics.
 
 ## Pages
 
@@ -35,6 +35,12 @@ Indian Data Project is a hub for Indian government data visualization. Each data
 - /states/explore — Browseable indicator explorer with categories: GSDP, Revenue, Fiscal, Per Capita. Select any indicator to compare across all 31 states/UTs with data.
 - /states/methodology — Data sources (RBI Handbook, State Finances report, Finance Commission), indicator definitions, data freshness (FY 2022-23 vintage), limitations
 - /states/glossary — Plain-language definitions of state finance terms: GSDP, per capita income, own tax revenue, central transfers, devolution, FRBM Act, fiscal deficit, debt-to-GSDP, Finance Commission, self-sufficiency ratio.
+
+### Census & Demographics Domain
+- /census — Scrollytelling narrative: population growth (1.45 billion), age structure waffle chart (young/working/elderly), vital statistics (birth rate, death rate, fertility rate, life expectancy), infant mortality with state breakdown, literacy gender gap butterfly chart, urbanization trends
+- /census/explore — Browseable indicator explorer with categories: Population, Demographics, Literacy, Health. Select any indicator to compare across states.
+- /census/methodology — Data sources (Census of India 2011, World Bank API, NFHS-5, SRS 2023, NPC Projections), multi-vintage data strategy, indicator definitions, limitations
+- /census/glossary — Plain-language definitions of demographic terms: census, decadal growth, sex ratio, dependency ratio, infant mortality rate, total fertility rate, literacy rate, urbanization, NFHS, SRS.
 
 ## Key data points
 
@@ -70,6 +76,17 @@ Indian Data Project is a hub for Indian government data visualization. Each data
 - Average per capita GSDP: Rs 1,71,687
 - Data source: RBI Handbook of Statistics on Indian States
 
+### Census & Demographics
+- Total population: ~1.45 billion (World Bank 2024 estimate)
+- Population growth rate: ~0.8% (decelerating from 1.6% in 2001)
+- Literacy rate: 74.04% (Census 2011; male 82.14%, female 65.46%)
+- Sex ratio: 943 females per 1000 males (Census 2011)
+- Total fertility rate: 2.0 (NFHS-5 2019-21, below replacement level of 2.1)
+- Infant mortality rate: 28 per 1000 live births (SRS 2023)
+- Life expectancy: 70.19 years (World Bank 2023)
+- Urbanization: ~36% (World Bank 2023)
+- Data sources: Census of India 2011, World Bank Open Data, NFHS-5, SRS 2023, National Population Commission
+
 ## Data sources
 
 - Open Budgets India (openbudgetsindia.org) — structured budget data
@@ -82,6 +99,10 @@ Indian Data Project is a hub for Indian government data visualization. Each data
 - RBI Handbook of Statistics on Indian States — state-level GSDP, per capita, growth rates
 - RBI State Finances: A Study of Budgets — revenue composition, fiscal deficit, debt
 - Finance Commission of India — tax devolution formulas, grants
+- Census of India (censusindia.gov.in) — decennial census 2011 baseline population, literacy, urbanization
+- National Family Health Survey (NFHS-5, 2019-21) — TFR, IMR, stunting, wasting, immunization by state
+- Sample Registration System (SRS 2023) — birth rate, death rate, IMR annual estimates
+- National Population Commission — population projections 2011-2036
 
 ## Downloadable datasets (JSON)
 
@@ -119,6 +140,14 @@ Indian Data Project is a hub for Indian government data visualization. Each data
 - /data/states/2025-26/revenue.json — Own tax revenue, central transfers, self-sufficiency ratio
 - /data/states/2025-26/fiscal-health.json — Fiscal deficit and debt-to-GSDP by state
 - /data/states/2025-26/indicators.json — All state indicators across 4 categories
+
+### Census & Demographics
+- /data/census/2025-26/summary.json — Census headline numbers (population, literacy, sex ratio)
+- /data/census/2025-26/population.json — State-wise population, density, urban/rural split, decadal growth, national time series
+- /data/census/2025-26/demographics.json — Age structure (young/working/elderly %), dependency ratio, vital stats (birth/death/fertility/life expectancy), urbanization trend
+- /data/census/2025-26/literacy.json — State-wise literacy by gender, national time series
+- /data/census/2025-26/health.json — IMR time series, state-level IMR, NFHS-5 state health (TFR, IMR, U5MR, stunting, wasting, immunization)
+- /data/census/2025-26/indicators.json — All census indicators across 4 categories
 
 ## Tax calculator details
 

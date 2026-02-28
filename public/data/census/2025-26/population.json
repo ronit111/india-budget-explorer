@@ -1,0 +1,534 @@
+{
+  "year": "2025-26",
+  "nationalTimeSeries": [
+    {
+      "year": "2000",
+      "value": 1057922733
+    },
+    {
+      "year": "2001",
+      "value": 1077898575
+    },
+    {
+      "year": "2002",
+      "value": 1097600380
+    },
+    {
+      "year": "2003",
+      "value": 1116803006
+    },
+    {
+      "year": "2004",
+      "value": 1135991513
+    },
+    {
+      "year": "2005",
+      "value": 1154676322
+    },
+    {
+      "year": "2006",
+      "value": 1172878890
+    },
+    {
+      "year": "2007",
+      "value": 1190676021
+    },
+    {
+      "year": "2008",
+      "value": 1207930964
+    },
+    {
+      "year": "2009",
+      "value": 1225524753
+    },
+    {
+      "year": "2010",
+      "value": 1243481564
+    },
+    {
+      "year": "2011",
+      "value": 1261224954
+    },
+    {
+      "year": "2012",
+      "value": 1278674502
+    },
+    {
+      "year": "2013",
+      "value": 1295829511
+    },
+    {
+      "year": "2014",
+      "value": 1312277191
+    },
+    {
+      "year": "2015",
+      "value": 1328024498
+    },
+    {
+      "year": "2016",
+      "value": 1343944296
+    },
+    {
+      "year": "2017",
+      "value": 1359657400
+    },
+    {
+      "year": "2018",
+      "value": 1374659064
+    },
+    {
+      "year": "2019",
+      "value": 1389030312
+    },
+    {
+      "year": "2020",
+      "value": 1402617695
+    },
+    {
+      "year": "2021",
+      "value": 1414203896
+    },
+    {
+      "year": "2022",
+      "value": 1425423212
+    },
+    {
+      "year": "2023",
+      "value": 1438069596
+    },
+    {
+      "year": "2024",
+      "value": 1450935791
+    }
+  ],
+  "growthTimeSeries": [
+    {
+      "year": "2000",
+      "value": 1.88
+    },
+    {
+      "year": "2001",
+      "value": 1.87
+    },
+    {
+      "year": "2002",
+      "value": 1.81
+    },
+    {
+      "year": "2003",
+      "value": 1.73
+    },
+    {
+      "year": "2004",
+      "value": 1.7
+    },
+    {
+      "year": "2005",
+      "value": 1.63
+    },
+    {
+      "year": "2006",
+      "value": 1.56
+    },
+    {
+      "year": "2007",
+      "value": 1.51
+    },
+    {
+      "year": "2008",
+      "value": 1.44
+    },
+    {
+      "year": "2009",
+      "value": 1.45
+    },
+    {
+      "year": "2010",
+      "value": 1.45
+    },
+    {
+      "year": "2011",
+      "value": 1.42
+    },
+    {
+      "year": "2012",
+      "value": 1.37
+    },
+    {
+      "year": "2013",
+      "value": 1.33
+    },
+    {
+      "year": "2014",
+      "value": 1.26
+    },
+    {
+      "year": "2015",
+      "value": 1.19
+    },
+    {
+      "year": "2016",
+      "value": 1.19
+    },
+    {
+      "year": "2017",
+      "value": 1.16
+    },
+    {
+      "year": "2018",
+      "value": 1.1
+    },
+    {
+      "year": "2019",
+      "value": 1.04
+    },
+    {
+      "year": "2020",
+      "value": 0.97
+    },
+    {
+      "year": "2021",
+      "value": 0.82
+    },
+    {
+      "year": "2022",
+      "value": 0.79
+    },
+    {
+      "year": "2023",
+      "value": 0.88
+    },
+    {
+      "year": "2024",
+      "value": 0.89
+    }
+  ],
+  "states": [
+    {
+      "id": "up",
+      "name": "Uttar Pradesh",
+      "population": 199812341,
+      "density": 829,
+      "urbanPercent": 22.27,
+      "ruralPercent": 77.73,
+      "decadalGrowth": 20.23
+    },
+    {
+      "id": "mh",
+      "name": "Maharashtra",
+      "population": 112374333,
+      "density": 365,
+      "urbanPercent": 45.23,
+      "ruralPercent": 54.77,
+      "decadalGrowth": 15.99
+    },
+    {
+      "id": "br",
+      "name": "Bihar",
+      "population": 104099452,
+      "density": 1106,
+      "urbanPercent": 11.3,
+      "ruralPercent": 88.7,
+      "decadalGrowth": 25.42
+    },
+    {
+      "id": "wb",
+      "name": "West Bengal",
+      "population": 91276115,
+      "density": 1028,
+      "urbanPercent": 31.89,
+      "ruralPercent": 68.11,
+      "decadalGrowth": 13.84
+    },
+    {
+      "id": "mp",
+      "name": "Madhya Pradesh",
+      "population": 72626809,
+      "density": 236,
+      "urbanPercent": 27.63,
+      "ruralPercent": 72.37,
+      "decadalGrowth": 20.35
+    },
+    {
+      "id": "tn",
+      "name": "Tamil Nadu",
+      "population": 72147030,
+      "density": 555,
+      "urbanPercent": 48.45,
+      "ruralPercent": 51.55,
+      "decadalGrowth": 15.61
+    },
+    {
+      "id": "rj",
+      "name": "Rajasthan",
+      "population": 68548437,
+      "density": 200,
+      "urbanPercent": 24.89,
+      "ruralPercent": 75.11,
+      "decadalGrowth": 21.31
+    },
+    {
+      "id": "ka",
+      "name": "Karnataka",
+      "population": 61095297,
+      "density": 319,
+      "urbanPercent": 38.57,
+      "ruralPercent": 61.43,
+      "decadalGrowth": 15.6
+    },
+    {
+      "id": "gj",
+      "name": "Gujarat",
+      "population": 60439692,
+      "density": 308,
+      "urbanPercent": 42.58,
+      "ruralPercent": 57.42,
+      "decadalGrowth": 19.28
+    },
+    {
+      "id": "ap",
+      "name": "Andhra Pradesh",
+      "population": 49577103,
+      "density": 308,
+      "urbanPercent": 29.47,
+      "ruralPercent": 70.53,
+      "decadalGrowth": 11.1
+    },
+    {
+      "id": "od",
+      "name": "Odisha",
+      "population": 41974218,
+      "density": 270,
+      "urbanPercent": 16.68,
+      "ruralPercent": 83.32,
+      "decadalGrowth": 14.05
+    },
+    {
+      "id": "tg",
+      "name": "Telangana",
+      "population": 35003674,
+      "density": 312,
+      "urbanPercent": 38.89,
+      "ruralPercent": 61.11,
+      "decadalGrowth": 13.58
+    },
+    {
+      "id": "kl",
+      "name": "Kerala",
+      "population": 33406061,
+      "density": 860,
+      "urbanPercent": 47.72,
+      "ruralPercent": 52.28,
+      "decadalGrowth": 4.91
+    },
+    {
+      "id": "jh",
+      "name": "Jharkhand",
+      "population": 32988134,
+      "density": 414,
+      "urbanPercent": 24.05,
+      "ruralPercent": 75.95,
+      "decadalGrowth": 22.42
+    },
+    {
+      "id": "as",
+      "name": "Assam",
+      "population": 31205576,
+      "density": 398,
+      "urbanPercent": 14.08,
+      "ruralPercent": 85.92,
+      "decadalGrowth": 17.07
+    },
+    {
+      "id": "pb",
+      "name": "Punjab",
+      "population": 27743338,
+      "density": 551,
+      "urbanPercent": 37.49,
+      "ruralPercent": 62.51,
+      "decadalGrowth": 13.89
+    },
+    {
+      "id": "ct",
+      "name": "Chhattisgarh",
+      "population": 25545198,
+      "density": 189,
+      "urbanPercent": 23.24,
+      "ruralPercent": 76.76,
+      "decadalGrowth": 22.61
+    },
+    {
+      "id": "hr",
+      "name": "Haryana",
+      "population": 25351462,
+      "density": 573,
+      "urbanPercent": 34.79,
+      "ruralPercent": 65.21,
+      "decadalGrowth": 19.9
+    },
+    {
+      "id": "jk",
+      "name": "Jammu & Kashmir",
+      "population": 12541302,
+      "density": 56,
+      "urbanPercent": 27.21,
+      "ruralPercent": 72.79,
+      "decadalGrowth": 23.64
+    },
+    {
+      "id": "uk",
+      "name": "Uttarakhand",
+      "population": 10086292,
+      "density": 189,
+      "urbanPercent": 30.55,
+      "ruralPercent": 69.45,
+      "decadalGrowth": 18.81
+    },
+    {
+      "id": "hp",
+      "name": "Himachal Pradesh",
+      "population": 6864602,
+      "density": 123,
+      "urbanPercent": 10.04,
+      "ruralPercent": 89.96,
+      "decadalGrowth": 12.94
+    },
+    {
+      "id": "tr",
+      "name": "Tripura",
+      "population": 3673917,
+      "density": 350,
+      "urbanPercent": 26.18,
+      "ruralPercent": 73.82,
+      "decadalGrowth": 14.84
+    },
+    {
+      "id": "ml",
+      "name": "Meghalaya",
+      "population": 2966889,
+      "density": 132,
+      "urbanPercent": 20.08,
+      "ruralPercent": 79.92,
+      "decadalGrowth": 27.95
+    },
+    {
+      "id": "mn",
+      "name": "Manipur",
+      "population": 2855794,
+      "density": 128,
+      "urbanPercent": 32.45,
+      "ruralPercent": 67.55,
+      "decadalGrowth": 18.65
+    },
+    {
+      "id": "nl",
+      "name": "Nagaland",
+      "population": 1978502,
+      "density": 119,
+      "urbanPercent": 28.97,
+      "ruralPercent": 71.03,
+      "decadalGrowth": -0.58
+    },
+    {
+      "id": "ga",
+      "name": "Goa",
+      "population": 1458545,
+      "density": 394,
+      "urbanPercent": 62.17,
+      "ruralPercent": 37.83,
+      "decadalGrowth": 8.23
+    },
+    {
+      "id": "ar",
+      "name": "Arunachal Pradesh",
+      "population": 1383727,
+      "density": 17,
+      "urbanPercent": 22.67,
+      "ruralPercent": 77.33,
+      "decadalGrowth": 26.03
+    },
+    {
+      "id": "mz",
+      "name": "Mizoram",
+      "population": 1097206,
+      "density": 52,
+      "urbanPercent": 52.11,
+      "ruralPercent": 47.89,
+      "decadalGrowth": 23.48
+    },
+    {
+      "id": "sk",
+      "name": "Sikkim",
+      "population": 610577,
+      "density": 86,
+      "urbanPercent": 24.97,
+      "ruralPercent": 75.03,
+      "decadalGrowth": 12.89
+    },
+    {
+      "id": "dl",
+      "name": "Delhi",
+      "population": 16787941,
+      "density": 11320,
+      "urbanPercent": 97.5,
+      "ruralPercent": 2.5,
+      "decadalGrowth": 21.21
+    },
+    {
+      "id": "py",
+      "name": "Puducherry",
+      "population": 1247953,
+      "density": 2598,
+      "urbanPercent": 68.31,
+      "ruralPercent": 31.69,
+      "decadalGrowth": 28.08
+    },
+    {
+      "id": "ch",
+      "name": "Chandigarh",
+      "population": 1055450,
+      "density": 9258,
+      "urbanPercent": 97.25,
+      "ruralPercent": 2.75,
+      "decadalGrowth": 17.19
+    },
+    {
+      "id": "an",
+      "name": "Andaman & Nicobar",
+      "population": 380581,
+      "density": 46,
+      "urbanPercent": 37.7,
+      "ruralPercent": 62.3,
+      "decadalGrowth": 6.86
+    },
+    {
+      "id": "dn",
+      "name": "Dadra & Nagar Haveli",
+      "population": 343709,
+      "density": 700,
+      "urbanPercent": 46.72,
+      "ruralPercent": 53.28,
+      "decadalGrowth": 55.88
+    },
+    {
+      "id": "dd",
+      "name": "Daman & Diu",
+      "population": 243247,
+      "density": 2169,
+      "urbanPercent": 75.16,
+      "ruralPercent": 24.84,
+      "decadalGrowth": 53.76
+    },
+    {
+      "id": "ld",
+      "name": "Lakshadweep",
+      "population": 64473,
+      "density": 2013,
+      "urbanPercent": 78.07,
+      "ruralPercent": 21.93,
+      "decadalGrowth": 6.3
+    }
+  ],
+  "source": "World Bank Development Indicators + Census of India 2011"
+}

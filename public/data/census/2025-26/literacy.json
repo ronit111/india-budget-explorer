@@ -1,0 +1,432 @@
+{
+  "year": "2025-26",
+  "totalTimeSeries": [
+    {
+      "year": "2001",
+      "value": 61.01
+    },
+    {
+      "year": "2006",
+      "value": 62.75
+    },
+    {
+      "year": "2010",
+      "value": 68.34
+    },
+    {
+      "year": "2011",
+      "value": 69.3
+    },
+    {
+      "year": "2012",
+      "value": 69.84
+    },
+    {
+      "year": "2018",
+      "value": 73.7
+    },
+    {
+      "year": "2019",
+      "value": 74.91
+    },
+    {
+      "year": "2020",
+      "value": 75.54
+    },
+    {
+      "year": "2021",
+      "value": 76.07
+    },
+    {
+      "year": "2022",
+      "value": 76.32
+    },
+    {
+      "year": "2023",
+      "value": 81.7
+    }
+  ],
+  "maleTimeSeries": [
+    {
+      "year": "2001",
+      "value": 73.41
+    },
+    {
+      "year": "2006",
+      "value": 75.19
+    },
+    {
+      "year": "2010",
+      "value": 78.62
+    },
+    {
+      "year": "2011",
+      "value": 78.88
+    },
+    {
+      "year": "2012",
+      "value": 79.45
+    },
+    {
+      "year": "2018",
+      "value": 82.0
+    },
+    {
+      "year": "2019",
+      "value": 82.79
+    },
+    {
+      "year": "2020",
+      "value": 83.34
+    },
+    {
+      "year": "2021",
+      "value": 83.9
+    },
+    {
+      "year": "2022",
+      "value": 83.45
+    },
+    {
+      "year": "2023",
+      "value": 88.31
+    }
+  ],
+  "femaleTimeSeries": [
+    {
+      "year": "2001",
+      "value": 47.84
+    },
+    {
+      "year": "2006",
+      "value": 50.82
+    },
+    {
+      "year": "2010",
+      "value": 57.67
+    },
+    {
+      "year": "2011",
+      "value": 59.28
+    },
+    {
+      "year": "2012",
+      "value": 59.95
+    },
+    {
+      "year": "2018",
+      "value": 65.23
+    },
+    {
+      "year": "2019",
+      "value": 67.0
+    },
+    {
+      "year": "2020",
+      "value": 67.59
+    },
+    {
+      "year": "2021",
+      "value": 68.22
+    },
+    {
+      "year": "2022",
+      "value": 69.1
+    },
+    {
+      "year": "2023",
+      "value": 74.86
+    }
+  ],
+  "states": [
+    {
+      "id": "up",
+      "name": "Uttar Pradesh",
+      "overallRate": 67.68,
+      "maleRate": 77.28,
+      "femaleRate": 57.18,
+      "genderGap": 20.1
+    },
+    {
+      "id": "mh",
+      "name": "Maharashtra",
+      "overallRate": 82.34,
+      "maleRate": 88.38,
+      "femaleRate": 75.87,
+      "genderGap": 12.51
+    },
+    {
+      "id": "br",
+      "name": "Bihar",
+      "overallRate": 61.8,
+      "maleRate": 71.2,
+      "femaleRate": 51.5,
+      "genderGap": 19.7
+    },
+    {
+      "id": "wb",
+      "name": "West Bengal",
+      "overallRate": 76.26,
+      "maleRate": 81.69,
+      "femaleRate": 70.54,
+      "genderGap": 11.15
+    },
+    {
+      "id": "mp",
+      "name": "Madhya Pradesh",
+      "overallRate": 69.32,
+      "maleRate": 78.73,
+      "femaleRate": 59.24,
+      "genderGap": 19.49
+    },
+    {
+      "id": "tn",
+      "name": "Tamil Nadu",
+      "overallRate": 80.09,
+      "maleRate": 86.77,
+      "femaleRate": 73.44,
+      "genderGap": 13.33
+    },
+    {
+      "id": "rj",
+      "name": "Rajasthan",
+      "overallRate": 66.11,
+      "maleRate": 79.19,
+      "femaleRate": 52.12,
+      "genderGap": 27.07
+    },
+    {
+      "id": "ka",
+      "name": "Karnataka",
+      "overallRate": 75.36,
+      "maleRate": 82.47,
+      "femaleRate": 68.08,
+      "genderGap": 14.39
+    },
+    {
+      "id": "gj",
+      "name": "Gujarat",
+      "overallRate": 78.03,
+      "maleRate": 85.75,
+      "femaleRate": 69.68,
+      "genderGap": 16.07
+    },
+    {
+      "id": "ap",
+      "name": "Andhra Pradesh",
+      "overallRate": 67.02,
+      "maleRate": 74.88,
+      "femaleRate": 59.15,
+      "genderGap": 15.73
+    },
+    {
+      "id": "od",
+      "name": "Odisha",
+      "overallRate": 72.87,
+      "maleRate": 81.59,
+      "femaleRate": 64.01,
+      "genderGap": 17.58
+    },
+    {
+      "id": "tg",
+      "name": "Telangana",
+      "overallRate": 66.46,
+      "maleRate": 74.95,
+      "femaleRate": 57.92,
+      "genderGap": 17.03
+    },
+    {
+      "id": "kl",
+      "name": "Kerala",
+      "overallRate": 93.91,
+      "maleRate": 96.02,
+      "femaleRate": 91.98,
+      "genderGap": 4.04
+    },
+    {
+      "id": "jh",
+      "name": "Jharkhand",
+      "overallRate": 66.41,
+      "maleRate": 76.84,
+      "femaleRate": 55.42,
+      "genderGap": 21.42
+    },
+    {
+      "id": "as",
+      "name": "Assam",
+      "overallRate": 72.19,
+      "maleRate": 77.85,
+      "femaleRate": 66.27,
+      "genderGap": 11.58
+    },
+    {
+      "id": "pb",
+      "name": "Punjab",
+      "overallRate": 75.84,
+      "maleRate": 80.44,
+      "femaleRate": 70.73,
+      "genderGap": 9.71
+    },
+    {
+      "id": "ct",
+      "name": "Chhattisgarh",
+      "overallRate": 70.28,
+      "maleRate": 80.27,
+      "femaleRate": 60.24,
+      "genderGap": 20.03
+    },
+    {
+      "id": "hr",
+      "name": "Haryana",
+      "overallRate": 75.55,
+      "maleRate": 84.06,
+      "femaleRate": 65.94,
+      "genderGap": 18.12
+    },
+    {
+      "id": "jk",
+      "name": "Jammu & Kashmir",
+      "overallRate": 67.16,
+      "maleRate": 76.75,
+      "femaleRate": 56.43,
+      "genderGap": 20.32
+    },
+    {
+      "id": "uk",
+      "name": "Uttarakhand",
+      "overallRate": 78.82,
+      "maleRate": 87.4,
+      "femaleRate": 70.01,
+      "genderGap": 17.39
+    },
+    {
+      "id": "hp",
+      "name": "Himachal Pradesh",
+      "overallRate": 82.8,
+      "maleRate": 89.53,
+      "femaleRate": 75.93,
+      "genderGap": 13.6
+    },
+    {
+      "id": "tr",
+      "name": "Tripura",
+      "overallRate": 87.22,
+      "maleRate": 91.53,
+      "femaleRate": 82.73,
+      "genderGap": 8.8
+    },
+    {
+      "id": "ml",
+      "name": "Meghalaya",
+      "overallRate": 74.43,
+      "maleRate": 76.0,
+      "femaleRate": 72.89,
+      "genderGap": 3.11
+    },
+    {
+      "id": "mn",
+      "name": "Manipur",
+      "overallRate": 79.85,
+      "maleRate": 86.49,
+      "femaleRate": 73.17,
+      "genderGap": 13.32
+    },
+    {
+      "id": "nl",
+      "name": "Nagaland",
+      "overallRate": 79.55,
+      "maleRate": 82.75,
+      "femaleRate": 76.11,
+      "genderGap": 6.64
+    },
+    {
+      "id": "ga",
+      "name": "Goa",
+      "overallRate": 88.7,
+      "maleRate": 92.65,
+      "femaleRate": 84.66,
+      "genderGap": 7.99
+    },
+    {
+      "id": "ar",
+      "name": "Arunachal Pradesh",
+      "overallRate": 65.38,
+      "maleRate": 72.55,
+      "femaleRate": 57.7,
+      "genderGap": 14.85
+    },
+    {
+      "id": "mz",
+      "name": "Mizoram",
+      "overallRate": 91.33,
+      "maleRate": 93.35,
+      "femaleRate": 89.27,
+      "genderGap": 4.08
+    },
+    {
+      "id": "sk",
+      "name": "Sikkim",
+      "overallRate": 81.42,
+      "maleRate": 86.55,
+      "femaleRate": 75.61,
+      "genderGap": 10.94
+    },
+    {
+      "id": "dl",
+      "name": "Delhi",
+      "overallRate": 86.21,
+      "maleRate": 90.94,
+      "femaleRate": 80.76,
+      "genderGap": 10.18
+    },
+    {
+      "id": "py",
+      "name": "Puducherry",
+      "overallRate": 85.85,
+      "maleRate": 91.26,
+      "femaleRate": 80.67,
+      "genderGap": 10.59
+    },
+    {
+      "id": "ch",
+      "name": "Chandigarh",
+      "overallRate": 86.05,
+      "maleRate": 90.54,
+      "femaleRate": 81.38,
+      "genderGap": 9.16
+    },
+    {
+      "id": "an",
+      "name": "Andaman & Nicobar",
+      "overallRate": 86.27,
+      "maleRate": 90.11,
+      "femaleRate": 81.84,
+      "genderGap": 8.27
+    },
+    {
+      "id": "dn",
+      "name": "Dadra & Nagar Haveli",
+      "overallRate": 76.24,
+      "maleRate": 85.17,
+      "femaleRate": 64.32,
+      "genderGap": 20.85
+    },
+    {
+      "id": "dd",
+      "name": "Daman & Diu",
+      "overallRate": 87.07,
+      "maleRate": 91.48,
+      "femaleRate": 79.59,
+      "genderGap": 11.89
+    },
+    {
+      "id": "ld",
+      "name": "Lakshadweep",
+      "overallRate": 91.85,
+      "maleRate": 95.56,
+      "femaleRate": 87.95,
+      "genderGap": 7.61
+    }
+  ],
+  "source": "World Bank Development Indicators + Census of India 2011"
+}

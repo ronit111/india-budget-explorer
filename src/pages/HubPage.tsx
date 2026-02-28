@@ -3,9 +3,9 @@ import { Link, useLocation } from 'react-router-dom';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useScrollTrigger } from '../hooks/useScrollTrigger.ts';
 import { SEOHead } from '../components/seo/SEOHead.tsx';
-import { loadSummary, loadEconomySummary, loadRBISummary, loadStatesSummary } from '../lib/dataLoader.ts';
+import { loadSummary, loadEconomySummary, loadRBISummary, loadStatesSummary, loadCensusSummary } from '../lib/dataLoader.ts';
 import { formatLakhCrore, formatIndianNumber } from '../lib/format.ts';
-import type { BudgetSummary, EconomySummary, RBISummary, StatesSummary } from '../lib/data/schema.ts';
+import type { BudgetSummary, EconomySummary, RBISummary, StatesSummary, CensusSummary } from '../lib/data/schema.ts';
 
 const EASE_OUT_EXPO: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
@@ -716,43 +716,143 @@ function StatesDomainCard({ summary }: { summary: StatesSummary | null }) {
   );
 }
 
-function ComingSoon() {
-  const [ref, isVisible] = useScrollTrigger({ threshold: 0.15 });
+function CensusDomainCard({ summary }: { summary: CensusSummary | null }) {
+  const [ref, isVisible] = useScrollTrigger({ threshold: 0.1 });
 
-  const domains = [
-    'Census & Demographics',
-  ];
+  // Mini horizontal bars: top 5 most populous states
+  const topStates = useMemo(() => {
+    if (!summary?.topPopulousStates) return [];
+    return summary.topPopulousStates.slice(0, 5);
+  }, [summary]);
+
+  const maxPop = Math.max(...topStates.map((d) => d.population), 1);
 
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, y: 16 }}
+      initial={{ opacity: 0, y: 32 }}
       animate={isVisible ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.6, ease: EASE_OUT_EXPO }}
-      className="mt-16 pt-12"
-      style={{ borderTop: 'var(--border-divider)' }}
+      transition={{ duration: 0.8, ease: EASE_OUT_EXPO, delay: 0.1 }}
+      className="mt-8"
     >
-      <p className="text-section-num tracking-[0.15em] uppercase mb-6">
-        {'On the horizon'}
-      </p>
-      <div className="flex flex-wrap gap-3">
-        {domains.map((d, i) => (
-          <motion.span
-            key={d}
-            initial={{ opacity: 0, y: 8 }}
-            animate={isVisible ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5, ease: EASE_OUT_EXPO, delay: 0.1 + i * 0.07 }}
-            className="px-4 py-2 rounded-full text-sm"
-            style={{
-              border: 'var(--border-subtle)',
-              color: 'var(--text-muted)',
-              background: 'var(--bg-raised)',
-            }}
-          >
-            {d}
-          </motion.span>
-        ))}
-      </div>
+      <Link
+        to="/census"
+        className="group block relative rounded-2xl p-px no-underline overflow-hidden"
+        style={{ transition: 'transform 0.3s ease' }}
+        onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-4px)'; }}
+        onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0px)'; }}
+      >
+        {/* Gradient border — violet for census */}
+        <div
+          className="absolute inset-0 rounded-2xl opacity-20 group-hover:opacity-50"
+          style={{
+            background: 'linear-gradient(135deg, var(--violet), transparent 40%, var(--saffron) 80%, transparent)',
+            transition: 'opacity 0.4s ease',
+          }}
+        />
+        <div
+          className="absolute -inset-2 rounded-2xl opacity-0 group-hover:opacity-100 blur-2xl pointer-events-none"
+          style={{
+            background: 'linear-gradient(135deg, rgba(139,92,246,0.06), rgba(255,107,53,0.04))',
+            transition: 'opacity 0.4s ease',
+          }}
+        />
+
+        <div
+          className="relative rounded-2xl overflow-hidden"
+          style={{ background: 'var(--bg-surface)' }}
+        >
+          <div className="grid md:grid-cols-[1.4fr_1fr]">
+            <div className="relative p-8 md:p-12 flex flex-col justify-between min-h-[320px]">
+              <div
+                className="absolute top-0 right-0 w-3/4 h-full pointer-events-none opacity-[0.03]"
+                style={{
+                  background: 'radial-gradient(ellipse at 70% 50%, var(--violet), transparent 70%)',
+                }}
+              />
+
+              <div className="relative z-10">
+                <span className="text-section-num tracking-[0.15em] uppercase mb-4 block">
+                  05 — Data Story
+                </span>
+                <h2
+                  className="text-3xl md:text-4xl font-bold mb-3"
+                  style={{ color: 'var(--text-primary)', lineHeight: 1.15 }}
+                >
+                  Census & Demographics
+                </h2>
+                <p className="text-annotation mb-6 max-w-md">
+                  1.45 billion people. Population structure, literacy, health outcomes, urbanization, and vital statistics across 36 states and union territories.
+                </p>
+              </div>
+
+              {/* Mini population bars — top 5 states */}
+              <div className="relative z-10">
+                {topStates.length > 0 && (
+                  <div className="mb-6 max-w-xs space-y-1">
+                    {topStates.map((d, i) => (
+                      <div key={d.name} className="flex items-center gap-2">
+                        <span className="text-[9px] font-mono w-8 text-right" style={{ color: 'var(--text-muted)' }}>
+                          {d.name.length > 4 ? d.name.slice(0, 3) : d.name}
+                        </span>
+                        <div className="flex-1 h-1.5 rounded-full overflow-hidden" style={{ background: 'var(--bg-raised)' }}>
+                          <motion.div
+                            className="h-full rounded-full"
+                            style={{ background: 'var(--violet)' }}
+                            initial={{ width: 0 }}
+                            animate={isVisible ? { width: `${(d.population / maxPop) * 100}%` } : {}}
+                            transition={{ duration: 0.6, ease: EASE_OUT_EXPO, delay: 0.4 + i * 0.06 }}
+                          />
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+
+                <div
+                  className="inline-flex items-center gap-2 text-sm font-medium"
+                  style={{ color: 'var(--violet)' }}
+                >
+                  <span>Explore demographics</span>
+                  <span
+                    className="group-hover:translate-x-1.5 inline-block"
+                    style={{ transition: 'transform 0.2s ease' }}
+                  >
+                    &rarr;
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div
+              className="p-8 md:p-12 flex flex-col justify-center gap-8 border-t md:border-t-0 md:border-l"
+              style={{ borderColor: 'rgba(255,255,255,0.06)' }}
+            >
+              <StatPill
+                label="Population"
+                value={summary ? `${(summary.totalPopulation / 1e9).toFixed(2)}B` : '...'}
+                color="var(--violet)"
+                delay={0.3}
+                isVisible={isVisible}
+              />
+              <StatPill
+                label="Literacy Rate"
+                value={summary ? `${summary.literacyRate}%` : '...'}
+                color="var(--saffron)"
+                delay={0.4}
+                isVisible={isVisible}
+              />
+              <StatPill
+                label="Sex Ratio"
+                value={summary ? `${summary.sexRatio}` : '...'}
+                color="var(--violet-light, #A78BFA)"
+                delay={0.5}
+                isVisible={isVisible}
+              />
+            </div>
+          </div>
+        </div>
+      </Link>
     </motion.div>
   );
 }
@@ -763,12 +863,14 @@ export default function HubPage() {
   const [economySummary, setEconomySummary] = useState<EconomySummary | null>(null);
   const [rbiSummary, setRbiSummary] = useState<RBISummary | null>(null);
   const [statesSummary, setStatesSummary] = useState<StatesSummary | null>(null);
+  const [censusSummary, setCensusSummary] = useState<CensusSummary | null>(null);
 
   useEffect(() => {
     loadSummary('2025-26').then(setSummary).catch(() => {});
     loadEconomySummary('2025-26').then(setEconomySummary).catch(() => {});
     loadRBISummary('2025-26').then(setRbiSummary).catch(() => {});
     loadStatesSummary('2025-26').then(setStatesSummary).catch(() => {});
+    loadCensusSummary('2025-26').then(setCensusSummary).catch(() => {});
   }, []);
 
   // Scroll to hash anchor (e.g. /#stories) after mount
@@ -816,7 +918,7 @@ export default function HubPage() {
 
         <StatesDomainCard summary={statesSummary} />
 
-        <ComingSoon />
+        <CensusDomainCard summary={censusSummary} />
       </section>
     </motion.div>
   );

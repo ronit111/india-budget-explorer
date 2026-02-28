@@ -49,12 +49,14 @@ export function SearchOverlay() {
       loadGlossary('economy', '2025-26').catch(() => null),
       loadGlossary('rbi', '2025-26').catch(() => null),
       loadGlossary('states', '2025-26').catch(() => null),
-    ]).then(([budget, economy, rbi, states]) => {
+      loadGlossary('census', '2025-26').catch(() => null),
+    ]).then(([budget, economy, rbi, states, census]) => {
       const items: SearchItem[] = [];
       if (budget) items.push(...budget.terms.map((t) => glossaryTermToSearchItem(t, 'budget')));
       if (economy) items.push(...economy.terms.map((t) => glossaryTermToSearchItem(t, 'economy')));
       if (rbi) items.push(...rbi.terms.map((t) => glossaryTermToSearchItem(t, 'rbi')));
       if (states) items.push(...states.terms.map((t) => glossaryTermToSearchItem(t, 'states')));
+      if (census) items.push(...census.terms.map((t) => glossaryTermToSearchItem(t, 'census')));
       setGlossaryTerms(items);
     });
   }, []);
@@ -103,6 +105,10 @@ export function SearchOverlay() {
     { type: 'page', id: 'states-explore', name: 'States Explorer', subtitle: 'Browse state indicators and compare', route: '/states/explore' },
     { type: 'page', id: 'states-methodology', name: 'States Methodology', subtitle: 'State finances data sources and notes', route: '/states/methodology' },
     { type: 'page', id: 'states-glossary', name: 'States Glossary', subtitle: 'State finance terms in plain language', route: '/states/glossary' },
+    { type: 'page', id: 'census', name: 'Census & Demographics', subtitle: 'Population, literacy, health, urbanization', route: '/census' },
+    { type: 'page', id: 'census-explore', name: 'Census Explorer', subtitle: 'Browse demographic indicators by state', route: '/census/explore' },
+    { type: 'page', id: 'census-methodology', name: 'Census Methodology', subtitle: 'Census data sources, vintages, and notes', route: '/census/methodology' },
+    { type: 'page', id: 'census-glossary', name: 'Census Glossary', subtitle: 'Demographic terms in plain language', route: '/census/glossary' },
   );
   // Glossary terms
   searchItems.push(...glossaryTerms);

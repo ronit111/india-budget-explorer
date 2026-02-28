@@ -1,5 +1,46 @@
 # Changelog
 
+## [0.8.0] - 2026-02-28
+
+### Phase 4B: Census & Demographics Domain
+
+**Census & Demographics Scrollytelling** (`/census`)
+- Six-section narrative: population growth (national time series from World Bank), age structure (custom 10x10 waffle grid showing young/working/elderly %), vital statistics (birth vs death rate, fertility rate with 2.1 replacement reference line, life expectancy with gender split), health outcomes (IMR time series + state-level IMR with color gradient bars + NFHS-5 state health), literacy gender gap (custom butterfly chart showing male vs female literacy by state, sorted by gap), urbanization trends
+- Multi-vintage data sourcing: World Bank API (national time series), Census 2011 (state baseline), NFHS-5 2019-21 (health by state), SRS 2023 (vital statistics), NPC population projections
+- Violet (#8B5CF6) accent color for the census domain
+- Custom visualizations: AgeWaffle (10x10 grid, each cell = 1% of population), GenderGapChart (bilateral bars with gap percentage), IMR color gradient (saffron worst → gold middle → violet best)
+
+**Census & Demographics Sub-Pages**
+- `/census/explore`: indicator explorer with 5 categories (All, Population, Demographics, Literacy, Health), `HorizontalBarChart` per indicator
+- `/census/methodology`: 7 sections covering data sources (4-tier explanation), indicator definitions (World Bank codes, NFHS/SRS indicators), data vintage transparency (Census 2021 gap, Census 2027 timeline), data freshness cycles, 5 documented limitations
+- `/census/glossary`: demographic terms in plain language
+
+**Hub Integration**
+- Census domain card (05 — DATA STORY) with mini horizontal population bars (top 5 states from `summary.json`), stat pills (Population in billions, Literacy Rate, Sex Ratio)
+- "Coming Soon" section removed — all planned Phase 4 domains are now live
+
+**SEO**
+- 4 census routes added to Puppeteer prerender (22 routes total)
+- Sitemap expanded with 4 page URLs + 6 data file URLs (28 data files total)
+- JSON-LD Dataset schema for Census data (Google Dataset Search)
+- JSON-LD BreadcrumbList updated with 4 census entries (22 total)
+- `llms.txt` expanded with Census domain description, key data points, and datasets
+- Noscript fallback updated with census content and data download links
+- Per-domain OG image: `og-census.png` (violet gradient)
+- WebApplication featureList updated with census capabilities
+
+**Navigation**
+- Header: `isCensusSection` detection, "Census & Demographics" title, 4 sub-nav tabs
+- Mobile bottom nav: census icon (people/users SVG) and tab array
+- Footer: census-specific attribution (Census of India, World Bank, NFHS-5)
+- Search (Cmd+K): census glossary terms indexed + 4 page entries
+
+**GitHub Actions**
+- `census-pipeline.yml`: quarterly runs (Jan/Apr/Jul/Oct 15th) — aligned to World Bank annual update cycle
+- `data-freshness-monitor.yml` updated with Census domain (120-day staleness threshold)
+
+---
+
 ## [0.7.0] - 2026-02-28
 
 ### Phase 4A: State Finances Domain

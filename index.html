@@ -53,7 +53,10 @@
         "RBI monetary policy trajectory and repo rate history",
         "Forex reserves and exchange rate visualization",
         "Credit growth and money supply analysis",
-        "State-wise GSDP, revenue, and fiscal health comparison across 36 states and UTs"
+        "State-wise GSDP, revenue, and fiscal health comparison across 36 states and UTs",
+        "Census population structure, age demographics, and vital statistics",
+        "Literacy gender gap visualization and state-wise literacy comparison",
+        "Infant mortality and health indicators from NFHS-5 and SRS"
       ],
       "dateModified": "2026-02-28"
     }
@@ -237,6 +240,49 @@
     }
     </script>
 
+    <!-- JSON-LD: Dataset (Census & Demographics) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Dataset",
+      "name": "India Census and Demographics Data",
+      "description": "Structured JSON datasets for India's demographic profile: population by state, age structure, literacy rates, infant mortality, fertility, life expectancy, and urbanization. Combines Census 2011 baseline, World Bank time series, NFHS-5, and SRS 2023 data.",
+      "url": "https://indiandataproject.org/census/explore",
+      "license": "https://creativecommons.org/licenses/by/4.0/",
+      "creator": {
+        "@type": "GovernmentOrganization",
+        "name": "Census of India / World Bank / NFHS",
+        "url": "https://censusindia.gov.in"
+      },
+      "temporalCoverage": "2011/2026",
+      "spatialCoverage": {
+        "@type": "Place",
+        "name": "India"
+      },
+      "distribution": [
+        {
+          "@type": "DataDownload",
+          "encodingFormat": "application/json",
+          "contentUrl": "https://indiandataproject.org/data/census/2025-26/summary.json",
+          "name": "Census Summary"
+        },
+        {
+          "@type": "DataDownload",
+          "encodingFormat": "application/json",
+          "contentUrl": "https://indiandataproject.org/data/census/2025-26/population.json",
+          "name": "State-wise Population"
+        },
+        {
+          "@type": "DataDownload",
+          "encodingFormat": "application/json",
+          "contentUrl": "https://indiandataproject.org/data/census/2025-26/health.json",
+          "name": "Health Indicators"
+        }
+      ],
+      "dateModified": "2026-02-28"
+    }
+    </script>
+
     <!-- JSON-LD: BreadcrumbList -->
     <script type="application/ld+json">
     {
@@ -260,7 +306,11 @@
         { "@type": "ListItem", "position": 15, "name": "State Finances", "item": "https://indiandataproject.org/states" },
         { "@type": "ListItem", "position": 16, "name": "State Indicator Explorer", "item": "https://indiandataproject.org/states/explore" },
         { "@type": "ListItem", "position": 17, "name": "States Methodology", "item": "https://indiandataproject.org/states/methodology" },
-        { "@type": "ListItem", "position": 18, "name": "States Glossary", "item": "https://indiandataproject.org/states/glossary" }
+        { "@type": "ListItem", "position": 18, "name": "States Glossary", "item": "https://indiandataproject.org/states/glossary" },
+        { "@type": "ListItem", "position": 19, "name": "Census & Demographics", "item": "https://indiandataproject.org/census" },
+        { "@type": "ListItem", "position": 20, "name": "Census Indicator Explorer", "item": "https://indiandataproject.org/census/explore" },
+        { "@type": "ListItem", "position": 21, "name": "Census Methodology", "item": "https://indiandataproject.org/census/methodology" },
+        { "@type": "ListItem", "position": 22, "name": "Census Glossary", "item": "https://indiandataproject.org/census/glossary" }
       ]
     }
     </script>
@@ -333,6 +383,21 @@
           <li><a href="/states/glossary">States Glossary</a> — State finance terms in plain language</li>
         </ul>
 
+        <h2>Census & Demographics</h2>
+        <ul>
+          <li>Total Population: ~1.45 billion (World Bank 2024)</li>
+          <li>Literacy Rate: 74.04% (Census 2011)</li>
+          <li>Sex Ratio: 943 females per 1000 males</li>
+          <li>Infant Mortality Rate: 28 per 1000 live births (SRS 2023)</li>
+          <li>Total Fertility Rate: 2.0 (NFHS-5, below replacement)</li>
+        </ul>
+        <ul>
+          <li><a href="/census">Census Visual Story</a></li>
+          <li><a href="/census/explore">Census Indicator Explorer</a></li>
+          <li><a href="/census/methodology">Methodology</a></li>
+          <li><a href="/census/glossary">Census Glossary</a> — Demographic terms in plain language</li>
+        </ul>
+
         <h2>Download Data (JSON)</h2>
         <ul>
           <li><a href="/data/budget/2025-26/summary.json">Budget Summary</a></li>
@@ -349,9 +414,15 @@
           <li><a href="/data/states/2025-26/revenue.json">State Revenue Data</a></li>
           <li><a href="/data/states/2025-26/fiscal-health.json">State Fiscal Health</a></li>
           <li><a href="/data/states/2025-26/indicators.json">State Indicators</a></li>
+          <li><a href="/data/census/2025-26/summary.json">Census Summary</a></li>
+          <li><a href="/data/census/2025-26/population.json">State Population Data</a></li>
+          <li><a href="/data/census/2025-26/demographics.json">Demographics Data</a></li>
+          <li><a href="/data/census/2025-26/literacy.json">Literacy Data</a></li>
+          <li><a href="/data/census/2025-26/health.json">Health Indicators</a></li>
+          <li><a href="/data/census/2025-26/indicators.json">Census Indicators</a></li>
         </ul>
 
-        <p>Data sourced from <a href="https://openbudgetsindia.org">Open Budgets India</a>, <a href="https://www.indiabudget.gov.in">indiabudget.gov.in</a>, and the <a href="https://www.indiabudget.gov.in/economicsurvey/">Economic Survey</a> under the <a href="https://data.gov.in/government-open-data-license-india">Government Open Data License - India</a>.</p>
+        <p>Data sourced from <a href="https://openbudgetsindia.org">Open Budgets India</a>, <a href="https://www.indiabudget.gov.in">indiabudget.gov.in</a>, the <a href="https://www.indiabudget.gov.in/economicsurvey/">Economic Survey</a>, <a href="https://censusindia.gov.in">Census of India</a>, and <a href="https://data.worldbank.org">World Bank Open Data</a> under the <a href="https://data.gov.in/government-open-data-license-india">Government Open Data License - India</a>.</p>
       </div>
     </noscript>
   </body>

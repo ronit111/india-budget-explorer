@@ -51,6 +51,17 @@ const DOMAIN_CONFIG = {
     seoTitle: 'Glossary — State Finances — Indian Data Project',
     seoDescription: 'Plain-language definitions of state finance terms: GSDP, per capita income, devolution, FRBM Act, fiscal deficit, and more.',
   },
+  census: {
+    accent: 'var(--violet)',
+    accentDim: 'rgba(139,92,246,0.12)',
+    label: 'Census & Demographics',
+    title: 'Census Glossary',
+    description: 'Demographic terms explained in plain language. What population density, fertility rate, and sex ratio actually mean.',
+    ogImage: '/og-census.png',
+    basePath: '/census/glossary',
+    seoTitle: 'Glossary — Census & Demographics — Indian Data Project',
+    seoDescription: 'Plain-language definitions of demographic terms: census, population density, TFR, IMR, MMR, demographic dividend, urbanization, literacy rate, and more.',
+  },
 } as const;
 
 type Domain = keyof typeof DOMAIN_CONFIG;
@@ -375,7 +386,11 @@ export default function GlossaryPage({ domain }: { domain: Domain }) {
             ? 'Union Budget 2025-26'
             : domain === 'economy'
               ? 'Economic Survey 2025-26, World Bank'
-              : 'RBI, World Bank'}
+              : domain === 'census'
+                ? 'Census of India, NFHS-5, SRS, World Bank'
+                : domain === 'states'
+                  ? 'RBI Handbook, Finance Commission'
+                  : 'RBI, World Bank'}
         </p>
       </div>
     </motion.div>

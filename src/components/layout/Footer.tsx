@@ -6,7 +6,8 @@ export function Footer() {
   const isEconomy = location.pathname.startsWith('/economy');
   const isRBI = location.pathname.startsWith('/rbi');
   const isStates = location.pathname.startsWith('/states');
-  const isDataDomain = isBudget || isEconomy || isRBI || isStates;
+  const isCensus = location.pathname.startsWith('/census');
+  const isDataDomain = isBudget || isEconomy || isRBI || isStates || isCensus;
 
   return (
     <footer className="relative py-8 pb-24 md:pb-8" style={{ background: 'var(--bg-surface)' }}>
@@ -128,6 +129,40 @@ export function Footer() {
             </a>
             {' '}&middot; Not affiliated with RBI or GoI
           </p>
+        ) : isCensus ? (
+          <p className="text-caption text-center md:text-left">
+            Data from{' '}
+            <a
+              href="https://censusindia.gov.in/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="link-hover"
+              style={{ color: 'var(--text-muted)' }}
+            >
+              Census of India
+            </a>
+            {' '}&middot;{' '}
+            <a
+              href="https://data.worldbank.org/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="link-hover"
+              style={{ color: 'var(--text-muted)' }}
+            >
+              World Bank
+            </a>
+            {' '}&middot;{' '}
+            <a
+              href="https://rchiips.org/nfhs/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="link-hover"
+              style={{ color: 'var(--text-muted)' }}
+            >
+              NFHS-5
+            </a>
+            {' '}&middot; Not affiliated with GoI
+          </p>
         ) : (
           <p className="text-caption text-center md:text-left">
             Open-source civic tech. Real government data, made accessible.
@@ -142,6 +177,8 @@ export function Footer() {
             'RBI Data 2025-26'
           ) : isStates ? (
             'State Finances 2022-23'
+          ) : isCensus ? (
+            'Census & Demographics'
           ) : (
             <a
               href="https://github.com/RonitChidara/indian-data-project"

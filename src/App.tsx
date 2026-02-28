@@ -20,6 +20,10 @@ import StatesPage from './pages/StatesPage.tsx';
 import StatesExplorePage from './pages/StatesExplorePage.tsx';
 import StatesMethodologyPage from './pages/StatesMethodologyPage.tsx';
 import StatesGlossaryPage from './pages/StatesGlossaryPage.tsx';
+import CensusPage from './pages/CensusPage.tsx';
+import CensusExplorePage from './pages/CensusExplorePage.tsx';
+import CensusMethodologyPage from './pages/CensusMethodologyPage.tsx';
+import CensusGlossaryPage from './pages/CensusGlossaryPage.tsx';
 
 const PAGE_ROUTES = [
   { path: '/', element: <HubPage /> },
@@ -40,6 +44,10 @@ const PAGE_ROUTES = [
   { path: '/states/explore', element: <StatesExplorePage /> },
   { path: '/states/methodology', element: <StatesMethodologyPage /> },
   { path: '/states/glossary', element: <StatesGlossaryPage /> },
+  { path: '/census', element: <CensusPage /> },
+  { path: '/census/explore', element: <CensusExplorePage /> },
+  { path: '/census/methodology', element: <CensusMethodologyPage /> },
+  { path: '/census/glossary', element: <CensusGlossaryPage /> },
 ] as const;
 
 // Old routes redirect to new /budget/* paths

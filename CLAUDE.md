@@ -11,7 +11,8 @@ Open data platform for Indian citizens. V1 of the broader **India Truth Engine**
 - **`/economy` (Economy Domain)**: Economic Survey 2025-26 scrollytelling. Sub-routes: `/economy/explore`, `/economy/methodology`, `/economy/glossary`.
 - **`/rbi` (RBI Domain)**: RBI monetary policy and financial data. Sub-routes: `/rbi/explore`, `/rbi/methodology`, `/rbi/glossary`.
 - **`/states` (State Finances Domain)**: State-level GSDP, revenue, fiscal health. Sub-routes: `/states/explore`, `/states/methodology`, `/states/glossary`.
-- **Future domains** each get their own top-level route (e.g., `/census`) with self-contained sub-pages.
+- **`/census` (Census & Demographics Domain)**: Population, literacy, health, age structure, urbanization. Sub-routes: `/census/explore`, `/census/methodology`, `/census/glossary`.
+- **Future domains** each get their own top-level route (e.g., `/education`) with self-contained sub-pages.
 - Header is **context-aware**: hub title + search on `/`, domain title + sub-nav tabs inside a domain.
 - **Back links** (header chevron + footer link) point to `/#stories`. New domains should follow this convention.
 - Old routes (`/explore`, `/calculator`, `/methodology`) redirect to `/budget/*` equivalents.

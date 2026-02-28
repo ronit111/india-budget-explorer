@@ -1,0 +1,1360 @@
+{
+  "year": "2025-26",
+  "ageStructure": {
+    "young": [
+      {
+        "year": "2000",
+        "value": 35.55
+      },
+      {
+        "year": "2001",
+        "value": 35.17
+      },
+      {
+        "year": "2002",
+        "value": 34.78
+      },
+      {
+        "year": "2003",
+        "value": 34.39
+      },
+      {
+        "year": "2004",
+        "value": 33.98
+      },
+      {
+        "year": "2005",
+        "value": 33.56
+      },
+      {
+        "year": "2006",
+        "value": 33.13
+      },
+      {
+        "year": "2007",
+        "value": 32.68
+      },
+      {
+        "year": "2008",
+        "value": 32.24
+      },
+      {
+        "year": "2009",
+        "value": 31.8
+      },
+      {
+        "year": "2010",
+        "value": 31.34
+      },
+      {
+        "year": "2011",
+        "value": 30.88
+      },
+      {
+        "year": "2012",
+        "value": 30.42
+      },
+      {
+        "year": "2013",
+        "value": 29.94
+      },
+      {
+        "year": "2014",
+        "value": 29.44
+      },
+      {
+        "year": "2015",
+        "value": 28.91
+      },
+      {
+        "year": "2016",
+        "value": 28.39
+      },
+      {
+        "year": "2017",
+        "value": 27.85
+      },
+      {
+        "year": "2018",
+        "value": 27.33
+      },
+      {
+        "year": "2019",
+        "value": 26.83
+      },
+      {
+        "year": "2020",
+        "value": 26.35
+      },
+      {
+        "year": "2021",
+        "value": 25.91
+      },
+      {
+        "year": "2022",
+        "value": 25.49
+      },
+      {
+        "year": "2023",
+        "value": 25.06
+      },
+      {
+        "year": "2024",
+        "value": 24.62
+      }
+    ],
+    "working": [
+      {
+        "year": "2000",
+        "value": 60.04
+      },
+      {
+        "year": "2001",
+        "value": 60.37
+      },
+      {
+        "year": "2002",
+        "value": 60.7
+      },
+      {
+        "year": "2003",
+        "value": 61.04
+      },
+      {
+        "year": "2004",
+        "value": 61.39
+      },
+      {
+        "year": "2005",
+        "value": 61.76
+      },
+      {
+        "year": "2006",
+        "value": 62.15
+      },
+      {
+        "year": "2007",
+        "value": 62.55
+      },
+      {
+        "year": "2008",
+        "value": 62.94
+      },
+      {
+        "year": "2009",
+        "value": 63.32
+      },
+      {
+        "year": "2010",
+        "value": 63.72
+      },
+      {
+        "year": "2011",
+        "value": 64.11
+      },
+      {
+        "year": "2012",
+        "value": 64.49
+      },
+      {
+        "year": "2013",
+        "value": 64.88
+      },
+      {
+        "year": "2014",
+        "value": 65.26
+      },
+      {
+        "year": "2015",
+        "value": 65.62
+      },
+      {
+        "year": "2016",
+        "value": 65.97
+      },
+      {
+        "year": "2017",
+        "value": 66.33
+      },
+      {
+        "year": "2018",
+        "value": 66.65
+      },
+      {
+        "year": "2019",
+        "value": 66.94
+      },
+      {
+        "year": "2020",
+        "value": 67.24
+      },
+      {
+        "year": "2021",
+        "value": 67.55
+      },
+      {
+        "year": "2022",
+        "value": 67.81
+      },
+      {
+        "year": "2023",
+        "value": 68.02
+      },
+      {
+        "year": "2024",
+        "value": 68.23
+      }
+    ],
+    "elderly": [
+      {
+        "year": "2000",
+        "value": 4.41
+      },
+      {
+        "year": "2001",
+        "value": 4.46
+      },
+      {
+        "year": "2002",
+        "value": 4.52
+      },
+      {
+        "year": "2003",
+        "value": 4.57
+      },
+      {
+        "year": "2004",
+        "value": 4.63
+      },
+      {
+        "year": "2005",
+        "value": 4.67
+      },
+      {
+        "year": "2006",
+        "value": 4.72
+      },
+      {
+        "year": "2007",
+        "value": 4.77
+      },
+      {
+        "year": "2008",
+        "value": 4.82
+      },
+      {
+        "year": "2009",
+        "value": 4.88
+      },
+      {
+        "year": "2010",
+        "value": 4.94
+      },
+      {
+        "year": "2011",
+        "value": 5.01
+      },
+      {
+        "year": "2012",
+        "value": 5.09
+      },
+      {
+        "year": "2013",
+        "value": 5.18
+      },
+      {
+        "year": "2014",
+        "value": 5.31
+      },
+      {
+        "year": "2015",
+        "value": 5.47
+      },
+      {
+        "year": "2016",
+        "value": 5.64
+      },
+      {
+        "year": "2017",
+        "value": 5.82
+      },
+      {
+        "year": "2018",
+        "value": 6.02
+      },
+      {
+        "year": "2019",
+        "value": 6.22
+      },
+      {
+        "year": "2020",
+        "value": 6.42
+      },
+      {
+        "year": "2021",
+        "value": 6.55
+      },
+      {
+        "year": "2022",
+        "value": 6.7
+      },
+      {
+        "year": "2023",
+        "value": 6.92
+      },
+      {
+        "year": "2024",
+        "value": 7.15
+      }
+    ]
+  },
+  "dependencyRatio": [
+    {
+      "year": "2000",
+      "value": 66.57
+    },
+    {
+      "year": "2001",
+      "value": 65.64
+    },
+    {
+      "year": "2002",
+      "value": 64.74
+    },
+    {
+      "year": "2003",
+      "value": 63.84
+    },
+    {
+      "year": "2004",
+      "value": 62.88
+    },
+    {
+      "year": "2005",
+      "value": 61.91
+    },
+    {
+      "year": "2006",
+      "value": 60.9
+    },
+    {
+      "year": "2007",
+      "value": 59.88
+    },
+    {
+      "year": "2008",
+      "value": 58.89
+    },
+    {
+      "year": "2009",
+      "value": 57.92
+    },
+    {
+      "year": "2010",
+      "value": 56.94
+    },
+    {
+      "year": "2011",
+      "value": 55.99
+    },
+    {
+      "year": "2012",
+      "value": 55.06
+    },
+    {
+      "year": "2013",
+      "value": 54.14
+    },
+    {
+      "year": "2014",
+      "value": 53.24
+    },
+    {
+      "year": "2015",
+      "value": 52.4
+    },
+    {
+      "year": "2016",
+      "value": 51.58
+    },
+    {
+      "year": "2017",
+      "value": 50.77
+    },
+    {
+      "year": "2018",
+      "value": 50.03
+    },
+    {
+      "year": "2019",
+      "value": 49.38
+    },
+    {
+      "year": "2020",
+      "value": 48.73
+    },
+    {
+      "year": "2021",
+      "value": 48.04
+    },
+    {
+      "year": "2022",
+      "value": 47.46
+    },
+    {
+      "year": "2023",
+      "value": 47.01
+    },
+    {
+      "year": "2024",
+      "value": 46.56
+    }
+  ],
+  "vitalStats": {
+    "birthRate": [
+      {
+        "year": "2000",
+        "value": 27.52
+      },
+      {
+        "year": "2001",
+        "value": 27.21
+      },
+      {
+        "year": "2002",
+        "value": 26.54
+      },
+      {
+        "year": "2003",
+        "value": 25.78
+      },
+      {
+        "year": "2004",
+        "value": 25.12
+      },
+      {
+        "year": "2005",
+        "value": 24.3
+      },
+      {
+        "year": "2006",
+        "value": 23.56
+      },
+      {
+        "year": "2007",
+        "value": 22.93
+      },
+      {
+        "year": "2008",
+        "value": 22.51
+      },
+      {
+        "year": "2009",
+        "value": 22.21
+      },
+      {
+        "year": "2010",
+        "value": 21.63
+      },
+      {
+        "year": "2011",
+        "value": 21.16
+      },
+      {
+        "year": "2012",
+        "value": 20.67
+      },
+      {
+        "year": "2013",
+        "value": 20.06
+      },
+      {
+        "year": "2014",
+        "value": 19.09
+      },
+      {
+        "year": "2015",
+        "value": 18.94
+      },
+      {
+        "year": "2016",
+        "value": 18.76
+      },
+      {
+        "year": "2017",
+        "value": 18.0
+      },
+      {
+        "year": "2018",
+        "value": 17.91
+      },
+      {
+        "year": "2019",
+        "value": 17.37
+      },
+      {
+        "year": "2020",
+        "value": 16.74
+      },
+      {
+        "year": "2021",
+        "value": 16.49
+      },
+      {
+        "year": "2022",
+        "value": 16.34
+      },
+      {
+        "year": "2023",
+        "value": 16.15
+      }
+    ],
+    "deathRate": [
+      {
+        "year": "2000",
+        "value": 8.63
+      },
+      {
+        "year": "2001",
+        "value": 8.48
+      },
+      {
+        "year": "2002",
+        "value": 8.29
+      },
+      {
+        "year": "2003",
+        "value": 8.12
+      },
+      {
+        "year": "2004",
+        "value": 7.98
+      },
+      {
+        "year": "2005",
+        "value": 7.82
+      },
+      {
+        "year": "2006",
+        "value": 7.67
+      },
+      {
+        "year": "2007",
+        "value": 7.54
+      },
+      {
+        "year": "2008",
+        "value": 7.41
+      },
+      {
+        "year": "2009",
+        "value": 7.29
+      },
+      {
+        "year": "2010",
+        "value": 7.16
+      },
+      {
+        "year": "2011",
+        "value": 7.05
+      },
+      {
+        "year": "2012",
+        "value": 6.95
+      },
+      {
+        "year": "2013",
+        "value": 6.86
+      },
+      {
+        "year": "2014",
+        "value": 6.77
+      },
+      {
+        "year": "2015",
+        "value": 6.73
+      },
+      {
+        "year": "2016",
+        "value": 6.7
+      },
+      {
+        "year": "2017",
+        "value": 6.67
+      },
+      {
+        "year": "2018",
+        "value": 6.67
+      },
+      {
+        "year": "2019",
+        "value": 6.67
+      },
+      {
+        "year": "2020",
+        "value": 7.21
+      },
+      {
+        "year": "2021",
+        "value": 9.26
+      },
+      {
+        "year": "2022",
+        "value": 6.58
+      },
+      {
+        "year": "2023",
+        "value": 6.61
+      }
+    ],
+    "fertilityRate": [
+      {
+        "year": "2000",
+        "value": 3.35
+      },
+      {
+        "year": "2001",
+        "value": 3.3
+      },
+      {
+        "year": "2002",
+        "value": 3.22
+      },
+      {
+        "year": "2003",
+        "value": 3.12
+      },
+      {
+        "year": "2004",
+        "value": 3.05
+      },
+      {
+        "year": "2005",
+        "value": 2.96
+      },
+      {
+        "year": "2006",
+        "value": 2.87
+      },
+      {
+        "year": "2007",
+        "value": 2.77
+      },
+      {
+        "year": "2008",
+        "value": 2.71
+      },
+      {
+        "year": "2009",
+        "value": 2.67
+      },
+      {
+        "year": "2010",
+        "value": 2.6
+      },
+      {
+        "year": "2011",
+        "value": 2.53
+      },
+      {
+        "year": "2012",
+        "value": 2.47
+      },
+      {
+        "year": "2013",
+        "value": 2.4
+      },
+      {
+        "year": "2014",
+        "value": 2.29
+      },
+      {
+        "year": "2015",
+        "value": 2.29
+      },
+      {
+        "year": "2016",
+        "value": 2.28
+      },
+      {
+        "year": "2017",
+        "value": 2.19
+      },
+      {
+        "year": "2018",
+        "value": 2.18
+      },
+      {
+        "year": "2019",
+        "value": 2.12
+      },
+      {
+        "year": "2020",
+        "value": 2.05
+      },
+      {
+        "year": "2021",
+        "value": 2.01
+      },
+      {
+        "year": "2022",
+        "value": 1.99
+      },
+      {
+        "year": "2023",
+        "value": 1.98
+      }
+    ],
+    "lifeExpectancy": [
+      {
+        "year": "2000",
+        "value": 62.75
+      },
+      {
+        "year": "2001",
+        "value": 63.16
+      },
+      {
+        "year": "2002",
+        "value": 63.65
+      },
+      {
+        "year": "2003",
+        "value": 64.09
+      },
+      {
+        "year": "2004",
+        "value": 64.48
+      },
+      {
+        "year": "2005",
+        "value": 64.94
+      },
+      {
+        "year": "2006",
+        "value": 65.37
+      },
+      {
+        "year": "2007",
+        "value": 65.8
+      },
+      {
+        "year": "2008",
+        "value": 66.25
+      },
+      {
+        "year": "2009",
+        "value": 66.7
+      },
+      {
+        "year": "2010",
+        "value": 67.16
+      },
+      {
+        "year": "2011",
+        "value": 67.62
+      },
+      {
+        "year": "2012",
+        "value": 68.08
+      },
+      {
+        "year": "2013",
+        "value": 68.5
+      },
+      {
+        "year": "2014",
+        "value": 68.93
+      },
+      {
+        "year": "2015",
+        "value": 69.33
+      },
+      {
+        "year": "2016",
+        "value": 69.71
+      },
+      {
+        "year": "2017",
+        "value": 70.07
+      },
+      {
+        "year": "2018",
+        "value": 70.42
+      },
+      {
+        "year": "2019",
+        "value": 70.75
+      },
+      {
+        "year": "2020",
+        "value": 70.16
+      },
+      {
+        "year": "2021",
+        "value": 67.28
+      },
+      {
+        "year": "2022",
+        "value": 71.7
+      },
+      {
+        "year": "2023",
+        "value": 72.0
+      }
+    ],
+    "lifeExpectancyMale": [
+      {
+        "year": "2000",
+        "value": 61.76
+      },
+      {
+        "year": "2001",
+        "value": 62.1
+      },
+      {
+        "year": "2002",
+        "value": 62.52
+      },
+      {
+        "year": "2003",
+        "value": 62.88
+      },
+      {
+        "year": "2004",
+        "value": 63.22
+      },
+      {
+        "year": "2005",
+        "value": 63.61
+      },
+      {
+        "year": "2006",
+        "value": 63.99
+      },
+      {
+        "year": "2007",
+        "value": 64.37
+      },
+      {
+        "year": "2008",
+        "value": 64.78
+      },
+      {
+        "year": "2009",
+        "value": 65.2
+      },
+      {
+        "year": "2010",
+        "value": 65.64
+      },
+      {
+        "year": "2011",
+        "value": 66.09
+      },
+      {
+        "year": "2012",
+        "value": 66.54
+      },
+      {
+        "year": "2013",
+        "value": 66.97
+      },
+      {
+        "year": "2014",
+        "value": 67.42
+      },
+      {
+        "year": "2015",
+        "value": 67.83
+      },
+      {
+        "year": "2016",
+        "value": 68.23
+      },
+      {
+        "year": "2017",
+        "value": 68.61
+      },
+      {
+        "year": "2018",
+        "value": 68.97
+      },
+      {
+        "year": "2019",
+        "value": 69.31
+      },
+      {
+        "year": "2020",
+        "value": 68.53
+      },
+      {
+        "year": "2021",
+        "value": 65.87
+      },
+      {
+        "year": "2022",
+        "value": 70.24
+      },
+      {
+        "year": "2023",
+        "value": 70.52
+      }
+    ],
+    "lifeExpectancyFemale": [
+      {
+        "year": "2000",
+        "value": 63.79
+      },
+      {
+        "year": "2001",
+        "value": 64.28
+      },
+      {
+        "year": "2002",
+        "value": 64.86
+      },
+      {
+        "year": "2003",
+        "value": 65.38
+      },
+      {
+        "year": "2004",
+        "value": 65.84
+      },
+      {
+        "year": "2005",
+        "value": 66.38
+      },
+      {
+        "year": "2006",
+        "value": 66.87
+      },
+      {
+        "year": "2007",
+        "value": 67.36
+      },
+      {
+        "year": "2008",
+        "value": 67.84
+      },
+      {
+        "year": "2009",
+        "value": 68.33
+      },
+      {
+        "year": "2010",
+        "value": 68.81
+      },
+      {
+        "year": "2011",
+        "value": 69.28
+      },
+      {
+        "year": "2012",
+        "value": 69.73
+      },
+      {
+        "year": "2013",
+        "value": 70.15
+      },
+      {
+        "year": "2014",
+        "value": 70.57
+      },
+      {
+        "year": "2015",
+        "value": 70.94
+      },
+      {
+        "year": "2016",
+        "value": 71.3
+      },
+      {
+        "year": "2017",
+        "value": 71.63
+      },
+      {
+        "year": "2018",
+        "value": 71.96
+      },
+      {
+        "year": "2019",
+        "value": 72.29
+      },
+      {
+        "year": "2020",
+        "value": 71.94
+      },
+      {
+        "year": "2021",
+        "value": 68.83
+      },
+      {
+        "year": "2022",
+        "value": 73.27
+      },
+      {
+        "year": "2023",
+        "value": 73.6
+      }
+    ]
+  },
+  "urbanization": [
+    {
+      "year": "2000",
+      "value": 27.65
+    },
+    {
+      "year": "2001",
+      "value": 27.9
+    },
+    {
+      "year": "2002",
+      "value": 28.18
+    },
+    {
+      "year": "2003",
+      "value": 28.47
+    },
+    {
+      "year": "2004",
+      "value": 28.77
+    },
+    {
+      "year": "2005",
+      "value": 29.09
+    },
+    {
+      "year": "2006",
+      "value": 29.43
+    },
+    {
+      "year": "2007",
+      "value": 29.78
+    },
+    {
+      "year": "2008",
+      "value": 30.14
+    },
+    {
+      "year": "2009",
+      "value": 30.52
+    },
+    {
+      "year": "2010",
+      "value": 30.9
+    },
+    {
+      "year": "2011",
+      "value": 31.27
+    },
+    {
+      "year": "2012",
+      "value": 31.59
+    },
+    {
+      "year": "2013",
+      "value": 31.91
+    },
+    {
+      "year": "2014",
+      "value": 32.23
+    },
+    {
+      "year": "2015",
+      "value": 32.55
+    },
+    {
+      "year": "2016",
+      "value": 32.87
+    },
+    {
+      "year": "2017",
+      "value": 33.18
+    },
+    {
+      "year": "2018",
+      "value": 33.5
+    },
+    {
+      "year": "2019",
+      "value": 33.81
+    },
+    {
+      "year": "2020",
+      "value": 34.13
+    },
+    {
+      "year": "2021",
+      "value": 34.44
+    },
+    {
+      "year": "2022",
+      "value": 34.76
+    },
+    {
+      "year": "2023",
+      "value": 35.07
+    },
+    {
+      "year": "2024",
+      "value": 35.38
+    }
+  ],
+  "states": [
+    {
+      "id": "up",
+      "name": "Uttar Pradesh",
+      "sexRatio": 912,
+      "urbanizationRate": 22.27,
+      "growthRate": 20.23
+    },
+    {
+      "id": "mh",
+      "name": "Maharashtra",
+      "sexRatio": 929,
+      "urbanizationRate": 45.23,
+      "growthRate": 15.99
+    },
+    {
+      "id": "br",
+      "name": "Bihar",
+      "sexRatio": 918,
+      "urbanizationRate": 11.3,
+      "growthRate": 25.42
+    },
+    {
+      "id": "wb",
+      "name": "West Bengal",
+      "sexRatio": 950,
+      "urbanizationRate": 31.89,
+      "growthRate": 13.84
+    },
+    {
+      "id": "mp",
+      "name": "Madhya Pradesh",
+      "sexRatio": 931,
+      "urbanizationRate": 27.63,
+      "growthRate": 20.35
+    },
+    {
+      "id": "tn",
+      "name": "Tamil Nadu",
+      "sexRatio": 996,
+      "urbanizationRate": 48.45,
+      "growthRate": 15.61
+    },
+    {
+      "id": "rj",
+      "name": "Rajasthan",
+      "sexRatio": 928,
+      "urbanizationRate": 24.89,
+      "growthRate": 21.31
+    },
+    {
+      "id": "ka",
+      "name": "Karnataka",
+      "sexRatio": 973,
+      "urbanizationRate": 38.57,
+      "growthRate": 15.6
+    },
+    {
+      "id": "gj",
+      "name": "Gujarat",
+      "sexRatio": 919,
+      "urbanizationRate": 42.58,
+      "growthRate": 19.28
+    },
+    {
+      "id": "ap",
+      "name": "Andhra Pradesh",
+      "sexRatio": 993,
+      "urbanizationRate": 29.47,
+      "growthRate": 11.1
+    },
+    {
+      "id": "od",
+      "name": "Odisha",
+      "sexRatio": 979,
+      "urbanizationRate": 16.68,
+      "growthRate": 14.05
+    },
+    {
+      "id": "tg",
+      "name": "Telangana",
+      "sexRatio": 988,
+      "urbanizationRate": 38.89,
+      "growthRate": 13.58
+    },
+    {
+      "id": "kl",
+      "name": "Kerala",
+      "sexRatio": 1084,
+      "urbanizationRate": 47.72,
+      "growthRate": 4.91
+    },
+    {
+      "id": "jh",
+      "name": "Jharkhand",
+      "sexRatio": 948,
+      "urbanizationRate": 24.05,
+      "growthRate": 22.42
+    },
+    {
+      "id": "as",
+      "name": "Assam",
+      "sexRatio": 958,
+      "urbanizationRate": 14.08,
+      "growthRate": 17.07
+    },
+    {
+      "id": "pb",
+      "name": "Punjab",
+      "sexRatio": 895,
+      "urbanizationRate": 37.49,
+      "growthRate": 13.89
+    },
+    {
+      "id": "ct",
+      "name": "Chhattisgarh",
+      "sexRatio": 991,
+      "urbanizationRate": 23.24,
+      "growthRate": 22.61
+    },
+    {
+      "id": "hr",
+      "name": "Haryana",
+      "sexRatio": 879,
+      "urbanizationRate": 34.79,
+      "growthRate": 19.9
+    },
+    {
+      "id": "jk",
+      "name": "Jammu & Kashmir",
+      "sexRatio": 889,
+      "urbanizationRate": 27.21,
+      "growthRate": 23.64
+    },
+    {
+      "id": "uk",
+      "name": "Uttarakhand",
+      "sexRatio": 963,
+      "urbanizationRate": 30.55,
+      "growthRate": 18.81
+    },
+    {
+      "id": "hp",
+      "name": "Himachal Pradesh",
+      "sexRatio": 972,
+      "urbanizationRate": 10.04,
+      "growthRate": 12.94
+    },
+    {
+      "id": "tr",
+      "name": "Tripura",
+      "sexRatio": 960,
+      "urbanizationRate": 26.18,
+      "growthRate": 14.84
+    },
+    {
+      "id": "ml",
+      "name": "Meghalaya",
+      "sexRatio": 989,
+      "urbanizationRate": 20.08,
+      "growthRate": 27.95
+    },
+    {
+      "id": "mn",
+      "name": "Manipur",
+      "sexRatio": 985,
+      "urbanizationRate": 32.45,
+      "growthRate": 18.65
+    },
+    {
+      "id": "nl",
+      "name": "Nagaland",
+      "sexRatio": 931,
+      "urbanizationRate": 28.97,
+      "growthRate": -0.58
+    },
+    {
+      "id": "ga",
+      "name": "Goa",
+      "sexRatio": 973,
+      "urbanizationRate": 62.17,
+      "growthRate": 8.23
+    },
+    {
+      "id": "ar",
+      "name": "Arunachal Pradesh",
+      "sexRatio": 938,
+      "urbanizationRate": 22.67,
+      "growthRate": 26.03
+    },
+    {
+      "id": "mz",
+      "name": "Mizoram",
+      "sexRatio": 976,
+      "urbanizationRate": 52.11,
+      "growthRate": 23.48
+    },
+    {
+      "id": "sk",
+      "name": "Sikkim",
+      "sexRatio": 890,
+      "urbanizationRate": 24.97,
+      "growthRate": 12.89
+    },
+    {
+      "id": "dl",
+      "name": "Delhi",
+      "sexRatio": 868,
+      "urbanizationRate": 97.5,
+      "growthRate": 21.21
+    },
+    {
+      "id": "py",
+      "name": "Puducherry",
+      "sexRatio": 1037,
+      "urbanizationRate": 68.31,
+      "growthRate": 28.08
+    },
+    {
+      "id": "ch",
+      "name": "Chandigarh",
+      "sexRatio": 818,
+      "urbanizationRate": 97.25,
+      "growthRate": 17.19
+    },
+    {
+      "id": "an",
+      "name": "Andaman & Nicobar",
+      "sexRatio": 876,
+      "urbanizationRate": 37.7,
+      "growthRate": 6.86
+    },
+    {
+      "id": "dn",
+      "name": "Dadra & Nagar Haveli",
+      "sexRatio": 774,
+      "urbanizationRate": 46.72,
+      "growthRate": 55.88
+    },
+    {
+      "id": "dd",
+      "name": "Daman & Diu",
+      "sexRatio": 618,
+      "urbanizationRate": 75.16,
+      "growthRate": 53.76
+    },
+    {
+      "id": "ld",
+      "name": "Lakshadweep",
+      "sexRatio": 946,
+      "urbanizationRate": 78.07,
+      "growthRate": 6.3
+    }
+  ],
+  "source": "World Bank Development Indicators + Census of India 2011"
+}

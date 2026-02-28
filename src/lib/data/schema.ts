@@ -455,10 +455,11 @@ export interface StatesIndicatorsData {
 export interface CensusSummary {
   year: string;
   totalPopulation: number;
+  populationGrowthRate: number;
   literacyRate: number;
   urbanizationRate: number;
   sexRatio: number;            // females per 1000 males
-  populationGrowthRate: number;
+  topPopulousStates: { name: string; population: number }[];
   lastUpdated: string;
   source: string;
 }
@@ -475,7 +476,9 @@ export interface StatePopulation {
 
 export interface PopulationData {
   year: string;
-  states: StatePopulation[];
+  nationalTimeSeries: TimeSeriesPoint[];  // WB total population
+  growthTimeSeries: TimeSeriesPoint[];    // WB population growth %
+  states: StatePopulation[];              // Census 2011 state entries
   source: string;
 }
 
@@ -490,7 +493,10 @@ export interface StateLiteracy {
 
 export interface LiteracyData {
   year: string;
-  states: StateLiteracy[];
+  totalTimeSeries: TimeSeriesPoint[];     // WB literacy total % (sparse)
+  maleTimeSeries: TimeSeriesPoint[];
+  femaleTimeSeries: TimeSeriesPoint[];
+  states: StateLiteracy[];                // Census 2011 state breakdown
   source: string;
 }
 
@@ -504,15 +510,51 @@ export interface StateDemographics {
 
 export interface DemographicsData {
   year: string;
-  states: StateDemographics[];
+  ageStructure: {
+    young: TimeSeriesPoint[];       // WB pop 0-14 %
+    working: TimeSeriesPoint[];     // WB pop 15-64 %
+    elderly: TimeSeriesPoint[];     // WB pop 65+ %
+  };
+  dependencyRatio: TimeSeriesPoint[];
+  vitalStats: {
+    birthRate: TimeSeriesPoint[];
+    deathRate: TimeSeriesPoint[];
+    fertilityRate: TimeSeriesPoint[];
+    lifeExpectancy: TimeSeriesPoint[];
+    lifeExpectancyMale: TimeSeriesPoint[];
+    lifeExpectancyFemale: TimeSeriesPoint[];
+  };
+  urbanization: TimeSeriesPoint[];  // WB urban population %
+  states: StateDemographics[];      // Census 2011 state demographics
   source: string;
+}
+
+export interface StateHealthEntry {
+  id: string;
+  name: string;
+  value: number;
+}
+
+export interface StateNfhsEntry {
+  id: string;
+  name: string;
+  tfr: number;
+  imr: number;
+  under5mr: number;
+  stunting: number;
+  wasting: number;
+  fullImmunization: number;
 }
 
 export interface HealthData {
   year: string;
   imrNational: TimeSeriesPoint[];
+  mmr: TimeSeriesPoint[];
+  under5: TimeSeriesPoint[];
   lifeExpectancy: TimeSeriesPoint[];
   fertilityRate: TimeSeriesPoint[];
+  stateImr: StateHealthEntry[];       // SRS 2023 state-level IMR
+  stateHealth: StateNfhsEntry[];      // NFHS-5 state-level
   source: string;
 }
 
