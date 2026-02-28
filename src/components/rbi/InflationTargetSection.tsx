@@ -36,20 +36,30 @@ export function InflationTargetSection({ monetaryPolicy }: InflationTargetSectio
     ];
 
     if (monetaryPolicy) {
+      // Convert calendar dates to fiscal years to match CPI series
+      const toFiscalYear = (date: string) => {
+        const y = parseInt(date.slice(0, 4), 10);
+        const m = parseInt(date.slice(5, 7), 10);
+        // Apr-Mar fiscal year: month >= 4 means current FY, else previous
+        const fy = m >= 4 ? y : y - 1;
+        const next = (fy + 1) % 100;
+        return `${fy}-${next.toString().padStart(2, '0')}`;
+      };
+
+      const seen = new Set<string>();
       result.push({
         id: 'repo',
         name: 'Repo Rate',
         color: 'var(--gold)',
         data: monetaryPolicy.decisions
-          .filter((_, i, arr) => {
-            // Sample ~1 per year for comparison line
-            if (i === 0 || i === arr.length - 1) return true;
-            const prevYear = arr[i - 1].date.slice(0, 4);
-            const currYear = arr[i].date.slice(0, 4);
-            return prevYear !== currYear;
+          .filter((d) => {
+            const fy = toFiscalYear(d.date);
+            if (seen.has(fy)) return false;
+            seen.add(fy);
+            return true;
           })
           .map((d) => ({
-            year: d.date.slice(0, 4),
+            year: toFiscalYear(d.date),
             value: d.rate,
           })),
         dashed: true,

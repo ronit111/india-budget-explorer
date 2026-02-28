@@ -203,8 +203,19 @@ export function LineChart({
           {/* X-axis labels */}
           {years.map((yr, i) => {
             const x = xScale(yr) ?? 0;
-            // Show every other label on small viewports
-            const show = years.length <= 8 || i % 2 === 0 || i === years.length - 1;
+            const maxLabels = 8;
+            const tickInterval = Math.max(1, Math.ceil(years.length / maxLabels));
+            const show = years.length <= maxLabels
+              ? true
+              : i % tickInterval === 0 || i === years.length - 1;
+            // Format: "2014-01" → "'14", "2014-15" → "14-15", "2024-25" → "24-25"
+            const formatLabel = (y: string) => {
+              if (y.length === 7 && y[4] === '-') {
+                const month = y.slice(5);
+                return month === '01' ? `'${y.slice(2, 4)}` : `${y.slice(2)}`;
+              }
+              return y.length > 5 ? y.slice(2) : y;
+            };
             return show ? (
               <text
                 key={yr}
@@ -217,7 +228,7 @@ export function LineChart({
                 opacity={isVisible ? 1 : 0}
                 style={{ transition: `opacity 0.4s ease ${0.05 * i}s` }}
               >
-                {yr.length > 5 ? yr.slice(2) : yr}
+                {formatLabel(yr)}
               </text>
             ) : null;
           })}

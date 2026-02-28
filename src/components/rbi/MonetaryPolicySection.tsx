@@ -13,11 +13,23 @@ export function MonetaryPolicySection({ data }: MonetaryPolicySectionProps) {
   const [ref, isVisible] = useScrollTrigger({ threshold: 0.08 });
 
   const series: LineSeries[] = useMemo(() => {
-    const repoSeries = data.decisions.map((d) => ({
-      year: d.date.slice(0, 7),
-      value: d.rate,
-      label: d.date,
-    }));
+    // Convert decisions to fiscal years (Apr-Mar), keep last decision per FY
+    const toFiscalYear = (date: string) => {
+      const y = parseInt(date.slice(0, 4), 10);
+      const m = parseInt(date.slice(5, 7), 10);
+      const fy = m >= 4 ? y : y - 1;
+      const next = (fy + 1) % 100;
+      return `${fy}-${next.toString().padStart(2, '0')}`;
+    };
+
+    // decisions are sorted newest-first; take the first (most recent) per FY
+    const fyMap = new Map<string, number>();
+    for (const d of data.decisions) {
+      const fy = toFiscalYear(d.date);
+      if (!fyMap.has(fy)) fyMap.set(fy, d.rate);
+    }
+    const repoSeries = Array.from(fyMap, ([year, value]) => ({ year, value }))
+      .sort((a, b) => a.year.localeCompare(b.year));
 
     const result: LineSeries[] = [
       {
