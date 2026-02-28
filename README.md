@@ -231,24 +231,33 @@ The site is built for maximum discoverability:
 - [x] RBI data pipeline (6 structured JSON datasets from World Bank + curated MPC data)
 - [x] Automated pipeline infrastructure (GitHub Actions cron jobs for Economy, RBI, data freshness)
 - [x] Data accuracy overhaul — truth-verified all figures against authoritative sources
+- [x] RBI chart QA fixes — x-axis alignment (fiscal years), liquidity section split, empty series cleanup
 
 ### Next Steps
 
-**Phase 3: Expand Scope**
-- [ ] New data domain: State Finances
-- [ ] New data domain: Census & Demographics
+**Phase 3: Polish Existing Domains**
+- [ ] Economy inflation chart: Food CPI / Core CPI show as disconnected 1-2 point segments (sparse World Bank data) — either hide when < 3 points or source fuller series
+- [ ] Economy GDP projection card shows "7.4–7.4%" — needs proper range or single value display
+- [ ] RBI credit section: domestic credit series empty (World Bank `FS.AST.DOMS.GD.ZS` returned no data) — try alternative WB indicator or DBIE source
+- [ ] RBI credit section: deposit rate series empty (`FR.INR.DPST`) — same issue
+- [ ] Per-domain OG images for social sharing (currently generic)
 
 **Phase 3.5: UX & Discoverability**
 - [ ] Per-domain glossary tabs (economic terms in simple language, alongside Methodology in nav)
 - [ ] Data feedback strip (persistent ribbon for users to report incorrect data via GitHub issues)
-- [ ] Per-domain OG images for social sharing
 - [ ] Cmd+K search indexing for glossary terms
+- [ ] Mobile UX audit across all 3 domains (bottom nav clearance, chart responsiveness, touch targets)
 
-**Phase 4: Expanded Datasets**
-- [ ] Historical budget data (multi-year comparisons)
+**Phase 4: Expand Scope**
+- [ ] New data domain: State Finances (state budget allocations, GSDP, own tax revenue)
+- [ ] New data domain: Census & Demographics (population, literacy, urbanization, sex ratio)
+
+**Phase 5: Expanded Datasets**
+- [ ] Historical budget data (multi-year comparisons, trend lines)
 - [ ] State budget data (starting with major states)
+- [ ] RBI DBIE direct API integration (bypass World Bank lag for monetary indicators)
 
-**Phase 5: Community & API**
+**Phase 6: Community & API**
 - [ ] Public REST API for all datasets
 - [ ] Embeddable chart widgets
 - [ ] Contributor guide for data journalists
