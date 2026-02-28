@@ -48,14 +48,14 @@ export function CreditSection({ data }: CreditSectionProps) {
               color: 'var(--cyan)',
               data: data.privateCreditPctGDP.series,
             },
-          ]}
+          ].filter((s) => s.data.length > 0)}
           isVisible={isVisible}
           formatValue={(v) => v.toFixed(1)}
           unit="% GDP"
         />
 
         <p className="source-attribution">
-          Source: {data.domesticCreditPctGDP.source}
+          Source: {data.privateCreditPctGDP.source}
         </p>
       </div>
     </section>
