@@ -12,19 +12,24 @@ export function Header() {
 
   const isBudgetSection = location.pathname.startsWith('/budget');
   const isEconomySection = location.pathname.startsWith('/economy');
-  const isDataDomain = isBudgetSection || isEconomySection;
+  const isRBISection = location.pathname.startsWith('/rbi');
+  const isDataDomain = isBudgetSection || isEconomySection || isRBISection;
 
   // Context-aware title: show story name when inside a data story
   const headerTitle = isBudgetSection
     ? 'Budget 2025-26'
     : isEconomySection
       ? 'Economic Survey 2025-26'
-      : 'Indian Data Project';
+      : isRBISection
+        ? 'RBI Data'
+        : 'Indian Data Project';
   const headerLink = isBudgetSection
     ? '/budget'
     : isEconomySection
       ? '/economy'
-      : '/';
+      : isRBISection
+        ? '/rbi'
+        : '/';
 
   // Only show nav links inside a data story (domain sub-pages)
   const navLinks = isBudgetSection
@@ -40,11 +45,18 @@ export function Header() {
           { to: '/economy/explore', label: 'Explore' },
           { to: '/economy/methodology', label: 'Methodology' },
         ]
-      : [];
+      : isRBISection
+        ? [
+            { to: '/rbi', label: 'Story' },
+            { to: '/rbi/explore', label: 'Explore' },
+            { to: '/rbi/methodology', label: 'Methodology' },
+          ]
+        : [];
 
   const isActiveLink = (linkTo: string) => {
     if (linkTo === '/budget') return location.pathname === '/budget';
     if (linkTo === '/economy') return location.pathname === '/economy';
+    if (linkTo === '/rbi') return location.pathname === '/rbi';
     return location.pathname === linkTo;
   };
 

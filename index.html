@@ -49,9 +49,12 @@
         "Income tax calculator (Old and New regime)",
         "Sortable data explorer with CSV export",
         "Economic Survey visual breakdown (GDP, inflation, trade, sectors)",
-        "Economic indicators explorer with year-over-year comparisons"
+        "Economic indicators explorer with year-over-year comparisons",
+        "RBI monetary policy trajectory and repo rate history",
+        "Forex reserves and exchange rate visualization",
+        "Credit growth and money supply analysis"
       ],
-      "dateModified": "2025-07-01"
+      "dateModified": "2026-02-28"
     }
     </script>
 
@@ -141,6 +144,49 @@
     }
     </script>
 
+    <!-- JSON-LD: Dataset (RBI Data) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Dataset",
+      "name": "India RBI Monetary Policy and Financial Data",
+      "description": "Structured JSON datasets for Reserve Bank of India data: repo rate decisions, inflation targeting, money supply, credit growth, forex reserves, and exchange rates.",
+      "url": "https://indiandataproject.org/rbi/explore",
+      "license": "https://creativecommons.org/licenses/by/4.0/",
+      "creator": {
+        "@type": "Organization",
+        "name": "Reserve Bank of India / World Bank",
+        "url": "https://www.rbi.org.in"
+      },
+      "temporalCoverage": "2014/2026",
+      "spatialCoverage": {
+        "@type": "Place",
+        "name": "India"
+      },
+      "distribution": [
+        {
+          "@type": "DataDownload",
+          "encodingFormat": "application/json",
+          "contentUrl": "https://indiandataproject.org/data/rbi/2025-26/summary.json",
+          "name": "RBI Summary"
+        },
+        {
+          "@type": "DataDownload",
+          "encodingFormat": "application/json",
+          "contentUrl": "https://indiandataproject.org/data/rbi/2025-26/monetary-policy.json",
+          "name": "Monetary Policy Decisions"
+        },
+        {
+          "@type": "DataDownload",
+          "encodingFormat": "application/json",
+          "contentUrl": "https://indiandataproject.org/data/rbi/2025-26/forex.json",
+          "name": "Forex Reserves and Exchange Rate"
+        }
+      ],
+      "dateModified": "2026-02-28"
+    }
+    </script>
+
     <!-- JSON-LD: BreadcrumbList -->
     <script type="application/ld+json">
     {
@@ -154,7 +200,10 @@
         { "@type": "ListItem", "position": 5, "name": "Budget Methodology", "item": "https://indiandataproject.org/budget/methodology" },
         { "@type": "ListItem", "position": 6, "name": "Economic Survey 2025-26", "item": "https://indiandataproject.org/economy" },
         { "@type": "ListItem", "position": 7, "name": "Economy Data Explorer", "item": "https://indiandataproject.org/economy/explore" },
-        { "@type": "ListItem", "position": 8, "name": "Economy Methodology", "item": "https://indiandataproject.org/economy/methodology" }
+        { "@type": "ListItem", "position": 8, "name": "Economy Methodology", "item": "https://indiandataproject.org/economy/methodology" },
+        { "@type": "ListItem", "position": 9, "name": "RBI Data", "item": "https://indiandataproject.org/rbi" },
+        { "@type": "ListItem", "position": 10, "name": "RBI Indicator Explorer", "item": "https://indiandataproject.org/rbi/explore" },
+        { "@type": "ListItem", "position": 11, "name": "RBI Methodology", "item": "https://indiandataproject.org/rbi/methodology" }
       ]
     }
     </script>
@@ -185,15 +234,29 @@
 
         <h2>Economic Survey 2025-26</h2>
         <ul>
-          <li>Real GDP Growth: 6.4% (2024-25 estimate)</li>
-          <li>Projected Growth: 6.3-6.8% (2025-26)</li>
-          <li>CPI Inflation: 4.2%</li>
-          <li>Current Account Deficit: -0.8% of GDP</li>
+          <li>Real GDP Growth: 6.5% (2024-25 Provisional Estimate)</li>
+          <li>Projected Growth: 7.4% (2025-26 NSO First Advance Estimate)</li>
+          <li>CPI Inflation: 4.0% (Economic Survey revised projection)</li>
+          <li>Current Account Deficit: -0.8% of GDP (H1 FY2025-26)</li>
         </ul>
         <ul>
           <li><a href="/economy">Economy Visual Story</a></li>
           <li><a href="/economy/explore">Economic Indicators Data</a></li>
           <li><a href="/economy/methodology">Methodology</a></li>
+        </ul>
+
+        <h2>RBI Data</h2>
+        <ul>
+          <li>Repo Rate: 5.25% (Neutral stance, February 2026)</li>
+          <li>CRR: 3.00%, SLR: 18.00%</li>
+          <li>Forex Reserves: $724 billion</li>
+          <li>M3 Growth: 11.3%</li>
+          <li>Exchange Rate: ~83.67 INR per USD (FY2024-25 avg)</li>
+        </ul>
+        <ul>
+          <li><a href="/rbi">RBI Visual Story</a></li>
+          <li><a href="/rbi/explore">RBI Indicator Explorer</a></li>
+          <li><a href="/rbi/methodology">Methodology</a></li>
         </ul>
 
         <h2>Download Data (JSON)</h2>
@@ -204,6 +267,9 @@
           <li><a href="/data/economy/2025-26/summary.json">Economic Summary</a></li>
           <li><a href="/data/economy/2025-26/gdp-growth.json">GDP Growth Data</a></li>
           <li><a href="/data/economy/2025-26/inflation.json">Inflation Data</a></li>
+          <li><a href="/data/rbi/2025-26/summary.json">RBI Summary</a></li>
+          <li><a href="/data/rbi/2025-26/monetary-policy.json">Monetary Policy Decisions</a></li>
+          <li><a href="/data/rbi/2025-26/forex.json">Forex Reserves and Exchange Rate</a></li>
         </ul>
 
         <p>Data sourced from <a href="https://openbudgetsindia.org">Open Budgets India</a>, <a href="https://www.indiabudget.gov.in">indiabudget.gov.in</a>, and the <a href="https://www.indiabudget.gov.in/economicsurvey/">Economic Survey</a> under the <a href="https://data.gov.in/government-open-data-license-india">Government Open Data License - India</a>.</p>

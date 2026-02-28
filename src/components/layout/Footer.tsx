@@ -4,7 +4,8 @@ export function Footer() {
   const location = useLocation();
   const isBudget = location.pathname.startsWith('/budget');
   const isEconomy = location.pathname.startsWith('/economy');
-  const isDataDomain = isBudget || isEconomy;
+  const isRBI = location.pathname.startsWith('/rbi');
+  const isDataDomain = isBudget || isEconomy || isRBI;
 
   return (
     <footer className="relative py-8 pb-24 md:pb-8" style={{ background: 'var(--bg-surface)' }}>
@@ -78,6 +79,30 @@ export function Footer() {
             </a>
             {' '}&middot; Not affiliated with GoI
           </p>
+        ) : isRBI ? (
+          <p className="text-caption text-center md:text-left">
+            Data from{' '}
+            <a
+              href="https://data.rbi.org.in/DBIE/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="link-hover"
+              style={{ color: 'var(--text-muted)' }}
+            >
+              RBI DBIE
+            </a>
+            {' '}&middot;{' '}
+            <a
+              href="https://data.worldbank.org/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="link-hover"
+              style={{ color: 'var(--text-muted)' }}
+            >
+              World Bank
+            </a>
+            {' '}&middot; Not affiliated with RBI or GoI
+          </p>
         ) : (
           <p className="text-caption text-center md:text-left">
             Open-source civic tech. Real government data, made accessible.
@@ -88,6 +113,8 @@ export function Footer() {
             'Union Budget 2025-26'
           ) : isEconomy ? (
             'Economic Survey 2025-26'
+          ) : isRBI ? (
+            'RBI Data 2025-26'
           ) : (
             <a
               href="https://github.com/RonitChidara/indian-data-project"

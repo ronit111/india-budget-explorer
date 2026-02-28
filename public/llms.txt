@@ -4,7 +4,7 @@
 
 ## What this site does
 
-Indian Data Project is a hub for Indian government data visualization. Each data domain (budget, economic survey, state finances) gets its own visual story with explorable breakdowns. Two domains are live: Union Budget 2025-26 and Economic Survey 2025-26.
+Indian Data Project is a hub for Indian government data visualization. Each data domain (budget, economic survey, RBI data, state finances) gets its own visual story with explorable breakdowns. Three domains are live: Union Budget 2025-26, Economic Survey 2025-26, and RBI Data.
 
 ## Pages
 
@@ -22,6 +22,11 @@ Indian Data Project is a hub for Indian government data visualization. Each data
 - /economy/explore — Searchable table of all economic indicators with year-over-year comparisons
 - /economy/methodology — Data sources, indicator definitions, survey methodology, limitations
 
+### RBI Data Domain
+- /rbi — Scrollytelling narrative: repo rate hero, monetary policy trajectory (line chart), inflation targeting vs 4% mandate (line chart with band), M3 money supply growth, credit expansion (two-series line chart), forex reserves (area chart), exchange rate INR/USD
+- /rbi/explore — Browseable indicator explorer with categories: monetary, liquidity, credit, external. Select any indicator to see full time series.
+- /rbi/methodology — Data sources (RBI DBIE, World Bank, MPC press releases), indicator definitions, WB codes, data freshness, limitations
+
 ## Key data points
 
 ### Budget (Budget Estimate 2025-26)
@@ -32,12 +37,21 @@ Indian Data Project is a hub for Indian government data visualization. Each data
 - Population estimate used: 145 crore (1.45 billion)
 
 ### Economic Survey (2025-26)
-- Real GDP growth: 6.4% (2024-25 estimate)
-- Projected growth: 6.3-6.8% (2025-26)
-- CPI inflation: 4.2%
+- Real GDP growth: 6.5% (2024-25 Provisional Estimate)
+- Projected growth: 7.4% (2025-26 NSO First Advance Estimate, Jan 2026)
+- CPI inflation: 4.0% (Economic Survey revised projection)
 - Nominal GDP: Rs 3,56,98,000 crore
-- Current account deficit: -0.8% of GDP
-- Per capita GDP: Rs 2,46,034
+- Current account deficit: -0.8% of GDP (H1 FY2025-26)
+- Per capita GDP: Rs 2,44,507
+
+### RBI Data (2025-26)
+- Repo rate: 5.25% (Neutral stance, as of February 6, 2026)
+- CRR: 3.00%, SLR: 18.00%
+- CPI inflation (World Bank latest): 4.95%
+- Forex reserves: $643 billion (World Bank latest; RBI weekly: $724B as of Feb 2026)
+- Broad money (M3) growth: 11.3%
+- Exchange rate: ~83.67 INR per USD (FY2024-25 annual average)
+- 30 repo rate decisions tracked from 2014 onward
 
 ## Data sources
 
@@ -45,6 +59,9 @@ Indian Data Project is a hub for Indian government data visualization. Each data
 - Union Budget documents (indiabudget.gov.in) — Expenditure Budget Vol. 1 & 2, Receipt Budget, Finance Bill
 - Economic Survey of India (indiabudget.gov.in/economicsurvey/) — annual economic review
 - Census projections and RBI reports for population estimates
+- RBI DBIE (data.rbi.org.in) — Database on Indian Economy
+- RBI Monetary Policy Statements — repo rate decisions, stance changes
+- World Bank Open Data API — monetary, liquidity, credit, and external indicators
 
 ## Downloadable datasets (JSON)
 
@@ -67,6 +84,14 @@ Indian Data Project is a hub for Indian government data visualization. Each data
 - /data/economy/2025-26/external.json — Trade balance, exports, imports
 - /data/economy/2025-26/sectors.json — Sectoral GDP composition
 - /data/economy/2025-26/indicators.json — Key economic indicators
+
+### RBI
+- /data/rbi/2025-26/summary.json — RBI headline numbers (repo rate, stance, forex, M3)
+- /data/rbi/2025-26/monetary-policy.json — Repo rate decision history, CRR time series
+- /data/rbi/2025-26/liquidity.json — Broad money growth and M3 % GDP
+- /data/rbi/2025-26/credit.json — Domestic and private credit, lending/deposit rates
+- /data/rbi/2025-26/forex.json — Forex reserves and INR/USD exchange rate
+- /data/rbi/2025-26/indicators.json — All RBI indicators across 4 categories
 
 ## Tax calculator details
 

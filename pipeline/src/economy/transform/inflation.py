@@ -56,12 +56,11 @@ def build_inflation(wb_cpi_data: list[dict], survey_year: str) -> dict:
         })
         logger.info("  Added FY2024-25 inflation estimate from Economic Survey")
 
-    # FY2025-26 (Apr-Dec avg) from Economic Survey: 4.6% → 1.7% trajectory
-    # Using average for the period
+    # FY2025-26 from Economic Survey 2025-26 revised projection
     if "2025-26" not in fiscal_years_present:
         series.append({
             "period": "2025-26",
-            "cpiHeadline": 4.2,  # Apr-Dec 2025-26 avg from Survey
+            "cpiHeadline": 4.0,  # Economic Survey 2025-26 revised projection (down from 4.2%)
             "cpiFood": 5.8,      # Food inflation avg (Survey)
             "cpiCore": 3.2,      # Core inflation estimate (Survey)
         })

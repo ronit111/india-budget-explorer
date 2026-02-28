@@ -298,3 +298,75 @@ export interface IndicatorsData {
   year: string;
   indicators: EconomicIndicator[];
 }
+
+// ─── RBI Data Domain ────────────────────────────────────────────
+
+export interface RBISummary {
+  year: string;
+  repoRate: number;
+  repoRateDate: string;
+  stance: string;
+  crr: number;
+  slr: number;
+  cpiLatest: number | null;
+  forexReservesUSD: number | null;
+  broadMoneyGrowth: number | null;
+  lastUpdated: string;
+  source: string;
+}
+
+export interface PolicyDecision {
+  date: string;
+  rate: number;
+  change: number;
+  stance: string;
+}
+
+export interface MonetaryPolicyData {
+  year: string;
+  currentRate: number;
+  currentStance: string;
+  decisions: PolicyDecision[];
+  crrHistory: TimeSeriesPoint[];
+  source: string;
+}
+
+export interface RBITimeSeries {
+  series: TimeSeriesPoint[];
+  unit: string;
+  source: string;
+}
+
+export interface LiquidityData {
+  year: string;
+  broadMoneyGrowth: RBITimeSeries;
+  broadMoneyPctGDP: RBITimeSeries;
+}
+
+export interface CreditData {
+  year: string;
+  domesticCreditPctGDP: RBITimeSeries;
+  privateCreditPctGDP: RBITimeSeries;
+  lendingRate: RBITimeSeries;
+  depositRate: RBITimeSeries;
+}
+
+export interface ForexData {
+  year: string;
+  reservesUSD: RBITimeSeries;
+  exchangeRate: RBITimeSeries;
+}
+
+export interface RBIIndicator {
+  id: string;
+  name: string;
+  category: string;
+  unit: string;
+  series: TimeSeriesPoint[];
+  source: string;
+}
+
+export interface RBIIndicatorsData {
+  year: string;
+  indicators: RBIIndicator[];
+}

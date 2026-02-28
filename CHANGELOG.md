@@ -1,5 +1,50 @@
 # Changelog
 
+## [0.5.0] - 2026-02-28
+
+### RBI Data Domain + Data Accuracy Overhaul + Automation
+
+**RBI Scrollytelling** (`/rbi`)
+- Six-section narrative: repo rate hero with stance badge, monetary policy trajectory (decade of rate decisions), inflation targeting vs RBI's 4% mandate, M3 money supply growth, credit expansion (domestic + private sector), forex reserves ($700B+ war chest), INR/USD exchange rate
+- All data sourced from RBI DBIE, World Bank API, and curated MPC decision history — no mock data
+- Step chart mini-visualization on hub domain card showing last 5 repo rate decisions
+
+**RBI Data Pipeline** (Python)
+- Hybrid three-tier data sourcing: World Bank API (historical backbone), curated RBI MPC decisions (hand-verified from official statements), merged at transform time
+- 4 transform modules: monetary policy, liquidity, credit, forex
+- Pydantic validation schemas for all RBI data shapes
+- 6 verified JSON outputs in `public/data/rbi/2025-26/`
+- 30 repo rate decisions tracked from 2014 onward
+
+**RBI Sub-Pages**
+- `/rbi/explore`: indicator explorer with 4 categories (monetary, liquidity, credit, external), interactive line charts
+- `/rbi/methodology`: data sources (DBIE, World Bank, MPC press releases), WB indicator code table, fiscal year mapping
+
+**Data Accuracy Overhaul** (all domains)
+- Truth-verified every key figure against authoritative sources (RBI MPC statements, NSO releases, World Bank API, Economic Survey 2025-26)
+- RBI corrections: repo rate 6.00% → 5.25%, CRR 4.50% → 3.00%, added 5 MPC decisions (Jun-Dec 2025, Feb 2026)
+- Economy corrections: GDP FY2024-25 6.4% → 6.5% (Provisional Estimate), FY2025-26 projection 6.3-6.8% → 7.4% (NSO FAE Jan 2026), CPI 4.2% → 4.0% (Survey revised)
+- Fixed economy pipeline schema: `cpiFood` changed to `Optional[float]` (World Bank doesn't provide food-specific CPI breakdown)
+
+**Automated Pipeline Infrastructure** (GitHub Actions)
+- `economy-pipeline.yml`: quarterly runs aligned to data releases (Feb 5 post-Survey, Mar 5 post-Second Advance, Jun 1 post-WB update, Dec 1 post-First Revised)
+- `rbi-pipeline.yml`: bi-monthly runs on 10th of Feb/Apr/Jun/Aug/Oct/Dec (post-MPC meeting dates)
+- `data-freshness-monitor.yml`: monthly staleness checks with auto-created GitHub issues — MPC decision reminders, Economic Survey reminders, Budget readiness reminders
+- All workflows: auto-commit-and-push on data changes, failure alerts via GitHub issues
+
+**Hub Integration**
+- RBI domain card (03 — DATA STORY) with step chart, stat pills (Repo Rate, Forex Reserves, M3 Growth)
+- "Coming Soon" reduced to State Finances and Census & Demographics
+
+**SEO**
+- Sitemap expanded: 3 RBI routes + 5 RBI data file URLs (11 pages + 17 data files total)
+- JSON-LD Dataset schema for RBI data (Google Dataset Search)
+- llms.txt expanded with RBI domain description and key data points
+- Noscript fallback with RBI content
+- Prerender routes expanded to 11
+
+---
+
 ## [0.4.1] - 2026-02-28
 
 ### SEO Overhaul + Viz Fixes

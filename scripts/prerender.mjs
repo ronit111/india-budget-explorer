@@ -24,6 +24,7 @@ const ROUTES = [
   '/',
   '/budget', '/budget/explore', '/budget/calculator', '/budget/methodology',
   '/economy', '/economy/explore', '/economy/methodology',
+  '/rbi', '/rbi/explore', '/rbi/methodology',
 ];
 
 const MIME_TYPES = {

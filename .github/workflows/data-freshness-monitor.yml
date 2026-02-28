@@ -1,0 +1,213 @@
+name: Data Freshness Monitor
+
+# ── Runs monthly to detect stale data and create reminders ──────────
+# This is the safety net. Even if pipeline runs succeed, the *curated*
+# data (MPC decisions, Economic Survey figures) requires human updates.
+# This workflow:
+#   1. Checks if any domain's JSON files are stale beyond their threshold
+#   2. Creates reminder issues for upcoming government data releases
+#   3. Flags missing MPC decisions if meeting dates have passed
+
+on:
+  schedule:
+    # 1st of every month at 8 AM UTC (1:30 PM IST)
+    - cron: '0 8 1 * *'
+  workflow_dispatch:
+
+permissions:
+  issues: write
+  contents: read
+
+jobs:
+  check-freshness:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Check data freshness and create issues
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const path = require('path');
+
+            const now = new Date();
+            const today = now.toISOString().slice(0, 10);
+            const currentMonth = now.getMonth() + 1; // 1-indexed
+            const currentYear = now.getFullYear();
+
+            const issues = [];
+
+            // ── Helper: read lastUpdated from JSON file ──
+            function getLastUpdated(filePath) {
+              try {
+                const data = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
+                return data.lastUpdated || null;
+              } catch {
+                return null;
+              }
+            }
+
+            function daysSince(dateStr) {
+              if (!dateStr) return Infinity;
+              const d = new Date(dateStr);
+              return Math.floor((now - d) / (1000 * 60 * 60 * 24));
+            }
+
+            // ── Check each domain's summary.json ──
+            const domains = [
+              {
+                name: 'Budget',
+                file: 'public/data/budget/2025-26/summary.json',
+                staleAfterDays: 60,   // Budget data is annual, 60 days is generous
+                pipelineWorkflow: 'data-pipeline.yml',
+              },
+              {
+                name: 'Economy',
+                file: 'public/data/economy/2025-26/summary.json',
+                staleAfterDays: 120,  // Quarterly refresh cycle
+                pipelineWorkflow: 'economy-pipeline.yml',
+              },
+              {
+                name: 'RBI',
+                file: 'public/data/rbi/2025-26/summary.json',
+                staleAfterDays: 75,   // Bi-monthly refresh cycle (~60 days + buffer)
+                pipelineWorkflow: 'rbi-pipeline.yml',
+              },
+            ];
+
+            for (const domain of domains) {
+              const lastUpdated = getLastUpdated(domain.file);
+              const age = daysSince(lastUpdated);
+
+              if (age > domain.staleAfterDays) {
+                issues.push({
+                  title: `Stale data: ${domain.name} domain (${age} days old)`,
+                  body: `## ${domain.name} Data Staleness Alert\n\n` +
+                        `**Last updated:** ${lastUpdated || 'unknown'}\n` +
+                        `**Age:** ${age} days (threshold: ${domain.staleAfterDays})\n` +
+                        `**File:** \`${domain.file}\`\n\n` +
+                        `### Action needed\n` +
+                        `1. Check if the \`${domain.pipelineWorkflow}\` workflow has been running successfully\n` +
+                        `2. Try a manual workflow dispatch to force-refresh\n` +
+                        `3. If the pipeline ran but data didn't change, check if the upstream source (World Bank API, CKAN) has new data\n\n` +
+                        `_Automated freshness check — ${today}_`,
+                  labels: ['data-freshness', 'automated'],
+                });
+              }
+            }
+
+            // ── RBI MPC meeting reminders ──
+            // MPC typically meets first week of: Feb, Apr, Jun, Aug, Oct, Dec
+            const mpcMonths = [2, 4, 6, 8, 10, 12];
+
+            if (mpcMonths.includes(currentMonth)) {
+              // Check if the latest decision in our data matches the current cycle
+              try {
+                const mpData = JSON.parse(fs.readFileSync('public/data/rbi/2025-26/monetary-policy.json', 'utf-8'));
+                const latestDecision = mpData.decisions && mpData.decisions[0]; // newest-first
+                const latestDate = latestDecision ? new Date(latestDecision.date) : null;
+
+                // If latest decision is > 45 days old and an MPC month just started,
+                // the MPC likely met and we may be missing a decision
+                if (!latestDate || daysSince(latestDecision.date) > 45) {
+                  issues.push({
+                    title: `RBI MPC may have met — check for new repo rate decision`,
+                    body: `## MPC Meeting Reminder\n\n` +
+                          `It's ${now.toLocaleString('en-US', {month: 'long'})} — the RBI MPC typically meets this month.\n\n` +
+                          `**Latest decision in our data:** ${latestDecision ? `${latestDecision.rate}% on ${latestDecision.date} (${latestDecision.stance})` : 'none'}\n\n` +
+                          `### To update\n` +
+                          `1. Check [RBI Monetary Policy page](https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx) for new MPC statement\n` +
+                          `2. If repo rate changed or stance changed, update:\n` +
+                          `   \`pipeline/src/rbi/transform/monetary_policy.py\`\n` +
+                          `   - Add new entry to \`REPO_RATE_DECISIONS\` list\n` +
+                          `   - Update \`CURRENT_RATES\` dict if CRR/SLR changed\n` +
+                          `3. Commit and push — the RBI pipeline will run on its next scheduled date,\n` +
+                          `   or trigger manually via Actions → RBI Data Pipeline → Run workflow\n\n` +
+                          `_Automated MPC reminder — ${today}_`,
+                    labels: ['data-freshness', 'rbi', 'automated'],
+                  });
+                }
+              } catch (e) {
+                console.log('Could not read monetary policy data:', e.message);
+              }
+            }
+
+            // ── Economic Survey reminder (January) ──
+            if (currentMonth === 1) {
+              issues.push({
+                title: `Economic Survey release expected — prepare economy pipeline update`,
+                body: `## Annual Economic Survey Reminder\n\n` +
+                      `The Economic Survey is typically released in the last week of January (Jan 29-31),\n` +
+                      `ahead of the Union Budget on Feb 1.\n\n` +
+                      `### When the Survey drops\n` +
+                      `Update curated values in the economy pipeline:\n\n` +
+                      `1. \`pipeline/src/economy/main.py\`:\n` +
+                      `   - \`SURVEY_YEAR\` (if fiscal year changed)\n` +
+                      `   - \`realGDPGrowth\` in summary_data\n` +
+                      `   - \`cpiInflation\` in summary_data\n` +
+                      `   - \`nominalGDP\` (from budget statistical appendix)\n` +
+                      `   - \`projectedGrowthLow/High\` range\n\n` +
+                      `2. \`pipeline/src/economy/transform/fiscal.py\`:\n` +
+                      `   - Add new fiscal year row to \`series\` list\n` +
+                      `   - Update previous year from BE to RE (Revised Estimate)\n\n` +
+                      `3. Commit and push. The economy pipeline will pick up WB API changes\n` +
+                      `   automatically on Feb 5 (scheduled run).\n\n` +
+                      `_Automated Survey reminder — ${today}_`,
+                labels: ['data-freshness', 'economy', 'automated'],
+              });
+            }
+
+            // ── Budget reminder (January) ──
+            if (currentMonth === 1) {
+              issues.push({
+                title: `Union Budget expected Feb 1 — verify budget pipeline readiness`,
+                body: `## Annual Budget Reminder\n\n` +
+                      `The Union Budget is typically presented on Feb 1.\n` +
+                      `The budget pipeline has special Budget Day polling (15-min intervals).\n\n` +
+                      `### Pre-Budget checklist\n` +
+                      `1. Verify \`DATAGOVINDIA_API_KEY\` secret is still valid\n` +
+                      `2. Check that the Budget Day cron (\`0 5 1 2 *\`) is enabled\n` +
+                      `3. If the fiscal year changes (e.g., Budget 2026-27), update:\n` +
+                      `   - Output paths in \`pipeline/src/main.py\`\n` +
+                      `   - Tax slab data if regimes change\n` +
+                      `   - Frontend year references\n\n` +
+                      `_Automated Budget reminder — ${today}_`,
+                labels: ['data-freshness', 'budget', 'automated'],
+              });
+            }
+
+            // ── Create issues (skip duplicates) ──
+            if (issues.length === 0) {
+              console.log('All data is fresh. No issues to create.');
+              return;
+            }
+
+            // Check for existing open issues to avoid duplicates
+            const existingIssues = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              labels: 'automated',
+              per_page: 50,
+            });
+            const existingTitles = new Set(existingIssues.data.map(i => i.title));
+
+            for (const issue of issues) {
+              if (existingTitles.has(issue.title)) {
+                console.log(`Skipping duplicate: "${issue.title}"`);
+                continue;
+              }
+
+              await github.rest.issues.create({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                title: issue.title,
+                body: issue.body,
+                labels: issue.labels,
+              });
+              console.log(`Created issue: "${issue.title}"`);
+            }

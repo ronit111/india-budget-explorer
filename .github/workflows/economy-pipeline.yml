@@ -1,0 +1,89 @@
+name: Economy Data Pipeline
+
+# ── Schedule: aligned to actual data release calendar ───────────────
+# India's economic data follows a predictable annual cycle:
+#   - Late Jan: Economic Survey released (typically Jan 29-31)
+#   - Late Feb: NSO Second Advance Estimate of GDP
+#   - Late May: NSO Provisional Estimate of GDP + World Bank annual data refresh
+#   - Late Nov: NSO First Revised Estimate
+#
+# We run 5 days after each key release date to allow publication delays.
+# World Bank API data for India updates once per year (April-June window).
+
+on:
+  schedule:
+    # Feb 5 — post-Economic Survey & Budget (released ~Jan 29-Feb 1)
+    - cron: '0 6 5 2 *'
+    # Mar 5 — post-Second Advance Estimate (released ~late Feb)
+    - cron: '0 6 5 3 *'
+    # Jun 1 — post-Provisional GDP Estimate + World Bank annual refresh
+    - cron: '0 6 1 6 *'
+    # Dec 1 — post-First Revised Estimate (released ~late Nov)
+    - cron: '0 6 1 12 *'
+  workflow_dispatch:
+    inputs:
+      force_refresh:
+        description: 'Force re-download and re-process all data'
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  update-economy-data:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install pipeline dependencies
+        run: |
+          cd pipeline
+          pip install requests pydantic
+
+      - name: Run economy pipeline
+        run: |
+          cd pipeline
+          python src/economy/main.py
+
+      - name: Check for data changes
+        id: changes
+        run: |
+          git diff --quiet public/data/economy/ && echo "changed=false" >> $GITHUB_OUTPUT || echo "changed=true" >> $GITHUB_OUTPUT
+
+      - name: Commit updated data
+        if: steps.changes.outputs.changed == 'true'
+        run: |
+          git config user.name "India Data Pipeline"
+          git config user.email "pipeline@india-data-portal.dev"
+          git add public/data/economy/
+          git commit -m "data: update economy data $(date +%Y-%m-%d)
+
+          Automated pipeline run. Sources: World Bank API + Economic Survey.
+          Triggered by: ${{ github.event_name }}"
+          git push
+
+      - name: Open issue on failure
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: `Economy pipeline failure: ${new Date().toISOString().slice(0,10)}`,
+              body: `The economy data pipeline failed.\n\n` +
+                    `**Trigger:** ${context.eventName}\n` +
+                    `**Run:** ${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}\n\n` +
+                    `The frontend continues serving the last known good data.`,
+              labels: ['pipeline', 'automated']
+            });

@@ -8,7 +8,9 @@ Open data platform for Indian citizens. V1 of the broader **India Truth Engine**
 ## Site Architecture — Hub + Data Domains
 - **`/` (Hub)**: Visual portal showcasing all data domains. Not a dashboard — a curated data story showcase.
 - **`/budget` (Budget Domain)**: Union Budget 2025-26 scrollytelling. Sub-routes: `/budget/explore`, `/budget/calculator`, `/budget/methodology`.
-- **Future domains** each get their own top-level route (e.g., `/economy`, `/states`) with self-contained sub-pages.
+- **`/economy` (Economy Domain)**: Economic Survey 2025-26 scrollytelling. Sub-routes: `/economy/explore`, `/economy/methodology`.
+- **`/rbi` (RBI Domain)**: RBI monetary policy and financial data. Sub-routes: `/rbi/explore`, `/rbi/methodology`.
+- **Future domains** each get their own top-level route (e.g., `/states`, `/census`) with self-contained sub-pages.
 - Header is **context-aware**: hub title + search on `/`, domain title + sub-nav tabs inside a domain.
 - **Back links** (header chevron + footer link) point to `/#stories`. New domains should follow this convention.
 - Old routes (`/explore`, `/calculator`, `/methodology`) redirect to `/budget/*` equivalents.
@@ -20,8 +22,17 @@ Open data platform for Indian citizens. V1 of the broader **India Truth Engine**
 - **All derived values computed at runtime** from source data, never hardcoded (e.g., "31 paise borrowed per rupee").
 
 ## Data Integrity — Non-Negotiable
-- **NEVER create mock, fake, placeholder, or hardcoded data.** Every number must trace to an authoritative source (indiabudget.gov.in, Open Budgets India, RBI, etc.).
+- **NEVER create mock, fake, placeholder, or hardcoded data.** Every number must trace to an authoritative source (indiabudget.gov.in, Open Budgets India, RBI, World Bank, etc.).
 - If data doesn't exist for a planned feature, the feature waits. No exceptions.
+
+## Automated Data Pipelines
+Three GitHub Actions workflows keep data fresh without manual intervention:
+- **Budget** (`data-pipeline.yml`): Daily cron + Budget Day polling (Feb 1). Source: CKAN API.
+- **Economy** (`economy-pipeline.yml`): Quarterly (Feb, Mar, Jun, Dec) aligned to NSO/Survey/WB release cycles. Source: World Bank API + curated Economic Survey figures.
+- **RBI** (`rbi-pipeline.yml`): Bi-monthly (10th of Feb/Apr/Jun/Aug/Oct/Dec) aligned to MPC meeting schedule. Source: World Bank API + curated MPC decisions.
+- **Freshness Monitor** (`data-freshness-monitor.yml`): Monthly check. Auto-creates GitHub issues for stale data, MPC decision reminders, Survey/Budget prep reminders.
+
+**Curated data** (MPC decisions in `monetary_policy.py`, fiscal deficit series in `fiscal.py`, Economic Survey headline numbers in `main.py`) requires human updates when government publications drop. The freshness monitor creates reminder issues for these.
 
 ## Design Identity
 - Dark theme: void (#06080f) / raised (#0e1420) / surface (#131b27)
@@ -38,6 +49,16 @@ Open data platform for Indian citizens. V1 of the broader **India Truth Engine**
 3. **Full sanity** = build passes + grep for stale imports + browser inspection + interaction test + screenshot evidence
 
 Never report a fix as complete based only on build + grep.
+
+## Final QA — Citizen Perspective (when project scope is complete)
+When all planned data domains are built and the project is considered "done," run a comprehensive QA pass from the perspective of an average Indian citizen visiting the portal for the first time. Evaluate:
+1. **Clarity**: Is every section, label, and number understandable without domain expertise? Would a non-economist understand what "fiscal deficit" or "repo rate" means in context?
+2. **Narrative flow**: Does each data story flow smoothly from section to section? Are there gaps where the reader might lose the thread or wonder "so what?"
+3. **Data accuracy**: Spot-check key numbers against current authoritative sources. Flag anything that looks stale or inconsistent across domains.
+4. **Analogies and comparisons**: Are the analogies practical and relatable? Do comparisons (e.g., per-capita breakdowns, paise-per-rupee) help understanding without creating confusion or prompting more questions?
+5. **Completeness**: Are there obvious questions a citizen would have that the portal doesn't answer? Identify gaps worth filling.
+
+This is not a per-change QA. It is a holistic product review to be run once, after all domains are live.
 
 ## Common Pitfalls
 - **Treemap**: Never use `hierarchy.leaves()`. Show one level at a time via `hierarchy.children`.

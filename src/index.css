@@ -199,6 +199,13 @@
     background-clip: text;
   }
 
+  .gradient-text-gold {
+    background: linear-gradient(135deg, var(--gold), #FFE08A);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
   /* Glass */
   .glass {
     background: var(--bg-glass);

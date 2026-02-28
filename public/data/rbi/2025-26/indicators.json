@@ -1,0 +1,438 @@
+{
+  "year": "2025-26",
+  "indicators": [
+    {
+      "id": "repo_rate",
+      "name": "Repo Rate",
+      "category": "monetary",
+      "unit": "%",
+      "series": [
+        {
+          "year": "2014-15",
+          "value": 8.0
+        },
+        {
+          "year": "2015-16",
+          "value": 6.75
+        },
+        {
+          "year": "2016-17",
+          "value": 6.25
+        },
+        {
+          "year": "2017-18",
+          "value": 6.0
+        },
+        {
+          "year": "2018-19",
+          "value": 6.5
+        },
+        {
+          "year": "2019-20",
+          "value": 5.15
+        },
+        {
+          "year": "2020-21",
+          "value": 4.0
+        },
+        {
+          "year": "2022-23",
+          "value": 6.25
+        },
+        {
+          "year": "2023-24",
+          "value": 6.5
+        },
+        {
+          "year": "2024-25",
+          "value": 6.5
+        },
+        {
+          "year": "2025-26",
+          "value": 5.25
+        },
+        {
+          "year": "2026-27",
+          "value": 5.25
+        }
+      ],
+      "source": "RBI Monetary Policy Statements"
+    },
+    {
+      "id": "inflation_cpi",
+      "name": "CPI Inflation (Annual)",
+      "category": "monetary",
+      "unit": "%",
+      "series": [
+        {
+          "year": "2014-15",
+          "value": 6.67
+        },
+        {
+          "year": "2015-16",
+          "value": 4.91
+        },
+        {
+          "year": "2016-17",
+          "value": 4.95
+        },
+        {
+          "year": "2017-18",
+          "value": 3.33
+        },
+        {
+          "year": "2018-19",
+          "value": 3.94
+        },
+        {
+          "year": "2019-20",
+          "value": 3.73
+        },
+        {
+          "year": "2020-21",
+          "value": 6.62
+        },
+        {
+          "year": "2021-22",
+          "value": 5.13
+        },
+        {
+          "year": "2022-23",
+          "value": 6.7
+        },
+        {
+          "year": "2023-24",
+          "value": 5.65
+        },
+        {
+          "year": "2024-25",
+          "value": 4.95
+        }
+      ],
+      "source": "World Bank FP.CPI.TOTL.ZG"
+    },
+    {
+      "id": "broad_money_growth",
+      "name": "Broad Money Growth",
+      "category": "liquidity",
+      "unit": "%",
+      "series": [
+        {
+          "year": "2014-15",
+          "value": 10.59
+        },
+        {
+          "year": "2015-16",
+          "value": 10.62
+        },
+        {
+          "year": "2016-17",
+          "value": 6.8
+        },
+        {
+          "year": "2017-18",
+          "value": 10.43
+        },
+        {
+          "year": "2018-19",
+          "value": 10.52
+        },
+        {
+          "year": "2019-20",
+          "value": 10.51
+        },
+        {
+          "year": "2020-21",
+          "value": 12.48
+        },
+        {
+          "year": "2021-22",
+          "value": 11.3
+        }
+      ],
+      "source": "World Bank FM.LBL.BMNY.ZG"
+    },
+    {
+      "id": "broad_money_pct_gdp",
+      "name": "Broad Money (% of GDP)",
+      "category": "liquidity",
+      "unit": "% of GDP",
+      "series": [
+        {
+          "year": "2014-15",
+          "value": 77.9
+        },
+        {
+          "year": "2015-16",
+          "value": 78.01
+        },
+        {
+          "year": "2016-17",
+          "value": 74.55
+        },
+        {
+          "year": "2017-18",
+          "value": 74.14
+        },
+        {
+          "year": "2018-19",
+          "value": 74.1
+        },
+        {
+          "year": "2019-20",
+          "value": 76.98
+        },
+        {
+          "year": "2020-21",
+          "value": 87.68
+        },
+        {
+          "year": "2021-22",
+          "value": 82.1
+        }
+      ],
+      "source": "World Bank FM.LBL.BMNY.GD.ZS"
+    },
+    {
+      "id": "private_credit_pct_gdp",
+      "name": "Private Credit (% of GDP)",
+      "category": "credit",
+      "unit": "% of GDP",
+      "series": [
+        {
+          "year": "2014-15",
+          "value": 51.88
+        },
+        {
+          "year": "2015-16",
+          "value": 51.87
+        },
+        {
+          "year": "2016-17",
+          "value": 49.1
+        },
+        {
+          "year": "2017-18",
+          "value": 48.79
+        },
+        {
+          "year": "2018-19",
+          "value": 50.34
+        },
+        {
+          "year": "2019-20",
+          "value": 50.74
+        },
+        {
+          "year": "2020-21",
+          "value": 54.51
+        },
+        {
+          "year": "2021-22",
+          "value": 50.14
+        }
+      ],
+      "source": "World Bank FD.AST.PRVT.GD.ZS"
+    },
+    {
+      "id": "lending_rate",
+      "name": "Lending Interest Rate",
+      "category": "credit",
+      "unit": "%",
+      "series": [
+        {
+          "year": "2014-15",
+          "value": 10.25
+        },
+        {
+          "year": "2015-16",
+          "value": 10.01
+        },
+        {
+          "year": "2016-17",
+          "value": 9.67
+        },
+        {
+          "year": "2017-18",
+          "value": 9.51
+        },
+        {
+          "year": "2018-19",
+          "value": 9.45
+        },
+        {
+          "year": "2019-20",
+          "value": 9.47
+        },
+        {
+          "year": "2020-21",
+          "value": 9.15
+        },
+        {
+          "year": "2021-22",
+          "value": 8.7
+        },
+        {
+          "year": "2022-23",
+          "value": 8.57
+        }
+      ],
+      "source": "World Bank FR.INR.LEND"
+    },
+    {
+      "id": "bank_branches",
+      "name": "Bank Branches per 100K Adults",
+      "category": "credit",
+      "unit": "per 100K",
+      "series": [
+        {
+          "year": "2014-15",
+          "value": 12.75
+        },
+        {
+          "year": "2015-16",
+          "value": 13.43
+        },
+        {
+          "year": "2016-17",
+          "value": 14.1
+        },
+        {
+          "year": "2017-18",
+          "value": 14.35
+        },
+        {
+          "year": "2018-19",
+          "value": 14.3
+        },
+        {
+          "year": "2019-20",
+          "value": 14.43
+        },
+        {
+          "year": "2020-21",
+          "value": 14.57
+        },
+        {
+          "year": "2021-22",
+          "value": 14.42
+        },
+        {
+          "year": "2022-23",
+          "value": 14.32
+        },
+        {
+          "year": "2023-24",
+          "value": 14.47
+        }
+      ],
+      "source": "World Bank FB.CBK.BRCH.P5"
+    },
+    {
+      "id": "reserves_usd",
+      "name": "Forex Reserves",
+      "category": "external",
+      "unit": "US$ billion",
+      "series": [
+        {
+          "year": "2014-15",
+          "value": 325.08
+        },
+        {
+          "year": "2015-16",
+          "value": 353.32
+        },
+        {
+          "year": "2016-17",
+          "value": 361.69
+        },
+        {
+          "year": "2017-18",
+          "value": 412.61
+        },
+        {
+          "year": "2018-19",
+          "value": 399.17
+        },
+        {
+          "year": "2019-20",
+          "value": 463.47
+        },
+        {
+          "year": "2020-21",
+          "value": 590.23
+        },
+        {
+          "year": "2021-22",
+          "value": 638.48
+        },
+        {
+          "year": "2022-23",
+          "value": 567.3
+        },
+        {
+          "year": "2023-24",
+          "value": 627.79
+        },
+        {
+          "year": "2024-25",
+          "value": 643.04
+        }
+      ],
+      "source": "World Bank FI.RES.TOTL.CD"
+    },
+    {
+      "id": "exchange_rate",
+      "name": "Exchange Rate (INR/USD)",
+      "category": "external",
+      "unit": "INR per USD",
+      "series": [
+        {
+          "year": "2014-15",
+          "value": 61.03
+        },
+        {
+          "year": "2015-16",
+          "value": 64.15
+        },
+        {
+          "year": "2016-17",
+          "value": 67.2
+        },
+        {
+          "year": "2017-18",
+          "value": 65.12
+        },
+        {
+          "year": "2018-19",
+          "value": 68.39
+        },
+        {
+          "year": "2019-20",
+          "value": 70.42
+        },
+        {
+          "year": "2020-21",
+          "value": 74.1
+        },
+        {
+          "year": "2021-22",
+          "value": 73.92
+        },
+        {
+          "year": "2022-23",
+          "value": 78.6
+        },
+        {
+          "year": "2023-24",
+          "value": 82.6
+        },
+        {
+          "year": "2024-25",
+          "value": 83.67
+        }
+      ],
+      "source": "World Bank PA.NUS.FCRF"
+    }
+  ]
+}

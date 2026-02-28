@@ -16,6 +16,12 @@ import type {
   ExternalData,
   SectorsData,
   IndicatorsData,
+  RBISummary,
+  MonetaryPolicyData,
+  LiquidityData,
+  CreditData,
+  ForexData,
+  RBIIndicatorsData,
 } from './data/schema.ts';
 
 const cache = new Map<string, unknown>();
@@ -79,3 +85,22 @@ export const loadSectors = (year: string) =>
 
 export const loadIndicators = (year: string) =>
   fetchJson<IndicatorsData>(`/data/economy/${year}/indicators.json`);
+
+// ─── RBI Domain ─────────────────────────────────────────────────
+export const loadRBISummary = (year: string) =>
+  fetchJson<RBISummary>(`/data/rbi/${year}/summary.json`);
+
+export const loadMonetaryPolicy = (year: string) =>
+  fetchJson<MonetaryPolicyData>(`/data/rbi/${year}/monetary-policy.json`);
+
+export const loadLiquidity = (year: string) =>
+  fetchJson<LiquidityData>(`/data/rbi/${year}/liquidity.json`);
+
+export const loadCredit = (year: string) =>
+  fetchJson<CreditData>(`/data/rbi/${year}/credit.json`);
+
+export const loadForex = (year: string) =>
+  fetchJson<ForexData>(`/data/rbi/${year}/forex.json`);
+
+export const loadRBIIndicators = (year: string) =>
+  fetchJson<RBIIndicatorsData>(`/data/rbi/${year}/indicators.json`);

@@ -1,15 +1,15 @@
 {
   "year": "2025-26",
   "surveyDate": "2026-01-29",
-  "realGDPGrowth": 6.4,
+  "realGDPGrowth": 6.5,
   "nominalGDP": 35698000,
-  "projectedGrowthLow": 6.3,
-  "projectedGrowthHigh": 6.8,
-  "cpiInflation": 4.2,
+  "projectedGrowthLow": 7.4,
+  "projectedGrowthHigh": 7.4,
+  "cpiInflation": 4.0,
   "fiscalDeficitPercentGDP": 4.4,
   "currentAccountDeficitPercentGDP": -0.8,
   "population": 1450935791,
   "perCapitaGDP": 246034,
-  "lastUpdated": "2026-02-27",
+  "lastUpdated": "2026-02-28",
   "source": "https://www.indiabudget.gov.in/economicsurvey/"
 }

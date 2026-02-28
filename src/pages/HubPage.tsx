@@ -3,9 +3,9 @@ import { Link, useLocation } from 'react-router-dom';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useScrollTrigger } from '../hooks/useScrollTrigger.ts';
 import { SEOHead } from '../components/seo/SEOHead.tsx';
-import { loadSummary, loadEconomySummary } from '../lib/dataLoader.ts';
+import { loadSummary, loadEconomySummary, loadRBISummary } from '../lib/dataLoader.ts';
 import { formatLakhCrore, formatIndianNumber } from '../lib/format.ts';
-import type { BudgetSummary, EconomySummary } from '../lib/data/schema.ts';
+import type { BudgetSummary, EconomySummary, RBISummary } from '../lib/data/schema.ts';
 
 const EASE_OUT_EXPO: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
@@ -406,12 +406,172 @@ function EconomyDomainCard({ summary }: { summary: EconomySummary | null }) {
   );
 }
 
+function RBIDomainCard({ summary }: { summary: RBISummary | null }) {
+  const [ref, isVisible] = useScrollTrigger({ threshold: 0.1 });
+
+  // Mini step chart: last 5 repo rate decisions
+  const rateSteps = useMemo(() => {
+    if (!summary) return [];
+    // Hardcode recent repo rate trajectory for the hub sparkline
+    return [
+      { label: 'May 22', rate: 4.40 },
+      { label: 'Sep 22', rate: 5.90 },
+      { label: 'Feb 23', rate: 6.50 },
+      { label: 'Feb 25', rate: 6.25 },
+      { label: 'Apr 25', rate: 6.00 },
+    ];
+  }, [summary]);
+
+  const minRate = Math.min(...rateSteps.map((d) => d.rate));
+  const maxRate = Math.max(...rateSteps.map((d) => d.rate));
+  const range = maxRate - minRate || 1;
+
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 32 }}
+      animate={isVisible ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.8, ease: EASE_OUT_EXPO, delay: 0.1 }}
+      className="mt-8"
+    >
+      <Link
+        to="/rbi"
+        className="group block relative rounded-2xl p-px no-underline overflow-hidden"
+        style={{ transition: 'transform 0.3s ease' }}
+        onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-4px)'; }}
+        onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0px)'; }}
+      >
+        {/* Gradient border — gold-saffron for RBI */}
+        <div
+          className="absolute inset-0 rounded-2xl opacity-20 group-hover:opacity-50"
+          style={{
+            background: 'linear-gradient(135deg, var(--gold), transparent 40%, var(--saffron) 80%, transparent)',
+            transition: 'opacity 0.4s ease',
+          }}
+        />
+        <div
+          className="absolute -inset-2 rounded-2xl opacity-0 group-hover:opacity-100 blur-2xl pointer-events-none"
+          style={{
+            background: 'linear-gradient(135deg, rgba(255,200,87,0.06), rgba(255,107,53,0.04))',
+            transition: 'opacity 0.4s ease',
+          }}
+        />
+
+        <div
+          className="relative rounded-2xl overflow-hidden"
+          style={{ background: 'var(--bg-surface)' }}
+        >
+          <div className="grid md:grid-cols-[1.4fr_1fr]">
+            <div className="relative p-8 md:p-12 flex flex-col justify-between min-h-[320px]">
+              <div
+                className="absolute top-0 right-0 w-3/4 h-full pointer-events-none opacity-[0.03]"
+                style={{
+                  background: 'radial-gradient(ellipse at 70% 50%, var(--gold), transparent 70%)',
+                }}
+              />
+
+              <div className="relative z-10">
+                <span className="text-section-num tracking-[0.15em] uppercase mb-4 block">
+                  03 — Data Story
+                </span>
+                <h2
+                  className="text-3xl md:text-4xl font-bold mb-3"
+                  style={{ color: 'var(--text-primary)', lineHeight: 1.15 }}
+                >
+                  RBI Data
+                </h2>
+                <p className="text-annotation mb-6 max-w-md">
+                  India's central banker. Repo rate decisions, inflation targeting, money supply, credit growth, and forex reserves from RBI primary sources.
+                </p>
+              </div>
+
+              {/* Mini repo rate step chart */}
+              <div className="relative z-10">
+                {rateSteps.length > 0 && (
+                  <div className="mb-6 max-w-xs">
+                    <div className="flex items-end gap-0 h-10 relative">
+                      {rateSteps.map((d, i) => {
+                        const pct = ((d.rate - minRate) / range) * 100;
+                        return (
+                          <div key={d.label} className="flex-1 relative">
+                            <motion.div
+                              className="absolute bottom-0 left-0 right-0"
+                              style={{
+                                height: `${Math.max(15, pct)}%`,
+                                background: 'var(--gold)',
+                                borderRadius: i === 0 ? '4px 0 0 0' : i === rateSteps.length - 1 ? '0 4px 0 0' : '0',
+                              }}
+                              initial={{ height: 0 }}
+                              animate={isVisible ? { height: `${Math.max(15, pct)}%` } : {}}
+                              transition={{ duration: 0.6, ease: EASE_OUT_EXPO, delay: 0.4 + i * 0.06 }}
+                            />
+                          </div>
+                        );
+                      })}
+                    </div>
+                    <div className="flex mt-1">
+                      {rateSteps.map((d) => (
+                        <span key={d.label} className="flex-1 text-center text-[9px] font-mono" style={{ color: 'var(--text-muted)' }}>
+                          {d.rate}%
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                <div
+                  className="inline-flex items-center gap-2 text-sm font-medium"
+                  style={{ color: 'var(--gold)' }}
+                >
+                  <span>Explore RBI data</span>
+                  <span
+                    className="group-hover:translate-x-1.5 inline-block"
+                    style={{ transition: 'transform 0.2s ease' }}
+                  >
+                    &rarr;
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div
+              className="p-8 md:p-12 flex flex-col justify-center gap-8 border-t md:border-t-0 md:border-l"
+              style={{ borderColor: 'rgba(255,255,255,0.06)' }}
+            >
+              <StatPill
+                label="Repo Rate"
+                value={summary ? `${summary.repoRate}%` : '...'}
+                color="var(--gold)"
+                delay={0.3}
+                isVisible={isVisible}
+              />
+              <StatPill
+                label="Forex Reserves"
+                value={summary ? `$${summary.forexReservesUSD?.toFixed(0) ?? '—'}B` : '...'}
+                color="var(--saffron)"
+                delay={0.4}
+                isVisible={isVisible}
+              />
+              <StatPill
+                label="M3 Growth"
+                value={summary ? `${summary.broadMoneyGrowth ?? '—'}%` : '...'}
+                color="var(--cyan)"
+                delay={0.5}
+                isVisible={isVisible}
+              />
+            </div>
+          </div>
+        </div>
+      </Link>
+    </motion.div>
+  );
+}
+
 function ComingSoon() {
   const [ref, isVisible] = useScrollTrigger({ threshold: 0.15 });
 
   const domains = [
     'State Finances',
-    'RBI Data',
     'Census & Demographics',
   ];
 
@@ -453,10 +613,12 @@ export default function HubPage() {
   const location = useLocation();
   const [summary, setSummary] = useState<BudgetSummary | null>(null);
   const [economySummary, setEconomySummary] = useState<EconomySummary | null>(null);
+  const [rbiSummary, setRbiSummary] = useState<RBISummary | null>(null);
 
   useEffect(() => {
     loadSummary('2025-26').then(setSummary).catch(() => {});
     loadEconomySummary('2025-26').then(setEconomySummary).catch(() => {});
+    loadRBISummary('2025-26').then(setRbiSummary).catch(() => {});
   }, []);
 
   // Scroll to hash anchor (e.g. /#stories) after mount
@@ -499,6 +661,8 @@ export default function HubPage() {
         <DomainCard summary={summary} />
 
         <EconomyDomainCard summary={economySummary} />
+
+        <RBIDomainCard summary={rbiSummary} />
 
         <ComingSoon />
       </section>

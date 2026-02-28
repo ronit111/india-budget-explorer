@@ -43,7 +43,7 @@ logger = logging.getLogger("economy-pipeline")
 
 SURVEY_YEAR = "2025-26"
 SOURCE_URL = "https://www.indiabudget.gov.in/economicsurvey/"
-POPULATION = 1_450_000_000  # 2025 estimate
+POPULATION = 1_460_000_000  # 2025 estimate (UN WPP 2024 revision: ~146 crore)
 
 
 def run_economy_pipeline():
@@ -120,13 +120,13 @@ def run_economy_pipeline():
     summary_data = {
         "year": SURVEY_YEAR,
         "surveyDate": "2026-01-29",
-        "realGDPGrowth": 6.4,  # First Advance Estimate for FY2025-26
+        "realGDPGrowth": 6.5,  # Provisional Estimate for FY2024-25 (May 2025, supersedes 6.4% FAE)
         "nominalGDP": nominal_gdp_rs_crore,
-        "projectedGrowthLow": 6.3,
-        "projectedGrowthHigh": 6.8,
-        "cpiInflation": 4.2,  # FY2025-26 Apr-Dec average
+        "projectedGrowthLow": 7.4,
+        "projectedGrowthHigh": 7.4,  # NSO First Advance Estimate for FY2025-26 (Jan 2026), corroborated by RBI Feb 2026
+        "cpiInflation": 4.0,  # Economic Survey 2025-26 revised projection (down from 4.2%)
         "fiscalDeficitPercentGDP": 4.4,
-        "currentAccountDeficitPercentGDP": -0.8,  # Signed: negative = deficit (BoP convention)
+        "currentAccountDeficitPercentGDP": -0.8,  # H1 FY2025-26 (Apr-Sep); full year est. ~1.1%
         "population": population,
         "perCapitaGDP": round(nominal_gdp_rs_crore * 1e7 / population),  # Rs per person
         "lastUpdated": date.today().isoformat(),

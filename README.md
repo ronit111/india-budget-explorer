@@ -1,6 +1,6 @@
 # Indian Data Project
 
-Open Indian government data made accessible, visual, and shareable. Starting with the Union Budget, expanding to economic indicators, state finances, and more.
+Open Indian government data made accessible, visual, and shareable. Three data domains live: Union Budget 2025-26, Economic Survey 2025-26, and RBI Data. Each gets its own visual story with explorable breakdowns.
 
 **Live:** [indiandataproject.org](https://indiandataproject.org)
 
@@ -8,7 +8,7 @@ Open Indian government data made accessible, visual, and shareable. Starting wit
 
 ## What It Does
 
-Indian Data Project turns dense government data into interactive visual experiences. The site is a hub — each data domain (budget, economic survey, state finances) gets its own self-contained visual story with explorable breakdowns. Budget 2025-26 is the first domain live, answering: *where does India's money come from?* and *where does it go?*
+Indian Data Project turns dense government data into interactive visual experiences. The site is a hub — each data domain gets its own self-contained visual story with explorable breakdowns.
 
 **Hub + data domains:**
 
@@ -22,6 +22,9 @@ Indian Data Project turns dense government data into interactive visual experien
 | **Economy Story** (`/economy`) | Scrollytelling visual breakdown — GDP growth trends, inflation tracking (CPI/WPI), trade balance area chart, fiscal position, sectoral composition |
 | **Economy Explorer** (`/economy/explore`) | Searchable table of economic indicators with year-over-year comparisons |
 | **Economy Methodology** (`/economy/methodology`) | Data sources, indicator definitions, survey methodology, limitations |
+| **RBI Story** (`/rbi`) | Scrollytelling narrative — repo rate hero, monetary policy trajectory, inflation targeting vs 4% mandate, M3 money supply, credit expansion, forex reserves, exchange rate |
+| **RBI Explorer** (`/rbi/explore`) | Indicator explorer with 4 categories (monetary, liquidity, credit, external), interactive line charts |
+| **RBI Methodology** (`/rbi/methodology`) | Data sources (DBIE, World Bank, MPC press releases), indicator definitions, WB codes |
 
 ---
 
@@ -33,7 +36,7 @@ Indian Data Project turns dense government data into interactive visual experien
 | Build | Vite 7 |
 | Styling | Tailwind CSS v4 (CSS Layers) |
 | State | Zustand |
-| Visualizations | D3.js (layout) + React (rendering) — waffle, treemap, sankey, choropleth |
+| Visualizations | D3.js (layout) + React (rendering) — waffle, treemap, sankey, choropleth, line, area, step charts |
 | Animation | Framer Motion |
 | Search | Fuse.js (Cmd+K overlay) |
 | i18n | react-i18next (infrastructure preserved but unwired — relying on browser auto-translate) |
@@ -67,7 +70,7 @@ npm run preview
 | Command | What it does |
 |---------|-------------|
 | `npm run dev` | Start Vite dev server with HMR |
-| `npm run build` | TypeScript check + Vite build + Puppeteer prerender (all 8 routes) |
+| `npm run build` | TypeScript check + Vite build + Puppeteer prerender (all 11 routes) |
 | `npm run build:no-prerender` | Build without prerendering (used by Vercel) |
 | `npm run lint` | ESLint check |
 | `npm run preview` | Preview production build locally |
@@ -86,36 +89,49 @@ src/
 │   ├── MethodologyPage.tsx  # Budget methodology
 │   ├── EconomyPage.tsx      # Economy scrollytelling (GDP, inflation, trade, sectors)
 │   ├── EconomyExplorePage.tsx # Economy indicators table
-│   └── EconomyMethodologyPage.tsx # Economy methodology
+│   ├── EconomyMethodologyPage.tsx # Economy methodology
+│   ├── RBIPage.tsx          # RBI scrollytelling (monetary policy, forex, credit)
+│   ├── RBIExplorePage.tsx   # RBI indicator explorer with category filters
+│   └── RBIMethodologyPage.tsx # RBI methodology
 ├── components/
 │   ├── home/               # Budget story compositions (Hero, Revenue, Expenditure, Flow, Map, CTA)
 │   ├── budget/             # Budget-specific compositions (DeficitSection, PerCapitaSection)
 │   ├── economy/            # Economy compositions (GrowthSection, InflationSection, TradeSection, etc.)
+│   ├── rbi/                # RBI compositions (HeroSection, MonetaryPolicySection, ForexSection, etc.)
 │   ├── calculator/         # Tax calculator UI (IncomeInput, DeductionsPanel, TaxBreakdown, ShareCard, SpendingAllocation)
 │   ├── explore/            # DataTable with expandable rows
-│   ├── viz/                # D3 visualizations (TreemapChart, SankeyDiagram, ChoroplethMap, WaffleChart, LineChart, AreaChart, HorizontalBarChart, AnimatedCounter)
+│   ├── viz/                # D3 visualizations (TreemapChart, SankeyDiagram, ChoroplethMap, WaffleChart, LineChart, AreaChart, HorizontalBarChart, StepChart, AnimatedCounter)
 │   ├── ui/                 # Shared UI (Tooltip, NarrativeBridge, SearchOverlay, Skeleton, etc.)
 │   ├── layout/             # Header, Footer, MobileNav, PageShell
 │   ├── seo/                # SEOHead (per-route meta tags + OG images + JSON-LD)
 │   └── i18n/               # Language provider and switcher
 ├── lib/
-│   ├── data/schema.ts      # TypeScript interfaces for all data shapes
+│   ├── data/schema.ts      # TypeScript interfaces for all data shapes (Budget, Economy, RBI)
 │   ├── taxEngine.ts        # Tax computation engine (Old/New regime, deductions, slabs)
 │   ├── format.ts           # Indian number formatting (lakhs/crores)
-│   ├── dataLoader.ts       # Fetch + cache layer for JSON data
+│   ├── dataLoader.ts       # Fetch + cache layer for JSON data (all domains)
 │   ├── stateMapping.ts     # India state ID → name mapping
 │   └── i18n.ts             # i18next configuration
-├── hooks/                  # useScrollTrigger, useIntersection, useBudgetData, useEconomyData, etc.
-├── store/                  # Zustand stores (budgetStore, economyStore, calculatorStore, uiStore)
+├── hooks/                  # useScrollTrigger, useIntersection, useBudgetData, useEconomyData, useRBIData, etc.
+├── store/                  # Zustand stores (budgetStore, economyStore, rbiStore, calculatorStore, uiStore)
 └── index.css               # Design tokens, CSS layers, keyframes
 
 public/
 ├── data/budget/2025-26/    # 7 structured JSON budget datasets
 ├── data/economy/2025-26/   # 7 structured JSON economy datasets
+├── data/rbi/2025-26/       # 6 structured JSON RBI datasets
 ├── locales/en/             # Translation files
-├── sitemap.xml             # All routes + data endpoints (8 pages + 12 data files)
+├── sitemap.xml             # All routes + data endpoints (11 pages + 17 data files)
 ├── robots.txt              # All bots welcomed (including AI crawlers)
 └── llms.txt                # AI-readable site summary
+
+pipeline/
+├── src/
+│   ├── main.py             # Budget pipeline (CKAN API → JSON)
+│   ├── economy/            # Economy pipeline (World Bank API → JSON)
+│   ├── rbi/                # RBI pipeline (World Bank + curated MPC data → JSON)
+│   └── publish/            # Shared JSON writer
+└── pyproject.toml          # Python dependencies
 ```
 
 ---
@@ -150,7 +166,20 @@ Economy data lives in `public/data/economy/2025-26/`:
 | `sectors.json` | Sectoral GDP composition (agriculture, industry, services) |
 | `indicators.json` | Key economic indicators with year-over-year data |
 
-Data sourced from [Open Budgets India](https://openbudgetsindia.org), [indiabudget.gov.in](https://www.indiabudget.gov.in), and the [Economic Survey](https://www.indiabudget.gov.in/economicsurvey/) under the [Government Open Data License — India](https://data.gov.in/government-open-data-license-india).
+### RBI Data
+
+RBI data lives in `public/data/rbi/2025-26/`:
+
+| File | Contents |
+|------|----------|
+| `summary.json` | Headline RBI numbers (repo rate, stance, CRR, forex, M3 growth) |
+| `monetary-policy.json` | Repo rate decision history (30 decisions, 2014-2026), CRR time series |
+| `liquidity.json` | Broad money (M3) growth and M3 as % of GDP |
+| `credit.json` | Domestic and private credit (% of GDP), lending/deposit rates |
+| `forex.json` | Forex reserves (US$) and INR/USD exchange rate |
+| `indicators.json` | All RBI indicators across 4 categories (monetary, liquidity, credit, external) |
+
+Data sourced from [Open Budgets India](https://openbudgetsindia.org), [indiabudget.gov.in](https://www.indiabudget.gov.in), [Economic Survey](https://www.indiabudget.gov.in/economicsurvey/), [RBI DBIE](https://data.rbi.org.in), [RBI Monetary Policy Statements](https://www.rbi.org.in), and [World Bank Open Data API](https://data.worldbank.org) under the [Government Open Data License — India](https://data.gov.in/government-open-data-license-india).
 
 ---
 
@@ -169,13 +198,13 @@ See [BRAND.md](./BRAND.md) for the full visual identity guide. Key principles:
 
 The site is built for maximum discoverability:
 
-- **Prerendered HTML** for all 8 routes (Puppeteer at build time)
-- **JSON-LD** structured data: `WebApplication`, `Dataset` x2 (Budget + Economy for Google Dataset Search), `BreadcrumbList`
+- **Prerendered HTML** for all 11 routes (Puppeteer at build time)
+- **JSON-LD** structured data: `WebApplication`, `Dataset` x3 (Budget + Economy + RBI for Google Dataset Search), `BreadcrumbList`
 - **Per-route meta tags** via react-helmet-async (title, description, OG image, Twitter card, canonical)
-- **sitemap.xml** covering 8 pages + 12 downloadable data endpoints
+- **sitemap.xml** covering 11 pages + 17 downloadable data endpoints
 - **robots.txt** explicitly welcoming AI crawlers (GPTBot, ClaudeBot, PerplexityBot, Google-Extended)
-- **llms.txt** for AI model discoverability (budget + economy content)
-- **Noscript fallback** with real budget and economy content for crawlers that don't execute JS
+- **llms.txt** for AI model discoverability (budget + economy + RBI content)
+- **Noscript fallback** with real content across all three domains for crawlers that don't execute JS
 
 ---
 
@@ -198,30 +227,26 @@ The site is built for maximum discoverability:
 - [x] Economic Survey 2025-26 data domain (scrollytelling, explorer, methodology)
 - [x] New viz components: LineChart, AreaChart, HorizontalBarChart
 - [x] Economy data pipeline (7 structured JSON datasets from Economic Survey)
+- [x] RBI Data domain (scrollytelling, indicator explorer, methodology)
+- [x] RBI data pipeline (6 structured JSON datasets from World Bank + curated MPC data)
+- [x] Automated pipeline infrastructure (GitHub Actions cron jobs for Economy, RBI, data freshness)
+- [x] Data accuracy overhaul — truth-verified all figures against authoritative sources
 
 ### Next Steps
 
-**Phase 2: Expand Scope**
+**Phase 3: Expand Scope**
 - [ ] New data domain: State Finances
-- [ ] New data domain: RBI Data
 - [ ] New data domain: Census & Demographics
 
-**Phase 2.5: UX & Discoverability**
+**Phase 3.5: UX & Discoverability**
 - [ ] Per-domain glossary tabs (economic terms in simple language, alongside Methodology in nav)
 - [ ] Data feedback strip (persistent ribbon for users to report incorrect data via GitHub issues)
 - [ ] Per-domain OG images for social sharing
 - [ ] Cmd+K search indexing for glossary terms
 
-**Phase 3: Automated Data Pipeline**
-- [ ] Python ETL pipeline for automated budget data extraction
-- [ ] GitHub Actions for daily data freshness checks
-- [ ] Budget Day rapid-update workflow
-- [ ] Change detection and validation suite
-
 **Phase 4: Expanded Datasets**
 - [ ] Historical budget data (multi-year comparisons)
 - [ ] State budget data (starting with major states)
-- [ ] RBI monetary policy data
 
 **Phase 5: Community & API**
 - [ ] Public REST API for all datasets
@@ -262,5 +287,7 @@ The underlying budget data is published by the Government of India under the [Go
 ## Acknowledgments
 
 - Budget data from [Open Budgets India](https://openbudgetsindia.org) and [Union Budget documents](https://www.indiabudget.gov.in)
+- Economy data from [Economic Survey](https://www.indiabudget.gov.in/economicsurvey/) and [World Bank Open Data](https://data.worldbank.org)
+- RBI data from [RBI DBIE](https://data.rbi.org.in), [RBI Monetary Policy Statements](https://www.rbi.org.in), and [World Bank Open Data](https://data.worldbank.org)
 - Design inspired by [Information is Beautiful](https://informationisbeautiful.net), [Visual Cinnamon](https://www.visualcinnamon.com), and [Kasia Siwosz](https://kasiasiwosz.com)
 - Built with React, D3, Framer Motion, and Tailwind CSS

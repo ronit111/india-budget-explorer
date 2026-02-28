@@ -1,0 +1,79 @@
+{
+  "year": "2025-26",
+  "broadMoneyGrowth": {
+    "series": [
+      {
+        "year": "2014-15",
+        "value": 10.59
+      },
+      {
+        "year": "2015-16",
+        "value": 10.62
+      },
+      {
+        "year": "2016-17",
+        "value": 6.8
+      },
+      {
+        "year": "2017-18",
+        "value": 10.43
+      },
+      {
+        "year": "2018-19",
+        "value": 10.52
+      },
+      {
+        "year": "2019-20",
+        "value": 10.51
+      },
+      {
+        "year": "2020-21",
+        "value": 12.48
+      },
+      {
+        "year": "2021-22",
+        "value": 11.3
+      }
+    ],
+    "unit": "%",
+    "source": "World Bank FM.LBL.BMNY.ZG"
+  },
+  "broadMoneyPctGDP": {
+    "series": [
+      {
+        "year": "2014-15",
+        "value": 77.9
+      },
+      {
+        "year": "2015-16",
+        "value": 78.01
+      },
+      {
+        "year": "2016-17",
+        "value": 74.55
+      },
+      {
+        "year": "2017-18",
+        "value": 74.14
+      },
+      {
+        "year": "2018-19",
+        "value": 74.1
+      },
+      {
+        "year": "2019-20",
+        "value": 76.98
+      },
+      {
+        "year": "2020-21",
+        "value": 87.68
+      },
+      {
+        "year": "2021-22",
+        "value": 82.1
+      }
+    ],
+    "unit": "% of GDP",
+    "source": "World Bank FM.LBL.BMNY.GD.ZS"
+  }
+}

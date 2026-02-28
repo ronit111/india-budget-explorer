@@ -1,0 +1,103 @@
+{
+  "year": "2025-26",
+  "reservesUSD": {
+    "series": [
+      {
+        "year": "2014-15",
+        "value": 325.08
+      },
+      {
+        "year": "2015-16",
+        "value": 353.32
+      },
+      {
+        "year": "2016-17",
+        "value": 361.69
+      },
+      {
+        "year": "2017-18",
+        "value": 412.61
+      },
+      {
+        "year": "2018-19",
+        "value": 399.17
+      },
+      {
+        "year": "2019-20",
+        "value": 463.47
+      },
+      {
+        "year": "2020-21",
+        "value": 590.23
+      },
+      {
+        "year": "2021-22",
+        "value": 638.48
+      },
+      {
+        "year": "2022-23",
+        "value": 567.3
+      },
+      {
+        "year": "2023-24",
+        "value": 627.79
+      },
+      {
+        "year": "2024-25",
+        "value": 643.04
+      }
+    ],
+    "unit": "US$ billion",
+    "source": "World Bank FI.RES.TOTL.CD"
+  },
+  "exchangeRate": {
+    "series": [
+      {
+        "year": "2014-15",
+        "value": 61.03
+      },
+      {
+        "year": "2015-16",
+        "value": 64.15
+      },
+      {
+        "year": "2016-17",
+        "value": 67.2
+      },
+      {
+        "year": "2017-18",
+        "value": 65.12
+      },
+      {
+        "year": "2018-19",
+        "value": 68.39
+      },
+      {
+        "year": "2019-20",
+        "value": 70.42
+      },
+      {
+        "year": "2020-21",
+        "value": 74.1
+      },
+      {
+        "year": "2021-22",
+        "value": 73.92
+      },
+      {
+        "year": "2022-23",
+        "value": 78.6
+      },
+      {
+        "year": "2023-24",
+        "value": 82.6
+      },
+      {
+        "year": "2024-25",
+        "value": 83.67
+      }
+    ],
+    "unit": "INR per USD",
+    "source": "World Bank PA.NUS.FCRF"
+  }
+}

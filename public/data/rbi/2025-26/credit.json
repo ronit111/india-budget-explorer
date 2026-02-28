@@ -1,0 +1,93 @@
+{
+  "year": "2025-26",
+  "domesticCreditPctGDP": {
+    "series": [],
+    "unit": "% of GDP",
+    "source": "World Bank FS.AST.DOMS.GD.ZS"
+  },
+  "privateCreditPctGDP": {
+    "series": [
+      {
+        "year": "2014-15",
+        "value": 51.88
+      },
+      {
+        "year": "2015-16",
+        "value": 51.87
+      },
+      {
+        "year": "2016-17",
+        "value": 49.1
+      },
+      {
+        "year": "2017-18",
+        "value": 48.79
+      },
+      {
+        "year": "2018-19",
+        "value": 50.34
+      },
+      {
+        "year": "2019-20",
+        "value": 50.74
+      },
+      {
+        "year": "2020-21",
+        "value": 54.51
+      },
+      {
+        "year": "2021-22",
+        "value": 50.14
+      }
+    ],
+    "unit": "% of GDP",
+    "source": "World Bank FD.AST.PRVT.GD.ZS"
+  },
+  "lendingRate": {
+    "series": [
+      {
+        "year": "2014-15",
+        "value": 10.25
+      },
+      {
+        "year": "2015-16",
+        "value": 10.01
+      },
+      {
+        "year": "2016-17",
+        "value": 9.67
+      },
+      {
+        "year": "2017-18",
+        "value": 9.51
+      },
+      {
+        "year": "2018-19",
+        "value": 9.45
+      },
+      {
+        "year": "2019-20",
+        "value": 9.47
+      },
+      {
+        "year": "2020-21",
+        "value": 9.15
+      },
+      {
+        "year": "2021-22",
+        "value": 8.7
+      },
+      {
+        "year": "2022-23",
+        "value": 8.57
+      }
+    ],
+    "unit": "%",
+    "source": "World Bank FR.INR.LEND"
+  },
+  "depositRate": {
+    "series": [],
+    "unit": "%",
+    "source": "World Bank FR.INR.DPST"
+  }
+}

@@ -17,7 +17,7 @@ def build_gdp_growth(wb_data: list[dict], survey_year: str) -> dict:
     """
     Build gdp-growth.json from World Bank GDP growth data.
 
-    The Economic Survey 2025-26 reports 7.4% real GDP growth for FY2025-26 (advance estimate).
+    NSO First Advance Estimate: 7.4% real GDP growth for FY2025-26 (Jan 2026).
     World Bank data lags by ~1 year, so we supplement the latest year from the Survey.
 
     Source: World Bank NY.GDP.MKTP.KD.ZG + Economic Survey 2025-26 Chapter 1
@@ -34,15 +34,15 @@ def build_gdp_growth(wb_data: list[dict], survey_year: str) -> dict:
     # Add the advance estimate from the Economic Survey if missing.
     fiscal_years_present = {s["year"] for s in series}
     if "2025-26" not in fiscal_years_present:
-        # Economic Survey 2025-26: real GDP growth advance estimate = 6.4%
-        # (First Advance Estimate for FY2025-26, published Jan 2026)
-        # Source: https://www.indiabudget.gov.in/economicsurvey/
+        # NSO First Advance Estimate for FY2025-26: 7.4% real GDP growth
+        # Published January 2026, corroborated by RBI Feb 2026 MPC statement
+        # Source: NSO / Economic Survey 2025-26 Ch.1
         series.append({
             "year": "2025-26",
-            "value": 6.4,
+            "value": 7.4,
             "label": "Advance estimate",
         })
-        logger.info("  Added FY2025-26 advance estimate (6.4%) from Economic Survey")
+        logger.info("  Added FY2025-26 advance estimate (7.4%) from NSO/Economic Survey")
 
     # Sort by fiscal year
     series.sort(key=lambda x: x["year"])

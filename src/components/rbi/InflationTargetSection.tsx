@@ -1,0 +1,107 @@
+import { useMemo } from 'react';
+import { motion } from 'framer-motion';
+import { useScrollTrigger } from '../../hooks/useScrollTrigger.ts';
+import { SectionNumber } from '../ui/SectionNumber.tsx';
+import { LineChart, type LineSeries } from '../viz/LineChart.tsx';
+import type { MonetaryPolicyData } from '../../lib/data/schema.ts';
+import { useRBIStore } from '../../store/rbiStore.ts';
+import { loadRBIIndicators } from '../../lib/dataLoader.ts';
+import { useState, useEffect } from 'react';
+import type { RBIIndicatorsData } from '../../lib/data/schema.ts';
+
+interface InflationTargetSectionProps {
+  monetaryPolicy: MonetaryPolicyData | null;
+}
+
+export function InflationTargetSection({ monetaryPolicy }: InflationTargetSectionProps) {
+  const [ref, isVisible] = useScrollTrigger({ threshold: 0.08 });
+  const year = useRBIStore((s) => s.selectedYear);
+  const [indicators, setIndicators] = useState<RBIIndicatorsData | null>(null);
+
+  useEffect(() => {
+    loadRBIIndicators(year).then(setIndicators).catch(() => {});
+  }, [year]);
+
+  const series: LineSeries[] = useMemo(() => {
+    const cpiIndicator = indicators?.indicators.find((i) => i.id === 'inflation_cpi');
+    if (!cpiIndicator) return [];
+
+    const result: LineSeries[] = [
+      {
+        id: 'cpi',
+        name: 'CPI Inflation',
+        color: 'var(--saffron)',
+        data: cpiIndicator.series,
+      },
+    ];
+
+    if (monetaryPolicy) {
+      result.push({
+        id: 'repo',
+        name: 'Repo Rate',
+        color: 'var(--gold)',
+        data: monetaryPolicy.decisions
+          .filter((_, i, arr) => {
+            // Sample ~1 per year for comparison line
+            if (i === 0 || i === arr.length - 1) return true;
+            const prevYear = arr[i - 1].date.slice(0, 4);
+            const currYear = arr[i].date.slice(0, 4);
+            return prevYear !== currYear;
+          })
+          .map((d) => ({
+            year: d.date.slice(0, 4),
+            value: d.rate,
+          })),
+        dashed: true,
+      });
+    }
+
+    return result;
+  }, [indicators, monetaryPolicy]);
+
+  return (
+    <section ref={ref} className="composition" style={{ background: 'var(--bg-surface)' }}>
+      <div className="max-w-7xl mx-auto px-6 sm:px-8">
+        <SectionNumber number={2} className="mb-6 block" isVisible={isVisible} />
+
+        <motion.h2
+          initial={{ opacity: 0, y: 16 }}
+          animate={isVisible ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          className="text-composition mb-2"
+        >
+          Is RBI hitting its inflation target?
+        </motion.h2>
+
+        <motion.p
+          initial={{ opacity: 0, y: 12 }}
+          animate={isVisible ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
+          className="text-annotation mb-8 max-w-xl"
+        >
+          RBI targets CPI inflation at 4%, with a tolerance band of 2-6%. When inflation breaches the upper bound, the MPC raises rates. The dashed line shows how repo rate tracks against CPI.
+        </motion.p>
+
+        {series.length > 0 && (
+          <LineChart
+            series={series}
+            band={{
+              lower: 2,
+              upper: 6,
+              color: '#FFC857',
+              label: 'RBI target band (2-6%)',
+            }}
+            referenceLine={4}
+            isVisible={isVisible}
+            formatValue={(v) => v.toFixed(1)}
+            unit="%"
+          />
+        )}
+
+        <p className="source-attribution">
+          Source: World Bank, RBI Monetary Policy Statements
+        </p>
+      </div>
+    </section>
+  );
+}

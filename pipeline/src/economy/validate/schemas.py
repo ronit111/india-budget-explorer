@@ -43,7 +43,7 @@ class GDPGrowthData(BaseModel):
 class InflationSeries(BaseModel):
     period: str
     cpiHeadline: float
-    cpiFood: float
+    cpiFood: float | None = None
     cpiCore: float | None = None
 
 

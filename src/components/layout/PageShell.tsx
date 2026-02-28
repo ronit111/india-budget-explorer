@@ -10,7 +10,8 @@ export function PageShell({ children }: { children: ReactNode }) {
   const location = useLocation();
   const isBudgetStory = location.pathname === '/budget';
   const isEconomyStory = location.pathname === '/economy';
-  const showScrollProgress = isBudgetStory || isEconomyStory;
+  const isRBIStory = location.pathname === '/rbi';
+  const showScrollProgress = isBudgetStory || isEconomyStory || isRBIStory;
 
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, { stiffness: 100, damping: 30, restDelta: 0.001 });
@@ -25,7 +26,7 @@ export function PageShell({ children }: { children: ReactNode }) {
           className="fixed top-16 left-0 right-0 h-0.5 z-40 origin-left"
           style={{
             scaleX,
-            backgroundColor: isEconomyStory ? 'var(--cyan)' : 'var(--saffron)',
+            backgroundColor: isRBIStory ? 'var(--gold)' : isEconomyStory ? 'var(--cyan)' : 'var(--saffron)',
           }}
         />
       )}
