@@ -47,12 +47,12 @@ function AgeWaffle({
   while (cells.length < 100) cells.push({ color: 'var(--violet)', label: 'Working age (15-64)' });
 
   return (
-    <div>
+    <div className="flex flex-col items-center">
       <div
-        className="grid gap-1 mb-4"
+        className="grid gap-1.5 mb-4 w-full"
         style={{
           gridTemplateColumns: `repeat(${GRID}, 1fr)`,
-          maxWidth: '320px',
+          maxWidth: '420px',
         }}
       >
         {cells.map((cell, i) => (

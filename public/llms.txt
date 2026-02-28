@@ -168,4 +168,4 @@ This project is not affiliated with or endorsed by the Government of India.
 
 ## Contact
 
-Open-source civic tech project: https://github.com/RonitChidara/indian-data-project
+Open-source civic tech project: https://github.com/ronit111/indian-data-project

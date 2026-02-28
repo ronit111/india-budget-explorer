@@ -412,7 +412,7 @@ export default function CensusMethodologyPage() {
         >
           Questions about methodology? Check the source links above or open an issue on{' '}
           <a
-            href="https://github.com/RonitChidara/indian-data-project"
+            href="https://github.com/ronit111/indian-data-project"
             target="_blank"
             rel="noopener noreferrer"
             className="link-hover"

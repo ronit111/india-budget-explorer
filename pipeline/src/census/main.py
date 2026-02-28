@@ -141,11 +141,15 @@ def _build_summary(wb_data: dict, npc_states: list[dict]) -> dict:
     urban_ts = wb_data.get("urban_pct", [])
     latest_urban = urban_ts[-1]["value"] if urban_ts else 35.87
 
-    # Literacy from Census 2011 national figure (WB literacy may be sparse)
-    census_pop = sum(s["population"] for s in CENSUS_2011_STATES)
-    weighted_literacy = sum(s["literacyTotal"] * s["population"] for s in CENSUS_2011_STATES) / census_pop if census_pop else 74.04
+    # Literacy: Census 2011 national figure (age 7+).
+    # A weighted average of state entries gives 72.82% — lower than the official
+    # 74.04% because weighting by total population (not age 7+ population)
+    # under-counts literate adults in high-fertility states. Use the authoritative
+    # Census 2011 national figure directly.
+    weighted_literacy = 74.04
 
     # Sex ratio: national weighted average from Census 2011
+    census_pop = sum(s["population"] for s in CENSUS_2011_STATES)
     weighted_sex_ratio = round(sum(s["sexRatio"] * s["population"] for s in CENSUS_2011_STATES) / census_pop) if census_pop else 943
 
     # Top 5 most populous states (NPC 2026 projections)

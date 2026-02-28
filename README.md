@@ -60,7 +60,7 @@ Indian Data Project turns dense government data into interactive visual experien
 
 ```bash
 # Clone
-git clone https://github.com/RonitChidara/indian-data-project.git
+git clone https://github.com/ronit111/indian-data-project.git
 cd indian-data-project
 
 # Install

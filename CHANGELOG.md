@@ -39,6 +39,11 @@
 - `census-pipeline.yml`: quarterly runs (Jan/Apr/Jul/Oct 15th) — aligned to World Bank annual update cycle
 - `data-freshness-monitor.yml` updated with Census domain (120-day staleness threshold)
 
+**Data Accuracy Fix (truth verification)**
+- Fixed `literacyRate` in summary.json: was 72.82 (incorrectly weighted by total population), now 74.04 (Census 2011 national figure for age 7+)
+- Corrected 57 NFHS-5 health values across 23 states: fullImmunization (21 states), IMR (16), under-5 mortality (17), wasting (3). Source: NFHS-5 state factsheet CSV (IIPS/DHS Program)
+- All 138 NFHS-5 values (23 states x 6 fields) now match authoritative source exactly
+
 ---
 
 ## [0.7.0] - 2026-02-28

@@ -28,13 +28,14 @@ Open data platform for Indian citizens. V1 of the broader **India Truth Engine**
 - If data doesn't exist for a planned feature, the feature waits. No exceptions.
 
 ## Automated Data Pipelines
-Three GitHub Actions workflows keep data fresh without manual intervention:
+Four GitHub Actions workflows keep data fresh without manual intervention:
 - **Budget** (`data-pipeline.yml`): Daily cron + Budget Day polling (Feb 1). Source: CKAN API.
 - **Economy** (`economy-pipeline.yml`): Quarterly (Feb, Mar, Jun, Dec) aligned to NSO/Survey/WB release cycles. Source: World Bank API + curated Economic Survey figures.
 - **RBI** (`rbi-pipeline.yml`): Bi-monthly (10th of Feb/Apr/Jun/Aug/Oct/Dec) aligned to MPC meeting schedule. Source: World Bank API + curated MPC decisions.
-- **Freshness Monitor** (`data-freshness-monitor.yml`): Monthly check. Auto-creates GitHub issues for stale data, MPC decision reminders, Survey/Budget prep reminders.
+- **Census** (`census-pipeline.yml`): Quarterly (15th of Jan/Apr/Jul/Oct). Source: World Bank API + curated Census 2011/NPC 2026/NFHS-5/SRS 2022. Curated data (NFHS-5, SRS, Census 2011) is static until new surveys publish.
+- **Freshness Monitor** (`data-freshness-monitor.yml`): Monthly check. Auto-creates GitHub issues for stale data, MPC decision reminders, Survey/Budget prep reminders. Covers all 5 domains.
 
-**Curated data** (MPC decisions in `monetary_policy.py`, fiscal deficit series in `fiscal.py`, Economic Survey headline numbers in `main.py`) requires human updates when government publications drop. The freshness monitor creates reminder issues for these.
+**Curated data** (MPC decisions in `monetary_policy.py`, fiscal deficit series in `fiscal.py`, Economic Survey headline numbers in `main.py`, NFHS-5/SRS health data in `curated.py`) requires human updates when government publications drop. The freshness monitor creates reminder issues for these.
 
 ## Design Identity
 - Dark theme: void (#06080f) / raised (#0e1420) / surface (#131b27)

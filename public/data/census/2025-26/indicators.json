@@ -1870,7 +1870,7 @@
         {
           "id": "gj",
           "name": "Gujarat",
-          "value": 2.0
+          "value": 1.9
         },
         {
           "id": "ap",
@@ -1910,12 +1910,12 @@
         {
           "id": "ct",
           "name": "Chhattisgarh",
-          "value": 2.0
+          "value": 1.8
         },
         {
           "id": "hr",
           "name": "Haryana",
-          "value": 2.1
+          "value": 1.9
         },
         {
           "id": "jk",
@@ -2059,7 +2059,7 @@
         {
           "id": "dl",
           "name": "Delhi",
-          "value": 31.2
+          "value": 30.9
         },
         {
           "id": "ga",
@@ -2078,42 +2078,42 @@
         {
           "id": "up",
           "name": "Uttar Pradesh",
-          "value": 58.0
+          "value": 69.6
         },
         {
           "id": "mh",
           "name": "Maharashtra",
-          "value": 56.4
+          "value": 73.5
         },
         {
           "id": "br",
           "name": "Bihar",
-          "value": 75.9
+          "value": 71.0
         },
         {
           "id": "wb",
           "name": "West Bengal",
-          "value": 75.9
+          "value": 87.8
         },
         {
           "id": "mp",
           "name": "Madhya Pradesh",
-          "value": 67.5
+          "value": 77.1
         },
         {
           "id": "tn",
           "name": "Tamil Nadu",
-          "value": 69.7
+          "value": 89.2
         },
         {
           "id": "rj",
           "name": "Rajasthan",
-          "value": 62.5
+          "value": 80.4
         },
         {
           "id": "ka",
           "name": "Karnataka",
-          "value": 64.0
+          "value": 84.1
         },
         {
           "id": "gj",
@@ -2123,57 +2123,57 @@
         {
           "id": "ap",
           "name": "Andhra Pradesh",
-          "value": 67.2
+          "value": 73.0
         },
         {
           "id": "od",
           "name": "Odisha",
-          "value": 66.4
+          "value": 90.5
         },
         {
           "id": "tg",
           "name": "Telangana",
-          "value": 68.1
+          "value": 79.1
         },
         {
           "id": "kl",
           "name": "Kerala",
-          "value": 82.0
+          "value": 77.8
         },
         {
           "id": "jh",
           "name": "Jharkhand",
-          "value": 65.5
+          "value": 73.9
         },
         {
           "id": "as",
           "name": "Assam",
-          "value": 51.5
+          "value": 66.4
         },
         {
           "id": "pb",
           "name": "Punjab",
-          "value": 73.1
+          "value": 76.2
         },
         {
           "id": "ct",
           "name": "Chhattisgarh",
-          "value": 76.5
+          "value": 79.7
         },
         {
           "id": "hr",
           "name": "Haryana",
-          "value": 66.8
+          "value": 76.9
         },
         {
           "id": "jk",
           "name": "Jammu & Kashmir",
-          "value": 73.5
+          "value": 86.2
         },
         {
           "id": "uk",
           "name": "Uttarakhand",
-          "value": 73.3
+          "value": 80.8
         },
         {
           "id": "hp",
@@ -2183,12 +2183,12 @@
         {
           "id": "dl",
           "name": "Delhi",
-          "value": 66.3
+          "value": 76.0
         },
         {
           "id": "ga",
           "name": "Goa",
-          "value": 64.8
+          "value": 81.9
         }
       ],
       "source": "NFHS-5 (2019-21)"

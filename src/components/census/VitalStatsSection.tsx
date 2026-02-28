@@ -114,7 +114,7 @@ export function VitalStatsSection({ data }: VitalStatsSectionProps) {
             <LineChart
               series={lifeSeries}
               isVisible={isVisible}
-              formatValue={(v) => `${v.toFixed(1)} yr`}
+              formatValue={(v) => v.toFixed(1)}
               unit="years"
             />
           </div>

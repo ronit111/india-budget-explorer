@@ -607,88 +607,88 @@
       "id": "up",
       "name": "Uttar Pradesh",
       "tfr": 2.4,
-      "imr": 50,
-      "under5mr": 59,
+      "imr": 50.4,
+      "under5mr": 59.8,
       "stunting": 39.7,
       "wasting": 17.3,
-      "fullImmunization": 58.0
+      "fullImmunization": 69.6
     },
     {
       "id": "mh",
       "name": "Maharashtra",
       "tfr": 1.7,
-      "imr": 24,
-      "under5mr": 29,
+      "imr": 23.2,
+      "under5mr": 28.0,
       "stunting": 35.2,
       "wasting": 25.6,
-      "fullImmunization": 56.4
+      "fullImmunization": 73.5
     },
     {
       "id": "br",
       "name": "Bihar",
       "tfr": 3.0,
-      "imr": 47,
-      "under5mr": 56,
+      "imr": 46.8,
+      "under5mr": 56.4,
       "stunting": 42.9,
       "wasting": 22.9,
-      "fullImmunization": 75.9
+      "fullImmunization": 71.0
     },
     {
       "id": "wb",
       "name": "West Bengal",
       "tfr": 1.6,
-      "imr": 22,
-      "under5mr": 26,
+      "imr": 22.0,
+      "under5mr": 25.4,
       "stunting": 33.8,
       "wasting": 20.3,
-      "fullImmunization": 75.9
+      "fullImmunization": 87.8
     },
     {
       "id": "mp",
       "name": "Madhya Pradesh",
       "tfr": 2.0,
-      "imr": 41,
-      "under5mr": 49,
+      "imr": 41.3,
+      "under5mr": 49.2,
       "stunting": 35.7,
-      "wasting": 18.9,
-      "fullImmunization": 67.5
+      "wasting": 19.0,
+      "fullImmunization": 77.1
     },
     {
       "id": "tn",
       "name": "Tamil Nadu",
       "tfr": 1.8,
-      "imr": 15,
-      "under5mr": 17,
+      "imr": 18.6,
+      "under5mr": 22.3,
       "stunting": 25.0,
       "wasting": 14.6,
-      "fullImmunization": 69.7
+      "fullImmunization": 89.2
     },
     {
       "id": "rj",
       "name": "Rajasthan",
       "tfr": 2.0,
-      "imr": 32,
-      "under5mr": 38,
+      "imr": 30.3,
+      "under5mr": 37.6,
       "stunting": 31.8,
       "wasting": 16.8,
-      "fullImmunization": 62.5
+      "fullImmunization": 80.4
     },
     {
       "id": "ka",
       "name": "Karnataka",
       "tfr": 1.7,
-      "imr": 21,
-      "under5mr": 25,
+      "imr": 25.4,
+      "under5mr": 29.5,
       "stunting": 35.4,
       "wasting": 19.5,
-      "fullImmunization": 64.0
+      "fullImmunization": 84.1
     },
     {
       "id": "gj",
       "name": "Gujarat",
-      "tfr": 2.0,
-      "imr": 28,
-      "under5mr": 33,
+      "tfr": 1.9,
+      "imr": 31.2,
+      "under5mr": 37.6,
       "stunting": 39.0,
       "wasting": 25.1,
       "fullImmunization": 76.3
@@ -697,118 +697,118 @@
       "id": "ap",
       "name": "Andhra Pradesh",
       "tfr": 1.7,
-      "imr": 20,
-      "under5mr": 23,
+      "imr": 30.3,
+      "under5mr": 35.2,
       "stunting": 31.2,
       "wasting": 16.1,
-      "fullImmunization": 67.2
+      "fullImmunization": 73.0
     },
     {
       "id": "od",
       "name": "Odisha",
       "tfr": 1.8,
-      "imr": 28,
-      "under5mr": 33,
+      "imr": 36.3,
+      "under5mr": 41.1,
       "stunting": 31.0,
       "wasting": 18.1,
-      "fullImmunization": 66.4
+      "fullImmunization": 90.5
     },
     {
       "id": "tg",
       "name": "Telangana",
       "tfr": 1.8,
-      "imr": 19,
-      "under5mr": 23,
+      "imr": 26.4,
+      "under5mr": 29.4,
       "stunting": 33.1,
       "wasting": 21.7,
-      "fullImmunization": 68.1
+      "fullImmunization": 79.1
     },
     {
       "id": "kl",
       "name": "Kerala",
       "tfr": 1.8,
-      "imr": 4,
-      "under5mr": 5,
+      "imr": 4.4,
+      "under5mr": 5.2,
       "stunting": 23.4,
       "wasting": 15.8,
-      "fullImmunization": 82.0
+      "fullImmunization": 77.8
     },
     {
       "id": "jh",
       "name": "Jharkhand",
       "tfr": 2.3,
-      "imr": 29,
-      "under5mr": 37,
+      "imr": 37.9,
+      "under5mr": 45.4,
       "stunting": 39.6,
       "wasting": 22.4,
-      "fullImmunization": 65.5
+      "fullImmunization": 73.9
     },
     {
       "id": "as",
       "name": "Assam",
       "tfr": 1.9,
-      "imr": 32,
-      "under5mr": 39,
+      "imr": 31.9,
+      "under5mr": 39.1,
       "stunting": 35.3,
       "wasting": 21.7,
-      "fullImmunization": 51.5
+      "fullImmunization": 66.4
     },
     {
       "id": "pb",
       "name": "Punjab",
       "tfr": 1.6,
-      "imr": 21,
-      "under5mr": 24,
+      "imr": 28.0,
+      "under5mr": 32.7,
       "stunting": 24.5,
-      "wasting": 15.5,
-      "fullImmunization": 73.1
+      "wasting": 10.6,
+      "fullImmunization": 76.2
     },
     {
       "id": "ct",
       "name": "Chhattisgarh",
-      "tfr": 2.0,
-      "imr": 38,
-      "under5mr": 44,
+      "tfr": 1.8,
+      "imr": 44.3,
+      "under5mr": 50.4,
       "stunting": 34.6,
-      "wasting": 18.6,
-      "fullImmunization": 76.5
+      "wasting": 18.9,
+      "fullImmunization": 79.7
     },
     {
       "id": "hr",
       "name": "Haryana",
-      "tfr": 2.1,
-      "imr": 30,
-      "under5mr": 36,
+      "tfr": 1.9,
+      "imr": 33.3,
+      "under5mr": 38.7,
       "stunting": 27.5,
       "wasting": 11.5,
-      "fullImmunization": 66.8
+      "fullImmunization": 76.9
     },
     {
       "id": "jk",
       "name": "Jammu & Kashmir",
       "tfr": 1.4,
-      "imr": 16,
-      "under5mr": 19,
+      "imr": 16.3,
+      "under5mr": 18.5,
       "stunting": 26.9,
-      "wasting": 19.5,
-      "fullImmunization": 73.5
+      "wasting": 19.0,
+      "fullImmunization": 86.2
     },
     {
       "id": "uk",
       "name": "Uttarakhand",
       "tfr": 1.9,
-      "imr": 25,
-      "under5mr": 30,
+      "imr": 39.1,
+      "under5mr": 45.6,
       "stunting": 27.0,
       "wasting": 13.2,
-      "fullImmunization": 73.3
+      "fullImmunization": 80.8
     },
     {
       "id": "hp",
       "name": "Himachal Pradesh",
       "tfr": 1.7,
-      "imr": 18,
-      "under5mr": 21,
+      "imr": 25.6,
+      "under5mr": 28.9,
       "stunting": 30.8,
       "wasting": 17.4,
       "fullImmunization": 89.3
@@ -817,21 +817,21 @@
       "id": "dl",
       "name": "Delhi",
       "tfr": 1.6,
-      "imr": 14,
-      "under5mr": 17,
-      "stunting": 31.2,
-      "wasting": 13.4,
-      "fullImmunization": 66.3
+      "imr": 24.5,
+      "under5mr": 30.6,
+      "stunting": 30.9,
+      "wasting": 11.2,
+      "fullImmunization": 76.0
     },
     {
       "id": "ga",
       "name": "Goa",
       "tfr": 1.3,
-      "imr": 9,
-      "under5mr": 11,
+      "imr": 5.6,
+      "under5mr": 10.6,
       "stunting": 25.8,
-      "wasting": 18.9,
-      "fullImmunization": 64.8
+      "wasting": 19.1,
+      "fullImmunization": 81.9
     }
   ],
   "source": "World Bank Development Indicators + SRS 2022 + NFHS-5 (2019-21)"

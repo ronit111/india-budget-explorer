@@ -29,7 +29,7 @@ interface LineChartProps {
 }
 
 // ─── Constants ───────────────────────────────────────────────────────
-const MARGIN = { top: 20, right: 24, bottom: 40, left: 48 };
+const MARGIN = { top: 20, right: 24, bottom: 40, left: 60 };
 
 export function LineChart({
   series,

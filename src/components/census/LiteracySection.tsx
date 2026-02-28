@@ -45,7 +45,7 @@ function GenderGapChart({
           >
             {s.name}
           </span>
-          <div className="flex-1 flex items-center gap-0.5 h-5">
+          <div className="flex-1 flex items-stretch gap-0.5 h-5">
             {/* Female bar */}
             <div className="flex-1 flex justify-end">
               <motion.div

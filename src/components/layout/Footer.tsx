@@ -181,7 +181,7 @@ export function Footer() {
             'Census & Demographics'
           ) : (
             <a
-              href="https://github.com/RonitChidara/indian-data-project"
+              href="https://github.com/ronit111/indian-data-project"
               target="_blank"
               rel="noopener noreferrer"
               className="link-hover"
