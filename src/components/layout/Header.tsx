@@ -38,18 +38,21 @@ export function Header() {
         { to: '/budget/explore', label: 'Explore' },
         { to: '/budget/calculator', label: 'Your Share' },
         { to: '/budget/methodology', label: 'Methodology' },
+        { to: '/budget/glossary', label: 'Glossary' },
       ]
     : isEconomySection
       ? [
           { to: '/economy', label: 'Story' },
           { to: '/economy/explore', label: 'Explore' },
           { to: '/economy/methodology', label: 'Methodology' },
+          { to: '/economy/glossary', label: 'Glossary' },
         ]
       : isRBISection
         ? [
             { to: '/rbi', label: 'Story' },
             { to: '/rbi/explore', label: 'Explore' },
             { to: '/rbi/methodology', label: 'Methodology' },
+            { to: '/rbi/glossary', label: 'Glossary' },
           ]
         : [];
 

@@ -1,0 +1,102 @@
+{
+  "domain": "budget",
+  "year": "2025-26",
+  "terms": [
+    {
+      "id": "fiscal-deficit",
+      "term": "Fiscal Deficit",
+      "simple": "How much the government borrows because it spends more than it earns.",
+      "detail": "The difference between total expenditure and total receipts (excluding borrowings). When the government spends more than it collects in taxes and other income, it borrows the rest. The fiscal deficit is usually expressed as a percentage of GDP to give a sense of scale.",
+      "inContext": "₹15,68,936 Cr (4.4% of GDP) in 2025-26",
+      "relatedTerms": ["revenue-deficit", "gdp", "frbm"]
+    },
+    {
+      "id": "revenue-deficit",
+      "term": "Revenue Deficit",
+      "simple": "When the government's day-to-day income falls short of its day-to-day spending.",
+      "detail": "The gap between revenue receipts and revenue expenditure. Unlike fiscal deficit, this excludes capital items (long-term investments and borrowings). A revenue deficit means the government is borrowing not just for investment, but to cover running costs like salaries and interest payments.",
+      "relatedTerms": ["fiscal-deficit", "revenue-expenditure", "revenue-receipts"]
+    },
+    {
+      "id": "capital-expenditure",
+      "term": "Capital Expenditure",
+      "simple": "Money spent on building things that last — roads, bridges, railways, defence equipment.",
+      "detail": "Government spending that creates long-term assets or reduces long-term liabilities. Unlike revenue expenditure (running costs), capital expenditure builds infrastructure, acquires land, and invests in projects that generate returns over many years. Economists generally prefer higher capital expenditure because it boosts productive capacity.",
+      "relatedTerms": ["revenue-expenditure", "fiscal-deficit"]
+    },
+    {
+      "id": "revenue-expenditure",
+      "term": "Revenue Expenditure",
+      "simple": "The government's running costs — salaries, pensions, interest on loans, subsidies.",
+      "detail": "Day-to-day spending that does not create long-term assets. This includes salaries of government employees, interest payments on past borrowings, subsidies (food, fertilizer, fuel), and grants to states. Revenue expenditure is necessary but does not directly build new infrastructure.",
+      "relatedTerms": ["capital-expenditure", "revenue-deficit"]
+    },
+    {
+      "id": "revenue-receipts",
+      "term": "Revenue Receipts",
+      "simple": "All the money the government earns — taxes, dividends, fees, fines.",
+      "detail": "Income that does not create any liability (debt) for the government. Revenue receipts come from two sources: tax revenue (income tax, GST, customs, excise) and non-tax revenue (dividends from public companies, spectrum auctions, interest earned, fees and fines).",
+      "inContext": "₹34,20,409 Cr in 2025-26",
+      "relatedTerms": ["non-tax-revenue", "revenue-deficit"]
+    },
+    {
+      "id": "non-tax-revenue",
+      "term": "Non-Tax Revenue",
+      "simple": "Government income that doesn't come from taxes — dividends, spectrum auctions, fees.",
+      "detail": "Revenue earned by the government from sources other than taxation. This includes dividends from public sector companies (like LIC, SBI), interest on loans given to states, spectrum auction proceeds, and various regulatory fees. Non-tax revenue is less predictable than tax revenue.",
+      "relatedTerms": ["revenue-receipts"]
+    },
+    {
+      "id": "cess",
+      "term": "Cess",
+      "simple": "An extra charge added on top of a tax, earmarked for a specific purpose.",
+      "detail": "A cess is levied as a percentage of the tax payable (not of income). For example, the Health and Education Cess of 4% is charged on the income tax amount. Unlike regular taxes that go into a general fund, cess collections are legally supposed to be used for their stated purpose — though in practice, large amounts have remained unspent.",
+      "relatedTerms": ["surcharge"]
+    },
+    {
+      "id": "surcharge",
+      "term": "Surcharge",
+      "simple": "An additional tax on people with higher incomes, on top of the regular income tax.",
+      "detail": "A surcharge is an extra levy on taxpayers above certain income thresholds. Unlike a cess (which funds a specific purpose), surcharge revenue goes into the Consolidated Fund of India and can be used for any government spending. It is essentially a way to make the tax system more progressive without changing slab rates.",
+      "relatedTerms": ["cess"]
+    },
+    {
+      "id": "devolution",
+      "term": "Devolution",
+      "simple": "The share of central taxes that the Union Government must send to state governments.",
+      "detail": "The Finance Commission recommends what fraction of the centre's tax revenue should be shared with states. Currently (16th Finance Commission), states get 41% of the divisible pool. This money is unconditional — states can spend it however they choose. Devolution is the largest single transfer from centre to states.",
+      "relatedTerms": ["fiscal-deficit"]
+    },
+    {
+      "id": "frbm",
+      "term": "FRBM Act",
+      "simple": "A law that puts a limit on how much the government can borrow.",
+      "detail": "The Fiscal Responsibility and Budget Management Act (2003) requires the government to progressively reduce its fiscal deficit. The original target was 3% of GDP. This limit has been repeatedly revised — the 2025-26 target is 4.4% of GDP. The FRBM Act exists to prevent governments from over-borrowing and burdening future generations.",
+      "inContext": "2025-26 target: 4.4% of GDP (above the original 3% FRBM target)",
+      "relatedTerms": ["fiscal-deficit", "gdp"]
+    },
+    {
+      "id": "gdp",
+      "term": "GDP (Gross Domestic Product)",
+      "simple": "The total value of everything India produces in a year — all goods and services combined.",
+      "detail": "GDP is the broadest measure of economic activity. When the budget says 'fiscal deficit is 4.4% of GDP', it means the borrowing is being compared to the size of the entire economy. India's GDP is measured at current prices (nominal GDP) or adjusted for inflation (real GDP). Budget documents use nominal GDP for ratio calculations.",
+      "inContext": "₹3,56,98,000 Cr (nominal GDP estimate for 2025-26)",
+      "relatedTerms": ["fiscal-deficit", "frbm"]
+    },
+    {
+      "id": "crore-lakh",
+      "term": "Crore & Lakh",
+      "simple": "Indian counting: 1 lakh = 1,00,000 (100 thousand). 1 crore = 1,00,00,000 (10 million).",
+      "detail": "The Indian numbering system groups digits differently from the Western system. After thousands, we count in lakhs (100 thousands) and crores (10 millions). Budget figures are in crores of rupees (₹ Cr). ₹1 lakh crore = ₹1,00,00,00,00,00,000 = roughly $120 billion.",
+      "relatedTerms": ["paise-per-rupee"]
+    },
+    {
+      "id": "paise-per-rupee",
+      "term": "Paise per Rupee",
+      "simple": "A way to show how each rupee of government money is split up.",
+      "detail": "When we say 'for every rupee the government earns, it borrows 31 paise more', we're expressing the fiscal deficit as a fraction of total receipts. This makes abstract crore-level numbers tangible. Similarly, the expenditure breakdown shows how many paise of every rupee go to defence, education, interest payments, etc.",
+      "inContext": "For every ₹1 earned, the government borrows about 45 paise more (2025-26)",
+      "relatedTerms": ["fiscal-deficit", "crore-lakh"]
+    }
+  ]
+}

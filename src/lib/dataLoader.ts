@@ -22,6 +22,7 @@ import type {
   CreditData,
   ForexData,
   RBIIndicatorsData,
+  GlossaryData,
 } from './data/schema.ts';
 
 const cache = new Map<string, unknown>();
@@ -104,3 +105,7 @@ export const loadForex = (year: string) =>
 
 export const loadRBIIndicators = (year: string) =>
   fetchJson<RBIIndicatorsData>(`/data/rbi/${year}/indicators.json`);
+
+// ─── Glossary (shared across domains) ──────────────────────────
+export const loadGlossary = (domain: string, year: string) =>
+  fetchJson<GlossaryData>(`/data/${domain}/${year}/glossary.json`);

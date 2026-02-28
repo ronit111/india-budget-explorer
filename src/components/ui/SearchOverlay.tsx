@@ -4,13 +4,32 @@ import Fuse from 'fuse.js';
 import { useUIStore } from '../../store/uiStore.ts';
 import { useBudgetStore } from '../../store/budgetStore.ts';
 import { useBudgetData } from '../../hooks/useBudgetData.ts';
+import { loadGlossary } from '../../lib/dataLoader.ts';
+import type { GlossaryTerm } from '../../lib/data/schema.ts';
 
 interface SearchItem {
-  type: 'ministry' | 'scheme' | 'page';
+  type: 'ministry' | 'scheme' | 'page' | 'term';
   id: string;
   name: string;
   subtitle: string;
   route: string;
+}
+
+const BADGE_STYLES: Record<SearchItem['type'], { bg: string; color: string }> = {
+  ministry: { bg: 'var(--saffron-dim)', color: 'var(--saffron)' },
+  scheme: { bg: 'rgba(16,185,129,0.15)', color: 'var(--positive)' },
+  page: { bg: 'rgba(59,130,246,0.15)', color: '#3B82F6' },
+  term: { bg: 'rgba(167,139,250,0.15)', color: '#a78bfa' },
+};
+
+function glossaryTermToSearchItem(term: GlossaryTerm, domain: string): SearchItem {
+  return {
+    type: 'term',
+    id: `${domain}-${term.id}`,
+    name: term.term,
+    subtitle: term.simple,
+    route: `/${domain}/glossary#${term.id}`,
+  };
 }
 
 export function SearchOverlay() {
@@ -21,6 +40,22 @@ export function SearchOverlay() {
   const inputRef = useRef<HTMLInputElement>(null);
   const [query, setQuery] = useState('');
   const [results, setResults] = useState<SearchItem[]>([]);
+  const [glossaryTerms, setGlossaryTerms] = useState<SearchItem[]>([]);
+
+  // Load glossary terms once
+  useEffect(() => {
+    Promise.all([
+      loadGlossary('budget', '2025-26').catch(() => null),
+      loadGlossary('economy', '2025-26').catch(() => null),
+      loadGlossary('rbi', '2025-26').catch(() => null),
+    ]).then(([budget, economy, rbi]) => {
+      const items: SearchItem[] = [];
+      if (budget) items.push(...budget.terms.map((t) => glossaryTermToSearchItem(t, 'budget')));
+      if (economy) items.push(...economy.terms.map((t) => glossaryTermToSearchItem(t, 'economy')));
+      if (rbi) items.push(...rbi.terms.map((t) => glossaryTermToSearchItem(t, 'rbi')));
+      setGlossaryTerms(items);
+    });
+  }, []);
 
   // Build search index
   const searchItems: SearchItem[] = [];
@@ -31,7 +66,7 @@ export function SearchOverlay() {
         id: m.id,
         name: m.name,
         subtitle: m.humanContext,
-        route: `/explore?ministry=${m.id}`,
+        route: `/budget/explore?ministry=${m.id}`,
       });
     }
   }
@@ -42,19 +77,29 @@ export function SearchOverlay() {
         id: s.id,
         name: s.name,
         subtitle: s.humanContext,
-        route: `/explore?scheme=${s.id}`,
+        route: `/budget/explore?scheme=${s.id}`,
       });
     }
   }
+  // Pages
   searchItems.push(
-    { type: 'page', id: 'home', name: 'Home', subtitle: 'Budget overview and visualizations', route: '/' },
-    { type: 'page', id: 'explore', name: 'Data Explorer', subtitle: 'Sortable table of all ministries', route: '/explore' },
-    { type: 'page', id: 'calculator', name: 'Tax Calculator', subtitle: 'Find where your taxes go', route: '/calculator' },
-    { type: 'page', id: 'methodology', name: 'Methodology', subtitle: 'How we process the data', route: '/methodology' },
+    { type: 'page', id: 'home', name: 'Home', subtitle: 'Data domain portal and stories', route: '/' },
+    { type: 'page', id: 'budget', name: 'Budget Story', subtitle: 'Union Budget 2025-26 visual narrative', route: '/budget' },
+    { type: 'page', id: 'budget-explore', name: 'Budget Explorer', subtitle: 'Sortable table of all ministries', route: '/budget/explore' },
+    { type: 'page', id: 'calculator', name: 'Tax Calculator', subtitle: 'Find where your taxes go', route: '/budget/calculator' },
+    { type: 'page', id: 'budget-methodology', name: 'Budget Methodology', subtitle: 'Budget data sources and notes', route: '/budget/methodology' },
+    { type: 'page', id: 'budget-glossary', name: 'Budget Glossary', subtitle: 'Budget terms in plain language', route: '/budget/glossary' },
     { type: 'page', id: 'economy', name: 'Economic Survey', subtitle: 'GDP, inflation, fiscal, trade analysis', route: '/economy' },
-    { type: 'page', id: 'economy-explore', name: 'Indicator Explorer', subtitle: 'Browse economic indicators across years', route: '/economy/explore' },
+    { type: 'page', id: 'economy-explore', name: 'Economy Explorer', subtitle: 'Browse economic indicators across years', route: '/economy/explore' },
     { type: 'page', id: 'economy-methodology', name: 'Economy Methodology', subtitle: 'Economic Survey data sources and notes', route: '/economy/methodology' },
+    { type: 'page', id: 'economy-glossary', name: 'Economy Glossary', subtitle: 'Economic terms in plain language', route: '/economy/glossary' },
+    { type: 'page', id: 'rbi', name: 'RBI Story', subtitle: 'Monetary policy, forex, and credit narrative', route: '/rbi' },
+    { type: 'page', id: 'rbi-explore', name: 'RBI Explorer', subtitle: 'Monetary and financial indicators', route: '/rbi/explore' },
+    { type: 'page', id: 'rbi-methodology', name: 'RBI Methodology', subtitle: 'RBI data sources and indicator codes', route: '/rbi/methodology' },
+    { type: 'page', id: 'rbi-glossary', name: 'RBI Glossary', subtitle: 'Monetary policy terms in plain language', route: '/rbi/glossary' },
   );
+  // Glossary terms
+  searchItems.push(...glossaryTerms);
 
   const fuse = new Fuse(searchItems, {
     keys: ['name', 'subtitle'],
@@ -67,10 +112,10 @@ export function SearchOverlay() {
       if (q.trim().length === 0) {
         setResults(searchItems.filter((s) => s.type === 'page'));
       } else {
-        setResults(fuse.search(q).map((r) => r.item).slice(0, 8));
+        setResults(fuse.search(q).map((r) => r.item).slice(0, 10));
       }
     },
-    [expenditure, schemes]
+    [expenditure, schemes, glossaryTerms]
   );
 
   // Keyboard shortcut
@@ -121,7 +166,7 @@ export function SearchOverlay() {
             type="text"
             value={query}
             onChange={(e) => handleSearch(e.target.value)}
-            placeholder="Search ministries, schemes, pages..."
+            placeholder="Search terms, ministries, schemes, pages..."
             className="w-full px-3 py-4 bg-transparent border-none outline-none text-sm"
             style={{ color: 'var(--text-primary)' }}
           />
@@ -139,40 +184,32 @@ export function SearchOverlay() {
               No results found
             </p>
           )}
-          {results.map((item) => (
-            <button
-              key={`${item.type}-${item.id}`}
-              onClick={() => {
-                navigate(item.route);
-                setSearchOpen(false);
-              }}
-              className="w-full text-left px-3 py-2.5 rounded-lg transition-colors flex items-start gap-3 cursor-pointer bg-transparent border-none"
-              onMouseEnter={(e) => (e.currentTarget.style.background = 'var(--bg-raised)')}
-              onMouseLeave={(e) => (e.currentTarget.style.background = 'transparent')}
-            >
-              <span
-                className="mt-0.5 text-[10px] font-mono uppercase px-1.5 py-0.5 rounded"
-                style={{
-                  background: item.type === 'ministry'
-                    ? 'var(--saffron-dim)'
-                    : item.type === 'scheme'
-                    ? 'rgba(16,185,129,0.15)'
-                    : 'rgba(59,130,246,0.15)',
-                  color: item.type === 'ministry'
-                    ? 'var(--saffron)'
-                    : item.type === 'scheme'
-                    ? 'var(--positive)'
-                    : '#3B82F6',
+          {results.map((item) => {
+            const badge = BADGE_STYLES[item.type];
+            return (
+              <button
+                key={`${item.type}-${item.id}`}
+                onClick={() => {
+                  navigate(item.route);
+                  setSearchOpen(false);
                 }}
+                className="w-full text-left px-3 py-2.5 rounded-lg transition-colors flex items-start gap-3 cursor-pointer bg-transparent border-none"
+                onMouseEnter={(e) => (e.currentTarget.style.background = 'var(--bg-raised)')}
+                onMouseLeave={(e) => (e.currentTarget.style.background = 'transparent')}
               >
-                {item.type}
-              </span>
-              <div>
-                <p className="text-sm font-medium" style={{ color: 'var(--text-primary)' }}>{item.name}</p>
-                <p className="text-xs mt-0.5" style={{ color: 'var(--text-muted)' }}>{item.subtitle}</p>
-              </div>
-            </button>
-          ))}
+                <span
+                  className="mt-0.5 text-[10px] font-mono uppercase px-1.5 py-0.5 rounded"
+                  style={{ background: badge.bg, color: badge.color }}
+                >
+                  {item.type}
+                </span>
+                <div className="min-w-0">
+                  <p className="text-sm font-medium truncate" style={{ color: 'var(--text-primary)' }}>{item.name}</p>
+                  <p className="text-xs mt-0.5 truncate" style={{ color: 'var(--text-muted)' }}>{item.subtitle}</p>
+                </div>
+              </button>
+            );
+          })}
         </div>
       </div>
     </div>

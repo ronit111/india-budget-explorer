@@ -25,6 +25,9 @@ Indian Data Project turns dense government data into interactive visual experien
 | **RBI Story** (`/rbi`) | Scrollytelling narrative — repo rate hero, monetary policy trajectory, inflation targeting vs 4% mandate, M3 money supply, credit expansion, forex reserves, exchange rate |
 | **RBI Explorer** (`/rbi/explore`) | Indicator explorer with 4 categories (monetary, liquidity, credit, external), interactive line charts |
 | **RBI Methodology** (`/rbi/methodology`) | Data sources (DBIE, World Bank, MPC press releases), indicator definitions, WB codes |
+| **Budget Glossary** (`/budget/glossary`) | 13 budget terms explained in plain language — fiscal deficit, revenue deficit, cess, devolution, crore/lakh, etc. |
+| **Economy Glossary** (`/economy/glossary`) | 15 economic terms — GDP, inflation, CPI, trade deficit, FDI, sectoral composition, advance estimates, etc. |
+| **RBI Glossary** (`/rbi/glossary`) | 12 monetary policy terms — repo rate, CRR, SLR, MPC, inflation targeting, forex reserves, basis points, etc. |
 
 ---
 
@@ -70,7 +73,7 @@ npm run preview
 | Command | What it does |
 |---------|-------------|
 | `npm run dev` | Start Vite dev server with HMR |
-| `npm run build` | TypeScript check + Vite build + Puppeteer prerender (all 11 routes) |
+| `npm run build` | TypeScript check + Vite build + Puppeteer prerender (all 14 routes) |
 | `npm run build:no-prerender` | Build without prerendering (used by Vercel) |
 | `npm run lint` | ESLint check |
 | `npm run preview` | Preview production build locally |
@@ -92,7 +95,11 @@ src/
 │   ├── EconomyMethodologyPage.tsx # Economy methodology
 │   ├── RBIPage.tsx          # RBI scrollytelling (monetary policy, forex, credit)
 │   ├── RBIExplorePage.tsx   # RBI indicator explorer with category filters
-│   └── RBIMethodologyPage.tsx # RBI methodology
+│   ├── RBIMethodologyPage.tsx # RBI methodology
+│   ├── GlossaryPage.tsx      # Shared glossary component (parameterized by domain)
+│   ├── BudgetGlossaryPage.tsx # Budget glossary wrapper
+│   ├── EconomyGlossaryPage.tsx # Economy glossary wrapper
+│   └── RBIGlossaryPage.tsx   # RBI glossary wrapper
 ├── components/
 │   ├── home/               # Budget story compositions (Hero, Revenue, Expenditure, Flow, Map, CTA)
 │   ├── budget/             # Budget-specific compositions (DeficitSection, PerCapitaSection)
@@ -101,7 +108,7 @@ src/
 │   ├── calculator/         # Tax calculator UI (IncomeInput, DeductionsPanel, TaxBreakdown, ShareCard, SpendingAllocation)
 │   ├── explore/            # DataTable with expandable rows
 │   ├── viz/                # D3 visualizations (TreemapChart, SankeyDiagram, ChoroplethMap, WaffleChart, LineChart, AreaChart, HorizontalBarChart, StepChart, AnimatedCounter)
-│   ├── ui/                 # Shared UI (Tooltip, NarrativeBridge, SearchOverlay, Skeleton, etc.)
+│   ├── ui/                 # Shared UI (Tooltip, NarrativeBridge, SearchOverlay, FeedbackButton, Skeleton, etc.)
 │   ├── layout/             # Header, Footer, MobileNav, PageShell
 │   ├── seo/                # SEOHead (per-route meta tags + OG images + JSON-LD)
 │   └── i18n/               # Language provider and switcher
@@ -121,7 +128,7 @@ public/
 ├── data/economy/2025-26/   # 7 structured JSON economy datasets
 ├── data/rbi/2025-26/       # 6 structured JSON RBI datasets
 ├── locales/en/             # Translation files
-├── sitemap.xml             # All routes + data endpoints (11 pages + 17 data files)
+├── sitemap.xml             # All routes + data endpoints (14 pages + 17 data files)
 ├── robots.txt              # All bots welcomed (including AI crawlers)
 └── llms.txt                # AI-readable site summary
 
@@ -151,6 +158,7 @@ Budget data lives in `public/data/budget/2025-26/`:
 | `treemap.json` | Hierarchical expenditure for treemap visualization |
 | `statewise.json` | State-wise budget allocations with per-capita figures |
 | `schemes.json` | Major government scheme details |
+| `glossary.json` | 13 budget terms with plain-language explanations |
 
 ### Economy Data
 
@@ -165,6 +173,7 @@ Economy data lives in `public/data/economy/2025-26/`:
 | `external.json` | Trade balance, exports, imports |
 | `sectors.json` | Sectoral GDP composition (agriculture, industry, services) |
 | `indicators.json` | Key economic indicators with year-over-year data |
+| `glossary.json` | 15 economy terms with plain-language explanations |
 
 ### RBI Data
 
@@ -178,6 +187,7 @@ RBI data lives in `public/data/rbi/2025-26/`:
 | `credit.json` | Domestic and private credit (% of GDP), lending/deposit rates |
 | `forex.json` | Forex reserves (US$) and INR/USD exchange rate |
 | `indicators.json` | All RBI indicators across 4 categories (monetary, liquidity, credit, external) |
+| `glossary.json` | 12 RBI terms with plain-language explanations |
 
 Data sourced from [Open Budgets India](https://openbudgetsindia.org), [indiabudget.gov.in](https://www.indiabudget.gov.in), [Economic Survey](https://www.indiabudget.gov.in/economicsurvey/), [RBI DBIE](https://data.rbi.org.in), [RBI Monetary Policy Statements](https://www.rbi.org.in), and [World Bank Open Data API](https://data.worldbank.org) under the [Government Open Data License — India](https://data.gov.in/government-open-data-license-india).
 
@@ -198,12 +208,12 @@ See [BRAND.md](./BRAND.md) for the full visual identity guide. Key principles:
 
 The site is built for maximum discoverability:
 
-- **Prerendered HTML** for all 11 routes (Puppeteer at build time)
+- **Prerendered HTML** for all 14 routes (Puppeteer at build time)
 - **JSON-LD** structured data: `WebApplication`, `Dataset` x3 (Budget + Economy + RBI for Google Dataset Search), `BreadcrumbList`
 - **Per-route meta tags** via react-helmet-async (title, description, OG image, Twitter card, canonical)
-- **sitemap.xml** covering 11 pages + 17 downloadable data endpoints
+- **sitemap.xml** covering 14 pages + 17 downloadable data endpoints
 - **robots.txt** explicitly welcoming AI crawlers (GPTBot, ClaudeBot, PerplexityBot, Google-Extended)
-- **llms.txt** for AI model discoverability (budget + economy + RBI content)
+- **llms.txt** for AI model discoverability (budget + economy + RBI content + glossary terms)
 - **Noscript fallback** with real content across all three domains for crawlers that don't execute JS
 
 ---
@@ -233,6 +243,9 @@ The site is built for maximum discoverability:
 - [x] Data accuracy overhaul — truth-verified all figures against authoritative sources
 - [x] RBI chart QA fixes — x-axis alignment (fiscal years), liquidity section split, empty series cleanup
 - [x] Phase 3 polish — sparse series filtering, GDP projection display fix, credit narrative alignment, per-domain OG images
+- [x] Per-domain glossary pages (budget, economy, RBI) — 40 terms in plain language with filter, alpha nav, and related terms
+- [x] Floating feedback button — GitHub issue form with pre-filled page context
+- [x] Cmd+K search expansion — glossary terms indexed with purple badges, RBI pages added, stale routes fixed
 
 ### Next Steps
 
@@ -243,11 +256,11 @@ The site is built for maximum discoverability:
 - [x] RBI credit section: deposit rate empty — noted in methodology; DBIE integration deferred to Phase 5
 - [x] Per-domain OG images: 4 variants (hub, budget, economy, rbi) generated via Puppeteer, wired into SEOHead on all 11 routes
 
-**Phase 3.5: UX & Discoverability**
-- [ ] Per-domain glossary tabs (economic terms in simple language, alongside Methodology in nav)
-- [ ] Data feedback strip (persistent ribbon for users to report incorrect data via GitHub issues)
-- [ ] Cmd+K search indexing for glossary terms
-- [ ] Mobile UX audit across all 3 domains (bottom nav clearance, chart responsiveness, touch targets)
+**Phase 3.5: UX & Discoverability** ✓
+- [x] Per-domain glossary pages (40 terms across 3 domains, plain-language explanations, related term pills, hash deep-linking)
+- [x] Floating feedback button (GitHub issue form with pre-filled page context and simple prompts)
+- [x] Cmd+K search indexing for glossary terms (40 terms with purple TERM badges, RBI pages added)
+- [ ] Mobile UX audit across all 3 domains (deferred to post-Phase 4 — after all data domains are built)
 
 **Phase 4: Expand Scope**
 - [ ] New data domain: State Finances (state budget allocations, GSDP, own tax revenue)

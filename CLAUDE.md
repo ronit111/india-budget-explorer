@@ -7,9 +7,9 @@ Open data platform for Indian citizens. V1 of the broader **India Truth Engine**
 
 ## Site Architecture — Hub + Data Domains
 - **`/` (Hub)**: Visual portal showcasing all data domains. Not a dashboard — a curated data story showcase.
-- **`/budget` (Budget Domain)**: Union Budget 2025-26 scrollytelling. Sub-routes: `/budget/explore`, `/budget/calculator`, `/budget/methodology`.
-- **`/economy` (Economy Domain)**: Economic Survey 2025-26 scrollytelling. Sub-routes: `/economy/explore`, `/economy/methodology`.
-- **`/rbi` (RBI Domain)**: RBI monetary policy and financial data. Sub-routes: `/rbi/explore`, `/rbi/methodology`.
+- **`/budget` (Budget Domain)**: Union Budget 2025-26 scrollytelling. Sub-routes: `/budget/explore`, `/budget/calculator`, `/budget/methodology`, `/budget/glossary`.
+- **`/economy` (Economy Domain)**: Economic Survey 2025-26 scrollytelling. Sub-routes: `/economy/explore`, `/economy/methodology`, `/economy/glossary`.
+- **`/rbi` (RBI Domain)**: RBI monetary policy and financial data. Sub-routes: `/rbi/explore`, `/rbi/methodology`, `/rbi/glossary`.
 - **Future domains** each get their own top-level route (e.g., `/states`, `/census`) with self-contained sub-pages.
 - Header is **context-aware**: hub title + search on `/`, domain title + sub-nav tabs inside a domain.
 - **Back links** (header chevron + footer link) point to `/#stories`. New domains should follow this convention.

@@ -22,9 +22,9 @@ const PORT = 4173;
 
 const ROUTES = [
   '/',
-  '/budget', '/budget/explore', '/budget/calculator', '/budget/methodology',
-  '/economy', '/economy/explore', '/economy/methodology',
-  '/rbi', '/rbi/explore', '/rbi/methodology',
+  '/budget', '/budget/explore', '/budget/calculator', '/budget/methodology', '/budget/glossary',
+  '/economy', '/economy/explore', '/economy/methodology', '/economy/glossary',
+  '/rbi', '/rbi/explore', '/rbi/methodology', '/rbi/glossary',
 ];
 
 const MIME_TYPES = {

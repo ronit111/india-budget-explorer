@@ -5,6 +5,7 @@ import { Header } from './Header.tsx';
 import { MobileNav } from './MobileNav.tsx';
 import { Footer } from './Footer.tsx';
 import { SearchOverlay } from '../ui/SearchOverlay.tsx';
+import { FeedbackButton } from '../ui/FeedbackButton.tsx';
 
 export function PageShell({ children }: { children: ReactNode }) {
   const location = useLocation();
@@ -33,6 +34,7 @@ export function PageShell({ children }: { children: ReactNode }) {
 
       <main className="flex-1 pt-16 overflow-y-auto">{children}</main>
       <Footer />
+      <FeedbackButton />
       <MobileNav />
     </div>
   );

@@ -1,0 +1,118 @@
+{
+  "domain": "economy",
+  "year": "2025-26",
+  "terms": [
+    {
+      "id": "gdp",
+      "term": "GDP (Gross Domestic Product)",
+      "simple": "The total value of all goods and services produced in India in a year.",
+      "detail": "GDP measures the size of the economy. It includes everything from factory output and farm produce to software exports and haircuts. India's GDP is calculated by the National Statistical Office (NSO) and revised several times as more data comes in — from advance estimates to provisional to final figures.",
+      "inContext": "₹3,56,98,000 Cr (nominal GDP, 2025-26 estimate)",
+      "relatedTerms": ["gdp-growth", "nominal-vs-real-gdp", "per-capita-gdp"]
+    },
+    {
+      "id": "gdp-growth",
+      "term": "GDP Growth Rate",
+      "simple": "How much faster the economy is growing compared to last year, adjusted for inflation.",
+      "detail": "When you hear 'India grew at 6.5%', it means the real (inflation-adjusted) value of goods and services produced this year is 6.5% more than last year. The growth rate is the single most watched economic number — it signals whether the economy is accelerating, cruising, or slowing down.",
+      "inContext": "6.5% real GDP growth in FY 2024-25 (Provisional Estimate)",
+      "relatedTerms": ["gdp", "nominal-vs-real-gdp", "base-year"]
+    },
+    {
+      "id": "nominal-vs-real-gdp",
+      "term": "Nominal vs Real GDP",
+      "simple": "Nominal GDP includes price inflation. Real GDP strips inflation out to show actual growth.",
+      "detail": "If prices rise 5% and output rises 5%, nominal GDP grows 10% but real GDP grows only 5%. Real GDP (at constant prices) gives a truer picture of whether the economy is actually producing more. India currently uses 2011-12 as the base year for real GDP calculations.",
+      "relatedTerms": ["gdp", "gdp-growth", "base-year"]
+    },
+    {
+      "id": "inflation",
+      "term": "Inflation",
+      "simple": "How fast prices are rising. If inflation is 4%, things cost 4% more than a year ago.",
+      "detail": "Inflation is measured by tracking the prices of a basket of goods and services that a typical household buys. Moderate inflation (2-6%) is considered normal. Very high inflation erodes purchasing power — your salary buys less. Very low inflation or deflation can signal weak demand. The RBI targets 4% CPI inflation.",
+      "inContext": "4.0% CPI inflation (2024-25, Economic Survey estimate)",
+      "relatedTerms": ["cpi", "wpi"]
+    },
+    {
+      "id": "cpi",
+      "term": "CPI (Consumer Price Index)",
+      "simple": "Measures what you pay — the price of groceries, rent, transport, and other household items.",
+      "detail": "CPI tracks the cost of a fixed basket of goods and services purchased by households. It covers food, housing, clothing, transport, healthcare, and education. CPI is India's primary inflation measure and the one the RBI uses for its 4% inflation target. It is published monthly by the NSO.",
+      "relatedTerms": ["inflation", "wpi"]
+    },
+    {
+      "id": "wpi",
+      "term": "WPI (Wholesale Price Index)",
+      "simple": "Measures what producers pay — the price of raw materials, fuel, and factory-gate goods.",
+      "detail": "WPI tracks prices at the wholesale/producer level before goods reach consumers. It includes manufactured goods, fuel and power, and primary articles (farm produce, minerals). WPI can diverge from CPI — when oil prices spike, WPI reacts first; the effect on consumer prices comes later.",
+      "relatedTerms": ["inflation", "cpi"]
+    },
+    {
+      "id": "fiscal-deficit",
+      "term": "Fiscal Deficit",
+      "simple": "How much the government borrows because it spends more than it earns.",
+      "detail": "The gap between what the government spends and what it collects (excluding borrowings). A fiscal deficit of 4.4% of GDP means the government needs to borrow an amount equal to 4.4% of the entire economy's output. The Economic Survey discusses fiscal deficit because excessive borrowing crowds out private investment.",
+      "inContext": "4.4% of GDP (2025-26 Budget Estimate)",
+      "relatedTerms": ["gdp"]
+    },
+    {
+      "id": "trade-deficit",
+      "term": "Trade Deficit",
+      "simple": "India buys more from other countries than it sells to them.",
+      "detail": "When imports exceed exports, the difference is the trade deficit. India typically has a merchandise trade deficit (we import more goods like oil and electronics than we export) but a services surplus (we export more IT and business services). The net trade balance affects the current account and the rupee's value.",
+      "relatedTerms": ["current-account", "fdi"]
+    },
+    {
+      "id": "current-account",
+      "term": "Current Account Deficit (CAD)",
+      "simple": "A broader measure than trade deficit — includes services, investment income, and remittances.",
+      "detail": "The current account tracks all cross-border flows of goods, services, income (interest, dividends), and transfers (like NRI remittances). India's trade deficit is partially offset by a large services surplus and remittance inflows. A CAD means the country is a net borrower from the rest of the world.",
+      "inContext": "-0.8% of GDP (2024-25, Economic Survey estimate)",
+      "relatedTerms": ["trade-deficit", "fdi"]
+    },
+    {
+      "id": "fdi",
+      "term": "FDI (Foreign Direct Investment)",
+      "simple": "When foreign companies invest in building factories, offices, or businesses in India.",
+      "detail": "FDI is long-term investment by foreign entities — setting up a plant, acquiring a stake in an Indian company, or starting a subsidiary. Unlike portfolio investment (buying stocks/bonds), FDI brings technology, management expertise, and stable capital. India receives FDI mainly in services, computer software, telecom, and automobiles.",
+      "relatedTerms": ["current-account"]
+    },
+    {
+      "id": "sectoral-composition",
+      "term": "Sectoral Composition",
+      "simple": "What share of the economy comes from farming, factories, and services.",
+      "detail": "India's GDP is split into three broad sectors: agriculture (farming, forestry, fishing), industry (manufacturing, mining, construction, electricity), and services (IT, banking, trade, transport, government). Services now contribute about 55% of GDP, agriculture around 15%, and industry around 30%.",
+      "relatedTerms": ["gdp"]
+    },
+    {
+      "id": "base-year",
+      "term": "Base Year",
+      "simple": "The reference year used to calculate 'real' (inflation-adjusted) economic numbers.",
+      "detail": "When we say India's GDP grew 6.5% in 'real' terms, we're comparing to prices in the base year. India currently uses 2011-12 as the base year. The base year is periodically updated to reflect structural changes in the economy (new industries, changing consumption patterns). A base year revision can change historical growth rates.",
+      "relatedTerms": ["nominal-vs-real-gdp", "gdp-growth"]
+    },
+    {
+      "id": "provisional-estimate",
+      "term": "Provisional Estimate (PE)",
+      "simple": "The government's best guess of GDP using actual data, but still subject to revision.",
+      "detail": "GDP estimates go through multiple rounds: First Advance Estimate (January, based on partial data), Second Advance Estimate (February), Provisional Estimate (May, with more actual data), First Revised, Second Revised, and Third Revised. Each revision incorporates more complete data. The number you see in news headlines may change significantly by the time it's finalized.",
+      "relatedTerms": ["advance-estimate", "gdp"]
+    },
+    {
+      "id": "advance-estimate",
+      "term": "Advance Estimate",
+      "simple": "The earliest GDP estimate, released before the financial year even ends.",
+      "detail": "The NSO releases the First Advance Estimate (FAE) in early January, based on 7-8 months of actual data and projections for the remaining months. It gives the first official signal of how the economy performed. The Second Advance Estimate, released around February with the Economic Survey, incorporates another month of data.",
+      "inContext": "NSO released FAE for 2025-26 projecting 7.4% growth (January 2026)",
+      "relatedTerms": ["provisional-estimate", "gdp-growth"]
+    },
+    {
+      "id": "per-capita-gdp",
+      "term": "Per Capita GDP",
+      "simple": "GDP divided by population — how much economic output each person would get if it were split equally.",
+      "detail": "Per capita GDP gives a sense of average living standards, though it hides inequality. India's per capita GDP is much lower than its total GDP ranking suggests because of its large population. Per capita GDP is useful for comparing living standards across countries or tracking progress over time.",
+      "inContext": "₹2,46,034 per person (2025-26, Economic Survey)",
+      "relatedTerms": ["gdp"]
+    }
+  ]
+}

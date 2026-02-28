@@ -33,6 +33,12 @@
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
+  <url>
+    <loc>https://indiandataproject.org/budget/glossary</loc>
+    <lastmod>2026-02-28</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
 
   <!-- Economy domain -->
   <url>
@@ -52,6 +58,12 @@
     <lastmod>2025-07-01</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://indiandataproject.org/economy/glossary</loc>
+    <lastmod>2026-02-28</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
   </url>
 
   <!-- Budget data endpoints -->
@@ -104,6 +116,12 @@
     <lastmod>2026-02-28</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://indiandataproject.org/rbi/glossary</loc>
+    <lastmod>2026-02-28</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
   </url>
 
   <!-- Economy data endpoints -->

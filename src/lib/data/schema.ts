@@ -370,3 +370,20 @@ export interface RBIIndicatorsData {
   year: string;
   indicators: RBIIndicator[];
 }
+
+// ─── Glossary (shared across domains) ──────────────────────────
+
+export interface GlossaryTerm {
+  id: string;
+  term: string;
+  simple: string;
+  detail: string;
+  inContext?: string;
+  relatedTerms?: string[];
+}
+
+export interface GlossaryData {
+  domain: 'budget' | 'economy' | 'rbi';
+  year: string;
+  terms: GlossaryTerm[];
+}

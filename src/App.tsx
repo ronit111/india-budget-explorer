@@ -13,6 +13,9 @@ import EconomyMethodologyPage from './pages/EconomyMethodologyPage.tsx';
 import RBIPage from './pages/RBIPage.tsx';
 import RBIExplorePage from './pages/RBIExplorePage.tsx';
 import RBIMethodologyPage from './pages/RBIMethodologyPage.tsx';
+import BudgetGlossaryPage from './pages/BudgetGlossaryPage.tsx';
+import EconomyGlossaryPage from './pages/EconomyGlossaryPage.tsx';
+import RBIGlossaryPage from './pages/RBIGlossaryPage.tsx';
 
 const PAGE_ROUTES = [
   { path: '/', element: <HubPage /> },
@@ -20,12 +23,15 @@ const PAGE_ROUTES = [
   { path: '/budget/explore', element: <ExplorePage /> },
   { path: '/budget/calculator', element: <FindYourSharePage /> },
   { path: '/budget/methodology', element: <MethodologyPage /> },
+  { path: '/budget/glossary', element: <BudgetGlossaryPage /> },
   { path: '/economy', element: <EconomyPage /> },
   { path: '/economy/explore', element: <EconomyExplorePage /> },
   { path: '/economy/methodology', element: <EconomyMethodologyPage /> },
+  { path: '/economy/glossary', element: <EconomyGlossaryPage /> },
   { path: '/rbi', element: <RBIPage /> },
   { path: '/rbi/explore', element: <RBIExplorePage /> },
   { path: '/rbi/methodology', element: <RBIMethodologyPage /> },
+  { path: '/rbi/glossary', element: <RBIGlossaryPage /> },
 ] as const;
 
 // Old routes redirect to new /budget/* paths

@@ -16,16 +16,19 @@ Indian Data Project is a hub for Indian government data visualization. Each data
 - /budget/explore — Sortable ministry-wise expenditure table with expandable scheme detail. CSV export available.
 - /budget/calculator — Personal tax calculator (FY 2025-26). Enter income, choose Old/New regime with deductions support (80C, 80D, HRA, 24b, NPS, 80TTA), see slab-by-slab tax breakdown and ministry-wise allocation of your tax. Shareable image card.
 - /budget/methodology — Data sources, tax computation methodology, formatting conventions, limitations.
+- /budget/glossary — Plain-language definitions of budget terms: fiscal deficit, revenue deficit, capital expenditure, cess, surcharge, devolution, FRBM, GDP, crore/lakh.
 
 ### Economy Domain
 - /economy — Scrollytelling visual breakdown: GDP growth trend (line chart), inflation tracking (CPI/WPI line chart), trade balance (area chart), fiscal position, sectoral composition (horizontal bar chart with annotations)
 - /economy/explore — Searchable table of all economic indicators with year-over-year comparisons
 - /economy/methodology — Data sources, indicator definitions, survey methodology, limitations
+- /economy/glossary — Plain-language definitions of economic terms: GDP, inflation, CPI, WPI, trade deficit, current account, FDI, sectoral composition, base year, advance estimates.
 
 ### RBI Data Domain
 - /rbi — Scrollytelling narrative: repo rate hero, monetary policy trajectory (line chart), inflation targeting vs 4% mandate (line chart with band), M3 money supply growth, credit expansion (two-series line chart), forex reserves (area chart), exchange rate INR/USD
 - /rbi/explore — Browseable indicator explorer with categories: monetary, liquidity, credit, external. Select any indicator to see full time series.
 - /rbi/methodology — Data sources (RBI DBIE, World Bank, MPC press releases), indicator definitions, WB codes, data freshness, limitations
+- /rbi/glossary — Plain-language definitions of RBI terms: repo rate, CRR, SLR, MPC, monetary policy stance, inflation targeting, M3 money supply, forex reserves, basis points.
 
 ## Key data points
 

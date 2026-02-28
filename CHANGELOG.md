@@ -1,5 +1,41 @@
 # Changelog
 
+## [0.6.0] - 2026-02-28
+
+### Phase 3.5: UX & Discoverability
+
+**Per-Domain Glossary Pages** (`/budget/glossary`, `/economy/glossary`, `/rbi/glossary`)
+- Shared `GlossaryPage` component parameterized by domain (accent colors, SEO, data loading)
+- 40 terms total: 13 budget, 15 economy, 12 RBI — all explained in plain language with "In Simple Terms" callouts
+- Each term has: one-liner explanation, detail paragraph, live "In Context" value traced to `summary.json`, related term pills
+- Filter input + alphabet jump pills for quick navigation
+- Hash-based deep linking from search results (e.g., `/budget/glossary#fiscal-deficit`)
+- Header tabs and mobile bottom nav updated for all 3 domains
+
+**Floating Feedback Button**
+- Fixed bottom-right corner button on all pages (flag icon, `z-40`)
+- Opens GitHub new issue form with pre-filled page context and plain-language prompts ("What looks wrong?", "What should it say instead?")
+- Positioned above mobile nav on small screens (`bottom-20 md:bottom-6`)
+- Tooltip on hover: "Report incorrect data"
+
+**Cmd+K Search Expansion**
+- Glossary terms indexed in search overlay with purple `TERM` badges
+- All 40 glossary terms searchable, linking to `/{domain}/glossary#{term-id}`
+- Added missing RBI pages (Story, Explore, Methodology) to search index
+- Fixed stale routes (`/explore` → `/budget/explore`, `/calculator` → `/budget/calculator`)
+- Updated placeholder: "Search terms, ministries, schemes, pages..."
+
+**SEO**
+- 3 glossary routes added to Puppeteer prerender (14 routes total)
+- Sitemap expanded with 3 glossary URLs
+- JSON-LD BreadcrumbList updated with glossary entries
+- `llms.txt` expanded with glossary descriptions per domain
+- Noscript fallback updated with glossary links
+
+**Note:** Mobile UX audit deferred to post-Phase 4 (after all data domains are built).
+
+---
+
 ## [0.5.1] - 2026-02-28
 
 ### Phase 3: Polish Existing Domains
