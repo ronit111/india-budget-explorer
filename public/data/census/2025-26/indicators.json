@@ -3,192 +3,192 @@
   "indicators": [
     {
       "id": "population",
-      "name": "Population",
+      "name": "Population (Projected 2026)",
       "category": "population",
       "unit": "",
       "states": [
         {
           "id": "up",
           "name": "Uttar Pradesh",
-          "value": 199812341
-        },
-        {
-          "id": "mh",
-          "name": "Maharashtra",
-          "value": 112374333
+          "value": 243466000
         },
         {
           "id": "br",
           "name": "Bihar",
-          "value": 104099452
+          "value": 132850000
+        },
+        {
+          "id": "mh",
+          "name": "Maharashtra",
+          "value": 129584000
         },
         {
           "id": "wb",
           "name": "West Bengal",
-          "value": 91276115
+          "value": 100631000
         },
         {
           "id": "mp",
           "name": "Madhya Pradesh",
-          "value": 72626809
-        },
-        {
-          "id": "tn",
-          "name": "Tamil Nadu",
-          "value": 72147030
+          "value": 89965000
         },
         {
           "id": "rj",
           "name": "Rajasthan",
-          "value": 68548437
+          "value": 83879000
         },
         {
-          "id": "ka",
-          "name": "Karnataka",
-          "value": 61095297
+          "id": "tn",
+          "name": "Tamil Nadu",
+          "value": 77582000
         },
         {
           "id": "gj",
           "name": "Gujarat",
-          "value": 60439692
+          "value": 74343000
+        },
+        {
+          "id": "ka",
+          "name": "Karnataka",
+          "value": 69074000
         },
         {
           "id": "ap",
           "name": "Andhra Pradesh",
-          "value": 49577103
+          "value": 53740000
         },
         {
           "id": "od",
           "name": "Odisha",
-          "value": 41974218
-        },
-        {
-          "id": "tg",
-          "name": "Telangana",
-          "value": 35003674
-        },
-        {
-          "id": "kl",
-          "name": "Kerala",
-          "value": 33406061
+          "value": 47221000
         },
         {
           "id": "jh",
           "name": "Jharkhand",
-          "value": 32988134
+          "value": 41108000
+        },
+        {
+          "id": "tg",
+          "name": "Telangana",
+          "value": 38665000
         },
         {
           "id": "as",
           "name": "Assam",
-          "value": 31205576
+          "value": 36815000
         },
         {
-          "id": "pb",
-          "name": "Punjab",
-          "value": 27743338
-        },
-        {
-          "id": "ct",
-          "name": "Chhattisgarh",
-          "value": 25545198
+          "id": "kl",
+          "name": "Kerala",
+          "value": 36239000
         },
         {
           "id": "hr",
           "name": "Haryana",
-          "value": 25351462
+          "value": 31409000
         },
         {
-          "id": "jk",
-          "name": "Jammu & Kashmir",
-          "value": 12541302
+          "id": "pb",
+          "name": "Punjab",
+          "value": 31370000
         },
         {
-          "id": "uk",
-          "name": "Uttarakhand",
-          "value": 10086292
-        },
-        {
-          "id": "hp",
-          "name": "Himachal Pradesh",
-          "value": 6864602
-        },
-        {
-          "id": "tr",
-          "name": "Tripura",
-          "value": 3673917
-        },
-        {
-          "id": "ml",
-          "name": "Meghalaya",
-          "value": 2966889
-        },
-        {
-          "id": "mn",
-          "name": "Manipur",
-          "value": 2855794
-        },
-        {
-          "id": "nl",
-          "name": "Nagaland",
-          "value": 1978502
-        },
-        {
-          "id": "ga",
-          "name": "Goa",
-          "value": 1458545
-        },
-        {
-          "id": "ar",
-          "name": "Arunachal Pradesh",
-          "value": 1383727
-        },
-        {
-          "id": "mz",
-          "name": "Mizoram",
-          "value": 1097206
-        },
-        {
-          "id": "sk",
-          "name": "Sikkim",
-          "value": 610577
+          "id": "ct",
+          "name": "Chhattisgarh",
+          "value": 31311000
         },
         {
           "id": "dl",
           "name": "Delhi",
-          "value": 16787941
+          "value": 22674000
+        },
+        {
+          "id": "jk",
+          "name": "Jammu & Kashmir",
+          "value": 14233000
+        },
+        {
+          "id": "uk",
+          "name": "Uttarakhand",
+          "value": 12028000
+        },
+        {
+          "id": "hp",
+          "name": "Himachal Pradesh",
+          "value": 7588000
+        },
+        {
+          "id": "tr",
+          "name": "Tripura",
+          "value": 4268000
+        },
+        {
+          "id": "ml",
+          "name": "Meghalaya",
+          "value": 3447000
+        },
+        {
+          "id": "mn",
+          "name": "Manipur",
+          "value": 3318000
+        },
+        {
+          "id": "nl",
+          "name": "Nagaland",
+          "value": 2299000
+        },
+        {
+          "id": "ar",
+          "name": "Arunachal Pradesh",
+          "value": 1608000
         },
         {
           "id": "py",
           "name": "Puducherry",
-          "value": 1247953
+          "value": 1771000
         },
         {
-          "id": "ch",
-          "name": "Chandigarh",
-          "value": 1055450
-        },
-        {
-          "id": "an",
-          "name": "Andaman & Nicobar",
-          "value": 380581
+          "id": "ga",
+          "name": "Goa",
+          "value": 1601000
         },
         {
           "id": "dn",
           "name": "Dadra & Nagar Haveli",
-          "value": 343709
+          "value": 933000
+        },
+        {
+          "id": "mz",
+          "name": "Mizoram",
+          "value": 1275000
+        },
+        {
+          "id": "ch",
+          "name": "Chandigarh",
+          "value": 1270000
+        },
+        {
+          "id": "sk",
+          "name": "Sikkim",
+          "value": 709000
         },
         {
           "id": "dd",
           "name": "Daman & Diu",
-          "value": 243247
+          "value": 660000
+        },
+        {
+          "id": "an",
+          "name": "Andaman & Nicobar",
+          "value": 406000
         },
         {
           "id": "ld",
           "name": "Lakshadweep",
-          "value": 64473
+          "value": 70000
         }
       ],
-      "source": "Census of India 2011"
+      "source": "NPC Population Projections 2026"
     },
     {
       "id": "density",

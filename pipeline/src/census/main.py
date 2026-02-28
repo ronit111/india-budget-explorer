@@ -25,6 +25,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent))
 from src.census.sources.world_bank import fetch_multiple
 from src.census.sources.curated import (
     CENSUS_2011_STATES,
+    NPC_2026_PROJECTIONS,
     NFHS5_STATE_HEALTH,
     SRS_STATE_IMR,
 )
@@ -65,18 +66,19 @@ def run_census_pipeline():
 
     logger.info(f"  World Bank: {sum(len(v) for v in wb_data.values())} total data points")
     logger.info(f"  Curated: {len(CENSUS_2011_STATES)} Census 2011 states")
+    logger.info(f"  Curated: {len(NPC_2026_PROJECTIONS)} NPC 2026 projected states")
     logger.info(f"  Curated: {len(NFHS5_STATE_HEALTH)} NFHS-5 states")
     logger.info(f"  Curated: {len(SRS_STATE_IMR)} SRS IMR states")
 
     # \u2500\u2500 Stage 2: TRANSFORM \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
     logger.info("Stage 2: TRANSFORM")
 
-    population_data = build_population(wb_data, CENSUS_2011_STATES, SURVEY_YEAR)
+    population_data = build_population(wb_data, CENSUS_2011_STATES, NPC_2026_PROJECTIONS, SURVEY_YEAR)
     demographics_data = build_demographics(wb_data, CENSUS_2011_STATES, SURVEY_YEAR)
     literacy_data = build_literacy(wb_data, CENSUS_2011_STATES, SURVEY_YEAR)
     health_data = build_health(wb_data, SRS_STATE_IMR, NFHS5_STATE_HEALTH, SURVEY_YEAR)
-    summary_data = _build_summary(wb_data, CENSUS_2011_STATES)
-    indicators_data = _build_indicators(CENSUS_2011_STATES, NFHS5_STATE_HEALTH, SRS_STATE_IMR)
+    summary_data = _build_summary(wb_data, NPC_2026_PROJECTIONS)
+    indicators_data = _build_indicators(CENSUS_2011_STATES, NPC_2026_PROJECTIONS, NFHS5_STATE_HEALTH, SRS_STATE_IMR)
     glossary_data = _build_glossary()
 
     # \u2500\u2500 Stage 3: VALIDATE \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
@@ -127,7 +129,7 @@ def run_census_pipeline():
     logger.info("=" * 60)
 
 
-def _build_summary(wb_data: dict, census_states: list[dict]) -> dict:
+def _build_summary(wb_data: dict, npc_states: list[dict]) -> dict:
     """Build summary.json for the hub page card."""
     # Get latest population from World Bank time series
     pop_ts = wb_data.get("population", [])
@@ -140,15 +142,14 @@ def _build_summary(wb_data: dict, census_states: list[dict]) -> dict:
     latest_urban = urban_ts[-1]["value"] if urban_ts else 35.87
 
     # Literacy from Census 2011 national figure (WB literacy may be sparse)
-    total_pop = sum(s["population"] for s in census_states)
-    weighted_literacy = sum(s["literacyTotal"] * s["population"] for s in census_states) / total_pop if total_pop else 74.04
+    census_pop = sum(s["population"] for s in CENSUS_2011_STATES)
+    weighted_literacy = sum(s["literacyTotal"] * s["population"] for s in CENSUS_2011_STATES) / census_pop if census_pop else 74.04
 
     # Sex ratio: national weighted average from Census 2011
-    # (sex ratio = females per 1000 males, weighted by population is approximate)
-    weighted_sex_ratio = round(sum(s["sexRatio"] * s["population"] for s in census_states) / total_pop) if total_pop else 943
+    weighted_sex_ratio = round(sum(s["sexRatio"] * s["population"] for s in CENSUS_2011_STATES) / census_pop) if census_pop else 943
 
-    # Top 5 most populous states
-    sorted_states = sorted(census_states, key=lambda s: s["population"], reverse=True)
+    # Top 5 most populous states (NPC 2026 projections)
+    sorted_states = sorted(npc_states, key=lambda s: s["population"], reverse=True)
     top5 = [{"name": s["name"], "population": s["population"]} for s in sorted_states[:5]]
 
     return {
@@ -160,26 +161,27 @@ def _build_summary(wb_data: dict, census_states: list[dict]) -> dict:
         "sexRatio": weighted_sex_ratio,
         "topPopulousStates": top5,
         "lastUpdated": date.today().isoformat(),
-        "source": "World Bank + Census of India 2011",
+        "source": "World Bank + NPC Projections 2026 + Census of India 2011",
     }
 
 
 def _build_indicators(
     census_states: list[dict],
+    npc_states: list[dict],
     nfhs_states: list[dict],
     srs_states: list[dict],
 ) -> dict:
     """Build indicators.json for the explorer page."""
     indicators = []
 
-    # Population category
+    # Population category — use NPC 2026 projected population
     indicators.append({
         "id": "population",
-        "name": "Population",
+        "name": "Population (Projected 2026)",
         "category": "population",
         "unit": "",
-        "states": [{"id": s["id"], "name": s["name"], "value": s["population"]} for s in census_states],
-        "source": "Census of India 2011",
+        "states": [{"id": s["id"], "name": s["name"], "value": s["population"]} for s in npc_states],
+        "source": "NPC Population Projections 2026",
     })
     indicators.append({
         "id": "density",

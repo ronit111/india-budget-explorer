@@ -4,6 +4,9 @@ Curated census and demographic data from authoritative Indian government sources
 Sources:
   - Census of India 2011: Primary Census Abstract
     https://censusindia.gov.in/census.website/data/census-tables
+  - NPC Population Projections 2011-2036: Technical Group on Population Projections,
+    National Commission on Population, Ministry of Health & Family Welfare (July 2020)
+    https://nhm.gov.in/New_Updates_2018/Report_Population_Projection_2019.pdf
   - NFHS-5 (2019-21): National Family Health Survey State Factsheets
     https://rchiips.org/nfhs/NFHS-5Reports/NFHS-5_INDIA_REPORT.pdf
   - SRS 2022 (Sample Registration System): Registrar General of India
@@ -13,6 +16,9 @@ Data notes:
   - Census 2011 state boundaries: AP shown as undivided (includes present-day Telangana).
     Telangana listed separately using Census 2011 district-level aggregation.
   - J&K shown as undivided (includes present-day Ladakh UT).
+  - NPC 2026 projections use current boundaries. J&K + Ladakh combined here
+    to match Census 2011 undivided J&K. DNH + DD split proportionally by
+    Census 2011 population share (merged into single UT in Jan 2020).
   - NFHS-5 uses current (2019-21) state/UT boundaries.
   - SRS data uses current state boundaries. Latest available: SRS 2022.
 
@@ -66,6 +72,57 @@ CENSUS_2011_STATES = [
     {"id": "dn", "name": "Dadra & Nagar Haveli", "population": 343709, "density": 700, "urbanPercent": 46.72, "ruralPercent": 53.28, "decadalGrowth": 55.88, "sexRatio": 774, "literacyTotal": 76.24, "literacyMale": 85.17, "literacyFemale": 64.32},
     {"id": "dd", "name": "Daman & Diu", "population": 243247, "density": 2169, "urbanPercent": 75.16, "ruralPercent": 24.84, "decadalGrowth": 53.76, "sexRatio": 618, "literacyTotal": 87.07, "literacyMale": 91.48, "literacyFemale": 79.59},
     {"id": "ld", "name": "Lakshadweep", "population": 64473, "density": 2013, "urbanPercent": 78.07, "ruralPercent": 21.93, "decadalGrowth": 6.30, "sexRatio": 946, "literacyTotal": 91.85, "literacyMale": 95.56, "literacyFemale": 87.95},
+]
+
+
+# ── NPC 2026 State Population Projections ────────────────────────────
+# Source: "Population Projections for India and States 2011-2036"
+# Technical Group on Population Projections, National Commission on Population,
+# Ministry of Health & Family Welfare, Government of India (July 2020)
+# https://nhm.gov.in/New_Updates_2018/Report_Population_Projection_2019.pdf
+#
+# Projected total population as of 1 July 2026.
+# J&K + Ladakh combined (13,927,000 + 306,000) to match undivided J&K in Census 2011.
+# DNH and DD split from merged NPC figure (1,593,000) by Census 2011 population share:
+#   DNH: 343,709/586,956 = 58.6% → 933,000; DD: 243,247/586,956 = 41.4% → 660,000
+
+NPC_2026_PROJECTIONS = [
+    {"id": "up", "name": "Uttar Pradesh", "population": 243466000},
+    {"id": "br", "name": "Bihar", "population": 132850000},
+    {"id": "mh", "name": "Maharashtra", "population": 129584000},
+    {"id": "wb", "name": "West Bengal", "population": 100631000},
+    {"id": "mp", "name": "Madhya Pradesh", "population": 89965000},
+    {"id": "rj", "name": "Rajasthan", "population": 83879000},
+    {"id": "tn", "name": "Tamil Nadu", "population": 77582000},
+    {"id": "gj", "name": "Gujarat", "population": 74343000},
+    {"id": "ka", "name": "Karnataka", "population": 69074000},
+    {"id": "ap", "name": "Andhra Pradesh", "population": 53740000},
+    {"id": "od", "name": "Odisha", "population": 47221000},
+    {"id": "jh", "name": "Jharkhand", "population": 41108000},
+    {"id": "tg", "name": "Telangana", "population": 38665000},
+    {"id": "as", "name": "Assam", "population": 36815000},
+    {"id": "kl", "name": "Kerala", "population": 36239000},
+    {"id": "hr", "name": "Haryana", "population": 31409000},
+    {"id": "pb", "name": "Punjab", "population": 31370000},
+    {"id": "ct", "name": "Chhattisgarh", "population": 31311000},
+    {"id": "dl", "name": "Delhi", "population": 22674000},
+    {"id": "jk", "name": "Jammu & Kashmir", "population": 14233000},
+    {"id": "uk", "name": "Uttarakhand", "population": 12028000},
+    {"id": "hp", "name": "Himachal Pradesh", "population": 7588000},
+    {"id": "tr", "name": "Tripura", "population": 4268000},
+    {"id": "ml", "name": "Meghalaya", "population": 3447000},
+    {"id": "mn", "name": "Manipur", "population": 3318000},
+    {"id": "nl", "name": "Nagaland", "population": 2299000},
+    {"id": "ar", "name": "Arunachal Pradesh", "population": 1608000},
+    {"id": "py", "name": "Puducherry", "population": 1771000},
+    {"id": "ga", "name": "Goa", "population": 1601000},
+    {"id": "dn", "name": "Dadra & Nagar Haveli", "population": 933000},
+    {"id": "mz", "name": "Mizoram", "population": 1275000},
+    {"id": "ch", "name": "Chandigarh", "population": 1270000},
+    {"id": "sk", "name": "Sikkim", "population": 709000},
+    {"id": "dd", "name": "Daman & Diu", "population": 660000},
+    {"id": "an", "name": "Andaman & Nicobar", "population": 406000},
+    {"id": "ld", "name": "Lakshadweep", "population": 70000},
 ]
 
 

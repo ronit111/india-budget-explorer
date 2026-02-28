@@ -8,25 +8,25 @@
   "topPopulousStates": [
     {
       "name": "Uttar Pradesh",
-      "population": 199812341
-    },
-    {
-      "name": "Maharashtra",
-      "population": 112374333
+      "population": 243466000
     },
     {
       "name": "Bihar",
-      "population": 104099452
+      "population": 132850000
+    },
+    {
+      "name": "Maharashtra",
+      "population": 129584000
     },
     {
       "name": "West Bengal",
-      "population": 91276115
+      "population": 100631000
     },
     {
       "name": "Madhya Pradesh",
-      "population": 72626809
+      "population": 89965000
     }
   ],
   "lastUpdated": "2026-02-28",
-  "source": "World Bank + Census of India 2011"
+  "source": "World Bank + NPC Projections 2026 + Census of India 2011"
 }
