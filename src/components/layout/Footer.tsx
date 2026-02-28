@@ -5,7 +5,8 @@ export function Footer() {
   const isBudget = location.pathname.startsWith('/budget');
   const isEconomy = location.pathname.startsWith('/economy');
   const isRBI = location.pathname.startsWith('/rbi');
-  const isDataDomain = isBudget || isEconomy || isRBI;
+  const isStates = location.pathname.startsWith('/states');
+  const isDataDomain = isBudget || isEconomy || isRBI || isStates;
 
   return (
     <footer className="relative py-8 pb-24 md:pb-8" style={{ background: 'var(--bg-surface)' }}>
@@ -103,6 +104,30 @@ export function Footer() {
             </a>
             {' '}&middot; Not affiliated with RBI or GoI
           </p>
+        ) : isStates ? (
+          <p className="text-caption text-center md:text-left">
+            Data from{' '}
+            <a
+              href="https://www.rbi.org.in/Scripts/AnnualPublications.aspx?head=Handbook%20of%20Statistics%20on%20Indian%20States"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="link-hover"
+              style={{ color: 'var(--text-muted)' }}
+            >
+              RBI Handbook
+            </a>
+            {' '}&middot;{' '}
+            <a
+              href="https://fincomindia.nic.in/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="link-hover"
+              style={{ color: 'var(--text-muted)' }}
+            >
+              Finance Commission
+            </a>
+            {' '}&middot; Not affiliated with RBI or GoI
+          </p>
         ) : (
           <p className="text-caption text-center md:text-left">
             Open-source civic tech. Real government data, made accessible.
@@ -115,6 +140,8 @@ export function Footer() {
             'Economic Survey 2025-26'
           ) : isRBI ? (
             'RBI Data 2025-26'
+          ) : isStates ? (
+            'State Finances 2022-23'
           ) : (
             <a
               href="https://github.com/RonitChidara/indian-data-project"

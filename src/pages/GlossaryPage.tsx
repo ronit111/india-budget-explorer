@@ -40,6 +40,17 @@ const DOMAIN_CONFIG = {
     seoTitle: 'Glossary — RBI Data — Indian Data Project',
     seoDescription: 'Plain-language definitions of RBI terms: repo rate, CRR, SLR, MPC, inflation targeting, forex reserves, and more.',
   },
+  states: {
+    accent: 'var(--emerald)',
+    accentDim: 'rgba(74,222,128,0.12)',
+    label: 'State Finances',
+    title: 'State Finances Glossary',
+    description: 'State-level economic terms explained simply. What GSDP, devolution, and fiscal deficit mean for your state.',
+    ogImage: '/og-states.png',
+    basePath: '/states/glossary',
+    seoTitle: 'Glossary — State Finances — Indian Data Project',
+    seoDescription: 'Plain-language definitions of state finance terms: GSDP, per capita income, devolution, FRBM Act, fiscal deficit, and more.',
+  },
 } as const;
 
 type Domain = keyof typeof DOMAIN_CONFIG;

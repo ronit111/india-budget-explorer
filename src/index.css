@@ -25,6 +25,10 @@
   --gold-dim:      rgba(255, 200, 87, 0.15);
   --cyan:          #4AEADC;
   --cyan-dim:      rgba(74, 234, 220, 0.12);
+  --emerald:       #4ADE80;
+  --emerald-dim:   rgba(74, 222, 128, 0.12);
+  --violet:        #C084FC;
+  --violet-dim:    rgba(192, 132, 252, 0.12);
 
   /* Semantic */
   --positive: #34d399;
@@ -201,6 +205,20 @@
 
   .gradient-text-gold {
     background: linear-gradient(135deg, var(--gold), #FFE08A);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .gradient-text-emerald {
+    background: linear-gradient(135deg, var(--emerald), #86EFAC);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .gradient-text-violet {
+    background: linear-gradient(135deg, var(--violet), #DDB4FE);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;

@@ -1,5 +1,50 @@
 # Changelog
 
+## [0.7.0] - 2026-02-28
+
+### Phase 4A: State Finances Domain
+
+**State Finances Scrollytelling** (`/states`)
+- Five-section narrative: GSDP landscape (top 20 states), growth leaders (constant prices), revenue self-sufficiency (own tax vs central transfers), fiscal health (debt-to-GSDP with FRBM 3% reference line), per capita GSDP
+- All data sourced from RBI Handbook of Statistics on Indian States (FY 2022-23) — no mock data
+- Emerald (#4ADE80) accent color for the states domain
+- Mini bar chart on hub domain card showing top 5 states by GSDP
+
+**State Finances Data Pipeline** (Python)
+- Curated extraction from RBI Handbook covering 31 states/UTs (5 small UTs lack complete accounts)
+- 4 transform modules: GSDP, revenue composition, fiscal health, cross-sectional indicators
+- Pydantic validation schemas for all state data shapes
+- 6 verified JSON outputs in `public/data/states/2025-26/`
+
+**State Finances Sub-Pages**
+- `/states/explore`: indicator explorer with 4 categories (GSDP, Revenue, Fiscal, Per Capita), `HorizontalBarChart` per indicator
+- `/states/methodology`: data sources (RBI Handbook, State Finances report, Finance Commission), indicator definitions, data freshness (FY 2022-23 vintage), limitations
+- `/states/glossary`: 12 state finance terms (GSDP, per capita income, own tax revenue, devolution, FRBM Act, etc.)
+
+**Hub Integration**
+- States domain card (04 — DATA STORY) with mini bar chart, stat pills (Top GSDP State, Growth Range, # States)
+- "Coming Soon" reduced to Census & Demographics only
+
+**SEO**
+- 4 states routes added to Puppeteer prerender (18 routes total)
+- Sitemap expanded with 4 page URLs + 5 data file URLs
+- JSON-LD Dataset schema for State Finances data (Google Dataset Search)
+- JSON-LD BreadcrumbList updated with 4 states entries
+- `llms.txt` expanded with State Finances domain description and key data points
+- Noscript fallback updated with states content and data download links
+- Per-domain OG image: `og-states.png` (emerald gradient)
+
+**Navigation**
+- Header: `isStatesSection` detection, "State Finances" title, 4 sub-nav tabs (Story, Explore, Methodology, Glossary)
+- Mobile bottom nav: states icon and tab array
+- Footer: states-specific attribution (RBI Handbook, Finance Commission)
+- Search (Cmd+K): 12 states glossary terms indexed with purple TERM badges + 4 page entries
+
+**Bug Fixes**
+- Fixed `HorizontalBarChart` double-display bug across all states sections — `formatValue` and `unit` prop both contained unit info, causing "₹20,843 Rs 00 Cr". Set `unit=""` in all sections where `formatValue` returns the complete display string.
+
+---
+
 ## [0.6.0] - 2026-02-28
 
 ### Phase 3.5: UX & Discoverability

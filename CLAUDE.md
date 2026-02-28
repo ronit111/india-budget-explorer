@@ -10,7 +10,8 @@ Open data platform for Indian citizens. V1 of the broader **India Truth Engine**
 - **`/budget` (Budget Domain)**: Union Budget 2025-26 scrollytelling. Sub-routes: `/budget/explore`, `/budget/calculator`, `/budget/methodology`, `/budget/glossary`.
 - **`/economy` (Economy Domain)**: Economic Survey 2025-26 scrollytelling. Sub-routes: `/economy/explore`, `/economy/methodology`, `/economy/glossary`.
 - **`/rbi` (RBI Domain)**: RBI monetary policy and financial data. Sub-routes: `/rbi/explore`, `/rbi/methodology`, `/rbi/glossary`.
-- **Future domains** each get their own top-level route (e.g., `/states`, `/census`) with self-contained sub-pages.
+- **`/states` (State Finances Domain)**: State-level GSDP, revenue, fiscal health. Sub-routes: `/states/explore`, `/states/methodology`, `/states/glossary`.
+- **Future domains** each get their own top-level route (e.g., `/census`) with self-contained sub-pages.
 - Header is **context-aware**: hub title + search on `/`, domain title + sub-nav tabs inside a domain.
 - **Back links** (header chevron + footer link) point to `/#stories`. New domains should follow this convention.
 - Old routes (`/explore`, `/calculator`, `/methodology`) redirect to `/budget/*` equivalents.
@@ -168,3 +169,33 @@ These are recurring polish tasks that should be checked after every domain build
 - **AnimatePresence + keyed SVGs**: `mode="wait"` causes double-render. Avoid for chart containers.
 - **Sticky headers**: `overflow-x-auto` breaks `position: sticky`. Use `overflow-x: clip`.
 - **Mobile nav**: Fixed bottom h-14. Content needs `pb-16 md:pb-0`.
+- **HorizontalBarChart formatting**: `formatValue` and `unit` are concatenated in bar labels. If `formatValue` returns a complete string (e.g., `₹35.28L Cr`), set `unit=""` to avoid double-display. Tooltip also uses `unit`, so keep it meaningful or empty.
+
+## Future Phases — Planned Audits
+
+### Creative Visualization Audit
+After all data domains are built, conduct a full audit of every visualization across the portal. The goal: ensure the portal doesn't skew toward a monotonous wall of charts. For each section, ask: "Is a standard bar/line chart the best way to tell this story, or would a waffle, cartogram, unit chart, radial, slope chart, or novel approach create more engagement?"
+
+Audit scope:
+- [ ] Budget: treemap, sankey, waffle already creative. Check if any sections could benefit from alternatives.
+- [ ] Economy: currently line/area charts. GDP composition could use a waffle or stacked waterfall.
+- [ ] RBI: monetary policy timeline could be a connected dot plot or decision tree instead of a line chart.
+- [ ] States: horizontal bars are functional but repetitive across 5 sections. Consider choropleth maps, slope charts (growth leaders vs. laggards), butterfly charts (revenue: own vs. central), or scatter plots (per capita vs. growth).
+- [ ] Census (when built): population cartogram, literacy gender gap butterfly chart, urbanization shift sankey.
+
+This audit should happen as a dedicated phase, not piecemeal. Document findings in a `VISUALIZATION_AUDIT.md` and implement changes domain by domain.
+
+### Cross-Domain Linking Audit
+Evaluate opportunities to weave connections between domains so users can naturally navigate related data. Examples:
+- Budget state allocation → link to that state's GSDP in State Finances
+- Economic Survey GDP figures → link to RBI monetary policy context
+- State Finances revenue → link to Budget devolution/transfers
+- Census state population → link to State Finances per capita
+
+Implementation approaches to evaluate:
+1. **Inline contextual links**: "Goa receives ₹X in budget allocation → [See Goa's fiscal health →](/states)"
+2. **Related data cards**: At the bottom of each section, show 1-2 related data points from other domains
+3. **Shared state selector**: If viewing Maharashtra data in one domain, offer quick navigation to Maharashtra in another domain
+4. **Hub as the crossroads**: The hub page could surface cross-domain insights (e.g., "States that get the most budget allocation vs. their own revenue generation")
+
+This is architecturally complex (requires cross-domain data awareness) and should be a separate phase. Use Codex to audit the codebase for natural connection points.

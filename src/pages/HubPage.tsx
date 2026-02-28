@@ -3,9 +3,9 @@ import { Link, useLocation } from 'react-router-dom';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useScrollTrigger } from '../hooks/useScrollTrigger.ts';
 import { SEOHead } from '../components/seo/SEOHead.tsx';
-import { loadSummary, loadEconomySummary, loadRBISummary } from '../lib/dataLoader.ts';
+import { loadSummary, loadEconomySummary, loadRBISummary, loadStatesSummary } from '../lib/dataLoader.ts';
 import { formatLakhCrore, formatIndianNumber } from '../lib/format.ts';
-import type { BudgetSummary, EconomySummary, RBISummary } from '../lib/data/schema.ts';
+import type { BudgetSummary, EconomySummary, RBISummary, StatesSummary } from '../lib/data/schema.ts';
 
 const EASE_OUT_EXPO: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
@@ -566,11 +566,160 @@ function RBIDomainCard({ summary }: { summary: RBISummary | null }) {
   );
 }
 
+function StatesDomainCard({ summary }: { summary: StatesSummary | null }) {
+  const [ref, isVisible] = useScrollTrigger({ threshold: 0.1 });
+
+  // Mini bar chart: top 5 states by GSDP
+  const topStates = useMemo(() => {
+    if (!summary) return [];
+    return [
+      { name: 'MH', value: 35.28 },
+      { name: 'TN', value: 24.81 },
+      { name: 'KA', value: 22.26 },
+      { name: 'GJ', value: 20.84 },
+      { name: 'UP', value: 21.73 },
+    ];
+  }, [summary]);
+
+  const maxVal = Math.max(...topStates.map((d) => d.value), 1);
+
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 32 }}
+      animate={isVisible ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.8, ease: EASE_OUT_EXPO, delay: 0.1 }}
+      className="mt-8"
+    >
+      <Link
+        to="/states"
+        className="group block relative rounded-2xl p-px no-underline overflow-hidden"
+        style={{ transition: 'transform 0.3s ease' }}
+        onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-4px)'; }}
+        onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0px)'; }}
+      >
+        {/* Gradient border — emerald for states */}
+        <div
+          className="absolute inset-0 rounded-2xl opacity-20 group-hover:opacity-50"
+          style={{
+            background: 'linear-gradient(135deg, var(--emerald), transparent 40%, var(--cyan) 80%, transparent)',
+            transition: 'opacity 0.4s ease',
+          }}
+        />
+        <div
+          className="absolute -inset-2 rounded-2xl opacity-0 group-hover:opacity-100 blur-2xl pointer-events-none"
+          style={{
+            background: 'linear-gradient(135deg, rgba(74,222,128,0.06), rgba(74,234,220,0.04))',
+            transition: 'opacity 0.4s ease',
+          }}
+        />
+
+        <div
+          className="relative rounded-2xl overflow-hidden"
+          style={{ background: 'var(--bg-surface)' }}
+        >
+          <div className="grid md:grid-cols-[1.4fr_1fr]">
+            <div className="relative p-8 md:p-12 flex flex-col justify-between min-h-[320px]">
+              <div
+                className="absolute top-0 right-0 w-3/4 h-full pointer-events-none opacity-[0.03]"
+                style={{
+                  background: 'radial-gradient(ellipse at 70% 50%, var(--emerald), transparent 70%)',
+                }}
+              />
+
+              <div className="relative z-10">
+                <span className="text-section-num tracking-[0.15em] uppercase mb-4 block">
+                  04 — Data Story
+                </span>
+                <h2
+                  className="text-3xl md:text-4xl font-bold mb-3"
+                  style={{ color: 'var(--text-primary)', lineHeight: 1.15 }}
+                >
+                  State Finances
+                </h2>
+                <p className="text-annotation mb-6 max-w-md">
+                  India's federal mosaic. GSDP, growth rates, revenue self-sufficiency, fiscal health, and per capita income across 28 states and 8 union territories.
+                </p>
+              </div>
+
+              {/* Mini top-5 bar chart */}
+              <div className="relative z-10">
+                {topStates.length > 0 && (
+                  <div className="mb-6 max-w-xs">
+                    <div className="flex items-end gap-1.5 h-8">
+                      {topStates.map((d, i) => (
+                        <motion.div
+                          key={d.name}
+                          className="flex-1 rounded-t"
+                          style={{ background: 'var(--emerald)' }}
+                          initial={{ height: 0 }}
+                          animate={isVisible ? { height: `${Math.max(10, (d.value / maxVal) * 100)}%` } : {}}
+                          transition={{ duration: 0.6, ease: EASE_OUT_EXPO, delay: 0.4 + i * 0.06 }}
+                        />
+                      ))}
+                    </div>
+                    <div className="flex gap-1.5 mt-1">
+                      {topStates.map((d) => (
+                        <span key={d.name} className="flex-1 text-center text-[9px] font-mono" style={{ color: 'var(--text-muted)' }}>
+                          {d.name}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                <div
+                  className="inline-flex items-center gap-2 text-sm font-medium"
+                  style={{ color: 'var(--emerald)' }}
+                >
+                  <span>Explore state data</span>
+                  <span
+                    className="group-hover:translate-x-1.5 inline-block"
+                    style={{ transition: 'transform 0.2s ease' }}
+                  >
+                    &rarr;
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div
+              className="p-8 md:p-12 flex flex-col justify-center gap-8 border-t md:border-t-0 md:border-l"
+              style={{ borderColor: 'rgba(255,255,255,0.06)' }}
+            >
+              <StatPill
+                label="Top State"
+                value={summary?.topGsdpState ?? '...'}
+                color="var(--emerald)"
+                delay={0.3}
+                isVisible={isVisible}
+              />
+              <StatPill
+                label="Growth Range"
+                value={summary?.growthRange ?? '...'}
+                color="var(--cyan)"
+                delay={0.4}
+                isVisible={isVisible}
+              />
+              <StatPill
+                label="States & UTs"
+                value={summary ? `${summary.stateCount}` : '...'}
+                color="var(--emerald)"
+                delay={0.5}
+                isVisible={isVisible}
+              />
+            </div>
+          </div>
+        </div>
+      </Link>
+    </motion.div>
+  );
+}
+
 function ComingSoon() {
   const [ref, isVisible] = useScrollTrigger({ threshold: 0.15 });
 
   const domains = [
-    'State Finances',
     'Census & Demographics',
   ];
 
@@ -613,11 +762,13 @@ export default function HubPage() {
   const [summary, setSummary] = useState<BudgetSummary | null>(null);
   const [economySummary, setEconomySummary] = useState<EconomySummary | null>(null);
   const [rbiSummary, setRbiSummary] = useState<RBISummary | null>(null);
+  const [statesSummary, setStatesSummary] = useState<StatesSummary | null>(null);
 
   useEffect(() => {
     loadSummary('2025-26').then(setSummary).catch(() => {});
     loadEconomySummary('2025-26').then(setEconomySummary).catch(() => {});
     loadRBISummary('2025-26').then(setRbiSummary).catch(() => {});
+    loadStatesSummary('2025-26').then(setStatesSummary).catch(() => {});
   }, []);
 
   // Scroll to hash anchor (e.g. /#stories) after mount
@@ -662,6 +813,8 @@ export default function HubPage() {
         <EconomyDomainCard summary={economySummary} />
 
         <RBIDomainCard summary={rbiSummary} />
+
+        <StatesDomainCard summary={statesSummary} />
 
         <ComingSoon />
       </section>

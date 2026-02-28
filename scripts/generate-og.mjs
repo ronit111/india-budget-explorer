@@ -45,6 +45,16 @@ const VARIANTS = [
     cornerBR: 'rgba(255,107,53,0.2)',
     glowColor: 'rgba(255,200,87,0.08)',
   },
+  {
+    filename: 'og-states.png',
+    title: 'State Finances',
+    tagline: 'GSDP, revenue, fiscal health across 28 states and 8 union territories',
+    accentFrom: '#4ADE80',
+    accentTo: '#86EFAC',
+    cornerTL: 'rgba(74,222,128,0.25)',
+    cornerBR: 'rgba(134,239,172,0.2)',
+    glowColor: 'rgba(74,222,128,0.08)',
+  },
 ];
 
 function buildHTML(variant) {

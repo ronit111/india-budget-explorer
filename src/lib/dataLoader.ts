@@ -22,6 +22,17 @@ import type {
   CreditData,
   ForexData,
   RBIIndicatorsData,
+  StatesSummary,
+  GSDPData,
+  RevenueData,
+  FiscalHealthData,
+  StatesIndicatorsData,
+  CensusSummary,
+  PopulationData,
+  LiteracyData,
+  DemographicsData,
+  HealthData,
+  CensusIndicatorsData,
   GlossaryData,
 } from './data/schema.ts';
 
@@ -105,6 +116,41 @@ export const loadForex = (year: string) =>
 
 export const loadRBIIndicators = (year: string) =>
   fetchJson<RBIIndicatorsData>(`/data/rbi/${year}/indicators.json`);
+
+// ─── State Finances Domain ──────────────────────────────────────
+export const loadStatesSummary = (year: string) =>
+  fetchJson<StatesSummary>(`/data/states/${year}/summary.json`);
+
+export const loadGSDP = (year: string) =>
+  fetchJson<GSDPData>(`/data/states/${year}/gsdp.json`);
+
+export const loadStateRevenue = (year: string) =>
+  fetchJson<RevenueData>(`/data/states/${year}/revenue.json`);
+
+export const loadFiscalHealth = (year: string) =>
+  fetchJson<FiscalHealthData>(`/data/states/${year}/fiscal-health.json`);
+
+export const loadStatesIndicators = (year: string) =>
+  fetchJson<StatesIndicatorsData>(`/data/states/${year}/indicators.json`);
+
+// ─── Census & Demographics Domain ──────────────────────────────
+export const loadCensusSummary = (year: string) =>
+  fetchJson<CensusSummary>(`/data/census/${year}/summary.json`);
+
+export const loadPopulation = (year: string) =>
+  fetchJson<PopulationData>(`/data/census/${year}/population.json`);
+
+export const loadLiteracyData = (year: string) =>
+  fetchJson<LiteracyData>(`/data/census/${year}/literacy.json`);
+
+export const loadDemographics = (year: string) =>
+  fetchJson<DemographicsData>(`/data/census/${year}/demographics.json`);
+
+export const loadHealthData = (year: string) =>
+  fetchJson<HealthData>(`/data/census/${year}/health.json`);
+
+export const loadCensusIndicators = (year: string) =>
+  fetchJson<CensusIndicatorsData>(`/data/census/${year}/indicators.json`);
 
 // ─── Glossary (shared across domains) ──────────────────────────
 export const loadGlossary = (domain: string, year: string) =>

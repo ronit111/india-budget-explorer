@@ -4,7 +4,7 @@
 
 ## What this site does
 
-Indian Data Project is a hub for Indian government data visualization. Each data domain (budget, economic survey, RBI data, state finances) gets its own visual story with explorable breakdowns. Three domains are live: Union Budget 2025-26, Economic Survey 2025-26, and RBI Data.
+Indian Data Project is a hub for Indian government data visualization. Each data domain (budget, economic survey, RBI data, state finances) gets its own visual story with explorable breakdowns. Four domains are live: Union Budget 2025-26, Economic Survey 2025-26, RBI Data, and State Finances.
 
 ## Pages
 
@@ -29,6 +29,12 @@ Indian Data Project is a hub for Indian government data visualization. Each data
 - /rbi/explore — Browseable indicator explorer with categories: monetary, liquidity, credit, external. Select any indicator to see full time series.
 - /rbi/methodology — Data sources (RBI DBIE, World Bank, MPC press releases), indicator definitions, WB codes, data freshness, limitations
 - /rbi/glossary — Plain-language definitions of RBI terms: repo rate, CRR, SLR, MPC, monetary policy stance, inflation targeting, M3 money supply, forex reserves, basis points.
+
+### State Finances Domain
+- /states — Scrollytelling narrative: state GSDP landscape (horizontal bar chart), growth leaders, revenue self-sufficiency (stacked bars showing own tax vs central transfers), fiscal health (debt-to-GSDP with FRBM 3% reference line), per capita GSDP
+- /states/explore — Browseable indicator explorer with categories: GSDP, Revenue, Fiscal, Per Capita. Select any indicator to compare across all 31 states/UTs with data.
+- /states/methodology — Data sources (RBI Handbook, State Finances report, Finance Commission), indicator definitions, data freshness (FY 2022-23 vintage), limitations
+- /states/glossary — Plain-language definitions of state finance terms: GSDP, per capita income, own tax revenue, central transfers, devolution, FRBM Act, fiscal deficit, debt-to-GSDP, Finance Commission, self-sufficiency ratio.
 
 ## Key data points
 
@@ -56,6 +62,14 @@ Indian Data Project is a hub for Indian government data visualization. Each data
 - Exchange rate: ~83.67 INR per USD (FY2024-25 annual average)
 - 30 repo rate decisions tracked from 2014 onward
 
+### State Finances (FY 2022-23)
+- Top GSDP: Maharashtra Rs 35.28 lakh crore
+- National combined state GDP: Rs 280.73 lakh crore
+- Growth range: 2.9% to 25.4% (constant prices)
+- 31 states/UTs with data (5 small UTs have incomplete accounts)
+- Average per capita GSDP: Rs 1,71,687
+- Data source: RBI Handbook of Statistics on Indian States
+
 ## Data sources
 
 - Open Budgets India (openbudgetsindia.org) — structured budget data
@@ -65,6 +79,9 @@ Indian Data Project is a hub for Indian government data visualization. Each data
 - RBI DBIE (data.rbi.org.in) — Database on Indian Economy
 - RBI Monetary Policy Statements — repo rate decisions, stance changes
 - World Bank Open Data API — monetary, liquidity, credit, and external indicators
+- RBI Handbook of Statistics on Indian States — state-level GSDP, per capita, growth rates
+- RBI State Finances: A Study of Budgets — revenue composition, fiscal deficit, debt
+- Finance Commission of India — tax devolution formulas, grants
 
 ## Downloadable datasets (JSON)
 
@@ -95,6 +112,13 @@ Indian Data Project is a hub for Indian government data visualization. Each data
 - /data/rbi/2025-26/credit.json — Domestic and private credit, lending/deposit rates
 - /data/rbi/2025-26/forex.json — Forex reserves and INR/USD exchange rate
 - /data/rbi/2025-26/indicators.json — All RBI indicators across 4 categories
+
+### State Finances
+- /data/states/2025-26/summary.json — State finances headline numbers
+- /data/states/2025-26/gsdp.json — State-wise GSDP, growth rate, per capita
+- /data/states/2025-26/revenue.json — Own tax revenue, central transfers, self-sufficiency ratio
+- /data/states/2025-26/fiscal-health.json — Fiscal deficit and debt-to-GSDP by state
+- /data/states/2025-26/indicators.json — All state indicators across 4 categories
 
 ## Tax calculator details
 

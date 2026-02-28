@@ -16,6 +16,10 @@ import RBIMethodologyPage from './pages/RBIMethodologyPage.tsx';
 import BudgetGlossaryPage from './pages/BudgetGlossaryPage.tsx';
 import EconomyGlossaryPage from './pages/EconomyGlossaryPage.tsx';
 import RBIGlossaryPage from './pages/RBIGlossaryPage.tsx';
+import StatesPage from './pages/StatesPage.tsx';
+import StatesExplorePage from './pages/StatesExplorePage.tsx';
+import StatesMethodologyPage from './pages/StatesMethodologyPage.tsx';
+import StatesGlossaryPage from './pages/StatesGlossaryPage.tsx';
 
 const PAGE_ROUTES = [
   { path: '/', element: <HubPage /> },
@@ -32,6 +36,10 @@ const PAGE_ROUTES = [
   { path: '/rbi/explore', element: <RBIExplorePage /> },
   { path: '/rbi/methodology', element: <RBIMethodologyPage /> },
   { path: '/rbi/glossary', element: <RBIGlossaryPage /> },
+  { path: '/states', element: <StatesPage /> },
+  { path: '/states/explore', element: <StatesExplorePage /> },
+  { path: '/states/methodology', element: <StatesMethodologyPage /> },
+  { path: '/states/glossary', element: <StatesGlossaryPage /> },
 ] as const;
 
 // Old routes redirect to new /budget/* paths

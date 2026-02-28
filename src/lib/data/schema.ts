@@ -371,6 +371,165 @@ export interface RBIIndicatorsData {
   indicators: RBIIndicator[];
 }
 
+// ─── State Finances Domain ──────────────────────────────────────
+
+export interface StateGSDPEntry {
+  id: string;
+  name: string;
+  gsdp: number;              // Rs crore, current prices
+  gsdpConstant: number | null; // Rs crore, constant prices (2011-12 base)
+  growthRate: number;         // % annual growth
+  perCapitaGsdp: number;      // Rs
+  population: number;         // lakhs
+}
+
+export interface GSDPData {
+  year: string;
+  baseYear: string;
+  states: StateGSDPEntry[];
+  source: string;
+}
+
+export interface StateRevenueEntry {
+  id: string;
+  name: string;
+  ownTaxRevenue: number;        // Rs crore
+  centralTransfers: number;     // Rs crore
+  totalRevenue: number;         // Rs crore
+  selfSufficiencyRatio: number; // own/total as %
+}
+
+export interface RevenueData {
+  year: string;
+  states: StateRevenueEntry[];
+  source: string;
+}
+
+export interface StateFiscalEntry {
+  id: string;
+  name: string;
+  fiscalDeficitPctGsdp: number;
+  debtToGsdp: number;
+}
+
+export interface FiscalHealthData {
+  year: string;
+  states: StateFiscalEntry[];
+  source: string;
+}
+
+export interface StatesSummary {
+  year: string;
+  topGsdpState: string;
+  topGsdpValue: number;       // Rs lakh crore
+  nationalGsdpTotal: number;  // Rs lakh crore
+  growthRange: string;        // e.g. "3.2% – 14.1%"
+  averagePerCapita: number;   // Rs
+  stateCount: number;
+  lastUpdated: string;
+  source: string;
+}
+
+export interface StateValue {
+  id: string;
+  name: string;
+  value: number;
+}
+
+export interface StatesIndicator {
+  id: string;
+  name: string;
+  category: string;           // 'gsdp' | 'revenue' | 'fiscal' | 'percapita'
+  unit: string;
+  states: StateValue[];
+  source: string;
+}
+
+export interface StatesIndicatorsData {
+  year: string;
+  indicators: StatesIndicator[];
+}
+
+// ─── Census & Demographics Domain ──────────────────────────────
+
+export interface CensusSummary {
+  year: string;
+  totalPopulation: number;
+  literacyRate: number;
+  urbanizationRate: number;
+  sexRatio: number;            // females per 1000 males
+  populationGrowthRate: number;
+  lastUpdated: string;
+  source: string;
+}
+
+export interface StatePopulation {
+  id: string;
+  name: string;
+  population: number;
+  density: number;             // per sq km
+  urbanPercent: number;
+  ruralPercent: number;
+  decadalGrowth: number;       // %
+}
+
+export interface PopulationData {
+  year: string;
+  states: StatePopulation[];
+  source: string;
+}
+
+export interface StateLiteracy {
+  id: string;
+  name: string;
+  overallRate: number;
+  maleRate: number;
+  femaleRate: number;
+  genderGap: number;
+}
+
+export interface LiteracyData {
+  year: string;
+  states: StateLiteracy[];
+  source: string;
+}
+
+export interface StateDemographics {
+  id: string;
+  name: string;
+  sexRatio: number;
+  urbanizationRate: number;
+  growthRate: number;
+}
+
+export interface DemographicsData {
+  year: string;
+  states: StateDemographics[];
+  source: string;
+}
+
+export interface HealthData {
+  year: string;
+  imrNational: TimeSeriesPoint[];
+  lifeExpectancy: TimeSeriesPoint[];
+  fertilityRate: TimeSeriesPoint[];
+  source: string;
+}
+
+export interface CensusIndicator {
+  id: string;
+  name: string;
+  category: string;
+  unit: string;
+  states: StateValue[];
+  source: string;
+}
+
+export interface CensusIndicatorsData {
+  year: string;
+  indicators: CensusIndicator[];
+}
+
 // ─── Glossary (shared across domains) ──────────────────────────
 
 export interface GlossaryTerm {
@@ -383,7 +542,7 @@ export interface GlossaryTerm {
 }
 
 export interface GlossaryData {
-  domain: 'budget' | 'economy' | 'rbi';
+  domain: 'budget' | 'economy' | 'rbi' | 'states' | 'census';
   year: string;
   terms: GlossaryTerm[];
 }

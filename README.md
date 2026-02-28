@@ -1,6 +1,6 @@
 # Indian Data Project
 
-Open Indian government data made accessible, visual, and shareable. Three data domains live: Union Budget 2025-26, Economic Survey 2025-26, and RBI Data. Each gets its own visual story with explorable breakdowns.
+Open Indian government data made accessible, visual, and shareable. Four data domains live: Union Budget 2025-26, Economic Survey 2025-26, RBI Data, and State Finances. Each gets its own visual story with explorable breakdowns.
 
 **Live:** [indiandataproject.org](https://indiandataproject.org)
 
@@ -28,6 +28,10 @@ Indian Data Project turns dense government data into interactive visual experien
 | **Budget Glossary** (`/budget/glossary`) | 13 budget terms explained in plain language — fiscal deficit, revenue deficit, cess, devolution, crore/lakh, etc. |
 | **Economy Glossary** (`/economy/glossary`) | 15 economic terms — GDP, inflation, CPI, trade deficit, FDI, sectoral composition, advance estimates, etc. |
 | **RBI Glossary** (`/rbi/glossary`) | 12 monetary policy terms — repo rate, CRR, SLR, MPC, inflation targeting, forex reserves, basis points, etc. |
+| **States Story** (`/states`) | Scrollytelling narrative — GSDP landscape, growth leaders, revenue self-sufficiency (own tax vs central transfers), fiscal health (debt-to-GSDP with FRBM 3% line), per capita GSDP |
+| **States Explorer** (`/states/explore`) | Indicator explorer with 4 categories (GSDP, Revenue, Fiscal, Per Capita), `HorizontalBarChart` per indicator |
+| **States Methodology** (`/states/methodology`) | Data sources (RBI Handbook, Finance Commission), indicator definitions, data freshness, limitations |
+| **States Glossary** (`/states/glossary`) | 12 state finance terms — GSDP, per capita income, own tax revenue, central transfers, devolution, FRBM Act, debt-to-GSDP, etc. |
 
 ---
 
@@ -73,7 +77,7 @@ npm run preview
 | Command | What it does |
 |---------|-------------|
 | `npm run dev` | Start Vite dev server with HMR |
-| `npm run build` | TypeScript check + Vite build + Puppeteer prerender (all 14 routes) |
+| `npm run build` | TypeScript check + Vite build + Puppeteer prerender (all 18 routes) |
 | `npm run build:no-prerender` | Build without prerendering (used by Vercel) |
 | `npm run lint` | ESLint check |
 | `npm run preview` | Preview production build locally |
@@ -96,15 +100,20 @@ src/
 │   ├── RBIPage.tsx          # RBI scrollytelling (monetary policy, forex, credit)
 │   ├── RBIExplorePage.tsx   # RBI indicator explorer with category filters
 │   ├── RBIMethodologyPage.tsx # RBI methodology
+│   ├── StatesPage.tsx        # States scrollytelling (GSDP, revenue, fiscal health)
+│   ├── StatesExplorePage.tsx  # States indicator explorer with category filters
+│   ├── StatesMethodologyPage.tsx # States methodology
 │   ├── GlossaryPage.tsx      # Shared glossary component (parameterized by domain)
 │   ├── BudgetGlossaryPage.tsx # Budget glossary wrapper
 │   ├── EconomyGlossaryPage.tsx # Economy glossary wrapper
-│   └── RBIGlossaryPage.tsx   # RBI glossary wrapper
+│   ├── RBIGlossaryPage.tsx   # RBI glossary wrapper
+│   └── StatesGlossaryPage.tsx # States glossary wrapper
 ├── components/
 │   ├── home/               # Budget story compositions (Hero, Revenue, Expenditure, Flow, Map, CTA)
 │   ├── budget/             # Budget-specific compositions (DeficitSection, PerCapitaSection)
 │   ├── economy/            # Economy compositions (GrowthSection, InflationSection, TradeSection, etc.)
 │   ├── rbi/                # RBI compositions (HeroSection, MonetaryPolicySection, ForexSection, etc.)
+│   ├── states/             # States compositions (GSDPSection, GrowthSection, RevenueSection, FiscalHealthSection, PerCapitaSection)
 │   ├── calculator/         # Tax calculator UI (IncomeInput, DeductionsPanel, TaxBreakdown, ShareCard, SpendingAllocation)
 │   ├── explore/            # DataTable with expandable rows
 │   ├── viz/                # D3 visualizations (TreemapChart, SankeyDiagram, ChoroplethMap, WaffleChart, LineChart, AreaChart, HorizontalBarChart, StepChart, AnimatedCounter)
@@ -113,22 +122,23 @@ src/
 │   ├── seo/                # SEOHead (per-route meta tags + OG images + JSON-LD)
 │   └── i18n/               # Language provider and switcher
 ├── lib/
-│   ├── data/schema.ts      # TypeScript interfaces for all data shapes (Budget, Economy, RBI)
+│   ├── data/schema.ts      # TypeScript interfaces for all data shapes (Budget, Economy, RBI, States)
 │   ├── taxEngine.ts        # Tax computation engine (Old/New regime, deductions, slabs)
 │   ├── format.ts           # Indian number formatting (lakhs/crores)
 │   ├── dataLoader.ts       # Fetch + cache layer for JSON data (all domains)
 │   ├── stateMapping.ts     # India state ID → name mapping
 │   └── i18n.ts             # i18next configuration
-├── hooks/                  # useScrollTrigger, useIntersection, useBudgetData, useEconomyData, useRBIData, etc.
-├── store/                  # Zustand stores (budgetStore, economyStore, rbiStore, calculatorStore, uiStore)
+├── hooks/                  # useScrollTrigger, useIntersection, useBudgetData, useEconomyData, useRBIData, useStatesData, etc.
+├── store/                  # Zustand stores (budgetStore, economyStore, rbiStore, statesStore, calculatorStore, uiStore)
 └── index.css               # Design tokens, CSS layers, keyframes
 
 public/
 ├── data/budget/2025-26/    # 7 structured JSON budget datasets
 ├── data/economy/2025-26/   # 7 structured JSON economy datasets
 ├── data/rbi/2025-26/       # 6 structured JSON RBI datasets
+├── data/states/2025-26/    # 6 structured JSON state finance datasets
 ├── locales/en/             # Translation files
-├── sitemap.xml             # All routes + data endpoints (14 pages + 17 data files)
+├── sitemap.xml             # All routes + data endpoints (18 pages + 22 data files)
 ├── robots.txt              # All bots welcomed (including AI crawlers)
 └── llms.txt                # AI-readable site summary
 
@@ -137,6 +147,7 @@ pipeline/
 │   ├── main.py             # Budget pipeline (CKAN API → JSON)
 │   ├── economy/            # Economy pipeline (World Bank API → JSON)
 │   ├── rbi/                # RBI pipeline (World Bank + curated MPC data → JSON)
+│   ├── states/             # States pipeline (curated RBI Handbook data → JSON)
 │   └── publish/            # Shared JSON writer
 └── pyproject.toml          # Python dependencies
 ```
@@ -189,7 +200,20 @@ RBI data lives in `public/data/rbi/2025-26/`:
 | `indicators.json` | All RBI indicators across 4 categories (monetary, liquidity, credit, external) |
 | `glossary.json` | 12 RBI terms with plain-language explanations |
 
-Data sourced from [Open Budgets India](https://openbudgetsindia.org), [indiabudget.gov.in](https://www.indiabudget.gov.in), [Economic Survey](https://www.indiabudget.gov.in/economicsurvey/), [RBI DBIE](https://data.rbi.org.in), [RBI Monetary Policy Statements](https://www.rbi.org.in), and [World Bank Open Data API](https://data.worldbank.org) under the [Government Open Data License — India](https://data.gov.in/government-open-data-license-india).
+### States Data
+
+States data lives in `public/data/states/2025-26/`:
+
+| File | Contents |
+|------|----------|
+| `summary.json` | Headline state finance numbers (top GSDP state, national total, growth range) |
+| `gsdp.json` | 31 state entries: GSDP current/constant prices, growth rate, per capita |
+| `revenue.json` | 31 state entries: own tax revenue, central transfers, self-sufficiency ratio |
+| `fiscal-health.json` | 31 state entries: fiscal deficit %, debt-to-GSDP |
+| `indicators.json` | All state indicators across 4 categories |
+| `glossary.json` | 12 state finance terms with plain-language explanations |
+
+Data sourced from [Open Budgets India](https://openbudgetsindia.org), [indiabudget.gov.in](https://www.indiabudget.gov.in), [Economic Survey](https://www.indiabudget.gov.in/economicsurvey/), [RBI DBIE](https://data.rbi.org.in), [RBI Monetary Policy Statements](https://www.rbi.org.in), [RBI Handbook of Statistics on Indian States](https://www.rbi.org.in), and [World Bank Open Data API](https://data.worldbank.org) under the [Government Open Data License — India](https://data.gov.in/government-open-data-license-india).
 
 ---
 
@@ -208,13 +232,13 @@ See [BRAND.md](./BRAND.md) for the full visual identity guide. Key principles:
 
 The site is built for maximum discoverability:
 
-- **Prerendered HTML** for all 14 routes (Puppeteer at build time)
-- **JSON-LD** structured data: `WebApplication`, `Dataset` x3 (Budget + Economy + RBI for Google Dataset Search), `BreadcrumbList`
+- **Prerendered HTML** for all 18 routes (Puppeteer at build time)
+- **JSON-LD** structured data: `WebApplication`, `Dataset` x4 (Budget + Economy + RBI + States for Google Dataset Search), `BreadcrumbList`
 - **Per-route meta tags** via react-helmet-async (title, description, OG image, Twitter card, canonical)
-- **sitemap.xml** covering 14 pages + 17 downloadable data endpoints
+- **sitemap.xml** covering 18 pages + 22 downloadable data endpoints
 - **robots.txt** explicitly welcoming AI crawlers (GPTBot, ClaudeBot, PerplexityBot, Google-Extended)
 - **llms.txt** for AI model discoverability (budget + economy + RBI content + glossary terms)
-- **Noscript fallback** with real content across all three domains for crawlers that don't execute JS
+- **Noscript fallback** with real content across all four domains for crawlers that don't execute JS
 
 ---
 
@@ -262,8 +286,13 @@ The site is built for maximum discoverability:
 - [x] Cmd+K search indexing for glossary terms (40 terms with purple TERM badges, RBI pages added)
 - [ ] Mobile UX audit across all 3 domains (deferred to post-Phase 4 — after all data domains are built)
 
-**Phase 4: Expand Scope**
-- [ ] New data domain: State Finances (state budget allocations, GSDP, own tax revenue)
+**Phase 4A: State Finances** ✓
+- [x] State Finances domain (scrollytelling, indicator explorer, methodology, glossary)
+- [x] States data pipeline (curated RBI Handbook data — GSDP, revenue, fiscal health across 31 states/UTs)
+- [x] Hub integration with emerald domain card, mini bar chart, stat pills
+- [x] Full SEO layer (prerender, sitemap, JSON-LD Dataset, OG image, llms.txt, noscript)
+
+**Phase 4B: Census & Demographics**
 - [ ] New data domain: Census & Demographics (population, literacy, urbanization, sex ratio)
 
 **Phase 5: Historical Data (all domains)**
@@ -314,5 +343,6 @@ The underlying budget data is published by the Government of India under the [Go
 - Budget data from [Open Budgets India](https://openbudgetsindia.org) and [Union Budget documents](https://www.indiabudget.gov.in)
 - Economy data from [Economic Survey](https://www.indiabudget.gov.in/economicsurvey/) and [World Bank Open Data](https://data.worldbank.org)
 - RBI data from [RBI DBIE](https://data.rbi.org.in), [RBI Monetary Policy Statements](https://www.rbi.org.in), and [World Bank Open Data](https://data.worldbank.org)
+- States data from [RBI Handbook of Statistics on Indian States](https://www.rbi.org.in) and [Finance Commission of India](https://fincomindia.nic.in)
 - Design inspired by [Information is Beautiful](https://informationisbeautiful.net), [Visual Cinnamon](https://www.visualcinnamon.com), and [Kasia Siwosz](https://kasiasiwosz.com)
 - Built with React, D3, Framer Motion, and Tailwind CSS

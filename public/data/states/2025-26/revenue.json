@@ -1,0 +1,294 @@
+{
+  "year": "2025-26",
+  "states": [
+    {
+      "id": "UP",
+      "name": "Uttar Pradesh",
+      "ownTaxRevenue": 174087,
+      "centralTransfers": 229665,
+      "totalRevenue": 417241,
+      "selfSufficiencyRatio": 41.7
+    },
+    {
+      "id": "MH",
+      "name": "Maharashtra",
+      "ownTaxRevenue": 277486,
+      "centralTransfers": 111415,
+      "totalRevenue": 405677,
+      "selfSufficiencyRatio": 68.4
+    },
+    {
+      "id": "TN",
+      "name": "Tamil Nadu",
+      "ownTaxRevenue": 150223,
+      "centralTransfers": 76465,
+      "totalRevenue": 243749,
+      "selfSufficiencyRatio": 61.6
+    },
+    {
+      "id": "KA",
+      "name": "Karnataka",
+      "ownTaxRevenue": 143702,
+      "centralTransfers": 71464,
+      "totalRevenue": 229080,
+      "selfSufficiencyRatio": 62.7
+    },
+    {
+      "id": "MP",
+      "name": "Madhya Pradesh",
+      "ownTaxRevenue": 72611,
+      "centralTransfers": 111497,
+      "totalRevenue": 203986,
+      "selfSufficiencyRatio": 35.6
+    },
+    {
+      "id": "GJ",
+      "name": "Gujarat",
+      "ownTaxRevenue": 124810,
+      "centralTransfers": 56164,
+      "totalRevenue": 199408,
+      "selfSufficiencyRatio": 62.6
+    },
+    {
+      "id": "WB",
+      "name": "West Bengal",
+      "ownTaxRevenue": 83609,
+      "centralTransfers": 109738,
+      "totalRevenue": 195544,
+      "selfSufficiencyRatio": 42.8
+    },
+    {
+      "id": "RJ",
+      "name": "Rajasthan",
+      "ownTaxRevenue": 87346,
+      "centralTransfers": 87078,
+      "totalRevenue": 194988,
+      "selfSufficiencyRatio": 44.8
+    },
+    {
+      "id": "BR",
+      "name": "Bihar",
+      "ownTaxRevenue": 44018,
+      "centralTransfers": 124535,
+      "totalRevenue": 172688,
+      "selfSufficiencyRatio": 25.5
+    },
+    {
+      "id": "TS",
+      "name": "Telangana",
+      "ownTaxRevenue": 106949,
+      "centralTransfers": 32848,
+      "totalRevenue": 159351,
+      "selfSufficiencyRatio": 67.1
+    },
+    {
+      "id": "AP",
+      "name": "Andhra Pradesh",
+      "ownTaxRevenue": 78026,
+      "centralTransfers": 74325,
+      "totalRevenue": 157768,
+      "selfSufficiencyRatio": 49.5
+    },
+    {
+      "id": "OR",
+      "name": "Odisha",
+      "ownTaxRevenue": 46554,
+      "centralTransfers": 61188,
+      "totalRevenue": 150462,
+      "selfSufficiencyRatio": 30.9
+    },
+    {
+      "id": "KL",
+      "name": "Kerala",
+      "ownTaxRevenue": 71968,
+      "centralTransfers": 45639,
+      "totalRevenue": 132725,
+      "selfSufficiencyRatio": 54.2
+    },
+    {
+      "id": "CG",
+      "name": "Chhattisgarh",
+      "ownTaxRevenue": 33122,
+      "centralTransfers": 45507,
+      "totalRevenue": 93877,
+      "selfSufficiencyRatio": 35.3
+    },
+    {
+      "id": "AS",
+      "name": "Assam",
+      "ownTaxRevenue": 24502,
+      "centralTransfers": 59480,
+      "totalRevenue": 89743,
+      "selfSufficiencyRatio": 27.3
+    },
+    {
+      "id": "HR",
+      "name": "Haryana",
+      "ownTaxRevenue": 62961,
+      "centralTransfers": 17490,
+      "totalRevenue": 89194,
+      "selfSufficiencyRatio": 70.6
+    },
+    {
+      "id": "PB",
+      "name": "Punjab",
+      "ownTaxRevenue": 42243,
+      "centralTransfers": 39141,
+      "totalRevenue": 87616,
+      "selfSufficiencyRatio": 48.2
+    },
+    {
+      "id": "JH",
+      "name": "Jharkhand",
+      "ownTaxRevenue": 25118,
+      "centralTransfers": 42298,
+      "totalRevenue": 80246,
+      "selfSufficiencyRatio": 31.3
+    },
+    {
+      "id": "JK",
+      "name": "Jammu and Kashmir",
+      "ownTaxRevenue": 12335,
+      "centralTransfers": 51493,
+      "totalRevenue": 68976,
+      "selfSufficiencyRatio": 17.9
+    },
+    {
+      "id": "DL",
+      "name": "Delhi",
+      "ownTaxRevenue": 47363,
+      "centralTransfers": 14759,
+      "totalRevenue": 62703,
+      "selfSufficiencyRatio": 75.5
+    },
+    {
+      "id": "UK",
+      "name": "Uttarakhand",
+      "ownTaxRevenue": 17103,
+      "centralTransfers": 27613,
+      "totalRevenue": 49083,
+      "selfSufficiencyRatio": 34.8
+    },
+    {
+      "id": "HP",
+      "name": "Himachal Pradesh",
+      "ownTaxRevenue": 10595,
+      "centralTransfers": 24618,
+      "totalRevenue": 38089,
+      "selfSufficiencyRatio": 27.8
+    },
+    {
+      "id": "AR",
+      "name": "Arunachal Pradesh",
+      "ownTaxRevenue": 2237,
+      "centralTransfers": 20534,
+      "totalRevenue": 23789,
+      "selfSufficiencyRatio": 9.4
+    },
+    {
+      "id": "TR",
+      "name": "Tripura",
+      "ownTaxRevenue": 2597,
+      "centralTransfers": 15310,
+      "totalRevenue": 18309,
+      "selfSufficiencyRatio": 14.2
+    },
+    {
+      "id": "GA",
+      "name": "Goa",
+      "ownTaxRevenue": 7825,
+      "centralTransfers": 5589,
+      "totalRevenue": 17283,
+      "selfSufficiencyRatio": 45.3
+    },
+    {
+      "id": "MN",
+      "name": "Manipur",
+      "ownTaxRevenue": 1879,
+      "centralTransfers": 13556,
+      "totalRevenue": 15893,
+      "selfSufficiencyRatio": 11.8
+    },
+    {
+      "id": "ML",
+      "name": "Meghalaya",
+      "ownTaxRevenue": 2651,
+      "centralTransfers": 11712,
+      "totalRevenue": 14820,
+      "selfSufficiencyRatio": 17.9
+    },
+    {
+      "id": "NL",
+      "name": "Nagaland",
+      "ownTaxRevenue": 1462,
+      "centralTransfers": 12159,
+      "totalRevenue": 14099,
+      "selfSufficiencyRatio": 10.4
+    },
+    {
+      "id": "MZ",
+      "name": "Mizoram",
+      "ownTaxRevenue": 1102,
+      "centralTransfers": 8152,
+      "totalRevenue": 10282,
+      "selfSufficiencyRatio": 10.7
+    },
+    {
+      "id": "PY",
+      "name": "Puducherry",
+      "ownTaxRevenue": 4297,
+      "centralTransfers": 3374,
+      "totalRevenue": 9635,
+      "selfSufficiencyRatio": 44.6
+    },
+    {
+      "id": "SK",
+      "name": "Sikkim",
+      "ownTaxRevenue": 1497,
+      "centralTransfers": 5631,
+      "totalRevenue": 8104,
+      "selfSufficiencyRatio": 18.5
+    },
+    {
+      "id": "AN",
+      "name": "Andaman and Nicobar Islands",
+      "ownTaxRevenue": 0,
+      "centralTransfers": 0,
+      "totalRevenue": 0,
+      "selfSufficiencyRatio": 0.0
+    },
+    {
+      "id": "CH",
+      "name": "Chandigarh",
+      "ownTaxRevenue": 0,
+      "centralTransfers": 0,
+      "totalRevenue": 0,
+      "selfSufficiencyRatio": 0.0
+    },
+    {
+      "id": "DN",
+      "name": "Dadra and Nagar Haveli and Daman and Diu",
+      "ownTaxRevenue": 0,
+      "centralTransfers": 0,
+      "totalRevenue": 0,
+      "selfSufficiencyRatio": 0.0
+    },
+    {
+      "id": "LA",
+      "name": "Ladakh",
+      "ownTaxRevenue": 0,
+      "centralTransfers": 0,
+      "totalRevenue": 0,
+      "selfSufficiencyRatio": 0.0
+    },
+    {
+      "id": "LD",
+      "name": "Lakshadweep",
+      "ownTaxRevenue": 0,
+      "centralTransfers": 0,
+      "totalRevenue": 0,
+      "selfSufficiencyRatio": 0.0
+    }
+  ],
+  "source": "RBI Handbook of Statistics on Indian States, Finance Commission"
+}

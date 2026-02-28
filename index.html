@@ -52,7 +52,8 @@
         "Economic indicators explorer with year-over-year comparisons",
         "RBI monetary policy trajectory and repo rate history",
         "Forex reserves and exchange rate visualization",
-        "Credit growth and money supply analysis"
+        "Credit growth and money supply analysis",
+        "State-wise GSDP, revenue, and fiscal health comparison across 36 states and UTs"
       ],
       "dateModified": "2026-02-28"
     }
@@ -187,6 +188,55 @@
     }
     </script>
 
+    <!-- JSON-LD: Dataset (State Finances) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Dataset",
+      "name": "India State Finances Data (FY 2022-23)",
+      "description": "Structured JSON datasets for Indian state finances: GSDP (current and constant prices), per capita income, own tax revenue vs central transfers, fiscal deficit, and debt-to-GSDP across 28 states and 8 union territories.",
+      "url": "https://indiandataproject.org/states/explore",
+      "license": "https://creativecommons.org/licenses/by/4.0/",
+      "creator": {
+        "@type": "Organization",
+        "name": "Reserve Bank of India",
+        "url": "https://www.rbi.org.in"
+      },
+      "temporalCoverage": "2022/2023",
+      "spatialCoverage": {
+        "@type": "Place",
+        "name": "India"
+      },
+      "distribution": [
+        {
+          "@type": "DataDownload",
+          "encodingFormat": "application/json",
+          "contentUrl": "https://indiandataproject.org/data/states/2025-26/summary.json",
+          "name": "State Finances Summary"
+        },
+        {
+          "@type": "DataDownload",
+          "encodingFormat": "application/json",
+          "contentUrl": "https://indiandataproject.org/data/states/2025-26/gsdp.json",
+          "name": "State-wise GSDP"
+        },
+        {
+          "@type": "DataDownload",
+          "encodingFormat": "application/json",
+          "contentUrl": "https://indiandataproject.org/data/states/2025-26/revenue.json",
+          "name": "State Revenue Composition"
+        },
+        {
+          "@type": "DataDownload",
+          "encodingFormat": "application/json",
+          "contentUrl": "https://indiandataproject.org/data/states/2025-26/fiscal-health.json",
+          "name": "State Fiscal Health"
+        }
+      ],
+      "dateModified": "2026-02-28"
+    }
+    </script>
+
     <!-- JSON-LD: BreadcrumbList -->
     <script type="application/ld+json">
     {
@@ -206,7 +256,11 @@
         { "@type": "ListItem", "position": 11, "name": "RBI Data", "item": "https://indiandataproject.org/rbi" },
         { "@type": "ListItem", "position": 12, "name": "RBI Indicator Explorer", "item": "https://indiandataproject.org/rbi/explore" },
         { "@type": "ListItem", "position": 13, "name": "RBI Methodology", "item": "https://indiandataproject.org/rbi/methodology" },
-        { "@type": "ListItem", "position": 14, "name": "RBI Glossary", "item": "https://indiandataproject.org/rbi/glossary" }
+        { "@type": "ListItem", "position": 14, "name": "RBI Glossary", "item": "https://indiandataproject.org/rbi/glossary" },
+        { "@type": "ListItem", "position": 15, "name": "State Finances", "item": "https://indiandataproject.org/states" },
+        { "@type": "ListItem", "position": 16, "name": "State Indicator Explorer", "item": "https://indiandataproject.org/states/explore" },
+        { "@type": "ListItem", "position": 17, "name": "States Methodology", "item": "https://indiandataproject.org/states/methodology" },
+        { "@type": "ListItem", "position": 18, "name": "States Glossary", "item": "https://indiandataproject.org/states/glossary" }
       ]
     }
     </script>
@@ -265,6 +319,20 @@
           <li><a href="/rbi/glossary">RBI Glossary</a> — Monetary policy terms in plain language</li>
         </ul>
 
+        <h2>State Finances (FY 2022-23)</h2>
+        <ul>
+          <li>Top GSDP: Maharashtra Rs 35.28 lakh crore</li>
+          <li>Combined state GDP: Rs 280.73 lakh crore</li>
+          <li>Growth range: 2.9% to 25.4% (constant prices)</li>
+          <li>31 states/UTs with data</li>
+        </ul>
+        <ul>
+          <li><a href="/states">State Finances Visual Story</a></li>
+          <li><a href="/states/explore">State Indicator Explorer</a></li>
+          <li><a href="/states/methodology">Methodology</a></li>
+          <li><a href="/states/glossary">States Glossary</a> — State finance terms in plain language</li>
+        </ul>
+
         <h2>Download Data (JSON)</h2>
         <ul>
           <li><a href="/data/budget/2025-26/summary.json">Budget Summary</a></li>
@@ -276,6 +344,11 @@
           <li><a href="/data/rbi/2025-26/summary.json">RBI Summary</a></li>
           <li><a href="/data/rbi/2025-26/monetary-policy.json">Monetary Policy Decisions</a></li>
           <li><a href="/data/rbi/2025-26/forex.json">Forex Reserves and Exchange Rate</a></li>
+          <li><a href="/data/states/2025-26/summary.json">State Finances Summary</a></li>
+          <li><a href="/data/states/2025-26/gsdp.json">State GSDP Data</a></li>
+          <li><a href="/data/states/2025-26/revenue.json">State Revenue Data</a></li>
+          <li><a href="/data/states/2025-26/fiscal-health.json">State Fiscal Health</a></li>
+          <li><a href="/data/states/2025-26/indicators.json">State Indicators</a></li>
         </ul>
 
         <p>Data sourced from <a href="https://openbudgetsindia.org">Open Budgets India</a>, <a href="https://www.indiabudget.gov.in">indiabudget.gov.in</a>, and the <a href="https://www.indiabudget.gov.in/economicsurvey/">Economic Survey</a> under the <a href="https://data.gov.in/government-open-data-license-india">Government Open Data License - India</a>.</p>

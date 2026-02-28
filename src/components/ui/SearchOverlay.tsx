@@ -48,11 +48,13 @@ export function SearchOverlay() {
       loadGlossary('budget', '2025-26').catch(() => null),
       loadGlossary('economy', '2025-26').catch(() => null),
       loadGlossary('rbi', '2025-26').catch(() => null),
-    ]).then(([budget, economy, rbi]) => {
+      loadGlossary('states', '2025-26').catch(() => null),
+    ]).then(([budget, economy, rbi, states]) => {
       const items: SearchItem[] = [];
       if (budget) items.push(...budget.terms.map((t) => glossaryTermToSearchItem(t, 'budget')));
       if (economy) items.push(...economy.terms.map((t) => glossaryTermToSearchItem(t, 'economy')));
       if (rbi) items.push(...rbi.terms.map((t) => glossaryTermToSearchItem(t, 'rbi')));
+      if (states) items.push(...states.terms.map((t) => glossaryTermToSearchItem(t, 'states')));
       setGlossaryTerms(items);
     });
   }, []);
@@ -97,6 +99,10 @@ export function SearchOverlay() {
     { type: 'page', id: 'rbi-explore', name: 'RBI Explorer', subtitle: 'Monetary and financial indicators', route: '/rbi/explore' },
     { type: 'page', id: 'rbi-methodology', name: 'RBI Methodology', subtitle: 'RBI data sources and indicator codes', route: '/rbi/methodology' },
     { type: 'page', id: 'rbi-glossary', name: 'RBI Glossary', subtitle: 'Monetary policy terms in plain language', route: '/rbi/glossary' },
+    { type: 'page', id: 'states', name: 'State Finances', subtitle: 'GSDP, revenue, fiscal health across states', route: '/states' },
+    { type: 'page', id: 'states-explore', name: 'States Explorer', subtitle: 'Browse state indicators and compare', route: '/states/explore' },
+    { type: 'page', id: 'states-methodology', name: 'States Methodology', subtitle: 'State finances data sources and notes', route: '/states/methodology' },
+    { type: 'page', id: 'states-glossary', name: 'States Glossary', subtitle: 'State finance terms in plain language', route: '/states/glossary' },
   );
   // Glossary terms
   searchItems.push(...glossaryTerms);

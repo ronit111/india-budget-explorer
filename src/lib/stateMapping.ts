@@ -60,3 +60,53 @@ export const STATES_WITHOUT_BUDGET_DATA = [
   'Puducherry',
   'Ladakh',
 ];
+
+/**
+ * Complete mapping of all 28 states + 8 UTs.
+ * Used by State Finances and Census domains where every state/UT has data.
+ */
+export const ALL_STATE_CODES: Record<string, string> = {
+  // States
+  AP: 'Andhra Pradesh',
+  AR: 'Arunachal Pradesh',
+  AS: 'Assam',
+  BR: 'Bihar',
+  CG: 'Chhattisgarh',
+  GA: 'Goa',
+  GJ: 'Gujarat',
+  HR: 'Haryana',
+  HP: 'Himachal Pradesh',
+  JH: 'Jharkhand',
+  KA: 'Karnataka',
+  KL: 'Kerala',
+  MP: 'Madhya Pradesh',
+  MH: 'Maharashtra',
+  MN: 'Manipur',
+  ML: 'Meghalaya',
+  MZ: 'Mizoram',
+  NL: 'Nagaland',
+  OR: 'Odisha',
+  PB: 'Punjab',
+  RJ: 'Rajasthan',
+  SK: 'Sikkim',
+  TN: 'Tamil Nadu',
+  TS: 'Telangana',
+  TR: 'Tripura',
+  UP: 'Uttar Pradesh',
+  UK: 'Uttarakhand',
+  WB: 'West Bengal',
+  // Union Territories
+  AN: 'Andaman and Nicobar Islands',
+  CH: 'Chandigarh',
+  DN: 'Dadra and Nagar Haveli and Daman and Diu',
+  DL: 'Delhi',
+  JK: 'Jammu and Kashmir',
+  LA: 'Ladakh',
+  LD: 'Lakshadweep',
+  PY: 'Puducherry',
+};
+
+/** Reverse: TopoJSON name → state code (all 36) */
+export const TOPO_NAME_TO_STATE_CODE: Record<string, string> = Object.fromEntries(
+  Object.entries(ALL_STATE_CODES).map(([code, name]) => [name, code])
+);
