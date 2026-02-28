@@ -60,6 +60,78 @@ When all planned data domains are built and the project is considered "done," ru
 
 This is not a per-change QA. It is a holistic product review to be run once, after all domains are live.
 
+## New Domain Checklist
+
+Every new data domain (State Finances, Census, etc.) must follow this end-to-end checklist. This was learned the hard way during Budget, Economy, and RBI buildout.
+
+### 1. Pipeline & Data
+- [ ] Pipeline fetches from authoritative source (government API, World Bank, etc.)
+- [ ] Pydantic validation schemas match TypeScript interfaces exactly
+- [ ] All JSON files pass validation — run pipeline and verify output
+- [ ] Cross-check every key figure against primary source documents (not just API output)
+- [ ] World Bank data has ~1 year lag — supplement with curated government source data for the latest year
+- [ ] If a series returns empty from the API, mark the field as `Optional` in schema and handle gracefully in UI (filter out empty series, don't show phantom legend entries)
+- [ ] GitHub Actions workflow added with cron schedule aligned to data release cadence
+
+### 2. TypeScript Scaffolding
+- [ ] Interfaces in `src/lib/data/schema.ts`
+- [ ] Loader functions in `src/lib/dataLoader.ts`
+- [ ] Zustand store in `src/store/`
+- [ ] Data hook in `src/hooks/`
+
+### 3. Routing & Navigation
+- [ ] Routes in `App.tsx` (story, explore, methodology)
+- [ ] Header: `isDomainSection` detection, title, tabs
+- [ ] MobileNav: domain tabs array + icon
+- [ ] Footer: domain-specific attribution with source links
+- [ ] Back chevron → `/#stories`, footer back link → `/#stories`
+
+### 4. Hub Integration
+- [ ] Domain card in `HubPage.tsx` with mini-visualization and stat pills
+- [ ] Hub loads only `summary.json` for the domain — never the full dataset
+- [ ] Remove domain from "Coming Soon" list
+- [ ] Mini-viz must be browser-verified (hub card rendering bugs are invisible to TypeScript)
+
+### 5. Scrollytelling Page
+- [ ] Each section: `useScrollTrigger` → `SectionNumber` → title/annotation → viz → source attribution
+- [ ] Narrative bridges between sections with storytelling connectors
+- [ ] CTA section at bottom with Explore + Methodology glow cards
+
+### 6. Chart Quality (the things that bite you)
+- [ ] **X-axis consistency**: When overlaying multiple series, ALL must use the same label format (e.g., all fiscal years "2014-15", never mix calendar years with fiscal years)
+- [ ] **Dual-scale avoidance**: Never put metrics of vastly different scales on the same y-axis (e.g., 10% growth + 80% GDP share). Split into separate charts with labeled sub-headings.
+- [ ] **Empty series**: Filter with `.filter(s => s.data.length > 0)` before passing to chart components. Otherwise phantom entries appear in legends.
+- [ ] **Sparse data**: If a series has < 3 data points, it renders as a disconnected segment. Either hide it or source more data.
+- [ ] **Tick density**: LineChart caps at ~8 x-axis labels. For datasets with 30+ points, the thinning is automatic, but verify the selected labels tell a coherent story.
+- [ ] **Framer Motion**: Never set animated properties in both `style` and `initial`/`animate`. Use only `initial`/`animate` for animated values.
+- [ ] **Flexbox + absolute children**: `items-end` with absolutely-positioned children = 0 content height. Use `h-full` on flex items.
+
+### 7. Sub-Pages
+- [ ] Explorer page: category filters, indicator list, interactive chart, data loads correctly
+- [ ] Methodology page: data sources, indicator definitions, limitations, source links work
+
+### 8. SEO
+- [ ] Routes added to `scripts/prerender.mjs`
+- [ ] Sitemap updated (`public/sitemap.xml`) with story + explore + methodology routes + data file URLs
+- [ ] `public/llms.txt` expanded with domain description and key data points
+- [ ] `index.html` noscript fallback updated with domain content
+- [ ] JSON-LD Dataset schema added in SEOHead component
+- [ ] Favicon and logo assets present in `public/` (not just local — must be committed to git)
+
+### 9. Browser QA (MANDATORY)
+- [ ] Hub: domain card renders with stats and mini-viz (scroll to it, screenshot)
+- [ ] Story: scroll through ALL sections — every chart renders, axes are readable, legends are accurate
+- [ ] Explorer: filter categories, select indicators, chart renders with correct data
+- [ ] Methodology: all sections readable, source links present
+- [ ] Navigation: header tabs work, back chevron → `/#stories`
+- [ ] Mobile: bottom nav tabs visible, charts responsive, no horizontal overflow
+- [ ] Build: `npm run build` passes with zero errors
+
+### 10. Documentation
+- [ ] CHANGELOG.md entry
+- [ ] README.md: pages table, data section, project structure, roadmap updated
+- [ ] CLAUDE.md: site architecture section updated with new domain
+
 ## Common Pitfalls
 - **Treemap**: Never use `hierarchy.leaves()`. Show one level at a time via `hierarchy.children`.
 - **Sankey**: `nodePadding` below 20 causes label overlap with 12+ nodes. Hide value text for nodes < 20px.
