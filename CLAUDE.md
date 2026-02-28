@@ -109,10 +109,15 @@ Every new data domain (State Finances, Census, etc.) must follow this end-to-end
 ### 7. Sub-Pages
 - [ ] Explorer page: category filters, indicator list, interactive chart, data loads correctly
 - [ ] Methodology page: data sources, indicator definitions, limitations, source links work
+- [ ] Glossary page: create `public/data/{domain}/{year}/glossary.json` with ~12-15 curated terms (follow existing schema: `id`, `term`, `simple`, `detail`, `inContext`, `relatedTerms`)
+- [ ] Glossary wrapper page: `src/pages/{Domain}GlossaryPage.tsx` → `<GlossaryPage domain="{domain}" />`
+- [ ] Add domain config to `DOMAIN_CONFIG` in `GlossaryPage.tsx` (accent color, title, description, SEO)
+- [ ] Route added to `App.tsx`, header tabs, and mobile nav
+- [ ] Glossary terms added to `SearchOverlay.tsx` search index (loads via `loadGlossary`)
 
 ### 8. SEO
-- [ ] Routes added to `scripts/prerender.mjs`
-- [ ] Sitemap updated (`public/sitemap.xml`) with story + explore + methodology routes + data file URLs
+- [ ] Routes added to `scripts/prerender.mjs` (including glossary route)
+- [ ] Sitemap updated (`public/sitemap.xml`) with story + explore + methodology + glossary routes + data file URLs
 - [ ] `public/llms.txt` expanded with domain description and key data points
 - [ ] `index.html` noscript fallback updated with domain content
 - [ ] JSON-LD Dataset schema added in SEOHead component
@@ -123,8 +128,10 @@ Every new data domain (State Finances, Census, etc.) must follow this end-to-end
 - [ ] Story: scroll through ALL sections — every chart renders, axes are readable, legends are accurate
 - [ ] Explorer: filter categories, select indicators, chart renders with correct data
 - [ ] Methodology: all sections readable, source links present
-- [ ] Navigation: header tabs work, back chevron → `/#stories`
-- [ ] Mobile: bottom nav tabs visible, charts responsive, no horizontal overflow
+- [ ] Glossary: terms render, filter works, related term pills scroll to target, accent colors match domain
+- [ ] Navigation: header tabs work (including Glossary tab), back chevron → `/#stories`
+- [ ] Mobile: bottom nav tabs visible (including Glossary), charts responsive, no horizontal overflow
+- [ ] Search: Cmd+K → type a domain term → glossary result appears with purple TERM badge
 - [ ] Build: `npm run build` passes with zero errors
 
 ### 10. Documentation
