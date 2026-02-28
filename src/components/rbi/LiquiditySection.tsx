@@ -34,28 +34,49 @@ export function LiquiditySection({ data }: LiquiditySectionProps) {
           M3 (broad money) captures all currency, deposits, and liquid instruments in the economy. Its growth rate reveals how actively RBI manages liquidity through open market operations and reserve requirements.
         </motion.p>
 
-        <LineChart
-          series={[
-            {
-              id: 'broad-money-growth',
-              name: 'Broad Money Growth',
-              color: 'var(--gold)',
-              data: data.broadMoneyGrowth.series,
-            },
-            {
-              id: 'broad-money-gdp',
-              name: 'Broad Money (% GDP)',
-              color: 'var(--cyan)',
-              data: data.broadMoneyPctGDP.series,
-              dashed: true,
-            },
-          ]}
-          isVisible={isVisible}
-          formatValue={(v) => v.toFixed(1)}
-          unit="%"
-        />
+        {/* M3 Growth — year-over-year pace of money creation */}
+        <div className="mb-3">
+          <h3 className="text-caption uppercase tracking-wider mb-3" style={{ color: 'var(--gold)' }}>
+            M3 Growth Rate (year-over-year)
+          </h3>
+          <LineChart
+            series={[
+              {
+                id: 'broad-money-growth',
+                name: 'M3 Growth',
+                color: 'var(--gold)',
+                data: data.broadMoneyGrowth.series,
+              },
+            ]}
+            isVisible={isVisible}
+            formatValue={(v) => v.toFixed(1)}
+            unit="%"
+            height={260}
+          />
+        </div>
 
-        <p className="source-attribution">
+        {/* M3 as % of GDP — structural depth of money in the economy */}
+        <div className="mt-10">
+          <h3 className="text-caption uppercase tracking-wider mb-3" style={{ color: 'var(--cyan)' }}>
+            Broad Money as % of GDP
+          </h3>
+          <LineChart
+            series={[
+              {
+                id: 'broad-money-gdp',
+                name: 'M3 (% GDP)',
+                color: 'var(--cyan)',
+                data: data.broadMoneyPctGDP.series,
+              },
+            ]}
+            isVisible={isVisible}
+            formatValue={(v) => v.toFixed(1)}
+            unit="%"
+            height={260}
+          />
+        </div>
+
+        <p className="source-attribution mt-4">
           Source: {data.broadMoneyGrowth.source}
         </p>
       </div>
