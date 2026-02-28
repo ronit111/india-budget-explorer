@@ -41,6 +41,22 @@ const SECTIONS = [
           <li className="flex gap-3 items-start">
             <span className="mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: 'var(--violet)' }} />
             <span>
+              <strong style={{ color: 'var(--violet)' }}>Tier 2 — NPC Population Projections</strong> (state-level, projected 2026, curated).{' '}
+              <a
+                href="https://nhm.gov.in/New_Updates_2018/Report_Population_Projection_2019.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-medium link-hover"
+                style={{ color: 'var(--violet)' }}
+              >
+                Population Projections for India and States 2011-2036
+              </a>{' '}
+              — Official government projections by the Technical Group on Population Projections, National Commission on Population (July 2020). Used for state-level population estimates since Census 2021 was never conducted. These are projections, not enumerated counts.
+            </span>
+          </li>
+          <li className="flex gap-3 items-start">
+            <span className="mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: 'var(--violet)' }} />
+            <span>
               <strong style={{ color: 'var(--violet)' }}>Tier 2 — NFHS-5</strong> (state-level, 2019-21, curated).{' '}
               <a
                 href="https://rchiips.org/nfhs/NFHS-5Reports/NFHS-5_INDIA_REPORT.pdf"
@@ -95,26 +111,30 @@ const SECTIONS = [
     content: (
       <>
         <p>
-          Population data combines World Bank national time series with Census 2011 state-level breakdowns:
+          Population data combines World Bank national time series, NPC 2026 state projections, and Census 2011 state-level metadata:
         </p>
         <div className="mt-4 overflow-x-auto">
           <table className="w-full text-sm" style={{ borderCollapse: 'collapse' }}>
             <thead>
               <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
                 <th className="text-left py-2 pr-4 font-medium" style={{ color: 'var(--text-primary)' }}>Indicator</th>
-                <th className="text-left py-2 pr-4 font-medium" style={{ color: 'var(--text-primary)' }}>WB Code</th>
                 <th className="text-left py-2 pr-4 font-medium" style={{ color: 'var(--text-primary)' }}>Source</th>
+                <th className="text-left py-2 pr-4 font-medium" style={{ color: 'var(--text-primary)' }}>Vintage</th>
                 <th className="text-left py-2 font-medium" style={{ color: 'var(--text-primary)' }}>Unit</th>
               </tr>
             </thead>
             <tbody style={{ color: 'var(--text-secondary)' }}>
-              <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.04)' }}><td className="py-2 pr-4">Total Population</td><td className="py-2 pr-4 font-mono text-xs">SP.POP.TOTL</td><td className="py-2 pr-4 text-xs">World Bank</td><td className="py-2">persons</td></tr>
-              <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.04)' }}><td className="py-2 pr-4">Population Growth</td><td className="py-2 pr-4 font-mono text-xs">SP.POP.GROW</td><td className="py-2 pr-4 text-xs">World Bank</td><td className="py-2">%</td></tr>
-              <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.04)' }}><td className="py-2 pr-4">Population Density</td><td className="py-2 pr-4 font-mono text-xs">EN.POP.DNST</td><td className="py-2 pr-4 text-xs">WB / Census</td><td className="py-2">per sq km</td></tr>
-              <tr><td className="py-2 pr-4">Decadal Growth (2001-11)</td><td className="py-2 pr-4 font-mono text-xs">—</td><td className="py-2 pr-4 text-xs">Census 2011</td><td className="py-2">%</td></tr>
+              <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.04)' }}><td className="py-2 pr-4">Total Population (national)</td><td className="py-2 pr-4 text-xs">World Bank</td><td className="py-2 pr-4 text-xs">2000–2024</td><td className="py-2">persons</td></tr>
+              <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.04)' }}><td className="py-2 pr-4">State Population</td><td className="py-2 pr-4 text-xs">NPC Projections</td><td className="py-2 pr-4 text-xs">2026 projected</td><td className="py-2">persons</td></tr>
+              <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.04)' }}><td className="py-2 pr-4">Population Growth (national)</td><td className="py-2 pr-4 text-xs">World Bank</td><td className="py-2 pr-4 text-xs">2000–2024</td><td className="py-2">%</td></tr>
+              <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.04)' }}><td className="py-2 pr-4">Population Density</td><td className="py-2 pr-4 text-xs">Census 2011</td><td className="py-2 pr-4 text-xs">2011</td><td className="py-2">per sq km</td></tr>
+              <tr><td className="py-2 pr-4">Decadal Growth (2001-11)</td><td className="py-2 pr-4 text-xs">Census 2011</td><td className="py-2 pr-4 text-xs">2011</td><td className="py-2">%</td></tr>
             </tbody>
           </table>
         </div>
+        <p className="mt-3 text-xs" style={{ color: 'var(--text-muted)' }}>
+          State population figures are NPC projections (as of 1 July 2026), not census counts. Density, urbanization, and decadal growth remain from Census 2011 — no newer state-level enumeration exists.
+        </p>
       </>
     ),
   },
@@ -201,9 +221,10 @@ const SECTIONS = [
             </thead>
             <tbody style={{ color: 'var(--text-secondary)' }}>
               <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.04)' }}><td className="py-2 pr-4">World Bank API</td><td className="py-2 pr-4 text-xs">2000–2024</td><td className="py-2 pr-4 text-xs">National</td><td className="py-2">Time series trends</td></tr>
+              <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.04)' }}><td className="py-2 pr-4">NPC Projections</td><td className="py-2 pr-4 text-xs">2026 (projected)</td><td className="py-2 pr-4 text-xs">State</td><td className="py-2">State population estimates</td></tr>
               <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.04)' }}><td className="py-2 pr-4">SRS 2023</td><td className="py-2 pr-4 text-xs">2023</td><td className="py-2 pr-4 text-xs">State</td><td className="py-2">Vital stats (CBR, CDR, IMR, TFR)</td></tr>
               <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.04)' }}><td className="py-2 pr-4">NFHS-5</td><td className="py-2 pr-4 text-xs">2019-21</td><td className="py-2 pr-4 text-xs">State</td><td className="py-2">Health, nutrition, gender</td></tr>
-              <tr><td className="py-2 pr-4">Census 2011</td><td className="py-2 pr-4 text-xs">2011</td><td className="py-2 pr-4 text-xs">State</td><td className="py-2">Population, literacy, density, sex ratio</td></tr>
+              <tr><td className="py-2 pr-4">Census 2011</td><td className="py-2 pr-4 text-xs">2011</td><td className="py-2 pr-4 text-xs">State</td><td className="py-2">Literacy, density, sex ratio, urbanization</td></tr>
             </tbody>
           </table>
         </div>
@@ -257,7 +278,13 @@ const SECTIONS = [
           <li className="flex gap-3 items-start">
             <span className="mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: 'var(--saffron)' }} />
             <span>
-              <strong>Census 2011 is 14+ years old.</strong> State-level population, literacy, density, and sex ratio figures are from 2011. The actual current values are different — particularly for fast-urbanizing and high-growth states.
+              <strong>Census 2011 is 14+ years old.</strong> State-level literacy, density, and sex ratio figures are from 2011. State population uses NPC 2026 projections (not enumerated counts). The actual current values for literacy and urbanization are likely different — particularly for fast-urbanizing and high-growth states.
+            </span>
+          </li>
+          <li className="flex gap-3 items-start">
+            <span className="mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: 'var(--saffron)' }} />
+            <span>
+              <strong>NPC projections are not census counts.</strong> State population figures are statistical projections based on Census 2011 baseline plus state-specific fertility, mortality, and migration assumptions. Actual populations may differ — the projections were published in 2020 and do not account for COVID-19 migration effects or post-2020 demographic shifts. Census 2027 will provide actual enumerated counts.
             </span>
           </li>
           <li className="flex gap-3 items-start">
