@@ -24,6 +24,18 @@ import CensusPage from './pages/CensusPage.tsx';
 import CensusExplorePage from './pages/CensusExplorePage.tsx';
 import CensusMethodologyPage from './pages/CensusMethodologyPage.tsx';
 import CensusGlossaryPage from './pages/CensusGlossaryPage.tsx';
+import EducationPage from './pages/EducationPage.tsx';
+import EducationExplorePage from './pages/EducationExplorePage.tsx';
+import EducationMethodologyPage from './pages/EducationMethodologyPage.tsx';
+import EducationGlossaryPage from './pages/EducationGlossaryPage.tsx';
+import EmploymentPage from './pages/EmploymentPage.tsx';
+import EmploymentExplorePage from './pages/EmploymentExplorePage.tsx';
+import EmploymentMethodologyPage from './pages/EmploymentMethodologyPage.tsx';
+import EmploymentGlossaryPage from './pages/EmploymentGlossaryPage.tsx';
+import HealthcarePage from './pages/HealthcarePage.tsx';
+import HealthcareExplorePage from './pages/HealthcareExplorePage.tsx';
+import HealthcareMethodologyPage from './pages/HealthcareMethodologyPage.tsx';
+import HealthcareGlossaryPage from './pages/HealthcareGlossaryPage.tsx';
 
 const PAGE_ROUTES = [
   { path: '/', element: <HubPage /> },
@@ -48,6 +60,18 @@ const PAGE_ROUTES = [
   { path: '/census/explore', element: <CensusExplorePage /> },
   { path: '/census/methodology', element: <CensusMethodologyPage /> },
   { path: '/census/glossary', element: <CensusGlossaryPage /> },
+  { path: '/education', element: <EducationPage /> },
+  { path: '/education/explore', element: <EducationExplorePage /> },
+  { path: '/education/methodology', element: <EducationMethodologyPage /> },
+  { path: '/education/glossary', element: <EducationGlossaryPage /> },
+  { path: '/employment', element: <EmploymentPage /> },
+  { path: '/employment/explore', element: <EmploymentExplorePage /> },
+  { path: '/employment/methodology', element: <EmploymentMethodologyPage /> },
+  { path: '/employment/glossary', element: <EmploymentGlossaryPage /> },
+  { path: '/healthcare', element: <HealthcarePage /> },
+  { path: '/healthcare/explore', element: <HealthcareExplorePage /> },
+  { path: '/healthcare/methodology', element: <HealthcareMethodologyPage /> },
+  { path: '/healthcare/glossary', element: <HealthcareGlossaryPage /> },
 ] as const;
 
 // Old routes redirect to new /budget/* paths

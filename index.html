@@ -56,7 +56,10 @@
         "State-wise GSDP, revenue, and fiscal health comparison across 36 states and UTs",
         "Census population structure, age demographics, and vital statistics",
         "Literacy gender gap visualization and state-wise literacy comparison",
-        "Infant mortality and health indicators from NFHS-5 and SRS"
+        "Infant mortality and health indicators from NFHS-5 and SRS",
+        "Education enrollment trends, learning outcomes, and spending analysis",
+        "Employment participation, unemployment trends, and sectoral shifts",
+        "Healthcare infrastructure, spending, immunization, and disease burden"
       ],
       "dateModified": "2026-02-28"
     }
@@ -283,6 +286,135 @@
     }
     </script>
 
+    <!-- JSON-LD: Dataset (Education) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Dataset",
+      "name": "India Education Data",
+      "description": "Structured JSON datasets for India's education system: enrollment trends, learning outcomes, pupil-teacher ratios, school infrastructure, and education spending. Combines UDISE+ 2023-24, ASER 2024, and World Bank data.",
+      "url": "https://indiandataproject.org/education/explore",
+      "license": "https://creativecommons.org/licenses/by/4.0/",
+      "creator": {
+        "@type": "GovernmentOrganization",
+        "name": "UDISE+ / ASER / World Bank",
+        "url": "https://udiseplus.gov.in"
+      },
+      "temporalCoverage": "2000/2026",
+      "spatialCoverage": {
+        "@type": "Place",
+        "name": "India"
+      },
+      "distribution": [
+        {
+          "@type": "DataDownload",
+          "encodingFormat": "application/json",
+          "contentUrl": "https://indiandataproject.org/data/education/2025-26/summary.json",
+          "name": "Education Summary"
+        },
+        {
+          "@type": "DataDownload",
+          "encodingFormat": "application/json",
+          "contentUrl": "https://indiandataproject.org/data/education/2025-26/enrollment.json",
+          "name": "Enrollment Data"
+        },
+        {
+          "@type": "DataDownload",
+          "encodingFormat": "application/json",
+          "contentUrl": "https://indiandataproject.org/data/education/2025-26/quality.json",
+          "name": "Quality and Learning Outcomes"
+        }
+      ],
+      "dateModified": "2026-02-28"
+    }
+    </script>
+
+    <!-- JSON-LD: Dataset (Employment) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Dataset",
+      "name": "India Employment and Labour Market Data",
+      "description": "Structured JSON datasets for India's labour market: unemployment rates, labour force participation, sectoral employment shifts, and state-wise indicators. Combines PLFS 2023-24, World Bank, and RBI KLEMS data.",
+      "url": "https://indiandataproject.org/employment/explore",
+      "license": "https://creativecommons.org/licenses/by/4.0/",
+      "creator": {
+        "@type": "GovernmentOrganization",
+        "name": "MoSPI PLFS / World Bank",
+        "url": "https://mospi.gov.in"
+      },
+      "temporalCoverage": "2000/2026",
+      "spatialCoverage": {
+        "@type": "Place",
+        "name": "India"
+      },
+      "distribution": [
+        {
+          "@type": "DataDownload",
+          "encodingFormat": "application/json",
+          "contentUrl": "https://indiandataproject.org/data/employment/2025-26/summary.json",
+          "name": "Employment Summary"
+        },
+        {
+          "@type": "DataDownload",
+          "encodingFormat": "application/json",
+          "contentUrl": "https://indiandataproject.org/data/employment/2025-26/unemployment.json",
+          "name": "Unemployment Data"
+        },
+        {
+          "@type": "DataDownload",
+          "encodingFormat": "application/json",
+          "contentUrl": "https://indiandataproject.org/data/employment/2025-26/participation.json",
+          "name": "Labour Force Participation"
+        }
+      ],
+      "dateModified": "2026-02-28"
+    }
+    </script>
+
+    <!-- JSON-LD: Dataset (Healthcare) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Dataset",
+      "name": "India Healthcare Infrastructure and Spending Data",
+      "description": "Structured JSON datasets for India's healthcare system: hospital beds, physicians, health expenditure, out-of-pocket spending, immunization coverage, and disease burden. Combines NHP 2022, NFHS-5, and World Bank data.",
+      "url": "https://indiandataproject.org/healthcare/explore",
+      "license": "https://creativecommons.org/licenses/by/4.0/",
+      "creator": {
+        "@type": "GovernmentOrganization",
+        "name": "CBHI / NFHS / World Bank",
+        "url": "https://cbhidghs.mohfw.gov.in"
+      },
+      "temporalCoverage": "2000/2026",
+      "spatialCoverage": {
+        "@type": "Place",
+        "name": "India"
+      },
+      "distribution": [
+        {
+          "@type": "DataDownload",
+          "encodingFormat": "application/json",
+          "contentUrl": "https://indiandataproject.org/data/healthcare/2025-26/summary.json",
+          "name": "Healthcare Summary"
+        },
+        {
+          "@type": "DataDownload",
+          "encodingFormat": "application/json",
+          "contentUrl": "https://indiandataproject.org/data/healthcare/2025-26/infrastructure.json",
+          "name": "Healthcare Infrastructure"
+        },
+        {
+          "@type": "DataDownload",
+          "encodingFormat": "application/json",
+          "contentUrl": "https://indiandataproject.org/data/healthcare/2025-26/spending.json",
+          "name": "Health Spending"
+        }
+      ],
+      "dateModified": "2026-02-28"
+    }
+    </script>
+
     <!-- JSON-LD: BreadcrumbList -->
     <script type="application/ld+json">
     {
@@ -310,7 +442,19 @@
         { "@type": "ListItem", "position": 19, "name": "Census & Demographics", "item": "https://indiandataproject.org/census" },
         { "@type": "ListItem", "position": 20, "name": "Census Indicator Explorer", "item": "https://indiandataproject.org/census/explore" },
         { "@type": "ListItem", "position": 21, "name": "Census Methodology", "item": "https://indiandataproject.org/census/methodology" },
-        { "@type": "ListItem", "position": 22, "name": "Census Glossary", "item": "https://indiandataproject.org/census/glossary" }
+        { "@type": "ListItem", "position": 22, "name": "Census Glossary", "item": "https://indiandataproject.org/census/glossary" },
+        { "@type": "ListItem", "position": 23, "name": "Education", "item": "https://indiandataproject.org/education" },
+        { "@type": "ListItem", "position": 24, "name": "Education Explorer", "item": "https://indiandataproject.org/education/explore" },
+        { "@type": "ListItem", "position": 25, "name": "Education Methodology", "item": "https://indiandataproject.org/education/methodology" },
+        { "@type": "ListItem", "position": 26, "name": "Education Glossary", "item": "https://indiandataproject.org/education/glossary" },
+        { "@type": "ListItem", "position": 27, "name": "Employment", "item": "https://indiandataproject.org/employment" },
+        { "@type": "ListItem", "position": 28, "name": "Employment Explorer", "item": "https://indiandataproject.org/employment/explore" },
+        { "@type": "ListItem", "position": 29, "name": "Employment Methodology", "item": "https://indiandataproject.org/employment/methodology" },
+        { "@type": "ListItem", "position": 30, "name": "Employment Glossary", "item": "https://indiandataproject.org/employment/glossary" },
+        { "@type": "ListItem", "position": 31, "name": "Healthcare", "item": "https://indiandataproject.org/healthcare" },
+        { "@type": "ListItem", "position": 32, "name": "Healthcare Explorer", "item": "https://indiandataproject.org/healthcare/explore" },
+        { "@type": "ListItem", "position": 33, "name": "Healthcare Methodology", "item": "https://indiandataproject.org/healthcare/methodology" },
+        { "@type": "ListItem", "position": 34, "name": "Healthcare Glossary", "item": "https://indiandataproject.org/healthcare/glossary" }
       ]
     }
     </script>
@@ -398,6 +542,48 @@
           <li><a href="/census/glossary">Census Glossary</a> — Demographic terms in plain language</li>
         </ul>
 
+        <h2>Education</h2>
+        <ul>
+          <li>Total Students: 248.2 million (UDISE+ 2023-24)</li>
+          <li>GER Primary: 104.8%, Secondary: 79.6%</li>
+          <li>Pupil-Teacher Ratio: 26 (national average)</li>
+          <li>Education Spending: 4.1% of GDP (NEP 2020 target: 6%)</li>
+        </ul>
+        <ul>
+          <li><a href="/education">Education Visual Story</a></li>
+          <li><a href="/education/explore">Education Indicator Explorer</a></li>
+          <li><a href="/education/methodology">Methodology</a></li>
+          <li><a href="/education/glossary">Education Glossary</a> — Education terms in plain language</li>
+        </ul>
+
+        <h2>Employment</h2>
+        <ul>
+          <li>Unemployment Rate: 4.2% (PLFS Oct-Dec 2025)</li>
+          <li>Labour Force Participation Rate: 55.8%</li>
+          <li>Female LFPR: 35.2%, Youth Unemployment: 12.8%</li>
+          <li>Agricultural Employment Share: ~42% (declining from 60% in 2000)</li>
+        </ul>
+        <ul>
+          <li><a href="/employment">Employment Visual Story</a></li>
+          <li><a href="/employment/explore">Employment Indicator Explorer</a></li>
+          <li><a href="/employment/methodology">Methodology</a></li>
+          <li><a href="/employment/glossary">Employment Glossary</a> — Labour market terms in plain language</li>
+        </ul>
+
+        <h2>Healthcare</h2>
+        <ul>
+          <li>Hospital Beds: 0.5 per 1,000 (WHO recommends 3.5)</li>
+          <li>Physicians: 0.7 per 1,000</li>
+          <li>Health Expenditure: 3.3% of GDP</li>
+          <li>Out-of-Pocket Spending: 48.2% of total health expenditure</li>
+        </ul>
+        <ul>
+          <li><a href="/healthcare">Healthcare Visual Story</a></li>
+          <li><a href="/healthcare/explore">Healthcare Indicator Explorer</a></li>
+          <li><a href="/healthcare/methodology">Methodology</a></li>
+          <li><a href="/healthcare/glossary">Healthcare Glossary</a> — Healthcare terms in plain language</li>
+        </ul>
+
         <h2>Download Data (JSON)</h2>
         <ul>
           <li><a href="/data/budget/2025-26/summary.json">Budget Summary</a></li>
@@ -420,9 +606,24 @@
           <li><a href="/data/census/2025-26/literacy.json">Literacy Data</a></li>
           <li><a href="/data/census/2025-26/health.json">Health Indicators</a></li>
           <li><a href="/data/census/2025-26/indicators.json">Census Indicators</a></li>
+          <li><a href="/data/education/2025-26/summary.json">Education Summary</a></li>
+          <li><a href="/data/education/2025-26/enrollment.json">Enrollment Data</a></li>
+          <li><a href="/data/education/2025-26/quality.json">Quality & Learning Data</a></li>
+          <li><a href="/data/education/2025-26/spending.json">Education Spending</a></li>
+          <li><a href="/data/education/2025-26/indicators.json">Education Indicators</a></li>
+          <li><a href="/data/employment/2025-26/summary.json">Employment Summary</a></li>
+          <li><a href="/data/employment/2025-26/unemployment.json">Unemployment Data</a></li>
+          <li><a href="/data/employment/2025-26/participation.json">Labour Force Participation</a></li>
+          <li><a href="/data/employment/2025-26/sectoral.json">Sectoral Employment</a></li>
+          <li><a href="/data/employment/2025-26/indicators.json">Employment Indicators</a></li>
+          <li><a href="/data/healthcare/2025-26/summary.json">Healthcare Summary</a></li>
+          <li><a href="/data/healthcare/2025-26/infrastructure.json">Healthcare Infrastructure</a></li>
+          <li><a href="/data/healthcare/2025-26/spending.json">Health Spending</a></li>
+          <li><a href="/data/healthcare/2025-26/disease.json">Disease Burden</a></li>
+          <li><a href="/data/healthcare/2025-26/indicators.json">Healthcare Indicators</a></li>
         </ul>
 
-        <p>Data sourced from <a href="https://openbudgetsindia.org">Open Budgets India</a>, <a href="https://www.indiabudget.gov.in">indiabudget.gov.in</a>, the <a href="https://www.indiabudget.gov.in/economicsurvey/">Economic Survey</a>, <a href="https://censusindia.gov.in">Census of India</a>, and <a href="https://data.worldbank.org">World Bank Open Data</a> under the <a href="https://data.gov.in/government-open-data-license-india">Government Open Data License - India</a>.</p>
+        <p>Data sourced from <a href="https://openbudgetsindia.org">Open Budgets India</a>, <a href="https://www.indiabudget.gov.in">indiabudget.gov.in</a>, the <a href="https://www.indiabudget.gov.in/economicsurvey/">Economic Survey</a>, <a href="https://censusindia.gov.in">Census of India</a>, <a href="https://udiseplus.gov.in">UDISE+</a>, <a href="https://mospi.gov.in">MoSPI PLFS</a>, <a href="https://cbhidghs.mohfw.gov.in">NHP/CBHI</a>, and <a href="https://data.worldbank.org">World Bank Open Data</a> under the <a href="https://data.gov.in/government-open-data-license-india">Government Open Data License - India</a>.</p>
       </div>
     </noscript>
   </body>

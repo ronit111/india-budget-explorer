@@ -1,0 +1,862 @@
+{
+  "year": "2025-26",
+  "primaryTimeSeries": [
+    {
+      "year": "2000",
+      "value": 98.81
+    },
+    {
+      "year": "2001",
+      "value": 96.9
+    },
+    {
+      "year": "2002",
+      "value": 97.45
+    },
+    {
+      "year": "2003",
+      "value": 105.66
+    },
+    {
+      "year": "2007",
+      "value": 113.33
+    },
+    {
+      "year": "2008",
+      "value": 113.83
+    },
+    {
+      "year": "2009",
+      "value": 112.49
+    },
+    {
+      "year": "2010",
+      "value": 112.22
+    },
+    {
+      "year": "2011",
+      "value": 110.08
+    },
+    {
+      "year": "2012",
+      "value": 112.38
+    },
+    {
+      "year": "2013",
+      "value": 114.29
+    },
+    {
+      "year": "2014",
+      "value": 112.36
+    },
+    {
+      "year": "2015",
+      "value": 113.54
+    },
+    {
+      "year": "2016",
+      "value": 119.99
+    },
+    {
+      "year": "2017",
+      "value": 118.32
+    },
+    {
+      "year": "2018",
+      "value": 101.44
+    },
+    {
+      "year": "2019",
+      "value": 99.91
+    },
+    {
+      "year": "2020",
+      "value": 102.04
+    },
+    {
+      "year": "2021",
+      "value": 103.2
+    },
+    {
+      "year": "2022",
+      "value": 112.07
+    },
+    {
+      "year": "2023",
+      "value": 113.16
+    },
+    {
+      "year": "2024",
+      "value": 120.52
+    }
+  ],
+  "secondaryTimeSeries": [
+    {
+      "year": "2000",
+      "value": 47.17
+    },
+    {
+      "year": "2001",
+      "value": 46.82
+    },
+    {
+      "year": "2002",
+      "value": 48.81
+    },
+    {
+      "year": "2003",
+      "value": 51.43
+    },
+    {
+      "year": "2004",
+      "value": 53.25
+    },
+    {
+      "year": "2005",
+      "value": 55.93
+    },
+    {
+      "year": "2006",
+      "value": 56.79
+    },
+    {
+      "year": "2007",
+      "value": 59.15
+    },
+    {
+      "year": "2008",
+      "value": 62.21
+    },
+    {
+      "year": "2009",
+      "value": 61.36
+    },
+    {
+      "year": "2010",
+      "value": 64.95
+    },
+    {
+      "year": "2011",
+      "value": 67.13
+    },
+    {
+      "year": "2012",
+      "value": 69.81
+    },
+    {
+      "year": "2013",
+      "value": 69.48
+    },
+    {
+      "year": "2014",
+      "value": 74.89
+    },
+    {
+      "year": "2015",
+      "value": 74.61
+    },
+    {
+      "year": "2016",
+      "value": 75.94
+    },
+    {
+      "year": "2017",
+      "value": 74.67
+    },
+    {
+      "year": "2018",
+      "value": 76.0
+    },
+    {
+      "year": "2019",
+      "value": 75.87
+    },
+    {
+      "year": "2020",
+      "value": 77.98
+    },
+    {
+      "year": "2021",
+      "value": 80.84
+    },
+    {
+      "year": "2022",
+      "value": 81.66
+    },
+    {
+      "year": "2023",
+      "value": 79.33
+    },
+    {
+      "year": "2024",
+      "value": 78.11
+    }
+  ],
+  "tertiaryTimeSeries": [
+    {
+      "year": "2000",
+      "value": 9.94
+    },
+    {
+      "year": "2001",
+      "value": 10.03
+    },
+    {
+      "year": "2002",
+      "value": 10.56
+    },
+    {
+      "year": "2003",
+      "value": 11.06
+    },
+    {
+      "year": "2004",
+      "value": 11.39
+    },
+    {
+      "year": "2005",
+      "value": 11.13
+    },
+    {
+      "year": "2006",
+      "value": 11.96
+    },
+    {
+      "year": "2007",
+      "value": 13.66
+    },
+    {
+      "year": "2008",
+      "value": 15.65
+    },
+    {
+      "year": "2009",
+      "value": 16.68
+    },
+    {
+      "year": "2010",
+      "value": 18.54
+    },
+    {
+      "year": "2011",
+      "value": 23.27
+    },
+    {
+      "year": "2012",
+      "value": 24.73
+    },
+    {
+      "year": "2013",
+      "value": 24.16
+    },
+    {
+      "year": "2014",
+      "value": 25.75
+    },
+    {
+      "year": "2015",
+      "value": 27.06
+    },
+    {
+      "year": "2016",
+      "value": 27.09
+    },
+    {
+      "year": "2017",
+      "value": 27.73
+    },
+    {
+      "year": "2018",
+      "value": 28.35
+    },
+    {
+      "year": "2019",
+      "value": 28.8
+    },
+    {
+      "year": "2020",
+      "value": 29.56
+    },
+    {
+      "year": "2021",
+      "value": 31.32
+    },
+    {
+      "year": "2022",
+      "value": 32.45
+    },
+    {
+      "year": "2023",
+      "value": 34.01
+    },
+    {
+      "year": "2024",
+      "value": 34.42
+    }
+  ],
+  "femaleSecondary": [
+    {
+      "year": "2000",
+      "value": 38.91
+    },
+    {
+      "year": "2001",
+      "value": 38.8
+    },
+    {
+      "year": "2002",
+      "value": 41.33
+    },
+    {
+      "year": "2003",
+      "value": 45.6
+    },
+    {
+      "year": "2004",
+      "value": 47.27
+    },
+    {
+      "year": "2005",
+      "value": 50.21
+    },
+    {
+      "year": "2006",
+      "value": 51.39
+    },
+    {
+      "year": "2007",
+      "value": 54.45
+    },
+    {
+      "year": "2008",
+      "value": 58.17
+    },
+    {
+      "year": "2009",
+      "value": 58.65
+    },
+    {
+      "year": "2010",
+      "value": 62.34
+    },
+    {
+      "year": "2011",
+      "value": 64.62
+    },
+    {
+      "year": "2012",
+      "value": 67.49
+    },
+    {
+      "year": "2013",
+      "value": 69.26
+    },
+    {
+      "year": "2014",
+      "value": 74.75
+    },
+    {
+      "year": "2015",
+      "value": 74.39
+    },
+    {
+      "year": "2016",
+      "value": 75.82
+    },
+    {
+      "year": "2017",
+      "value": 74.22
+    },
+    {
+      "year": "2018",
+      "value": 75.56
+    },
+    {
+      "year": "2019",
+      "value": 75.64
+    },
+    {
+      "year": "2020",
+      "value": 76.9
+    },
+    {
+      "year": "2021",
+      "value": 78.68
+    },
+    {
+      "year": "2022",
+      "value": 80.92
+    },
+    {
+      "year": "2023",
+      "value": 79.21
+    },
+    {
+      "year": "2024",
+      "value": 78.72
+    }
+  ],
+  "maleSecondary": [
+    {
+      "year": "2000",
+      "value": 54.79
+    },
+    {
+      "year": "2001",
+      "value": 54.24
+    },
+    {
+      "year": "2002",
+      "value": 55.72
+    },
+    {
+      "year": "2003",
+      "value": 56.8
+    },
+    {
+      "year": "2004",
+      "value": 58.76
+    },
+    {
+      "year": "2005",
+      "value": 61.19
+    },
+    {
+      "year": "2006",
+      "value": 61.74
+    },
+    {
+      "year": "2007",
+      "value": 63.44
+    },
+    {
+      "year": "2008",
+      "value": 65.9
+    },
+    {
+      "year": "2009",
+      "value": 63.82
+    },
+    {
+      "year": "2010",
+      "value": 67.31
+    },
+    {
+      "year": "2011",
+      "value": 69.41
+    },
+    {
+      "year": "2012",
+      "value": 71.92
+    },
+    {
+      "year": "2013",
+      "value": 69.68
+    },
+    {
+      "year": "2014",
+      "value": 75.01
+    },
+    {
+      "year": "2015",
+      "value": 74.81
+    },
+    {
+      "year": "2016",
+      "value": 76.04
+    },
+    {
+      "year": "2017",
+      "value": 75.09
+    },
+    {
+      "year": "2018",
+      "value": 76.41
+    },
+    {
+      "year": "2019",
+      "value": 76.08
+    },
+    {
+      "year": "2020",
+      "value": 78.96
+    },
+    {
+      "year": "2021",
+      "value": 82.81
+    },
+    {
+      "year": "2022",
+      "value": 82.33
+    },
+    {
+      "year": "2023",
+      "value": 79.43
+    },
+    {
+      "year": "2024",
+      "value": 77.55
+    }
+  ],
+  "primaryCompletion": [
+    {
+      "year": "2000",
+      "value": 75.28
+    },
+    {
+      "year": "2001",
+      "value": 74.77
+    },
+    {
+      "year": "2002",
+      "value": 77.94
+    },
+    {
+      "year": "2003",
+      "value": 82.53
+    },
+    {
+      "year": "2008",
+      "value": 97.73
+    },
+    {
+      "year": "2009",
+      "value": 98.85
+    },
+    {
+      "year": "2011",
+      "value": 93.3
+    },
+    {
+      "year": "2013",
+      "value": 97.39
+    },
+    {
+      "year": "2014",
+      "value": 99.56
+    },
+    {
+      "year": "2015",
+      "value": 100.72
+    },
+    {
+      "year": "2016",
+      "value": 100.44
+    },
+    {
+      "year": "2017",
+      "value": 99.37
+    },
+    {
+      "year": "2019",
+      "value": 96.21
+    },
+    {
+      "year": "2020",
+      "value": 98.15
+    },
+    {
+      "year": "2021",
+      "value": 99.41
+    },
+    {
+      "year": "2023",
+      "value": 93.82
+    },
+    {
+      "year": "2024",
+      "value": 94.49
+    }
+  ],
+  "states": [
+    {
+      "id": "up",
+      "name": "Uttar Pradesh",
+      "gerPrimary": 100.2,
+      "gerSecondary": 76.9,
+      "gerHigherSec": 56.8,
+      "dropoutPrimary": 1.4,
+      "dropoutSecondary": 14.6
+    },
+    {
+      "id": "mh",
+      "name": "Maharashtra",
+      "gerPrimary": 101.5,
+      "gerSecondary": 90.8,
+      "gerHigherSec": 70.1,
+      "dropoutPrimary": 0.8,
+      "dropoutSecondary": 10.2
+    },
+    {
+      "id": "br",
+      "name": "Bihar",
+      "gerPrimary": 104.1,
+      "gerSecondary": 68.5,
+      "gerHigherSec": 42.3,
+      "dropoutPrimary": 2.8,
+      "dropoutSecondary": 20.4
+    },
+    {
+      "id": "mp",
+      "name": "Madhya Pradesh",
+      "gerPrimary": 101.8,
+      "gerSecondary": 78.4,
+      "gerHigherSec": 54.6,
+      "dropoutPrimary": 1.6,
+      "dropoutSecondary": 16.8
+    },
+    {
+      "id": "rj",
+      "name": "Rajasthan",
+      "gerPrimary": 103.4,
+      "gerSecondary": 82.1,
+      "gerHigherSec": 58.2,
+      "dropoutPrimary": 1.5,
+      "dropoutSecondary": 17.2
+    },
+    {
+      "id": "wb",
+      "name": "West Bengal",
+      "gerPrimary": 99.4,
+      "gerSecondary": 87.6,
+      "gerHigherSec": 62.4,
+      "dropoutPrimary": 1.2,
+      "dropoutSecondary": 12.1
+    },
+    {
+      "id": "tn",
+      "name": "Tamil Nadu",
+      "gerPrimary": 102.3,
+      "gerSecondary": 96.2,
+      "gerHigherSec": 78.5,
+      "dropoutPrimary": 0.4,
+      "dropoutSecondary": 6.8
+    },
+    {
+      "id": "ka",
+      "name": "Karnataka",
+      "gerPrimary": 101.1,
+      "gerSecondary": 93.7,
+      "gerHigherSec": 71.8,
+      "dropoutPrimary": 0.6,
+      "dropoutSecondary": 8.4
+    },
+    {
+      "id": "gj",
+      "name": "Gujarat",
+      "gerPrimary": 102.6,
+      "gerSecondary": 85.4,
+      "gerHigherSec": 62.7,
+      "dropoutPrimary": 1.0,
+      "dropoutSecondary": 11.8
+    },
+    {
+      "id": "ap",
+      "name": "Andhra Pradesh",
+      "gerPrimary": 100.8,
+      "gerSecondary": 88.3,
+      "gerHigherSec": 65.2,
+      "dropoutPrimary": 0.7,
+      "dropoutSecondary": 9.6
+    },
+    {
+      "id": "tg",
+      "name": "Telangana",
+      "gerPrimary": 101.2,
+      "gerSecondary": 91.5,
+      "gerHigherSec": 68.4,
+      "dropoutPrimary": 0.5,
+      "dropoutSecondary": 8.2
+    },
+    {
+      "id": "od",
+      "name": "Odisha",
+      "gerPrimary": 100.6,
+      "gerSecondary": 82.8,
+      "gerHigherSec": 55.3,
+      "dropoutPrimary": 1.3,
+      "dropoutSecondary": 14.2
+    },
+    {
+      "id": "kl",
+      "name": "Kerala",
+      "gerPrimary": 99.8,
+      "gerSecondary": 97.4,
+      "gerHigherSec": 82.6,
+      "dropoutPrimary": 0.2,
+      "dropoutSecondary": 3.8
+    },
+    {
+      "id": "jh",
+      "name": "Jharkhand",
+      "gerPrimary": 102.8,
+      "gerSecondary": 72.4,
+      "gerHigherSec": 45.8,
+      "dropoutPrimary": 2.2,
+      "dropoutSecondary": 18.6
+    },
+    {
+      "id": "as",
+      "name": "Assam",
+      "gerPrimary": 101.4,
+      "gerSecondary": 80.2,
+      "gerHigherSec": 52.4,
+      "dropoutPrimary": 1.8,
+      "dropoutSecondary": 16.4
+    },
+    {
+      "id": "pb",
+      "name": "Punjab",
+      "gerPrimary": 100.4,
+      "gerSecondary": 92.8,
+      "gerHigherSec": 72.4,
+      "dropoutPrimary": 0.4,
+      "dropoutSecondary": 6.2
+    },
+    {
+      "id": "ct",
+      "name": "Chhattisgarh",
+      "gerPrimary": 102.4,
+      "gerSecondary": 78.6,
+      "gerHigherSec": 52.8,
+      "dropoutPrimary": 1.8,
+      "dropoutSecondary": 16.2
+    },
+    {
+      "id": "hr",
+      "name": "Haryana",
+      "gerPrimary": 101.6,
+      "gerSecondary": 88.4,
+      "gerHigherSec": 66.8,
+      "dropoutPrimary": 0.6,
+      "dropoutSecondary": 8.8
+    },
+    {
+      "id": "uk",
+      "name": "Uttarakhand",
+      "gerPrimary": 100.8,
+      "gerSecondary": 90.2,
+      "gerHigherSec": 68.4,
+      "dropoutPrimary": 0.8,
+      "dropoutSecondary": 8.6
+    },
+    {
+      "id": "jk",
+      "name": "Jammu & Kashmir",
+      "gerPrimary": 100.6,
+      "gerSecondary": 84.2,
+      "gerHigherSec": 58.6,
+      "dropoutPrimary": 1.2,
+      "dropoutSecondary": 12.4
+    },
+    {
+      "id": "hp",
+      "name": "Himachal Pradesh",
+      "gerPrimary": 100.2,
+      "gerSecondary": 94.6,
+      "gerHigherSec": 76.8,
+      "dropoutPrimary": 0.3,
+      "dropoutSecondary": 4.8
+    },
+    {
+      "id": "tr",
+      "name": "Tripura",
+      "gerPrimary": 101.2,
+      "gerSecondary": 86.4,
+      "gerHigherSec": 58.2,
+      "dropoutPrimary": 1.0,
+      "dropoutSecondary": 10.8
+    },
+    {
+      "id": "ml",
+      "name": "Meghalaya",
+      "gerPrimary": 103.8,
+      "gerSecondary": 74.6,
+      "gerHigherSec": 48.2,
+      "dropoutPrimary": 2.4,
+      "dropoutSecondary": 18.2
+    },
+    {
+      "id": "mn",
+      "name": "Manipur",
+      "gerPrimary": 102.4,
+      "gerSecondary": 82.6,
+      "gerHigherSec": 56.4,
+      "dropoutPrimary": 1.4,
+      "dropoutSecondary": 12.6
+    },
+    {
+      "id": "nl",
+      "name": "Nagaland",
+      "gerPrimary": 101.8,
+      "gerSecondary": 78.4,
+      "gerHigherSec": 52.6,
+      "dropoutPrimary": 1.6,
+      "dropoutSecondary": 14.8
+    },
+    {
+      "id": "ga",
+      "name": "Goa",
+      "gerPrimary": 100.4,
+      "gerSecondary": 96.8,
+      "gerHigherSec": 80.2,
+      "dropoutPrimary": 0.2,
+      "dropoutSecondary": 3.4
+    },
+    {
+      "id": "ar",
+      "name": "Arunachal Pradesh",
+      "gerPrimary": 103.2,
+      "gerSecondary": 76.8,
+      "gerHigherSec": 46.4,
+      "dropoutPrimary": 2.6,
+      "dropoutSecondary": 18.8
+    },
+    {
+      "id": "mz",
+      "name": "Mizoram",
+      "gerPrimary": 101.6,
+      "gerSecondary": 88.4,
+      "gerHigherSec": 62.8,
+      "dropoutPrimary": 0.8,
+      "dropoutSecondary": 8.4
+    },
+    {
+      "id": "sk",
+      "name": "Sikkim",
+      "gerPrimary": 100.6,
+      "gerSecondary": 92.4,
+      "gerHigherSec": 72.6,
+      "dropoutPrimary": 0.4,
+      "dropoutSecondary": 5.2
+    },
+    {
+      "id": "dl",
+      "name": "Delhi",
+      "gerPrimary": 101.4,
+      "gerSecondary": 94.2,
+      "gerHigherSec": 76.4,
+      "dropoutPrimary": 0.4,
+      "dropoutSecondary": 5.8
+    },
+    {
+      "id": "py",
+      "name": "Puducherry",
+      "gerPrimary": 100.8,
+      "gerSecondary": 94.8,
+      "gerHigherSec": 78.4,
+      "dropoutPrimary": 0.3,
+      "dropoutSecondary": 4.2
+    },
+    {
+      "id": "ch",
+      "name": "Chandigarh",
+      "gerPrimary": 101.2,
+      "gerSecondary": 95.6,
+      "gerHigherSec": 80.2,
+      "dropoutPrimary": 0.2,
+      "dropoutSecondary": 3.6
+    }
+  ],
+  "source": "World Bank + UDISE+ Flash Statistics 2023-24"
+}

@@ -572,6 +572,234 @@ export interface CensusIndicatorsData {
   indicators: CensusIndicator[];
 }
 
+// ─── Education Domain ───────────────────────────────────────────
+
+export interface EducationSummary {
+  year: string;
+  totalStudents: number;
+  totalSchools: number;
+  totalTeachers: number;
+  gerPrimary: number;
+  gerSecondary: number;
+  ptrNational: number;
+  educationSpendGDP: number;
+  topEnrolledStates: { name: string; students: number }[];
+  lastUpdated: string;
+  source: string;
+}
+
+export interface StateEnrollment {
+  id: string;
+  name: string;
+  gerPrimary: number;
+  gerSecondary: number;
+  gerHigherSec: number;
+  dropoutPrimary: number;
+  dropoutSecondary: number;
+}
+
+export interface EnrollmentData {
+  year: string;
+  primaryTimeSeries: TimeSeriesPoint[];
+  secondaryTimeSeries: TimeSeriesPoint[];
+  tertiaryTimeSeries: TimeSeriesPoint[];
+  femaleSecondary: TimeSeriesPoint[];
+  maleSecondary: TimeSeriesPoint[];
+  primaryCompletion: TimeSeriesPoint[];
+  states: StateEnrollment[];
+  source: string;
+}
+
+export interface StateInfrastructure {
+  id: string;
+  name: string;
+  ptr: number;
+  schoolsWithComputers: number;
+  schoolsWithInternet: number;
+  girlsToilets: number;
+}
+
+export interface StateLearning {
+  id: string;
+  name: string;
+  canReadStd2: number;
+  canDoSubtraction: number;
+  canReadEnglish: number;
+}
+
+export interface QualityData {
+  year: string;
+  ptrPrimaryTimeSeries: TimeSeriesPoint[];
+  ptrSecondaryTimeSeries: TimeSeriesPoint[];
+  stateInfrastructure: StateInfrastructure[];
+  learningOutcomes: StateLearning[];
+  source: string;
+}
+
+export interface SpendingData {
+  year: string;
+  spendGDPTimeSeries: TimeSeriesPoint[];
+  spendGovtTimeSeries: TimeSeriesPoint[];
+  outOfSchoolTimeSeries: TimeSeriesPoint[];
+  source: string;
+}
+
+export interface EducationIndicator {
+  id: string;
+  name: string;
+  category: 'enrollment' | 'quality' | 'infrastructure' | 'spending';
+  unit: string;
+  states: StateValue[];
+  source: string;
+}
+
+export interface EducationIndicatorsData {
+  year: string;
+  indicators: EducationIndicator[];
+}
+
+// ─── Employment Domain ──────────────────────────────────────────
+
+export interface EmploymentSummary {
+  year: string;
+  unemploymentRate: number;
+  lfpr: number;
+  youthUnemployment: number;
+  femaleLfpr: number;
+  workforceTotal: number;         // in crores
+  selfEmployedPct: number;
+  lastUpdated: string;
+  source: string;
+}
+
+export interface UnemploymentData {
+  year: string;
+  totalTimeSeries: TimeSeriesPoint[];
+  youthTimeSeries: TimeSeriesPoint[];
+  femaleTimeSeries: TimeSeriesPoint[];
+  maleTimeSeries: TimeSeriesPoint[];
+  stateUnemployment: StateValue[];
+  source: string;
+}
+
+export interface ParticipationData {
+  year: string;
+  lfprTotalTimeSeries: TimeSeriesPoint[];
+  lfprMaleTimeSeries: TimeSeriesPoint[];
+  lfprFemaleTimeSeries: TimeSeriesPoint[];
+  empPopRatioTimeSeries: TimeSeriesPoint[];
+  stateLfpr: StateValue[];
+  source: string;
+}
+
+export interface SectoralEntry {
+  id: string;
+  name: string;
+  employmentShare: number;
+}
+
+export interface SectoralData {
+  year: string;
+  agricultureTimeSeries: TimeSeriesPoint[];
+  industryTimeSeries: TimeSeriesPoint[];
+  servicesTimeSeries: TimeSeriesPoint[];
+  selfEmployedTimeSeries: TimeSeriesPoint[];
+  vulnerableTimeSeries: TimeSeriesPoint[];
+  currentSectors: SectoralEntry[];
+  source: string;
+}
+
+export interface EmploymentIndicator {
+  id: string;
+  name: string;
+  category: 'unemployment' | 'participation' | 'sectoral' | 'informality';
+  unit: string;
+  states: StateValue[];
+  source: string;
+}
+
+export interface EmploymentIndicatorsData {
+  year: string;
+  indicators: EmploymentIndicator[];
+}
+
+// ─── Healthcare Domain ──────────────────────────────────────────
+
+export interface HealthcareSummary {
+  year: string;
+  hospitalBedsPer1000: number;
+  physiciansPer1000: number;
+  healthExpGDP: number;
+  outOfPocketPct: number;
+  dptImmunization: number;
+  tbIncidence: number;
+  lastUpdated: string;
+  source: string;
+}
+
+export interface InfrastructureData {
+  year: string;
+  hospitalBedsTimeSeries: TimeSeriesPoint[];
+  physiciansTimeSeries: TimeSeriesPoint[];
+  nursesTimeSeries: TimeSeriesPoint[];
+  stateInfrastructure: StateHealthInfra[];
+  source: string;
+}
+
+export interface StateHealthInfra {
+  id: string;
+  name: string;
+  bedsPerLakh: number;
+  phcs: number;
+  chcs: number;
+  subCentres: number;
+  doctorsAtPHC: number;
+  doctorsPer10K: number;
+}
+
+export interface HealthSpendingData {
+  year: string;
+  healthExpGDPTimeSeries: TimeSeriesPoint[];
+  healthExpPerCapitaTimeSeries: TimeSeriesPoint[];
+  outOfPocketTimeSeries: TimeSeriesPoint[];
+  govtHealthExpTimeSeries: TimeSeriesPoint[];
+  source: string;
+}
+
+export interface DiseaseData {
+  year: string;
+  dptTimeSeries: TimeSeriesPoint[];
+  measlesTimeSeries: TimeSeriesPoint[];
+  tbIncidenceTimeSeries: TimeSeriesPoint[];
+  hivTimeSeries: TimeSeriesPoint[];
+  birthsAttendedTimeSeries: TimeSeriesPoint[];
+  stateImmunization: StateImmunization[];
+  source: string;
+}
+
+export interface StateImmunization {
+  id: string;
+  name: string;
+  fullImmunization: number;
+  bcg: number;
+  measles: number;
+  dpt3: number;
+}
+
+export interface HealthcareIndicator {
+  id: string;
+  name: string;
+  category: 'infrastructure' | 'spending' | 'disease' | 'immunization';
+  unit: string;
+  states: StateValue[];
+  source: string;
+}
+
+export interface HealthcareIndicatorsData {
+  year: string;
+  indicators: HealthcareIndicator[];
+}
+
 // ─── Glossary (shared across domains) ──────────────────────────
 
 export interface GlossaryTerm {
@@ -584,7 +812,7 @@ export interface GlossaryTerm {
 }
 
 export interface GlossaryData {
-  domain: 'budget' | 'economy' | 'rbi' | 'states' | 'census';
+  domain: 'budget' | 'economy' | 'rbi' | 'states' | 'census' | 'education' | 'employment' | 'healthcare';
   year: string;
   terms: GlossaryTerm[];
 }

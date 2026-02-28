@@ -15,7 +15,10 @@ export function Header() {
   const isRBISection = location.pathname.startsWith('/rbi');
   const isStatesSection = location.pathname.startsWith('/states');
   const isCensusSection = location.pathname.startsWith('/census');
-  const isDataDomain = isBudgetSection || isEconomySection || isRBISection || isStatesSection || isCensusSection;
+  const isEducationSection = location.pathname.startsWith('/education');
+  const isEmploymentSection = location.pathname.startsWith('/employment');
+  const isHealthcareSection = location.pathname.startsWith('/healthcare');
+  const isDataDomain = isBudgetSection || isEconomySection || isRBISection || isStatesSection || isCensusSection || isEducationSection || isEmploymentSection || isHealthcareSection;
 
   // Context-aware title: show story name when inside a data story
   const headerTitle = isBudgetSection
@@ -28,7 +31,13 @@ export function Header() {
           ? 'State Finances'
           : isCensusSection
             ? 'Census & Demographics'
-            : 'Indian Data Project';
+            : isEducationSection
+              ? 'Education'
+              : isEmploymentSection
+                ? 'Employment'
+                : isHealthcareSection
+                  ? 'Healthcare'
+                  : 'Indian Data Project';
   const headerLink = isBudgetSection
     ? '/budget'
     : isEconomySection
@@ -39,7 +48,13 @@ export function Header() {
           ? '/states'
           : isCensusSection
             ? '/census'
-            : '/';
+            : isEducationSection
+              ? '/education'
+              : isEmploymentSection
+                ? '/employment'
+                : isHealthcareSection
+                  ? '/healthcare'
+                  : '/';
 
   // Only show nav links inside a data story (domain sub-pages)
   const navLinks = isBudgetSection
@@ -78,7 +93,28 @@ export function Header() {
                 { to: '/census/methodology', label: 'Methodology' },
                 { to: '/census/glossary', label: 'Glossary' },
               ]
-            : [];
+            : isEducationSection
+              ? [
+                  { to: '/education', label: 'Story' },
+                  { to: '/education/explore', label: 'Explore' },
+                  { to: '/education/methodology', label: 'Methodology' },
+                  { to: '/education/glossary', label: 'Glossary' },
+                ]
+              : isEmploymentSection
+                ? [
+                    { to: '/employment', label: 'Story' },
+                    { to: '/employment/explore', label: 'Explore' },
+                    { to: '/employment/methodology', label: 'Methodology' },
+                    { to: '/employment/glossary', label: 'Glossary' },
+                  ]
+                : isHealthcareSection
+                  ? [
+                      { to: '/healthcare', label: 'Story' },
+                      { to: '/healthcare/explore', label: 'Explore' },
+                      { to: '/healthcare/methodology', label: 'Methodology' },
+                      { to: '/healthcare/glossary', label: 'Glossary' },
+                    ]
+                  : [];
 
   const isActiveLink = (linkTo: string) => {
     if (linkTo === '/budget') return location.pathname === '/budget';
@@ -86,6 +122,9 @@ export function Header() {
     if (linkTo === '/rbi') return location.pathname === '/rbi';
     if (linkTo === '/states') return location.pathname === '/states';
     if (linkTo === '/census') return location.pathname === '/census';
+    if (linkTo === '/education') return location.pathname === '/education';
+    if (linkTo === '/employment') return location.pathname === '/employment';
+    if (linkTo === '/healthcare') return location.pathname === '/healthcare';
     return location.pathname === linkTo;
   };
 

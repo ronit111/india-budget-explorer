@@ -1,0 +1,1436 @@
+{
+  "year": "2025-26",
+  "indicators": [
+    {
+      "id": "beds_per_lakh",
+      "name": "Hospital Beds per Lakh Population",
+      "category": "infrastructure",
+      "unit": "per lakh",
+      "states": [
+        {
+          "id": "up",
+          "name": "Uttar Pradesh",
+          "value": 32
+        },
+        {
+          "id": "mh",
+          "name": "Maharashtra",
+          "value": 58
+        },
+        {
+          "id": "br",
+          "name": "Bihar",
+          "value": 11
+        },
+        {
+          "id": "wb",
+          "name": "West Bengal",
+          "value": 52
+        },
+        {
+          "id": "mp",
+          "name": "Madhya Pradesh",
+          "value": 28
+        },
+        {
+          "id": "tn",
+          "name": "Tamil Nadu",
+          "value": 86
+        },
+        {
+          "id": "rj",
+          "name": "Rajasthan",
+          "value": 36
+        },
+        {
+          "id": "ka",
+          "name": "Karnataka",
+          "value": 68
+        },
+        {
+          "id": "gj",
+          "name": "Gujarat",
+          "value": 42
+        },
+        {
+          "id": "ap",
+          "name": "Andhra Pradesh",
+          "value": 48
+        },
+        {
+          "id": "tg",
+          "name": "Telangana",
+          "value": 56
+        },
+        {
+          "id": "od",
+          "name": "Odisha",
+          "value": 24
+        },
+        {
+          "id": "kl",
+          "name": "Kerala",
+          "value": 94
+        },
+        {
+          "id": "jh",
+          "name": "Jharkhand",
+          "value": 18
+        },
+        {
+          "id": "as",
+          "name": "Assam",
+          "value": 22
+        },
+        {
+          "id": "pb",
+          "name": "Punjab",
+          "value": 62
+        },
+        {
+          "id": "ct",
+          "name": "Chhattisgarh",
+          "value": 20
+        },
+        {
+          "id": "hr",
+          "name": "Haryana",
+          "value": 38
+        },
+        {
+          "id": "uk",
+          "name": "Uttarakhand",
+          "value": 42
+        },
+        {
+          "id": "jk",
+          "name": "Jammu & Kashmir",
+          "value": 34
+        },
+        {
+          "id": "hp",
+          "name": "Himachal Pradesh",
+          "value": 68
+        },
+        {
+          "id": "dl",
+          "name": "Delhi",
+          "value": 124
+        },
+        {
+          "id": "ga",
+          "name": "Goa",
+          "value": 148
+        },
+        {
+          "id": "tr",
+          "name": "Tripura",
+          "value": 28
+        },
+        {
+          "id": "mn",
+          "name": "Manipur",
+          "value": 24
+        },
+        {
+          "id": "ml",
+          "name": "Meghalaya",
+          "value": 18
+        },
+        {
+          "id": "nl",
+          "name": "Nagaland",
+          "value": 16
+        },
+        {
+          "id": "mz",
+          "name": "Mizoram",
+          "value": 22
+        },
+        {
+          "id": "sk",
+          "name": "Sikkim",
+          "value": 54
+        },
+        {
+          "id": "ar",
+          "name": "Arunachal Pradesh",
+          "value": 14
+        }
+      ],
+      "source": "NHP 2022"
+    },
+    {
+      "id": "doctors_per_10k",
+      "name": "Doctors per 10,000 Population",
+      "category": "infrastructure",
+      "unit": "per 10K",
+      "states": [
+        {
+          "id": "up",
+          "name": "Uttar Pradesh",
+          "value": 3.8
+        },
+        {
+          "id": "mh",
+          "name": "Maharashtra",
+          "value": 10.2
+        },
+        {
+          "id": "br",
+          "name": "Bihar",
+          "value": 2.4
+        },
+        {
+          "id": "wb",
+          "name": "West Bengal",
+          "value": 7.8
+        },
+        {
+          "id": "mp",
+          "name": "Madhya Pradesh",
+          "value": 4.2
+        },
+        {
+          "id": "tn",
+          "name": "Tamil Nadu",
+          "value": 12.4
+        },
+        {
+          "id": "rj",
+          "name": "Rajasthan",
+          "value": 5.6
+        },
+        {
+          "id": "ka",
+          "name": "Karnataka",
+          "value": 9.8
+        },
+        {
+          "id": "gj",
+          "name": "Gujarat",
+          "value": 7.4
+        },
+        {
+          "id": "ap",
+          "name": "Andhra Pradesh",
+          "value": 8.6
+        },
+        {
+          "id": "tg",
+          "name": "Telangana",
+          "value": 10.8
+        },
+        {
+          "id": "od",
+          "name": "Odisha",
+          "value": 4.8
+        },
+        {
+          "id": "kl",
+          "name": "Kerala",
+          "value": 18.6
+        },
+        {
+          "id": "jh",
+          "name": "Jharkhand",
+          "value": 3.2
+        },
+        {
+          "id": "as",
+          "name": "Assam",
+          "value": 4.6
+        },
+        {
+          "id": "pb",
+          "name": "Punjab",
+          "value": 11.4
+        },
+        {
+          "id": "ct",
+          "name": "Chhattisgarh",
+          "value": 3.4
+        },
+        {
+          "id": "hr",
+          "name": "Haryana",
+          "value": 8.2
+        },
+        {
+          "id": "uk",
+          "name": "Uttarakhand",
+          "value": 7.6
+        },
+        {
+          "id": "jk",
+          "name": "Jammu & Kashmir",
+          "value": 6.2
+        },
+        {
+          "id": "hp",
+          "name": "Himachal Pradesh",
+          "value": 12.8
+        },
+        {
+          "id": "dl",
+          "name": "Delhi",
+          "value": 24.6
+        },
+        {
+          "id": "ga",
+          "name": "Goa",
+          "value": 22.4
+        },
+        {
+          "id": "tr",
+          "name": "Tripura",
+          "value": 5.4
+        },
+        {
+          "id": "mn",
+          "name": "Manipur",
+          "value": 5.8
+        },
+        {
+          "id": "ml",
+          "name": "Meghalaya",
+          "value": 4.2
+        },
+        {
+          "id": "nl",
+          "name": "Nagaland",
+          "value": 3.8
+        },
+        {
+          "id": "mz",
+          "name": "Mizoram",
+          "value": 6.4
+        },
+        {
+          "id": "sk",
+          "name": "Sikkim",
+          "value": 8.8
+        },
+        {
+          "id": "ar",
+          "name": "Arunachal Pradesh",
+          "value": 3.2
+        }
+      ],
+      "source": "NHP 2022"
+    },
+    {
+      "id": "phcs",
+      "name": "Primary Health Centres",
+      "category": "infrastructure",
+      "unit": "",
+      "states": [
+        {
+          "id": "up",
+          "name": "Uttar Pradesh",
+          "value": 3621
+        },
+        {
+          "id": "mh",
+          "name": "Maharashtra",
+          "value": 1814
+        },
+        {
+          "id": "br",
+          "name": "Bihar",
+          "value": 1883
+        },
+        {
+          "id": "wb",
+          "name": "West Bengal",
+          "value": 909
+        },
+        {
+          "id": "mp",
+          "name": "Madhya Pradesh",
+          "value": 1171
+        },
+        {
+          "id": "tn",
+          "name": "Tamil Nadu",
+          "value": 1682
+        },
+        {
+          "id": "rj",
+          "name": "Rajasthan",
+          "value": 2080
+        },
+        {
+          "id": "ka",
+          "name": "Karnataka",
+          "value": 2310
+        },
+        {
+          "id": "gj",
+          "name": "Gujarat",
+          "value": 1516
+        },
+        {
+          "id": "ap",
+          "name": "Andhra Pradesh",
+          "value": 1147
+        },
+        {
+          "id": "tg",
+          "name": "Telangana",
+          "value": 762
+        },
+        {
+          "id": "od",
+          "name": "Odisha",
+          "value": 1226
+        },
+        {
+          "id": "kl",
+          "name": "Kerala",
+          "value": 847
+        },
+        {
+          "id": "jh",
+          "name": "Jharkhand",
+          "value": 327
+        },
+        {
+          "id": "as",
+          "name": "Assam",
+          "value": 975
+        },
+        {
+          "id": "pb",
+          "name": "Punjab",
+          "value": 427
+        },
+        {
+          "id": "ct",
+          "name": "Chhattisgarh",
+          "value": 790
+        },
+        {
+          "id": "hr",
+          "name": "Haryana",
+          "value": 473
+        },
+        {
+          "id": "uk",
+          "name": "Uttarakhand",
+          "value": 257
+        },
+        {
+          "id": "jk",
+          "name": "Jammu & Kashmir",
+          "value": 692
+        },
+        {
+          "id": "hp",
+          "name": "Himachal Pradesh",
+          "value": 522
+        },
+        {
+          "id": "dl",
+          "name": "Delhi",
+          "value": 8
+        },
+        {
+          "id": "ga",
+          "name": "Goa",
+          "value": 25
+        },
+        {
+          "id": "tr",
+          "name": "Tripura",
+          "value": 112
+        },
+        {
+          "id": "mn",
+          "name": "Manipur",
+          "value": 86
+        },
+        {
+          "id": "ml",
+          "name": "Meghalaya",
+          "value": 118
+        },
+        {
+          "id": "nl",
+          "name": "Nagaland",
+          "value": 126
+        },
+        {
+          "id": "mz",
+          "name": "Mizoram",
+          "value": 57
+        },
+        {
+          "id": "sk",
+          "name": "Sikkim",
+          "value": 24
+        },
+        {
+          "id": "ar",
+          "name": "Arunachal Pradesh",
+          "value": 118
+        }
+      ],
+      "source": "NHP 2022"
+    },
+    {
+      "id": "chcs",
+      "name": "Community Health Centres",
+      "category": "infrastructure",
+      "unit": "",
+      "states": [
+        {
+          "id": "up",
+          "name": "Uttar Pradesh",
+          "value": 773
+        },
+        {
+          "id": "mh",
+          "name": "Maharashtra",
+          "value": 364
+        },
+        {
+          "id": "br",
+          "name": "Bihar",
+          "value": 252
+        },
+        {
+          "id": "wb",
+          "name": "West Bengal",
+          "value": 348
+        },
+        {
+          "id": "mp",
+          "name": "Madhya Pradesh",
+          "value": 334
+        },
+        {
+          "id": "tn",
+          "name": "Tamil Nadu",
+          "value": 385
+        },
+        {
+          "id": "rj",
+          "name": "Rajasthan",
+          "value": 579
+        },
+        {
+          "id": "ka",
+          "name": "Karnataka",
+          "value": 207
+        },
+        {
+          "id": "gj",
+          "name": "Gujarat",
+          "value": 363
+        },
+        {
+          "id": "ap",
+          "name": "Andhra Pradesh",
+          "value": 194
+        },
+        {
+          "id": "tg",
+          "name": "Telangana",
+          "value": 116
+        },
+        {
+          "id": "od",
+          "name": "Odisha",
+          "value": 377
+        },
+        {
+          "id": "kl",
+          "name": "Kerala",
+          "value": 234
+        },
+        {
+          "id": "jh",
+          "name": "Jharkhand",
+          "value": 188
+        },
+        {
+          "id": "as",
+          "name": "Assam",
+          "value": 151
+        },
+        {
+          "id": "pb",
+          "name": "Punjab",
+          "value": 150
+        },
+        {
+          "id": "ct",
+          "name": "Chhattisgarh",
+          "value": 169
+        },
+        {
+          "id": "hr",
+          "name": "Haryana",
+          "value": 119
+        },
+        {
+          "id": "uk",
+          "name": "Uttarakhand",
+          "value": 69
+        },
+        {
+          "id": "jk",
+          "name": "Jammu & Kashmir",
+          "value": 87
+        },
+        {
+          "id": "hp",
+          "name": "Himachal Pradesh",
+          "value": 79
+        },
+        {
+          "id": "dl",
+          "name": "Delhi",
+          "value": 2
+        },
+        {
+          "id": "ga",
+          "name": "Goa",
+          "value": 4
+        },
+        {
+          "id": "tr",
+          "name": "Tripura",
+          "value": 22
+        },
+        {
+          "id": "mn",
+          "name": "Manipur",
+          "value": 16
+        },
+        {
+          "id": "ml",
+          "name": "Meghalaya",
+          "value": 29
+        },
+        {
+          "id": "nl",
+          "name": "Nagaland",
+          "value": 21
+        },
+        {
+          "id": "mz",
+          "name": "Mizoram",
+          "value": 9
+        },
+        {
+          "id": "sk",
+          "name": "Sikkim",
+          "value": 2
+        },
+        {
+          "id": "ar",
+          "name": "Arunachal Pradesh",
+          "value": 62
+        }
+      ],
+      "source": "NHP 2022"
+    },
+    {
+      "id": "sub_centres",
+      "name": "Sub-Centres",
+      "category": "infrastructure",
+      "unit": "",
+      "states": [
+        {
+          "id": "up",
+          "name": "Uttar Pradesh",
+          "value": 20521
+        },
+        {
+          "id": "mh",
+          "name": "Maharashtra",
+          "value": 10580
+        },
+        {
+          "id": "br",
+          "name": "Bihar",
+          "value": 9729
+        },
+        {
+          "id": "wb",
+          "name": "West Bengal",
+          "value": 10356
+        },
+        {
+          "id": "mp",
+          "name": "Madhya Pradesh",
+          "value": 9192
+        },
+        {
+          "id": "tn",
+          "name": "Tamil Nadu",
+          "value": 8706
+        },
+        {
+          "id": "rj",
+          "name": "Rajasthan",
+          "value": 14407
+        },
+        {
+          "id": "ka",
+          "name": "Karnataka",
+          "value": 8143
+        },
+        {
+          "id": "gj",
+          "name": "Gujarat",
+          "value": 7274
+        },
+        {
+          "id": "ap",
+          "name": "Andhra Pradesh",
+          "value": 7458
+        },
+        {
+          "id": "tg",
+          "name": "Telangana",
+          "value": 4742
+        },
+        {
+          "id": "od",
+          "name": "Odisha",
+          "value": 6688
+        },
+        {
+          "id": "kl",
+          "name": "Kerala",
+          "value": 5094
+        },
+        {
+          "id": "jh",
+          "name": "Jharkhand",
+          "value": 3958
+        },
+        {
+          "id": "as",
+          "name": "Assam",
+          "value": 4621
+        },
+        {
+          "id": "pb",
+          "name": "Punjab",
+          "value": 2950
+        },
+        {
+          "id": "ct",
+          "name": "Chhattisgarh",
+          "value": 5211
+        },
+        {
+          "id": "hr",
+          "name": "Haryana",
+          "value": 2630
+        },
+        {
+          "id": "uk",
+          "name": "Uttarakhand",
+          "value": 1847
+        },
+        {
+          "id": "jk",
+          "name": "Jammu & Kashmir",
+          "value": 1949
+        },
+        {
+          "id": "hp",
+          "name": "Himachal Pradesh",
+          "value": 2065
+        },
+        {
+          "id": "dl",
+          "name": "Delhi",
+          "value": 18
+        },
+        {
+          "id": "ga",
+          "name": "Goa",
+          "value": 210
+        },
+        {
+          "id": "tr",
+          "name": "Tripura",
+          "value": 1062
+        },
+        {
+          "id": "mn",
+          "name": "Manipur",
+          "value": 420
+        },
+        {
+          "id": "ml",
+          "name": "Meghalaya",
+          "value": 582
+        },
+        {
+          "id": "nl",
+          "name": "Nagaland",
+          "value": 396
+        },
+        {
+          "id": "mz",
+          "name": "Mizoram",
+          "value": 370
+        },
+        {
+          "id": "sk",
+          "name": "Sikkim",
+          "value": 147
+        },
+        {
+          "id": "ar",
+          "name": "Arunachal Pradesh",
+          "value": 404
+        }
+      ],
+      "source": "NHP 2022"
+    },
+    {
+      "id": "full_immunization",
+      "name": "Full Immunization Coverage",
+      "category": "immunization",
+      "unit": "%",
+      "states": [
+        {
+          "id": "up",
+          "name": "Uttar Pradesh",
+          "value": 67.0
+        },
+        {
+          "id": "mh",
+          "name": "Maharashtra",
+          "value": 77.4
+        },
+        {
+          "id": "br",
+          "name": "Bihar",
+          "value": 54.2
+        },
+        {
+          "id": "wb",
+          "name": "West Bengal",
+          "value": 74.8
+        },
+        {
+          "id": "mp",
+          "name": "Madhya Pradesh",
+          "value": 68.4
+        },
+        {
+          "id": "tn",
+          "name": "Tamil Nadu",
+          "value": 82.6
+        },
+        {
+          "id": "rj",
+          "name": "Rajasthan",
+          "value": 66.8
+        },
+        {
+          "id": "ka",
+          "name": "Karnataka",
+          "value": 76.8
+        },
+        {
+          "id": "gj",
+          "name": "Gujarat",
+          "value": 72.4
+        },
+        {
+          "id": "ap",
+          "name": "Andhra Pradesh",
+          "value": 73.6
+        },
+        {
+          "id": "tg",
+          "name": "Telangana",
+          "value": 75.4
+        },
+        {
+          "id": "od",
+          "name": "Odisha",
+          "value": 73.2
+        },
+        {
+          "id": "kl",
+          "name": "Kerala",
+          "value": 84.2
+        },
+        {
+          "id": "jh",
+          "name": "Jharkhand",
+          "value": 61.8
+        },
+        {
+          "id": "as",
+          "name": "Assam",
+          "value": 58.4
+        },
+        {
+          "id": "pb",
+          "name": "Punjab",
+          "value": 79.2
+        },
+        {
+          "id": "ct",
+          "name": "Chhattisgarh",
+          "value": 70.2
+        },
+        {
+          "id": "hr",
+          "name": "Haryana",
+          "value": 74.6
+        },
+        {
+          "id": "uk",
+          "name": "Uttarakhand",
+          "value": 74.8
+        },
+        {
+          "id": "jk",
+          "name": "Jammu & Kashmir",
+          "value": 72.4
+        },
+        {
+          "id": "hp",
+          "name": "Himachal Pradesh",
+          "value": 82.4
+        },
+        {
+          "id": "dl",
+          "name": "Delhi",
+          "value": 73.8
+        },
+        {
+          "id": "ga",
+          "name": "Goa",
+          "value": 80.4
+        },
+        {
+          "id": "tr",
+          "name": "Tripura",
+          "value": 62.6
+        },
+        {
+          "id": "mn",
+          "name": "Manipur",
+          "value": 55.8
+        },
+        {
+          "id": "ml",
+          "name": "Meghalaya",
+          "value": 46.2
+        },
+        {
+          "id": "nl",
+          "name": "Nagaland",
+          "value": 39.8
+        },
+        {
+          "id": "mz",
+          "name": "Mizoram",
+          "value": 52.4
+        },
+        {
+          "id": "sk",
+          "name": "Sikkim",
+          "value": 76.4
+        },
+        {
+          "id": "ar",
+          "name": "Arunachal Pradesh",
+          "value": 38.6
+        }
+      ],
+      "source": "NFHS-5"
+    },
+    {
+      "id": "bcg_coverage",
+      "name": "BCG Coverage",
+      "category": "immunization",
+      "unit": "%",
+      "states": [
+        {
+          "id": "up",
+          "name": "Uttar Pradesh",
+          "value": 92.4
+        },
+        {
+          "id": "mh",
+          "name": "Maharashtra",
+          "value": 96.8
+        },
+        {
+          "id": "br",
+          "name": "Bihar",
+          "value": 87.6
+        },
+        {
+          "id": "wb",
+          "name": "West Bengal",
+          "value": 98.2
+        },
+        {
+          "id": "mp",
+          "name": "Madhya Pradesh",
+          "value": 94.2
+        },
+        {
+          "id": "tn",
+          "name": "Tamil Nadu",
+          "value": 98.4
+        },
+        {
+          "id": "rj",
+          "name": "Rajasthan",
+          "value": 93.6
+        },
+        {
+          "id": "ka",
+          "name": "Karnataka",
+          "value": 97.4
+        },
+        {
+          "id": "gj",
+          "name": "Gujarat",
+          "value": 95.8
+        },
+        {
+          "id": "ap",
+          "name": "Andhra Pradesh",
+          "value": 97.2
+        },
+        {
+          "id": "tg",
+          "name": "Telangana",
+          "value": 97.8
+        },
+        {
+          "id": "od",
+          "name": "Odisha",
+          "value": 96.4
+        },
+        {
+          "id": "kl",
+          "name": "Kerala",
+          "value": 99.2
+        },
+        {
+          "id": "jh",
+          "name": "Jharkhand",
+          "value": 92.8
+        },
+        {
+          "id": "as",
+          "name": "Assam",
+          "value": 90.6
+        },
+        {
+          "id": "pb",
+          "name": "Punjab",
+          "value": 97.6
+        },
+        {
+          "id": "ct",
+          "name": "Chhattisgarh",
+          "value": 95.4
+        },
+        {
+          "id": "hr",
+          "name": "Haryana",
+          "value": 96.8
+        },
+        {
+          "id": "uk",
+          "name": "Uttarakhand",
+          "value": 97.2
+        },
+        {
+          "id": "jk",
+          "name": "Jammu & Kashmir",
+          "value": 96.4
+        },
+        {
+          "id": "hp",
+          "name": "Himachal Pradesh",
+          "value": 98.6
+        },
+        {
+          "id": "dl",
+          "name": "Delhi",
+          "value": 96.2
+        },
+        {
+          "id": "ga",
+          "name": "Goa",
+          "value": 98.4
+        },
+        {
+          "id": "tr",
+          "name": "Tripura",
+          "value": 93.8
+        },
+        {
+          "id": "mn",
+          "name": "Manipur",
+          "value": 88.4
+        },
+        {
+          "id": "ml",
+          "name": "Meghalaya",
+          "value": 84.6
+        },
+        {
+          "id": "nl",
+          "name": "Nagaland",
+          "value": 78.4
+        },
+        {
+          "id": "mz",
+          "name": "Mizoram",
+          "value": 86.8
+        },
+        {
+          "id": "sk",
+          "name": "Sikkim",
+          "value": 97.8
+        },
+        {
+          "id": "ar",
+          "name": "Arunachal Pradesh",
+          "value": 76.2
+        }
+      ],
+      "source": "NFHS-5"
+    },
+    {
+      "id": "measles_coverage",
+      "name": "Measles/MR Coverage",
+      "category": "immunization",
+      "unit": "%",
+      "states": [
+        {
+          "id": "up",
+          "name": "Uttar Pradesh",
+          "value": 80.2
+        },
+        {
+          "id": "mh",
+          "name": "Maharashtra",
+          "value": 88.6
+        },
+        {
+          "id": "br",
+          "name": "Bihar",
+          "value": 68.4
+        },
+        {
+          "id": "wb",
+          "name": "West Bengal",
+          "value": 88.4
+        },
+        {
+          "id": "mp",
+          "name": "Madhya Pradesh",
+          "value": 82.6
+        },
+        {
+          "id": "tn",
+          "name": "Tamil Nadu",
+          "value": 92.8
+        },
+        {
+          "id": "rj",
+          "name": "Rajasthan",
+          "value": 80.4
+        },
+        {
+          "id": "ka",
+          "name": "Karnataka",
+          "value": 88.2
+        },
+        {
+          "id": "gj",
+          "name": "Gujarat",
+          "value": 84.6
+        },
+        {
+          "id": "ap",
+          "name": "Andhra Pradesh",
+          "value": 86.4
+        },
+        {
+          "id": "tg",
+          "name": "Telangana",
+          "value": 88.2
+        },
+        {
+          "id": "od",
+          "name": "Odisha",
+          "value": 86.8
+        },
+        {
+          "id": "kl",
+          "name": "Kerala",
+          "value": 94.6
+        },
+        {
+          "id": "jh",
+          "name": "Jharkhand",
+          "value": 76.4
+        },
+        {
+          "id": "as",
+          "name": "Assam",
+          "value": 72.8
+        },
+        {
+          "id": "pb",
+          "name": "Punjab",
+          "value": 90.4
+        },
+        {
+          "id": "ct",
+          "name": "Chhattisgarh",
+          "value": 84.2
+        },
+        {
+          "id": "hr",
+          "name": "Haryana",
+          "value": 86.4
+        },
+        {
+          "id": "uk",
+          "name": "Uttarakhand",
+          "value": 88.6
+        },
+        {
+          "id": "jk",
+          "name": "Jammu & Kashmir",
+          "value": 84.8
+        },
+        {
+          "id": "hp",
+          "name": "Himachal Pradesh",
+          "value": 92.4
+        },
+        {
+          "id": "dl",
+          "name": "Delhi",
+          "value": 86.2
+        },
+        {
+          "id": "ga",
+          "name": "Goa",
+          "value": 92.8
+        },
+        {
+          "id": "tr",
+          "name": "Tripura",
+          "value": 78.4
+        },
+        {
+          "id": "mn",
+          "name": "Manipur",
+          "value": 72.6
+        },
+        {
+          "id": "ml",
+          "name": "Meghalaya",
+          "value": 62.4
+        },
+        {
+          "id": "nl",
+          "name": "Nagaland",
+          "value": 56.8
+        },
+        {
+          "id": "mz",
+          "name": "Mizoram",
+          "value": 68.4
+        },
+        {
+          "id": "sk",
+          "name": "Sikkim",
+          "value": 88.6
+        },
+        {
+          "id": "ar",
+          "name": "Arunachal Pradesh",
+          "value": 54.6
+        }
+      ],
+      "source": "NFHS-5"
+    },
+    {
+      "id": "dpt3_coverage",
+      "name": "DPT/Pentavalent 3rd Dose Coverage",
+      "category": "immunization",
+      "unit": "%",
+      "states": [
+        {
+          "id": "up",
+          "name": "Uttar Pradesh",
+          "value": 72.8
+        },
+        {
+          "id": "mh",
+          "name": "Maharashtra",
+          "value": 82.4
+        },
+        {
+          "id": "br",
+          "name": "Bihar",
+          "value": 62.8
+        },
+        {
+          "id": "wb",
+          "name": "West Bengal",
+          "value": 80.6
+        },
+        {
+          "id": "mp",
+          "name": "Madhya Pradesh",
+          "value": 74.2
+        },
+        {
+          "id": "tn",
+          "name": "Tamil Nadu",
+          "value": 88.2
+        },
+        {
+          "id": "rj",
+          "name": "Rajasthan",
+          "value": 72.4
+        },
+        {
+          "id": "ka",
+          "name": "Karnataka",
+          "value": 82.8
+        },
+        {
+          "id": "gj",
+          "name": "Gujarat",
+          "value": 78.2
+        },
+        {
+          "id": "ap",
+          "name": "Andhra Pradesh",
+          "value": 79.8
+        },
+        {
+          "id": "tg",
+          "name": "Telangana",
+          "value": 80.6
+        },
+        {
+          "id": "od",
+          "name": "Odisha",
+          "value": 78.4
+        },
+        {
+          "id": "kl",
+          "name": "Kerala",
+          "value": 90.4
+        },
+        {
+          "id": "jh",
+          "name": "Jharkhand",
+          "value": 68.6
+        },
+        {
+          "id": "as",
+          "name": "Assam",
+          "value": 66.2
+        },
+        {
+          "id": "pb",
+          "name": "Punjab",
+          "value": 84.6
+        },
+        {
+          "id": "ct",
+          "name": "Chhattisgarh",
+          "value": 76.8
+        },
+        {
+          "id": "hr",
+          "name": "Haryana",
+          "value": 80.2
+        },
+        {
+          "id": "uk",
+          "name": "Uttarakhand",
+          "value": 80.8
+        },
+        {
+          "id": "jk",
+          "name": "Jammu & Kashmir",
+          "value": 78.6
+        },
+        {
+          "id": "hp",
+          "name": "Himachal Pradesh",
+          "value": 88.2
+        },
+        {
+          "id": "dl",
+          "name": "Delhi",
+          "value": 79.4
+        },
+        {
+          "id": "ga",
+          "name": "Goa",
+          "value": 86.4
+        },
+        {
+          "id": "tr",
+          "name": "Tripura",
+          "value": 70.2
+        },
+        {
+          "id": "mn",
+          "name": "Manipur",
+          "value": 64.8
+        },
+        {
+          "id": "ml",
+          "name": "Meghalaya",
+          "value": 54.8
+        },
+        {
+          "id": "nl",
+          "name": "Nagaland",
+          "value": 48.2
+        },
+        {
+          "id": "mz",
+          "name": "Mizoram",
+          "value": 60.2
+        },
+        {
+          "id": "sk",
+          "name": "Sikkim",
+          "value": 82.4
+        },
+        {
+          "id": "ar",
+          "name": "Arunachal Pradesh",
+          "value": 46.8
+        }
+      ],
+      "source": "NFHS-5"
+    }
+  ]
+}

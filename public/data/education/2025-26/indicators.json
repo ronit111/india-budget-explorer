@@ -1,0 +1,2266 @@
+{
+  "year": "2025-26",
+  "indicators": [
+    {
+      "id": "ger_primary",
+      "name": "Gross Enrollment Ratio (Primary)",
+      "category": "enrollment",
+      "unit": "%",
+      "states": [
+        {
+          "id": "up",
+          "name": "Uttar Pradesh",
+          "value": 100.2
+        },
+        {
+          "id": "mh",
+          "name": "Maharashtra",
+          "value": 101.5
+        },
+        {
+          "id": "br",
+          "name": "Bihar",
+          "value": 104.1
+        },
+        {
+          "id": "mp",
+          "name": "Madhya Pradesh",
+          "value": 101.8
+        },
+        {
+          "id": "rj",
+          "name": "Rajasthan",
+          "value": 103.4
+        },
+        {
+          "id": "wb",
+          "name": "West Bengal",
+          "value": 99.4
+        },
+        {
+          "id": "tn",
+          "name": "Tamil Nadu",
+          "value": 102.3
+        },
+        {
+          "id": "ka",
+          "name": "Karnataka",
+          "value": 101.1
+        },
+        {
+          "id": "gj",
+          "name": "Gujarat",
+          "value": 102.6
+        },
+        {
+          "id": "ap",
+          "name": "Andhra Pradesh",
+          "value": 100.8
+        },
+        {
+          "id": "tg",
+          "name": "Telangana",
+          "value": 101.2
+        },
+        {
+          "id": "od",
+          "name": "Odisha",
+          "value": 100.6
+        },
+        {
+          "id": "kl",
+          "name": "Kerala",
+          "value": 99.8
+        },
+        {
+          "id": "jh",
+          "name": "Jharkhand",
+          "value": 102.8
+        },
+        {
+          "id": "as",
+          "name": "Assam",
+          "value": 101.4
+        },
+        {
+          "id": "pb",
+          "name": "Punjab",
+          "value": 100.4
+        },
+        {
+          "id": "ct",
+          "name": "Chhattisgarh",
+          "value": 102.4
+        },
+        {
+          "id": "hr",
+          "name": "Haryana",
+          "value": 101.6
+        },
+        {
+          "id": "uk",
+          "name": "Uttarakhand",
+          "value": 100.8
+        },
+        {
+          "id": "jk",
+          "name": "Jammu & Kashmir",
+          "value": 100.6
+        },
+        {
+          "id": "hp",
+          "name": "Himachal Pradesh",
+          "value": 100.2
+        },
+        {
+          "id": "tr",
+          "name": "Tripura",
+          "value": 101.2
+        },
+        {
+          "id": "ml",
+          "name": "Meghalaya",
+          "value": 103.8
+        },
+        {
+          "id": "mn",
+          "name": "Manipur",
+          "value": 102.4
+        },
+        {
+          "id": "nl",
+          "name": "Nagaland",
+          "value": 101.8
+        },
+        {
+          "id": "ga",
+          "name": "Goa",
+          "value": 100.4
+        },
+        {
+          "id": "ar",
+          "name": "Arunachal Pradesh",
+          "value": 103.2
+        },
+        {
+          "id": "mz",
+          "name": "Mizoram",
+          "value": 101.6
+        },
+        {
+          "id": "sk",
+          "name": "Sikkim",
+          "value": 100.6
+        },
+        {
+          "id": "dl",
+          "name": "Delhi",
+          "value": 101.4
+        },
+        {
+          "id": "py",
+          "name": "Puducherry",
+          "value": 100.8
+        },
+        {
+          "id": "ch",
+          "name": "Chandigarh",
+          "value": 101.2
+        }
+      ],
+      "source": "UDISE+ 2023-24"
+    },
+    {
+      "id": "ger_secondary",
+      "name": "Gross Enrollment Ratio (Secondary)",
+      "category": "enrollment",
+      "unit": "%",
+      "states": [
+        {
+          "id": "up",
+          "name": "Uttar Pradesh",
+          "value": 76.9
+        },
+        {
+          "id": "mh",
+          "name": "Maharashtra",
+          "value": 90.8
+        },
+        {
+          "id": "br",
+          "name": "Bihar",
+          "value": 68.5
+        },
+        {
+          "id": "mp",
+          "name": "Madhya Pradesh",
+          "value": 78.4
+        },
+        {
+          "id": "rj",
+          "name": "Rajasthan",
+          "value": 82.1
+        },
+        {
+          "id": "wb",
+          "name": "West Bengal",
+          "value": 87.6
+        },
+        {
+          "id": "tn",
+          "name": "Tamil Nadu",
+          "value": 96.2
+        },
+        {
+          "id": "ka",
+          "name": "Karnataka",
+          "value": 93.7
+        },
+        {
+          "id": "gj",
+          "name": "Gujarat",
+          "value": 85.4
+        },
+        {
+          "id": "ap",
+          "name": "Andhra Pradesh",
+          "value": 88.3
+        },
+        {
+          "id": "tg",
+          "name": "Telangana",
+          "value": 91.5
+        },
+        {
+          "id": "od",
+          "name": "Odisha",
+          "value": 82.8
+        },
+        {
+          "id": "kl",
+          "name": "Kerala",
+          "value": 97.4
+        },
+        {
+          "id": "jh",
+          "name": "Jharkhand",
+          "value": 72.4
+        },
+        {
+          "id": "as",
+          "name": "Assam",
+          "value": 80.2
+        },
+        {
+          "id": "pb",
+          "name": "Punjab",
+          "value": 92.8
+        },
+        {
+          "id": "ct",
+          "name": "Chhattisgarh",
+          "value": 78.6
+        },
+        {
+          "id": "hr",
+          "name": "Haryana",
+          "value": 88.4
+        },
+        {
+          "id": "uk",
+          "name": "Uttarakhand",
+          "value": 90.2
+        },
+        {
+          "id": "jk",
+          "name": "Jammu & Kashmir",
+          "value": 84.2
+        },
+        {
+          "id": "hp",
+          "name": "Himachal Pradesh",
+          "value": 94.6
+        },
+        {
+          "id": "tr",
+          "name": "Tripura",
+          "value": 86.4
+        },
+        {
+          "id": "ml",
+          "name": "Meghalaya",
+          "value": 74.6
+        },
+        {
+          "id": "mn",
+          "name": "Manipur",
+          "value": 82.6
+        },
+        {
+          "id": "nl",
+          "name": "Nagaland",
+          "value": 78.4
+        },
+        {
+          "id": "ga",
+          "name": "Goa",
+          "value": 96.8
+        },
+        {
+          "id": "ar",
+          "name": "Arunachal Pradesh",
+          "value": 76.8
+        },
+        {
+          "id": "mz",
+          "name": "Mizoram",
+          "value": 88.4
+        },
+        {
+          "id": "sk",
+          "name": "Sikkim",
+          "value": 92.4
+        },
+        {
+          "id": "dl",
+          "name": "Delhi",
+          "value": 94.2
+        },
+        {
+          "id": "py",
+          "name": "Puducherry",
+          "value": 94.8
+        },
+        {
+          "id": "ch",
+          "name": "Chandigarh",
+          "value": 95.6
+        }
+      ],
+      "source": "UDISE+ 2023-24"
+    },
+    {
+      "id": "ger_higher_sec",
+      "name": "Gross Enrollment Ratio (Higher Secondary)",
+      "category": "enrollment",
+      "unit": "%",
+      "states": [
+        {
+          "id": "up",
+          "name": "Uttar Pradesh",
+          "value": 56.8
+        },
+        {
+          "id": "mh",
+          "name": "Maharashtra",
+          "value": 70.1
+        },
+        {
+          "id": "br",
+          "name": "Bihar",
+          "value": 42.3
+        },
+        {
+          "id": "mp",
+          "name": "Madhya Pradesh",
+          "value": 54.6
+        },
+        {
+          "id": "rj",
+          "name": "Rajasthan",
+          "value": 58.2
+        },
+        {
+          "id": "wb",
+          "name": "West Bengal",
+          "value": 62.4
+        },
+        {
+          "id": "tn",
+          "name": "Tamil Nadu",
+          "value": 78.5
+        },
+        {
+          "id": "ka",
+          "name": "Karnataka",
+          "value": 71.8
+        },
+        {
+          "id": "gj",
+          "name": "Gujarat",
+          "value": 62.7
+        },
+        {
+          "id": "ap",
+          "name": "Andhra Pradesh",
+          "value": 65.2
+        },
+        {
+          "id": "tg",
+          "name": "Telangana",
+          "value": 68.4
+        },
+        {
+          "id": "od",
+          "name": "Odisha",
+          "value": 55.3
+        },
+        {
+          "id": "kl",
+          "name": "Kerala",
+          "value": 82.6
+        },
+        {
+          "id": "jh",
+          "name": "Jharkhand",
+          "value": 45.8
+        },
+        {
+          "id": "as",
+          "name": "Assam",
+          "value": 52.4
+        },
+        {
+          "id": "pb",
+          "name": "Punjab",
+          "value": 72.4
+        },
+        {
+          "id": "ct",
+          "name": "Chhattisgarh",
+          "value": 52.8
+        },
+        {
+          "id": "hr",
+          "name": "Haryana",
+          "value": 66.8
+        },
+        {
+          "id": "uk",
+          "name": "Uttarakhand",
+          "value": 68.4
+        },
+        {
+          "id": "jk",
+          "name": "Jammu & Kashmir",
+          "value": 58.6
+        },
+        {
+          "id": "hp",
+          "name": "Himachal Pradesh",
+          "value": 76.8
+        },
+        {
+          "id": "tr",
+          "name": "Tripura",
+          "value": 58.2
+        },
+        {
+          "id": "ml",
+          "name": "Meghalaya",
+          "value": 48.2
+        },
+        {
+          "id": "mn",
+          "name": "Manipur",
+          "value": 56.4
+        },
+        {
+          "id": "nl",
+          "name": "Nagaland",
+          "value": 52.6
+        },
+        {
+          "id": "ga",
+          "name": "Goa",
+          "value": 80.2
+        },
+        {
+          "id": "ar",
+          "name": "Arunachal Pradesh",
+          "value": 46.4
+        },
+        {
+          "id": "mz",
+          "name": "Mizoram",
+          "value": 62.8
+        },
+        {
+          "id": "sk",
+          "name": "Sikkim",
+          "value": 72.6
+        },
+        {
+          "id": "dl",
+          "name": "Delhi",
+          "value": 76.4
+        },
+        {
+          "id": "py",
+          "name": "Puducherry",
+          "value": 78.4
+        },
+        {
+          "id": "ch",
+          "name": "Chandigarh",
+          "value": 80.2
+        }
+      ],
+      "source": "UDISE+ 2023-24"
+    },
+    {
+      "id": "dropout_primary",
+      "name": "Dropout Rate (Primary)",
+      "category": "enrollment",
+      "unit": "%",
+      "states": [
+        {
+          "id": "up",
+          "name": "Uttar Pradesh",
+          "value": 1.4
+        },
+        {
+          "id": "mh",
+          "name": "Maharashtra",
+          "value": 0.8
+        },
+        {
+          "id": "br",
+          "name": "Bihar",
+          "value": 2.8
+        },
+        {
+          "id": "mp",
+          "name": "Madhya Pradesh",
+          "value": 1.6
+        },
+        {
+          "id": "rj",
+          "name": "Rajasthan",
+          "value": 1.5
+        },
+        {
+          "id": "wb",
+          "name": "West Bengal",
+          "value": 1.2
+        },
+        {
+          "id": "tn",
+          "name": "Tamil Nadu",
+          "value": 0.4
+        },
+        {
+          "id": "ka",
+          "name": "Karnataka",
+          "value": 0.6
+        },
+        {
+          "id": "gj",
+          "name": "Gujarat",
+          "value": 1.0
+        },
+        {
+          "id": "ap",
+          "name": "Andhra Pradesh",
+          "value": 0.7
+        },
+        {
+          "id": "tg",
+          "name": "Telangana",
+          "value": 0.5
+        },
+        {
+          "id": "od",
+          "name": "Odisha",
+          "value": 1.3
+        },
+        {
+          "id": "kl",
+          "name": "Kerala",
+          "value": 0.2
+        },
+        {
+          "id": "jh",
+          "name": "Jharkhand",
+          "value": 2.2
+        },
+        {
+          "id": "as",
+          "name": "Assam",
+          "value": 1.8
+        },
+        {
+          "id": "pb",
+          "name": "Punjab",
+          "value": 0.4
+        },
+        {
+          "id": "ct",
+          "name": "Chhattisgarh",
+          "value": 1.8
+        },
+        {
+          "id": "hr",
+          "name": "Haryana",
+          "value": 0.6
+        },
+        {
+          "id": "uk",
+          "name": "Uttarakhand",
+          "value": 0.8
+        },
+        {
+          "id": "jk",
+          "name": "Jammu & Kashmir",
+          "value": 1.2
+        },
+        {
+          "id": "hp",
+          "name": "Himachal Pradesh",
+          "value": 0.3
+        },
+        {
+          "id": "tr",
+          "name": "Tripura",
+          "value": 1.0
+        },
+        {
+          "id": "ml",
+          "name": "Meghalaya",
+          "value": 2.4
+        },
+        {
+          "id": "mn",
+          "name": "Manipur",
+          "value": 1.4
+        },
+        {
+          "id": "nl",
+          "name": "Nagaland",
+          "value": 1.6
+        },
+        {
+          "id": "ga",
+          "name": "Goa",
+          "value": 0.2
+        },
+        {
+          "id": "ar",
+          "name": "Arunachal Pradesh",
+          "value": 2.6
+        },
+        {
+          "id": "mz",
+          "name": "Mizoram",
+          "value": 0.8
+        },
+        {
+          "id": "sk",
+          "name": "Sikkim",
+          "value": 0.4
+        },
+        {
+          "id": "dl",
+          "name": "Delhi",
+          "value": 0.4
+        },
+        {
+          "id": "py",
+          "name": "Puducherry",
+          "value": 0.3
+        },
+        {
+          "id": "ch",
+          "name": "Chandigarh",
+          "value": 0.2
+        }
+      ],
+      "source": "UDISE+ 2023-24"
+    },
+    {
+      "id": "dropout_secondary",
+      "name": "Dropout Rate (Secondary)",
+      "category": "enrollment",
+      "unit": "%",
+      "states": [
+        {
+          "id": "up",
+          "name": "Uttar Pradesh",
+          "value": 14.6
+        },
+        {
+          "id": "mh",
+          "name": "Maharashtra",
+          "value": 10.2
+        },
+        {
+          "id": "br",
+          "name": "Bihar",
+          "value": 20.4
+        },
+        {
+          "id": "mp",
+          "name": "Madhya Pradesh",
+          "value": 16.8
+        },
+        {
+          "id": "rj",
+          "name": "Rajasthan",
+          "value": 17.2
+        },
+        {
+          "id": "wb",
+          "name": "West Bengal",
+          "value": 12.1
+        },
+        {
+          "id": "tn",
+          "name": "Tamil Nadu",
+          "value": 6.8
+        },
+        {
+          "id": "ka",
+          "name": "Karnataka",
+          "value": 8.4
+        },
+        {
+          "id": "gj",
+          "name": "Gujarat",
+          "value": 11.8
+        },
+        {
+          "id": "ap",
+          "name": "Andhra Pradesh",
+          "value": 9.6
+        },
+        {
+          "id": "tg",
+          "name": "Telangana",
+          "value": 8.2
+        },
+        {
+          "id": "od",
+          "name": "Odisha",
+          "value": 14.2
+        },
+        {
+          "id": "kl",
+          "name": "Kerala",
+          "value": 3.8
+        },
+        {
+          "id": "jh",
+          "name": "Jharkhand",
+          "value": 18.6
+        },
+        {
+          "id": "as",
+          "name": "Assam",
+          "value": 16.4
+        },
+        {
+          "id": "pb",
+          "name": "Punjab",
+          "value": 6.2
+        },
+        {
+          "id": "ct",
+          "name": "Chhattisgarh",
+          "value": 16.2
+        },
+        {
+          "id": "hr",
+          "name": "Haryana",
+          "value": 8.8
+        },
+        {
+          "id": "uk",
+          "name": "Uttarakhand",
+          "value": 8.6
+        },
+        {
+          "id": "jk",
+          "name": "Jammu & Kashmir",
+          "value": 12.4
+        },
+        {
+          "id": "hp",
+          "name": "Himachal Pradesh",
+          "value": 4.8
+        },
+        {
+          "id": "tr",
+          "name": "Tripura",
+          "value": 10.8
+        },
+        {
+          "id": "ml",
+          "name": "Meghalaya",
+          "value": 18.2
+        },
+        {
+          "id": "mn",
+          "name": "Manipur",
+          "value": 12.6
+        },
+        {
+          "id": "nl",
+          "name": "Nagaland",
+          "value": 14.8
+        },
+        {
+          "id": "ga",
+          "name": "Goa",
+          "value": 3.4
+        },
+        {
+          "id": "ar",
+          "name": "Arunachal Pradesh",
+          "value": 18.8
+        },
+        {
+          "id": "mz",
+          "name": "Mizoram",
+          "value": 8.4
+        },
+        {
+          "id": "sk",
+          "name": "Sikkim",
+          "value": 5.2
+        },
+        {
+          "id": "dl",
+          "name": "Delhi",
+          "value": 5.8
+        },
+        {
+          "id": "py",
+          "name": "Puducherry",
+          "value": 4.2
+        },
+        {
+          "id": "ch",
+          "name": "Chandigarh",
+          "value": 3.6
+        }
+      ],
+      "source": "UDISE+ 2023-24"
+    },
+    {
+      "id": "can_read_std2",
+      "name": "Can Read Std II Text (Std III children)",
+      "category": "quality",
+      "unit": "%",
+      "states": [
+        {
+          "id": "up",
+          "name": "Uttar Pradesh",
+          "value": 18.6
+        },
+        {
+          "id": "mh",
+          "name": "Maharashtra",
+          "value": 28.4
+        },
+        {
+          "id": "br",
+          "name": "Bihar",
+          "value": 14.2
+        },
+        {
+          "id": "mp",
+          "name": "Madhya Pradesh",
+          "value": 20.4
+        },
+        {
+          "id": "rj",
+          "name": "Rajasthan",
+          "value": 22.8
+        },
+        {
+          "id": "wb",
+          "name": "West Bengal",
+          "value": 24.6
+        },
+        {
+          "id": "tn",
+          "name": "Tamil Nadu",
+          "value": 32.4
+        },
+        {
+          "id": "ka",
+          "name": "Karnataka",
+          "value": 30.2
+        },
+        {
+          "id": "gj",
+          "name": "Gujarat",
+          "value": 26.4
+        },
+        {
+          "id": "ap",
+          "name": "Andhra Pradesh",
+          "value": 24.8
+        },
+        {
+          "id": "tg",
+          "name": "Telangana",
+          "value": 26.2
+        },
+        {
+          "id": "od",
+          "name": "Odisha",
+          "value": 21.6
+        },
+        {
+          "id": "kl",
+          "name": "Kerala",
+          "value": 42.8
+        },
+        {
+          "id": "jh",
+          "name": "Jharkhand",
+          "value": 16.4
+        },
+        {
+          "id": "as",
+          "name": "Assam",
+          "value": 20.8
+        },
+        {
+          "id": "pb",
+          "name": "Punjab",
+          "value": 32.6
+        },
+        {
+          "id": "ct",
+          "name": "Chhattisgarh",
+          "value": 19.2
+        },
+        {
+          "id": "hr",
+          "name": "Haryana",
+          "value": 28.6
+        },
+        {
+          "id": "uk",
+          "name": "Uttarakhand",
+          "value": 30.4
+        },
+        {
+          "id": "hp",
+          "name": "Himachal Pradesh",
+          "value": 38.4
+        },
+        {
+          "id": "jk",
+          "name": "Jammu & Kashmir",
+          "value": 24.2
+        },
+        {
+          "id": "mn",
+          "name": "Manipur",
+          "value": 26.8
+        },
+        {
+          "id": "ml",
+          "name": "Meghalaya",
+          "value": 22.4
+        },
+        {
+          "id": "tr",
+          "name": "Tripura",
+          "value": 24.6
+        },
+        {
+          "id": "nl",
+          "name": "Nagaland",
+          "value": 24.8
+        }
+      ],
+      "source": "ASER 2024"
+    },
+    {
+      "id": "can_do_subtraction",
+      "name": "Can Do Subtraction (Std III children)",
+      "category": "quality",
+      "unit": "%",
+      "states": [
+        {
+          "id": "up",
+          "name": "Uttar Pradesh",
+          "value": 16.2
+        },
+        {
+          "id": "mh",
+          "name": "Maharashtra",
+          "value": 24.6
+        },
+        {
+          "id": "br",
+          "name": "Bihar",
+          "value": 12.8
+        },
+        {
+          "id": "mp",
+          "name": "Madhya Pradesh",
+          "value": 18.2
+        },
+        {
+          "id": "rj",
+          "name": "Rajasthan",
+          "value": 20.4
+        },
+        {
+          "id": "wb",
+          "name": "West Bengal",
+          "value": 21.8
+        },
+        {
+          "id": "tn",
+          "name": "Tamil Nadu",
+          "value": 28.6
+        },
+        {
+          "id": "ka",
+          "name": "Karnataka",
+          "value": 26.8
+        },
+        {
+          "id": "gj",
+          "name": "Gujarat",
+          "value": 22.8
+        },
+        {
+          "id": "ap",
+          "name": "Andhra Pradesh",
+          "value": 22.4
+        },
+        {
+          "id": "tg",
+          "name": "Telangana",
+          "value": 23.8
+        },
+        {
+          "id": "od",
+          "name": "Odisha",
+          "value": 19.4
+        },
+        {
+          "id": "kl",
+          "name": "Kerala",
+          "value": 38.4
+        },
+        {
+          "id": "jh",
+          "name": "Jharkhand",
+          "value": 14.8
+        },
+        {
+          "id": "as",
+          "name": "Assam",
+          "value": 18.6
+        },
+        {
+          "id": "pb",
+          "name": "Punjab",
+          "value": 28.4
+        },
+        {
+          "id": "ct",
+          "name": "Chhattisgarh",
+          "value": 17.4
+        },
+        {
+          "id": "hr",
+          "name": "Haryana",
+          "value": 25.2
+        },
+        {
+          "id": "uk",
+          "name": "Uttarakhand",
+          "value": 26.8
+        },
+        {
+          "id": "hp",
+          "name": "Himachal Pradesh",
+          "value": 34.6
+        },
+        {
+          "id": "jk",
+          "name": "Jammu & Kashmir",
+          "value": 21.6
+        },
+        {
+          "id": "mn",
+          "name": "Manipur",
+          "value": 24.2
+        },
+        {
+          "id": "ml",
+          "name": "Meghalaya",
+          "value": 19.8
+        },
+        {
+          "id": "tr",
+          "name": "Tripura",
+          "value": 22.2
+        },
+        {
+          "id": "nl",
+          "name": "Nagaland",
+          "value": 22.6
+        }
+      ],
+      "source": "ASER 2024"
+    },
+    {
+      "id": "can_read_english",
+      "name": "Can Read English (Std V children)",
+      "category": "quality",
+      "unit": "%",
+      "states": [
+        {
+          "id": "up",
+          "name": "Uttar Pradesh",
+          "value": 24.8
+        },
+        {
+          "id": "mh",
+          "name": "Maharashtra",
+          "value": 38.2
+        },
+        {
+          "id": "br",
+          "name": "Bihar",
+          "value": 16.4
+        },
+        {
+          "id": "mp",
+          "name": "Madhya Pradesh",
+          "value": 22.6
+        },
+        {
+          "id": "rj",
+          "name": "Rajasthan",
+          "value": 26.2
+        },
+        {
+          "id": "wb",
+          "name": "West Bengal",
+          "value": 28.4
+        },
+        {
+          "id": "tn",
+          "name": "Tamil Nadu",
+          "value": 42.8
+        },
+        {
+          "id": "ka",
+          "name": "Karnataka",
+          "value": 36.4
+        },
+        {
+          "id": "gj",
+          "name": "Gujarat",
+          "value": 30.6
+        },
+        {
+          "id": "ap",
+          "name": "Andhra Pradesh",
+          "value": 28.6
+        },
+        {
+          "id": "tg",
+          "name": "Telangana",
+          "value": 32.4
+        },
+        {
+          "id": "od",
+          "name": "Odisha",
+          "value": 24.2
+        },
+        {
+          "id": "kl",
+          "name": "Kerala",
+          "value": 56.2
+        },
+        {
+          "id": "jh",
+          "name": "Jharkhand",
+          "value": 18.6
+        },
+        {
+          "id": "as",
+          "name": "Assam",
+          "value": 22.4
+        },
+        {
+          "id": "pb",
+          "name": "Punjab",
+          "value": 40.2
+        },
+        {
+          "id": "ct",
+          "name": "Chhattisgarh",
+          "value": 20.8
+        },
+        {
+          "id": "hr",
+          "name": "Haryana",
+          "value": 34.8
+        },
+        {
+          "id": "uk",
+          "name": "Uttarakhand",
+          "value": 36.2
+        },
+        {
+          "id": "hp",
+          "name": "Himachal Pradesh",
+          "value": 48.2
+        },
+        {
+          "id": "jk",
+          "name": "Jammu & Kashmir",
+          "value": 28.8
+        },
+        {
+          "id": "mn",
+          "name": "Manipur",
+          "value": 32.6
+        },
+        {
+          "id": "ml",
+          "name": "Meghalaya",
+          "value": 26.4
+        },
+        {
+          "id": "tr",
+          "name": "Tripura",
+          "value": 28.4
+        },
+        {
+          "id": "nl",
+          "name": "Nagaland",
+          "value": 30.2
+        }
+      ],
+      "source": "ASER 2024"
+    },
+    {
+      "id": "ptr",
+      "name": "Pupil-Teacher Ratio",
+      "category": "infrastructure",
+      "unit": "",
+      "states": [
+        {
+          "id": "up",
+          "name": "Uttar Pradesh",
+          "value": 48
+        },
+        {
+          "id": "mh",
+          "name": "Maharashtra",
+          "value": 28
+        },
+        {
+          "id": "br",
+          "name": "Bihar",
+          "value": 65
+        },
+        {
+          "id": "mp",
+          "name": "Madhya Pradesh",
+          "value": 41
+        },
+        {
+          "id": "rj",
+          "name": "Rajasthan",
+          "value": 38
+        },
+        {
+          "id": "wb",
+          "name": "West Bengal",
+          "value": 38
+        },
+        {
+          "id": "tn",
+          "name": "Tamil Nadu",
+          "value": 25
+        },
+        {
+          "id": "ka",
+          "name": "Karnataka",
+          "value": 26
+        },
+        {
+          "id": "gj",
+          "name": "Gujarat",
+          "value": 30
+        },
+        {
+          "id": "ap",
+          "name": "Andhra Pradesh",
+          "value": 27
+        },
+        {
+          "id": "tg",
+          "name": "Telangana",
+          "value": 24
+        },
+        {
+          "id": "od",
+          "name": "Odisha",
+          "value": 32
+        },
+        {
+          "id": "kl",
+          "name": "Kerala",
+          "value": 18
+        },
+        {
+          "id": "jh",
+          "name": "Jharkhand",
+          "value": 45
+        },
+        {
+          "id": "as",
+          "name": "Assam",
+          "value": 33
+        },
+        {
+          "id": "pb",
+          "name": "Punjab",
+          "value": 22
+        },
+        {
+          "id": "ct",
+          "name": "Chhattisgarh",
+          "value": 33
+        },
+        {
+          "id": "hr",
+          "name": "Haryana",
+          "value": 30
+        },
+        {
+          "id": "uk",
+          "name": "Uttarakhand",
+          "value": 24
+        },
+        {
+          "id": "jk",
+          "name": "Jammu & Kashmir",
+          "value": 25
+        },
+        {
+          "id": "hp",
+          "name": "Himachal Pradesh",
+          "value": 14
+        },
+        {
+          "id": "tr",
+          "name": "Tripura",
+          "value": 20
+        },
+        {
+          "id": "ml",
+          "name": "Meghalaya",
+          "value": 18
+        },
+        {
+          "id": "mn",
+          "name": "Manipur",
+          "value": 21
+        },
+        {
+          "id": "nl",
+          "name": "Nagaland",
+          "value": 19
+        },
+        {
+          "id": "ga",
+          "name": "Goa",
+          "value": 16
+        },
+        {
+          "id": "ar",
+          "name": "Arunachal Pradesh",
+          "value": 21
+        },
+        {
+          "id": "mz",
+          "name": "Mizoram",
+          "value": 16
+        },
+        {
+          "id": "sk",
+          "name": "Sikkim",
+          "value": 15
+        },
+        {
+          "id": "dl",
+          "name": "Delhi",
+          "value": 28
+        },
+        {
+          "id": "py",
+          "name": "Puducherry",
+          "value": 18
+        },
+        {
+          "id": "ch",
+          "name": "Chandigarh",
+          "value": 22
+        }
+      ],
+      "source": "UDISE+ 2023-24"
+    },
+    {
+      "id": "schools_computers",
+      "name": "Schools with Computers",
+      "category": "infrastructure",
+      "unit": "%",
+      "states": [
+        {
+          "id": "up",
+          "name": "Uttar Pradesh",
+          "value": 22.4
+        },
+        {
+          "id": "mh",
+          "name": "Maharashtra",
+          "value": 42.5
+        },
+        {
+          "id": "br",
+          "name": "Bihar",
+          "value": 10.8
+        },
+        {
+          "id": "mp",
+          "name": "Madhya Pradesh",
+          "value": 19.7
+        },
+        {
+          "id": "rj",
+          "name": "Rajasthan",
+          "value": 23.8
+        },
+        {
+          "id": "wb",
+          "name": "West Bengal",
+          "value": 18.3
+        },
+        {
+          "id": "tn",
+          "name": "Tamil Nadu",
+          "value": 52.1
+        },
+        {
+          "id": "ka",
+          "name": "Karnataka",
+          "value": 44.8
+        },
+        {
+          "id": "gj",
+          "name": "Gujarat",
+          "value": 35.6
+        },
+        {
+          "id": "ap",
+          "name": "Andhra Pradesh",
+          "value": 38.4
+        },
+        {
+          "id": "tg",
+          "name": "Telangana",
+          "value": 48.2
+        },
+        {
+          "id": "od",
+          "name": "Odisha",
+          "value": 16.8
+        },
+        {
+          "id": "kl",
+          "name": "Kerala",
+          "value": 68.4
+        },
+        {
+          "id": "jh",
+          "name": "Jharkhand",
+          "value": 12.4
+        },
+        {
+          "id": "as",
+          "name": "Assam",
+          "value": 14.6
+        },
+        {
+          "id": "pb",
+          "name": "Punjab",
+          "value": 46.8
+        },
+        {
+          "id": "ct",
+          "name": "Chhattisgarh",
+          "value": 15.2
+        },
+        {
+          "id": "hr",
+          "name": "Haryana",
+          "value": 42.6
+        },
+        {
+          "id": "uk",
+          "name": "Uttarakhand",
+          "value": 38.4
+        },
+        {
+          "id": "jk",
+          "name": "Jammu & Kashmir",
+          "value": 28.4
+        },
+        {
+          "id": "hp",
+          "name": "Himachal Pradesh",
+          "value": 54.2
+        },
+        {
+          "id": "tr",
+          "name": "Tripura",
+          "value": 22.6
+        },
+        {
+          "id": "ml",
+          "name": "Meghalaya",
+          "value": 12.8
+        },
+        {
+          "id": "mn",
+          "name": "Manipur",
+          "value": 18.4
+        },
+        {
+          "id": "nl",
+          "name": "Nagaland",
+          "value": 16.4
+        },
+        {
+          "id": "ga",
+          "name": "Goa",
+          "value": 72.4
+        },
+        {
+          "id": "ar",
+          "name": "Arunachal Pradesh",
+          "value": 14.2
+        },
+        {
+          "id": "mz",
+          "name": "Mizoram",
+          "value": 24.6
+        },
+        {
+          "id": "sk",
+          "name": "Sikkim",
+          "value": 48.6
+        },
+        {
+          "id": "dl",
+          "name": "Delhi",
+          "value": 62.4
+        },
+        {
+          "id": "py",
+          "name": "Puducherry",
+          "value": 58.4
+        },
+        {
+          "id": "ch",
+          "name": "Chandigarh",
+          "value": 68.2
+        }
+      ],
+      "source": "UDISE+ 2023-24"
+    },
+    {
+      "id": "schools_internet",
+      "name": "Schools with Internet",
+      "category": "infrastructure",
+      "unit": "%",
+      "states": [
+        {
+          "id": "up",
+          "name": "Uttar Pradesh",
+          "value": 19.2
+        },
+        {
+          "id": "mh",
+          "name": "Maharashtra",
+          "value": 35.8
+        },
+        {
+          "id": "br",
+          "name": "Bihar",
+          "value": 8.1
+        },
+        {
+          "id": "mp",
+          "name": "Madhya Pradesh",
+          "value": 15.3
+        },
+        {
+          "id": "rj",
+          "name": "Rajasthan",
+          "value": 18.6
+        },
+        {
+          "id": "wb",
+          "name": "West Bengal",
+          "value": 14.7
+        },
+        {
+          "id": "tn",
+          "name": "Tamil Nadu",
+          "value": 44.3
+        },
+        {
+          "id": "ka",
+          "name": "Karnataka",
+          "value": 38.2
+        },
+        {
+          "id": "gj",
+          "name": "Gujarat",
+          "value": 28.4
+        },
+        {
+          "id": "ap",
+          "name": "Andhra Pradesh",
+          "value": 31.2
+        },
+        {
+          "id": "tg",
+          "name": "Telangana",
+          "value": 42.1
+        },
+        {
+          "id": "od",
+          "name": "Odisha",
+          "value": 12.4
+        },
+        {
+          "id": "kl",
+          "name": "Kerala",
+          "value": 62.1
+        },
+        {
+          "id": "jh",
+          "name": "Jharkhand",
+          "value": 9.8
+        },
+        {
+          "id": "as",
+          "name": "Assam",
+          "value": 11.2
+        },
+        {
+          "id": "pb",
+          "name": "Punjab",
+          "value": 38.4
+        },
+        {
+          "id": "ct",
+          "name": "Chhattisgarh",
+          "value": 11.8
+        },
+        {
+          "id": "hr",
+          "name": "Haryana",
+          "value": 36.2
+        },
+        {
+          "id": "uk",
+          "name": "Uttarakhand",
+          "value": 32.1
+        },
+        {
+          "id": "jk",
+          "name": "Jammu & Kashmir",
+          "value": 22.6
+        },
+        {
+          "id": "hp",
+          "name": "Himachal Pradesh",
+          "value": 46.8
+        },
+        {
+          "id": "tr",
+          "name": "Tripura",
+          "value": 18.4
+        },
+        {
+          "id": "ml",
+          "name": "Meghalaya",
+          "value": 9.6
+        },
+        {
+          "id": "mn",
+          "name": "Manipur",
+          "value": 14.2
+        },
+        {
+          "id": "nl",
+          "name": "Nagaland",
+          "value": 12.8
+        },
+        {
+          "id": "ga",
+          "name": "Goa",
+          "value": 66.8
+        },
+        {
+          "id": "ar",
+          "name": "Arunachal Pradesh",
+          "value": 10.6
+        },
+        {
+          "id": "mz",
+          "name": "Mizoram",
+          "value": 20.2
+        },
+        {
+          "id": "sk",
+          "name": "Sikkim",
+          "value": 42.4
+        },
+        {
+          "id": "dl",
+          "name": "Delhi",
+          "value": 56.8
+        },
+        {
+          "id": "py",
+          "name": "Puducherry",
+          "value": 52.6
+        },
+        {
+          "id": "ch",
+          "name": "Chandigarh",
+          "value": 62.4
+        }
+      ],
+      "source": "UDISE+ 2023-24"
+    },
+    {
+      "id": "girls_toilets",
+      "name": "Schools with Girls' Toilets",
+      "category": "infrastructure",
+      "unit": "%",
+      "states": [
+        {
+          "id": "up",
+          "name": "Uttar Pradesh",
+          "value": 97.3
+        },
+        {
+          "id": "mh",
+          "name": "Maharashtra",
+          "value": 98.7
+        },
+        {
+          "id": "br",
+          "name": "Bihar",
+          "value": 90.2
+        },
+        {
+          "id": "mp",
+          "name": "Madhya Pradesh",
+          "value": 95.8
+        },
+        {
+          "id": "rj",
+          "name": "Rajasthan",
+          "value": 96.1
+        },
+        {
+          "id": "wb",
+          "name": "West Bengal",
+          "value": 96.8
+        },
+        {
+          "id": "tn",
+          "name": "Tamil Nadu",
+          "value": 99.2
+        },
+        {
+          "id": "ka",
+          "name": "Karnataka",
+          "value": 98.9
+        },
+        {
+          "id": "gj",
+          "name": "Gujarat",
+          "value": 98.1
+        },
+        {
+          "id": "ap",
+          "name": "Andhra Pradesh",
+          "value": 98.4
+        },
+        {
+          "id": "tg",
+          "name": "Telangana",
+          "value": 99.0
+        },
+        {
+          "id": "od",
+          "name": "Odisha",
+          "value": 95.6
+        },
+        {
+          "id": "kl",
+          "name": "Kerala",
+          "value": 99.6
+        },
+        {
+          "id": "jh",
+          "name": "Jharkhand",
+          "value": 92.4
+        },
+        {
+          "id": "as",
+          "name": "Assam",
+          "value": 93.8
+        },
+        {
+          "id": "pb",
+          "name": "Punjab",
+          "value": 98.8
+        },
+        {
+          "id": "ct",
+          "name": "Chhattisgarh",
+          "value": 94.6
+        },
+        {
+          "id": "hr",
+          "name": "Haryana",
+          "value": 98.4
+        },
+        {
+          "id": "uk",
+          "name": "Uttarakhand",
+          "value": 97.8
+        },
+        {
+          "id": "jk",
+          "name": "Jammu & Kashmir",
+          "value": 96.4
+        },
+        {
+          "id": "hp",
+          "name": "Himachal Pradesh",
+          "value": 99.2
+        },
+        {
+          "id": "tr",
+          "name": "Tripura",
+          "value": 96.2
+        },
+        {
+          "id": "ml",
+          "name": "Meghalaya",
+          "value": 88.4
+        },
+        {
+          "id": "mn",
+          "name": "Manipur",
+          "value": 92.8
+        },
+        {
+          "id": "nl",
+          "name": "Nagaland",
+          "value": 90.6
+        },
+        {
+          "id": "ga",
+          "name": "Goa",
+          "value": 99.8
+        },
+        {
+          "id": "ar",
+          "name": "Arunachal Pradesh",
+          "value": 86.2
+        },
+        {
+          "id": "mz",
+          "name": "Mizoram",
+          "value": 94.8
+        },
+        {
+          "id": "sk",
+          "name": "Sikkim",
+          "value": 98.6
+        },
+        {
+          "id": "dl",
+          "name": "Delhi",
+          "value": 99.4
+        },
+        {
+          "id": "py",
+          "name": "Puducherry",
+          "value": 99.4
+        },
+        {
+          "id": "ch",
+          "name": "Chandigarh",
+          "value": 99.6
+        }
+      ],
+      "source": "UDISE+ 2023-24"
+    },
+    {
+      "id": "total_students",
+      "name": "Total Students Enrolled",
+      "category": "spending",
+      "unit": "",
+      "states": [
+        {
+          "id": "up",
+          "name": "Uttar Pradesh",
+          "value": 41500000
+        },
+        {
+          "id": "mh",
+          "name": "Maharashtra",
+          "value": 22400000
+        },
+        {
+          "id": "br",
+          "name": "Bihar",
+          "value": 27800000
+        },
+        {
+          "id": "mp",
+          "name": "Madhya Pradesh",
+          "value": 17200000
+        },
+        {
+          "id": "rj",
+          "name": "Rajasthan",
+          "value": 16900000
+        },
+        {
+          "id": "wb",
+          "name": "West Bengal",
+          "value": 18300000
+        },
+        {
+          "id": "tn",
+          "name": "Tamil Nadu",
+          "value": 12800000
+        },
+        {
+          "id": "ka",
+          "name": "Karnataka",
+          "value": 11800000
+        },
+        {
+          "id": "gj",
+          "name": "Gujarat",
+          "value": 12200000
+        },
+        {
+          "id": "ap",
+          "name": "Andhra Pradesh",
+          "value": 8600000
+        },
+        {
+          "id": "tg",
+          "name": "Telangana",
+          "value": 6900000
+        },
+        {
+          "id": "od",
+          "name": "Odisha",
+          "value": 8200000
+        },
+        {
+          "id": "kl",
+          "name": "Kerala",
+          "value": 4200000
+        },
+        {
+          "id": "jh",
+          "name": "Jharkhand",
+          "value": 8400000
+        },
+        {
+          "id": "as",
+          "name": "Assam",
+          "value": 7800000
+        },
+        {
+          "id": "pb",
+          "name": "Punjab",
+          "value": 5200000
+        },
+        {
+          "id": "ct",
+          "name": "Chhattisgarh",
+          "value": 6400000
+        },
+        {
+          "id": "hr",
+          "name": "Haryana",
+          "value": 5800000
+        },
+        {
+          "id": "uk",
+          "name": "Uttarakhand",
+          "value": 2400000
+        },
+        {
+          "id": "jk",
+          "name": "Jammu & Kashmir",
+          "value": 2800000
+        },
+        {
+          "id": "hp",
+          "name": "Himachal Pradesh",
+          "value": 1200000
+        },
+        {
+          "id": "tr",
+          "name": "Tripura",
+          "value": 860000
+        },
+        {
+          "id": "ml",
+          "name": "Meghalaya",
+          "value": 860000
+        },
+        {
+          "id": "mn",
+          "name": "Manipur",
+          "value": 580000
+        },
+        {
+          "id": "nl",
+          "name": "Nagaland",
+          "value": 420000
+        },
+        {
+          "id": "ga",
+          "name": "Goa",
+          "value": 240000
+        },
+        {
+          "id": "ar",
+          "name": "Arunachal Pradesh",
+          "value": 380000
+        },
+        {
+          "id": "mz",
+          "name": "Mizoram",
+          "value": 280000
+        },
+        {
+          "id": "sk",
+          "name": "Sikkim",
+          "value": 120000
+        },
+        {
+          "id": "dl",
+          "name": "Delhi",
+          "value": 4200000
+        },
+        {
+          "id": "py",
+          "name": "Puducherry",
+          "value": 240000
+        },
+        {
+          "id": "ch",
+          "name": "Chandigarh",
+          "value": 180000
+        }
+      ],
+      "source": "UDISE+ 2023-24"
+    },
+    {
+      "id": "total_teachers",
+      "name": "Total Teachers",
+      "category": "spending",
+      "unit": "",
+      "states": [
+        {
+          "id": "up",
+          "name": "Uttar Pradesh",
+          "value": 866000
+        },
+        {
+          "id": "mh",
+          "name": "Maharashtra",
+          "value": 633000
+        },
+        {
+          "id": "br",
+          "name": "Bihar",
+          "value": 430000
+        },
+        {
+          "id": "mp",
+          "name": "Madhya Pradesh",
+          "value": 423000
+        },
+        {
+          "id": "rj",
+          "name": "Rajasthan",
+          "value": 447000
+        },
+        {
+          "id": "wb",
+          "name": "West Bengal",
+          "value": 485000
+        },
+        {
+          "id": "tn",
+          "name": "Tamil Nadu",
+          "value": 394000
+        },
+        {
+          "id": "ka",
+          "name": "Karnataka",
+          "value": 356000
+        },
+        {
+          "id": "gj",
+          "name": "Gujarat",
+          "value": 331000
+        },
+        {
+          "id": "ap",
+          "name": "Andhra Pradesh",
+          "value": 276000
+        },
+        {
+          "id": "tg",
+          "name": "Telangana",
+          "value": 228000
+        },
+        {
+          "id": "od",
+          "name": "Odisha",
+          "value": 258000
+        },
+        {
+          "id": "kl",
+          "name": "Kerala",
+          "value": 198000
+        },
+        {
+          "id": "jh",
+          "name": "Jharkhand",
+          "value": 186000
+        },
+        {
+          "id": "as",
+          "name": "Assam",
+          "value": 234000
+        },
+        {
+          "id": "pb",
+          "name": "Punjab",
+          "value": 186000
+        },
+        {
+          "id": "ct",
+          "name": "Chhattisgarh",
+          "value": 192000
+        },
+        {
+          "id": "hr",
+          "name": "Haryana",
+          "value": 156000
+        },
+        {
+          "id": "uk",
+          "name": "Uttarakhand",
+          "value": 98000
+        },
+        {
+          "id": "jk",
+          "name": "Jammu & Kashmir",
+          "value": 112000
+        },
+        {
+          "id": "hp",
+          "name": "Himachal Pradesh",
+          "value": 78000
+        },
+        {
+          "id": "tr",
+          "name": "Tripura",
+          "value": 42000
+        },
+        {
+          "id": "ml",
+          "name": "Meghalaya",
+          "value": 48000
+        },
+        {
+          "id": "mn",
+          "name": "Manipur",
+          "value": 28000
+        },
+        {
+          "id": "nl",
+          "name": "Nagaland",
+          "value": 22000
+        },
+        {
+          "id": "ga",
+          "name": "Goa",
+          "value": 14000
+        },
+        {
+          "id": "ar",
+          "name": "Arunachal Pradesh",
+          "value": 18000
+        },
+        {
+          "id": "mz",
+          "name": "Mizoram",
+          "value": 18000
+        },
+        {
+          "id": "sk",
+          "name": "Sikkim",
+          "value": 8000
+        },
+        {
+          "id": "dl",
+          "name": "Delhi",
+          "value": 148000
+        },
+        {
+          "id": "py",
+          "name": "Puducherry",
+          "value": 12000
+        },
+        {
+          "id": "ch",
+          "name": "Chandigarh",
+          "value": 6800
+        }
+      ],
+      "source": "UDISE+ 2023-24"
+    }
+  ]
+}

@@ -4,7 +4,7 @@
 
 ## What this site does
 
-Indian Data Project is a hub for Indian government data visualization. Each data domain (budget, economic survey, RBI data, state finances, census & demographics) gets its own visual story with explorable breakdowns. Five domains are live: Union Budget 2025-26, Economic Survey 2025-26, RBI Data, State Finances, and Census & Demographics.
+Indian Data Project is a hub for Indian government data visualization. Each data domain gets its own visual story with explorable breakdowns. Eight domains are live: Union Budget 2025-26, Economic Survey 2025-26, RBI Data, State Finances, Census & Demographics, Education, Employment, and Healthcare.
 
 ## Pages
 
@@ -41,6 +41,24 @@ Indian Data Project is a hub for Indian government data visualization. Each data
 - /census/explore — Browseable indicator explorer with categories: Population, Demographics, Literacy, Health. Select any indicator to compare across states.
 - /census/methodology — Data sources (Census of India 2011, World Bank API, NFHS-5, SRS 2023, NPC Projections), multi-vintage data strategy, indicator definitions, limitations
 - /census/glossary — Plain-language definitions of demographic terms: census, decadal growth, sex ratio, dependency ratio, infant mortality rate, total fertility rate, literacy rate, urbanization, NFHS, SRS.
+
+### Education Domain
+- /education — Scrollytelling narrative: enrollment triumph (primary/secondary/tertiary GER trends), gender convergence in enrollment, dropout cliff (primary 1.9% → secondary 14.1%), learning quality gap (ASER outcomes), teacher challenge (pupil-teacher ratios), education spending vs global peers
+- /education/explore — Browseable indicator explorer with categories: enrollment, quality, infrastructure, spending. Select any indicator to compare across 36 states.
+- /education/methodology — Data sources (UDISE+ 2023-24, ASER 2024, World Bank), indicator definitions, limitations
+- /education/glossary — Plain-language definitions of education terms: GER, NER, dropout rate, PTR, ASER, UDISE, NEP 2020, foundational literacy, RTE Act, and more.
+
+### Employment Domain
+- /employment — Scrollytelling narrative: participation puzzle (LFPR trends), structural shift (agriculture declining, services rising), youth unemployment crisis (3-4x overall rate), gender gap in LFPR, informality challenge (self-employment dominance), rural vs urban employment patterns
+- /employment/explore — Browseable indicator explorer with categories: unemployment, participation, sectoral, informality. Select any indicator to compare across states.
+- /employment/methodology — Data sources (PLFS 2023-24, World Bank, RBI KLEMS), indicator definitions, limitations
+- /employment/glossary — Plain-language definitions of employment terms: LFPR, unemployment rate, PLFS, informal sector, gig economy, structural transformation, and more.
+
+### Healthcare Domain
+- /healthcare — Scrollytelling narrative: infrastructure deficit (0.5 hospital beds per 1,000 vs WHO 3.5), health spending (3.3% GDP), out-of-pocket burden (48% of health spending), immunization coverage, disease burden (TB, NCDs), doctor gap across states
+- /healthcare/explore — Browseable indicator explorer with categories: infrastructure, spending, immunization, disease. Select any indicator to compare across states.
+- /healthcare/methodology — Data sources (NHP 2022, NFHS-5, World Bank), indicator definitions, limitations
+- /healthcare/glossary — Plain-language definitions of healthcare terms: PHC, CHC, out-of-pocket spending, immunization, TB incidence, hospital beds per 1000, and more.
 
 ## Key data points
 
@@ -87,6 +105,31 @@ Indian Data Project is a hub for Indian government data visualization. Each data
 - Urbanization: ~36% (World Bank 2023)
 - Data sources: Census of India 2011, World Bank Open Data, NFHS-5, SRS 2023, National Population Commission
 
+### Education
+- Total students: 248.2 million (UDISE+ 2023-24)
+- Total schools: 1.47 million
+- GER Primary: 104.8%, Secondary: 79.6%, Tertiary: 28.4%
+- Pupil-teacher ratio: 26 (national average)
+- Education spending: 4.1% of GDP (NEP 2020 target: 6%)
+- Data sources: UDISE+ 2023-24, ASER 2024, World Bank Open Data
+
+### Employment
+- Unemployment rate: 4.2% (PLFS Oct-Dec 2025)
+- Labour force participation rate: 55.8%
+- Female LFPR: 35.2%, Youth unemployment: 12.8%
+- Agricultural employment: declining from 60% (2000) to 42% (2023)
+- Services employment: rising from 23% (2000) to 32% (2023)
+- Data sources: PLFS Quarterly Bulletin, PLFS Annual Report 2023-24, World Bank, RBI KLEMS
+
+### Healthcare
+- Hospital beds: 0.5 per 1,000 (WHO recommends 3.5)
+- Physicians: 0.7 per 1,000
+- Health expenditure: 3.3% of GDP (global average ~6%)
+- Out-of-pocket spending: 48.2% of total health expenditure
+- DPT immunization: 91%, Measles: 92%
+- TB incidence: 199 per 100,000 (highest global burden)
+- Data sources: NHP 2022 (CBHI), NFHS-5, World Bank Open Data
+
 ## Data sources
 
 - Open Budgets India (openbudgetsindia.org) — structured budget data
@@ -103,6 +146,13 @@ Indian Data Project is a hub for Indian government data visualization. Each data
 - National Family Health Survey (NFHS-5, 2019-21) — TFR, IMR, stunting, wasting, immunization by state
 - Sample Registration System (SRS 2023) — birth rate, death rate, IMR annual estimates
 - National Population Commission — population projections 2011-2036
+- UDISE+ Flash Statistics 2023-24 (udiseplus.gov.in) — school enrollment, infrastructure, teacher data
+- ASER 2024 (asercentre.org) — learning outcomes and foundational skills assessment
+- PLFS Quarterly Bulletin (mospi.gov.in) — unemployment, LFPR, worker population ratio
+- PLFS Annual Report 2023-24 — state-wise employment indicators
+- RBI KLEMS Database — sectoral employment and output data
+- National Health Profile 2022 (cbhidghs.mohfw.gov.in) — hospital infrastructure, PHCs, CHCs, doctors
+- NFHS-5 (rchiips.org/nfhs) — immunization coverage, health indicators by state
 
 ## Downloadable datasets (JSON)
 
@@ -148,6 +198,27 @@ Indian Data Project is a hub for Indian government data visualization. Each data
 - /data/census/2025-26/literacy.json — State-wise literacy by gender, national time series
 - /data/census/2025-26/health.json — IMR time series, state-level IMR, NFHS-5 state health (TFR, IMR, U5MR, stunting, wasting, immunization)
 - /data/census/2025-26/indicators.json — All census indicators across 4 categories
+
+### Education
+- /data/education/2025-26/summary.json — Education headline numbers (total students, GER, PTR, spending)
+- /data/education/2025-26/enrollment.json — National enrollment time series + state GER
+- /data/education/2025-26/quality.json — Pupil-teacher ratios, learning outcomes, school infrastructure
+- /data/education/2025-26/spending.json — Education expenditure trends (% GDP, % govt spending)
+- /data/education/2025-26/indicators.json — All education indicators across 4 categories
+
+### Employment
+- /data/employment/2025-26/summary.json — Employment headline numbers (UR, LFPR, female LFPR)
+- /data/employment/2025-26/unemployment.json — Unemployment time series (total/youth/gender) + state data
+- /data/employment/2025-26/participation.json — LFPR time series (total/male/female) + state data
+- /data/employment/2025-26/sectoral.json — Agriculture/industry/services employment shares
+- /data/employment/2025-26/indicators.json — All employment indicators across 4 categories
+
+### Healthcare
+- /data/healthcare/2025-26/summary.json — Healthcare headline numbers (beds, doctors, spending, OOP)
+- /data/healthcare/2025-26/infrastructure.json — Hospital beds, physicians, nurses time series + state data
+- /data/healthcare/2025-26/spending.json — Health expenditure trends (% GDP, per capita, OOP)
+- /data/healthcare/2025-26/disease.json — TB incidence, immunization coverage trends
+- /data/healthcare/2025-26/indicators.json — All healthcare indicators across 4 categories
 
 ## Tax calculator details
 

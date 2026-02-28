@@ -1,0 +1,539 @@
+{
+  "year": "2025-26",
+  "ptrPrimaryTimeSeries": [
+    {
+      "year": "2000",
+      "value": 40.0
+    },
+    {
+      "year": "2001",
+      "value": 40.15
+    },
+    {
+      "year": "2002",
+      "value": 40.66
+    },
+    {
+      "year": "2003",
+      "value": 41.33
+    },
+    {
+      "year": "2011",
+      "value": 35.15
+    },
+    {
+      "year": "2013",
+      "value": 32.32
+    },
+    {
+      "year": "2014",
+      "value": 31.29
+    },
+    {
+      "year": "2015",
+      "value": 31.49
+    },
+    {
+      "year": "2016",
+      "value": 35.22
+    },
+    {
+      "year": "2017",
+      "value": 32.75
+    }
+  ],
+  "ptrSecondaryTimeSeries": [
+    {
+      "year": "2000",
+      "value": 33.62
+    },
+    {
+      "year": "2001",
+      "value": 33.44
+    },
+    {
+      "year": "2002",
+      "value": 32.32
+    },
+    {
+      "year": "2003",
+      "value": 32.32
+    },
+    {
+      "year": "2004",
+      "value": 32.7
+    },
+    {
+      "year": "2009",
+      "value": 25.14
+    },
+    {
+      "year": "2010",
+      "value": 25.33
+    },
+    {
+      "year": "2011",
+      "value": 25.92
+    },
+    {
+      "year": "2013",
+      "value": 30.78
+    },
+    {
+      "year": "2014",
+      "value": 31.77
+    },
+    {
+      "year": "2015",
+      "value": 31.65
+    },
+    {
+      "year": "2016",
+      "value": 28.49
+    },
+    {
+      "year": "2017",
+      "value": 27.44
+    },
+    {
+      "year": "2018",
+      "value": 28.52
+    }
+  ],
+  "stateInfrastructure": [
+    {
+      "id": "up",
+      "name": "Uttar Pradesh",
+      "ptr": 48,
+      "schoolsWithComputers": 22.4,
+      "schoolsWithInternet": 19.2,
+      "girlsToilets": 97.3
+    },
+    {
+      "id": "mh",
+      "name": "Maharashtra",
+      "ptr": 28,
+      "schoolsWithComputers": 42.5,
+      "schoolsWithInternet": 35.8,
+      "girlsToilets": 98.7
+    },
+    {
+      "id": "br",
+      "name": "Bihar",
+      "ptr": 65,
+      "schoolsWithComputers": 10.8,
+      "schoolsWithInternet": 8.1,
+      "girlsToilets": 90.2
+    },
+    {
+      "id": "mp",
+      "name": "Madhya Pradesh",
+      "ptr": 41,
+      "schoolsWithComputers": 19.7,
+      "schoolsWithInternet": 15.3,
+      "girlsToilets": 95.8
+    },
+    {
+      "id": "rj",
+      "name": "Rajasthan",
+      "ptr": 38,
+      "schoolsWithComputers": 23.8,
+      "schoolsWithInternet": 18.6,
+      "girlsToilets": 96.1
+    },
+    {
+      "id": "wb",
+      "name": "West Bengal",
+      "ptr": 38,
+      "schoolsWithComputers": 18.3,
+      "schoolsWithInternet": 14.7,
+      "girlsToilets": 96.8
+    },
+    {
+      "id": "tn",
+      "name": "Tamil Nadu",
+      "ptr": 25,
+      "schoolsWithComputers": 52.1,
+      "schoolsWithInternet": 44.3,
+      "girlsToilets": 99.2
+    },
+    {
+      "id": "ka",
+      "name": "Karnataka",
+      "ptr": 26,
+      "schoolsWithComputers": 44.8,
+      "schoolsWithInternet": 38.2,
+      "girlsToilets": 98.9
+    },
+    {
+      "id": "gj",
+      "name": "Gujarat",
+      "ptr": 30,
+      "schoolsWithComputers": 35.6,
+      "schoolsWithInternet": 28.4,
+      "girlsToilets": 98.1
+    },
+    {
+      "id": "ap",
+      "name": "Andhra Pradesh",
+      "ptr": 27,
+      "schoolsWithComputers": 38.4,
+      "schoolsWithInternet": 31.2,
+      "girlsToilets": 98.4
+    },
+    {
+      "id": "tg",
+      "name": "Telangana",
+      "ptr": 24,
+      "schoolsWithComputers": 48.2,
+      "schoolsWithInternet": 42.1,
+      "girlsToilets": 99.0
+    },
+    {
+      "id": "od",
+      "name": "Odisha",
+      "ptr": 32,
+      "schoolsWithComputers": 16.8,
+      "schoolsWithInternet": 12.4,
+      "girlsToilets": 95.6
+    },
+    {
+      "id": "kl",
+      "name": "Kerala",
+      "ptr": 18,
+      "schoolsWithComputers": 68.4,
+      "schoolsWithInternet": 62.1,
+      "girlsToilets": 99.6
+    },
+    {
+      "id": "jh",
+      "name": "Jharkhand",
+      "ptr": 45,
+      "schoolsWithComputers": 12.4,
+      "schoolsWithInternet": 9.8,
+      "girlsToilets": 92.4
+    },
+    {
+      "id": "as",
+      "name": "Assam",
+      "ptr": 33,
+      "schoolsWithComputers": 14.6,
+      "schoolsWithInternet": 11.2,
+      "girlsToilets": 93.8
+    },
+    {
+      "id": "pb",
+      "name": "Punjab",
+      "ptr": 22,
+      "schoolsWithComputers": 46.8,
+      "schoolsWithInternet": 38.4,
+      "girlsToilets": 98.8
+    },
+    {
+      "id": "ct",
+      "name": "Chhattisgarh",
+      "ptr": 33,
+      "schoolsWithComputers": 15.2,
+      "schoolsWithInternet": 11.8,
+      "girlsToilets": 94.6
+    },
+    {
+      "id": "hr",
+      "name": "Haryana",
+      "ptr": 30,
+      "schoolsWithComputers": 42.6,
+      "schoolsWithInternet": 36.2,
+      "girlsToilets": 98.4
+    },
+    {
+      "id": "uk",
+      "name": "Uttarakhand",
+      "ptr": 24,
+      "schoolsWithComputers": 38.4,
+      "schoolsWithInternet": 32.1,
+      "girlsToilets": 97.8
+    },
+    {
+      "id": "jk",
+      "name": "Jammu & Kashmir",
+      "ptr": 25,
+      "schoolsWithComputers": 28.4,
+      "schoolsWithInternet": 22.6,
+      "girlsToilets": 96.4
+    },
+    {
+      "id": "hp",
+      "name": "Himachal Pradesh",
+      "ptr": 14,
+      "schoolsWithComputers": 54.2,
+      "schoolsWithInternet": 46.8,
+      "girlsToilets": 99.2
+    },
+    {
+      "id": "tr",
+      "name": "Tripura",
+      "ptr": 20,
+      "schoolsWithComputers": 22.6,
+      "schoolsWithInternet": 18.4,
+      "girlsToilets": 96.2
+    },
+    {
+      "id": "ml",
+      "name": "Meghalaya",
+      "ptr": 18,
+      "schoolsWithComputers": 12.8,
+      "schoolsWithInternet": 9.6,
+      "girlsToilets": 88.4
+    },
+    {
+      "id": "mn",
+      "name": "Manipur",
+      "ptr": 21,
+      "schoolsWithComputers": 18.4,
+      "schoolsWithInternet": 14.2,
+      "girlsToilets": 92.8
+    },
+    {
+      "id": "nl",
+      "name": "Nagaland",
+      "ptr": 19,
+      "schoolsWithComputers": 16.4,
+      "schoolsWithInternet": 12.8,
+      "girlsToilets": 90.6
+    },
+    {
+      "id": "ga",
+      "name": "Goa",
+      "ptr": 16,
+      "schoolsWithComputers": 72.4,
+      "schoolsWithInternet": 66.8,
+      "girlsToilets": 99.8
+    },
+    {
+      "id": "ar",
+      "name": "Arunachal Pradesh",
+      "ptr": 21,
+      "schoolsWithComputers": 14.2,
+      "schoolsWithInternet": 10.6,
+      "girlsToilets": 86.2
+    },
+    {
+      "id": "mz",
+      "name": "Mizoram",
+      "ptr": 16,
+      "schoolsWithComputers": 24.6,
+      "schoolsWithInternet": 20.2,
+      "girlsToilets": 94.8
+    },
+    {
+      "id": "sk",
+      "name": "Sikkim",
+      "ptr": 15,
+      "schoolsWithComputers": 48.6,
+      "schoolsWithInternet": 42.4,
+      "girlsToilets": 98.6
+    },
+    {
+      "id": "dl",
+      "name": "Delhi",
+      "ptr": 28,
+      "schoolsWithComputers": 62.4,
+      "schoolsWithInternet": 56.8,
+      "girlsToilets": 99.4
+    },
+    {
+      "id": "py",
+      "name": "Puducherry",
+      "ptr": 18,
+      "schoolsWithComputers": 58.4,
+      "schoolsWithInternet": 52.6,
+      "girlsToilets": 99.4
+    },
+    {
+      "id": "ch",
+      "name": "Chandigarh",
+      "ptr": 22,
+      "schoolsWithComputers": 68.2,
+      "schoolsWithInternet": 62.4,
+      "girlsToilets": 99.6
+    }
+  ],
+  "learningOutcomes": [
+    {
+      "id": "up",
+      "name": "Uttar Pradesh",
+      "canReadStd2": 18.6,
+      "canDoSubtraction": 16.2,
+      "canReadEnglish": 24.8
+    },
+    {
+      "id": "mh",
+      "name": "Maharashtra",
+      "canReadStd2": 28.4,
+      "canDoSubtraction": 24.6,
+      "canReadEnglish": 38.2
+    },
+    {
+      "id": "br",
+      "name": "Bihar",
+      "canReadStd2": 14.2,
+      "canDoSubtraction": 12.8,
+      "canReadEnglish": 16.4
+    },
+    {
+      "id": "mp",
+      "name": "Madhya Pradesh",
+      "canReadStd2": 20.4,
+      "canDoSubtraction": 18.2,
+      "canReadEnglish": 22.6
+    },
+    {
+      "id": "rj",
+      "name": "Rajasthan",
+      "canReadStd2": 22.8,
+      "canDoSubtraction": 20.4,
+      "canReadEnglish": 26.2
+    },
+    {
+      "id": "wb",
+      "name": "West Bengal",
+      "canReadStd2": 24.6,
+      "canDoSubtraction": 21.8,
+      "canReadEnglish": 28.4
+    },
+    {
+      "id": "tn",
+      "name": "Tamil Nadu",
+      "canReadStd2": 32.4,
+      "canDoSubtraction": 28.6,
+      "canReadEnglish": 42.8
+    },
+    {
+      "id": "ka",
+      "name": "Karnataka",
+      "canReadStd2": 30.2,
+      "canDoSubtraction": 26.8,
+      "canReadEnglish": 36.4
+    },
+    {
+      "id": "gj",
+      "name": "Gujarat",
+      "canReadStd2": 26.4,
+      "canDoSubtraction": 22.8,
+      "canReadEnglish": 30.6
+    },
+    {
+      "id": "ap",
+      "name": "Andhra Pradesh",
+      "canReadStd2": 24.8,
+      "canDoSubtraction": 22.4,
+      "canReadEnglish": 28.6
+    },
+    {
+      "id": "tg",
+      "name": "Telangana",
+      "canReadStd2": 26.2,
+      "canDoSubtraction": 23.8,
+      "canReadEnglish": 32.4
+    },
+    {
+      "id": "od",
+      "name": "Odisha",
+      "canReadStd2": 21.6,
+      "canDoSubtraction": 19.4,
+      "canReadEnglish": 24.2
+    },
+    {
+      "id": "kl",
+      "name": "Kerala",
+      "canReadStd2": 42.8,
+      "canDoSubtraction": 38.4,
+      "canReadEnglish": 56.2
+    },
+    {
+      "id": "jh",
+      "name": "Jharkhand",
+      "canReadStd2": 16.4,
+      "canDoSubtraction": 14.8,
+      "canReadEnglish": 18.6
+    },
+    {
+      "id": "as",
+      "name": "Assam",
+      "canReadStd2": 20.8,
+      "canDoSubtraction": 18.6,
+      "canReadEnglish": 22.4
+    },
+    {
+      "id": "pb",
+      "name": "Punjab",
+      "canReadStd2": 32.6,
+      "canDoSubtraction": 28.4,
+      "canReadEnglish": 40.2
+    },
+    {
+      "id": "ct",
+      "name": "Chhattisgarh",
+      "canReadStd2": 19.2,
+      "canDoSubtraction": 17.4,
+      "canReadEnglish": 20.8
+    },
+    {
+      "id": "hr",
+      "name": "Haryana",
+      "canReadStd2": 28.6,
+      "canDoSubtraction": 25.2,
+      "canReadEnglish": 34.8
+    },
+    {
+      "id": "uk",
+      "name": "Uttarakhand",
+      "canReadStd2": 30.4,
+      "canDoSubtraction": 26.8,
+      "canReadEnglish": 36.2
+    },
+    {
+      "id": "hp",
+      "name": "Himachal Pradesh",
+      "canReadStd2": 38.4,
+      "canDoSubtraction": 34.6,
+      "canReadEnglish": 48.2
+    },
+    {
+      "id": "jk",
+      "name": "Jammu & Kashmir",
+      "canReadStd2": 24.2,
+      "canDoSubtraction": 21.6,
+      "canReadEnglish": 28.8
+    },
+    {
+      "id": "mn",
+      "name": "Manipur",
+      "canReadStd2": 26.8,
+      "canDoSubtraction": 24.2,
+      "canReadEnglish": 32.6
+    },
+    {
+      "id": "ml",
+      "name": "Meghalaya",
+      "canReadStd2": 22.4,
+      "canDoSubtraction": 19.8,
+      "canReadEnglish": 26.4
+    },
+    {
+      "id": "tr",
+      "name": "Tripura",
+      "canReadStd2": 24.6,
+      "canDoSubtraction": 22.2,
+      "canReadEnglish": 28.4
+    },
+    {
+      "id": "nl",
+      "name": "Nagaland",
+      "canReadStd2": 24.8,
+      "canDoSubtraction": 22.6,
+      "canReadEnglish": 30.2
+    }
+  ],
+  "source": "World Bank + UDISE+ 2023-24 + ASER 2024"
+}

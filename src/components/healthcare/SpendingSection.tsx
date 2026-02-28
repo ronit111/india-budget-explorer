@@ -1,0 +1,81 @@
+import { useMemo } from 'react';
+import { motion } from 'framer-motion';
+import { useScrollTrigger } from '../../hooks/useScrollTrigger.ts';
+import { SectionNumber } from '../ui/SectionNumber.tsx';
+import { LineChart, type LineSeries } from '../viz/LineChart.tsx';
+import type { HealthSpendingData } from '../../lib/data/schema.ts';
+
+const MIN_POINTS = 3;
+
+interface SpendingSectionProps {
+  data: HealthSpendingData;
+}
+
+export function SpendingSection({ data }: SpendingSectionProps) {
+  const [ref, isVisible] = useScrollTrigger({ threshold: 0.08 });
+
+  const spendingSeries: LineSeries[] = useMemo(() => {
+    const series: LineSeries[] = [];
+    if (data.healthExpGDPTimeSeries.length >= MIN_POINTS) {
+      series.push({
+        id: 'total-health-exp',
+        name: 'Total Health Exp (% GDP)',
+        color: 'var(--rose)',
+        data: data.healthExpGDPTimeSeries,
+      });
+    }
+    if (data.govtHealthExpTimeSeries.length >= MIN_POINTS) {
+      series.push({
+        id: 'govt-health-exp',
+        name: 'Govt Health Exp (% GDP)',
+        color: 'var(--rose-light)',
+        data: data.govtHealthExpTimeSeries,
+      });
+    }
+    return series;
+  }, [data]);
+
+  return (
+    <section ref={ref} className="composition" style={{ background: 'var(--bg-surface)' }}>
+      <div className="max-w-7xl mx-auto px-6 sm:px-8">
+        <SectionNumber number={2} className="mb-6 block" isVisible={isVisible} />
+
+        <motion.h2
+          initial={{ opacity: 0, y: 16 }}
+          animate={isVisible ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          className="text-composition mb-2"
+        >
+          The spending story
+        </motion.h2>
+
+        <motion.p
+          initial={{ opacity: 0, y: 12 }}
+          animate={isVisible ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
+          className="text-annotation mb-8 max-w-xl"
+        >
+          India spends about 3% of GDP on health — half the global average. The gap means crumbling infrastructure, understaffed hospitals, and patients paying out of pocket.
+        </motion.p>
+
+        {spendingSeries.length > 0 && (
+          <div className="mb-8">
+            <p className="text-xs font-mono uppercase tracking-wider mb-3" style={{ color: 'var(--text-muted)' }}>
+              Health expenditure as share of GDP (%)
+            </p>
+            <LineChart
+              series={spendingSeries}
+              isVisible={isVisible}
+              formatValue={(v) => `${v.toFixed(1)}%`}
+              unit="%"
+            />
+          </div>
+        )}
+
+        <p className="source-attribution">
+          Source: {data.source}
+        </p>
+      </div>
+    </section>
+  );
+}

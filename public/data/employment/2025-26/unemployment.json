@@ -1,0 +1,580 @@
+{
+  "year": "2025-26",
+  "totalTimeSeries": [
+    {
+      "year": "2000",
+      "value": 7.59
+    },
+    {
+      "year": "2001",
+      "value": 7.61
+    },
+    {
+      "year": "2002",
+      "value": 7.68
+    },
+    {
+      "year": "2003",
+      "value": 7.63
+    },
+    {
+      "year": "2004",
+      "value": 7.6
+    },
+    {
+      "year": "2005",
+      "value": 7.55
+    },
+    {
+      "year": "2006",
+      "value": 7.55
+    },
+    {
+      "year": "2007",
+      "value": 7.56
+    },
+    {
+      "year": "2008",
+      "value": 7.63
+    },
+    {
+      "year": "2009",
+      "value": 7.64
+    },
+    {
+      "year": "2010",
+      "value": 7.63
+    },
+    {
+      "year": "2011",
+      "value": 7.61
+    },
+    {
+      "year": "2012",
+      "value": 7.64
+    },
+    {
+      "year": "2013",
+      "value": 7.68
+    },
+    {
+      "year": "2014",
+      "value": 7.66
+    },
+    {
+      "year": "2015",
+      "value": 7.63
+    },
+    {
+      "year": "2016",
+      "value": 7.61
+    },
+    {
+      "year": "2017",
+      "value": 7.63
+    },
+    {
+      "year": "2018",
+      "value": 7.65
+    },
+    {
+      "year": "2019",
+      "value": 6.51
+    },
+    {
+      "year": "2020",
+      "value": 7.86
+    },
+    {
+      "year": "2021",
+      "value": 6.38
+    },
+    {
+      "year": "2022",
+      "value": 4.82
+    },
+    {
+      "year": "2023",
+      "value": 4.17
+    },
+    {
+      "year": "2024",
+      "value": 4.17
+    },
+    {
+      "year": "2025",
+      "value": 4.22
+    }
+  ],
+  "youthTimeSeries": [
+    {
+      "year": "2000",
+      "value": 20.2
+    },
+    {
+      "year": "2001",
+      "value": 20.42
+    },
+    {
+      "year": "2002",
+      "value": 20.76
+    },
+    {
+      "year": "2003",
+      "value": 20.86
+    },
+    {
+      "year": "2004",
+      "value": 20.99
+    },
+    {
+      "year": "2005",
+      "value": 21.12
+    },
+    {
+      "year": "2006",
+      "value": 21.47
+    },
+    {
+      "year": "2007",
+      "value": 21.86
+    },
+    {
+      "year": "2008",
+      "value": 22.42
+    },
+    {
+      "year": "2009",
+      "value": 22.86
+    },
+    {
+      "year": "2010",
+      "value": 23.3
+    },
+    {
+      "year": "2011",
+      "value": 23.64
+    },
+    {
+      "year": "2012",
+      "value": 24.14
+    },
+    {
+      "year": "2013",
+      "value": 24.47
+    },
+    {
+      "year": "2014",
+      "value": 24.71
+    },
+    {
+      "year": "2015",
+      "value": 24.96
+    },
+    {
+      "year": "2016",
+      "value": 25.23
+    },
+    {
+      "year": "2017",
+      "value": 25.59
+    },
+    {
+      "year": "2018",
+      "value": 26.0
+    },
+    {
+      "year": "2019",
+      "value": 22.95
+    },
+    {
+      "year": "2020",
+      "value": 24.67
+    },
+    {
+      "year": "2021",
+      "value": 20.82
+    },
+    {
+      "year": "2022",
+      "value": 17.73
+    },
+    {
+      "year": "2023",
+      "value": 15.6
+    },
+    {
+      "year": "2024",
+      "value": 15.75
+    },
+    {
+      "year": "2025",
+      "value": 16.02
+    }
+  ],
+  "femaleTimeSeries": [
+    {
+      "year": "2000",
+      "value": 7.66
+    },
+    {
+      "year": "2001",
+      "value": 7.67
+    },
+    {
+      "year": "2002",
+      "value": 7.74
+    },
+    {
+      "year": "2003",
+      "value": 7.69
+    },
+    {
+      "year": "2004",
+      "value": 7.66
+    },
+    {
+      "year": "2005",
+      "value": 7.62
+    },
+    {
+      "year": "2006",
+      "value": 7.62
+    },
+    {
+      "year": "2007",
+      "value": 7.63
+    },
+    {
+      "year": "2008",
+      "value": 7.69
+    },
+    {
+      "year": "2009",
+      "value": 7.7
+    },
+    {
+      "year": "2010",
+      "value": 7.69
+    },
+    {
+      "year": "2011",
+      "value": 7.67
+    },
+    {
+      "year": "2012",
+      "value": 7.71
+    },
+    {
+      "year": "2013",
+      "value": 7.74
+    },
+    {
+      "year": "2014",
+      "value": 7.72
+    },
+    {
+      "year": "2015",
+      "value": 7.69
+    },
+    {
+      "year": "2016",
+      "value": 7.68
+    },
+    {
+      "year": "2017",
+      "value": 7.69
+    },
+    {
+      "year": "2018",
+      "value": 7.71
+    },
+    {
+      "year": "2019",
+      "value": 6.07
+    },
+    {
+      "year": "2020",
+      "value": 6.75
+    },
+    {
+      "year": "2021",
+      "value": 5.39
+    },
+    {
+      "year": "2022",
+      "value": 4.59
+    },
+    {
+      "year": "2023",
+      "value": 4.06
+    },
+    {
+      "year": "2024",
+      "value": 4.09
+    },
+    {
+      "year": "2025",
+      "value": 4.14
+    }
+  ],
+  "maleTimeSeries": [
+    {
+      "year": "2000",
+      "value": 7.56
+    },
+    {
+      "year": "2001",
+      "value": 7.59
+    },
+    {
+      "year": "2002",
+      "value": 7.66
+    },
+    {
+      "year": "2003",
+      "value": 7.61
+    },
+    {
+      "year": "2004",
+      "value": 7.57
+    },
+    {
+      "year": "2005",
+      "value": 7.52
+    },
+    {
+      "year": "2006",
+      "value": 7.53
+    },
+    {
+      "year": "2007",
+      "value": 7.54
+    },
+    {
+      "year": "2008",
+      "value": 7.61
+    },
+    {
+      "year": "2009",
+      "value": 7.62
+    },
+    {
+      "year": "2010",
+      "value": 7.61
+    },
+    {
+      "year": "2011",
+      "value": 7.59
+    },
+    {
+      "year": "2012",
+      "value": 7.62
+    },
+    {
+      "year": "2013",
+      "value": 7.66
+    },
+    {
+      "year": "2014",
+      "value": 7.64
+    },
+    {
+      "year": "2015",
+      "value": 7.61
+    },
+    {
+      "year": "2016",
+      "value": 7.59
+    },
+    {
+      "year": "2017",
+      "value": 7.61
+    },
+    {
+      "year": "2018",
+      "value": 7.63
+    },
+    {
+      "year": "2019",
+      "value": 6.65
+    },
+    {
+      "year": "2020",
+      "value": 8.22
+    },
+    {
+      "year": "2021",
+      "value": 6.72
+    },
+    {
+      "year": "2022",
+      "value": 4.91
+    },
+    {
+      "year": "2023",
+      "value": 4.22
+    },
+    {
+      "year": "2024",
+      "value": 4.21
+    },
+    {
+      "year": "2025",
+      "value": 4.25
+    }
+  ],
+  "stateUnemployment": [
+    {
+      "id": "up",
+      "name": "Uttar Pradesh",
+      "value": 4.8
+    },
+    {
+      "id": "mh",
+      "name": "Maharashtra",
+      "value": 3.8
+    },
+    {
+      "id": "br",
+      "name": "Bihar",
+      "value": 6.8
+    },
+    {
+      "id": "wb",
+      "name": "West Bengal",
+      "value": 5.2
+    },
+    {
+      "id": "mp",
+      "name": "Madhya Pradesh",
+      "value": 3.2
+    },
+    {
+      "id": "tn",
+      "name": "Tamil Nadu",
+      "value": 3.4
+    },
+    {
+      "id": "rj",
+      "name": "Rajasthan",
+      "value": 3.6
+    },
+    {
+      "id": "ka",
+      "name": "Karnataka",
+      "value": 3.2
+    },
+    {
+      "id": "gj",
+      "name": "Gujarat",
+      "value": 2.8
+    },
+    {
+      "id": "ap",
+      "name": "Andhra Pradesh",
+      "value": 3.4
+    },
+    {
+      "id": "tg",
+      "name": "Telangana",
+      "value": 3.8
+    },
+    {
+      "id": "od",
+      "name": "Odisha",
+      "value": 4.2
+    },
+    {
+      "id": "kl",
+      "name": "Kerala",
+      "value": 7.4
+    },
+    {
+      "id": "jh",
+      "name": "Jharkhand",
+      "value": 5.6
+    },
+    {
+      "id": "as",
+      "name": "Assam",
+      "value": 5.4
+    },
+    {
+      "id": "pb",
+      "name": "Punjab",
+      "value": 4.8
+    },
+    {
+      "id": "ct",
+      "name": "Chhattisgarh",
+      "value": 2.6
+    },
+    {
+      "id": "hr",
+      "name": "Haryana",
+      "value": 5.8
+    },
+    {
+      "id": "uk",
+      "name": "Uttarakhand",
+      "value": 4.6
+    },
+    {
+      "id": "jk",
+      "name": "Jammu & Kashmir",
+      "value": 6.2
+    },
+    {
+      "id": "hp",
+      "name": "Himachal Pradesh",
+      "value": 3.8
+    },
+    {
+      "id": "dl",
+      "name": "Delhi",
+      "value": 7.2
+    },
+    {
+      "id": "ga",
+      "name": "Goa",
+      "value": 6.8
+    },
+    {
+      "id": "tr",
+      "name": "Tripura",
+      "value": 5.8
+    },
+    {
+      "id": "mn",
+      "name": "Manipur",
+      "value": 5.4
+    },
+    {
+      "id": "ml",
+      "name": "Meghalaya",
+      "value": 3.2
+    },
+    {
+      "id": "nl",
+      "name": "Nagaland",
+      "value": 6.4
+    },
+    {
+      "id": "mz",
+      "name": "Mizoram",
+      "value": 4.2
+    },
+    {
+      "id": "sk",
+      "name": "Sikkim",
+      "value": 3.6
+    },
+    {
+      "id": "ar",
+      "name": "Arunachal Pradesh",
+      "value": 4.8
+    }
+  ],
+  "source": "World Bank (ILO modelled) + PLFS Annual Report 2023-24"
+}

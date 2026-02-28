@@ -1,6 +1,6 @@
 # Indian Data Project
 
-Open Indian government data made accessible, visual, and shareable. Five data domains live: Union Budget 2025-26, Economic Survey 2025-26, RBI Data, State Finances, and Census & Demographics. Each gets its own visual story with explorable breakdowns.
+Open Indian government data made accessible, visual, and shareable. Eight data domains live: Union Budget 2025-26, Economic Survey 2025-26, RBI Data, State Finances, Census & Demographics, Education, Employment, and Healthcare. Each gets its own visual story with explorable breakdowns.
 
 **Live:** [indiandataproject.org](https://indiandataproject.org)
 
@@ -10,7 +10,7 @@ Open Indian government data made accessible, visual, and shareable. Five data do
 
 Indian Data Project turns dense government data into interactive visual experiences. The site is a hub — each data domain gets its own self-contained visual story with explorable breakdowns.
 
-**Hub + 5 data domains:**
+**Hub + 8 data domains:**
 
 | Page | What it shows |
 |------|---------------|
@@ -36,6 +36,18 @@ Indian Data Project turns dense government data into interactive visual experien
 | **Census Explorer** (`/census/explore`) | Indicator explorer with 5 categories (All, Population, Demographics, Literacy, Health), `HorizontalBarChart` per indicator |
 | **Census Methodology** (`/census/methodology`) | Data sources (Census 2011, World Bank, NFHS-5, SRS 2023, NPC), multi-vintage strategy, limitations |
 | **Census Glossary** (`/census/glossary`) | Demographic terms — census, decadal growth, sex ratio, dependency ratio, IMR, TFR, literacy rate, urbanization, etc. |
+| **Education Story** (`/education`) | Scrollytelling narrative — enrollment triumph (GER trends), gender convergence, dropout cliff, learning quality gap (ASER), teacher challenge (PTR), spending vs global peers |
+| **Education Explorer** (`/education/explore`) | Indicator explorer with 5 categories (All, Enrollment, Quality, Infrastructure, Spending), 36 states |
+| **Education Methodology** (`/education/methodology`) | Data sources (UDISE+ 2023-24, ASER 2024, World Bank), indicator definitions, limitations |
+| **Education Glossary** (`/education/glossary`) | 14 education terms — GER, dropout rate, PTR, ASER, UDISE, NEP 2020, foundational literacy, RTE Act, etc. |
+| **Employment Story** (`/employment`) | Scrollytelling narrative — participation puzzle (LFPR trends), structural shift, youth unemployment, gender gap, informality challenge, rural vs urban |
+| **Employment Explorer** (`/employment/explore`) | Indicator explorer with 5 categories (All, Unemployment, Participation, Sectoral, Informality), 30 states |
+| **Employment Methodology** (`/employment/methodology`) | Data sources (PLFS 2023-24, RBI KLEMS, World Bank), indicator definitions, limitations |
+| **Employment Glossary** (`/employment/glossary`) | 15 employment terms — LFPR, PLFS, gig economy, structural transformation, informal sector, etc. |
+| **Healthcare Story** (`/healthcare`) | Scrollytelling narrative — infrastructure deficit, spending story, out-of-pocket burden, immunization push, disease burden, doctor gap |
+| **Healthcare Explorer** (`/healthcare/explore`) | Indicator explorer with 5 categories (All, Infrastructure, Spending, Immunization, Disease), 30 states |
+| **Healthcare Methodology** (`/healthcare/methodology`) | Data sources (NHP 2022, NFHS-5, World Bank), indicator definitions, limitations |
+| **Healthcare Glossary** (`/healthcare/glossary`) | 13 healthcare terms — PHC, CHC, out-of-pocket spending, immunization, TB incidence, hospital beds per 1000, etc. |
 
 ---
 
@@ -81,7 +93,7 @@ npm run preview
 | Command | What it does |
 |---------|-------------|
 | `npm run dev` | Start Vite dev server with HMR |
-| `npm run build` | TypeScript check + Vite build + Puppeteer prerender (all 22 routes) |
+| `npm run build` | TypeScript check + Vite build + Puppeteer prerender (all 34 routes) |
 | `npm run build:no-prerender` | Build without prerendering (used by Vercel) |
 | `npm run lint` | ESLint check |
 | `npm run preview` | Preview production build locally |
@@ -110,12 +122,24 @@ src/
 │   ├── CensusPage.tsx          # Census scrollytelling (population, age, health, literacy, urbanization)
 │   ├── CensusExplorePage.tsx   # Census indicator explorer with category filters
 │   ├── CensusMethodologyPage.tsx # Census methodology
+│   ├── EducationPage.tsx        # Education scrollytelling (enrollment, quality, spending)
+│   ├── EducationExplorePage.tsx  # Education indicator explorer
+│   ├── EducationMethodologyPage.tsx # Education methodology
+│   ├── EmploymentPage.tsx       # Employment scrollytelling (LFPR, sectoral, informality)
+│   ├── EmploymentExplorePage.tsx # Employment indicator explorer
+│   ├── EmploymentMethodologyPage.tsx # Employment methodology
+│   ├── HealthcarePage.tsx       # Healthcare scrollytelling (infrastructure, spending, disease)
+│   ├── HealthcareExplorePage.tsx # Healthcare indicator explorer
+│   ├── HealthcareMethodologyPage.tsx # Healthcare methodology
 │   ├── GlossaryPage.tsx      # Shared glossary component (parameterized by domain)
 │   ├── BudgetGlossaryPage.tsx # Budget glossary wrapper
 │   ├── EconomyGlossaryPage.tsx # Economy glossary wrapper
 │   ├── RBIGlossaryPage.tsx   # RBI glossary wrapper
 │   ├── StatesGlossaryPage.tsx # States glossary wrapper
-│   └── CensusGlossaryPage.tsx # Census glossary wrapper
+│   ├── CensusGlossaryPage.tsx # Census glossary wrapper
+│   ├── EducationGlossaryPage.tsx # Education glossary wrapper
+│   ├── EmploymentGlossaryPage.tsx # Employment glossary wrapper
+│   └── HealthcareGlossaryPage.tsx # Healthcare glossary wrapper
 ├── components/
 │   ├── home/               # Budget story compositions (Hero, Revenue, Expenditure, Flow, Map, CTA)
 │   ├── budget/             # Budget-specific compositions (DeficitSection, PerCapitaSection)
@@ -123,6 +147,9 @@ src/
 │   ├── rbi/                # RBI compositions (HeroSection, MonetaryPolicySection, ForexSection, etc.)
 │   ├── states/             # States compositions (GSDPSection, GrowthSection, RevenueSection, FiscalHealthSection, PerCapitaSection)
 │   ├── census/             # Census compositions (PopulationSection, AgeDemographicsSection, VitalStatsSection, HealthSection, LiteracySection, UrbanizationSection)
+│   ├── education/           # Education compositions (EnrollmentSection, GenderSection, DropoutSection, QualitySection, TeacherSection, SpendingSection)
+│   ├── employment/          # Employment compositions (ParticipationSection, StructuralSection, YouthSection, GenderGapSection, InformalitySection, RuralUrbanSection)
+│   ├── healthcare/          # Healthcare compositions (InfrastructureSection, SpendingSection, OOPSection, ImmunizationSection, DiseaseSection, DoctorGapSection)
 │   ├── calculator/         # Tax calculator UI (IncomeInput, DeductionsPanel, TaxBreakdown, ShareCard, SpendingAllocation)
 │   ├── explore/            # DataTable with expandable rows
 │   ├── viz/                # D3 visualizations (TreemapChart, SankeyDiagram, ChoroplethMap, WaffleChart, LineChart, AreaChart, HorizontalBarChart, StepChart, AnimatedCounter)
@@ -131,14 +158,14 @@ src/
 │   ├── seo/                # SEOHead (per-route meta tags + OG images + JSON-LD)
 │   └── i18n/               # Language provider and switcher
 ├── lib/
-│   ├── data/schema.ts      # TypeScript interfaces for all data shapes (Budget, Economy, RBI, States, Census)
+│   ├── data/schema.ts      # TypeScript interfaces for all data shapes (Budget, Economy, RBI, States, Census, Education, Employment, Healthcare)
 │   ├── taxEngine.ts        # Tax computation engine (Old/New regime, deductions, slabs)
 │   ├── format.ts           # Indian number formatting (lakhs/crores)
 │   ├── dataLoader.ts       # Fetch + cache layer for JSON data (all domains)
 │   ├── stateMapping.ts     # India state ID → name mapping
 │   └── i18n.ts             # i18next configuration
-├── hooks/                  # useScrollTrigger, useIntersection, useBudgetData, useEconomyData, useRBIData, useStatesData, useCensusData, etc.
-├── store/                  # Zustand stores (budgetStore, economyStore, rbiStore, statesStore, censusStore, calculatorStore, uiStore)
+├── hooks/                  # useScrollTrigger, useIntersection, useBudgetData, useEconomyData, useRBIData, useStatesData, useCensusData, useEducationData, useEmploymentData, useHealthcareData, etc.
+├── store/                  # Zustand stores (budgetStore, economyStore, rbiStore, statesStore, censusStore, educationStore, employmentStore, healthcareStore, calculatorStore, uiStore)
 └── index.css               # Design tokens, CSS layers, keyframes
 
 public/
@@ -147,8 +174,11 @@ public/
 ├── data/rbi/2025-26/       # 6 structured JSON RBI datasets
 ├── data/states/2025-26/    # 6 structured JSON state finance datasets
 ├── data/census/2025-26/    # 7 structured JSON census & demographics datasets
+├── data/education/2025-26/ # 6 structured JSON education datasets
+├── data/employment/2025-26/ # 6 structured JSON employment datasets
+├── data/healthcare/2025-26/ # 6 structured JSON healthcare datasets
 ├── locales/en/             # Translation files
-├── sitemap.xml             # All routes + data endpoints (22 pages + 28 data files)
+├── sitemap.xml             # All routes + data endpoints (34 pages + 43 data files)
 ├── robots.txt              # All bots welcomed (including AI crawlers)
 └── llms.txt                # AI-readable site summary
 
@@ -159,6 +189,9 @@ pipeline/
 │   ├── rbi/                # RBI pipeline (World Bank + curated MPC data → JSON)
 │   ├── states/             # States pipeline (curated RBI Handbook data → JSON)
 │   ├── census/             # Census pipeline (World Bank API + curated Census/NFHS/SRS → JSON)
+│   ├── education/          # Education pipeline (World Bank API + curated UDISE+/ASER → JSON)
+│   ├── employment/         # Employment pipeline (World Bank API + curated PLFS/KLEMS → JSON)
+│   ├── healthcare/         # Healthcare pipeline (World Bank API + curated NHP/NFHS-5 → JSON)
 │   └── publish/            # Shared JSON writer
 └── pyproject.toml          # Python dependencies
 ```
@@ -238,7 +271,46 @@ Census data lives in `public/data/census/2025-26/`:
 | `indicators.json` | All census indicators across 4 categories |
 | `glossary.json` | Demographic terms with plain-language explanations |
 
-Data sourced from [Open Budgets India](https://openbudgetsindia.org), [indiabudget.gov.in](https://www.indiabudget.gov.in), [Economic Survey](https://www.indiabudget.gov.in/economicsurvey/), [RBI DBIE](https://data.rbi.org.in), [RBI Monetary Policy Statements](https://www.rbi.org.in), [RBI Handbook of Statistics on Indian States](https://www.rbi.org.in), [Census of India](https://censusindia.gov.in), [NFHS](http://rchiips.org/nfhs/), and [World Bank Open Data API](https://data.worldbank.org) under the [Government Open Data License — India](https://data.gov.in/government-open-data-license-india).
+### Education Data
+
+Education data lives in `public/data/education/2025-26/`:
+
+| File | Contents |
+|------|----------|
+| `summary.json` | Headline education numbers (total students, GER, PTR, spending % GDP) |
+| `enrollment.json` | National enrollment time series (primary/secondary/tertiary) + state GER from UDISE+ |
+| `quality.json` | Pupil-teacher ratios, ASER learning outcomes, school infrastructure by state |
+| `spending.json` | Education expenditure trends (% GDP, % govt spending) |
+| `indicators.json` | All education indicators across 4 categories (enrollment, quality, infrastructure, spending) |
+| `glossary.json` | 14 education terms with plain-language explanations |
+
+### Employment Data
+
+Employment data lives in `public/data/employment/2025-26/`:
+
+| File | Contents |
+|------|----------|
+| `summary.json` | Headline employment numbers (unemployment rate, LFPR, female LFPR, youth UR) |
+| `unemployment.json` | Unemployment time series (total/youth/gender) + state unemployment rates |
+| `participation.json` | LFPR time series (total/male/female) + state LFPR |
+| `sectoral.json` | Agriculture/industry/services employment shares + RBI KLEMS breakdown |
+| `indicators.json` | All employment indicators across 4 categories (unemployment, participation, sectoral, informality) |
+| `glossary.json` | 15 employment terms with plain-language explanations |
+
+### Healthcare Data
+
+Healthcare data lives in `public/data/healthcare/2025-26/`:
+
+| File | Contents |
+|------|----------|
+| `summary.json` | Headline healthcare numbers (hospital beds/1000, doctors/1000, health spending % GDP, OOP %) |
+| `infrastructure.json` | Hospital beds, physicians, nurses time series + state infrastructure from NHP 2022 |
+| `spending.json` | Health expenditure trends (% GDP, per capita, out-of-pocket %) |
+| `disease.json` | TB incidence, HIV prevalence, immunization coverage trends |
+| `indicators.json` | All healthcare indicators across 4 categories (infrastructure, spending, immunization, disease) |
+| `glossary.json` | 13 healthcare terms with plain-language explanations |
+
+Data sourced from [Open Budgets India](https://openbudgetsindia.org), [indiabudget.gov.in](https://www.indiabudget.gov.in), [Economic Survey](https://www.indiabudget.gov.in/economicsurvey/), [RBI DBIE](https://data.rbi.org.in), [RBI Monetary Policy Statements](https://www.rbi.org.in), [RBI Handbook of Statistics on Indian States](https://www.rbi.org.in), [Census of India](https://censusindia.gov.in), [NFHS](http://rchiips.org/nfhs/), [UDISE+](https://udiseplus.gov.in), [ASER](https://asercentre.org), [PLFS](https://mospi.gov.in), [NHP/CBHI](https://cbhidghs.mohfw.gov.in), and [World Bank Open Data API](https://data.worldbank.org) under the [Government Open Data License — India](https://data.gov.in/government-open-data-license-india).
 
 ---
 
@@ -257,13 +329,13 @@ See [BRAND.md](./BRAND.md) for the full visual identity guide. Key principles:
 
 The site is built for maximum discoverability:
 
-- **Prerendered HTML** for all 22 routes (Puppeteer at build time)
-- **JSON-LD** structured data: `WebApplication`, `Dataset` x5 (Budget + Economy + RBI + States + Census for Google Dataset Search), `BreadcrumbList`
+- **Prerendered HTML** for all 34 routes (Puppeteer at build time)
+- **JSON-LD** structured data: `WebApplication`, `Dataset` x8 (Budget + Economy + RBI + States + Census + Education + Employment + Healthcare for Google Dataset Search), `BreadcrumbList`
 - **Per-route meta tags** via react-helmet-async (title, description, OG image, Twitter card, canonical)
-- **sitemap.xml** covering 22 pages + 28 downloadable data endpoints
+- **sitemap.xml** covering 34 pages + 43 downloadable data endpoints
 - **robots.txt** explicitly welcoming AI crawlers (GPTBot, ClaudeBot, PerplexityBot, Google-Extended)
-- **llms.txt** for AI model discoverability (all 5 domains + glossary terms)
-- **Noscript fallback** with real content across all five domains for crawlers that don't execute JS
+- **llms.txt** for AI model discoverability (all 8 domains + glossary terms)
+- **Noscript fallback** with real content across all eight domains for crawlers that don't execute JS
 
 ---
 
@@ -325,10 +397,14 @@ The site is built for maximum discoverability:
 - [x] Full SEO layer (prerender, sitemap, JSON-LD Dataset, OG image, llms.txt, noscript)
 - [x] GitHub Actions: `census-pipeline.yml` (quarterly) + freshness monitor updated
 
-**Phase 5: New Domains — Education, Healthcare, Employment**
-- [ ] Education domain (UDISE+ data — enrollment, pupil-teacher ratio, infrastructure, dropout rates)
-- [ ] Healthcare domain (NHM data — hospital beds, immunization, maternal health, disease burden)
-- [ ] Employment domain (PLFS data — unemployment rate, labor force participation, sectoral employment)
+**Phase 5: New Domains — Education, Employment, Healthcare** ✓
+- [x] Education domain (scrollytelling with 6 sections, indicator explorer, methodology, glossary) — UDISE+ 2023-24, ASER 2024, World Bank
+- [x] Employment domain (scrollytelling with 6 sections, indicator explorer, methodology, glossary) — PLFS 2023-24, RBI KLEMS, World Bank
+- [x] Healthcare domain (scrollytelling with 6 sections, indicator explorer, methodology, glossary) — NHP 2022, NFHS-5, World Bank
+- [x] 3 automated pipelines: `education-pipeline.yml`, `employment-pipeline.yml`, `healthcare-pipeline.yml`
+- [x] Hub expanded to 8 domain cards with mini-visualizations
+- [x] Full SEO layer for all 3 domains (prerender, sitemap, JSON-LD, OG images, llms.txt, noscript)
+- [x] 42 new glossary terms across 3 domains (14 education, 15 employment, 13 healthcare)
 
 **Phase 6: Historical Data & Depth (all domains)**
 - [ ] Historical budget data (multi-year comparisons, trend lines across union budgets)
@@ -412,5 +488,8 @@ The underlying budget data is published by the Government of India under the [Go
 - RBI data from [RBI DBIE](https://data.rbi.org.in), [RBI Monetary Policy Statements](https://www.rbi.org.in), and [World Bank Open Data](https://data.worldbank.org)
 - States data from [RBI Handbook of Statistics on Indian States](https://www.rbi.org.in) and [Finance Commission of India](https://fincomindia.nic.in)
 - Census data from [Census of India](https://censusindia.gov.in), [NFHS-5](http://rchiips.org/nfhs/), [Sample Registration System](https://censusindia.gov.in/census.website/data/srs), and [World Bank Open Data](https://data.worldbank.org)
+- Education data from [UDISE+ 2023-24](https://udiseplus.gov.in), [ASER 2024](https://asercentre.org), and [World Bank Open Data](https://data.worldbank.org)
+- Employment data from [PLFS Quarterly Bulletin](https://mospi.gov.in), [RBI KLEMS Database](https://www.rbi.org.in), and [World Bank Open Data](https://data.worldbank.org)
+- Healthcare data from [National Health Profile 2022](https://cbhidghs.mohfw.gov.in), [NFHS-5](http://rchiips.org/nfhs/), and [World Bank Open Data](https://data.worldbank.org)
 - Design inspired by [Information is Beautiful](https://informationisbeautiful.net), [Visual Cinnamon](https://www.visualcinnamon.com), and [Kasia Siwosz](https://kasiasiwosz.com)
 - Built with React, D3, Framer Motion, and Tailwind CSS

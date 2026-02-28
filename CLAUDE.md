@@ -12,7 +12,10 @@ Open data platform for Indian citizens. V1 of the broader **India Truth Engine**
 - **`/rbi` (RBI Domain)**: RBI monetary policy and financial data. Sub-routes: `/rbi/explore`, `/rbi/methodology`, `/rbi/glossary`.
 - **`/states` (State Finances Domain)**: State-level GSDP, revenue, fiscal health. Sub-routes: `/states/explore`, `/states/methodology`, `/states/glossary`.
 - **`/census` (Census & Demographics Domain)**: Population, literacy, health, age structure, urbanization. Sub-routes: `/census/explore`, `/census/methodology`, `/census/glossary`.
-- **Future domains** each get their own top-level route (e.g., `/education`) with self-contained sub-pages.
+- **`/education` (Education Domain)**: Enrollment, quality, dropout, learning outcomes, spending. Sub-routes: `/education/explore`, `/education/methodology`, `/education/glossary`.
+- **`/employment` (Employment Domain)**: LFPR, unemployment, sectoral shifts, informality. Sub-routes: `/employment/explore`, `/employment/methodology`, `/employment/glossary`.
+- **`/healthcare` (Healthcare Domain)**: Infrastructure, spending, immunization, disease burden. Sub-routes: `/healthcare/explore`, `/healthcare/methodology`, `/healthcare/glossary`.
+- **Future domains** each get their own top-level route with self-contained sub-pages.
 - Header is **context-aware**: hub title + search on `/`, domain title + sub-nav tabs inside a domain.
 - **Back links** (header chevron + footer link) point to `/#stories`. New domains should follow this convention.
 - Old routes (`/explore`, `/calculator`, `/methodology`) redirect to `/budget/*` equivalents.
@@ -33,7 +36,10 @@ Four GitHub Actions workflows keep data fresh without manual intervention:
 - **Economy** (`economy-pipeline.yml`): Quarterly (Feb, Mar, Jun, Dec) aligned to NSO/Survey/WB release cycles. Source: World Bank API + curated Economic Survey figures.
 - **RBI** (`rbi-pipeline.yml`): Bi-monthly (10th of Feb/Apr/Jun/Aug/Oct/Dec) aligned to MPC meeting schedule. Source: World Bank API + curated MPC decisions.
 - **Census** (`census-pipeline.yml`): Quarterly (15th of Jan/Apr/Jul/Oct). Source: World Bank API + curated Census 2011/NPC 2026/NFHS-5/SRS 2022. Curated data (NFHS-5, SRS, Census 2011) is static until new surveys publish.
-- **Freshness Monitor** (`data-freshness-monitor.yml`): Monthly check. Auto-creates GitHub issues for stale data, MPC decision reminders, Survey/Budget prep reminders. Covers all 5 domains.
+- **Education** (`education-pipeline.yml`): Quarterly (15th of Jan/Apr/Jul/Oct). Source: World Bank API + curated UDISE+ 2023-24 + ASER 2024.
+- **Employment** (`employment-pipeline.yml`): Quarterly (1st of Mar/Jun/Sep/Dec) aligned to PLFS release schedule. Source: World Bank API + curated PLFS state data + RBI KLEMS.
+- **Healthcare** (`healthcare-pipeline.yml`): Quarterly (15th of Feb/May/Aug/Nov). Source: World Bank API + curated NHP 2022 + NFHS-5 immunization.
+- **Freshness Monitor** (`data-freshness-monitor.yml`): Monthly check. Auto-creates GitHub issues for stale data, MPC decision reminders, Survey/Budget prep reminders. Covers all 8 domains.
 
 **Curated data** (MPC decisions in `monetary_policy.py`, fiscal deficit series in `fiscal.py`, Economic Survey headline numbers in `main.py`, NFHS-5/SRS health data in `curated.py`) requires human updates when government publications drop. The freshness monitor creates reminder issues for these.
 

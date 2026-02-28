@@ -83,6 +83,24 @@ jobs:
                 staleAfterDays: 120,  // Quarterly refresh — mostly static data
                 pipelineWorkflow: 'census-pipeline.yml',
               },
+              {
+                name: 'Education',
+                file: 'public/data/education/2025-26/summary.json',
+                staleAfterDays: 120,  // Quarterly refresh — UDISE+/ASER + WB data
+                pipelineWorkflow: 'education-pipeline.yml',
+              },
+              {
+                name: 'Employment',
+                file: 'public/data/employment/2025-26/summary.json',
+                staleAfterDays: 120,  // Quarterly refresh — PLFS + WB data
+                pipelineWorkflow: 'employment-pipeline.yml',
+              },
+              {
+                name: 'Healthcare',
+                file: 'public/data/healthcare/2025-26/summary.json',
+                staleAfterDays: 120,  // Quarterly refresh — NHP/NFHS + WB data
+                pipelineWorkflow: 'healthcare-pipeline.yml',
+              },
             ];
 
             for (const domain of domains) {

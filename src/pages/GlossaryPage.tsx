@@ -62,6 +62,39 @@ const DOMAIN_CONFIG = {
     seoTitle: 'Glossary — Census & Demographics — Indian Data Project',
     seoDescription: 'Plain-language definitions of demographic terms: census, population density, TFR, IMR, MMR, demographic dividend, urbanization, literacy rate, and more.',
   },
+  education: {
+    accent: 'var(--blue)',
+    accentDim: 'rgba(59,130,246,0.12)',
+    label: 'Education',
+    title: 'Education Glossary',
+    description: 'Education terms explained in plain language. What GER, dropout rate, and pupil-teacher ratio actually mean.',
+    ogImage: '/og-education.png',
+    basePath: '/education/glossary',
+    seoTitle: 'Glossary — Education — Indian Data Project',
+    seoDescription: 'Plain-language definitions of education terms: GER, NER, dropout rate, PTR, ASER, UDISE, NEP 2020, foundational literacy, and more.',
+  },
+  employment: {
+    accent: 'var(--amber)',
+    accentDim: 'rgba(245,158,11,0.12)',
+    label: 'Employment',
+    title: 'Employment Glossary',
+    description: 'Labour market terms explained in plain language. What LFPR, unemployment rate, and informal sector actually mean.',
+    ogImage: '/og-employment.png',
+    basePath: '/employment/glossary',
+    seoTitle: 'Glossary — Employment — Indian Data Project',
+    seoDescription: 'Plain-language definitions of employment terms: LFPR, unemployment rate, PLFS, informal sector, gig economy, structural transformation, and more.',
+  },
+  healthcare: {
+    accent: 'var(--rose)',
+    accentDim: 'rgba(244,63,94,0.12)',
+    label: 'Healthcare',
+    title: 'Healthcare Glossary',
+    description: 'Healthcare terms explained in plain language. What out-of-pocket spending, PHC, and disease burden actually mean.',
+    ogImage: '/og-healthcare.png',
+    basePath: '/healthcare/glossary',
+    seoTitle: 'Glossary — Healthcare — Indian Data Project',
+    seoDescription: 'Plain-language definitions of healthcare terms: PHC, CHC, out-of-pocket spending, immunization, TB incidence, hospital beds, and more.',
+  },
 } as const;
 
 type Domain = keyof typeof DOMAIN_CONFIG;
@@ -390,7 +423,13 @@ export default function GlossaryPage({ domain }: { domain: Domain }) {
                 ? 'Census of India, NFHS-5, SRS, World Bank'
                 : domain === 'states'
                   ? 'RBI Handbook, Finance Commission'
-                  : 'RBI, World Bank'}
+                  : domain === 'education'
+                    ? 'UDISE+ 2023-24, ASER 2024, World Bank'
+                    : domain === 'employment'
+                      ? 'PLFS 2023-24, RBI KLEMS, World Bank'
+                      : domain === 'healthcare'
+                        ? 'NHP 2022, NFHS-5, World Bank'
+                        : 'RBI, World Bank'}
         </p>
       </div>
     </motion.div>

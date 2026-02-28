@@ -27,6 +27,9 @@ const ROUTES = [
   '/rbi', '/rbi/explore', '/rbi/methodology', '/rbi/glossary',
   '/states', '/states/explore', '/states/methodology', '/states/glossary',
   '/census', '/census/explore', '/census/methodology', '/census/glossary',
+  '/education', '/education/explore', '/education/methodology', '/education/glossary',
+  '/employment', '/employment/explore', '/employment/methodology', '/employment/glossary',
+  '/healthcare', '/healthcare/explore', '/healthcare/methodology', '/healthcare/glossary',
 ];
 
 const MIME_TYPES = {

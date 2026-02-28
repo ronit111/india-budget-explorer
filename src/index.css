@@ -30,6 +30,15 @@
   --violet:        #8B5CF6;
   --violet-light:  #A78BFA;
   --violet-dim:    rgba(139, 92, 246, 0.12);
+  --blue:          #3B82F6;
+  --blue-light:    #60A5FA;
+  --blue-dim:      rgba(59, 130, 246, 0.12);
+  --amber:         #F59E0B;
+  --amber-light:   #FBBF24;
+  --amber-dim:     rgba(245, 158, 11, 0.12);
+  --rose:          #F43F5E;
+  --rose-light:    #FB7185;
+  --rose-dim:      rgba(244, 63, 94, 0.12);
 
   /* Semantic */
   --positive: #34d399;
@@ -220,6 +229,27 @@
 
   .gradient-text-violet {
     background: linear-gradient(135deg, var(--violet), var(--violet-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .gradient-text-amber {
+    background: linear-gradient(135deg, var(--amber), var(--amber-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .gradient-text-blue {
+    background: linear-gradient(135deg, var(--blue), var(--blue-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .gradient-text-rose {
+    background: linear-gradient(135deg, var(--rose), var(--rose-light));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;

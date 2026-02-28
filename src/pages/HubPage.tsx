@@ -3,9 +3,9 @@ import { Link, useLocation } from 'react-router-dom';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useScrollTrigger } from '../hooks/useScrollTrigger.ts';
 import { SEOHead } from '../components/seo/SEOHead.tsx';
-import { loadSummary, loadEconomySummary, loadRBISummary, loadStatesSummary, loadCensusSummary } from '../lib/dataLoader.ts';
+import { loadSummary, loadEconomySummary, loadRBISummary, loadStatesSummary, loadCensusSummary, loadEducationSummary, loadEmploymentSummary, loadHealthcareSummary } from '../lib/dataLoader.ts';
 import { formatLakhCrore, formatIndianNumber } from '../lib/format.ts';
-import type { BudgetSummary, EconomySummary, RBISummary, StatesSummary, CensusSummary } from '../lib/data/schema.ts';
+import type { BudgetSummary, EconomySummary, RBISummary, StatesSummary, CensusSummary, EducationSummary, EmploymentSummary, HealthcareSummary } from '../lib/data/schema.ts';
 
 const EASE_OUT_EXPO: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
@@ -857,6 +857,292 @@ function CensusDomainCard({ summary }: { summary: CensusSummary | null }) {
   );
 }
 
+function EducationDomainCard({ summary }: { summary: EducationSummary | null }) {
+  const [ref, isVisible] = useScrollTrigger({ threshold: 0.1 });
+
+  // Mini bar chart: primary/secondary/tertiary GER
+  const gerBars = useMemo(() => {
+    if (!summary) return [];
+    return [
+      { label: 'Primary', value: summary.gerPrimary },
+      { label: 'Secondary', value: summary.gerSecondary },
+      { label: 'Tertiary', value: 30.5 },
+    ];
+  }, [summary]);
+
+  const maxGer = Math.max(...gerBars.map((d) => d.value), 1);
+
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 32 }}
+      animate={isVisible ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.8, ease: EASE_OUT_EXPO, delay: 0.1 }}
+      className="mt-8"
+    >
+      <Link
+        to="/education"
+        className="group block relative rounded-2xl p-px no-underline overflow-hidden"
+        style={{ transition: 'transform 0.3s ease' }}
+        onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-4px)'; }}
+        onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0px)'; }}
+      >
+        <div
+          className="absolute inset-0 rounded-2xl opacity-20 group-hover:opacity-50"
+          style={{
+            background: 'linear-gradient(135deg, var(--blue), transparent 40%, var(--cyan) 80%, transparent)',
+            transition: 'opacity 0.4s ease',
+          }}
+        />
+        <div
+          className="absolute -inset-2 rounded-2xl opacity-0 group-hover:opacity-100 blur-2xl pointer-events-none"
+          style={{
+            background: 'linear-gradient(135deg, rgba(59,130,246,0.06), rgba(74,234,220,0.04))',
+            transition: 'opacity 0.4s ease',
+          }}
+        />
+
+        <div
+          className="relative rounded-2xl overflow-hidden"
+          style={{ background: 'var(--bg-surface)' }}
+        >
+          <div className="grid md:grid-cols-[1.4fr_1fr]">
+            <div className="relative p-8 md:p-12 flex flex-col justify-between min-h-[320px]">
+              <div
+                className="absolute top-0 right-0 w-3/4 h-full pointer-events-none opacity-[0.03]"
+                style={{ background: 'radial-gradient(ellipse at 70% 50%, var(--blue), transparent 70%)' }}
+              />
+              <div className="relative z-10">
+                <span className="text-section-num tracking-[0.15em] uppercase mb-4 block">06 — Data Story</span>
+                <h2 className="text-3xl md:text-4xl font-bold mb-3" style={{ color: 'var(--text-primary)', lineHeight: 1.15 }}>Education</h2>
+                <p className="text-annotation mb-6 max-w-md">248 million students. Enrollment triumphs, quality gaps, the dropout cliff, and spending challenges across India's education system.</p>
+              </div>
+              <div className="relative z-10">
+                {gerBars.length > 0 && (
+                  <div className="mb-6 max-w-xs">
+                    <div className="flex items-end gap-1.5 h-8">
+                      {gerBars.map((d, i) => (
+                        <motion.div
+                          key={d.label}
+                          className="flex-1 rounded-t"
+                          style={{ background: i === 0 ? 'var(--blue)' : i === 1 ? 'var(--blue-light)' : 'var(--cyan)' }}
+                          initial={{ height: 0 }}
+                          animate={isVisible ? { height: `${Math.max(10, (d.value / maxGer) * 100)}%` } : {}}
+                          transition={{ duration: 0.6, ease: EASE_OUT_EXPO, delay: 0.4 + i * 0.06 }}
+                        />
+                      ))}
+                    </div>
+                    <div className="flex gap-1.5 mt-1">
+                      {gerBars.map((d) => (
+                        <span key={d.label} className="flex-1 text-center text-[9px] font-mono" style={{ color: 'var(--text-muted)' }}>{d.label}</span>
+                      ))}
+                    </div>
+                  </div>
+                )}
+                <div className="inline-flex items-center gap-2 text-sm font-medium" style={{ color: 'var(--blue)' }}>
+                  <span>Explore education</span>
+                  <span className="group-hover:translate-x-1.5 inline-block" style={{ transition: 'transform 0.2s ease' }}>&rarr;</span>
+                </div>
+              </div>
+            </div>
+            <div className="p-8 md:p-12 flex flex-col justify-center gap-8 border-t md:border-t-0 md:border-l" style={{ borderColor: 'rgba(255,255,255,0.06)' }}>
+              <StatPill label="Total Students" value={summary ? `${(summary.totalStudents / 1e6).toFixed(0)}M` : '...'} color="var(--blue)" delay={0.3} isVisible={isVisible} />
+              <StatPill label="GER Primary" value={summary ? `${summary.gerPrimary}%` : '...'} color="var(--blue-light, #60A5FA)" delay={0.4} isVisible={isVisible} />
+              <StatPill label="Spending" value={summary ? `${summary.educationSpendGDP}% GDP` : '...'} color="var(--cyan)" delay={0.5} isVisible={isVisible} />
+            </div>
+          </div>
+        </div>
+      </Link>
+    </motion.div>
+  );
+}
+
+function EmploymentDomainCard({ summary }: { summary: EmploymentSummary | null }) {
+  const [ref, isVisible] = useScrollTrigger({ threshold: 0.1 });
+
+  // Mini stacked area concept: show UR trend as step bars
+  const urSteps = useMemo(() => {
+    if (!summary) return [];
+    return [
+      { label: '20-21', value: 8.2 },
+      { label: '21-22', value: 6.1 },
+      { label: '22-23', value: 4.5 },
+      { label: '23-24', value: 4.2 },
+      { label: 'Q3 25', value: 4.2 },
+    ];
+  }, [summary]);
+
+  const maxUr = Math.max(...urSteps.map((d) => d.value), 1);
+
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 32 }}
+      animate={isVisible ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.8, ease: EASE_OUT_EXPO, delay: 0.1 }}
+      className="mt-8"
+    >
+      <Link
+        to="/employment"
+        className="group block relative rounded-2xl p-px no-underline overflow-hidden"
+        style={{ transition: 'transform 0.3s ease' }}
+        onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-4px)'; }}
+        onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0px)'; }}
+      >
+        <div
+          className="absolute inset-0 rounded-2xl opacity-20 group-hover:opacity-50"
+          style={{
+            background: 'linear-gradient(135deg, var(--amber), transparent 40%, var(--gold) 80%, transparent)',
+            transition: 'opacity 0.4s ease',
+          }}
+        />
+        <div
+          className="absolute -inset-2 rounded-2xl opacity-0 group-hover:opacity-100 blur-2xl pointer-events-none"
+          style={{
+            background: 'linear-gradient(135deg, rgba(245,158,11,0.06), rgba(255,200,87,0.04))',
+            transition: 'opacity 0.4s ease',
+          }}
+        />
+
+        <div className="relative rounded-2xl overflow-hidden" style={{ background: 'var(--bg-surface)' }}>
+          <div className="grid md:grid-cols-[1.4fr_1fr]">
+            <div className="relative p-8 md:p-12 flex flex-col justify-between min-h-[320px]">
+              <div className="absolute top-0 right-0 w-3/4 h-full pointer-events-none opacity-[0.03]" style={{ background: 'radial-gradient(ellipse at 70% 50%, var(--amber), transparent 70%)' }} />
+              <div className="relative z-10">
+                <span className="text-section-num tracking-[0.15em] uppercase mb-4 block">07 — Data Story</span>
+                <h2 className="text-3xl md:text-4xl font-bold mb-3" style={{ color: 'var(--text-primary)', lineHeight: 1.15 }}>Employment</h2>
+                <p className="text-annotation mb-6 max-w-md">57 crore workers. Labour participation, youth unemployment, the structural shift from agriculture to services, and the informality challenge.</p>
+              </div>
+              <div className="relative z-10">
+                {urSteps.length > 0 && (
+                  <div className="mb-6 max-w-xs">
+                    <div className="flex items-end gap-1.5 h-8">
+                      {urSteps.map((d, i) => (
+                        <motion.div
+                          key={d.label}
+                          className="flex-1 rounded-t"
+                          style={{ background: 'var(--amber)' }}
+                          initial={{ height: 0 }}
+                          animate={isVisible ? { height: `${Math.max(10, (d.value / maxUr) * 100)}%` } : {}}
+                          transition={{ duration: 0.6, ease: EASE_OUT_EXPO, delay: 0.4 + i * 0.06 }}
+                        />
+                      ))}
+                    </div>
+                    <div className="flex gap-1.5 mt-1">
+                      {urSteps.map((d) => (
+                        <span key={d.label} className="flex-1 text-center text-[9px] font-mono" style={{ color: 'var(--text-muted)' }}>{d.value}%</span>
+                      ))}
+                    </div>
+                  </div>
+                )}
+                <div className="inline-flex items-center gap-2 text-sm font-medium" style={{ color: 'var(--amber)' }}>
+                  <span>Explore employment</span>
+                  <span className="group-hover:translate-x-1.5 inline-block" style={{ transition: 'transform 0.2s ease' }}>&rarr;</span>
+                </div>
+              </div>
+            </div>
+            <div className="p-8 md:p-12 flex flex-col justify-center gap-8 border-t md:border-t-0 md:border-l" style={{ borderColor: 'rgba(255,255,255,0.06)' }}>
+              <StatPill label="Unemployment" value={summary ? `${summary.unemploymentRate}%` : '...'} color="var(--amber)" delay={0.3} isVisible={isVisible} />
+              <StatPill label="LFPR" value={summary ? `${summary.lfpr}%` : '...'} color="var(--amber-light, #FBBF24)" delay={0.4} isVisible={isVisible} />
+              <StatPill label="Female LFPR" value={summary ? `${summary.femaleLfpr}%` : '...'} color="var(--gold)" delay={0.5} isVisible={isVisible} />
+            </div>
+          </div>
+        </div>
+      </Link>
+    </motion.div>
+  );
+}
+
+function HealthcareDomainCard({ summary }: { summary: HealthcareSummary | null }) {
+  const [ref, isVisible] = useScrollTrigger({ threshold: 0.1 });
+
+  // Mini comparison bars: India vs WHO recommendation
+  const compBars = useMemo(() => {
+    if (!summary) return [];
+    return [
+      { label: 'Beds', india: summary.hospitalBedsPer1000, who: 3.5 },
+      { label: 'Docs', india: summary.physiciansPer1000, who: 2.5 },
+      { label: 'Exp', india: summary.healthExpGDP, who: 6.0 },
+    ];
+  }, [summary]);
+
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 32 }}
+      animate={isVisible ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.8, ease: EASE_OUT_EXPO, delay: 0.1 }}
+      className="mt-8"
+    >
+      <Link
+        to="/healthcare"
+        className="group block relative rounded-2xl p-px no-underline overflow-hidden"
+        style={{ transition: 'transform 0.3s ease' }}
+        onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-4px)'; }}
+        onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0px)'; }}
+      >
+        <div
+          className="absolute inset-0 rounded-2xl opacity-20 group-hover:opacity-50"
+          style={{
+            background: 'linear-gradient(135deg, var(--rose), transparent 40%, var(--saffron) 80%, transparent)',
+            transition: 'opacity 0.4s ease',
+          }}
+        />
+        <div
+          className="absolute -inset-2 rounded-2xl opacity-0 group-hover:opacity-100 blur-2xl pointer-events-none"
+          style={{
+            background: 'linear-gradient(135deg, rgba(244,63,94,0.06), rgba(255,107,53,0.04))',
+            transition: 'opacity 0.4s ease',
+          }}
+        />
+
+        <div className="relative rounded-2xl overflow-hidden" style={{ background: 'var(--bg-surface)' }}>
+          <div className="grid md:grid-cols-[1.4fr_1fr]">
+            <div className="relative p-8 md:p-12 flex flex-col justify-between min-h-[320px]">
+              <div className="absolute top-0 right-0 w-3/4 h-full pointer-events-none opacity-[0.03]" style={{ background: 'radial-gradient(ellipse at 70% 50%, var(--rose), transparent 70%)' }} />
+              <div className="relative z-10">
+                <span className="text-section-num tracking-[0.15em] uppercase mb-4 block">08 — Data Story</span>
+                <h2 className="text-3xl md:text-4xl font-bold mb-3" style={{ color: 'var(--text-primary)', lineHeight: 1.15 }}>Healthcare</h2>
+                <p className="text-annotation mb-6 max-w-md">0.7 doctors per 1,000 people. Infrastructure deficits, spending gaps, out-of-pocket burden, immunization progress, and the disease burden.</p>
+              </div>
+              <div className="relative z-10">
+                {compBars.length > 0 && (
+                  <div className="mb-6 max-w-xs space-y-1.5">
+                    {compBars.map((d, i) => (
+                      <div key={d.label} className="flex items-center gap-2">
+                        <span className="text-[9px] font-mono w-8 text-right" style={{ color: 'var(--text-muted)' }}>{d.label}</span>
+                        <div className="flex-1 h-1.5 rounded-full overflow-hidden" style={{ background: 'var(--bg-raised)' }}>
+                          <motion.div
+                            className="h-full rounded-full"
+                            style={{ background: 'var(--rose)' }}
+                            initial={{ width: 0 }}
+                            animate={isVisible ? { width: `${(d.india / d.who) * 100}%` } : {}}
+                            transition={{ duration: 0.6, ease: EASE_OUT_EXPO, delay: 0.4 + i * 0.06 }}
+                          />
+                        </div>
+                        <span className="text-[9px] font-mono" style={{ color: 'var(--text-muted)' }}>{d.india}/{d.who}</span>
+                      </div>
+                    ))}
+                  </div>
+                )}
+                <div className="inline-flex items-center gap-2 text-sm font-medium" style={{ color: 'var(--rose)' }}>
+                  <span>Explore healthcare</span>
+                  <span className="group-hover:translate-x-1.5 inline-block" style={{ transition: 'transform 0.2s ease' }}>&rarr;</span>
+                </div>
+              </div>
+            </div>
+            <div className="p-8 md:p-12 flex flex-col justify-center gap-8 border-t md:border-t-0 md:border-l" style={{ borderColor: 'rgba(255,255,255,0.06)' }}>
+              <StatPill label="Beds / 1,000" value={summary ? `${summary.hospitalBedsPer1000}` : '...'} color="var(--rose)" delay={0.3} isVisible={isVisible} />
+              <StatPill label="Health Exp" value={summary ? `${summary.healthExpGDP}% GDP` : '...'} color="var(--rose-light, #FB7185)" delay={0.4} isVisible={isVisible} />
+              <StatPill label="Out-of-Pocket" value={summary ? `${summary.outOfPocketPct}%` : '...'} color="var(--saffron)" delay={0.5} isVisible={isVisible} />
+            </div>
+          </div>
+        </div>
+      </Link>
+    </motion.div>
+  );
+}
+
 export default function HubPage() {
   const location = useLocation();
   const [summary, setSummary] = useState<BudgetSummary | null>(null);
@@ -864,6 +1150,9 @@ export default function HubPage() {
   const [rbiSummary, setRbiSummary] = useState<RBISummary | null>(null);
   const [statesSummary, setStatesSummary] = useState<StatesSummary | null>(null);
   const [censusSummary, setCensusSummary] = useState<CensusSummary | null>(null);
+  const [educationSummary, setEducationSummary] = useState<EducationSummary | null>(null);
+  const [employmentSummary, setEmploymentSummary] = useState<EmploymentSummary | null>(null);
+  const [healthcareSummary, setHealthcareSummary] = useState<HealthcareSummary | null>(null);
 
   useEffect(() => {
     loadSummary('2025-26').then(setSummary).catch(() => {});
@@ -871,6 +1160,9 @@ export default function HubPage() {
     loadRBISummary('2025-26').then(setRbiSummary).catch(() => {});
     loadStatesSummary('2025-26').then(setStatesSummary).catch(() => {});
     loadCensusSummary('2025-26').then(setCensusSummary).catch(() => {});
+    loadEducationSummary('2025-26').then(setEducationSummary).catch(() => {});
+    loadEmploymentSummary('2025-26').then(setEmploymentSummary).catch(() => {});
+    loadHealthcareSummary('2025-26').then(setHealthcareSummary).catch(() => {});
   }, []);
 
   // Scroll to hash anchor (e.g. /#stories) after mount
@@ -919,6 +1211,12 @@ export default function HubPage() {
         <StatesDomainCard summary={statesSummary} />
 
         <CensusDomainCard summary={censusSummary} />
+
+        <EducationDomainCard summary={educationSummary} />
+
+        <EmploymentDomainCard summary={employmentSummary} />
+
+        <HealthcareDomainCard summary={healthcareSummary} />
       </section>
     </motion.div>
   );

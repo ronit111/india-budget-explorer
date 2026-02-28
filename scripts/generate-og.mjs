@@ -65,6 +65,36 @@ const VARIANTS = [
     cornerBR: 'rgba(167,139,250,0.2)',
     glowColor: 'rgba(139,92,246,0.08)',
   },
+  {
+    filename: 'og-education.png',
+    title: 'Education',
+    tagline: '248 million students — enrollment, quality, spending, and the learning gap',
+    accentFrom: '#3B82F6',
+    accentTo: '#60A5FA',
+    cornerTL: 'rgba(59,130,246,0.25)',
+    cornerBR: 'rgba(96,165,250,0.2)',
+    glowColor: 'rgba(59,130,246,0.08)',
+  },
+  {
+    filename: 'og-employment.png',
+    title: 'Employment',
+    tagline: 'Labour force participation, unemployment, sectoral shifts, and informality',
+    accentFrom: '#F59E0B',
+    accentTo: '#FBBF24',
+    cornerTL: 'rgba(245,158,11,0.25)',
+    cornerBR: 'rgba(251,191,36,0.2)',
+    glowColor: 'rgba(245,158,11,0.08)',
+  },
+  {
+    filename: 'og-healthcare.png',
+    title: 'Healthcare',
+    tagline: 'Infrastructure, spending, immunization, and the doctor gap across India',
+    accentFrom: '#F43F5E',
+    accentTo: '#FB7185',
+    cornerTL: 'rgba(244,63,94,0.25)',
+    cornerBR: 'rgba(251,113,133,0.2)',
+    glowColor: 'rgba(244,63,94,0.08)',
+  },
 ];
 
 function buildHTML(variant) {

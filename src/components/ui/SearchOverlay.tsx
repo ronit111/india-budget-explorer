@@ -50,13 +50,19 @@ export function SearchOverlay() {
       loadGlossary('rbi', '2025-26').catch(() => null),
       loadGlossary('states', '2025-26').catch(() => null),
       loadGlossary('census', '2025-26').catch(() => null),
-    ]).then(([budget, economy, rbi, states, census]) => {
+      loadGlossary('education', '2025-26').catch(() => null),
+      loadGlossary('employment', '2025-26').catch(() => null),
+      loadGlossary('healthcare', '2025-26').catch(() => null),
+    ]).then(([budget, economy, rbi, states, census, education, employment, healthcare]) => {
       const items: SearchItem[] = [];
       if (budget) items.push(...budget.terms.map((t) => glossaryTermToSearchItem(t, 'budget')));
       if (economy) items.push(...economy.terms.map((t) => glossaryTermToSearchItem(t, 'economy')));
       if (rbi) items.push(...rbi.terms.map((t) => glossaryTermToSearchItem(t, 'rbi')));
       if (states) items.push(...states.terms.map((t) => glossaryTermToSearchItem(t, 'states')));
       if (census) items.push(...census.terms.map((t) => glossaryTermToSearchItem(t, 'census')));
+      if (education) items.push(...education.terms.map((t) => glossaryTermToSearchItem(t, 'education')));
+      if (employment) items.push(...employment.terms.map((t) => glossaryTermToSearchItem(t, 'employment')));
+      if (healthcare) items.push(...healthcare.terms.map((t) => glossaryTermToSearchItem(t, 'healthcare')));
       setGlossaryTerms(items);
     });
   }, []);
@@ -109,6 +115,18 @@ export function SearchOverlay() {
     { type: 'page', id: 'census-explore', name: 'Census Explorer', subtitle: 'Browse demographic indicators by state', route: '/census/explore' },
     { type: 'page', id: 'census-methodology', name: 'Census Methodology', subtitle: 'Census data sources, vintages, and notes', route: '/census/methodology' },
     { type: 'page', id: 'census-glossary', name: 'Census Glossary', subtitle: 'Demographic terms in plain language', route: '/census/glossary' },
+    { type: 'page', id: 'education', name: 'Education', subtitle: 'Enrollment, quality, dropout, spending', route: '/education' },
+    { type: 'page', id: 'education-explore', name: 'Education Explorer', subtitle: 'Browse education indicators by state', route: '/education/explore' },
+    { type: 'page', id: 'education-methodology', name: 'Education Methodology', subtitle: 'UDISE+, ASER, and World Bank data sources', route: '/education/methodology' },
+    { type: 'page', id: 'education-glossary', name: 'Education Glossary', subtitle: 'Education terms in plain language', route: '/education/glossary' },
+    { type: 'page', id: 'employment', name: 'Employment', subtitle: 'LFPR, unemployment, sectoral shift', route: '/employment' },
+    { type: 'page', id: 'employment-explore', name: 'Employment Explorer', subtitle: 'Browse labour market indicators by state', route: '/employment/explore' },
+    { type: 'page', id: 'employment-methodology', name: 'Employment Methodology', subtitle: 'PLFS, World Bank, RBI KLEMS sources', route: '/employment/methodology' },
+    { type: 'page', id: 'employment-glossary', name: 'Employment Glossary', subtitle: 'Labour market terms in plain language', route: '/employment/glossary' },
+    { type: 'page', id: 'healthcare', name: 'Healthcare', subtitle: 'Infrastructure, spending, immunization, disease', route: '/healthcare' },
+    { type: 'page', id: 'healthcare-explore', name: 'Healthcare Explorer', subtitle: 'Browse health indicators by state', route: '/healthcare/explore' },
+    { type: 'page', id: 'healthcare-methodology', name: 'Healthcare Methodology', subtitle: 'NHP, NFHS-5, and World Bank data sources', route: '/healthcare/methodology' },
+    { type: 'page', id: 'healthcare-glossary', name: 'Healthcare Glossary', subtitle: 'Healthcare terms in plain language', route: '/healthcare/glossary' },
   );
   // Glossary terms
   searchItems.push(...glossaryTerms);

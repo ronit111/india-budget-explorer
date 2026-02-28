@@ -33,6 +33,21 @@ import type {
   DemographicsData,
   HealthData,
   CensusIndicatorsData,
+  EducationSummary,
+  EnrollmentData,
+  QualityData,
+  SpendingData,
+  EducationIndicatorsData,
+  EmploymentSummary,
+  UnemploymentData,
+  ParticipationData,
+  SectoralData,
+  EmploymentIndicatorsData,
+  HealthcareSummary,
+  InfrastructureData,
+  HealthSpendingData,
+  DiseaseData,
+  HealthcareIndicatorsData,
   GlossaryData,
 } from './data/schema.ts';
 
@@ -151,6 +166,54 @@ export const loadHealthData = (year: string) =>
 
 export const loadCensusIndicators = (year: string) =>
   fetchJson<CensusIndicatorsData>(`/data/census/${year}/indicators.json`);
+
+// ─── Education Domain ───────────────────────────────────────────
+export const loadEducationSummary = (year: string) =>
+  fetchJson<EducationSummary>(`/data/education/${year}/summary.json`);
+
+export const loadEnrollment = (year: string) =>
+  fetchJson<EnrollmentData>(`/data/education/${year}/enrollment.json`);
+
+export const loadQuality = (year: string) =>
+  fetchJson<QualityData>(`/data/education/${year}/quality.json`);
+
+export const loadSpending = (year: string) =>
+  fetchJson<SpendingData>(`/data/education/${year}/spending.json`);
+
+export const loadEducationIndicators = (year: string) =>
+  fetchJson<EducationIndicatorsData>(`/data/education/${year}/indicators.json`);
+
+// ─── Employment Domain ──────────────────────────────────────────
+export const loadEmploymentSummary = (year: string) =>
+  fetchJson<EmploymentSummary>(`/data/employment/${year}/summary.json`);
+
+export const loadUnemployment = (year: string) =>
+  fetchJson<UnemploymentData>(`/data/employment/${year}/unemployment.json`);
+
+export const loadParticipation = (year: string) =>
+  fetchJson<ParticipationData>(`/data/employment/${year}/participation.json`);
+
+export const loadSectoral = (year: string) =>
+  fetchJson<SectoralData>(`/data/employment/${year}/sectoral.json`);
+
+export const loadEmploymentIndicators = (year: string) =>
+  fetchJson<EmploymentIndicatorsData>(`/data/employment/${year}/indicators.json`);
+
+// ─── Healthcare Domain ──────────────────────────────────────────
+export const loadHealthcareSummary = (year: string) =>
+  fetchJson<HealthcareSummary>(`/data/healthcare/${year}/summary.json`);
+
+export const loadInfrastructure = (year: string) =>
+  fetchJson<InfrastructureData>(`/data/healthcare/${year}/infrastructure.json`);
+
+export const loadHealthSpending = (year: string) =>
+  fetchJson<HealthSpendingData>(`/data/healthcare/${year}/spending.json`);
+
+export const loadDisease = (year: string) =>
+  fetchJson<DiseaseData>(`/data/healthcare/${year}/disease.json`);
+
+export const loadHealthcareIndicators = (year: string) =>
+  fetchJson<HealthcareIndicatorsData>(`/data/healthcare/${year}/indicators.json`);
 
 // ─── Glossary (shared across domains) ──────────────────────────
 export const loadGlossary = (domain: string, year: string) =>

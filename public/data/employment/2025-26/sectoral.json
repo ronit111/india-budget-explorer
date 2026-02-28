@@ -1,0 +1,571 @@
+{
+  "year": "2025-26",
+  "agricultureTimeSeries": [
+    {
+      "year": "2000",
+      "value": 59.61
+    },
+    {
+      "year": "2001",
+      "value": 58.89
+    },
+    {
+      "year": "2002",
+      "value": 58.21
+    },
+    {
+      "year": "2003",
+      "value": 57.16
+    },
+    {
+      "year": "2004",
+      "value": 56.0
+    },
+    {
+      "year": "2005",
+      "value": 55.02
+    },
+    {
+      "year": "2006",
+      "value": 54.27
+    },
+    {
+      "year": "2007",
+      "value": 53.37
+    },
+    {
+      "year": "2008",
+      "value": 52.88
+    },
+    {
+      "year": "2009",
+      "value": 51.94
+    },
+    {
+      "year": "2010",
+      "value": 51.06
+    },
+    {
+      "year": "2011",
+      "value": 49.08
+    },
+    {
+      "year": "2012",
+      "value": 47.09
+    },
+    {
+      "year": "2013",
+      "value": 46.24
+    },
+    {
+      "year": "2014",
+      "value": 45.25
+    },
+    {
+      "year": "2015",
+      "value": 44.28
+    },
+    {
+      "year": "2016",
+      "value": 43.2
+    },
+    {
+      "year": "2017",
+      "value": 42.27
+    },
+    {
+      "year": "2018",
+      "value": 41.29
+    },
+    {
+      "year": "2019",
+      "value": 40.65
+    },
+    {
+      "year": "2020",
+      "value": 44.68
+    },
+    {
+      "year": "2021",
+      "value": 44.08
+    },
+    {
+      "year": "2022",
+      "value": 42.86
+    },
+    {
+      "year": "2023",
+      "value": 43.51
+    },
+    {
+      "year": "2024",
+      "value": 42.35
+    },
+    {
+      "year": "2025",
+      "value": 41.63
+    }
+  ],
+  "industryTimeSeries": [
+    {
+      "year": "2000",
+      "value": 16.34
+    },
+    {
+      "year": "2001",
+      "value": 16.75
+    },
+    {
+      "year": "2002",
+      "value": 17.06
+    },
+    {
+      "year": "2003",
+      "value": 17.69
+    },
+    {
+      "year": "2004",
+      "value": 18.42
+    },
+    {
+      "year": "2005",
+      "value": 19.0
+    },
+    {
+      "year": "2006",
+      "value": 19.52
+    },
+    {
+      "year": "2007",
+      "value": 20.32
+    },
+    {
+      "year": "2008",
+      "value": 20.75
+    },
+    {
+      "year": "2009",
+      "value": 21.56
+    },
+    {
+      "year": "2010",
+      "value": 22.38
+    },
+    {
+      "year": "2011",
+      "value": 23.55
+    },
+    {
+      "year": "2012",
+      "value": 24.69
+    },
+    {
+      "year": "2013",
+      "value": 24.75
+    },
+    {
+      "year": "2014",
+      "value": 24.9
+    },
+    {
+      "year": "2015",
+      "value": 24.95
+    },
+    {
+      "year": "2016",
+      "value": 25.19
+    },
+    {
+      "year": "2017",
+      "value": 25.27
+    },
+    {
+      "year": "2018",
+      "value": 25.37
+    },
+    {
+      "year": "2019",
+      "value": 25.25
+    },
+    {
+      "year": "2020",
+      "value": 23.7
+    },
+    {
+      "year": "2021",
+      "value": 24.47
+    },
+    {
+      "year": "2022",
+      "value": 26.12
+    },
+    {
+      "year": "2023",
+      "value": 25.03
+    },
+    {
+      "year": "2024",
+      "value": 25.37
+    },
+    {
+      "year": "2025",
+      "value": 25.82
+    }
+  ],
+  "servicesTimeSeries": [
+    {
+      "year": "2000",
+      "value": 24.05
+    },
+    {
+      "year": "2001",
+      "value": 24.36
+    },
+    {
+      "year": "2002",
+      "value": 24.74
+    },
+    {
+      "year": "2003",
+      "value": 25.14
+    },
+    {
+      "year": "2004",
+      "value": 25.58
+    },
+    {
+      "year": "2005",
+      "value": 25.98
+    },
+    {
+      "year": "2006",
+      "value": 26.2
+    },
+    {
+      "year": "2007",
+      "value": 26.31
+    },
+    {
+      "year": "2008",
+      "value": 26.37
+    },
+    {
+      "year": "2009",
+      "value": 26.49
+    },
+    {
+      "year": "2010",
+      "value": 26.57
+    },
+    {
+      "year": "2011",
+      "value": 27.38
+    },
+    {
+      "year": "2012",
+      "value": 28.22
+    },
+    {
+      "year": "2013",
+      "value": 29.0
+    },
+    {
+      "year": "2014",
+      "value": 29.85
+    },
+    {
+      "year": "2015",
+      "value": 30.77
+    },
+    {
+      "year": "2016",
+      "value": 31.61
+    },
+    {
+      "year": "2017",
+      "value": 32.47
+    },
+    {
+      "year": "2018",
+      "value": 33.34
+    },
+    {
+      "year": "2019",
+      "value": 34.1
+    },
+    {
+      "year": "2020",
+      "value": 31.62
+    },
+    {
+      "year": "2021",
+      "value": 31.45
+    },
+    {
+      "year": "2022",
+      "value": 31.02
+    },
+    {
+      "year": "2023",
+      "value": 31.46
+    },
+    {
+      "year": "2024",
+      "value": 32.27
+    },
+    {
+      "year": "2025",
+      "value": 32.56
+    }
+  ],
+  "selfEmployedTimeSeries": [
+    {
+      "year": "2000",
+      "value": 84.7
+    },
+    {
+      "year": "2001",
+      "value": 84.64
+    },
+    {
+      "year": "2002",
+      "value": 84.58
+    },
+    {
+      "year": "2003",
+      "value": 84.49
+    },
+    {
+      "year": "2004",
+      "value": 84.36
+    },
+    {
+      "year": "2005",
+      "value": 84.21
+    },
+    {
+      "year": "2006",
+      "value": 84.03
+    },
+    {
+      "year": "2007",
+      "value": 83.85
+    },
+    {
+      "year": "2008",
+      "value": 83.73
+    },
+    {
+      "year": "2009",
+      "value": 83.58
+    },
+    {
+      "year": "2010",
+      "value": 83.43
+    },
+    {
+      "year": "2011",
+      "value": 82.23
+    },
+    {
+      "year": "2012",
+      "value": 81.05
+    },
+    {
+      "year": "2013",
+      "value": 80.57
+    },
+    {
+      "year": "2014",
+      "value": 80.08
+    },
+    {
+      "year": "2015",
+      "value": 79.54
+    },
+    {
+      "year": "2016",
+      "value": 78.97
+    },
+    {
+      "year": "2017",
+      "value": 78.38
+    },
+    {
+      "year": "2018",
+      "value": 77.79
+    },
+    {
+      "year": "2019",
+      "value": 77.23
+    },
+    {
+      "year": "2020",
+      "value": 77.2
+    },
+    {
+      "year": "2021",
+      "value": 76.65
+    },
+    {
+      "year": "2022",
+      "value": 76.87
+    },
+    {
+      "year": "2023",
+      "value": 76.13
+    },
+    {
+      "year": "2024",
+      "value": 75.39
+    },
+    {
+      "year": "2025",
+      "value": 74.9
+    }
+  ],
+  "vulnerableTimeSeries": [
+    {
+      "year": "2000",
+      "value": 83.72
+    },
+    {
+      "year": "2001",
+      "value": 83.68
+    },
+    {
+      "year": "2002",
+      "value": 83.59
+    },
+    {
+      "year": "2003",
+      "value": 83.5
+    },
+    {
+      "year": "2004",
+      "value": 83.31
+    },
+    {
+      "year": "2005",
+      "value": 83.15
+    },
+    {
+      "year": "2006",
+      "value": 82.93
+    },
+    {
+      "year": "2007",
+      "value": 82.74
+    },
+    {
+      "year": "2008",
+      "value": 82.64
+    },
+    {
+      "year": "2009",
+      "value": 82.48
+    },
+    {
+      "year": "2010",
+      "value": 82.31
+    },
+    {
+      "year": "2011",
+      "value": 80.97
+    },
+    {
+      "year": "2012",
+      "value": 79.65
+    },
+    {
+      "year": "2013",
+      "value": 79.09
+    },
+    {
+      "year": "2014",
+      "value": 78.52
+    },
+    {
+      "year": "2015",
+      "value": 77.88
+    },
+    {
+      "year": "2016",
+      "value": 77.22
+    },
+    {
+      "year": "2017",
+      "value": 76.52
+    },
+    {
+      "year": "2018",
+      "value": 75.81
+    },
+    {
+      "year": "2019",
+      "value": 75.2
+    },
+    {
+      "year": "2020",
+      "value": 75.08
+    },
+    {
+      "year": "2021",
+      "value": 74.55
+    },
+    {
+      "year": "2022",
+      "value": 74.0
+    },
+    {
+      "year": "2023",
+      "value": 72.76
+    },
+    {
+      "year": "2024",
+      "value": 72.06
+    },
+    {
+      "year": "2025",
+      "value": 71.58
+    }
+  ],
+  "currentSectors": [
+    {
+      "id": "agriculture",
+      "name": "Agriculture & Allied",
+      "employmentShare": 45.8
+    },
+    {
+      "id": "manufacturing",
+      "name": "Manufacturing",
+      "employmentShare": 11.4
+    },
+    {
+      "id": "construction",
+      "name": "Construction",
+      "employmentShare": 12.1
+    },
+    {
+      "id": "trade",
+      "name": "Trade, Hotels & Transport",
+      "employmentShare": 13.8
+    },
+    {
+      "id": "finance",
+      "name": "Finance & Business Services",
+      "employmentShare": 4.2
+    },
+    {
+      "id": "public_admin",
+      "name": "Public Administration & Defence",
+      "employmentShare": 3.8
+    },
+    {
+      "id": "other_services",
+      "name": "Other Services",
+      "employmentShare": 8.9
+    }
+  ],
+  "source": "World Bank (ILO modelled) + RBI KLEMS Database"
+}

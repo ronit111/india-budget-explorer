@@ -1,5 +1,58 @@
 # Changelog
 
+## [0.9.0] - 2026-03-01
+
+### Phase 5: Education, Employment & Healthcare Domains
+
+**Education Domain** (`/education`) — Blue accent (#3B82F6)
+- Six-section scrollytelling: enrollment triumph (primary/secondary/tertiary GER line chart), gender convergence (slope chart showing girls catching up), dropout cliff (funnel/waterfall — primary 1.9% → secondary 14.1%), learning quality gap (ASER outcomes bar chart), teacher challenge (PTR trends + state ranking), spending vs global peers (India 4.1% GDP vs NEP 6% target)
+- Pipeline: World Bank API (14 indicators) + curated UDISE+ 2023-24 (36 states) + ASER 2024 (25 states)
+- Explorer with 5 categories (All, Enrollment, Quality, Infrastructure, Spending)
+- Methodology: 7 sections covering UDISE+, ASER, World Bank data sourcing
+- Glossary: 14 education terms (GER, dropout rate, PTR, ASER, NEP 2020, RTE Act, etc.)
+
+**Employment Domain** (`/employment`) — Amber accent (#F59E0B)
+- Six-section scrollytelling: participation puzzle (LFPR trend line chart), structural shift (agriculture declining, services rising stacked area), youth unemployment crisis (age-cohort bar chart), gender gap (male vs female LFPR butterfly chart), informality challenge (waffle chart — 8/10 workers informal), rural vs urban patterns
+- Pipeline: World Bank API (17 indicators) + curated PLFS Oct-Dec 2025 + PLFS state data (30 states) + RBI KLEMS sectoral breakdown
+- Explorer with 5 categories (All, Unemployment, Participation, Sectoral, Informality)
+- Methodology: 7 sections covering PLFS, KLEMS, World Bank data sourcing
+- Glossary: 15 employment terms (LFPR, PLFS, gig economy, structural transformation, etc.)
+
+**Healthcare Domain** (`/healthcare`) — Rose accent (#F43F5E)
+- Six-section scrollytelling: infrastructure deficit (India 0.5 beds vs WHO 3.5 bar chart), spending story (health expenditure % GDP line chart), out-of-pocket burden (waffle chart — ₹50 of every ₹100 from patient pockets), immunization push (DPT + measles coverage trends), disease burden (TB incidence, NCD shift), doctor gap (state-level doctors per 10K bar chart)
+- Pipeline: World Bank API (12 indicators) + curated NHP 2022 (30 states) + NFHS-5 immunization (30 states)
+- Explorer with 5 categories (All, Infrastructure, Spending, Immunization, Disease)
+- Methodology: 7 sections covering NHP, NFHS-5, World Bank data sourcing
+- Glossary: 13 healthcare terms (PHC, CHC, out-of-pocket spending, TB incidence, etc.)
+
+**Hub Integration**
+- 3 new domain cards: Education (#06), Employment (#07), Healthcare (#08)
+- Mini-visualizations: enrollment bars (blue), sectoral area (amber), infrastructure bars (rose)
+- Hub now shows 8 data domain cards
+
+**SEO**
+- 12 new routes added to Puppeteer prerender (34 routes total)
+- Sitemap expanded with 12 page URLs + 15 data file URLs (43 data files total)
+- 3 JSON-LD Dataset schemas (Education/Employment/Healthcare for Google Dataset Search)
+- JSON-LD BreadcrumbList updated with 12 new entries (34 total)
+- `llms.txt` expanded with 3 domain descriptions, key data points, and datasets
+- Noscript fallback updated with 3 domain content sections + data download links
+- 3 per-domain OG images: `og-education.png`, `og-employment.png`, `og-healthcare.png`
+
+**Navigation**
+- Header: `isEducationSection`/`isEmploymentSection`/`isHealthcareSection` detection, domain titles, 4 sub-nav tabs each
+- Mobile bottom nav: 3 new domain icons and tab arrays
+- Footer: domain-specific attribution with source links
+- Search (Cmd+K): 42 new glossary terms indexed + 12 page entries
+
+**GitHub Actions**
+- `education-pipeline.yml`: quarterly (Jan/Apr/Jul/Oct 15th) — aligned to UDISE+/ASER/WB release cycles
+- `employment-pipeline.yml`: quarterly (Mar/Jun/Sep/Dec 1st) — aligned to PLFS quarterly bulletin releases
+- `healthcare-pipeline.yml`: quarterly (Feb/May/Aug/Nov 15th) — aligned to NHP/WB release cycles
+- `data-freshness-monitor.yml` updated with 3 new domain entries (8 domains total)
+
+---
+
 ## [0.8.0] - 2026-02-28
 
 ### Phase 4B: Census & Demographics Domain

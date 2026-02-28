@@ -1,0 +1,584 @@
+{
+  "year": "2025-26",
+  "dptTimeSeries": [
+    {
+      "year": "2000",
+      "value": 58
+    },
+    {
+      "year": "2001",
+      "value": 59
+    },
+    {
+      "year": "2002",
+      "value": 59
+    },
+    {
+      "year": "2003",
+      "value": 61
+    },
+    {
+      "year": "2004",
+      "value": 63
+    },
+    {
+      "year": "2005",
+      "value": 65
+    },
+    {
+      "year": "2006",
+      "value": 65
+    },
+    {
+      "year": "2007",
+      "value": 64
+    },
+    {
+      "year": "2008",
+      "value": 70
+    },
+    {
+      "year": "2009",
+      "value": 74
+    },
+    {
+      "year": "2010",
+      "value": 79
+    },
+    {
+      "year": "2011",
+      "value": 82
+    },
+    {
+      "year": "2012",
+      "value": 82
+    },
+    {
+      "year": "2013",
+      "value": 83
+    },
+    {
+      "year": "2014",
+      "value": 85
+    },
+    {
+      "year": "2015",
+      "value": 87
+    },
+    {
+      "year": "2016",
+      "value": 88
+    },
+    {
+      "year": "2017",
+      "value": 89
+    },
+    {
+      "year": "2018",
+      "value": 90
+    },
+    {
+      "year": "2019",
+      "value": 91
+    },
+    {
+      "year": "2020",
+      "value": 85
+    },
+    {
+      "year": "2021",
+      "value": 85
+    },
+    {
+      "year": "2022",
+      "value": 93
+    },
+    {
+      "year": "2023",
+      "value": 91
+    },
+    {
+      "year": "2024",
+      "value": 94
+    }
+  ],
+  "measlesTimeSeries": [
+    {
+      "year": "2000",
+      "value": 56
+    },
+    {
+      "year": "2001",
+      "value": 57
+    },
+    {
+      "year": "2002",
+      "value": 56
+    },
+    {
+      "year": "2003",
+      "value": 60
+    },
+    {
+      "year": "2004",
+      "value": 64
+    },
+    {
+      "year": "2005",
+      "value": 68
+    },
+    {
+      "year": "2006",
+      "value": 69
+    },
+    {
+      "year": "2007",
+      "value": 70
+    },
+    {
+      "year": "2008",
+      "value": 72
+    },
+    {
+      "year": "2009",
+      "value": 78
+    },
+    {
+      "year": "2010",
+      "value": 82
+    },
+    {
+      "year": "2011",
+      "value": 84
+    },
+    {
+      "year": "2012",
+      "value": 83
+    },
+    {
+      "year": "2013",
+      "value": 83
+    },
+    {
+      "year": "2014",
+      "value": 85
+    },
+    {
+      "year": "2015",
+      "value": 87
+    },
+    {
+      "year": "2016",
+      "value": 88
+    },
+    {
+      "year": "2017",
+      "value": 90
+    },
+    {
+      "year": "2018",
+      "value": 93
+    },
+    {
+      "year": "2019",
+      "value": 95
+    },
+    {
+      "year": "2020",
+      "value": 89
+    },
+    {
+      "year": "2021",
+      "value": 89
+    },
+    {
+      "year": "2022",
+      "value": 95
+    },
+    {
+      "year": "2023",
+      "value": 93
+    },
+    {
+      "year": "2024",
+      "value": 97
+    }
+  ],
+  "tbIncidenceTimeSeries": [
+    {
+      "year": "2000",
+      "value": 322
+    },
+    {
+      "year": "2001",
+      "value": 321
+    },
+    {
+      "year": "2002",
+      "value": 320
+    },
+    {
+      "year": "2003",
+      "value": 318
+    },
+    {
+      "year": "2004",
+      "value": 315
+    },
+    {
+      "year": "2005",
+      "value": 311
+    },
+    {
+      "year": "2006",
+      "value": 305
+    },
+    {
+      "year": "2007",
+      "value": 298
+    },
+    {
+      "year": "2008",
+      "value": 291
+    },
+    {
+      "year": "2009",
+      "value": 283
+    },
+    {
+      "year": "2010",
+      "value": 276
+    },
+    {
+      "year": "2011",
+      "value": 268
+    },
+    {
+      "year": "2012",
+      "value": 258
+    },
+    {
+      "year": "2013",
+      "value": 248
+    },
+    {
+      "year": "2014",
+      "value": 243
+    },
+    {
+      "year": "2015",
+      "value": 237
+    },
+    {
+      "year": "2016",
+      "value": 225
+    },
+    {
+      "year": "2017",
+      "value": 217
+    },
+    {
+      "year": "2018",
+      "value": 208
+    },
+    {
+      "year": "2019",
+      "value": 202
+    },
+    {
+      "year": "2020",
+      "value": 197
+    },
+    {
+      "year": "2021",
+      "value": 196
+    },
+    {
+      "year": "2022",
+      "value": 196
+    },
+    {
+      "year": "2023",
+      "value": 192
+    },
+    {
+      "year": "2024",
+      "value": 187
+    }
+  ],
+  "hivTimeSeries": [
+    {
+      "year": "2024",
+      "value": 0.2
+    }
+  ],
+  "birthsAttendedTimeSeries": [
+    {
+      "year": "2000",
+      "value": 42.5
+    },
+    {
+      "year": "2006",
+      "value": 46.6
+    },
+    {
+      "year": "2008",
+      "value": 52.3
+    },
+    {
+      "year": "2014",
+      "value": 81.4
+    },
+    {
+      "year": "2016",
+      "value": 81.4
+    },
+    {
+      "year": "2021",
+      "value": 89.4
+    }
+  ],
+  "stateImmunization": [
+    {
+      "id": "up",
+      "name": "Uttar Pradesh",
+      "fullImmunization": 67.0,
+      "bcg": 92.4,
+      "measles": 80.2,
+      "dpt3": 72.8
+    },
+    {
+      "id": "mh",
+      "name": "Maharashtra",
+      "fullImmunization": 77.4,
+      "bcg": 96.8,
+      "measles": 88.6,
+      "dpt3": 82.4
+    },
+    {
+      "id": "br",
+      "name": "Bihar",
+      "fullImmunization": 54.2,
+      "bcg": 87.6,
+      "measles": 68.4,
+      "dpt3": 62.8
+    },
+    {
+      "id": "wb",
+      "name": "West Bengal",
+      "fullImmunization": 74.8,
+      "bcg": 98.2,
+      "measles": 88.4,
+      "dpt3": 80.6
+    },
+    {
+      "id": "mp",
+      "name": "Madhya Pradesh",
+      "fullImmunization": 68.4,
+      "bcg": 94.2,
+      "measles": 82.6,
+      "dpt3": 74.2
+    },
+    {
+      "id": "tn",
+      "name": "Tamil Nadu",
+      "fullImmunization": 82.6,
+      "bcg": 98.4,
+      "measles": 92.8,
+      "dpt3": 88.2
+    },
+    {
+      "id": "rj",
+      "name": "Rajasthan",
+      "fullImmunization": 66.8,
+      "bcg": 93.6,
+      "measles": 80.4,
+      "dpt3": 72.4
+    },
+    {
+      "id": "ka",
+      "name": "Karnataka",
+      "fullImmunization": 76.8,
+      "bcg": 97.4,
+      "measles": 88.2,
+      "dpt3": 82.8
+    },
+    {
+      "id": "gj",
+      "name": "Gujarat",
+      "fullImmunization": 72.4,
+      "bcg": 95.8,
+      "measles": 84.6,
+      "dpt3": 78.2
+    },
+    {
+      "id": "ap",
+      "name": "Andhra Pradesh",
+      "fullImmunization": 73.6,
+      "bcg": 97.2,
+      "measles": 86.4,
+      "dpt3": 79.8
+    },
+    {
+      "id": "tg",
+      "name": "Telangana",
+      "fullImmunization": 75.4,
+      "bcg": 97.8,
+      "measles": 88.2,
+      "dpt3": 80.6
+    },
+    {
+      "id": "od",
+      "name": "Odisha",
+      "fullImmunization": 73.2,
+      "bcg": 96.4,
+      "measles": 86.8,
+      "dpt3": 78.4
+    },
+    {
+      "id": "kl",
+      "name": "Kerala",
+      "fullImmunization": 84.2,
+      "bcg": 99.2,
+      "measles": 94.6,
+      "dpt3": 90.4
+    },
+    {
+      "id": "jh",
+      "name": "Jharkhand",
+      "fullImmunization": 61.8,
+      "bcg": 92.8,
+      "measles": 76.4,
+      "dpt3": 68.6
+    },
+    {
+      "id": "as",
+      "name": "Assam",
+      "fullImmunization": 58.4,
+      "bcg": 90.6,
+      "measles": 72.8,
+      "dpt3": 66.2
+    },
+    {
+      "id": "pb",
+      "name": "Punjab",
+      "fullImmunization": 79.2,
+      "bcg": 97.6,
+      "measles": 90.4,
+      "dpt3": 84.6
+    },
+    {
+      "id": "ct",
+      "name": "Chhattisgarh",
+      "fullImmunization": 70.2,
+      "bcg": 95.4,
+      "measles": 84.2,
+      "dpt3": 76.8
+    },
+    {
+      "id": "hr",
+      "name": "Haryana",
+      "fullImmunization": 74.6,
+      "bcg": 96.8,
+      "measles": 86.4,
+      "dpt3": 80.2
+    },
+    {
+      "id": "uk",
+      "name": "Uttarakhand",
+      "fullImmunization": 74.8,
+      "bcg": 97.2,
+      "measles": 88.6,
+      "dpt3": 80.8
+    },
+    {
+      "id": "jk",
+      "name": "Jammu & Kashmir",
+      "fullImmunization": 72.4,
+      "bcg": 96.4,
+      "measles": 84.8,
+      "dpt3": 78.6
+    },
+    {
+      "id": "hp",
+      "name": "Himachal Pradesh",
+      "fullImmunization": 82.4,
+      "bcg": 98.6,
+      "measles": 92.4,
+      "dpt3": 88.2
+    },
+    {
+      "id": "dl",
+      "name": "Delhi",
+      "fullImmunization": 73.8,
+      "bcg": 96.2,
+      "measles": 86.2,
+      "dpt3": 79.4
+    },
+    {
+      "id": "ga",
+      "name": "Goa",
+      "fullImmunization": 80.4,
+      "bcg": 98.4,
+      "measles": 92.8,
+      "dpt3": 86.4
+    },
+    {
+      "id": "tr",
+      "name": "Tripura",
+      "fullImmunization": 62.6,
+      "bcg": 93.8,
+      "measles": 78.4,
+      "dpt3": 70.2
+    },
+    {
+      "id": "mn",
+      "name": "Manipur",
+      "fullImmunization": 55.8,
+      "bcg": 88.4,
+      "measles": 72.6,
+      "dpt3": 64.8
+    },
+    {
+      "id": "ml",
+      "name": "Meghalaya",
+      "fullImmunization": 46.2,
+      "bcg": 84.6,
+      "measles": 62.4,
+      "dpt3": 54.8
+    },
+    {
+      "id": "nl",
+      "name": "Nagaland",
+      "fullImmunization": 39.8,
+      "bcg": 78.4,
+      "measles": 56.8,
+      "dpt3": 48.2
+    },
+    {
+      "id": "mz",
+      "name": "Mizoram",
+      "fullImmunization": 52.4,
+      "bcg": 86.8,
+      "measles": 68.4,
+      "dpt3": 60.2
+    },
+    {
+      "id": "sk",
+      "name": "Sikkim",
+      "fullImmunization": 76.4,
+      "bcg": 97.8,
+      "measles": 88.6,
+      "dpt3": 82.4
+    },
+    {
+      "id": "ar",
+      "name": "Arunachal Pradesh",
+      "fullImmunization": 38.6,
+      "bcg": 76.2,
+      "measles": 54.6,
+      "dpt3": 46.8
+    }
+  ],
+  "source": "World Bank + NFHS-5 (2019-21)"
+}

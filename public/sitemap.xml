@@ -176,6 +176,180 @@
     <priority>0.6</priority>
   </url>
 
+  <!-- Education domain -->
+  <url>
+    <loc>https://indiandataproject.org/education</loc>
+    <lastmod>2026-02-28</lastmod>
+    <changefreq>quarterly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://indiandataproject.org/education/explore</loc>
+    <lastmod>2026-02-28</lastmod>
+    <changefreq>quarterly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://indiandataproject.org/education/methodology</loc>
+    <lastmod>2026-02-28</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://indiandataproject.org/education/glossary</loc>
+    <lastmod>2026-02-28</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Employment domain -->
+  <url>
+    <loc>https://indiandataproject.org/employment</loc>
+    <lastmod>2026-02-28</lastmod>
+    <changefreq>quarterly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://indiandataproject.org/employment/explore</loc>
+    <lastmod>2026-02-28</lastmod>
+    <changefreq>quarterly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://indiandataproject.org/employment/methodology</loc>
+    <lastmod>2026-02-28</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://indiandataproject.org/employment/glossary</loc>
+    <lastmod>2026-02-28</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Healthcare domain -->
+  <url>
+    <loc>https://indiandataproject.org/healthcare</loc>
+    <lastmod>2026-02-28</lastmod>
+    <changefreq>quarterly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://indiandataproject.org/healthcare/explore</loc>
+    <lastmod>2026-02-28</lastmod>
+    <changefreq>quarterly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://indiandataproject.org/healthcare/methodology</loc>
+    <lastmod>2026-02-28</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://indiandataproject.org/healthcare/glossary</loc>
+    <lastmod>2026-02-28</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Education data endpoints -->
+  <url>
+    <loc>https://indiandataproject.org/data/education/2025-26/summary.json</loc>
+    <lastmod>2026-02-28</lastmod>
+    <changefreq>quarterly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://indiandataproject.org/data/education/2025-26/enrollment.json</loc>
+    <lastmod>2026-02-28</lastmod>
+    <changefreq>quarterly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://indiandataproject.org/data/education/2025-26/quality.json</loc>
+    <lastmod>2026-02-28</lastmod>
+    <changefreq>quarterly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://indiandataproject.org/data/education/2025-26/spending.json</loc>
+    <lastmod>2026-02-28</lastmod>
+    <changefreq>quarterly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://indiandataproject.org/data/education/2025-26/indicators.json</loc>
+    <lastmod>2026-02-28</lastmod>
+    <changefreq>quarterly</changefreq>
+    <priority>0.4</priority>
+  </url>
+
+  <!-- Employment data endpoints -->
+  <url>
+    <loc>https://indiandataproject.org/data/employment/2025-26/summary.json</loc>
+    <lastmod>2026-02-28</lastmod>
+    <changefreq>quarterly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://indiandataproject.org/data/employment/2025-26/unemployment.json</loc>
+    <lastmod>2026-02-28</lastmod>
+    <changefreq>quarterly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://indiandataproject.org/data/employment/2025-26/participation.json</loc>
+    <lastmod>2026-02-28</lastmod>
+    <changefreq>quarterly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://indiandataproject.org/data/employment/2025-26/sectoral.json</loc>
+    <lastmod>2026-02-28</lastmod>
+    <changefreq>quarterly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://indiandataproject.org/data/employment/2025-26/indicators.json</loc>
+    <lastmod>2026-02-28</lastmod>
+    <changefreq>quarterly</changefreq>
+    <priority>0.4</priority>
+  </url>
+
+  <!-- Healthcare data endpoints -->
+  <url>
+    <loc>https://indiandataproject.org/data/healthcare/2025-26/summary.json</loc>
+    <lastmod>2026-02-28</lastmod>
+    <changefreq>quarterly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://indiandataproject.org/data/healthcare/2025-26/infrastructure.json</loc>
+    <lastmod>2026-02-28</lastmod>
+    <changefreq>quarterly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://indiandataproject.org/data/healthcare/2025-26/spending.json</loc>
+    <lastmod>2026-02-28</lastmod>
+    <changefreq>quarterly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://indiandataproject.org/data/healthcare/2025-26/disease.json</loc>
+    <lastmod>2026-02-28</lastmod>
+    <changefreq>quarterly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://indiandataproject.org/data/healthcare/2025-26/indicators.json</loc>
+    <lastmod>2026-02-28</lastmod>
+    <changefreq>quarterly</changefreq>
+    <priority>0.4</priority>
+  </url>
+
   <!-- Economy data endpoints -->
   <url>
     <loc>https://indiandataproject.org/data/economy/2025-26/summary.json</loc>

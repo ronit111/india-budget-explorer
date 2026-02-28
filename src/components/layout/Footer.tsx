@@ -7,7 +7,10 @@ export function Footer() {
   const isRBI = location.pathname.startsWith('/rbi');
   const isStates = location.pathname.startsWith('/states');
   const isCensus = location.pathname.startsWith('/census');
-  const isDataDomain = isBudget || isEconomy || isRBI || isStates || isCensus;
+  const isEducation = location.pathname.startsWith('/education');
+  const isEmployment = location.pathname.startsWith('/employment');
+  const isHealthcare = location.pathname.startsWith('/healthcare');
+  const isDataDomain = isBudget || isEconomy || isRBI || isStates || isCensus || isEducation || isEmployment || isHealthcare;
 
   return (
     <footer className="relative py-8 pb-24 md:pb-8" style={{ background: 'var(--bg-surface)' }}>
@@ -163,6 +166,98 @@ export function Footer() {
             </a>
             {' '}&middot; Not affiliated with GoI
           </p>
+        ) : isEducation ? (
+          <p className="text-caption text-center md:text-left">
+            Data from{' '}
+            <a
+              href="https://udiseplus.gov.in/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="link-hover"
+              style={{ color: 'var(--text-muted)' }}
+            >
+              UDISE+
+            </a>
+            {' '}&middot;{' '}
+            <a
+              href="https://asercentre.org/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="link-hover"
+              style={{ color: 'var(--text-muted)' }}
+            >
+              ASER
+            </a>
+            {' '}&middot;{' '}
+            <a
+              href="https://data.worldbank.org/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="link-hover"
+              style={{ color: 'var(--text-muted)' }}
+            >
+              World Bank
+            </a>
+            {' '}&middot; Not affiliated with GoI
+          </p>
+        ) : isEmployment ? (
+          <p className="text-caption text-center md:text-left">
+            Data from{' '}
+            <a
+              href="https://mospi.gov.in/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="link-hover"
+              style={{ color: 'var(--text-muted)' }}
+            >
+              PLFS (MoSPI)
+            </a>
+            {' '}&middot;{' '}
+            <a
+              href="https://data.worldbank.org/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="link-hover"
+              style={{ color: 'var(--text-muted)' }}
+            >
+              World Bank
+            </a>
+            {' '}&middot; Not affiliated with GoI
+          </p>
+        ) : isHealthcare ? (
+          <p className="text-caption text-center md:text-left">
+            Data from{' '}
+            <a
+              href="https://cbhidghs.mohfw.gov.in/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="link-hover"
+              style={{ color: 'var(--text-muted)' }}
+            >
+              NHP (CBHI)
+            </a>
+            {' '}&middot;{' '}
+            <a
+              href="https://rchiips.org/nfhs/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="link-hover"
+              style={{ color: 'var(--text-muted)' }}
+            >
+              NFHS-5
+            </a>
+            {' '}&middot;{' '}
+            <a
+              href="https://data.worldbank.org/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="link-hover"
+              style={{ color: 'var(--text-muted)' }}
+            >
+              World Bank
+            </a>
+            {' '}&middot; Not affiliated with GoI
+          </p>
         ) : (
           <p className="text-caption text-center md:text-left">
             Open-source civic tech. Real government data, made accessible.
@@ -179,6 +274,12 @@ export function Footer() {
             'State Finances 2022-23'
           ) : isCensus ? (
             'Census & Demographics'
+          ) : isEducation ? (
+            'Education 2025-26'
+          ) : isEmployment ? (
+            'Employment 2025-26'
+          ) : isHealthcare ? (
+            'Healthcare 2025-26'
           ) : (
             <a
               href="https://github.com/ronit111/indian-data-project"

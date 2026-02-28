@@ -1,0 +1,504 @@
+{
+  "year": "2025-26",
+  "hospitalBedsTimeSeries": [
+    {
+      "year": "2000",
+      "value": 2.13
+    },
+    {
+      "year": "2001",
+      "value": 2.09
+    },
+    {
+      "year": "2002",
+      "value": 2.05
+    },
+    {
+      "year": "2003",
+      "value": 2.02
+    },
+    {
+      "year": "2004",
+      "value": 1.99
+    },
+    {
+      "year": "2005",
+      "value": 1.95
+    },
+    {
+      "year": "2006",
+      "value": 1.92
+    },
+    {
+      "year": "2007",
+      "value": 1.89
+    },
+    {
+      "year": "2008",
+      "value": 1.87
+    },
+    {
+      "year": "2009",
+      "value": 1.84
+    },
+    {
+      "year": "2010",
+      "value": 1.81
+    },
+    {
+      "year": "2011",
+      "value": 1.79
+    },
+    {
+      "year": "2012",
+      "value": 1.76
+    },
+    {
+      "year": "2013",
+      "value": 1.74
+    },
+    {
+      "year": "2014",
+      "value": 1.72
+    },
+    {
+      "year": "2015",
+      "value": 1.7
+    },
+    {
+      "year": "2016",
+      "value": 1.68
+    },
+    {
+      "year": "2017",
+      "value": 1.66
+    },
+    {
+      "year": "2018",
+      "value": 1.64
+    },
+    {
+      "year": "2019",
+      "value": 1.62
+    },
+    {
+      "year": "2020",
+      "value": 1.61
+    },
+    {
+      "year": "2021",
+      "value": 1.59
+    }
+  ],
+  "physiciansTimeSeries": [
+    {
+      "year": "2014",
+      "value": 0.71
+    },
+    {
+      "year": "2015",
+      "value": 0.72
+    },
+    {
+      "year": "2016",
+      "value": 0.75
+    },
+    {
+      "year": "2017",
+      "value": 0.77
+    },
+    {
+      "year": "2018",
+      "value": 0.84
+    },
+    {
+      "year": "2019",
+      "value": 0.89
+    },
+    {
+      "year": "2020",
+      "value": 0.72
+    }
+  ],
+  "nursesTimeSeries": [
+    {
+      "year": "2000",
+      "value": 0.73
+    },
+    {
+      "year": "2001",
+      "value": 0.75
+    },
+    {
+      "year": "2003",
+      "value": 0.75
+    },
+    {
+      "year": "2004",
+      "value": 1.21
+    },
+    {
+      "year": "2005",
+      "value": 1.28
+    },
+    {
+      "year": "2006",
+      "value": 0.78
+    },
+    {
+      "year": "2007",
+      "value": 0.78
+    },
+    {
+      "year": "2008",
+      "value": 0.8
+    },
+    {
+      "year": "2009",
+      "value": 0.85
+    },
+    {
+      "year": "2010",
+      "value": 0.86
+    },
+    {
+      "year": "2011",
+      "value": 0.98
+    },
+    {
+      "year": "2012",
+      "value": 1.1
+    },
+    {
+      "year": "2013",
+      "value": 1.21
+    },
+    {
+      "year": "2014",
+      "value": 1.36
+    },
+    {
+      "year": "2015",
+      "value": 1.43
+    },
+    {
+      "year": "2016",
+      "value": 1.47
+    },
+    {
+      "year": "2017",
+      "value": 2.13
+    },
+    {
+      "year": "2018",
+      "value": 1.7
+    },
+    {
+      "year": "2020",
+      "value": 1.72
+    }
+  ],
+  "stateInfrastructure": [
+    {
+      "id": "up",
+      "name": "Uttar Pradesh",
+      "bedsPerLakh": 32,
+      "phcs": 3621,
+      "chcs": 773,
+      "subCentres": 20521,
+      "doctorsAtPHC": 3218,
+      "doctorsPer10K": 3.8
+    },
+    {
+      "id": "mh",
+      "name": "Maharashtra",
+      "bedsPerLakh": 58,
+      "phcs": 1814,
+      "chcs": 364,
+      "subCentres": 10580,
+      "doctorsAtPHC": 2648,
+      "doctorsPer10K": 10.2
+    },
+    {
+      "id": "br",
+      "name": "Bihar",
+      "bedsPerLakh": 11,
+      "phcs": 1883,
+      "chcs": 252,
+      "subCentres": 9729,
+      "doctorsAtPHC": 1424,
+      "doctorsPer10K": 2.4
+    },
+    {
+      "id": "wb",
+      "name": "West Bengal",
+      "bedsPerLakh": 52,
+      "phcs": 909,
+      "chcs": 348,
+      "subCentres": 10356,
+      "doctorsAtPHC": 1842,
+      "doctorsPer10K": 7.8
+    },
+    {
+      "id": "mp",
+      "name": "Madhya Pradesh",
+      "bedsPerLakh": 28,
+      "phcs": 1171,
+      "chcs": 334,
+      "subCentres": 9192,
+      "doctorsAtPHC": 1628,
+      "doctorsPer10K": 4.2
+    },
+    {
+      "id": "tn",
+      "name": "Tamil Nadu",
+      "bedsPerLakh": 86,
+      "phcs": 1682,
+      "chcs": 385,
+      "subCentres": 8706,
+      "doctorsAtPHC": 2486,
+      "doctorsPer10K": 12.4
+    },
+    {
+      "id": "rj",
+      "name": "Rajasthan",
+      "bedsPerLakh": 36,
+      "phcs": 2080,
+      "chcs": 579,
+      "subCentres": 14407,
+      "doctorsAtPHC": 2842,
+      "doctorsPer10K": 5.6
+    },
+    {
+      "id": "ka",
+      "name": "Karnataka",
+      "bedsPerLakh": 68,
+      "phcs": 2310,
+      "chcs": 207,
+      "subCentres": 8143,
+      "doctorsAtPHC": 2648,
+      "doctorsPer10K": 9.8
+    },
+    {
+      "id": "gj",
+      "name": "Gujarat",
+      "bedsPerLakh": 42,
+      "phcs": 1516,
+      "chcs": 363,
+      "subCentres": 7274,
+      "doctorsAtPHC": 2186,
+      "doctorsPer10K": 7.4
+    },
+    {
+      "id": "ap",
+      "name": "Andhra Pradesh",
+      "bedsPerLakh": 48,
+      "phcs": 1147,
+      "chcs": 194,
+      "subCentres": 7458,
+      "doctorsAtPHC": 1842,
+      "doctorsPer10K": 8.6
+    },
+    {
+      "id": "tg",
+      "name": "Telangana",
+      "bedsPerLakh": 56,
+      "phcs": 762,
+      "chcs": 116,
+      "subCentres": 4742,
+      "doctorsAtPHC": 1248,
+      "doctorsPer10K": 10.8
+    },
+    {
+      "id": "od",
+      "name": "Odisha",
+      "bedsPerLakh": 24,
+      "phcs": 1226,
+      "chcs": 377,
+      "subCentres": 6688,
+      "doctorsAtPHC": 1486,
+      "doctorsPer10K": 4.8
+    },
+    {
+      "id": "kl",
+      "name": "Kerala",
+      "bedsPerLakh": 94,
+      "phcs": 847,
+      "chcs": 234,
+      "subCentres": 5094,
+      "doctorsAtPHC": 1624,
+      "doctorsPer10K": 18.6
+    },
+    {
+      "id": "jh",
+      "name": "Jharkhand",
+      "bedsPerLakh": 18,
+      "phcs": 327,
+      "chcs": 188,
+      "subCentres": 3958,
+      "doctorsAtPHC": 486,
+      "doctorsPer10K": 3.2
+    },
+    {
+      "id": "as",
+      "name": "Assam",
+      "bedsPerLakh": 22,
+      "phcs": 975,
+      "chcs": 151,
+      "subCentres": 4621,
+      "doctorsAtPHC": 1086,
+      "doctorsPer10K": 4.6
+    },
+    {
+      "id": "pb",
+      "name": "Punjab",
+      "bedsPerLakh": 62,
+      "phcs": 427,
+      "chcs": 150,
+      "subCentres": 2950,
+      "doctorsAtPHC": 864,
+      "doctorsPer10K": 11.4
+    },
+    {
+      "id": "ct",
+      "name": "Chhattisgarh",
+      "bedsPerLakh": 20,
+      "phcs": 790,
+      "chcs": 169,
+      "subCentres": 5211,
+      "doctorsAtPHC": 842,
+      "doctorsPer10K": 3.4
+    },
+    {
+      "id": "hr",
+      "name": "Haryana",
+      "bedsPerLakh": 38,
+      "phcs": 473,
+      "chcs": 119,
+      "subCentres": 2630,
+      "doctorsAtPHC": 648,
+      "doctorsPer10K": 8.2
+    },
+    {
+      "id": "uk",
+      "name": "Uttarakhand",
+      "bedsPerLakh": 42,
+      "phcs": 257,
+      "chcs": 69,
+      "subCentres": 1847,
+      "doctorsAtPHC": 462,
+      "doctorsPer10K": 7.6
+    },
+    {
+      "id": "jk",
+      "name": "Jammu & Kashmir",
+      "bedsPerLakh": 34,
+      "phcs": 692,
+      "chcs": 87,
+      "subCentres": 1949,
+      "doctorsAtPHC": 824,
+      "doctorsPer10K": 6.2
+    },
+    {
+      "id": "hp",
+      "name": "Himachal Pradesh",
+      "bedsPerLakh": 68,
+      "phcs": 522,
+      "chcs": 79,
+      "subCentres": 2065,
+      "doctorsAtPHC": 648,
+      "doctorsPer10K": 12.8
+    },
+    {
+      "id": "dl",
+      "name": "Delhi",
+      "bedsPerLakh": 124,
+      "phcs": 8,
+      "chcs": 2,
+      "subCentres": 18,
+      "doctorsAtPHC": 42,
+      "doctorsPer10K": 24.6
+    },
+    {
+      "id": "ga",
+      "name": "Goa",
+      "bedsPerLakh": 148,
+      "phcs": 25,
+      "chcs": 4,
+      "subCentres": 210,
+      "doctorsAtPHC": 86,
+      "doctorsPer10K": 22.4
+    },
+    {
+      "id": "tr",
+      "name": "Tripura",
+      "bedsPerLakh": 28,
+      "phcs": 112,
+      "chcs": 22,
+      "subCentres": 1062,
+      "doctorsAtPHC": 186,
+      "doctorsPer10K": 5.4
+    },
+    {
+      "id": "mn",
+      "name": "Manipur",
+      "bedsPerLakh": 24,
+      "phcs": 86,
+      "chcs": 16,
+      "subCentres": 420,
+      "doctorsAtPHC": 124,
+      "doctorsPer10K": 5.8
+    },
+    {
+      "id": "ml",
+      "name": "Meghalaya",
+      "bedsPerLakh": 18,
+      "phcs": 118,
+      "chcs": 29,
+      "subCentres": 582,
+      "doctorsAtPHC": 142,
+      "doctorsPer10K": 4.2
+    },
+    {
+      "id": "nl",
+      "name": "Nagaland",
+      "bedsPerLakh": 16,
+      "phcs": 126,
+      "chcs": 21,
+      "subCentres": 396,
+      "doctorsAtPHC": 108,
+      "doctorsPer10K": 3.8
+    },
+    {
+      "id": "mz",
+      "name": "Mizoram",
+      "bedsPerLakh": 22,
+      "phcs": 57,
+      "chcs": 9,
+      "subCentres": 370,
+      "doctorsAtPHC": 86,
+      "doctorsPer10K": 6.4
+    },
+    {
+      "id": "sk",
+      "name": "Sikkim",
+      "bedsPerLakh": 54,
+      "phcs": 24,
+      "chcs": 2,
+      "subCentres": 147,
+      "doctorsAtPHC": 48,
+      "doctorsPer10K": 8.8
+    },
+    {
+      "id": "ar",
+      "name": "Arunachal Pradesh",
+      "bedsPerLakh": 14,
+      "phcs": 118,
+      "chcs": 62,
+      "subCentres": 404,
+      "doctorsAtPHC": 142,
+      "doctorsPer10K": 3.2
+    }
+  ],
+  "source": "World Bank + National Health Profile 2022"
+}
