@@ -1,0 +1,20 @@
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <!-- Indian Data Project — Waffle Fragment Logomark -->
+  <!-- Grid: 100x100 viewBox, 5px margin, 26px cells, 6px gaps, 3px radius -->
+  <!-- Color: 3-3-3 equal rows (Saffron / Gold / Cyan) -->
+  
+  <!-- Row 1: Saffron (#FF6B35) -->
+  <rect x="5" y="5" width="26" height="26" rx="3" fill="#FF6B35"/>
+  <rect x="37" y="5" width="26" height="26" rx="3" fill="#FF6B35"/>
+  <rect x="69" y="5" width="26" height="26" rx="3" fill="#FF6B35"/>
+  
+  <!-- Row 2: Gold (#FFC857) -->
+  <rect x="5" y="37" width="26" height="26" rx="3" fill="#FFC857"/>
+  <rect x="37" y="37" width="26" height="26" rx="3" fill="#FFC857"/>
+  <rect x="69" y="37" width="26" height="26" rx="3" fill="#FFC857"/>
+  
+  <!-- Row 3: Cyan (#4AEADC) -->
+  <rect x="5" y="69" width="26" height="26" rx="3" fill="#4AEADC"/>
+  <rect x="37" y="69" width="26" height="26" rx="3" fill="#4AEADC"/>
+  <rect x="69" y="69" width="26" height="26" rx="3" fill="#4AEADC"/>
+</svg>
