@@ -252,8 +252,10 @@ The site is built for maximum discoverability:
 - [ ] New data domain: State Finances (state budget allocations, GSDP, own tax revenue)
 - [ ] New data domain: Census & Demographics (population, literacy, urbanization, sex ratio)
 
-**Phase 5: Expanded Datasets**
-- [ ] Historical budget data (multi-year comparisons, trend lines)
+**Phase 5: Historical Data (all domains)**
+- [ ] Historical budget data (multi-year comparisons, trend lines across union budgets)
+- [ ] Historical economy data (GDP, inflation, trade over multiple survey periods)
+- [ ] Historical RBI data (extend MPC decision history, fill World Bank data gaps via DBIE)
 - [ ] State budget data (starting with major states)
 - [ ] RBI DBIE direct API integration (bypass World Bank lag for monetary indicators)
 
