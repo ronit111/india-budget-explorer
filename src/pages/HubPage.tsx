@@ -409,16 +409,15 @@ function EconomyDomainCard({ summary }: { summary: EconomySummary | null }) {
 function RBIDomainCard({ summary }: { summary: RBISummary | null }) {
   const [ref, isVisible] = useScrollTrigger({ threshold: 0.1 });
 
-  // Mini step chart: last 5 repo rate decisions
+  // Mini step chart: key repo rate milestones showing the full arc
   const rateSteps = useMemo(() => {
     if (!summary) return [];
-    // Hardcode recent repo rate trajectory for the hub sparkline
     return [
-      { label: 'May 22', rate: 4.40 },
-      { label: 'Sep 22', rate: 5.90 },
+      { label: 'May 20', rate: 4.00 },
       { label: 'Feb 23', rate: 6.50 },
       { label: 'Feb 25', rate: 6.25 },
-      { label: 'Apr 25', rate: 6.00 },
+      { label: 'Jun 25', rate: 5.50 },
+      { label: 'Feb 26', rate: 5.25 },
     ];
   }, [summary]);
 
@@ -489,20 +488,20 @@ function RBIDomainCard({ summary }: { summary: RBISummary | null }) {
               <div className="relative z-10">
                 {rateSteps.length > 0 && (
                   <div className="mb-6 max-w-xs">
-                    <div className="flex items-end gap-0 h-10 relative">
+                    <div className="flex gap-0 h-12 relative">
                       {rateSteps.map((d, i) => {
                         const pct = ((d.rate - minRate) / range) * 100;
+                        const targetHeight = `${Math.max(20, pct)}%`;
                         return (
-                          <div key={d.label} className="flex-1 relative">
+                          <div key={d.label} className="flex-1 relative h-full">
                             <motion.div
                               className="absolute bottom-0 left-0 right-0"
                               style={{
-                                height: `${Math.max(15, pct)}%`,
                                 background: 'var(--gold)',
                                 borderRadius: i === 0 ? '4px 0 0 0' : i === rateSteps.length - 1 ? '0 4px 0 0' : '0',
                               }}
-                              initial={{ height: 0 }}
-                              animate={isVisible ? { height: `${Math.max(15, pct)}%` } : {}}
+                              initial={{ height: '0%' }}
+                              animate={isVisible ? { height: targetHeight } : { height: '0%' }}
                               transition={{ duration: 0.6, ease: EASE_OUT_EXPO, delay: 0.4 + i * 0.06 }}
                             />
                           </div>
