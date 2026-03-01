@@ -1,5 +1,101 @@
 # Changelog
 
+## [0.15.0] - 2026-03-02
+
+### Phase 10B: Elections Domain
+
+**New domain: Elections** — Indigo accent (#6366F1). India's electoral data story spanning 17 Lok Sabha elections from 1962 to 2024.
+
+**Data Pipeline** (`pipeline/src/elections/`)
+- Purely curated pipeline (no API calls) — all data from authoritative government sources
+- 4 curated sources: ECI (turnout, state breakdown), TCPD Lok Dhaba (party-wise Lok Sabha results 1962-2024, 17 elections), ADR/MyNeta (543 MP criminal cases, assets, education for 2024), Lok Sabha Secretariat (women MPs trend)
+- 7 JSON output files: summary, turnout, results, candidates, representation, indicators, glossary
+- Pydantic validation schemas matching TypeScript interfaces
+- GitHub Actions semi-annual cron (`elections-pipeline.yml`, Jan 15 + Jul 15)
+
+**Scrollytelling** (5 sections + hero + CTA)
+1. **The World's Largest Election** — Turnout trends 1962-2024 (annotated LineChart with election event markers) + state-wise turnout 2024 (HorizontalBarChart)
+2. **Party Landscape** — Stacked AreaChart showing seat share evolution across 17 elections for major parties (BJP, INC, Left, Regional)
+3. **Lok Sabha 2024** — Parliament hemicycle (543 dots in concentric semicircular arcs colored by party) + top parties by seats (HorizontalBarChart)
+4. **Money & Muscle** — Top 20 wealthiest MPs (HorizontalBarChart) + top 20 by criminal cases + summary pills (criminal %, crorepati %, avg assets)
+5. **The Gender Gap** — Women MPs % trend (LineChart) with 33% reservation target dashed reference line
+
+**Sub-pages**
+- Explorer: 3 categories (All, Turnout, Representation), state-level indicator comparison
+- Methodology: 4-tier source documentation with links to ECI, TCPD, ADR, Lok Sabha Secretariat
+- Glossary: 15 election terms (FPTP, EVM, NOTA, Lok Sabha, anti-defection, delimitation, etc.)
+
+**Hub Integration**
+- Elections domain card (#10) with parliament hemicycle mini-viz (543 dots) + 3 stat pills (Turnout %, Criminal MPs %, Women MPs %)
+
+**Chart Infrastructure**
+- 5 chart registry entries (turnout, party-landscape, lok-sabha-2024, money-muscle, gender-gap)
+- ChartActionsWrapper on all section charts (PNG export, CSV, embed, permalink)
+- 13 citizen questions added to search (115 total across 10 domains)
+- Party colors section-scoped: BJP=#FF6B35, INC=#00BFFF, Left=#DC2626, BSP=#3B82F6, SP=#22C55E, TMC=#16A34A, Others=#9CA3AF
+
+**State Report Card Extension**
+- Environment panel (3 metrics: AQI Average, Forest Cover %, Groundwater Stage) added to `stateReportEngine.ts`
+- Elections panel (1 metric: Voter Turnout 2024 %) added to `stateReportEngine.ts`
+- State report card now loads 16 JSON files across 8 domains, 11 panels with ~25 metrics
+- Source attribution updated on report card page
+
+**SEO & Distribution**
+- 55 prerendered routes (was 50), updated sitemap with 4 page routes + 7 data URLs + 1 embed URL
+- Elections OG image (`og-elections.png`), JSON-LD Dataset entry, BreadcrumbList entries
+- `llms.txt` updated: ten domains, elections section with page routes
+- `index.html` noscript section with 4 stat bullets + 4 navigation links
+
+---
+
+## [0.14.0] - 2026-03-01
+
+### Phase 10A: Environment Domain
+
+**New domain: Environment** — Teal accent (#14B8A6). India's environmental data story across air, forests, energy, carbon, and water.
+
+**Data Pipeline** (`pipeline/src/environment/`)
+- 11 World Bank indicators (CO2/capita, PM2.5, forest %, renewables %, coal electricity, GHG, protected areas, energy use/capita, renewable electricity)
+- 5 curated government sources: CPCB state/city AQI (30 states, 30 cities), ISFR 2023 forest cover (36 states/UTs with change data), CEA installed capacity mix (8 fuel types, 2015-2024), CWC reservoir storage (4 regions), CGWB groundwater assessment (30 states)
+- 7 JSON output files: summary, air-quality, forest, energy, water, indicators, glossary
+- Pydantic validation schemas matching TypeScript interfaces
+- GitHub Actions quarterly cron (`environment-pipeline.yml`)
+
+**Scrollytelling** (5 sections + hero + CTA)
+1. **Air We Breathe** — PM2.5 trend (LineChart) + top 20 most polluted cities (HorizontalBarChart)
+2. **Forest Cover** — Forest area % trend (LineChart) + diverging bar chart (gainers vs losers by state, ISFR 2021→2023)
+3. **Energy Transition** — Stacked AreaChart showing installed capacity mix evolution (8 fuel types, 2015-2024)
+4. **Carbon Footprint** — Coal electricity % trend + peer comparison pills (India 1.9t vs US 14t vs China 8t vs World 4.7t)
+5. **Water Stress** — Groundwater exploitation by state (HorizontalBarChart) + reservoir storage by region + summary pills (Over-Exploited/Semi-Critical/Safe)
+
+**Sub-pages**
+- Explorer: 4 categories (All, Air, Forest, Water), state-level indicator comparison
+- Methodology: 5-tier source documentation with links to CPCB, ISFR, CEA, CWC/CGWB, World Bank
+- Glossary: 15 environment terms (AQI, PM2.5, NAAQS, carbon sink, groundwater stage, etc.)
+
+**Hub Integration**
+- Environment domain card (#09) with fossil-vs-renewable split bar mini-viz + 3 stat pills (PM2.5 with WHO multiplier, Forest Cover %, Renewables %)
+
+**Chart Infrastructure**
+- 5 chart registry entries (air-quality, forest-cover, energy-transition, carbon-footprint, water-stress)
+- ChartActionsWrapper on all section charts (PNG export, CSV, embed, permalink)
+- 13 citizen questions added to search (115 total across 9 domains)
+
+**HorizontalBarChart Diverging Support**
+- Added diverging bar support for mixed positive/negative datasets
+- Symmetric scale with zero reference line, bars extend left (negative) and right (positive)
+- Smart value label positioning: outside bar for small values, inside bar with contrasting fill for large negative bars (prevents label overlap)
+
+**Bug Fixes**
+- Fixed `'summary' is possibly null'` TypeScript build errors in 6 story pages (RBI, States, Census, Education, Employment, Healthcare) — added null guards around KeyTakeaways components
+
+**SEO & Distribution**
+- 50 prerendered routes (was 45), updated sitemap with 4 page routes + 7 data URLs + 1 embed URL
+- Environment OG image (`og-environment.png`), JSON-LD Dataset entry, BreadcrumbList entries
+- `llms.txt` updated: nine domains, environment section with page routes
+
+---
+
 ## [0.13.0] - 2026-03-01
 
 ### Phase 9: Key Insights & Question-First Search

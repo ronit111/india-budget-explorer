@@ -1,0 +1,81 @@
+name: Elections Pipeline
+
+# ── Schedule: aligned to election data cycles ────────────────────────
+# Election data is event-driven (Lok Sabha elections every 5 years).
+# ADR/TCPD updates come after each election cycle.
+# Semi-annual runs catch any corrections or supplementary data updates.
+# Curated data (TCPD results, ECI turnout, ADR profiles) lives in
+# pipeline source files and must be updated after each Lok Sabha election.
+
+on:
+  schedule:
+    # Semi-annual: Jan 15 + Jul 15 — 6 AM UTC (11:30 AM IST)
+    - cron: '0 6 15 1 *'    # Jan 15 — post-election season check
+    - cron: '0 6 15 7 *'    # Jul 15 — mid-year corrections
+  workflow_dispatch:
+    inputs:
+      force_refresh:
+        description: 'Force re-process all election data'
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  update-elections-data:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install pipeline dependencies
+        run: |
+          cd pipeline
+          pip install requests pydantic
+
+      - name: Run Elections pipeline
+        run: |
+          cd pipeline
+          python src/elections/main.py
+
+      - name: Check for data changes
+        id: changes
+        run: |
+          git diff --quiet public/data/elections/ && echo "changed=false" >> $GITHUB_OUTPUT || echo "changed=true" >> $GITHUB_OUTPUT
+
+      - name: Commit updated data
+        if: steps.changes.outputs.changed == 'true'
+        run: |
+          git config user.name "India Data Pipeline"
+          git config user.email "pipeline@india-data-portal.dev"
+          git add public/data/elections/
+          git commit -m "data: update Elections data $(date +%Y-%m-%d)
+
+          Automated pipeline run. Sources: curated ECI/TCPD/ADR/Lok Sabha Secretariat data.
+          Triggered by: ${{ github.event_name }}"
+          git push
+
+      - name: Open issue on failure
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: `Elections pipeline failure: ${new Date().toISOString().slice(0,10)}`,
+              body: `The Elections data pipeline failed.\n\n` +
+                    `**Trigger:** ${context.eventName}\n` +
+                    `**Run:** ${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}\n\n` +
+                    `The frontend continues serving the last known good data.`,
+              labels: ['pipeline', 'automated']
+            });

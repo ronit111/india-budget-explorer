@@ -16,6 +16,7 @@ const ICONS = {
   education: 'M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222',
   employment: 'M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2M3 8a2 2 0 012-2h14a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V8z',
   healthcare: 'M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z',
+  elections: 'M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4',
   reportCard: 'M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01',
 };
 
@@ -29,6 +30,8 @@ export function MobileNav() {
   const isEducationSection = location.pathname.startsWith('/education');
   const isEmploymentSection = location.pathname.startsWith('/employment');
   const isHealthcareSection = location.pathname.startsWith('/healthcare');
+  const isEnvironmentSection = location.pathname.startsWith('/environment');
+  const isElectionsSection = location.pathname.startsWith('/elections');
 
   const hubTabs = [
     { to: '/', label: 'Home', icon: ICONS.home },
@@ -107,6 +110,22 @@ export function MobileNav() {
     { to: '/healthcare/glossary', label: 'Glossary', icon: ICONS.glossary },
   ];
 
+  const environmentTabs = [
+    { to: '/', label: 'Hub', icon: ICONS.home },
+    { to: '/environment', label: 'Story', icon: ICONS.healthcare },
+    { to: '/environment/explore', label: 'Explore', icon: ICONS.explore },
+    { to: '/environment/methodology', label: 'Methods', icon: ICONS.methodology },
+    { to: '/environment/glossary', label: 'Glossary', icon: ICONS.glossary },
+  ];
+
+  const electionsTabs = [
+    { to: '/', label: 'Hub', icon: ICONS.home },
+    { to: '/elections', label: 'Story', icon: ICONS.elections },
+    { to: '/elections/explore', label: 'Explore', icon: ICONS.explore },
+    { to: '/elections/methodology', label: 'Methods', icon: ICONS.methodology },
+    { to: '/elections/glossary', label: 'Glossary', icon: ICONS.glossary },
+  ];
+
   const tabs = isBudgetSection
     ? budgetTabs
     : isEconomySection
@@ -123,6 +142,10 @@ export function MobileNav() {
                 ? employmentTabs
                 : isHealthcareSection
                   ? healthcareTabs
+                  : isEnvironmentSection
+                    ? environmentTabs
+                    : isElectionsSection
+                      ? electionsTabs
                   : hubTabs;
 
   const isActiveTab = (tabTo: string) => {
@@ -135,6 +158,8 @@ export function MobileNav() {
     if (tabTo === '/education') return location.pathname === '/education';
     if (tabTo === '/employment') return location.pathname === '/employment';
     if (tabTo === '/healthcare') return location.pathname === '/healthcare';
+    if (tabTo === '/environment') return location.pathname === '/environment';
+    if (tabTo === '/elections') return location.pathname === '/elections';
     return location.pathname === tabTo;
   };
 

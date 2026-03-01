@@ -1,0 +1,311 @@
+"""
+Elections Data Pipeline — main entry point.
+
+Stages:
+  1. FETCH   — All curated (no API calls). Purely deterministic pipeline.
+  2. TRANSFORM — Build output schemas from curated constants
+  3. VALIDATE — Pydantic model checks
+  4. PUBLISH — Write JSON to public/data/elections/
+
+Data sources (all curated from authoritative publications):
+  - Election Commission of India (ECI): Official results, turnout statistics
+  - TCPD Lok Dhaba (Ashoka University): Compiled ECI data across 17 elections
+  - ADR / MyNeta: Candidate affidavit analysis (criminal cases, assets, education)
+  - Lok Sabha Secretariat / PRS: Women MPs trend, legislative data
+
+Coverage: 2nd Lok Sabha (1957) to 18th Lok Sabha (2024) — 17 elections
+"""
+
+import logging
+import sys
+from datetime import date
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent))
+
+from src.elections.sources.curated import (
+    TURNOUT_TREND,
+    ELECTION_EVENTS,
+    STATE_TURNOUT_2024,
+    SEAT_EVOLUTION,
+    RESULTS_2024_PARTIES,
+    WOMEN_MPS_TREND,
+    ADR_SUMMARY,
+    ADR_TOP_WEALTHIEST,
+    ADR_TOP_CRIMINAL,
+    NATIONAL_TOTALS,
+)
+from src.elections.transform.turnout import build_turnout
+from src.elections.transform.results import build_results
+from src.elections.transform.candidates import build_candidates
+from src.elections.transform.representation import build_representation
+from src.elections.validate.schemas import (
+    ElectionsSummary,
+    TurnoutData,
+    ResultsData,
+    CandidatesData,
+    RepresentationData,
+    ElectionsIndicatorsData,
+    GlossaryData,
+)
+from src.publish.writer import publish_all
+
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s [%(levelname)s] %(name)s: %(message)s",
+)
+logger = logging.getLogger("elections-pipeline")
+
+SURVEY_YEAR = "2025-26"
+
+
+def run_elections_pipeline():
+    logger.info("=" * 60)
+    logger.info(f"Elections Data Pipeline — {SURVEY_YEAR}")
+    logger.info("=" * 60)
+
+    # ── Stage 1: FETCH (all curated — no API calls) ─────────────────
+    logger.info("Stage 1: FETCH (curated data — no API calls)")
+    logger.info(f"  Turnout trend: {len(TURNOUT_TREND)} elections")
+    logger.info(f"  Seat evolution: {len(SEAT_EVOLUTION)} elections × 8 party groups")
+    logger.info(f"  2024 parties: {len(RESULTS_2024_PARTIES)} entries")
+    logger.info(f"  State turnout 2024: {len(STATE_TURNOUT_2024)} states/UTs")
+    logger.info(f"  Women MPs trend: {len(WOMEN_MPS_TREND)} elections")
+    logger.info(f"  ADR top wealthiest: {len(ADR_TOP_WEALTHIEST)} MPs")
+    logger.info(f"  ADR top criminal: {len(ADR_TOP_CRIMINAL)} MPs")
+
+    # ── Stage 2: TRANSFORM ───────────────────────────────────────────
+    logger.info("Stage 2: TRANSFORM")
+
+    turnout_data = build_turnout(TURNOUT_TREND, ELECTION_EVENTS,
+                                 STATE_TURNOUT_2024, SURVEY_YEAR)
+    results_data = build_results(SEAT_EVOLUTION, RESULTS_2024_PARTIES, SURVEY_YEAR)
+    candidates_data = build_candidates(ADR_SUMMARY, ADR_TOP_WEALTHIEST,
+                                       ADR_TOP_CRIMINAL, SURVEY_YEAR)
+    representation_data = build_representation(WOMEN_MPS_TREND, SURVEY_YEAR)
+    summary_data = _build_summary()
+    indicators_data = _build_indicators()
+    glossary_data = _build_glossary()
+
+    # ── Stage 3: VALIDATE ────────────────────────────────────────────
+    logger.info("Stage 3: VALIDATE")
+    errors = []
+
+    validations = [
+        ("summary.json", ElectionsSummary, summary_data),
+        ("turnout.json", TurnoutData, turnout_data),
+        ("results.json", ResultsData, results_data),
+        ("candidates.json", CandidatesData, candidates_data),
+        ("representation.json", RepresentationData, representation_data),
+        ("indicators.json", ElectionsIndicatorsData, indicators_data),
+        ("glossary.json", GlossaryData, glossary_data),
+    ]
+
+    for name, model, data in validations:
+        try:
+            model(**data)
+            logger.info(f"  {name} ✓")
+        except Exception as e:
+            errors.append(f"{name}: {e}")
+            logger.error(f"  {name} FAILED: {e}")
+
+    if errors:
+        logger.error(f"Validation failed with {len(errors)} error(s):")
+        for err in errors:
+            logger.error(f"  - {err}")
+        sys.exit(1)
+
+    # ── Stage 4: PUBLISH ─────────────────────────────────────────────
+    logger.info("Stage 4: PUBLISH")
+    outputs = {
+        f"elections/{SURVEY_YEAR}/summary.json": summary_data,
+        f"elections/{SURVEY_YEAR}/turnout.json": turnout_data,
+        f"elections/{SURVEY_YEAR}/results.json": results_data,
+        f"elections/{SURVEY_YEAR}/candidates.json": candidates_data,
+        f"elections/{SURVEY_YEAR}/representation.json": representation_data,
+        f"elections/{SURVEY_YEAR}/indicators.json": indicators_data,
+        f"elections/{SURVEY_YEAR}/glossary.json": glossary_data,
+    }
+
+    paths = publish_all(outputs)
+    logger.info(f"Published {len(paths)} files")
+
+    logger.info("=" * 60)
+    logger.info("Elections pipeline complete!")
+    logger.info("=" * 60)
+
+
+def _build_summary() -> dict:
+    return {
+        "year": SURVEY_YEAR,
+        "turnout2024": NATIONAL_TOTALS["turnout2024"],
+        "totalElectorsCrore": NATIONAL_TOTALS["totalElectorsCrore"],
+        "bjpSeats2024": NATIONAL_TOTALS["bjpSeats2024"],
+        "incSeats2024": NATIONAL_TOTALS["incSeats2024"],
+        "ndaSeats2024": NATIONAL_TOTALS["ndaSeats2024"],
+        "indiaAllianceSeats2024": NATIONAL_TOTALS["indiaAllianceSeats2024"],
+        "womenMPs2024": NATIONAL_TOTALS["womenMPs2024"],
+        "womenMPsPct2024": NATIONAL_TOTALS["womenMPsPct2024"],
+        "criminalPct": NATIONAL_TOTALS["criminalPct"],
+        "seriousCriminalPct": NATIONAL_TOTALS["seriousCriminalPct"],
+        "avgAssetsCrore": NATIONAL_TOTALS["avgAssetsCrore"],
+        "totalConstituencies": NATIONAL_TOTALS["totalConstituencies"],
+        "lastUpdated": date.today().isoformat(),
+        "source": "ECI + ADR / MyNeta",
+    }
+
+
+def _build_indicators() -> dict:
+    """Build state-level indicators for the Explorer page."""
+    indicators = []
+
+    # Voter turnout 2024 by state
+    indicators.append({
+        "id": "turnout_2024",
+        "name": "Voter Turnout 2024",
+        "category": "participation",
+        "unit": "%",
+        "states": [
+            {"id": s["id"], "name": s["name"], "value": s["turnout"]}
+            for s in STATE_TURNOUT_2024
+        ],
+        "source": "ECI 2024",
+    })
+
+    return {
+        "year": SURVEY_YEAR,
+        "indicators": indicators,
+    }
+
+
+def _build_glossary() -> dict:
+    return {
+        "domain": "elections",
+        "year": SURVEY_YEAR,
+        "terms": [
+            {
+                "id": "lok-sabha",
+                "term": "Lok Sabha",
+                "simple": "The lower house of India's Parliament, with 543 elected members who represent constituencies across the country.",
+                "detail": "Lok Sabha (House of the People) is the directly elected chamber of Parliament. Members are chosen through first-past-the-post voting from single-member constituencies. The party or coalition with a majority (272+ seats) forms the government. The term is 5 years unless dissolved earlier. The 18th Lok Sabha was elected in April-June 2024. Article 81 of the Constitution determines its composition.",
+                "inContext": "543 constituencies, 5-year term. 272 seats needed for majority.",
+                "relatedTerms": ["fptp", "constituency", "general-election"],
+            },
+            {
+                "id": "fptp",
+                "term": "First Past the Post (FPTP)",
+                "simple": "The voting system where the candidate with the most votes wins, even without a majority.",
+                "detail": "India uses FPTP (also called simple plurality) for Lok Sabha and state assembly elections. In each constituency, the candidate with the highest votes wins — even if that's only 25-30% of votes cast. This creates significant distortion: in 2014, BSP got 4.1% of national votes but won 0 seats, while parties with lower vote shares but geographic concentration won seats. FPTP favors large parties and regional concentration over diffuse national support.",
+                "inContext": "BSP 2014: 4.1% votes, 0 seats. FPTP rewards geographic concentration over diffuse support.",
+                "relatedTerms": ["lok-sabha", "vote-share"],
+            },
+            {
+                "id": "constituency",
+                "term": "Constituency",
+                "simple": "A geographic area that elects one Member of Parliament. India has 543 such areas.",
+                "detail": "Each Lok Sabha constituency represents roughly equal population (not area). Boundaries are redrawn by the Delimitation Commission — last done in 2008 based on Census 2001 data. Population per constituency ranges from ~7 lakh (Lakshadweep) to ~34 lakh (Malkajgiri, Telangana). The next delimitation, triggered by the 2023 Women's Reservation Act, will use the first post-Act Census. Constituency boundaries directly affect representation: large states like UP have 80 seats while small northeastern states have 1-2.",
+                "inContext": "543 constituencies. Next delimitation will follow the first Census after the 2023 Act.",
+                "relatedTerms": ["lok-sabha", "delimitation"],
+            },
+            {
+                "id": "general-election",
+                "term": "General Election",
+                "simple": "A nationwide election to choose all 543 Members of Parliament for the Lok Sabha.",
+                "detail": "General elections are conducted by the Election Commission of India (ECI), typically in multiple phases over 4-6 weeks to manage logistics for 96+ crore voters. India has held 18 general elections since 1951. The 2024 election was the largest democratic exercise in history: 7 phases, 44 days, 10.5 lakh polling stations. The Model Code of Conduct applies from announcement to results. EVM (Electronic Voting Machine) + VVPAT (paper trail) are used since 2019.",
+                "inContext": "2024: 7 phases, 96.88 crore electors, 10.5 lakh polling stations.",
+                "relatedTerms": ["lok-sabha", "evm", "eci"],
+            },
+            {
+                "id": "evm",
+                "term": "Electronic Voting Machine (EVM)",
+                "simple": "A portable electronic device used in Indian elections instead of paper ballots.",
+                "detail": "India shifted from paper ballots to EVMs starting 1998, with full adoption by 2004. Each EVM has a Ballot Unit (voter presses button next to candidate name) and a Control Unit (stores vote count). Since 2019, every EVM is paired with a VVPAT (Voter Verifiable Paper Audit Trail) that prints a slip visible for 7 seconds. EVMs are designed by ECIL and BEL (government companies). They are standalone devices — not connected to any network. Supreme Court mandated VVPAT verification for 5 random EVMs per constituency.",
+                "inContext": "Full EVM adoption since 2004. VVPAT paired since 2019. 5 random checks per constituency.",
+                "relatedTerms": ["general-election", "eci"],
+            },
+            {
+                "id": "eci",
+                "term": "Election Commission of India (ECI)",
+                "simple": "The independent constitutional body that conducts and supervises all elections in India.",
+                "detail": "Established under Article 324. The ECI is a multi-member commission (Chief Election Commissioner + 2 Election Commissioners). It controls the entire election process: announcing dates, enforcing Model Code of Conduct, registering parties, allocating symbols, monitoring spending, and declaring results. The CEC can only be removed through impeachment (same as a Supreme Court judge). ECI managed the 2024 election covering 96.88 crore voters across 10.5 lakh polling stations — the largest electoral exercise in human history.",
+                "inContext": "Constitutional body (Article 324). Manages elections for 96+ crore voters.",
+                "relatedTerms": ["general-election", "evm", "mcc"],
+            },
+            {
+                "id": "mcc",
+                "term": "Model Code of Conduct (MCC)",
+                "simple": "Rules that political parties and candidates must follow from election announcement to results.",
+                "detail": "The MCC isn't a law — it's a set of guidelines that parties voluntarily agree to follow, enforced by ECI through moral authority and administrative action. Key rules: no government announcements/inaugurations after announcement, no appeals to caste/religion, no bribing/intimidating voters, no misuse of government machinery, equal media access. Violations can lead to ECI notices, filing of FIRs, or debarment from campaigning. The MCC kicks in from the date of announcement, not the date of notification.",
+                "inContext": "Not a law — enforced through ECI authority. Active from announcement to results.",
+                "relatedTerms": ["eci", "general-election"],
+            },
+            {
+                "id": "vote-share",
+                "term": "Vote Share",
+                "simple": "The percentage of total votes a party receives across all constituencies in the election.",
+                "detail": "Vote share measures a party's overall support, while seat share measures electoral success. Due to FPTP, these can diverge dramatically. In 2024: BJP got 36.6% vote share but 44.2% of seats. In 2014: BSP got 4.1% vote share but 0 seats (most extreme FPTP distortion in Indian history — representing ~2.3 crore votes that elected nobody). Regional parties with concentrated support (DMK: 1.8% national share, 22 seats) outperform parties with diffuse support.",
+                "inContext": "BJP 2024: 36.6% votes → 44.2% seats. BSP 2014: 4.1% votes → 0 seats.",
+                "relatedTerms": ["fptp", "constituency"],
+            },
+            {
+                "id": "nota",
+                "term": "NOTA (None of the Above)",
+                "simple": "An option on the ballot that lets voters reject all candidates without spoiling their vote.",
+                "detail": "Introduced by Supreme Court order in 2013 (PUCL v. Union of India). NOTA allows voters to formally express dissatisfaction with all candidates. However, NOTA has no electoral consequence — even if NOTA gets the highest votes, the candidate with the most votes among actual candidates still wins. In 2024, NOTA received about 0.6% of total votes (~40 lakh votes). Critics argue NOTA is meaningless without a 'right to reject' that triggers re-election. Some state elections have seen NOTA outpolling candidates.",
+                "inContext": "Introduced 2013. ~0.6% of votes in 2024. No electoral consequence — winner still wins.",
+                "relatedTerms": ["fptp", "general-election"],
+            },
+            {
+                "id": "affidavit",
+                "term": "Candidate Affidavit",
+                "simple": "A sworn legal document every candidate must file, declaring their criminal record, assets, education, and liabilities.",
+                "detail": "Since 2003 (Supreme Court directive in Union of India v. ADR), all candidates must file affidavits with the Returning Officer. These are public documents, searchable on myneta.info. Mandatory disclosures: criminal cases (pending + convicted), total assets + liabilities, educational qualifications, sources of income. False information can lead to disqualification. ADR (Association for Democratic Reforms) systematically analyzes all 543 winning MPs' affidavits after each election. In 2024: 46% of MPs declared criminal cases, average declared assets were ₹97.3 crore.",
+                "inContext": "Mandatory since 2003. In 2024: 46% of MPs declared criminal cases.",
+                "relatedTerms": ["adr"],
+            },
+            {
+                "id": "adr",
+                "term": "ADR (Association for Democratic Reforms)",
+                "simple": "An independent organization that analyzes election data, candidate backgrounds, and political funding in India.",
+                "detail": "Founded in 1999 by IIM-Ahmedabad professors. ADR pioneered the Right to Information about candidates — their PIL led to the Supreme Court's 2003 affidavit mandate. ADR analyzes every election: tracking criminal backgrounds, assets, education, and funding of candidates. Their reports (published at adrindia.org and myneta.info) are the most comprehensive source for candidate-level data. ADR also advocates for electoral reforms: state funding of elections, inner-party democracy, and criminality disclosure.",
+                "inContext": "Founded 1999. Pioneered candidate disclosure via PIL. Data at myneta.info.",
+                "relatedTerms": ["affidavit"],
+            },
+            {
+                "id": "delimitation",
+                "term": "Delimitation",
+                "simple": "The process of redrawing constituency boundaries to ensure roughly equal population in each area.",
+                "detail": "Delimitation is done by a Delimitation Commission (headed by a retired Supreme Court judge) using Census population data. Last delimitation: 2008 (based on Census 2001). Constituency count was frozen at 543 by the 42nd Amendment (1976) until 2026 to not penalize states that reduced population growth. This freeze created massive disparities: UP's constituencies average ~33 lakh people while South Indian states average ~17-20 lakh. The 2023 Women's Reservation Act will trigger next delimitation. Southern states fear losing seats to northern states with higher population growth.",
+                "inContext": "Last: 2008. Frozen at 543 seats until 2026. Next triggered by 2023 Reservation Act.",
+                "relatedTerms": ["constituency", "lok-sabha"],
+            },
+            {
+                "id": "coalition",
+                "term": "Coalition Government",
+                "simple": "A government formed by multiple parties joining together when no single party wins a majority of 272 seats.",
+                "detail": "India's FPTP system with diverse states means single-party majorities are rare. From 1989-2014, every government was a coalition. Major coalitions: NDA (BJP-led, 1998-2004, 2014-present) and UPA (Congress-led, 2004-2014). Coalitions require negotiating ministerial berths, policy compromises, and managing alliance partners. The 2024 election returned India to dependent coalitions: BJP won 240 seats (below 272), relying on TDP (16) and JD(U) (12) for majority. Coalition politics gives disproportionate leverage to small parties.",
+                "inContext": "1989-2014: all coalition governments. 2024: BJP relies on TDP + JD(U) for majority.",
+                "relatedTerms": ["lok-sabha", "fptp"],
+            },
+            {
+                "id": "nari-shakti",
+                "term": "Nari Shakti Vandan Adhiniyam (Women's Reservation Act)",
+                "simple": "A 2023 law reserving 33% of Lok Sabha and state assembly seats for women.",
+                "detail": "Passed by both houses of Parliament in September 2023 (128th Constitutional Amendment). The Bill was first introduced in 1996 and failed repeatedly for 27 years. Key provisions: 33% reservation for women in Lok Sabha and state assemblies, with sub-reservation for SC/ST women. However, it will only take effect AFTER the next delimitation, which requires a new Census. Current women's representation in Lok Sabha: 13.6% (74 out of 543). The global average for women in national parliaments is ~27%. The Act could potentially add ~105 more women MPs.",
+                "inContext": "Passed 2023 after 27 years. 33% reservation. Effective after next delimitation + Census.",
+                "relatedTerms": ["delimitation", "lok-sabha"],
+            },
+            {
+                "id": "turnout",
+                "term": "Voter Turnout",
+                "simple": "The percentage of registered voters who actually cast their vote in an election.",
+                "detail": "India's turnout has ranged from 47.7% (1957) to 67.4% (2019). The 2024 turnout was 65.8%. India's turnout is moderate by global standards (Belgium: ~88% compulsory, US: ~66%, UK: ~67%). Turnout varies enormously by state: Lakshadweep (84.1%) vs. Uttar Pradesh (56.0%). Factors: distance to polling station, weather, perception of candidate quality, festival/harvest timing, booth-level agents. ECI initiatives: SVEEP (voter education), postal ballots for service voters, home voting for 80+ and disabled.",
+                "inContext": "2024 turnout: 65.8%. Highest ever: 67.4% (2019). Range: 84% (Lakshadweep) to 56% (UP).",
+                "relatedTerms": ["general-election", "eci"],
+            },
+        ],
+    }
+
+
+if __name__ == "__main__":
+    run_elections_pipeline()

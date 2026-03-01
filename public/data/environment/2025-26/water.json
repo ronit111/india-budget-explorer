@@ -1,0 +1,218 @@
+{
+  "year": "2025-26",
+  "reservoirStorage": [
+    {
+      "region": "North",
+      "storagePct": 47,
+      "reservoirCount": 15,
+      "capacityBCM": 19.66
+    },
+    {
+      "region": "East",
+      "storagePct": 39,
+      "reservoirCount": 23,
+      "capacityBCM": 21.38
+    },
+    {
+      "region": "West",
+      "storagePct": 51,
+      "reservoirCount": 36,
+      "capacityBCM": 37.13
+    },
+    {
+      "region": "Central",
+      "storagePct": 43,
+      "reservoirCount": 26,
+      "capacityBCM": 48.3
+    },
+    {
+      "region": "South",
+      "storagePct": 56,
+      "reservoirCount": 50,
+      "capacityBCM": 53.33
+    }
+  ],
+  "groundwaterStage": [
+    {
+      "id": "DL",
+      "name": "Delhi",
+      "stagePct": 137,
+      "stage": "Over-Exploited"
+    },
+    {
+      "id": "RJ",
+      "name": "Rajasthan",
+      "stagePct": 140,
+      "stage": "Over-Exploited"
+    },
+    {
+      "id": "HR",
+      "name": "Haryana",
+      "stagePct": 137,
+      "stage": "Over-Exploited"
+    },
+    {
+      "id": "PB",
+      "name": "Punjab",
+      "stagePct": 165,
+      "stage": "Over-Exploited"
+    },
+    {
+      "id": "TN",
+      "name": "Tamil Nadu",
+      "stagePct": 77,
+      "stage": "Semi-Critical"
+    },
+    {
+      "id": "UP",
+      "name": "Uttar Pradesh",
+      "stagePct": 74,
+      "stage": "Semi-Critical"
+    },
+    {
+      "id": "KA",
+      "name": "Karnataka",
+      "stagePct": 73,
+      "stage": "Semi-Critical"
+    },
+    {
+      "id": "GJ",
+      "name": "Gujarat",
+      "stagePct": 69,
+      "stage": "Safe"
+    },
+    {
+      "id": "MP",
+      "name": "Madhya Pradesh",
+      "stagePct": 56,
+      "stage": "Safe"
+    },
+    {
+      "id": "MH",
+      "name": "Maharashtra",
+      "stagePct": 54,
+      "stage": "Safe"
+    },
+    {
+      "id": "AP",
+      "name": "Andhra Pradesh",
+      "stagePct": 51,
+      "stage": "Safe"
+    },
+    {
+      "id": "TS",
+      "name": "Telangana",
+      "stagePct": 48,
+      "stage": "Safe"
+    },
+    {
+      "id": "WB",
+      "name": "West Bengal",
+      "stagePct": 44,
+      "stage": "Safe"
+    },
+    {
+      "id": "BR",
+      "name": "Bihar",
+      "stagePct": 42,
+      "stage": "Safe"
+    },
+    {
+      "id": "OD",
+      "name": "Odisha",
+      "stagePct": 35,
+      "stage": "Safe"
+    },
+    {
+      "id": "JH",
+      "name": "Jharkhand",
+      "stagePct": 32,
+      "stage": "Safe"
+    },
+    {
+      "id": "CG",
+      "name": "Chhattisgarh",
+      "stagePct": 28,
+      "stage": "Safe"
+    },
+    {
+      "id": "AS",
+      "name": "Assam",
+      "stagePct": 22,
+      "stage": "Safe"
+    },
+    {
+      "id": "KL",
+      "name": "Kerala",
+      "stagePct": 47,
+      "stage": "Safe"
+    },
+    {
+      "id": "UK",
+      "name": "Uttarakhand",
+      "stagePct": 38,
+      "stage": "Safe"
+    },
+    {
+      "id": "HP",
+      "name": "Himachal Pradesh",
+      "stagePct": 24,
+      "stage": "Safe"
+    },
+    {
+      "id": "JK",
+      "name": "Jammu & Kashmir",
+      "stagePct": 19,
+      "stage": "Safe"
+    },
+    {
+      "id": "GA",
+      "name": "Goa",
+      "stagePct": 26,
+      "stage": "Safe"
+    },
+    {
+      "id": "SK",
+      "name": "Sikkim",
+      "stagePct": 8,
+      "stage": "Safe"
+    },
+    {
+      "id": "NL",
+      "name": "Nagaland",
+      "stagePct": 6,
+      "stage": "Safe"
+    },
+    {
+      "id": "MZ",
+      "name": "Mizoram",
+      "stagePct": 5,
+      "stage": "Safe"
+    },
+    {
+      "id": "ML",
+      "name": "Meghalaya",
+      "stagePct": 4,
+      "stage": "Safe"
+    },
+    {
+      "id": "MN",
+      "name": "Manipur",
+      "stagePct": 3,
+      "stage": "Safe"
+    },
+    {
+      "id": "AR",
+      "name": "Arunachal Pradesh",
+      "stagePct": 2,
+      "stage": "Safe"
+    },
+    {
+      "id": "TR",
+      "name": "Tripura",
+      "stagePct": 15,
+      "stage": "Safe"
+    }
+  ],
+  "source": "CWC Reservoir Bulletin + CGWB Assessment 2023"
+}

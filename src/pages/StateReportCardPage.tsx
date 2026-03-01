@@ -16,6 +16,10 @@ import {
   loadParticipation,
   loadInfrastructure,
   loadDisease,
+  loadAirQuality,
+  loadForest,
+  loadWater,
+  loadTurnout,
 } from '../lib/dataLoader.ts';
 import { StateSelector } from '../components/personalization/StateSelector.tsx';
 import { ReportCardGrid } from '../components/report-card/ReportCardGrid.tsx';
@@ -54,6 +58,10 @@ export default function StateReportCardPage() {
       { key: 'participation', fn: () => loadParticipation(year) },
       { key: 'infrastructure', fn: () => loadInfrastructure(year) },
       { key: 'disease', fn: () => loadDisease(year) },
+      { key: 'airQuality', fn: () => loadAirQuality(year) },
+      { key: 'forest', fn: () => loadForest(year) },
+      { key: 'water', fn: () => loadWater(year) },
+      { key: 'turnout', fn: () => loadTurnout(year) },
     ] as const;
 
     Promise.allSettled(loaders.map((l) => l.fn())).then((results) => {
@@ -99,7 +107,7 @@ export default function StateReportCardPage() {
     >
       <SEOHead
         title={`${report.state.name} — State Report Card`}
-        description={`How does ${report.state.name} compare to other states? See rankings across economy, budget, education, healthcare, and more.`}
+        description={`How does ${report.state.name} compare to other states? See rankings across economy, budget, education, healthcare, environment, elections, and more.`}
         path="/states/your-state"
         image="/og-state-report-card.png"
       />
@@ -177,7 +185,7 @@ export default function StateReportCardPage() {
         <p className="text-xs text-center mt-12" style={{ color: 'var(--text-muted)' }}>
           Sources: RBI Handbook (GSDP, Revenue, Fiscal Health), Census 2011 + NPC 2026 (Demographics),
           UDISE+ 2023-24 (Education), PLFS 2023-24 (Employment), NHP 2022 + NFHS-5 (Healthcare),
-          Union Budget 2025-26 (Budget Allocation).
+          Union Budget 2025-26 (Budget Allocation), CPCB + FSI + CGWB (Environment), ECI (Elections).
         </p>
       </div>
     </motion.div>

@@ -65,7 +65,9 @@ export function SearchOverlay() {
       loadGlossary('education', '2025-26').catch(() => null),
       loadGlossary('employment', '2025-26').catch(() => null),
       loadGlossary('healthcare', '2025-26').catch(() => null),
-    ]).then(([budget, economy, rbi, states, census, education, employment, healthcare]) => {
+      loadGlossary('environment', '2025-26').catch(() => null),
+      loadGlossary('elections', '2025-26').catch(() => null),
+    ]).then(([budget, economy, rbi, states, census, education, employment, healthcare, environment, elections]) => {
       const items: SearchItem[] = [];
       if (budget) items.push(...budget.terms.map((t) => glossaryTermToSearchItem(t, 'budget')));
       if (economy) items.push(...economy.terms.map((t) => glossaryTermToSearchItem(t, 'economy')));
@@ -75,6 +77,8 @@ export function SearchOverlay() {
       if (education) items.push(...education.terms.map((t) => glossaryTermToSearchItem(t, 'education')));
       if (employment) items.push(...employment.terms.map((t) => glossaryTermToSearchItem(t, 'employment')));
       if (healthcare) items.push(...healthcare.terms.map((t) => glossaryTermToSearchItem(t, 'healthcare')));
+      if (environment) items.push(...environment.terms.map((t) => glossaryTermToSearchItem(t, 'environment')));
+      if (elections) items.push(...elections.terms.map((t) => glossaryTermToSearchItem(t, 'elections')));
       setGlossaryTerms(items);
     });
 
@@ -143,6 +147,14 @@ export function SearchOverlay() {
     { type: 'page', id: 'healthcare-explore', name: 'Healthcare Explorer', subtitle: 'Browse health indicators by state', route: '/healthcare/explore' },
     { type: 'page', id: 'healthcare-methodology', name: 'Healthcare Methodology', subtitle: 'NHP, NFHS-5, and World Bank data sources', route: '/healthcare/methodology' },
     { type: 'page', id: 'healthcare-glossary', name: 'Healthcare Glossary', subtitle: 'Healthcare terms in plain language', route: '/healthcare/glossary' },
+    { type: 'page', id: 'environment', name: 'Environment', subtitle: 'Air quality, forest cover, energy transition, water stress', route: '/environment' },
+    { type: 'page', id: 'environment-explore', name: 'Environment Explorer', subtitle: 'Browse environment indicators by state', route: '/environment/explore' },
+    { type: 'page', id: 'environment-methodology', name: 'Environment Methodology', subtitle: 'CPCB, ISFR, CEA, CWC, and World Bank data sources', route: '/environment/methodology' },
+    { type: 'page', id: 'environment-glossary', name: 'Environment Glossary', subtitle: 'Environment terms in plain language', route: '/environment/glossary' },
+    { type: 'page', id: 'elections', name: 'Elections', subtitle: 'Turnout, party landscape, candidates, women in Parliament', route: '/elections' },
+    { type: 'page', id: 'elections-explore', name: 'Elections Explorer', subtitle: 'Browse election indicators by state', route: '/elections/explore' },
+    { type: 'page', id: 'elections-methodology', name: 'Elections Methodology', subtitle: 'ECI, TCPD, and ADR data sources', route: '/elections/methodology' },
+    { type: 'page', id: 'elections-glossary', name: 'Elections Glossary', subtitle: 'Election terms in plain language', route: '/elections/glossary' },
     { type: 'page', id: 'emi-calculator', name: 'EMI Calculator', subtitle: 'How repo rate changes affect your loan EMI', route: '/rbi/calculator' },
     { type: 'page', id: 'cost-of-living', name: 'Cost of Living Calculator', subtitle: 'How inflation changed your spending power', route: '/economy/calculator' },
     { type: 'page', id: 'state-report-card', name: 'State Report Card', subtitle: 'Your state ranked across 6 domains', route: '/states/your-state' },

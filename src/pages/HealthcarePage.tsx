@@ -58,7 +58,7 @@ export default function HealthcarePage() {
 
       <HealthcareHeroSection summary={summary} />
 
-      <KeyTakeaways
+      {summary && <KeyTakeaways
         accent="#F43F5E"
         pills={[
           { value: `${summary.outOfPocketPct}%`, label: 'You pay half your medical bills from your pocket', sectionId: 'oop' },
@@ -66,7 +66,7 @@ export default function HealthcarePage() {
           { value: `${summary.healthExpGDP}% of GDP`, label: 'What India spends on your health', sectionId: 'spending' },
           { value: `${summary.tbIncidence}/lakh`, label: 'TB cases — highest burden in the world', sectionId: 'disease' },
         ]}
-      />
+      />}
 
       <div className="composition-divider" />
 

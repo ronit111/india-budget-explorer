@@ -30,10 +30,13 @@ const ROUTES = [
   '/education', '/education/explore', '/education/methodology', '/education/glossary',
   '/employment', '/employment/explore', '/employment/methodology', '/employment/glossary',
   '/healthcare', '/healthcare/explore', '/healthcare/methodology', '/healthcare/glossary',
+  '/environment', '/environment/explore', '/environment/methodology', '/environment/glossary',
+  '/elections', '/elections/explore', '/elections/methodology', '/elections/glossary',
   // Representative embed routes (one per domain)
   '/embed/budget/revenue', '/embed/economy/growth', '/embed/rbi/monetary-policy',
   '/embed/states/gsdp', '/embed/census/population', '/embed/education/enrollment',
-  '/embed/employment/participation', '/embed/healthcare/infrastructure',
+  '/embed/employment/participation', '/embed/healthcare/infrastructure', '/embed/environment/air-quality',
+  '/embed/elections/turnout',
 ];
 
 const MIME_TYPES = {

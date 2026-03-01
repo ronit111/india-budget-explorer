@@ -62,7 +62,8 @@
         "Healthcare infrastructure, spending, immunization, and disease burden",
         "EMI impact calculator showing repo rate effects on home, car, and personal loans",
         "Cost-of-living calculator with CPI inflation by expense category",
-        "Cross-domain state report card ranking states across economy, education, and health"
+        "Cross-domain state report card ranking states across economy, education, and health",
+        "Election data visualization: turnout trends, party landscape evolution, Lok Sabha 2024 results, candidate profiles, and women's representation"
       ],
       "dateModified": "2026-02-28"
     }
@@ -418,6 +419,61 @@
     }
     </script>
 
+    <!-- JSON-LD: Dataset (Environment) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Dataset",
+      "name": "India Environment Data — Air Quality, Forest Cover, Energy, Water",
+      "description": "Structured JSON datasets for India's environment: PM2.5 air quality, CPCB state AQI, ISFR forest cover, CEA installed electricity capacity mix, CO₂ emissions, groundwater stress, and reservoir storage.",
+      "url": "https://indiandataproject.org/environment/explore",
+      "license": "https://creativecommons.org/licenses/by/4.0/",
+      "creator": {
+        "@type": "GovernmentOrganization",
+        "name": "CPCB / FSI / CEA / CWC / World Bank",
+        "url": "https://cpcb.nic.in"
+      },
+      "temporalCoverage": "2000/2026",
+      "spatialCoverage": {
+        "@type": "Place",
+        "name": "India"
+      },
+      "distribution": [
+        {
+          "@type": "DataDownload",
+          "encodingFormat": "application/json",
+          "contentUrl": "https://indiandataproject.org/data/environment/2025-26/summary.json",
+          "name": "Environment Summary"
+        },
+        {
+          "@type": "DataDownload",
+          "encodingFormat": "application/json",
+          "contentUrl": "https://indiandataproject.org/data/environment/2025-26/air-quality.json",
+          "name": "Air Quality"
+        },
+        {
+          "@type": "DataDownload",
+          "encodingFormat": "application/json",
+          "contentUrl": "https://indiandataproject.org/data/environment/2025-26/forest.json",
+          "name": "Forest Cover"
+        },
+        {
+          "@type": "DataDownload",
+          "encodingFormat": "application/json",
+          "contentUrl": "https://indiandataproject.org/data/environment/2025-26/energy.json",
+          "name": "Energy & Carbon"
+        },
+        {
+          "@type": "DataDownload",
+          "encodingFormat": "application/json",
+          "contentUrl": "https://indiandataproject.org/data/environment/2025-26/water.json",
+          "name": "Water Resources"
+        }
+      ],
+      "dateModified": "2026-03-01"
+    }
+    </script>
+
     <!-- JSON-LD: BreadcrumbList -->
     <script type="application/ld+json">
     {
@@ -458,9 +514,13 @@
         { "@type": "ListItem", "position": 32, "name": "Healthcare Explorer", "item": "https://indiandataproject.org/healthcare/explore" },
         { "@type": "ListItem", "position": 33, "name": "Healthcare Methodology", "item": "https://indiandataproject.org/healthcare/methodology" },
         { "@type": "ListItem", "position": 34, "name": "Healthcare Glossary", "item": "https://indiandataproject.org/healthcare/glossary" },
-        { "@type": "ListItem", "position": 35, "name": "EMI Calculator", "item": "https://indiandataproject.org/rbi/calculator" },
-        { "@type": "ListItem", "position": 36, "name": "Cost of Living Calculator", "item": "https://indiandataproject.org/economy/calculator" },
-        { "@type": "ListItem", "position": 37, "name": "State Report Card", "item": "https://indiandataproject.org/states/your-state" }
+        { "@type": "ListItem", "position": 35, "name": "Environment", "item": "https://indiandataproject.org/environment" },
+        { "@type": "ListItem", "position": 36, "name": "Environment Explorer", "item": "https://indiandataproject.org/environment/explore" },
+        { "@type": "ListItem", "position": 37, "name": "Environment Methodology", "item": "https://indiandataproject.org/environment/methodology" },
+        { "@type": "ListItem", "position": 38, "name": "Environment Glossary", "item": "https://indiandataproject.org/environment/glossary" },
+        { "@type": "ListItem", "position": 39, "name": "EMI Calculator", "item": "https://indiandataproject.org/rbi/calculator" },
+        { "@type": "ListItem", "position": 40, "name": "Cost of Living Calculator", "item": "https://indiandataproject.org/economy/calculator" },
+        { "@type": "ListItem", "position": 41, "name": "State Report Card", "item": "https://indiandataproject.org/states/your-state" }
       ]
     }
     </script>
@@ -590,6 +650,24 @@
           <li><a href="/healthcare/glossary">Healthcare Glossary</a> — Healthcare terms in plain language</li>
         </ul>
 
+        <h2>Environment</h2>
+        <p>PM2.5: 53.3 ug/m3. Forest cover: 25.17%. Renewable energy: 43.4%.</p>
+        <a href="/environment">View Environment Data</a>
+
+        <h2>Elections</h2>
+        <ul>
+          <li>Voter turnout 2024: 65.8% (96.88 crore electors)</li>
+          <li>BJP seats: 240, INC seats: 99 (NDA: 293, INDIA: 234)</li>
+          <li>MPs with criminal cases: 46%</li>
+          <li>Women MPs: 13.6% (74 out of 543)</li>
+        </ul>
+        <ul>
+          <li><a href="/elections">Elections Visual Story</a></li>
+          <li><a href="/elections/explore">Elections Indicator Explorer</a></li>
+          <li><a href="/elections/methodology">Methodology</a></li>
+          <li><a href="/elections/glossary">Elections Glossary</a> — Election terms in plain language</li>
+        </ul>
+
         <h2>Personalization Tools</h2>
         <ul>
           <li><a href="/rbi/calculator">EMI Impact Calculator</a> — See how RBI repo rate changes affect your home, car, or personal loan EMI</li>
@@ -634,9 +712,14 @@
           <li><a href="/data/healthcare/2025-26/spending.json">Health Spending</a></li>
           <li><a href="/data/healthcare/2025-26/disease.json">Disease Burden</a></li>
           <li><a href="/data/healthcare/2025-26/indicators.json">Healthcare Indicators</a></li>
+          <li><a href="/data/elections/2025-26/summary.json">Elections Summary</a></li>
+          <li><a href="/data/elections/2025-26/turnout.json">Voter Turnout Data</a></li>
+          <li><a href="/data/elections/2025-26/results.json">Party Results Data</a></li>
+          <li><a href="/data/elections/2025-26/candidates.json">Candidate Profiles (ADR)</a></li>
+          <li><a href="/data/elections/2025-26/representation.json">Women in Parliament</a></li>
         </ul>
 
-        <p>Data sourced from <a href="https://openbudgetsindia.org">Open Budgets India</a>, <a href="https://www.indiabudget.gov.in">indiabudget.gov.in</a>, the <a href="https://www.indiabudget.gov.in/economicsurvey/">Economic Survey</a>, <a href="https://censusindia.gov.in">Census of India</a>, <a href="https://udiseplus.gov.in">UDISE+</a>, <a href="https://mospi.gov.in">MoSPI PLFS</a>, <a href="https://cbhidghs.mohfw.gov.in">NHP/CBHI</a>, and <a href="https://data.worldbank.org">World Bank Open Data</a> under the <a href="https://data.gov.in/government-open-data-license-india">Government Open Data License - India</a>.</p>
+        <p>Data sourced from <a href="https://openbudgetsindia.org">Open Budgets India</a>, <a href="https://www.indiabudget.gov.in">indiabudget.gov.in</a>, the <a href="https://www.indiabudget.gov.in/economicsurvey/">Economic Survey</a>, <a href="https://censusindia.gov.in">Census of India</a>, <a href="https://udiseplus.gov.in">UDISE+</a>, <a href="https://mospi.gov.in">MoSPI PLFS</a>, <a href="https://cbhidghs.mohfw.gov.in">NHP/CBHI</a>, <a href="https://eci.gov.in">ECI</a>, <a href="https://adrindia.org">ADR</a>, and <a href="https://data.worldbank.org">World Bank Open Data</a> under the <a href="https://data.gov.in/government-open-data-license-india">Government Open Data License - India</a>.</p>
       </div>
     </noscript>
   </body>

@@ -95,6 +95,28 @@ const DOMAIN_CONFIG = {
     seoTitle: 'Glossary — Healthcare — Indian Data Project',
     seoDescription: 'Plain-language definitions of healthcare terms: PHC, CHC, out-of-pocket spending, immunization, TB incidence, hospital beds, and more.',
   },
+  environment: {
+    accent: 'var(--teal)',
+    accentDim: 'rgba(20,184,166,0.12)',
+    label: 'Environment',
+    title: 'Environment Glossary',
+    description: 'Environment terms explained in plain language. What AQI, PM2.5, forest cover, and groundwater stage actually mean.',
+    ogImage: '/og-environment.png',
+    basePath: '/environment/glossary',
+    seoTitle: 'Glossary — Environment — Indian Data Project',
+    seoDescription: 'Plain-language definitions of environment terms: AQI, PM2.5, NAAQS, forest cover, ISFR, renewable energy, CO2 emissions, groundwater, and more.',
+  },
+  elections: {
+    accent: 'var(--indigo)',
+    accentDim: 'rgba(99,102,241,0.12)',
+    label: 'Elections',
+    title: 'Elections Glossary',
+    description: 'Election terms explained in plain language. What FPTP, NOTA, EVM, delimitation, and vote share actually mean.',
+    ogImage: '/og-elections.png',
+    basePath: '/elections/glossary',
+    seoTitle: 'Glossary — Elections — Indian Data Project',
+    seoDescription: 'Plain-language definitions of election terms: Lok Sabha, FPTP, constituency, EVM, NOTA, vote share, delimitation, coalition, ADR, and more.',
+  },
 } as const;
 
 type Domain = keyof typeof DOMAIN_CONFIG;

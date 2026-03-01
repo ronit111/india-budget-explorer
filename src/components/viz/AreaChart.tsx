@@ -77,8 +77,10 @@ export function AreaChart({
       }
     }
     const pad = (max - min) * 0.15;
+    // Only extend domain below zero when data contains negative values
+    const domainMin = min >= 0 ? 0 : min - pad;
     return scaleLinear()
-      .domain([Math.min(0, min - pad), max + pad])
+      .domain([domainMin, max + pad])
       .range([innerH, 0])
       .nice();
   }, [series, innerH]);

@@ -1,0 +1,113 @@
+{
+  "year": "2025-26",
+  "trend": [
+    {
+      "year": "1957",
+      "totalSeats": 494,
+      "womenMPs": 22,
+      "pct": 4.5
+    },
+    {
+      "year": "1962",
+      "totalSeats": 494,
+      "womenMPs": 34,
+      "pct": 6.9
+    },
+    {
+      "year": "1967",
+      "totalSeats": 520,
+      "womenMPs": 31,
+      "pct": 6.0
+    },
+    {
+      "year": "1971",
+      "totalSeats": 518,
+      "womenMPs": 22,
+      "pct": 4.2
+    },
+    {
+      "year": "1977",
+      "totalSeats": 542,
+      "womenMPs": 19,
+      "pct": 3.5
+    },
+    {
+      "year": "1980",
+      "totalSeats": 542,
+      "womenMPs": 28,
+      "pct": 5.2
+    },
+    {
+      "year": "1984",
+      "totalSeats": 542,
+      "womenMPs": 44,
+      "pct": 8.1
+    },
+    {
+      "year": "1989",
+      "totalSeats": 529,
+      "womenMPs": 28,
+      "pct": 5.3
+    },
+    {
+      "year": "1991",
+      "totalSeats": 521,
+      "womenMPs": 39,
+      "pct": 7.5
+    },
+    {
+      "year": "1996",
+      "totalSeats": 543,
+      "womenMPs": 40,
+      "pct": 7.4
+    },
+    {
+      "year": "1998",
+      "totalSeats": 543,
+      "womenMPs": 43,
+      "pct": 7.9
+    },
+    {
+      "year": "1999",
+      "totalSeats": 543,
+      "womenMPs": 49,
+      "pct": 9.0
+    },
+    {
+      "year": "2004",
+      "totalSeats": 543,
+      "womenMPs": 45,
+      "pct": 8.3
+    },
+    {
+      "year": "2009",
+      "totalSeats": 543,
+      "womenMPs": 59,
+      "pct": 10.9
+    },
+    {
+      "year": "2014",
+      "totalSeats": 543,
+      "womenMPs": 62,
+      "pct": 11.4
+    },
+    {
+      "year": "2019",
+      "totalSeats": 543,
+      "womenMPs": 78,
+      "pct": 14.4
+    },
+    {
+      "year": "2024",
+      "totalSeats": 543,
+      "womenMPs": 74,
+      "pct": 13.6
+    }
+  ],
+  "target": {
+    "label": "33% Reservation (2023 Act)",
+    "pct": 33,
+    "note": "Nari Shakti Vandan Adhiniyam passed Sep 2023. Effective after delimitation based on first Census post-Act."
+  },
+  "source": "Lok Sabha Secretariat + PRS Legislative Research"
+}

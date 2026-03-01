@@ -4,7 +4,7 @@
 
 ## What this site does
 
-Indian Data Project is a hub for Indian government data visualization. Each data domain gets its own visual story with explorable breakdowns. Eight domains are live: Union Budget 2025-26, Economic Survey 2025-26, RBI Data, State Finances, Census & Demographics, Education, Employment, and Healthcare.
+Indian Data Project is a hub for Indian government data visualization. Each data domain gets its own visual story with explorable breakdowns. Ten domains are live: Union Budget 2025-26, Economic Survey 2025-26, RBI Data, State Finances, Census & Demographics, Education, Employment, Healthcare, Environment, and Elections.
 
 ## Pages
 
@@ -59,6 +59,18 @@ Indian Data Project is a hub for Indian government data visualization. Each data
 - /healthcare/explore — Browseable indicator explorer with categories: infrastructure, spending, immunization, disease. Select any indicator to compare across states.
 - /healthcare/methodology — Data sources (NHP 2022, NFHS-5, World Bank), indicator definitions, limitations
 - /healthcare/glossary — Plain-language definitions of healthcare terms: PHC, CHC, out-of-pocket spending, immunization, TB incidence, hospital beds per 1000, and more.
+
+### Environment Domain
+- /environment — Scrollytelling narrative (5 sections): PM2.5 air quality trends and city AQI rankings, forest cover from ISFR 2023, installed electricity capacity mix (coal to solar transition 2015-2024), CO₂ per capita with global peers, groundwater stress and reservoir storage
+- /environment/explore — Browseable indicator explorer with categories: air, forest, water. Select any indicator to compare across states.
+- /environment/methodology — Data sources (CPCB, ISFR 2023, CEA, CWC, CGWB, World Bank), indicator definitions, limitations
+- /environment/glossary — Plain-language definitions of environment terms: AQI, PM2.5, NAAQS, forest cover, groundwater stress, renewable energy, CO₂ emissions, and more.
+
+### Elections Domain
+- /elections — Scrollytelling narrative (5 sections): voter turnout trends 1957-2024 with event annotations, party landscape evolution (stacked area chart of 8 party groups across 17 elections), Lok Sabha 2024 verdict (Parliament hemicycle visualization of 543 seats), money & muscle (criminal cases, assets, education of MPs from ADR data), women in Parliament (trend with 33% reservation target line)
+- /elections/explore — Browseable indicator explorer with state-level election data (voter turnout 2024 by state)
+- /elections/methodology — Data sources (ECI, TCPD Lok Dhaba, ADR/MyNeta, Lok Sabha Secretariat), party grouping methodology, data vintage, limitations
+- /elections/glossary — Plain-language definitions of election terms: Lok Sabha, FPTP, constituency, EVM, NOTA, ECI, MCC, affidavit, ADR, delimitation, coalition, Nari Shakti Vandan Adhiniyam.
 
 ### Personalization Calculators
 - /rbi/calculator — EMI Impact Calculator: See how repo rate changes affect your monthly EMI. Choose home/car/personal loan, set amount and tenure, view rate impact at ±25/50 bps scenarios. Uses live repo rate (currently 5.25%) and bank spreads (SBI EBLR).
@@ -135,6 +147,17 @@ Indian Data Project is a hub for Indian government data visualization. Each data
 - TB incidence: 199 per 100,000 (highest global burden)
 - Data sources: NHP 2022 (CBHI), NFHS-5, World Bank Open Data
 
+### Elections (Lok Sabha 1957-2024)
+- Total electors 2024: 96.88 crore (968.8 million)
+- Voter turnout 2024: 65.8% (17th Lok Sabha)
+- Highest ever turnout: 67.5% (2014)
+- BJP seats 2024: 240 (36.6% vote share), INC seats: 99 (21.2%)
+- NDA total: 293 seats, INDIA bloc: 234 seats
+- MPs with criminal cases: 46% (251 out of 543), Serious charges: 31%
+- Average MP assets: Rs 97.3 crore (ADR analysis of affidavits)
+- Women MPs: 74 out of 543 (13.6%), Nari Shakti Vandan Adhiniyam targets 33%
+- Data sources: Election Commission of India, TCPD Lok Dhaba (Ashoka University), ADR/MyNeta.info, Lok Sabha Secretariat
+
 ## Data sources
 
 - Open Budgets India (openbudgetsindia.org) — structured budget data
@@ -161,6 +184,10 @@ Indian Data Project is a hub for Indian government data visualization. Each data
 - MOSPI eSankhyiki CPI API (api.mospi.gov.in/api/cpi/getCPIIndex) — group-wise monthly CPI indices and YoY inflation rates, Base 2012=100. Primary source for CPI by COICOP division (FY 2019+)
 - IMF CPI dataset via DBnomics (db.nomics.world/IMF/CPI) — historical CPI by COICOP division (Food, Housing, Health, Transport, Education) for India, CY 2014-2018
 - SBI/HDFC/ICICI published rate cards — loan spreads over repo rate (home, car, personal loans)
+- Election Commission of India (eci.gov.in) — constituency results, turnout data, election schedule
+- TCPD Lok Dhaba (lokdhaba.ashoka.edu.in) — Trivedi Centre for Political Data, Ashoka University — historical Lok Sabha results 1962-2024
+- ADR / MyNeta (adrindia.org, myneta.info) — Association for Democratic Reforms — MP criminal records, assets, education from affidavits
+- Lok Sabha Secretariat — Women MPs count per election, parliamentary composition data
 
 ## Downloadable datasets (JSON)
 
@@ -230,8 +257,17 @@ Indian Data Project is a hub for Indian government data visualization. Each data
 - /data/healthcare/2025-26/disease.json — TB incidence, immunization coverage trends
 - /data/healthcare/2025-26/indicators.json — All healthcare indicators across 4 categories
 
+### Elections
+- /data/elections/2025-26/summary.json — Elections headline numbers (turnout, electors, BJP/INC seats, women MPs, criminal cases %)
+- /data/elections/2025-26/turnout.json — National turnout trend 1957-2024 (17 elections) + event annotations + state-wise 2024 breakdown
+- /data/elections/2025-26/results.json — Party-wise seat evolution across 17 elections (stacked area format) + Lok Sabha 2024 party results + alliance totals
+- /data/elections/2025-26/candidates.json — ADR data: criminal cases breakdown, assets distribution, education levels, top 20 wealthiest MPs, top 15 MPs by criminal cases
+- /data/elections/2025-26/representation.json — Women MPs trend 1957-2024 with 33% reservation target
+- /data/elections/2025-26/indicators.json — State-level election indicators
+- /data/elections/2025-26/glossary.json — 15 election terms with plain-language definitions
+
 ### Citizen Questions
-- /data/questions.json — 102 curated citizen questions across 8 domains with answers and section anchors. Used by Cmd+K search.
+- /data/questions.json — 115 curated citizen questions across 10 domains with answers and section anchors. Used by Cmd+K search.
 
 ### EMI Calculator
 - /data/emi/loan-spreads.json — Curated loan spreads over repo rate for home (2.75%), car (3.5%), personal (8%) loans. Sources: SBI EBLR, HDFC, ICICI published rate cards.
@@ -285,6 +321,7 @@ Available embed URLs (examples):
 - /embed/education/enrollment — Gross Enrollment Ratios
 - /embed/employment/participation — Labour Force Participation
 - /embed/healthcare/infrastructure — Healthcare Infrastructure
+- /embed/elections/turnout — Voter Turnout Trends
 
 Embed pages render with minimal chrome (no header/footer), responsive to container width, dark background, source attribution, and a link back to the full portal.
 

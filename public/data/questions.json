@@ -814,5 +814,213 @@
     "answer": "Communicable diseases still cause significant deaths despite being largely preventable.",
     "sectionId": "disease",
     "route": "/healthcare#disease"
+  },
+  {
+    "id": "env-air-quality",
+    "domain": "environment",
+    "question": "How bad is India's air pollution?",
+    "answer": "India's PM2.5 annual mean is 53 \u03bcg/m\u00b3 \u2014 more than 10\u00d7 the WHO guideline of 5 \u03bcg/m\u00b3.",
+    "sectionId": "air-quality",
+    "route": "/environment#air-quality"
+  },
+  {
+    "id": "env-most-polluted",
+    "domain": "environment",
+    "question": "Which are India's most polluted cities?",
+    "answer": "Delhi, Patna, and Muzaffarpur consistently rank among the worst for annual average AQI.",
+    "sectionId": "air-quality",
+    "route": "/environment#air-quality"
+  },
+  {
+    "id": "env-safe-breathe",
+    "domain": "environment",
+    "question": "Is the air safe to breathe in my city?",
+    "answer": "Most Indian cities exceed WHO air quality guidelines. CPCB monitors AQI across 30 states.",
+    "sectionId": "air-quality",
+    "route": "/environment#air-quality"
+  },
+  {
+    "id": "env-forest-cover",
+    "domain": "environment",
+    "question": "How much of India is covered by forests?",
+    "answer": "About 25% of India's land area is under forest cover, though this includes plantations.",
+    "sectionId": "forest-cover",
+    "route": "/environment#forest-cover"
+  },
+  {
+    "id": "env-forest-growing",
+    "domain": "environment",
+    "question": "Are India's forests growing or shrinking?",
+    "answer": "Some states have gained forest cover while others have lost it \u2014 the net change varies by assessment.",
+    "sectionId": "forest-cover",
+    "route": "/environment#forest-cover"
+  },
+  {
+    "id": "env-renewable-energy",
+    "domain": "environment",
+    "question": "How much of India's electricity comes from renewables?",
+    "answer": "Renewable sources now make up over half of India's installed electricity capacity, led by solar and wind.",
+    "sectionId": "energy-transition",
+    "route": "/environment#energy-transition"
+  },
+  {
+    "id": "env-coal-dependency",
+    "domain": "environment",
+    "question": "Is India still dependent on coal?",
+    "answer": "Coal still generates about 49% of India's electricity, though its share is declining as solar grows.",
+    "sectionId": "energy-transition",
+    "route": "/environment#energy-transition"
+  },
+  {
+    "id": "env-solar-growth",
+    "domain": "environment",
+    "question": "How fast is India's solar capacity growing?",
+    "answer": "Solar capacity has grown from 3,744 MW in 2015 to over 90,000 MW in 2024 \u2014 a 25x increase.",
+    "sectionId": "energy-transition",
+    "route": "/environment#energy-transition"
+  },
+  {
+    "id": "env-carbon-footprint",
+    "domain": "environment",
+    "question": "How much CO\u2082 does India emit per person?",
+    "answer": "India's CO\u2082 per capita is about 1.9 tonnes \u2014 well below the global average of 4.7 tonnes.",
+    "sectionId": "carbon-footprint",
+    "route": "/environment#carbon-footprint"
+  },
+  {
+    "id": "env-water-crisis",
+    "domain": "environment",
+    "question": "Is India running out of groundwater?",
+    "answer": "Several states extract more groundwater than is recharged annually, making them over-exploited.",
+    "sectionId": "water-stress",
+    "route": "/environment#water-stress"
+  },
+  {
+    "id": "env-groundwater-state",
+    "domain": "environment",
+    "question": "Which states have the worst groundwater crisis?",
+    "answer": "Punjab, Haryana, Rajasthan, and Delhi are among states where groundwater is over-exploited.",
+    "sectionId": "water-stress",
+    "route": "/environment#water-stress"
+  },
+  {
+    "id": "env-reservoir-levels",
+    "domain": "environment",
+    "question": "How full are India's reservoirs?",
+    "answer": "Reservoir storage varies seasonally with monsoon \u2014 CWC tracks 150 major reservoirs across 5 regions.",
+    "sectionId": "water-stress",
+    "route": "/environment#water-stress"
+  },
+  {
+    "id": "env-climate-compare",
+    "domain": "environment",
+    "question": "How does India compare globally on climate?",
+    "answer": "India is the 3rd largest CO\u2082 emitter but per capita emissions are among the lowest of major economies.",
+    "sectionId": "carbon-footprint",
+    "route": "/environment#carbon-footprint"
+  },
+  {
+    "id": "elections-turnout",
+    "domain": "elections",
+    "question": "What was the voter turnout in the 2024 election?",
+    "answer": "65.8% of 96.88 crore eligible voters turned out for the 2024 Lok Sabha elections.",
+    "sectionId": "turnout",
+    "route": "/elections#turnout"
+  },
+  {
+    "id": "elections-who-won",
+    "domain": "elections",
+    "question": "Who won the 2024 Lok Sabha election?",
+    "answer": "BJP won 240 seats (32 short of majority). NDA coalition got 293, INDIA bloc got 234.",
+    "sectionId": "lok-sabha-2024",
+    "route": "/elections#lok-sabha-2024"
+  },
+  {
+    "id": "elections-bjp-seats",
+    "domain": "elections",
+    "question": "How many seats did BJP win in 2024?",
+    "answer": "BJP won 240 seats with 36.6% vote share \u2014 down from 303 seats in 2019.",
+    "sectionId": "lok-sabha-2024",
+    "route": "/elections#lok-sabha-2024"
+  },
+  {
+    "id": "elections-criminal-mps",
+    "domain": "elections",
+    "question": "How many MPs have criminal cases?",
+    "answer": "46% of current Lok Sabha MPs (251 out of 543) have declared criminal cases against them.",
+    "sectionId": "money-muscle",
+    "route": "/elections#money-muscle"
+  },
+  {
+    "id": "elections-richest-mp",
+    "domain": "elections",
+    "question": "Who is the richest MP in India?",
+    "answer": "The wealthiest MPs have declared assets exceeding hundreds of crores \u2014 see the full ranking.",
+    "sectionId": "money-muscle",
+    "route": "/elections#money-muscle"
+  },
+  {
+    "id": "elections-women-parliament",
+    "domain": "elections",
+    "question": "How many women are in Parliament?",
+    "answer": "Only 13.6% of Lok Sabha MPs are women (74 out of 543). A 33% reservation law was passed in 2023.",
+    "sectionId": "gender-gap",
+    "route": "/elections#gender-gap"
+  },
+  {
+    "id": "elections-reservation-when",
+    "domain": "elections",
+    "question": "When will women get 33% reservation in Parliament?",
+    "answer": "The Nari Shakti Vandan Adhiniyam was passed in 2023, but requires delimitation + census to take effect.",
+    "sectionId": "gender-gap",
+    "route": "/elections#gender-gap"
+  },
+  {
+    "id": "elections-party-evolution",
+    "domain": "elections",
+    "question": "How has India's political landscape changed since independence?",
+    "answer": "From Congress dominance (1957-84) to coalition era (1989-2009) to BJP era (2014-present).",
+    "sectionId": "party-landscape",
+    "route": "/elections#party-landscape"
+  },
+  {
+    "id": "elections-nota",
+    "domain": "elections",
+    "question": "What is NOTA and how many people use it?",
+    "answer": "NOTA (None of the Above) lets voters reject all candidates \u2014 it was introduced in 2013.",
+    "sectionId": "turnout",
+    "route": "/elections#turnout"
+  },
+  {
+    "id": "elections-highest-turnout",
+    "domain": "elections",
+    "question": "Which state had the highest voter turnout in 2024?",
+    "answer": "Turnout varies widely by state \u2014 some northeast states consistently exceed 80%.",
+    "sectionId": "turnout",
+    "route": "/elections#turnout"
+  },
+  {
+    "id": "elections-fptp",
+    "domain": "elections",
+    "question": "Why does a party with fewer votes win more seats?",
+    "answer": "India uses FPTP (first-past-the-post) \u2014 you only need the most votes in each constituency, not a majority.",
+    "sectionId": "party-landscape",
+    "route": "/elections#party-landscape"
+  },
+  {
+    "id": "elections-evm",
+    "domain": "elections",
+    "question": "How does voting work in India? What is an EVM?",
+    "answer": "India uses Electronic Voting Machines (EVMs) with VVPAT paper trail since 2019.",
+    "sectionId": "turnout",
+    "route": "/elections#turnout"
+  },
+  {
+    "id": "elections-mp-education",
+    "domain": "elections",
+    "question": "What is the education level of Indian MPs?",
+    "answer": "About 30% of MPs are post-graduates, 44% graduates, and 26% have below-graduate education.",
+    "sectionId": "money-muscle",
+    "route": "/elections#money-muscle"
   }
 ]

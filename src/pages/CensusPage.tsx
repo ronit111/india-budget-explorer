@@ -58,7 +58,7 @@ export default function CensusPage() {
 
       <CensusHeroSection summary={summary} />
 
-      <KeyTakeaways
+      {summary && <KeyTakeaways
         accent="#8B5CF6"
         pills={[
           { value: String(summary.sexRatio), label: 'Girls per 1,000 boys — 57 are "missing"', sectionId: 'health' },
@@ -66,7 +66,7 @@ export default function CensusPage() {
           { value: `${summary.populationGrowthRate}%`, label: 'Population growth — at a historic low', sectionId: 'population' },
           { value: `${Math.round(summary.urbanizationRate)}%`, label: 'Only 1 in 3 Indians lives in a city', sectionId: 'urbanization' },
         ]}
-      />
+      />}
 
       <div className="composition-divider" />
 

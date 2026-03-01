@@ -39,6 +39,14 @@ import HealthcarePage from './pages/HealthcarePage.tsx';
 import HealthcareExplorePage from './pages/HealthcareExplorePage.tsx';
 import HealthcareMethodologyPage from './pages/HealthcareMethodologyPage.tsx';
 import HealthcareGlossaryPage from './pages/HealthcareGlossaryPage.tsx';
+import EnvironmentPage from './pages/EnvironmentPage.tsx';
+import EnvironmentExplorePage from './pages/EnvironmentExplorePage.tsx';
+import EnvironmentMethodologyPage from './pages/EnvironmentMethodologyPage.tsx';
+import EnvironmentGlossaryPage from './pages/EnvironmentGlossaryPage.tsx';
+import ElectionsPage from './pages/ElectionsPage.tsx';
+import ElectionsExplorePage from './pages/ElectionsExplorePage.tsx';
+import ElectionsMethodologyPage from './pages/ElectionsMethodologyPage.tsx';
+import ElectionsGlossaryPage from './pages/ElectionsGlossaryPage.tsx';
 import EMICalculatorPage from './pages/EMICalculatorPage.tsx';
 import CostOfLivingPage from './pages/CostOfLivingPage.tsx';
 import StateReportCardPage from './pages/StateReportCardPage.tsx';
@@ -81,6 +89,14 @@ const PAGE_ROUTES = [
   { path: '/healthcare/explore', element: <HealthcareExplorePage /> },
   { path: '/healthcare/methodology', element: <HealthcareMethodologyPage /> },
   { path: '/healthcare/glossary', element: <HealthcareGlossaryPage /> },
+  { path: '/environment', element: <EnvironmentPage /> },
+  { path: '/environment/explore', element: <EnvironmentExplorePage /> },
+  { path: '/environment/methodology', element: <EnvironmentMethodologyPage /> },
+  { path: '/environment/glossary', element: <EnvironmentGlossaryPage /> },
+  { path: '/elections', element: <ElectionsPage /> },
+  { path: '/elections/explore', element: <ElectionsExplorePage /> },
+  { path: '/elections/methodology', element: <ElectionsMethodologyPage /> },
+  { path: '/elections/glossary', element: <ElectionsGlossaryPage /> },
 ] as const;
 
 // Old routes redirect to new /budget/* paths

@@ -15,7 +15,9 @@ Open data platform for Indian citizens. V1 of the broader **India Truth Engine**
 - **`/education` (Education Domain)**: Enrollment, quality, dropout, learning outcomes, spending. Sub-routes: `/education/explore`, `/education/methodology`, `/education/glossary`.
 - **`/employment` (Employment Domain)**: LFPR, unemployment, sectoral shifts, informality. Sub-routes: `/employment/explore`, `/employment/methodology`, `/employment/glossary`.
 - **`/healthcare` (Healthcare Domain)**: Infrastructure, spending, immunization, disease burden. Sub-routes: `/healthcare/explore`, `/healthcare/methodology`, `/healthcare/glossary`.
-- **`/embed/{domain}/{section}` (Embed Routes)**: Standalone responsive chart pages for iframe embedding. Renders outside PageShell (no header/footer/nav). ~49 sections available across all 8 domains. Lazy-loaded chart components via `ChartRenderer`.
+- **`/environment` (Environment Domain)**: Air quality, forest cover, energy transition, carbon footprint, water stress. Sub-routes: `/environment/explore`, `/environment/methodology`, `/environment/glossary`.
+- **`/elections` (Elections Domain)**: Lok Sabha elections 1962-2024 — turnout, party landscape, candidates, representation. Sub-routes: `/elections/explore`, `/elections/methodology`, `/elections/glossary`.
+- **`/embed/{domain}/{section}` (Embed Routes)**: Standalone responsive chart pages for iframe embedding. Renders outside PageShell (no header/footer/nav). ~59 sections available across all 10 domains. Lazy-loaded chart components via `ChartRenderer`.
 - **Future domains** each get their own top-level route with self-contained sub-pages.
 - Header is **context-aware**: hub title + search on `/`, domain title + sub-nav tabs inside a domain.
 - **Back links** (header chevron + footer link) point to `/#stories`. New domains should follow this convention.
@@ -23,17 +25,17 @@ Open data platform for Indian citizens. V1 of the broader **India Truth Engine**
 
 ## Chart Sharing Infrastructure (Phase 7)
 - **Central Chart Registry** (`src/lib/chartRegistry.ts`): Map keyed by `"{domain}/{sectionId}"`. Each entry has title, source, accent color, data files, chartType, `toTabular()` for CSV, `heroStat()` for WhatsApp cards. Registry files in `src/lib/registry/{domain}.ts`.
-- **ChartActionsWrapper** (`src/components/share/ChartActionsWrapper.tsx`): Wraps every chart across all 8 domains. Desktop: hover overlay with 4 action buttons. Mobile: persistent share button → `ShareBottomSheet`. Uses `pointer-events: none` on overlay to preserve chart tooltips/drill-down.
+- **ChartActionsWrapper** (`src/components/share/ChartActionsWrapper.tsx`): Wraps every chart across all 10 domains. Desktop: hover overlay with 4 action buttons. Mobile: persistent share button → `ShareBottomSheet`. Uses `pointer-events: none` on overlay to preserve chart tooltips/drill-down.
 - **SVG→PNG capture** (`src/lib/svgCapture.ts`): Clones SVG, resolves CSS custom properties, forces opacity:1, serializes to Canvas, composites dark background + accent bar + title + chart + source watermark. No external dependencies.
 - **WhatsApp share cards** (`src/lib/shareCard.ts`): 1200×630 Canvas with hero stat, domain accent, deep link URL. Tries Web Share API, falls back to download.
-- **URL state** (`src/hooks/useUrlState.ts`): Bidirectional Zustand↔URLSearchParams sync. URL wins on mount (deep linking), store wins after. All 8 explorer pages wired. All scrollytelling sections have `id` attributes for `#hash` anchors.
+- **URL state** (`src/hooks/useUrlState.ts`): Bidirectional Zustand↔URLSearchParams sync. URL wins on mount (deep linking), store wins after. All 10 explorer pages wired. All scrollytelling sections have `id` attributes for `#hash` anchors.
 
 ## Personalization Engine (Phase 8)
 - **Personalization store** (`src/store/personalizationStore.ts`): Global Zustand store with `persist` middleware (localStorage). Holds `selectedStateId` (uppercase vehicle code), `selectedStateName`, `householdSize`. All calculators and the banner read from this store.
 - **State ID standard**: All pipelines use uppercase vehicle registration (RTO) codes (MH, UP, KA). Three differ from ISO 3166-2: Odisha=OD, Chhattisgarh=CG, Telangana=TS. Mapping in `src/lib/stateMapping.ts`.
 - **EMI engine** (`src/lib/emiEngine.ts`): Pure functions — `calculateEMI()`, `calculateRateImpact()`, `getEffectiveRate()`. Standard formula with edge cases (zero principal, zero rate). Rate impact generates 5 scenarios at ±50/25/0 bps.
 - **Cost-of-living engine** (`src/lib/costOfLivingEngine.ts`): CPI-based deflation using cumulative multiplier. Category-specific COICOP CPI where available (Food 01, Housing 04, Health 06, Transport 07, Education 10), headline CPI fallback. Gap detection in `cumulativeMultiplier` prevents incorrect computation for non-consecutive years.
-- **State report engine** (`src/lib/stateReportEngine.ts`): Cross-domain aggregation from 12 JSON files. `buildReportCard()` returns 9 domain panels with ~25 metrics, ranks, quartiles. `Promise.allSettled` for partial data loading.
+- **State report engine** (`src/lib/stateReportEngine.ts`): Cross-domain aggregation from 16 JSON files. `buildReportCard()` returns 11 domain panels with ~25 metrics, ranks, quartiles. `Promise.allSettled` for partial data loading.
 - **CPI by category**: `inflation.json` includes `cpiByCategory` array with 5 COICOP divisions. Three-tier sourcing: IMF/DBnomics baseline (2014-19), MOSPI eSankhyiki API live data (2019+, `api.mospi.gov.in/api/cpi/getCPIIndex`, no auth), curated fallback if API unreachable.
 - **Personalization banner** (`src/components/personalization/PersonalizationBanner.tsx`): 40px bar below header on scrollytelling pages. Shows state + domain-specific stat. Dismissable via localStorage.
 
@@ -48,7 +50,7 @@ Open data platform for Indian citizens. V1 of the broader **India Truth Engine**
 - If data doesn't exist for a planned feature, the feature waits. No exceptions.
 
 ## Automated Data Pipelines
-Nine GitHub Actions workflows keep data fresh without manual intervention:
+Eleven GitHub Actions workflows keep data fresh without manual intervention:
 - **Budget** (`data-pipeline.yml`): Daily cron + Budget Day polling (Feb 1). Source: CKAN API.
 - **Economy** (`economy-pipeline.yml`): Quarterly (Feb, Mar, Jun, Dec) aligned to NSO/Survey/WB release cycles. Source: World Bank API + MOSPI eSankhyiki CPI API + curated Economic Survey figures.
 - **RBI** (`rbi-pipeline.yml`): Bi-monthly (10th of Feb/Apr/Jun/Aug/Oct/Dec) aligned to MPC meeting schedule. Source: World Bank API + curated MPC decisions.
@@ -57,15 +59,17 @@ Nine GitHub Actions workflows keep data fresh without manual intervention:
 - **Education** (`education-pipeline.yml`): Quarterly (15th of Jan/Apr/Jul/Oct). Source: World Bank API + curated UDISE+ 2023-24 + ASER 2024.
 - **Employment** (`employment-pipeline.yml`): Quarterly (1st of Mar/Jun/Sep/Dec) aligned to PLFS release schedule. Source: World Bank API + curated PLFS state data + RBI KLEMS.
 - **Healthcare** (`healthcare-pipeline.yml`): Quarterly (15th of Feb/May/Aug/Nov). Source: World Bank API + curated NHP 2022 + NFHS-5 immunization.
-- **Freshness Monitor** (`data-freshness-monitor.yml`): Monthly check. Auto-creates GitHub issues for stale data, MPC decision reminders, Survey/Budget prep reminders. Covers all 8 domains.
+- **Environment** (`environment-pipeline.yml`): Quarterly (15th of Jan/Apr/Jul/Oct). Source: World Bank API + curated CPCB AQI + ISFR 2023 + CEA capacity + CWC/CGWB water.
+- **Elections** (`elections-pipeline.yml`): Semi-annual (Jan 15, Jul 15). Source: purely curated data from ECI, TCPD, ADR, Lok Sabha Secretariat. No API calls — election data is event-driven.
+- **Freshness Monitor** (`data-freshness-monitor.yml`): Monthly check. Auto-creates GitHub issues for stale data, MPC decision reminders, Survey/Budget prep reminders. Covers all 10 domains.
 
-**Shared pipeline infrastructure**: All 6 World Bank-sourced pipelines share `pipeline/src/common/world_bank.py` (retry with exponential backoff, HTTPError handling, configurable precision). Domain-specific files in `pipeline/src/{domain}/sources/world_bank.py` are thin wrappers with only `INDICATORS` dict and precision config. See `pipeline/PIPELINE_DATA_SOURCES.md` for the full catalog of 30+ curated data constants.
+**Shared pipeline infrastructure**: All 7 World Bank-sourced pipelines share `pipeline/src/common/world_bank.py` (retry with exponential backoff, HTTPError handling, configurable precision). Domain-specific files in `pipeline/src/{domain}/sources/world_bank.py` are thin wrappers with only `INDICATORS` dict and precision config. See `pipeline/PIPELINE_DATA_SOURCES.md` for the full catalog of 30+ curated data constants.
 
 **Curated data** (MPC decisions in `monetary_policy.py`, fiscal deficit series in `fiscal.py`, Economic Survey headline numbers in `main.py`, NFHS-5/SRS health data in `curated.py`) requires human updates when government publications drop. The freshness monitor creates reminder issues for these.
 
 ## Design Identity
 - Dark theme: void (#06080f) / raised (#0e1420) / surface (#131b27)
-- Accents: saffron (#FF6B35), cyan (#4AEADC), gold (#FFC857)
+- Accents: saffron (#FF6B35), cyan (#4AEADC), gold (#FFC857), teal (#14B8A6), indigo (#6366F1)
 - Typography: Inter (body), JetBrains Mono (data)
 - IIB-inspired minimal, data-forward. Creative latitude encouraged — see BRAND.md.
 
@@ -86,7 +90,7 @@ Before the citizen-perspective review, run a comprehensive automated code audit 
 3. **Route registration**: Cross-check `App.tsx` routes, `prerender.mjs` ROUTES, `sitemap.xml` URLs, `Header.tsx` tabs, and `MobileNav.tsx` tabs are all in sync.
 4. **Import integrity**: Check for broken imports, circular dependencies, and stale references (components that reference deleted files or renamed exports).
 5. **Calculation engine correctness**: Audit `emiEngine.ts`, `costOfLivingEngine.ts`, `stateReportEngine.ts` for edge cases (zero values, missing data, division by zero).
-6. **Pipeline validation**: Run all 8 pipelines locally and verify JSON output passes Pydantic validation. Cross-check 3-5 key figures per domain against authoritative sources.
+6. **Pipeline validation**: Run all 9 pipelines locally and verify JSON output passes Pydantic validation. Cross-check 3-5 key figures per domain against authoritative sources.
 7. **Security**: Check user-facing inputs (sliders, selects, text fields) for XSS, injection, or OWASP top 10 vulnerabilities.
 
 This is a one-time audit run by Codex, not a per-change check. It sits between feature completion and the citizen-perspective review.

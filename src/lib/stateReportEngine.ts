@@ -1,8 +1,8 @@
 /**
  * Cross-domain state data aggregator for the State Report Card.
  *
- * Loads metrics from 6 domains (States, Budget, Census, Education,
- * Employment, Healthcare), computes ranks and quartiles.
+ * Loads metrics from 8 domains (States, Budget, Census, Education,
+ * Employment, Healthcare, Environment, Elections), computes ranks and quartiles.
  */
 
 import type {
@@ -18,6 +18,10 @@ import type {
   ParticipationData,
   InfrastructureData,
   DiseaseData,
+  AirQualityData,
+  ForestData,
+  WaterData,
+  TurnoutData,
 } from './data/schema.ts';
 import { ALL_STATE_CODES } from './stateMapping.ts';
 
@@ -67,6 +71,10 @@ export interface AllDomainData {
   participation?: ParticipationData;
   infrastructure?: InfrastructureData;
   disease?: DiseaseData;
+  airQuality?: AirQualityData;
+  forest?: ForestData;
+  water?: WaterData;
+  turnout?: TurnoutData;
 }
 
 // ─── Metric Definitions ─────────────────────────────────────────────
@@ -102,6 +110,12 @@ const METRIC_DEFS: MetricDef[] = [
   { key: 'imr', label: 'Infant Mortality', unit: 'per 1000', higherIsBetter: false, domain: 'health' },
   { key: 'fullImmunization', label: 'Full Immunization', unit: '%', higherIsBetter: true, domain: 'health' },
   { key: 'stunting', label: 'Stunting', unit: '%', higherIsBetter: false, domain: 'health' },
+  // Environment (from air-quality.json, forest.json, water.json)
+  { key: 'stateAqi', label: 'AQI Average', unit: '', higherIsBetter: false, domain: 'environment' },
+  { key: 'forestCoverPct', label: 'Forest Cover', unit: '% area', higherIsBetter: true, domain: 'environment' },
+  { key: 'groundwaterSafe', label: 'Groundwater Stage', unit: '%', higherIsBetter: false, domain: 'environment' },
+  // Elections (from turnout.json)
+  { key: 'voterTurnout2024', label: 'Voter Turnout 2024', unit: '%', higherIsBetter: true, domain: 'elections' },
 ];
 
 // ─── Domain panel config ────────────────────────────────────────────
@@ -116,6 +130,8 @@ const PANEL_CONFIG: Record<string, { title: string; accentColor: string }> = {
   employment: { title: 'Employment', accentColor: '#F59E0B' },
   healthcare: { title: 'Healthcare Infrastructure', accentColor: '#F43F5E' },
   health: { title: 'Health Outcomes (NFHS-5)', accentColor: '#F43F5E' },
+  environment: { title: 'Environment', accentColor: '#14B8A6' },
+  elections: { title: 'Elections', accentColor: '#6366F1' },
 };
 
 // ─── Data extraction helpers ────────────────────────────────────────
@@ -255,6 +271,28 @@ const EXTRACTORS: Record<string, Extractor> = {
     const all = d.health?.stateHealth?.map((x) => x.stunting) ?? [];
     return { value: nfhs?.stunting ?? null, all };
   },
+  stateAqi: (sid, d) => {
+    const s = findInArray(d.airQuality?.stateAQI, sid);
+    const all = d.airQuality?.stateAQI.map((x) => x.aqi) ?? [];
+    return { value: s?.aqi ?? null, all };
+  },
+  forestCoverPct: (sid, d) => {
+    const s = findInArray(d.forest?.stateForestCover, sid);
+    const all = d.forest?.stateForestCover.map((x) => x.pctGeographicArea) ?? [];
+    return { value: s?.pctGeographicArea ?? null, all };
+  },
+  groundwaterSafe: (sid, d) => {
+    const s = findInArray(d.water?.groundwaterStage, sid);
+    const all = d.water?.groundwaterStage.map((x) => x.stagePct) ?? [];
+    return { value: s?.stagePct ?? null, all };
+  },
+  voterTurnout2024: (sid, d) => {
+    const s = d.turnout?.stateBreakdown2024.find(
+      (x) => x.id === sid || x.id.toUpperCase() === sid.toUpperCase()
+    );
+    const all = d.turnout?.stateBreakdown2024.map((x) => x.turnout) ?? [];
+    return { value: s?.turnout ?? null, all };
+  },
 };
 
 // ─── Rank & quartile computation ────────────────────────────────────
@@ -307,7 +345,7 @@ export function buildReportCard(
   });
 
   // Group by domain
-  const domainOrder = ['economy', 'budget', 'revenue', 'fiscal', 'demographics', 'education', 'employment', 'healthcare', 'health'];
+  const domainOrder = ['economy', 'budget', 'revenue', 'fiscal', 'demographics', 'education', 'employment', 'healthcare', 'health', 'environment', 'elections'];
   const panels: DomainPanel[] = domainOrder.map((domain) => {
     const metrics = metricResults.filter((m) => m.def.domain === domain);
     const config = PANEL_CONFIG[domain] ?? { title: domain, accentColor: '#6B7280' };

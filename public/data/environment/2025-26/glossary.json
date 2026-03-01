@@ -1,0 +1,171 @@
+{
+  "domain": "environment",
+  "year": "2025-26",
+  "terms": [
+    {
+      "id": "aqi",
+      "term": "Air Quality Index (AQI)",
+      "simple": "A number from 0-500 that tells you how clean or polluted the air is. Higher means worse.",
+      "detail": "India uses a 6-category AQI: Good (0-50), Satisfactory (51-100), Moderate (101-200), Poor (201-300), Very Poor (301-400), Severe (401-500). It considers 8 pollutants: PM10, PM2.5, NO2, SO2, CO, O3, NH3, Pb. The AQI is based on the worst-performing pollutant — if PM2.5 is bad but everything else is fine, the AQI still reflects PM2.5. Delhi regularly exceeds 300 (Very Poor) during October-January due to stubble burning, Diwali firecrackers, and temperature inversions.",
+      "inContext": "Delhi's annual avg AQI: ~263 (Poor). WHO recommends PM2.5 below 5 μg/m3.",
+      "relatedTerms": [
+        "pm25",
+        "naaqs"
+      ]
+    },
+    {
+      "id": "pm25",
+      "term": "PM2.5",
+      "simple": "Tiny particles in the air smaller than 2.5 micrometers — so small they enter your lungs and bloodstream.",
+      "detail": "PM2.5 (particulate matter ≤ 2.5 micrometers) is the most dangerous air pollutant for health. Sources: vehicle exhaust, coal power plants, crop burning, construction dust, industrial emissions. India's annual average PM2.5 (~53 μg/m3) is 10x the WHO guideline (5 μg/m3). Long-term exposure causes respiratory disease, heart disease, stroke, and lung cancer. LANCET estimates 1.67 million premature deaths in India (2019) from air pollution.",
+      "inContext": "India PM2.5: ~53 μg/m3. WHO guideline: 5 μg/m3. India NAAQS: 40 μg/m3.",
+      "relatedTerms": [
+        "aqi",
+        "naaqs"
+      ]
+    },
+    {
+      "id": "naaqs",
+      "term": "NAAQS (National Ambient Air Quality Standards)",
+      "simple": "India's legal limits for how much pollution is acceptable in outdoor air.",
+      "detail": "Set by CPCB under the Environment Protection Act. Key limits: PM2.5 annual average 40 μg/m3, PM10: 60 μg/m3, SO2: 50 μg/m3, NO2: 40 μg/m3. India's NAAQS for PM2.5 (40 μg/m3) is 8x weaker than the WHO guideline (5 μg/m3). Even by India's own standards, most cities in the Indo-Gangetic Plain exceed limits. The National Clean Air Programme (NCAP) targets 20-30% PM2.5 reduction by 2024 vs 2017.",
+      "inContext": "India's PM2.5 standard: 40 μg/m3. WHO guideline: 5 μg/m3. Gap: 8x.",
+      "relatedTerms": [
+        "pm25",
+        "aqi"
+      ]
+    },
+    {
+      "id": "forest-cover",
+      "term": "Forest Cover",
+      "simple": "Land area covered by trees, measured by satellite. India has 25.17% forest cover — about 8.27 lakh km².",
+      "detail": "Forest Survey of India (FSI) classifies forest into: Very Dense (canopy >70%), Moderately Dense (40-70%), Open (10-40%). The biennial India State of Forest Report (ISFR) uses satellite imagery (LISS-III). India's 25.17% forest cover is below the National Forest Policy target of 33%. However, not all 'forest cover' is natural forest — plantations, orchards, and even urban tree cover count. The northeast has the highest forest % but is losing cover fastest due to shifting cultivation and encroachment.",
+      "inContext": "India: 25.17% forest cover (ISFR 2023). Policy target: 33%. Northeast losing fastest.",
+      "relatedTerms": [
+        "isfr",
+        "protected-areas"
+      ]
+    },
+    {
+      "id": "isfr",
+      "term": "ISFR (India State of Forest Report)",
+      "simple": "A report published every 2 years by the Forest Survey of India, measuring how much forest India has.",
+      "detail": "Published since 1987. Uses IRS satellite data (LISS-III sensor, 23.5m resolution) to map tree canopy across all of India. ISFR 2023 is the latest edition. It classifies land into forest cover (by density), tree cover outside forests, scrub, and non-forest. Key finding: India gained 1,540 km² of forest between ISFR 2021 and ISFR 2023 — but most gain is in plantations, while natural forests in the northeast continue to shrink.",
+      "inContext": "ISFR 2023: 8,27,357 km² total. Net gain: 1,540 km² since ISFR 2021.",
+      "relatedTerms": [
+        "forest-cover",
+        "protected-areas"
+      ]
+    },
+    {
+      "id": "protected-areas",
+      "term": "Protected Areas",
+      "simple": "Land legally set aside for wildlife conservation — national parks, wildlife sanctuaries, and reserves.",
+      "detail": "India has ~990 protected areas covering ~5.26% of geographic area: 106 national parks, 567 wildlife sanctuaries, 105 conservation reserves, 214 community reserves. Key legislation: Wildlife Protection Act 1972. Famous examples: Jim Corbett (India's first national park), Kaziranga (one-horned rhino), Ranthambore (tigers). Project Tiger (1973) is one of the world's most successful conservation programmes — tiger population grew from 1,411 (2006) to 3,682 (2022).",
+      "inContext": "990 protected areas. 5.26% of India. Tiger population: 3,682 (2022, up from 1,411 in 2006).",
+      "relatedTerms": [
+        "forest-cover",
+        "isfr"
+      ]
+    },
+    {
+      "id": "renewable-energy",
+      "term": "Renewable Energy",
+      "simple": "Electricity from sources that don't run out — solar, wind, hydro, and biomass. India's renewables are growing fast.",
+      "detail": "India's installed renewable capacity: ~192 GW (March 2024) = 43.4% of total. Breakdown: solar 82.8 GW, wind 46.2 GW, hydro 47.1 GW, biomass+small hydro 15.6 GW. India has committed to 500 GW non-fossil capacity by 2030 (COP26 Glasgow). Solar has been the fastest-growing source: from 3.7 GW (2015) to 82.8 GW (2024) — a 22x increase in 9 years. Challenges: grid intermittency, land acquisition, storage, and coal lobbying.",
+      "inContext": "Renewables: 43.4% of capacity. Solar grew 22x in 9 years. Target: 500 GW by 2030.",
+      "relatedTerms": [
+        "energy-transition",
+        "coal"
+      ]
+    },
+    {
+      "id": "coal",
+      "term": "Coal Power",
+      "simple": "Electricity generated by burning coal. India is the world's 2nd largest coal consumer. Coal still powers ~49% of India's grid.",
+      "detail": "India's coal installed capacity: ~214 GW (March 2024). While renewables are growing, coal capacity has NOT declined — it continues to grow slowly. India added ~4 GW of coal capacity even between 2022-2024. This is because electricity demand is growing so fast (~5% per year) that renewables ADD to the mix rather than REPLACE coal. India's net-zero target is 2070 — the latest among major economies. Coal India Limited is the world's largest coal miner.",
+      "inContext": "Coal: ~214 GW (49% of capacity). Still growing. Net-zero target: 2070.",
+      "relatedTerms": [
+        "renewable-energy",
+        "co2-emissions"
+      ]
+    },
+    {
+      "id": "co2-emissions",
+      "term": "CO2 Emissions",
+      "simple": "Carbon dioxide released by burning fossil fuels. India emits 1.9 tonnes per person — low globally, but total is 3rd highest.",
+      "detail": "India's per capita CO2: ~1.9 tonnes (2021). Compare: US 14.0, China 8.0, EU 6.0, World 4.7. India's TOTAL emissions are 3rd after China and US at ~2.7 billion tonnes. The moral argument: India has the right to develop, and per-capita emissions are well below global average. The practical problem: India is among the most climate-vulnerable nations (monsoon disruption, heat waves, sea level rise). India's NDC: 45% emissions intensity reduction (per unit GDP) by 2030 vs 2005.",
+      "inContext": "Per capita: 1.9t (US: 14, China: 8). Total: 3rd globally. Target: 45% intensity cut by 2030.",
+      "relatedTerms": [
+        "coal",
+        "renewable-energy",
+        "ghg"
+      ]
+    },
+    {
+      "id": "ghg",
+      "term": "GHG (Greenhouse Gas Emissions)",
+      "simple": "All gases that trap heat in the atmosphere — CO2, methane, nitrous oxide, and others.",
+      "detail": "India's total GHG: ~3.3 billion tonnes CO2 equivalent (2021). CO2 is the largest component (~70%, from energy), followed by methane (~20%, from agriculture and waste) and nitrous oxide (~7%, from fertilizers). India's agriculture sector is a major methane source due to paddy cultivation (flooded rice fields) and livestock (350 million cattle). Unlike CO2, methane has 80x the warming potential over 20 years but a shorter atmospheric lifetime (~12 years).",
+      "inContext": "Total GHG: ~3.3 Gt CO2e. Agriculture: major methane source (paddy + 350M cattle).",
+      "relatedTerms": [
+        "co2-emissions",
+        "coal"
+      ]
+    },
+    {
+      "id": "energy-transition",
+      "term": "Energy Transition",
+      "simple": "India's shift from coal and oil to solar, wind, and other clean energy sources.",
+      "detail": "India's energy transition challenge is unique: it must simultaneously grow energy access (still 230 million without reliable power), expand the grid to meet 5% annual demand growth, AND decarbonize. The International Solar Alliance (ISA) was founded by India in 2015. Key milestones: 500 GW renewable target by 2030, Panchamrit pledges at COP26, National Green Hydrogen Mission (₹19,744 crore). But the transition is uneven — Rajasthan and Gujarat lead in solar, while eastern states lag.",
+      "inContext": "India must grow energy access AND decarbonize simultaneously. 500 GW renewable target by 2030.",
+      "relatedTerms": [
+        "renewable-energy",
+        "coal"
+      ]
+    },
+    {
+      "id": "groundwater",
+      "term": "Groundwater",
+      "simple": "Water stored underground in rock and soil. India is the world's largest groundwater user — mostly for irrigation.",
+      "detail": "India uses ~251 BCM of groundwater annually — 25% of global groundwater extraction. 89% goes to irrigation. Extraction exceeds recharge in many states: Punjab (165%), Rajasthan (140%), Haryana (137%), Delhi (137%). CGWB classifies blocks as Safe (<70% extraction), Semi-Critical (70-90%), Critical (90-100%), Over-Exploited (>100%). 17% of India's blocks are over-exploited. Causes: free electricity for tube wells (political subsidy), water-intensive crops (rice in Punjab), lack of regulation. Consequence: water table dropping 1-3 meters per year in many areas.",
+      "inContext": "World's largest GW user. Punjab: 165% extraction. 17% blocks over-exploited.",
+      "relatedTerms": [
+        "water-stress"
+      ]
+    },
+    {
+      "id": "water-stress",
+      "term": "Water Stress",
+      "simple": "When demand for water exceeds what's available. India is heading toward severe water crisis by 2030.",
+      "detail": "NITI Aayog (2018): India faces the 'worst water crisis in its history.' 600 million people face high-to-extreme water stress. 21 major cities (including Delhi, Bengaluru, Chennai, Hyderabad) may run out of groundwater by 2030. Per capita water availability: 1,486 m3/year (2021), down from 5,177 m3 in 1951. Below 1,700 m3 = 'water stress'; below 1,000 = 'water scarcity'. Drivers: population growth, urbanization, groundwater over-extraction, climate-change-disrupted monsoons.",
+      "inContext": "600M people face water stress. Per capita: 1,486 m3 (was 5,177 in 1951). 21 cities may run dry by 2030.",
+      "relatedTerms": [
+        "groundwater"
+      ]
+    },
+    {
+      "id": "cpcb",
+      "term": "CPCB (Central Pollution Control Board)",
+      "simple": "India's top environmental regulator that monitors air and water quality across the country.",
+      "detail": "Statutory body under MoEFCC, established 1974 under Water Act. Functions: set environmental standards, monitor pollution, advise central government. Operates the National Air Quality Monitoring Programme (NAMP) with 793 stations in 344 cities. Also manages the National Air Quality Index (NAQI) which provides real-time AQI data. State equivalents: SPCBs (State Pollution Control Boards). Key criticism: underfunded, understaffed, lacks enforcement teeth.",
+      "inContext": "793 monitoring stations across 344 cities. Real-time AQI data via NAQI portal.",
+      "relatedTerms": [
+        "aqi",
+        "naaqs",
+        "pm25"
+      ]
+    },
+    {
+      "id": "reservoir-storage",
+      "term": "Reservoir Storage",
+      "simple": "How full India's major dams and reservoirs are — tracked weekly by the Central Water Commission.",
+      "detail": "CWC monitors 150 major reservoirs with total capacity of ~178 BCM (billion cubic meters). These store monsoon runoff for drinking water, irrigation, and hydropower during dry months. Storage levels vary seasonally: lowest in May-June (pre-monsoon), highest in September-October (post-monsoon). Regional variation is significant — South India often has better storage due to multiple river systems, while Central India depends heavily on monsoon timing. Reservoir storage directly affects Rabi (winter) crop prospects.",
+      "inContext": "150 major reservoirs, ~178 BCM total capacity. Lowest in May, highest post-monsoon.",
+      "relatedTerms": [
+        "water-stress",
+        "groundwater"
+      ]
+    }
+  ]
+}

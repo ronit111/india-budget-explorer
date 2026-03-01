@@ -58,7 +58,7 @@ export default function EmploymentPage() {
 
       <EmploymentHeroSection summary={summary} />
 
-      <KeyTakeaways
+      {summary && <KeyTakeaways
         accent="#F59E0B"
         pills={[
           { value: `${summary.youthUnemployment}%`, label: 'Youth unemployment — 3× the national rate', sectionId: 'youth' },
@@ -66,7 +66,7 @@ export default function EmploymentPage() {
           { value: `${summary.femaleLfpr}%`, label: 'Only 1 in 3 women in the workforce', sectionId: 'gender-gap' },
           { value: `${summary.workforceTotal} Cr`, label: "India's total workforce", sectionId: 'participation' },
         ]}
-      />
+      />}
 
       <div className="composition-divider" />
 

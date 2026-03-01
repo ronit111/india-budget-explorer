@@ -58,7 +58,7 @@ export default function RBIPage() {
 
       <RBIHeroSection summary={summary} />
 
-      <KeyTakeaways
+      {summary && <KeyTakeaways
         accent="#4AEADC"
         pills={[
           { value: `${summary.repoRate}%`, label: 'The rate that decides your EMI', sectionId: 'monetary-policy' },
@@ -66,7 +66,7 @@ export default function RBIPage() {
           { value: `${summary.cpiLatest ?? '—'}%`, label: 'Current inflation — within target?', sectionId: 'inflation-target' },
           { value: `${summary.slr}%`, label: 'Of every bank deposit, locked by RBI', sectionId: 'liquidity' },
         ]}
-      />
+      />}
 
       <div className="composition-divider" />
 

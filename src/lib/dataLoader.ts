@@ -50,6 +50,18 @@ import type {
   HealthSpendingData,
   DiseaseData,
   HealthcareIndicatorsData,
+  EnvironmentSummary,
+  AirQualityData,
+  ForestData,
+  EnergyData,
+  WaterData,
+  EnvironmentIndicatorsData,
+  ElectionsSummary,
+  TurnoutData,
+  ResultsData,
+  CandidatesData,
+  RepresentationData,
+  ElectionsIndicatorsData,
   GlossaryData,
   LoanSpreadsData,
   CitizenQuestion,
@@ -224,6 +236,44 @@ export const loadDisease = (year: string) =>
 
 export const loadHealthcareIndicators = (year: string) =>
   fetchJson<HealthcareIndicatorsData>(`/data/healthcare/${year}/indicators.json`);
+
+// ─── Environment Domain ────────────────────────────────────────
+export const loadEnvironmentSummary = (year: string) =>
+  fetchJson<EnvironmentSummary>(`/data/environment/${year}/summary.json`);
+
+export const loadAirQuality = (year: string) =>
+  fetchJson<AirQualityData>(`/data/environment/${year}/air-quality.json`);
+
+export const loadForest = (year: string) =>
+  fetchJson<ForestData>(`/data/environment/${year}/forest.json`);
+
+export const loadEnergy = (year: string) =>
+  fetchJson<EnergyData>(`/data/environment/${year}/energy.json`);
+
+export const loadWater = (year: string) =>
+  fetchJson<WaterData>(`/data/environment/${year}/water.json`);
+
+export const loadEnvironmentIndicators = (year: string) =>
+  fetchJson<EnvironmentIndicatorsData>(`/data/environment/${year}/indicators.json`);
+
+// ─── Elections Domain ─────────────────────────────────────────
+export const loadElectionsSummary = (year: string) =>
+  fetchJson<ElectionsSummary>(`/data/elections/${year}/summary.json`);
+
+export const loadTurnout = (year: string) =>
+  fetchJson<TurnoutData>(`/data/elections/${year}/turnout.json`);
+
+export const loadResults = (year: string) =>
+  fetchJson<ResultsData>(`/data/elections/${year}/results.json`);
+
+export const loadCandidates = (year: string) =>
+  fetchJson<CandidatesData>(`/data/elections/${year}/candidates.json`);
+
+export const loadRepresentation = (year: string) =>
+  fetchJson<RepresentationData>(`/data/elections/${year}/representation.json`);
+
+export const loadElectionsIndicators = (year: string) =>
+  fetchJson<ElectionsIndicatorsData>(`/data/elections/${year}/indicators.json`);
 
 // ─── EMI Calculator ────────────────────────────────────────────
 export const loadLoanSpreads = () =>

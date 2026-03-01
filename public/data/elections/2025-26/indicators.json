@@ -1,0 +1,189 @@
+{
+  "year": "2025-26",
+  "indicators": [
+    {
+      "id": "turnout_2024",
+      "name": "Voter Turnout 2024",
+      "category": "participation",
+      "unit": "%",
+      "states": [
+        {
+          "id": "LD",
+          "name": "Lakshadweep",
+          "value": 84.1
+        },
+        {
+          "id": "TR",
+          "name": "Tripura",
+          "value": 81.8
+        },
+        {
+          "id": "AS",
+          "name": "Assam",
+          "value": 80.2
+        },
+        {
+          "id": "WB",
+          "name": "West Bengal",
+          "value": 73.5
+        },
+        {
+          "id": "SK",
+          "name": "Sikkim",
+          "value": 73.0
+        },
+        {
+          "id": "MN",
+          "name": "Manipur",
+          "value": 72.8
+        },
+        {
+          "id": "AN",
+          "name": "Andaman & Nicobar",
+          "value": 72.4
+        },
+        {
+          "id": "KL",
+          "name": "Kerala",
+          "value": 71.3
+        },
+        {
+          "id": "NL",
+          "name": "Nagaland",
+          "value": 70.2
+        },
+        {
+          "id": "MZ",
+          "name": "Mizoram",
+          "value": 69.5
+        },
+        {
+          "id": "TN",
+          "name": "Tamil Nadu",
+          "value": 69.7
+        },
+        {
+          "id": "AR",
+          "name": "Arunachal Pradesh",
+          "value": 68.3
+        },
+        {
+          "id": "ML",
+          "name": "Meghalaya",
+          "value": 67.4
+        },
+        {
+          "id": "PB",
+          "name": "Punjab",
+          "value": 65.4
+        },
+        {
+          "id": "CG",
+          "name": "Chhattisgarh",
+          "value": 67.1
+        },
+        {
+          "id": "OD",
+          "name": "Odisha",
+          "value": 73.4
+        },
+        {
+          "id": "JH",
+          "name": "Jharkhand",
+          "value": 67.5
+        },
+        {
+          "id": "KA",
+          "name": "Karnataka",
+          "value": 69.2
+        },
+        {
+          "id": "HP",
+          "name": "Himachal Pradesh",
+          "value": 71.5
+        },
+        {
+          "id": "UK",
+          "name": "Uttarakhand",
+          "value": 57.8
+        },
+        {
+          "id": "GA",
+          "name": "Goa",
+          "value": 72.1
+        },
+        {
+          "id": "AP",
+          "name": "Andhra Pradesh",
+          "value": 81.9
+        },
+        {
+          "id": "TS",
+          "name": "Telangana",
+          "value": 65.7
+        },
+        {
+          "id": "GJ",
+          "name": "Gujarat",
+          "value": 59.5
+        },
+        {
+          "id": "MH",
+          "name": "Maharashtra",
+          "value": 61.3
+        },
+        {
+          "id": "RJ",
+          "name": "Rajasthan",
+          "value": 59.2
+        },
+        {
+          "id": "MP",
+          "name": "Madhya Pradesh",
+          "value": 64.8
+        },
+        {
+          "id": "HR",
+          "name": "Haryana",
+          "value": 64.0
+        },
+        {
+          "id": "UP",
+          "name": "Uttar Pradesh",
+          "value": 56.0
+        },
+        {
+          "id": "BR",
+          "name": "Bihar",
+          "value": 57.3
+        },
+        {
+          "id": "DL",
+          "name": "Delhi",
+          "value": 58.7
+        },
+        {
+          "id": "JK",
+          "name": "Jammu & Kashmir",
+          "value": 58.5
+        },
+        {
+          "id": "DD",
+          "name": "Dadra & Nagar Haveli and Daman & Diu",
+          "value": 67.8
+        },
+        {
+          "id": "PY",
+          "name": "Puducherry",
+          "value": 73.2
+        },
+        {
+          "id": "CH",
+          "name": "Chandigarh",
+          "value": 68.2
+        }
+      ],
+      "source": "ECI 2024"
+    }
+  ]
+}

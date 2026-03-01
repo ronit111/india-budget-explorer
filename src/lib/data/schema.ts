@@ -876,6 +876,281 @@ export interface LoanSpreadsData {
   };
 }
 
+// ─── Environment Domain ────────────────────────────────────────
+
+export interface EnvironmentSummary {
+  year: string;
+  co2PerCapita: number;
+  forestPct: number;
+  renewablesPct: number;
+  pm25: number;
+  coalPct: number;
+  ghgTotal: number;
+  lastUpdated: string;
+  source: string;
+}
+
+export interface StateAQIEntry {
+  id: string;
+  name: string;
+  aqi: number;
+  category: string;
+}
+
+export interface CityAQIEntry {
+  city: string;
+  state: string;
+  aqi: number;
+}
+
+export interface AirQualityData {
+  year: string;
+  pm25TimeSeries: TimeSeriesPoint[];
+  stateAQI: StateAQIEntry[];
+  cityAQI: CityAQIEntry[];
+  source: string;
+}
+
+export interface StateForestEntry {
+  id: string;
+  name: string;
+  forestCoverKm2: number;
+  pctGeographicArea: number;
+  changeKm2: number;
+}
+
+export interface ForestData {
+  year: string;
+  forestPctTimeSeries: TimeSeriesPoint[];
+  forestKm2TimeSeries: TimeSeriesPoint[];
+  protectedAreasPct: TimeSeriesPoint[];
+  stateForestCover: StateForestEntry[];
+  source: string;
+}
+
+export interface FuelCapacityEntry {
+  year: string;
+  coal: number;
+  gas: number;
+  nuclear: number;
+  hydro: number;
+  solar: number;
+  wind: number;
+  biomass: number;
+  smallHydro: number;
+}
+
+export interface EnergyData {
+  year: string;
+  renewablesPctTimeSeries: TimeSeriesPoint[];
+  renewableElecTimeSeries: TimeSeriesPoint[];
+  coalElecTimeSeries: TimeSeriesPoint[];
+  energyUsePerCapitaTimeSeries: TimeSeriesPoint[];
+  co2PerCapitaTimeSeries: TimeSeriesPoint[];
+  co2TotalTimeSeries: TimeSeriesPoint[];
+  ghgTotalTimeSeries: TimeSeriesPoint[];
+  fuelCapacityMix: FuelCapacityEntry[];
+  source: string;
+}
+
+export interface ReservoirEntry {
+  region: string;
+  storagePct: number;
+  reservoirCount: number;
+  capacityBCM: number;
+}
+
+export interface StateGroundwaterEntry {
+  id: string;
+  name: string;
+  stagePct: number;
+  stage: string;
+}
+
+export interface WaterData {
+  year: string;
+  reservoirStorage: ReservoirEntry[];
+  groundwaterStage: StateGroundwaterEntry[];
+  source: string;
+}
+
+export interface EnvironmentIndicator {
+  id: string;
+  name: string;
+  category: 'air' | 'forest' | 'energy' | 'water' | 'carbon';
+  unit: string;
+  states: StateValue[];
+  source: string;
+}
+
+export interface EnvironmentIndicatorsData {
+  year: string;
+  indicators: EnvironmentIndicator[];
+}
+
+// ─── Elections Domain ──────────────────────────────────────────
+
+export interface ElectionsSummary {
+  year: string;
+  turnout2024: number;
+  totalElectorsCrore: number;
+  bjpSeats2024: number;
+  incSeats2024: number;
+  ndaSeats2024: number;
+  indiaAllianceSeats2024: number;
+  womenMPs2024: number;
+  womenMPsPct2024: number;
+  criminalPct: number;
+  seriousCriminalPct: number;
+  avgAssetsCrore: number;
+  totalConstituencies: number;
+  lastUpdated: string;
+  source: string;
+}
+
+export interface TurnoutPoint {
+  year: string;
+  turnout: number;
+  electors: number;
+  lsNumber: number;
+}
+
+export interface TurnoutEvent {
+  year: string;
+  event: string;
+}
+
+export interface StateTurnout {
+  id: string;
+  name: string;
+  turnout: number;
+}
+
+export interface TurnoutData {
+  year: string;
+  nationalTrend: TurnoutPoint[];
+  events: TurnoutEvent[];
+  stateBreakdown2024: StateTurnout[];
+  source: string;
+}
+
+export interface SeatDataPoint {
+  year: string;
+  seats: number;
+  totalSeats: number;
+  pct: number;
+}
+
+export interface PartySeries {
+  id: string;
+  name: string;
+  color: string;
+  data: SeatDataPoint[];
+}
+
+export interface Party2024 {
+  party: string;
+  fullName: string;
+  seats: number;
+  voteShare: number;
+  color: string;
+  alliance: string;
+}
+
+export interface AllianceTotals {
+  NDA: number;
+  INDIA: number;
+  Others: number;
+  majorityMark: number;
+}
+
+export interface ResultsData {
+  year: string;
+  seatEvolution: PartySeries[];
+  parties2024: Party2024[];
+  allianceTotals2024: AllianceTotals;
+  source: string;
+}
+
+export interface CriminalBreakdown {
+  totalMPs: number;
+  withAnyCases: number;
+  withSeriousCases: number;
+  pctAny: number;
+  pctSerious: number;
+}
+
+export interface AssetsBreakdown {
+  avgCrore: number;
+  medianCrore: number;
+}
+
+export interface EducationBreakdown {
+  postGradAndAbove: number;
+  graduate: number;
+  belowGraduate: number;
+}
+
+export interface WealthiestMP {
+  rank: number;
+  name: string;
+  constituency: string;
+  party: string;
+  assetsCrore: number;
+}
+
+export interface CriminalMP {
+  rank: number;
+  name: string;
+  constituency: string;
+  party: string;
+  cases: number;
+}
+
+export interface CandidatesData {
+  year: string;
+  criminal: CriminalBreakdown;
+  assets: AssetsBreakdown;
+  education: EducationBreakdown;
+  topWealthiest: WealthiestMP[];
+  topCriminal: CriminalMP[];
+  source: string;
+}
+
+export interface WomenMPsPoint {
+  year: string;
+  totalSeats: number;
+  womenMPs: number;
+  pct: number;
+}
+
+export interface ReservationTarget {
+  label: string;
+  pct: number;
+  note: string;
+}
+
+export interface RepresentationData {
+  year: string;
+  trend: WomenMPsPoint[];
+  target: ReservationTarget;
+  source: string;
+}
+
+export interface ElectionsIndicator {
+  id: string;
+  name: string;
+  category: string;
+  unit: string;
+  states: StateValue[];
+  source: string;
+}
+
+export interface ElectionsIndicatorsData {
+  year: string;
+  indicators: ElectionsIndicator[];
+}
+
 // ─── Glossary (shared across domains) ──────────────────────────
 
 export interface GlossaryTerm {
@@ -888,7 +1163,7 @@ export interface GlossaryTerm {
 }
 
 export interface GlossaryData {
-  domain: 'budget' | 'economy' | 'rbi' | 'states' | 'census' | 'education' | 'employment' | 'healthcare';
+  domain: 'budget' | 'economy' | 'rbi' | 'states' | 'census' | 'education' | 'employment' | 'healthcare' | 'environment' | 'elections';
   year: string;
   terms: GlossaryTerm[];
 }

@@ -3,9 +3,9 @@ import { Link, useLocation } from 'react-router-dom';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useScrollTrigger } from '../hooks/useScrollTrigger.ts';
 import { SEOHead } from '../components/seo/SEOHead.tsx';
-import { loadSummary, loadEconomySummary, loadRBISummary, loadStatesSummary, loadCensusSummary, loadEducationSummary, loadEmploymentSummary, loadHealthcareSummary } from '../lib/dataLoader.ts';
+import { loadSummary, loadEconomySummary, loadRBISummary, loadStatesSummary, loadCensusSummary, loadEducationSummary, loadEmploymentSummary, loadHealthcareSummary, loadEnvironmentSummary, loadElectionsSummary } from '../lib/dataLoader.ts';
 import { formatLakhCrore, formatIndianNumber } from '../lib/format.ts';
-import type { BudgetSummary, EconomySummary, RBISummary, StatesSummary, CensusSummary, EducationSummary, EmploymentSummary, HealthcareSummary } from '../lib/data/schema.ts';
+import type { BudgetSummary, EconomySummary, RBISummary, StatesSummary, CensusSummary, EducationSummary, EmploymentSummary, HealthcareSummary, EnvironmentSummary, ElectionsSummary } from '../lib/data/schema.ts';
 
 const EASE_OUT_EXPO: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
@@ -1143,6 +1143,210 @@ function HealthcareDomainCard({ summary }: { summary: HealthcareSummary | null }
   );
 }
 
+function EnvironmentDomainCard({ summary }: { summary: EnvironmentSummary | null }) {
+  const [ref, isVisible] = useScrollTrigger({ threshold: 0.1 });
+
+  // Mini split bar: fossil vs renewable share of electricity capacity
+  const energySplit = useMemo(() => {
+    if (!summary) return null;
+    const fossil = summary.coalPct;
+    const renewable = 100 - fossil;
+    return { fossil, renewable };
+  }, [summary]);
+
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 32 }}
+      animate={isVisible ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.8, ease: EASE_OUT_EXPO, delay: 0.1 }}
+      className="mt-8"
+    >
+      <Link
+        to="/environment"
+        className="group block relative rounded-2xl p-px no-underline overflow-hidden"
+        style={{ transition: 'transform 0.3s ease' }}
+        onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-4px)'; }}
+        onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0px)'; }}
+      >
+        <div
+          className="absolute inset-0 rounded-2xl opacity-20 group-hover:opacity-50"
+          style={{
+            background: 'linear-gradient(135deg, var(--teal), transparent 40%, var(--cyan) 80%, transparent)',
+            transition: 'opacity 0.4s ease',
+          }}
+        />
+        <div
+          className="absolute -inset-2 rounded-2xl opacity-0 group-hover:opacity-100 blur-2xl pointer-events-none"
+          style={{
+            background: 'linear-gradient(135deg, rgba(20,184,166,0.06), rgba(74,234,220,0.04))',
+            transition: 'opacity 0.4s ease',
+          }}
+        />
+
+        <div className="relative rounded-2xl overflow-hidden" style={{ background: 'var(--bg-surface)' }}>
+          <div className="grid md:grid-cols-[1.4fr_1fr]">
+            <div className="relative p-8 md:p-12 flex flex-col justify-between min-h-[320px]">
+              <div className="absolute top-0 right-0 w-3/4 h-full pointer-events-none opacity-[0.03]" style={{ background: 'radial-gradient(ellipse at 70% 50%, var(--teal), transparent 70%)' }} />
+              <div className="relative z-10">
+                <span className="text-section-num tracking-[0.15em] uppercase mb-4 block">09 — Data Story</span>
+                <h2 className="text-3xl md:text-4xl font-bold mb-3" style={{ color: 'var(--text-primary)', lineHeight: 1.15 }}>Environment</h2>
+                <p className="text-annotation mb-6 max-w-md">PM2.5 at {summary ? `${Math.round(summary.pm25 / 5)}×` : '...'} the WHO limit. Air quality, forest cover, the coal-to-solar shift, carbon footprint, and the water crisis underfoot.</p>
+              </div>
+              <div className="relative z-10">
+                {energySplit && (
+                  <div className="mb-6 max-w-xs">
+                    <div className="flex items-center justify-between mb-1.5">
+                      <span className="text-[9px] font-mono uppercase tracking-wider" style={{ color: 'var(--text-muted)' }}>Fossil</span>
+                      <span className="text-[9px] font-mono uppercase tracking-wider" style={{ color: 'var(--text-muted)' }}>Renewable</span>
+                    </div>
+                    <div className="flex h-2.5 rounded-full overflow-hidden" style={{ background: 'var(--bg-raised)' }}>
+                      <motion.div
+                        className="h-full"
+                        style={{ background: 'var(--text-muted)', borderRadius: '9999px 0 0 9999px' }}
+                        initial={{ width: 0 }}
+                        animate={isVisible ? { width: `${energySplit.fossil}%` } : {}}
+                        transition={{ duration: 0.8, ease: EASE_OUT_EXPO, delay: 0.4 }}
+                      />
+                      <motion.div
+                        className="h-full"
+                        style={{ background: 'var(--teal)', borderRadius: '0 9999px 9999px 0' }}
+                        initial={{ width: 0 }}
+                        animate={isVisible ? { width: `${energySplit.renewable}%` } : {}}
+                        transition={{ duration: 0.8, ease: EASE_OUT_EXPO, delay: 0.5 }}
+                      />
+                    </div>
+                    <div className="flex items-center justify-between mt-1">
+                      <span className="text-[9px] font-mono" style={{ color: 'var(--text-muted)' }}>{energySplit.fossil.toFixed(0)}%</span>
+                      <span className="text-[9px] font-mono" style={{ color: 'var(--teal)' }}>{energySplit.renewable.toFixed(0)}%</span>
+                    </div>
+                  </div>
+                )}
+                <div className="inline-flex items-center gap-2 text-sm font-medium" style={{ color: 'var(--teal)' }}>
+                  <span>Explore environment</span>
+                  <span className="group-hover:translate-x-1.5 inline-block" style={{ transition: 'transform 0.2s ease' }}>&rarr;</span>
+                </div>
+              </div>
+            </div>
+            <div className="p-8 md:p-12 flex flex-col justify-center gap-8 border-t md:border-t-0 md:border-l" style={{ borderColor: 'rgba(255,255,255,0.06)' }}>
+              <StatPill label="PM2.5" value={summary ? `${summary.pm25.toFixed(0)} μg/m³` : '...'} color="var(--negative)" delay={0.3} isVisible={isVisible} />
+              <StatPill label="Forest Cover" value={summary ? `${summary.forestPct.toFixed(1)}%` : '...'} color="var(--teal)" delay={0.4} isVisible={isVisible} />
+              <StatPill label="Renewables" value={summary ? `${summary.renewablesPct.toFixed(1)}%` : '...'} color="var(--teal-light, #2DD4BF)" delay={0.5} isVisible={isVisible} />
+            </div>
+          </div>
+        </div>
+      </Link>
+    </motion.div>
+  );
+}
+
+function ElectionsDomainCard({ summary }: { summary: ElectionsSummary | null }) {
+  const [ref, isVisible] = useScrollTrigger({ threshold: 0.1 });
+
+  // Mini seat bar: NDA vs INDIA alliance vs Others
+  const seatSplit = useMemo(() => {
+    if (!summary) return null;
+    const total = summary.totalConstituencies;
+    return {
+      nda: (summary.ndaSeats2024 / total) * 100,
+      india: (summary.indiaAllianceSeats2024 / total) * 100,
+      others: ((total - summary.ndaSeats2024 - summary.indiaAllianceSeats2024) / total) * 100,
+    };
+  }, [summary]);
+
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 32 }}
+      animate={isVisible ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.8, ease: EASE_OUT_EXPO, delay: 0.1 }}
+      className="mt-8"
+    >
+      <Link
+        to="/elections"
+        className="group block relative rounded-2xl p-px no-underline overflow-hidden"
+        style={{ transition: 'transform 0.3s ease' }}
+        onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-4px)'; }}
+        onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0px)'; }}
+      >
+        <div
+          className="absolute inset-0 rounded-2xl opacity-20 group-hover:opacity-50"
+          style={{
+            background: 'linear-gradient(135deg, var(--indigo), transparent 40%, var(--indigo-light) 80%, transparent)',
+            transition: 'opacity 0.4s ease',
+          }}
+        />
+        <div
+          className="absolute -inset-2 rounded-2xl opacity-0 group-hover:opacity-100 blur-2xl pointer-events-none"
+          style={{
+            background: 'linear-gradient(135deg, rgba(99,102,241,0.06), rgba(129,140,248,0.04))',
+            transition: 'opacity 0.4s ease',
+          }}
+        />
+
+        <div className="relative rounded-2xl overflow-hidden" style={{ background: 'var(--bg-surface)' }}>
+          <div className="grid md:grid-cols-[1.4fr_1fr]">
+            <div className="relative p-8 md:p-12 flex flex-col justify-between min-h-[320px]">
+              <div className="absolute top-0 right-0 w-3/4 h-full pointer-events-none opacity-[0.03]" style={{ background: 'radial-gradient(ellipse at 70% 50%, var(--indigo), transparent 70%)' }} />
+              <div className="relative z-10">
+                <span className="text-section-num tracking-[0.15em] uppercase mb-4 block">10 — Data Story</span>
+                <h2 className="text-3xl md:text-4xl font-bold mb-3" style={{ color: 'var(--text-primary)', lineHeight: 1.15 }}>Elections</h2>
+                <p className="text-annotation mb-6 max-w-md">{summary ? `${summary.totalElectorsCrore} crore` : '...'} voters, 543 seats, 67 years of democracy. Turnout trends, party shifts, and who your MP really is — criminal records, wealth, and all.</p>
+              </div>
+              <div className="relative z-10">
+                {seatSplit && (
+                  <div className="mb-6 max-w-xs">
+                    <div className="flex items-center justify-between mb-1.5">
+                      <span className="text-[9px] font-mono uppercase tracking-wider" style={{ color: '#FF6B35' }}>NDA</span>
+                      <span className="text-[9px] font-mono uppercase tracking-wider" style={{ color: '#00BFFF' }}>INDIA</span>
+                    </div>
+                    <div className="flex h-2.5 rounded-full overflow-hidden" style={{ background: 'var(--bg-raised)' }}>
+                      <motion.div
+                        className="h-full"
+                        style={{ background: '#FF6B35', borderRadius: '9999px 0 0 9999px' }}
+                        initial={{ width: 0 }}
+                        animate={isVisible ? { width: `${seatSplit.nda}%` } : {}}
+                        transition={{ duration: 0.8, ease: EASE_OUT_EXPO, delay: 0.4 }}
+                      />
+                      <motion.div
+                        className="h-full"
+                        style={{ background: '#00BFFF' }}
+                        initial={{ width: 0 }}
+                        animate={isVisible ? { width: `${seatSplit.india}%` } : {}}
+                        transition={{ duration: 0.8, ease: EASE_OUT_EXPO, delay: 0.5 }}
+                      />
+                      <motion.div
+                        className="h-full"
+                        style={{ background: 'var(--text-muted)', borderRadius: '0 9999px 9999px 0' }}
+                        initial={{ width: 0 }}
+                        animate={isVisible ? { width: `${seatSplit.others}%` } : {}}
+                        transition={{ duration: 0.8, ease: EASE_OUT_EXPO, delay: 0.6 }}
+                      />
+                    </div>
+                    <div className="flex items-center justify-between mt-1">
+                      <span className="text-[9px] font-mono" style={{ color: '#FF6B35' }}>{summary?.ndaSeats2024}</span>
+                      <span className="text-[9px] font-mono" style={{ color: '#00BFFF' }}>{summary?.indiaAllianceSeats2024}</span>
+                    </div>
+                  </div>
+                )}
+                <div className="inline-flex items-center gap-2 text-sm font-medium" style={{ color: 'var(--indigo)' }}>
+                  <span>Explore elections</span>
+                  <span className="group-hover:translate-x-1.5 inline-block" style={{ transition: 'transform 0.2s ease' }}>&rarr;</span>
+                </div>
+              </div>
+            </div>
+            <div className="p-8 md:p-12 flex flex-col justify-center gap-8 border-t md:border-t-0 md:border-l" style={{ borderColor: 'rgba(255,255,255,0.06)' }}>
+              <StatPill label="Turnout 2024" value={summary ? `${summary.turnout2024}%` : '...'} color="var(--indigo)" delay={0.3} isVisible={isVisible} />
+              <StatPill label="Criminal MPs" value={summary ? `${summary.criminalPct}%` : '...'} color="var(--negative)" delay={0.4} isVisible={isVisible} />
+              <StatPill label="Women MPs" value={summary ? `${summary.womenMPsPct2024}%` : '...'} color="var(--indigo-light, #818CF8)" delay={0.5} isVisible={isVisible} />
+            </div>
+          </div>
+        </div>
+      </Link>
+    </motion.div>
+  );
+}
+
 export default function HubPage() {
   const location = useLocation();
   const [summary, setSummary] = useState<BudgetSummary | null>(null);
@@ -1153,6 +1357,8 @@ export default function HubPage() {
   const [educationSummary, setEducationSummary] = useState<EducationSummary | null>(null);
   const [employmentSummary, setEmploymentSummary] = useState<EmploymentSummary | null>(null);
   const [healthcareSummary, setHealthcareSummary] = useState<HealthcareSummary | null>(null);
+  const [environmentSummary, setEnvironmentSummary] = useState<EnvironmentSummary | null>(null);
+  const [electionsSummary, setElectionsSummary] = useState<ElectionsSummary | null>(null);
 
   useEffect(() => {
     loadSummary('2025-26').then(setSummary).catch(() => {});
@@ -1163,6 +1369,8 @@ export default function HubPage() {
     loadEducationSummary('2025-26').then(setEducationSummary).catch(() => {});
     loadEmploymentSummary('2025-26').then(setEmploymentSummary).catch(() => {});
     loadHealthcareSummary('2025-26').then(setHealthcareSummary).catch(() => {});
+    loadEnvironmentSummary('2025-26').then(setEnvironmentSummary).catch(() => {});
+    loadElectionsSummary('2025-26').then(setElectionsSummary).catch(() => {});
   }, []);
 
   // Scroll to hash anchor (e.g. /#stories) after mount
@@ -1217,6 +1425,10 @@ export default function HubPage() {
         <EmploymentDomainCard summary={employmentSummary} />
 
         <HealthcareDomainCard summary={healthcareSummary} />
+
+        <EnvironmentDomainCard summary={environmentSummary} />
+
+        <ElectionsDomainCard summary={electionsSummary} />
       </section>
     </motion.div>
   );

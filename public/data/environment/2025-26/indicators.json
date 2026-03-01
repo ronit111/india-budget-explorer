@@ -1,0 +1,800 @@
+{
+  "year": "2025-26",
+  "indicators": [
+    {
+      "id": "state_aqi",
+      "name": "Annual Average AQI",
+      "category": "air",
+      "unit": "AQI",
+      "states": [
+        {
+          "id": "DL",
+          "name": "Delhi",
+          "value": 263
+        },
+        {
+          "id": "UP",
+          "name": "Uttar Pradesh",
+          "value": 196
+        },
+        {
+          "id": "BR",
+          "name": "Bihar",
+          "value": 188
+        },
+        {
+          "id": "HR",
+          "name": "Haryana",
+          "value": 179
+        },
+        {
+          "id": "RJ",
+          "name": "Rajasthan",
+          "value": 156
+        },
+        {
+          "id": "WB",
+          "name": "West Bengal",
+          "value": 151
+        },
+        {
+          "id": "MP",
+          "name": "Madhya Pradesh",
+          "value": 143
+        },
+        {
+          "id": "JH",
+          "name": "Jharkhand",
+          "value": 141
+        },
+        {
+          "id": "PB",
+          "name": "Punjab",
+          "value": 139
+        },
+        {
+          "id": "MH",
+          "name": "Maharashtra",
+          "value": 126
+        },
+        {
+          "id": "CG",
+          "name": "Chhattisgarh",
+          "value": 122
+        },
+        {
+          "id": "OD",
+          "name": "Odisha",
+          "value": 118
+        },
+        {
+          "id": "GJ",
+          "name": "Gujarat",
+          "value": 115
+        },
+        {
+          "id": "TS",
+          "name": "Telangana",
+          "value": 108
+        },
+        {
+          "id": "AP",
+          "name": "Andhra Pradesh",
+          "value": 96
+        },
+        {
+          "id": "TN",
+          "name": "Tamil Nadu",
+          "value": 89
+        },
+        {
+          "id": "KA",
+          "name": "Karnataka",
+          "value": 86
+        },
+        {
+          "id": "UK",
+          "name": "Uttarakhand",
+          "value": 84
+        },
+        {
+          "id": "AS",
+          "name": "Assam",
+          "value": 79
+        },
+        {
+          "id": "KL",
+          "name": "Kerala",
+          "value": 72
+        },
+        {
+          "id": "GA",
+          "name": "Goa",
+          "value": 62
+        },
+        {
+          "id": "HP",
+          "name": "Himachal Pradesh",
+          "value": 58
+        },
+        {
+          "id": "JK",
+          "name": "Jammu & Kashmir",
+          "value": 55
+        },
+        {
+          "id": "SK",
+          "name": "Sikkim",
+          "value": 42
+        },
+        {
+          "id": "MZ",
+          "name": "Mizoram",
+          "value": 38
+        },
+        {
+          "id": "ML",
+          "name": "Meghalaya",
+          "value": 36
+        },
+        {
+          "id": "NL",
+          "name": "Nagaland",
+          "value": 34
+        },
+        {
+          "id": "AR",
+          "name": "Arunachal Pradesh",
+          "value": 28
+        },
+        {
+          "id": "MN",
+          "name": "Manipur",
+          "value": 32
+        },
+        {
+          "id": "TR",
+          "name": "Tripura",
+          "value": 45
+        }
+      ],
+      "source": "CPCB NAQI 2023"
+    },
+    {
+      "id": "forest_cover_pct",
+      "name": "Forest Cover (% of Geographic Area)",
+      "category": "forest",
+      "unit": "%",
+      "states": [
+        {
+          "id": "MP",
+          "name": "Madhya Pradesh",
+          "value": 25.11
+        },
+        {
+          "id": "AR",
+          "name": "Arunachal Pradesh",
+          "value": 79.63
+        },
+        {
+          "id": "CG",
+          "name": "Chhattisgarh",
+          "value": 41.21
+        },
+        {
+          "id": "MH",
+          "name": "Maharashtra",
+          "value": 16.52
+        },
+        {
+          "id": "OD",
+          "name": "Odisha",
+          "value": 33.15
+        },
+        {
+          "id": "KA",
+          "name": "Karnataka",
+          "value": 20.12
+        },
+        {
+          "id": "UP",
+          "name": "Uttar Pradesh",
+          "value": 6.15
+        },
+        {
+          "id": "RJ",
+          "name": "Rajasthan",
+          "value": 4.84
+        },
+        {
+          "id": "TN",
+          "name": "Tamil Nadu",
+          "value": 20.27
+        },
+        {
+          "id": "AP",
+          "name": "Andhra Pradesh",
+          "value": 18.19
+        },
+        {
+          "id": "JH",
+          "name": "Jharkhand",
+          "value": 29.55
+        },
+        {
+          "id": "TS",
+          "name": "Telangana",
+          "value": 18.93
+        },
+        {
+          "id": "KL",
+          "name": "Kerala",
+          "value": 54.42
+        },
+        {
+          "id": "AS",
+          "name": "Assam",
+          "value": 36.08
+        },
+        {
+          "id": "MZ",
+          "name": "Mizoram",
+          "value": 84.53
+        },
+        {
+          "id": "GJ",
+          "name": "Gujarat",
+          "value": 7.57
+        },
+        {
+          "id": "ML",
+          "name": "Meghalaya",
+          "value": 76.0
+        },
+        {
+          "id": "NL",
+          "name": "Nagaland",
+          "value": 73.9
+        },
+        {
+          "id": "MN",
+          "name": "Manipur",
+          "value": 74.34
+        },
+        {
+          "id": "WB",
+          "name": "West Bengal",
+          "value": 18.95
+        },
+        {
+          "id": "HP",
+          "name": "Himachal Pradesh",
+          "value": 27.72
+        },
+        {
+          "id": "TR",
+          "name": "Tripura",
+          "value": 73.68
+        },
+        {
+          "id": "UK",
+          "name": "Uttarakhand",
+          "value": 45.44
+        },
+        {
+          "id": "BR",
+          "name": "Bihar",
+          "value": 7.84
+        },
+        {
+          "id": "SK",
+          "name": "Sikkim",
+          "value": 47.1
+        },
+        {
+          "id": "JK",
+          "name": "Jammu & Kashmir",
+          "value": 49.18
+        },
+        {
+          "id": "PB",
+          "name": "Punjab",
+          "value": 3.67
+        },
+        {
+          "id": "HR",
+          "name": "Haryana",
+          "value": 3.63
+        },
+        {
+          "id": "GA",
+          "name": "Goa",
+          "value": 60.34
+        },
+        {
+          "id": "DL",
+          "name": "Delhi",
+          "value": 13.18
+        }
+      ],
+      "source": "ISFR 2023"
+    },
+    {
+      "id": "forest_cover_km2",
+      "name": "Forest Cover (km²)",
+      "category": "forest",
+      "unit": "km²",
+      "states": [
+        {
+          "id": "MP",
+          "name": "Madhya Pradesh",
+          "value": 77073
+        },
+        {
+          "id": "AR",
+          "name": "Arunachal Pradesh",
+          "value": 66688
+        },
+        {
+          "id": "CG",
+          "name": "Chhattisgarh",
+          "value": 55717
+        },
+        {
+          "id": "MH",
+          "name": "Maharashtra",
+          "value": 50778
+        },
+        {
+          "id": "OD",
+          "name": "Odisha",
+          "value": 51619
+        },
+        {
+          "id": "KA",
+          "name": "Karnataka",
+          "value": 38575
+        },
+        {
+          "id": "UP",
+          "name": "Uttar Pradesh",
+          "value": 14806
+        },
+        {
+          "id": "RJ",
+          "name": "Rajasthan",
+          "value": 16572
+        },
+        {
+          "id": "TN",
+          "name": "Tamil Nadu",
+          "value": 26364
+        },
+        {
+          "id": "AP",
+          "name": "Andhra Pradesh",
+          "value": 29784
+        },
+        {
+          "id": "JH",
+          "name": "Jharkhand",
+          "value": 23553
+        },
+        {
+          "id": "TS",
+          "name": "Telangana",
+          "value": 21214
+        },
+        {
+          "id": "KL",
+          "name": "Kerala",
+          "value": 21144
+        },
+        {
+          "id": "AS",
+          "name": "Assam",
+          "value": 28312
+        },
+        {
+          "id": "MZ",
+          "name": "Mizoram",
+          "value": 17820
+        },
+        {
+          "id": "GJ",
+          "name": "Gujarat",
+          "value": 14857
+        },
+        {
+          "id": "ML",
+          "name": "Meghalaya",
+          "value": 17046
+        },
+        {
+          "id": "NL",
+          "name": "Nagaland",
+          "value": 12251
+        },
+        {
+          "id": "MN",
+          "name": "Manipur",
+          "value": 16598
+        },
+        {
+          "id": "WB",
+          "name": "West Bengal",
+          "value": 16832
+        },
+        {
+          "id": "HP",
+          "name": "Himachal Pradesh",
+          "value": 15434
+        },
+        {
+          "id": "TR",
+          "name": "Tripura",
+          "value": 7726
+        },
+        {
+          "id": "UK",
+          "name": "Uttarakhand",
+          "value": 24303
+        },
+        {
+          "id": "BR",
+          "name": "Bihar",
+          "value": 7381
+        },
+        {
+          "id": "SK",
+          "name": "Sikkim",
+          "value": 3341
+        },
+        {
+          "id": "JK",
+          "name": "Jammu & Kashmir",
+          "value": 20230
+        },
+        {
+          "id": "PB",
+          "name": "Punjab",
+          "value": 1849
+        },
+        {
+          "id": "HR",
+          "name": "Haryana",
+          "value": 1603
+        },
+        {
+          "id": "GA",
+          "name": "Goa",
+          "value": 2237
+        },
+        {
+          "id": "DL",
+          "name": "Delhi",
+          "value": 195
+        }
+      ],
+      "source": "ISFR 2023"
+    },
+    {
+      "id": "forest_change",
+      "name": "Forest Cover Change from ISFR 2021",
+      "category": "forest",
+      "unit": "km²",
+      "states": [
+        {
+          "id": "MP",
+          "name": "Madhya Pradesh",
+          "value": 8
+        },
+        {
+          "id": "AR",
+          "name": "Arunachal Pradesh",
+          "value": -258
+        },
+        {
+          "id": "CG",
+          "name": "Chhattisgarh",
+          "value": 11
+        },
+        {
+          "id": "MH",
+          "name": "Maharashtra",
+          "value": -89
+        },
+        {
+          "id": "OD",
+          "name": "Odisha",
+          "value": 275
+        },
+        {
+          "id": "KA",
+          "name": "Karnataka",
+          "value": -30
+        },
+        {
+          "id": "UP",
+          "name": "Uttar Pradesh",
+          "value": 18
+        },
+        {
+          "id": "RJ",
+          "name": "Rajasthan",
+          "value": 33
+        },
+        {
+          "id": "TN",
+          "name": "Tamil Nadu",
+          "value": -106
+        },
+        {
+          "id": "AP",
+          "name": "Andhra Pradesh",
+          "value": 12
+        },
+        {
+          "id": "JH",
+          "name": "Jharkhand",
+          "value": -73
+        },
+        {
+          "id": "TS",
+          "name": "Telangana",
+          "value": 32
+        },
+        {
+          "id": "KL",
+          "name": "Kerala",
+          "value": -14
+        },
+        {
+          "id": "AS",
+          "name": "Assam",
+          "value": -339
+        },
+        {
+          "id": "MZ",
+          "name": "Mizoram",
+          "value": -186
+        },
+        {
+          "id": "GJ",
+          "name": "Gujarat",
+          "value": -8
+        },
+        {
+          "id": "ML",
+          "name": "Meghalaya",
+          "value": -73
+        },
+        {
+          "id": "NL",
+          "name": "Nagaland",
+          "value": -23
+        },
+        {
+          "id": "MN",
+          "name": "Manipur",
+          "value": -249
+        },
+        {
+          "id": "WB",
+          "name": "West Bengal",
+          "value": -56
+        },
+        {
+          "id": "HP",
+          "name": "Himachal Pradesh",
+          "value": 15
+        },
+        {
+          "id": "TR",
+          "name": "Tripura",
+          "value": -32
+        },
+        {
+          "id": "UK",
+          "name": "Uttarakhand",
+          "value": -22
+        },
+        {
+          "id": "BR",
+          "name": "Bihar",
+          "value": 12
+        },
+        {
+          "id": "SK",
+          "name": "Sikkim",
+          "value": -2
+        },
+        {
+          "id": "JK",
+          "name": "Jammu & Kashmir",
+          "value": -24
+        },
+        {
+          "id": "PB",
+          "name": "Punjab",
+          "value": 18
+        },
+        {
+          "id": "HR",
+          "name": "Haryana",
+          "value": -5
+        },
+        {
+          "id": "GA",
+          "name": "Goa",
+          "value": -3
+        },
+        {
+          "id": "DL",
+          "name": "Delhi",
+          "value": -0.5
+        }
+      ],
+      "source": "ISFR 2023"
+    },
+    {
+      "id": "groundwater_stage",
+      "name": "Groundwater Development Stage",
+      "category": "water",
+      "unit": "%",
+      "states": [
+        {
+          "id": "DL",
+          "name": "Delhi",
+          "value": 137
+        },
+        {
+          "id": "RJ",
+          "name": "Rajasthan",
+          "value": 140
+        },
+        {
+          "id": "HR",
+          "name": "Haryana",
+          "value": 137
+        },
+        {
+          "id": "PB",
+          "name": "Punjab",
+          "value": 165
+        },
+        {
+          "id": "TN",
+          "name": "Tamil Nadu",
+          "value": 77
+        },
+        {
+          "id": "UP",
+          "name": "Uttar Pradesh",
+          "value": 74
+        },
+        {
+          "id": "KA",
+          "name": "Karnataka",
+          "value": 73
+        },
+        {
+          "id": "GJ",
+          "name": "Gujarat",
+          "value": 69
+        },
+        {
+          "id": "MP",
+          "name": "Madhya Pradesh",
+          "value": 56
+        },
+        {
+          "id": "MH",
+          "name": "Maharashtra",
+          "value": 54
+        },
+        {
+          "id": "AP",
+          "name": "Andhra Pradesh",
+          "value": 51
+        },
+        {
+          "id": "TS",
+          "name": "Telangana",
+          "value": 48
+        },
+        {
+          "id": "WB",
+          "name": "West Bengal",
+          "value": 44
+        },
+        {
+          "id": "BR",
+          "name": "Bihar",
+          "value": 42
+        },
+        {
+          "id": "OD",
+          "name": "Odisha",
+          "value": 35
+        },
+        {
+          "id": "JH",
+          "name": "Jharkhand",
+          "value": 32
+        },
+        {
+          "id": "CG",
+          "name": "Chhattisgarh",
+          "value": 28
+        },
+        {
+          "id": "AS",
+          "name": "Assam",
+          "value": 22
+        },
+        {
+          "id": "KL",
+          "name": "Kerala",
+          "value": 47
+        },
+        {
+          "id": "UK",
+          "name": "Uttarakhand",
+          "value": 38
+        },
+        {
+          "id": "HP",
+          "name": "Himachal Pradesh",
+          "value": 24
+        },
+        {
+          "id": "JK",
+          "name": "Jammu & Kashmir",
+          "value": 19
+        },
+        {
+          "id": "GA",
+          "name": "Goa",
+          "value": 26
+        },
+        {
+          "id": "SK",
+          "name": "Sikkim",
+          "value": 8
+        },
+        {
+          "id": "NL",
+          "name": "Nagaland",
+          "value": 6
+        },
+        {
+          "id": "MZ",
+          "name": "Mizoram",
+          "value": 5
+        },
+        {
+          "id": "ML",
+          "name": "Meghalaya",
+          "value": 4
+        },
+        {
+          "id": "MN",
+          "name": "Manipur",
+          "value": 3
+        },
+        {
+          "id": "AR",
+          "name": "Arunachal Pradesh",
+          "value": 2
+        },
+        {
+          "id": "TR",
+          "name": "Tripura",
+          "value": 15
+        }
+      ],
+      "source": "CGWB 2023"
+    }
+  ]
+}

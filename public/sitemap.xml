@@ -284,6 +284,102 @@
     <priority>0.6</priority>
   </url>
 
+  <!-- Environment domain -->
+  <url>
+    <loc>https://indiandataproject.org/environment</loc>
+    <lastmod>2026-02-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://indiandataproject.org/environment/explore</loc>
+    <lastmod>2026-02-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://indiandataproject.org/environment/methodology</loc>
+    <lastmod>2026-02-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://indiandataproject.org/environment/glossary</loc>
+    <lastmod>2026-02-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Elections domain -->
+  <url>
+    <loc>https://indiandataproject.org/elections</loc>
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://indiandataproject.org/elections/explore</loc>
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://indiandataproject.org/elections/methodology</loc>
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://indiandataproject.org/elections/glossary</loc>
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Elections data endpoints -->
+  <url>
+    <loc>https://indiandataproject.org/data/elections/2025-26/summary.json</loc>
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://indiandataproject.org/data/elections/2025-26/turnout.json</loc>
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://indiandataproject.org/data/elections/2025-26/results.json</loc>
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://indiandataproject.org/data/elections/2025-26/candidates.json</loc>
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://indiandataproject.org/data/elections/2025-26/representation.json</loc>
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://indiandataproject.org/data/elections/2025-26/indicators.json</loc>
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://indiandataproject.org/data/elections/2025-26/glossary.json</loc>
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+  </url>
+
   <!-- Education data endpoints -->
   <url>
     <loc>https://indiandataproject.org/data/education/2025-26/summary.json</loc>
@@ -375,6 +471,50 @@
   </url>
   <url>
     <loc>https://indiandataproject.org/data/healthcare/2025-26/indicators.json</loc>
+    <lastmod>2026-02-28</lastmod>
+    <changefreq>quarterly</changefreq>
+    <priority>0.4</priority>
+  </url>
+
+  <!-- Environment data endpoints -->
+  <url>
+    <loc>https://indiandataproject.org/data/environment/2025-26/summary.json</loc>
+    <lastmod>2026-02-28</lastmod>
+    <changefreq>quarterly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://indiandataproject.org/data/environment/2025-26/air-quality.json</loc>
+    <lastmod>2026-02-28</lastmod>
+    <changefreq>quarterly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://indiandataproject.org/data/environment/2025-26/forest.json</loc>
+    <lastmod>2026-02-28</lastmod>
+    <changefreq>quarterly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://indiandataproject.org/data/environment/2025-26/energy.json</loc>
+    <lastmod>2026-02-28</lastmod>
+    <changefreq>quarterly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://indiandataproject.org/data/environment/2025-26/water.json</loc>
+    <lastmod>2026-02-28</lastmod>
+    <changefreq>quarterly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://indiandataproject.org/data/environment/2025-26/indicators.json</loc>
+    <lastmod>2026-02-28</lastmod>
+    <changefreq>quarterly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://indiandataproject.org/data/environment/2025-26/glossary.json</loc>
     <lastmod>2026-02-28</lastmod>
     <changefreq>quarterly</changefreq>
     <priority>0.4</priority>
@@ -578,6 +718,18 @@
   </url>
   <url>
     <loc>https://indiandataproject.org/embed/healthcare/infrastructure</loc>
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://indiandataproject.org/embed/environment/air-quality</loc>
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://indiandataproject.org/embed/elections/turnout</loc>
     <lastmod>2026-03-01</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>

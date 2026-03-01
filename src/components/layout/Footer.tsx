@@ -10,7 +10,9 @@ export function Footer() {
   const isEducation = location.pathname.startsWith('/education');
   const isEmployment = location.pathname.startsWith('/employment');
   const isHealthcare = location.pathname.startsWith('/healthcare');
-  const isDataDomain = isBudget || isEconomy || isRBI || isStates || isCensus || isEducation || isEmployment || isHealthcare;
+  const isEnvironment = location.pathname.startsWith('/environment');
+  const isElections = location.pathname.startsWith('/elections');
+  const isDataDomain = isBudget || isEconomy || isRBI || isStates || isCensus || isEducation || isEmployment || isHealthcare || isEnvironment || isElections;
 
   return (
     <footer className="relative py-8 pb-24 md:pb-8" style={{ background: 'var(--bg-surface)' }}>
@@ -258,6 +260,94 @@ export function Footer() {
             </a>
             {' '}&middot; Not affiliated with GoI
           </p>
+        ) : isEnvironment ? (
+          <p className="text-caption text-center md:text-left">
+            Data from{' '}
+            <a
+              href="https://airquality.cpcb.gov.in/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="link-hover"
+              style={{ color: 'var(--text-muted)' }}
+            >
+              CPCB
+            </a>
+            {' '}&middot;{' '}
+            <a
+              href="https://fsi.nic.in/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="link-hover"
+              style={{ color: 'var(--text-muted)' }}
+            >
+              ISFR 2023
+            </a>
+            {' '}&middot;{' '}
+            <a
+              href="https://cea.nic.in/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="link-hover"
+              style={{ color: 'var(--text-muted)' }}
+            >
+              CEA
+            </a>
+            {' '}&middot;{' '}
+            <a
+              href="https://cwc.gov.in/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="link-hover"
+              style={{ color: 'var(--text-muted)' }}
+            >
+              CWC/CGWB
+            </a>
+            {' '}&middot;{' '}
+            <a
+              href="https://data.worldbank.org/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="link-hover"
+              style={{ color: 'var(--text-muted)' }}
+            >
+              World Bank
+            </a>
+            {' '}&middot; Not affiliated with GoI
+          </p>
+        ) : isElections ? (
+          <p className="text-caption text-center md:text-left">
+            Data from{' '}
+            <a
+              href="https://eci.gov.in/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="link-hover"
+              style={{ color: 'var(--text-muted)' }}
+            >
+              ECI
+            </a>
+            {' '}&middot;{' '}
+            <a
+              href="https://lokdhaba.ashoka.edu.in/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="link-hover"
+              style={{ color: 'var(--text-muted)' }}
+            >
+              TCPD Lok Dhaba
+            </a>
+            {' '}&middot;{' '}
+            <a
+              href="https://adrindia.org/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="link-hover"
+              style={{ color: 'var(--text-muted)' }}
+            >
+              ADR / MyNeta
+            </a>
+            {' '}&middot; Not affiliated with ECI or GoI
+          </p>
         ) : (
           <p className="text-caption text-center md:text-left">
             Open-source civic tech. Real government data, made accessible.
@@ -280,6 +370,10 @@ export function Footer() {
             'Employment 2025-26'
           ) : isHealthcare ? (
             'Healthcare 2025-26'
+          ) : isEnvironment ? (
+            'Environment 2025-26'
+          ) : isElections ? (
+            'Elections 2025-26'
           ) : (
             <a
               href="https://github.com/ronit111/indian-data-project"

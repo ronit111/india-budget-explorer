@@ -16,6 +16,8 @@ function getDomainContext(pathname: string): string | null {
   if (pathname.startsWith('/education')) return 'education';
   if (pathname.startsWith('/employment')) return 'employment';
   if (pathname.startsWith('/healthcare')) return 'healthcare';
+  if (pathname.startsWith('/environment')) return 'environment';
+  if (pathname.startsWith('/elections')) return 'elections';
   return null;
 }
 
@@ -28,6 +30,8 @@ const DOMAIN_LABELS: Record<string, string> = {
   education: 'Viewing education data',
   employment: 'Viewing employment data',
   healthcare: 'Viewing healthcare data',
+  environment: 'Viewing environment data',
+  elections: 'Viewing election data',
 };
 
 export function PersonalizationBanner() {

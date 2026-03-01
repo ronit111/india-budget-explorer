@@ -1,0 +1,495 @@
+{
+  "year": "2025-26",
+  "renewablesPctTimeSeries": [
+    {
+      "year": "2000",
+      "value": 46.9
+    },
+    {
+      "year": "2001",
+      "value": 47.1
+    },
+    {
+      "year": "2002",
+      "value": 45.8
+    },
+    {
+      "year": "2003",
+      "value": 45.6
+    },
+    {
+      "year": "2004",
+      "value": 44.9
+    },
+    {
+      "year": "2005",
+      "value": 44.2
+    },
+    {
+      "year": "2006",
+      "value": 43.2
+    },
+    {
+      "year": "2007",
+      "value": 41.5
+    },
+    {
+      "year": "2008",
+      "value": 39.4
+    },
+    {
+      "year": "2009",
+      "value": 37.4
+    },
+    {
+      "year": "2010",
+      "value": 36.2
+    },
+    {
+      "year": "2011",
+      "value": 35
+    },
+    {
+      "year": "2012",
+      "value": 34.8
+    },
+    {
+      "year": "2013",
+      "value": 34.9
+    },
+    {
+      "year": "2014",
+      "value": 33.9
+    },
+    {
+      "year": "2015",
+      "value": 33.4
+    },
+    {
+      "year": "2016",
+      "value": 33
+    },
+    {
+      "year": "2017",
+      "value": 32.5
+    },
+    {
+      "year": "2018",
+      "value": 32.9
+    },
+    {
+      "year": "2019",
+      "value": 33.5
+    },
+    {
+      "year": "2020",
+      "value": 36.1
+    },
+    {
+      "year": "2021",
+      "value": 34.9
+    }
+  ],
+  "renewableElecTimeSeries": [
+    {
+      "year": "2000",
+      "value": 14.04
+    },
+    {
+      "year": "2001",
+      "value": 13.62
+    },
+    {
+      "year": "2002",
+      "value": 12.8
+    },
+    {
+      "year": "2003",
+      "value": 11.52
+    },
+    {
+      "year": "2004",
+      "value": 12.87
+    },
+    {
+      "year": "2005",
+      "value": 14.37
+    },
+    {
+      "year": "2006",
+      "value": 15.97
+    },
+    {
+      "year": "2007",
+      "value": 16.9
+    },
+    {
+      "year": "2008",
+      "value": 17.11
+    },
+    {
+      "year": "2009",
+      "value": 15.35
+    },
+    {
+      "year": "2010",
+      "value": 14.94
+    },
+    {
+      "year": "2011",
+      "value": 15.31
+    },
+    {
+      "year": "2012",
+      "value": 16.24
+    },
+    {
+      "year": "2013",
+      "value": 15.3
+    },
+    {
+      "year": "2014",
+      "value": 15.86
+    },
+    {
+      "year": "2015",
+      "value": 14.89
+    },
+    {
+      "year": "2016",
+      "value": 13.6
+    },
+    {
+      "year": "2017",
+      "value": 14.16
+    },
+    {
+      "year": "2018",
+      "value": 15.01
+    },
+    {
+      "year": "2019",
+      "value": 16.83
+    },
+    {
+      "year": "2020",
+      "value": 19.76
+    },
+    {
+      "year": "2021",
+      "value": 19.13
+    }
+  ],
+  "coalElecTimeSeries": [
+    {
+      "year": "2000",
+      "value": 68.89
+    },
+    {
+      "year": "2001",
+      "value": 69.89
+    },
+    {
+      "year": "2002",
+      "value": 70.21
+    },
+    {
+      "year": "2003",
+      "value": 68.44
+    },
+    {
+      "year": "2004",
+      "value": 68.12
+    },
+    {
+      "year": "2005",
+      "value": 67.27
+    },
+    {
+      "year": "2006",
+      "value": 67.04
+    },
+    {
+      "year": "2007",
+      "value": 65.77
+    },
+    {
+      "year": "2008",
+      "value": 68.3
+    },
+    {
+      "year": "2009",
+      "value": 67.26
+    },
+    {
+      "year": "2010",
+      "value": 67.67
+    },
+    {
+      "year": "2011",
+      "value": 67.73
+    },
+    {
+      "year": "2012",
+      "value": 72.18
+    },
+    {
+      "year": "2013",
+      "value": 73.05
+    },
+    {
+      "year": "2014",
+      "value": 74.79
+    },
+    {
+      "year": "2015",
+      "value": 76.01
+    },
+    {
+      "year": "2016",
+      "value": 75.48
+    },
+    {
+      "year": "2017",
+      "value": 74.86
+    },
+    {
+      "year": "2018",
+      "value": 74.99
+    },
+    {
+      "year": "2019",
+      "value": 72.86
+    },
+    {
+      "year": "2020",
+      "value": 71.36
+    },
+    {
+      "year": "2021",
+      "value": 71.49
+    },
+    {
+      "year": "2022",
+      "value": 71.74
+    },
+    {
+      "year": "2023",
+      "value": 74.43
+    }
+  ],
+  "energyUsePerCapitaTimeSeries": [
+    {
+      "year": "2000",
+      "value": 394.92
+    },
+    {
+      "year": "2001",
+      "value": 393.38
+    },
+    {
+      "year": "2002",
+      "value": 397.34
+    },
+    {
+      "year": "2003",
+      "value": 399.7
+    },
+    {
+      "year": "2004",
+      "value": 415.48
+    },
+    {
+      "year": "2005",
+      "value": 425.37
+    },
+    {
+      "year": "2006",
+      "value": 441.79
+    },
+    {
+      "year": "2007",
+      "value": 461.2
+    },
+    {
+      "year": "2008",
+      "value": 481.55
+    },
+    {
+      "year": "2009",
+      "value": 509.45
+    },
+    {
+      "year": "2010",
+      "value": 531.87
+    },
+    {
+      "year": "2011",
+      "value": 546.68
+    },
+    {
+      "year": "2012",
+      "value": 572.13
+    },
+    {
+      "year": "2013",
+      "value": 577.25
+    },
+    {
+      "year": "2014",
+      "value": 610.17
+    },
+    {
+      "year": "2015",
+      "value": 622.34
+    },
+    {
+      "year": "2016",
+      "value": 627.27
+    },
+    {
+      "year": "2017",
+      "value": 648.01
+    },
+    {
+      "year": "2018",
+      "value": 668.3
+    },
+    {
+      "year": "2019",
+      "value": 666.98
+    },
+    {
+      "year": "2020",
+      "value": 632.24
+    },
+    {
+      "year": "2021",
+      "value": 676.81
+    },
+    {
+      "year": "2022",
+      "value": 727.9
+    },
+    {
+      "year": "2023",
+      "value": 754.18
+    }
+  ],
+  "co2PerCapitaTimeSeries": [],
+  "co2TotalTimeSeries": [],
+  "ghgTotalTimeSeries": [],
+  "fuelCapacityMix": [
+    {
+      "year": "2015",
+      "coal": 164636,
+      "gas": 23062,
+      "nuclear": 5780,
+      "hydro": 41267,
+      "solar": 3744,
+      "wind": 23354,
+      "biomass": 4418,
+      "smallHydro": 3990
+    },
+    {
+      "year": "2016",
+      "coal": 176163,
+      "gas": 24509,
+      "nuclear": 5780,
+      "hydro": 42783,
+      "solar": 6763,
+      "wind": 26777,
+      "biomass": 4831,
+      "smallHydro": 4274
+    },
+    {
+      "year": "2017",
+      "coal": 188898,
+      "gas": 25329,
+      "nuclear": 6780,
+      "hydro": 44478,
+      "solar": 12289,
+      "wind": 32280,
+      "biomass": 8182,
+      "smallHydro": 4380
+    },
+    {
+      "year": "2018",
+      "coal": 197172,
+      "gas": 24897,
+      "nuclear": 6780,
+      "hydro": 45399,
+      "solar": 21651,
+      "wind": 34046,
+      "biomass": 8839,
+      "smallHydro": 4486
+    },
+    {
+      "year": "2019",
+      "coal": 200704,
+      "gas": 24937,
+      "nuclear": 6780,
+      "hydro": 45399,
+      "solar": 28181,
+      "wind": 36625,
+      "biomass": 9524,
+      "smallHydro": 4647
+    },
+    {
+      "year": "2020",
+      "coal": 205135,
+      "gas": 24955,
+      "nuclear": 6780,
+      "hydro": 45699,
+      "solar": 34628,
+      "wind": 37694,
+      "biomass": 9942,
+      "smallHydro": 4744
+    },
+    {
+      "year": "2021",
+      "coal": 209285,
+      "gas": 24924,
+      "nuclear": 6780,
+      "hydro": 46209,
+      "solar": 40085,
+      "wind": 39248,
+      "biomass": 10145,
+      "smallHydro": 4786
+    },
+    {
+      "year": "2022",
+      "coal": 210700,
+      "gas": 24824,
+      "nuclear": 6780,
+      "hydro": 46722,
+      "solar": 50778,
+      "wind": 40080,
+      "biomass": 10176,
+      "smallHydro": 4841
+    },
+    {
+      "year": "2023",
+      "coal": 211666,
+      "gas": 24824,
+      "nuclear": 7480,
+      "hydro": 46850,
+      "solar": 66780,
+      "wind": 42633,
+      "biomass": 10261,
+      "smallHydro": 4943
+    },
+    {
+      "year": "2024",
+      "coal": 213950,
+      "gas": 24824,
+      "nuclear": 7480,
+      "hydro": 47073,
+      "solar": 82788,
+      "wind": 46160,
+      "biomass": 10544,
+      "smallHydro": 5011
+    }
+  ],
+  "source": "World Bank + CEA Installed Capacity Reports"
+}

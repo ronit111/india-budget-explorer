@@ -58,7 +58,7 @@ export default function EducationPage() {
 
       <EducationHeroSection summary={summary} />
 
-      <KeyTakeaways
+      {summary && <KeyTakeaways
         accent="#3B82F6"
         pills={[
           { value: `${(summary.totalStudents / 10000000).toFixed(1)} Cr`, label: "Students — more than Brazil's population", sectionId: 'enrollment' },
@@ -66,7 +66,7 @@ export default function EducationPage() {
           { value: `${summary.gerSecondary?.toFixed(0) ?? '—'}%`, label: 'Secondary enrollment — 1 in 5 teens not in school', sectionId: 'dropout' },
           { value: `${summary.educationSpendGDP}% of GDP`, label: 'What India spends on education', sectionId: 'spending' },
         ]}
-      />
+      />}
 
       <div className="composition-divider" />
 

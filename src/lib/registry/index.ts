@@ -10,3 +10,5 @@ import './census.ts';
 import './education.ts';
 import './employment.ts';
 import './healthcare.ts';
+import './environment.ts';
+import './elections.ts';

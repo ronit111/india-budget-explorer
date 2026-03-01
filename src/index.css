@@ -39,6 +39,12 @@
   --rose:          #F43F5E;
   --rose-light:    #FB7185;
   --rose-dim:      rgba(244, 63, 94, 0.12);
+  --teal:          #14B8A6;
+  --teal-light:    #2DD4BF;
+  --teal-dim:      rgba(20, 184, 166, 0.12);
+  --indigo:        #6366F1;
+  --indigo-light:  #818CF8;
+  --indigo-dim:    rgba(99, 102, 241, 0.12);
 
   /* Semantic */
   --positive: #34d399;
@@ -257,6 +263,20 @@
 
   .gradient-text-rose {
     background: linear-gradient(135deg, var(--rose), var(--rose-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .gradient-text-teal {
+    background: linear-gradient(135deg, var(--teal), var(--teal-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .gradient-text-indigo {
+    background: linear-gradient(135deg, var(--indigo), var(--indigo-light));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;

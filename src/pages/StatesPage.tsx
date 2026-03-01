@@ -58,7 +58,7 @@ export default function StatesPage() {
 
       <StatesHeroSection summary={summary} />
 
-      <KeyTakeaways
+      {summary && <KeyTakeaways
         accent="#4ADE80"
         pills={[
           { value: `₹${formatIndianNumber(summary.averagePerCapita)}`, label: 'Average state income per person', sectionId: 'percapita' },
@@ -66,7 +66,7 @@ export default function StatesPage() {
           { value: `₹${summary.topGsdpValue}L Cr`, label: 'Maharashtra alone, bigger than many nations', sectionId: 'gsdp' },
           { value: String(summary.stateCount), label: 'States and UTs — 31 different economies', sectionId: 'fiscal-health' },
         ]}
-      />
+      />}
 
       <div className="composition-divider" />
 

@@ -18,7 +18,9 @@ export function Header() {
   const isEducationSection = location.pathname.startsWith('/education');
   const isEmploymentSection = location.pathname.startsWith('/employment');
   const isHealthcareSection = location.pathname.startsWith('/healthcare');
-  const isDataDomain = isBudgetSection || isEconomySection || isRBISection || isStatesSection || isCensusSection || isEducationSection || isEmploymentSection || isHealthcareSection;
+  const isEnvironmentSection = location.pathname.startsWith('/environment');
+  const isElectionsSection = location.pathname.startsWith('/elections');
+  const isDataDomain = isBudgetSection || isEconomySection || isRBISection || isStatesSection || isCensusSection || isEducationSection || isEmploymentSection || isHealthcareSection || isEnvironmentSection || isElectionsSection;
 
   // Context-aware title: show story name when inside a data story
   const headerTitle = isBudgetSection
@@ -37,6 +39,10 @@ export function Header() {
                 ? 'Employment'
                 : isHealthcareSection
                   ? 'Healthcare'
+                  : isEnvironmentSection
+                    ? 'Environment'
+                    : isElectionsSection
+                      ? 'Elections'
                   : 'Indian Data Project';
   const headerLink = isBudgetSection
     ? '/budget'
@@ -54,6 +60,10 @@ export function Header() {
                 ? '/employment'
                 : isHealthcareSection
                   ? '/healthcare'
+                  : isEnvironmentSection
+                    ? '/environment'
+                    : isElectionsSection
+                      ? '/elections'
                   : '/';
 
   // Only show nav links inside a data story (domain sub-pages)
@@ -117,6 +127,20 @@ export function Header() {
                       { to: '/healthcare/methodology', label: 'Methodology' },
                       { to: '/healthcare/glossary', label: 'Glossary' },
                     ]
+                  : isEnvironmentSection
+                    ? [
+                        { to: '/environment', label: 'Story' },
+                        { to: '/environment/explore', label: 'Explore' },
+                        { to: '/environment/methodology', label: 'Methodology' },
+                        { to: '/environment/glossary', label: 'Glossary' },
+                      ]
+                    : isElectionsSection
+                      ? [
+                          { to: '/elections', label: 'Story' },
+                          { to: '/elections/explore', label: 'Explore' },
+                          { to: '/elections/methodology', label: 'Methodology' },
+                          { to: '/elections/glossary', label: 'Glossary' },
+                        ]
                   : [];
 
   const isActiveLink = (linkTo: string) => {
@@ -128,6 +152,8 @@ export function Header() {
     if (linkTo === '/education') return location.pathname === '/education';
     if (linkTo === '/employment') return location.pathname === '/employment';
     if (linkTo === '/healthcare') return location.pathname === '/healthcare';
+    if (linkTo === '/environment') return location.pathname === '/environment';
+    if (linkTo === '/elections') return location.pathname === '/elections';
     return location.pathname === linkTo;
   };
 

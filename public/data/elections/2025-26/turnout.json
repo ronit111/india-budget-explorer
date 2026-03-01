@@ -1,0 +1,315 @@
+{
+  "year": "2025-26",
+  "nationalTrend": [
+    {
+      "year": "1957",
+      "turnout": 47.7,
+      "electors": 19.4,
+      "lsNumber": 2
+    },
+    {
+      "year": "1962",
+      "turnout": 55.4,
+      "electors": 21.6,
+      "lsNumber": 3
+    },
+    {
+      "year": "1967",
+      "turnout": 61.3,
+      "electors": 25.0,
+      "lsNumber": 4
+    },
+    {
+      "year": "1971",
+      "turnout": 55.3,
+      "electors": 27.4,
+      "lsNumber": 5
+    },
+    {
+      "year": "1977",
+      "turnout": 60.5,
+      "electors": 32.1,
+      "lsNumber": 6
+    },
+    {
+      "year": "1980",
+      "turnout": 56.9,
+      "electors": 35.6,
+      "lsNumber": 7
+    },
+    {
+      "year": "1984",
+      "turnout": 64.0,
+      "electors": 37.9,
+      "lsNumber": 8
+    },
+    {
+      "year": "1989",
+      "turnout": 62.0,
+      "electors": 49.9,
+      "lsNumber": 9
+    },
+    {
+      "year": "1991",
+      "turnout": 56.7,
+      "electors": 49.8,
+      "lsNumber": 10
+    },
+    {
+      "year": "1996",
+      "turnout": 57.9,
+      "electors": 59.3,
+      "lsNumber": 11
+    },
+    {
+      "year": "1998",
+      "turnout": 62.0,
+      "electors": 60.5,
+      "lsNumber": 12
+    },
+    {
+      "year": "1999",
+      "turnout": 60.0,
+      "electors": 62.0,
+      "lsNumber": 13
+    },
+    {
+      "year": "2004",
+      "turnout": 58.1,
+      "electors": 67.1,
+      "lsNumber": 14
+    },
+    {
+      "year": "2009",
+      "turnout": 58.2,
+      "electors": 71.7,
+      "lsNumber": 15
+    },
+    {
+      "year": "2014",
+      "turnout": 66.4,
+      "electors": 81.5,
+      "lsNumber": 16
+    },
+    {
+      "year": "2019",
+      "turnout": 67.4,
+      "electors": 91.2,
+      "lsNumber": 17
+    },
+    {
+      "year": "2024",
+      "turnout": 65.8,
+      "electors": 96.9,
+      "lsNumber": 18
+    }
+  ],
+  "events": [
+    {
+      "year": "1977",
+      "event": "Post-Emergency: Congress routed"
+    },
+    {
+      "year": "1984",
+      "event": "Indira assassination: sympathy wave"
+    },
+    {
+      "year": "1989",
+      "event": "Mandal–Mandir politics begins"
+    },
+    {
+      "year": "1991",
+      "event": "Rajiv assassination mid-election"
+    },
+    {
+      "year": "1996",
+      "event": "Coalition era begins"
+    },
+    {
+      "year": "2014",
+      "event": "Modi Wave 1.0: BJP majority"
+    },
+    {
+      "year": "2024",
+      "event": "INDIA alliance checks BJP majority"
+    }
+  ],
+  "stateBreakdown2024": [
+    {
+      "id": "LD",
+      "name": "Lakshadweep",
+      "turnout": 84.1
+    },
+    {
+      "id": "AP",
+      "name": "Andhra Pradesh",
+      "turnout": 81.9
+    },
+    {
+      "id": "TR",
+      "name": "Tripura",
+      "turnout": 81.8
+    },
+    {
+      "id": "AS",
+      "name": "Assam",
+      "turnout": 80.2
+    },
+    {
+      "id": "WB",
+      "name": "West Bengal",
+      "turnout": 73.5
+    },
+    {
+      "id": "OD",
+      "name": "Odisha",
+      "turnout": 73.4
+    },
+    {
+      "id": "PY",
+      "name": "Puducherry",
+      "turnout": 73.2
+    },
+    {
+      "id": "SK",
+      "name": "Sikkim",
+      "turnout": 73.0
+    },
+    {
+      "id": "MN",
+      "name": "Manipur",
+      "turnout": 72.8
+    },
+    {
+      "id": "AN",
+      "name": "Andaman & Nicobar",
+      "turnout": 72.4
+    },
+    {
+      "id": "GA",
+      "name": "Goa",
+      "turnout": 72.1
+    },
+    {
+      "id": "HP",
+      "name": "Himachal Pradesh",
+      "turnout": 71.5
+    },
+    {
+      "id": "KL",
+      "name": "Kerala",
+      "turnout": 71.3
+    },
+    {
+      "id": "NL",
+      "name": "Nagaland",
+      "turnout": 70.2
+    },
+    {
+      "id": "TN",
+      "name": "Tamil Nadu",
+      "turnout": 69.7
+    },
+    {
+      "id": "MZ",
+      "name": "Mizoram",
+      "turnout": 69.5
+    },
+    {
+      "id": "KA",
+      "name": "Karnataka",
+      "turnout": 69.2
+    },
+    {
+      "id": "AR",
+      "name": "Arunachal Pradesh",
+      "turnout": 68.3
+    },
+    {
+      "id": "CH",
+      "name": "Chandigarh",
+      "turnout": 68.2
+    },
+    {
+      "id": "DD",
+      "name": "Dadra & Nagar Haveli and Daman & Diu",
+      "turnout": 67.8
+    },
+    {
+      "id": "JH",
+      "name": "Jharkhand",
+      "turnout": 67.5
+    },
+    {
+      "id": "ML",
+      "name": "Meghalaya",
+      "turnout": 67.4
+    },
+    {
+      "id": "CG",
+      "name": "Chhattisgarh",
+      "turnout": 67.1
+    },
+    {
+      "id": "TS",
+      "name": "Telangana",
+      "turnout": 65.7
+    },
+    {
+      "id": "PB",
+      "name": "Punjab",
+      "turnout": 65.4
+    },
+    {
+      "id": "MP",
+      "name": "Madhya Pradesh",
+      "turnout": 64.8
+    },
+    {
+      "id": "HR",
+      "name": "Haryana",
+      "turnout": 64.0
+    },
+    {
+      "id": "MH",
+      "name": "Maharashtra",
+      "turnout": 61.3
+    },
+    {
+      "id": "GJ",
+      "name": "Gujarat",
+      "turnout": 59.5
+    },
+    {
+      "id": "RJ",
+      "name": "Rajasthan",
+      "turnout": 59.2
+    },
+    {
+      "id": "DL",
+      "name": "Delhi",
+      "turnout": 58.7
+    },
+    {
+      "id": "JK",
+      "name": "Jammu & Kashmir",
+      "turnout": 58.5
+    },
+    {
+      "id": "UK",
+      "name": "Uttarakhand",
+      "turnout": 57.8
+    },
+    {
+      "id": "BR",
+      "name": "Bihar",
+      "turnout": 57.3
+    },
+    {
+      "id": "UP",
+      "name": "Uttar Pradesh",
+      "turnout": 56.0
+    }
+  ],
+  "source": "Election Commission of India — Statistical Reports on General Elections"
+}

@@ -1,0 +1,1054 @@
+{
+  "year": "2025-26",
+  "seatEvolution": [
+    {
+      "id": "INC",
+      "name": "Congress (INC)",
+      "color": "#00BFFF",
+      "data": [
+        {
+          "year": "1957",
+          "seats": 371,
+          "totalSeats": 494,
+          "pct": 75.1
+        },
+        {
+          "year": "1962",
+          "seats": 361,
+          "totalSeats": 494,
+          "pct": 73.1
+        },
+        {
+          "year": "1967",
+          "seats": 283,
+          "totalSeats": 520,
+          "pct": 54.4
+        },
+        {
+          "year": "1971",
+          "seats": 352,
+          "totalSeats": 518,
+          "pct": 68.0
+        },
+        {
+          "year": "1977",
+          "seats": 154,
+          "totalSeats": 542,
+          "pct": 28.4
+        },
+        {
+          "year": "1980",
+          "seats": 353,
+          "totalSeats": 542,
+          "pct": 65.1
+        },
+        {
+          "year": "1984",
+          "seats": 404,
+          "totalSeats": 542,
+          "pct": 74.5
+        },
+        {
+          "year": "1989",
+          "seats": 197,
+          "totalSeats": 529,
+          "pct": 37.2
+        },
+        {
+          "year": "1991",
+          "seats": 232,
+          "totalSeats": 521,
+          "pct": 44.5
+        },
+        {
+          "year": "1996",
+          "seats": 140,
+          "totalSeats": 543,
+          "pct": 25.8
+        },
+        {
+          "year": "1998",
+          "seats": 141,
+          "totalSeats": 543,
+          "pct": 26.0
+        },
+        {
+          "year": "1999",
+          "seats": 114,
+          "totalSeats": 543,
+          "pct": 21.0
+        },
+        {
+          "year": "2004",
+          "seats": 145,
+          "totalSeats": 543,
+          "pct": 26.7
+        },
+        {
+          "year": "2009",
+          "seats": 206,
+          "totalSeats": 543,
+          "pct": 37.9
+        },
+        {
+          "year": "2014",
+          "seats": 44,
+          "totalSeats": 543,
+          "pct": 8.1
+        },
+        {
+          "year": "2019",
+          "seats": 52,
+          "totalSeats": 543,
+          "pct": 9.6
+        },
+        {
+          "year": "2024",
+          "seats": 99,
+          "totalSeats": 543,
+          "pct": 18.2
+        }
+      ]
+    },
+    {
+      "id": "BJP",
+      "name": "BJP",
+      "color": "#FF6B35",
+      "data": [
+        {
+          "year": "1957",
+          "seats": 4,
+          "totalSeats": 494,
+          "pct": 0.8
+        },
+        {
+          "year": "1962",
+          "seats": 14,
+          "totalSeats": 494,
+          "pct": 2.8
+        },
+        {
+          "year": "1967",
+          "seats": 35,
+          "totalSeats": 520,
+          "pct": 6.7
+        },
+        {
+          "year": "1971",
+          "seats": 22,
+          "totalSeats": 518,
+          "pct": 4.2
+        },
+        {
+          "year": "1977",
+          "seats": 0,
+          "totalSeats": 542,
+          "pct": 0.0
+        },
+        {
+          "year": "1980",
+          "seats": 0,
+          "totalSeats": 542,
+          "pct": 0.0
+        },
+        {
+          "year": "1984",
+          "seats": 2,
+          "totalSeats": 542,
+          "pct": 0.4
+        },
+        {
+          "year": "1989",
+          "seats": 85,
+          "totalSeats": 529,
+          "pct": 16.1
+        },
+        {
+          "year": "1991",
+          "seats": 120,
+          "totalSeats": 521,
+          "pct": 23.0
+        },
+        {
+          "year": "1996",
+          "seats": 161,
+          "totalSeats": 543,
+          "pct": 29.7
+        },
+        {
+          "year": "1998",
+          "seats": 182,
+          "totalSeats": 543,
+          "pct": 33.5
+        },
+        {
+          "year": "1999",
+          "seats": 182,
+          "totalSeats": 543,
+          "pct": 33.5
+        },
+        {
+          "year": "2004",
+          "seats": 138,
+          "totalSeats": 543,
+          "pct": 25.4
+        },
+        {
+          "year": "2009",
+          "seats": 116,
+          "totalSeats": 543,
+          "pct": 21.4
+        },
+        {
+          "year": "2014",
+          "seats": 282,
+          "totalSeats": 543,
+          "pct": 51.9
+        },
+        {
+          "year": "2019",
+          "seats": 303,
+          "totalSeats": 543,
+          "pct": 55.8
+        },
+        {
+          "year": "2024",
+          "seats": 240,
+          "totalSeats": 543,
+          "pct": 44.2
+        }
+      ]
+    },
+    {
+      "id": "Left",
+      "name": "Left Parties",
+      "color": "#DC2626",
+      "data": [
+        {
+          "year": "1957",
+          "seats": 29,
+          "totalSeats": 494,
+          "pct": 5.9
+        },
+        {
+          "year": "1962",
+          "seats": 29,
+          "totalSeats": 494,
+          "pct": 5.9
+        },
+        {
+          "year": "1967",
+          "seats": 42,
+          "totalSeats": 520,
+          "pct": 8.1
+        },
+        {
+          "year": "1971",
+          "seats": 48,
+          "totalSeats": 518,
+          "pct": 9.3
+        },
+        {
+          "year": "1977",
+          "seats": 29,
+          "totalSeats": 542,
+          "pct": 5.4
+        },
+        {
+          "year": "1980",
+          "seats": 47,
+          "totalSeats": 542,
+          "pct": 8.7
+        },
+        {
+          "year": "1984",
+          "seats": 28,
+          "totalSeats": 542,
+          "pct": 5.2
+        },
+        {
+          "year": "1989",
+          "seats": 45,
+          "totalSeats": 529,
+          "pct": 8.5
+        },
+        {
+          "year": "1991",
+          "seats": 49,
+          "totalSeats": 521,
+          "pct": 9.4
+        },
+        {
+          "year": "1996",
+          "seats": 44,
+          "totalSeats": 543,
+          "pct": 8.1
+        },
+        {
+          "year": "1998",
+          "seats": 38,
+          "totalSeats": 543,
+          "pct": 7.0
+        },
+        {
+          "year": "1999",
+          "seats": 42,
+          "totalSeats": 543,
+          "pct": 7.7
+        },
+        {
+          "year": "2004",
+          "seats": 59,
+          "totalSeats": 543,
+          "pct": 10.9
+        },
+        {
+          "year": "2009",
+          "seats": 24,
+          "totalSeats": 543,
+          "pct": 4.4
+        },
+        {
+          "year": "2014",
+          "seats": 12,
+          "totalSeats": 543,
+          "pct": 2.2
+        },
+        {
+          "year": "2019",
+          "seats": 5,
+          "totalSeats": 543,
+          "pct": 0.9
+        },
+        {
+          "year": "2024",
+          "seats": 6,
+          "totalSeats": 543,
+          "pct": 1.1
+        }
+      ]
+    },
+    {
+      "id": "JD",
+      "name": "Janata Family",
+      "color": "#A855F7",
+      "data": [
+        {
+          "year": "1957",
+          "seats": 0,
+          "totalSeats": 494,
+          "pct": 0.0
+        },
+        {
+          "year": "1962",
+          "seats": 0,
+          "totalSeats": 494,
+          "pct": 0.0
+        },
+        {
+          "year": "1967",
+          "seats": 0,
+          "totalSeats": 520,
+          "pct": 0.0
+        },
+        {
+          "year": "1971",
+          "seats": 0,
+          "totalSeats": 518,
+          "pct": 0.0
+        },
+        {
+          "year": "1977",
+          "seats": 295,
+          "totalSeats": 542,
+          "pct": 54.4
+        },
+        {
+          "year": "1980",
+          "seats": 41,
+          "totalSeats": 542,
+          "pct": 7.6
+        },
+        {
+          "year": "1984",
+          "seats": 10,
+          "totalSeats": 542,
+          "pct": 1.8
+        },
+        {
+          "year": "1989",
+          "seats": 143,
+          "totalSeats": 529,
+          "pct": 27.0
+        },
+        {
+          "year": "1991",
+          "seats": 59,
+          "totalSeats": 521,
+          "pct": 11.3
+        },
+        {
+          "year": "1996",
+          "seats": 46,
+          "totalSeats": 543,
+          "pct": 8.5
+        },
+        {
+          "year": "1998",
+          "seats": 6,
+          "totalSeats": 543,
+          "pct": 1.1
+        },
+        {
+          "year": "1999",
+          "seats": 22,
+          "totalSeats": 543,
+          "pct": 4.1
+        },
+        {
+          "year": "2004",
+          "seats": 8,
+          "totalSeats": 543,
+          "pct": 1.5
+        },
+        {
+          "year": "2009",
+          "seats": 20,
+          "totalSeats": 543,
+          "pct": 3.7
+        },
+        {
+          "year": "2014",
+          "seats": 4,
+          "totalSeats": 543,
+          "pct": 0.7
+        },
+        {
+          "year": "2019",
+          "seats": 16,
+          "totalSeats": 543,
+          "pct": 2.9
+        },
+        {
+          "year": "2024",
+          "seats": 12,
+          "totalSeats": 543,
+          "pct": 2.2
+        }
+      ]
+    },
+    {
+      "id": "BSP",
+      "name": "BSP",
+      "color": "#3B82F6",
+      "data": [
+        {
+          "year": "1957",
+          "seats": 0,
+          "totalSeats": 494,
+          "pct": 0.0
+        },
+        {
+          "year": "1962",
+          "seats": 0,
+          "totalSeats": 494,
+          "pct": 0.0
+        },
+        {
+          "year": "1967",
+          "seats": 0,
+          "totalSeats": 520,
+          "pct": 0.0
+        },
+        {
+          "year": "1971",
+          "seats": 0,
+          "totalSeats": 518,
+          "pct": 0.0
+        },
+        {
+          "year": "1977",
+          "seats": 0,
+          "totalSeats": 542,
+          "pct": 0.0
+        },
+        {
+          "year": "1980",
+          "seats": 0,
+          "totalSeats": 542,
+          "pct": 0.0
+        },
+        {
+          "year": "1984",
+          "seats": 0,
+          "totalSeats": 542,
+          "pct": 0.0
+        },
+        {
+          "year": "1989",
+          "seats": 3,
+          "totalSeats": 529,
+          "pct": 0.6
+        },
+        {
+          "year": "1991",
+          "seats": 1,
+          "totalSeats": 521,
+          "pct": 0.2
+        },
+        {
+          "year": "1996",
+          "seats": 11,
+          "totalSeats": 543,
+          "pct": 2.0
+        },
+        {
+          "year": "1998",
+          "seats": 5,
+          "totalSeats": 543,
+          "pct": 0.9
+        },
+        {
+          "year": "1999",
+          "seats": 14,
+          "totalSeats": 543,
+          "pct": 2.6
+        },
+        {
+          "year": "2004",
+          "seats": 19,
+          "totalSeats": 543,
+          "pct": 3.5
+        },
+        {
+          "year": "2009",
+          "seats": 21,
+          "totalSeats": 543,
+          "pct": 3.9
+        },
+        {
+          "year": "2014",
+          "seats": 0,
+          "totalSeats": 543,
+          "pct": 0.0
+        },
+        {
+          "year": "2019",
+          "seats": 10,
+          "totalSeats": 543,
+          "pct": 1.8
+        },
+        {
+          "year": "2024",
+          "seats": 0,
+          "totalSeats": 543,
+          "pct": 0.0
+        }
+      ]
+    },
+    {
+      "id": "SP",
+      "name": "SP",
+      "color": "#22C55E",
+      "data": [
+        {
+          "year": "1957",
+          "seats": 0,
+          "totalSeats": 494,
+          "pct": 0.0
+        },
+        {
+          "year": "1962",
+          "seats": 0,
+          "totalSeats": 494,
+          "pct": 0.0
+        },
+        {
+          "year": "1967",
+          "seats": 0,
+          "totalSeats": 520,
+          "pct": 0.0
+        },
+        {
+          "year": "1971",
+          "seats": 0,
+          "totalSeats": 518,
+          "pct": 0.0
+        },
+        {
+          "year": "1977",
+          "seats": 0,
+          "totalSeats": 542,
+          "pct": 0.0
+        },
+        {
+          "year": "1980",
+          "seats": 0,
+          "totalSeats": 542,
+          "pct": 0.0
+        },
+        {
+          "year": "1984",
+          "seats": 0,
+          "totalSeats": 542,
+          "pct": 0.0
+        },
+        {
+          "year": "1989",
+          "seats": 0,
+          "totalSeats": 529,
+          "pct": 0.0
+        },
+        {
+          "year": "1991",
+          "seats": 5,
+          "totalSeats": 521,
+          "pct": 1.0
+        },
+        {
+          "year": "1996",
+          "seats": 17,
+          "totalSeats": 543,
+          "pct": 3.1
+        },
+        {
+          "year": "1998",
+          "seats": 20,
+          "totalSeats": 543,
+          "pct": 3.7
+        },
+        {
+          "year": "1999",
+          "seats": 26,
+          "totalSeats": 543,
+          "pct": 4.8
+        },
+        {
+          "year": "2004",
+          "seats": 36,
+          "totalSeats": 543,
+          "pct": 6.6
+        },
+        {
+          "year": "2009",
+          "seats": 23,
+          "totalSeats": 543,
+          "pct": 4.2
+        },
+        {
+          "year": "2014",
+          "seats": 5,
+          "totalSeats": 543,
+          "pct": 0.9
+        },
+        {
+          "year": "2019",
+          "seats": 5,
+          "totalSeats": 543,
+          "pct": 0.9
+        },
+        {
+          "year": "2024",
+          "seats": 37,
+          "totalSeats": 543,
+          "pct": 6.8
+        }
+      ]
+    },
+    {
+      "id": "Regional",
+      "name": "Regional Parties",
+      "color": "#14B8A6",
+      "data": [
+        {
+          "year": "1957",
+          "seats": 18,
+          "totalSeats": 494,
+          "pct": 3.6
+        },
+        {
+          "year": "1962",
+          "seats": 25,
+          "totalSeats": 494,
+          "pct": 5.1
+        },
+        {
+          "year": "1967",
+          "seats": 69,
+          "totalSeats": 520,
+          "pct": 13.3
+        },
+        {
+          "year": "1971",
+          "seats": 23,
+          "totalSeats": 518,
+          "pct": 4.4
+        },
+        {
+          "year": "1977",
+          "seats": 18,
+          "totalSeats": 542,
+          "pct": 3.3
+        },
+        {
+          "year": "1980",
+          "seats": 24,
+          "totalSeats": 542,
+          "pct": 4.4
+        },
+        {
+          "year": "1984",
+          "seats": 42,
+          "totalSeats": 542,
+          "pct": 7.7
+        },
+        {
+          "year": "1989",
+          "seats": 18,
+          "totalSeats": 529,
+          "pct": 3.4
+        },
+        {
+          "year": "1991",
+          "seats": 24,
+          "totalSeats": 521,
+          "pct": 4.6
+        },
+        {
+          "year": "1996",
+          "seats": 87,
+          "totalSeats": 543,
+          "pct": 16.0
+        },
+        {
+          "year": "1998",
+          "seats": 109,
+          "totalSeats": 543,
+          "pct": 20.1
+        },
+        {
+          "year": "1999",
+          "seats": 100,
+          "totalSeats": 543,
+          "pct": 18.4
+        },
+        {
+          "year": "2004",
+          "seats": 90,
+          "totalSeats": 543,
+          "pct": 16.6
+        },
+        {
+          "year": "2009",
+          "seats": 93,
+          "totalSeats": 543,
+          "pct": 17.1
+        },
+        {
+          "year": "2014",
+          "seats": 153,
+          "totalSeats": 543,
+          "pct": 28.2
+        },
+        {
+          "year": "2019",
+          "seats": 114,
+          "totalSeats": 543,
+          "pct": 21.0
+        },
+        {
+          "year": "2024",
+          "seats": 115,
+          "totalSeats": 543,
+          "pct": 21.2
+        }
+      ]
+    },
+    {
+      "id": "Others",
+      "name": "Others / Independents",
+      "color": "#9CA3AF",
+      "data": [
+        {
+          "year": "1957",
+          "seats": 72,
+          "totalSeats": 494,
+          "pct": 14.6
+        },
+        {
+          "year": "1962",
+          "seats": 65,
+          "totalSeats": 494,
+          "pct": 13.2
+        },
+        {
+          "year": "1967",
+          "seats": 91,
+          "totalSeats": 520,
+          "pct": 17.5
+        },
+        {
+          "year": "1971",
+          "seats": 73,
+          "totalSeats": 518,
+          "pct": 14.1
+        },
+        {
+          "year": "1977",
+          "seats": 46,
+          "totalSeats": 542,
+          "pct": 8.5
+        },
+        {
+          "year": "1980",
+          "seats": 77,
+          "totalSeats": 542,
+          "pct": 14.2
+        },
+        {
+          "year": "1984",
+          "seats": 56,
+          "totalSeats": 542,
+          "pct": 10.3
+        },
+        {
+          "year": "1989",
+          "seats": 38,
+          "totalSeats": 529,
+          "pct": 7.2
+        },
+        {
+          "year": "1991",
+          "seats": 31,
+          "totalSeats": 521,
+          "pct": 6.0
+        },
+        {
+          "year": "1996",
+          "seats": 37,
+          "totalSeats": 543,
+          "pct": 6.8
+        },
+        {
+          "year": "1998",
+          "seats": 42,
+          "totalSeats": 543,
+          "pct": 7.7
+        },
+        {
+          "year": "1999",
+          "seats": 43,
+          "totalSeats": 543,
+          "pct": 7.9
+        },
+        {
+          "year": "2004",
+          "seats": 48,
+          "totalSeats": 543,
+          "pct": 8.8
+        },
+        {
+          "year": "2009",
+          "seats": 40,
+          "totalSeats": 543,
+          "pct": 7.4
+        },
+        {
+          "year": "2014",
+          "seats": 43,
+          "totalSeats": 543,
+          "pct": 7.9
+        },
+        {
+          "year": "2019",
+          "seats": 38,
+          "totalSeats": 543,
+          "pct": 7.0
+        },
+        {
+          "year": "2024",
+          "seats": 34,
+          "totalSeats": 543,
+          "pct": 6.3
+        }
+      ]
+    }
+  ],
+  "parties2024": [
+    {
+      "party": "BJP",
+      "fullName": "Bharatiya Janata Party",
+      "seats": 240,
+      "voteShare": 36.6,
+      "color": "#FF6B35",
+      "alliance": "NDA"
+    },
+    {
+      "party": "INC",
+      "fullName": "Indian National Congress",
+      "seats": 99,
+      "voteShare": 21.2,
+      "color": "#00BFFF",
+      "alliance": "INDIA"
+    },
+    {
+      "party": "SP",
+      "fullName": "Samajwadi Party",
+      "seats": 37,
+      "voteShare": 4.5,
+      "color": "#22C55E",
+      "alliance": "INDIA"
+    },
+    {
+      "party": "TMC",
+      "fullName": "All India Trinamool Congress",
+      "seats": 29,
+      "voteShare": 4.2,
+      "color": "#16A34A",
+      "alliance": "INDIA"
+    },
+    {
+      "party": "OTH",
+      "fullName": "Other Parties",
+      "seats": 27,
+      "voteShare": 15.4,
+      "color": "#9CA3AF",
+      "alliance": "—"
+    },
+    {
+      "party": "DMK",
+      "fullName": "Dravida Munnetra Kazhagam",
+      "seats": 22,
+      "voteShare": 1.8,
+      "color": "#DC2626",
+      "alliance": "INDIA"
+    },
+    {
+      "party": "TDP",
+      "fullName": "Telugu Desam Party",
+      "seats": 16,
+      "voteShare": 1.7,
+      "color": "#FBBF24",
+      "alliance": "NDA"
+    },
+    {
+      "party": "JD(U)",
+      "fullName": "Janata Dal (United)",
+      "seats": 12,
+      "voteShare": 1.4,
+      "color": "#6D28D9",
+      "alliance": "NDA"
+    },
+    {
+      "party": "SS(UBT)",
+      "fullName": "Shiv Sena (UBT)",
+      "seats": 9,
+      "voteShare": 1.6,
+      "color": "#EA580C",
+      "alliance": "INDIA"
+    },
+    {
+      "party": "NCP(SP)",
+      "fullName": "NCP (Sharadchandra Pawar)",
+      "seats": 8,
+      "voteShare": 1.3,
+      "color": "#3B82F6",
+      "alliance": "INDIA"
+    },
+    {
+      "party": "SS",
+      "fullName": "Shiv Sena",
+      "seats": 7,
+      "voteShare": 1.4,
+      "color": "#F97316",
+      "alliance": "NDA"
+    },
+    {
+      "party": "IND",
+      "fullName": "Independents",
+      "seats": 7,
+      "voteShare": 5.8,
+      "color": "#6B7280",
+      "alliance": "—"
+    },
+    {
+      "party": "LJP(RV)",
+      "fullName": "Lok Janshakti Party (Ram Vilas)",
+      "seats": 5,
+      "voteShare": 0.7,
+      "color": "#0EA5E9",
+      "alliance": "NDA"
+    },
+    {
+      "party": "YSRCP",
+      "fullName": "YSR Congress Party",
+      "seats": 4,
+      "voteShare": 2.1,
+      "color": "#7C3AED",
+      "alliance": "—"
+    },
+    {
+      "party": "RJD",
+      "fullName": "Rashtriya Janata Dal",
+      "seats": 4,
+      "voteShare": 1.1,
+      "color": "#059669",
+      "alliance": "INDIA"
+    },
+    {
+      "party": "CPI(M)",
+      "fullName": "Communist Party of India (Marxist)",
+      "seats": 4,
+      "voteShare": 1.0,
+      "color": "#DC2626",
+      "alliance": "INDIA"
+    },
+    {
+      "party": "AAP",
+      "fullName": "Aam Aadmi Party",
+      "seats": 3,
+      "voteShare": 1.3,
+      "color": "#2563EB",
+      "alliance": "INDIA"
+    },
+    {
+      "party": "JMM",
+      "fullName": "Jharkhand Mukti Morcha",
+      "seats": 3,
+      "voteShare": 0.6,
+      "color": "#14B8A6",
+      "alliance": "INDIA"
+    },
+    {
+      "party": "IUML",
+      "fullName": "Indian Union Muslim League",
+      "seats": 3,
+      "voteShare": 0.3,
+      "color": "#15803D",
+      "alliance": "INDIA"
+    },
+    {
+      "party": "JD(S)",
+      "fullName": "Janata Dal (Secular)",
+      "seats": 2,
+      "voteShare": 0.3,
+      "color": "#65A30D",
+      "alliance": "NDA"
+    },
+    {
+      "party": "NCP",
+      "fullName": "Nationalist Congress Party",
+      "seats": 2,
+      "voteShare": 0.6,
+      "color": "#0284C7",
+      "alliance": "NDA"
+    }
+  ],
+  "allianceTotals2024": {
+    "NDA": 284,
+    "INDIA": 221,
+    "Others": 38,
+    "majorityMark": 272
+  },
+  "source": "ECI Official Results + TCPD Lok Dhaba"
+}

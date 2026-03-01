@@ -101,6 +101,18 @@ jobs:
                 staleAfterDays: 120,  // Quarterly refresh — NHP/NFHS + WB data
                 pipelineWorkflow: 'healthcare-pipeline.yml',
               },
+              {
+                name: 'Environment',
+                file: 'public/data/environment/2025-26/summary.json',
+                staleAfterDays: 120,
+                pipelineWorkflow: 'environment-pipeline.yml',
+              },
+              {
+                name: 'Elections',
+                file: 'public/data/elections/2025-26/summary.json',
+                staleAfterDays: 200,  // Semi-annual refresh — event-driven data
+                pipelineWorkflow: 'elections-pipeline.yml',
+              },
             ];
 
             for (const domain of domains) {

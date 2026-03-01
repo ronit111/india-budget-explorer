@@ -108,6 +108,20 @@ export const DOMAIN_META: Record<string, DomainMeta> = {
     basePath: '/healthcare',
     defaultYear: '2024',
   },
+  environment: {
+    name: 'Environment',
+    accent: '#14B8A6',
+    accentLight: '#2DD4BF',
+    basePath: '/environment',
+    defaultYear: '2025-26',
+  },
+  elections: {
+    name: 'Elections',
+    accent: '#6366F1',
+    accentLight: '#818CF8',
+    basePath: '/elections',
+    defaultYear: '2025-26',
+  },
 };
 
 // ─── Registry Map ────────────────────────────────────────────────────

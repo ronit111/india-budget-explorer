@@ -1,6 +1,6 @@
 # Indian Data Project
 
-Open Indian government data made accessible, visual, and shareable. Eight data domains live: Union Budget 2025-26, Economic Survey 2025-26, RBI Data, State Finances, Census & Demographics, Education, Employment, and Healthcare. Each gets its own visual story with explorable breakdowns. Three personalization calculators let citizens see how national data applies to their own lives.
+Open Indian government data made accessible, visual, and shareable. Ten data domains live: Union Budget 2025-26, Economic Survey 2025-26, RBI Data, State Finances, Census & Demographics, Education, Employment, Healthcare, Environment, and Elections. Each gets its own visual story with explorable breakdowns. Three personalization calculators let citizens see how national data applies to their own lives.
 
 **Live:** [indiandataproject.org](https://indiandataproject.org)
 
@@ -10,7 +10,7 @@ Open Indian government data made accessible, visual, and shareable. Eight data d
 
 Indian Data Project turns dense government data into interactive visual experiences. The site is a hub — each data domain gets its own self-contained visual story with explorable breakdowns.
 
-**Hub + 8 data domains + 3 personalization calculators:**
+**Hub + 10 data domains + 3 personalization calculators:**
 
 | Page | What it shows |
 |------|---------------|
@@ -48,10 +48,18 @@ Indian Data Project turns dense government data into interactive visual experien
 | **Healthcare Explorer** (`/healthcare/explore`) | Indicator explorer with 5 categories (All, Infrastructure, Spending, Immunization, Disease), 30 states |
 | **Healthcare Methodology** (`/healthcare/methodology`) | Data sources (NHP 2022, NFHS-5, World Bank), indicator definitions, limitations |
 | **Healthcare Glossary** (`/healthcare/glossary`) | 13 healthcare terms — PHC, CHC, out-of-pocket spending, immunization, TB incidence, hospital beds per 1000, etc. |
+| **Environment Story** (`/environment`) | Air quality, forest cover, energy transition, carbon footprint, water stress scrollytelling |
+| **Environment Explorer** (`/environment/explore`) | State-level environment indicators (AQI, forest, water) |
+| **Environment Methodology** (`/environment/methodology`) | Data sources and limitations |
+| **Environment Glossary** (`/environment/glossary`) | 15 environment terms explained |
+| **Elections Story** (`/elections`) | World's largest democracy — turnout trends 1962-2024, party landscape evolution, Lok Sabha 2024 hemicycle, money & muscle in politics, women in Parliament |
+| **Elections Explorer** (`/elections/explore`) | State-level election indicators (turnout, representation, candidates) |
+| **Elections Methodology** (`/elections/methodology`) | Data sources (ECI, TCPD, ADR) and limitations |
+| **Elections Glossary** (`/elections/glossary`) | 15 election terms explained |
 | **EMI Calculator** (`/rbi/calculator`) | How repo rate changes affect your EMI — choose home/car/personal loan, set amount and tenure, see monthly EMI + rate impact scenarios at ±25/50 bps. Reads live repo rate from RBI data. |
 | **Cost-of-Living Calculator** (`/economy/calculator`) | How inflation has changed what your money buys — input monthly expenses by category, compare against any year from 2014+. Uses category-specific CPI (food, housing, transport, education, health) where available, headline CPI fallback otherwise. |
-| **State Report Card** (`/states/your-state`) | Your state's performance across 6 domains — 9 panels with ~25 metrics (GSDP, budget, revenue, fiscal health, demographics, education, employment, healthcare). Ranks, quartile badges, and national average comparison. |
-| **Embed Charts** (`/embed/{domain}/{section}`) | Standalone responsive chart pages for iframe embedding — minimal chrome, lazy-loaded charts, ~49 sections available |
+| **State Report Card** (`/states/your-state`) | Your state's performance across 8 domains — 11 panels with ~25 metrics (GSDP, budget, revenue, fiscal health, demographics, education, employment, healthcare, environment, elections). Ranks, quartile badges, and national average comparison. |
+| **Embed Charts** (`/embed/{domain}/{section}`) | Standalone responsive chart pages for iframe embedding — minimal chrome, lazy-loaded charts, ~54 sections available |
 
 ---
 
@@ -98,7 +106,7 @@ npm run preview
 | Command | What it does |
 |---------|-------------|
 | `npm run dev` | Start Vite dev server with HMR |
-| `npm run build` | TypeScript check + Vite build + Puppeteer prerender (45 routes: 37 pages + 8 embed) |
+| `npm run build` | TypeScript check + Vite build + Puppeteer prerender (55 routes: 45 pages + 10 embed) |
 | `npm run build:no-prerender` | Build without prerendering (used by Vercel) |
 | `npm run lint` | ESLint check |
 | `npm run preview` | Preview production build locally |
@@ -136,6 +144,12 @@ src/
 │   ├── HealthcarePage.tsx       # Healthcare scrollytelling (infrastructure, spending, disease)
 │   ├── HealthcareExplorePage.tsx # Healthcare indicator explorer
 │   ├── HealthcareMethodologyPage.tsx # Healthcare methodology
+│   ├── EnvironmentPage.tsx       # Environment scrollytelling (air quality, forest, energy, water, carbon)
+│   ├── EnvironmentExplorePage.tsx # Environment indicator explorer
+│   ├── EnvironmentMethodologyPage.tsx # Environment methodology
+│   ├── ElectionsPage.tsx        # Elections scrollytelling (turnout, parties, Lok Sabha 2024, money & muscle, women)
+│   ├── ElectionsExplorePage.tsx  # Elections indicator explorer
+│   ├── ElectionsMethodologyPage.tsx # Elections methodology
 │   ├── GlossaryPage.tsx      # Shared glossary component (parameterized by domain)
 │   ├── BudgetGlossaryPage.tsx # Budget glossary wrapper
 │   ├── EconomyGlossaryPage.tsx # Economy glossary wrapper
@@ -145,9 +159,11 @@ src/
 │   ├── EducationGlossaryPage.tsx # Education glossary wrapper
 │   ├── EmploymentGlossaryPage.tsx # Employment glossary wrapper
 │   ├── HealthcareGlossaryPage.tsx # Healthcare glossary wrapper
+│   ├── EnvironmentGlossaryPage.tsx # Environment glossary wrapper
+│   ├── ElectionsGlossaryPage.tsx # Elections glossary wrapper
 │   ├── EMICalculatorPage.tsx    # EMI impact calculator (repo rate → monthly payment)
 │   ├── CostOfLivingPage.tsx     # Cost-of-living inflation calculator (CPI by category)
-│   ├── StateReportCardPage.tsx  # Cross-domain state report card (6 domains, ~25 metrics)
+│   ├── StateReportCardPage.tsx  # Cross-domain state report card (8 domains, ~25 metrics)
 │   └── EmbedPage.tsx          # Standalone embed chart (reads :domain/:section params, renders outside PageShell)
 ├── components/
 │   ├── home/               # Budget story compositions (Hero, Revenue, Expenditure, Flow, Map, CTA)
@@ -159,6 +175,8 @@ src/
 │   ├── education/           # Education compositions (EnrollmentSection, GenderSection, DropoutSection, QualitySection, TeacherSection, SpendingSection)
 │   ├── employment/          # Employment compositions (ParticipationSection, StructuralSection, YouthSection, GenderGapSection, InformalitySection, RuralUrbanSection)
 │   ├── healthcare/          # Healthcare compositions (InfrastructureSection, SpendingSection, OOPSection, ImmunizationSection, DiseaseSection, DoctorGapSection)
+│   ├── environment/          # Environment compositions (AirQualitySection, ForestSection, EnergySection, WaterSection, CarbonSection)
+│   ├── elections/            # Elections compositions (TurnoutSection, PartyLandscapeSection, LokSabha2024Section, MoneyMuscleSection, GenderGapSection)
 │   ├── personalization/     # Personalization components (StateSelector dropdown, PersonalizationBanner)
 │   ├── emi/                 # EMI calculator components (EMIInputPanel, EMIBreakdownDisplay, RateImpactViz)
 │   ├── cost-of-living/      # Cost-of-living components (ExpenseInput, InflationImpactDisplay)
@@ -173,9 +191,9 @@ src/
 │   ├── seo/                # SEOHead (per-route meta tags + OG images + JSON-LD)
 │   └── i18n/               # Language provider and switcher
 ├── lib/
-│   ├── data/schema.ts      # TypeScript interfaces for all data shapes (Budget, Economy, RBI, States, Census, Education, Employment, Healthcare)
+│   ├── data/schema.ts      # TypeScript interfaces for all data shapes (Budget, Economy, RBI, States, Census, Education, Employment, Healthcare, Environment, Elections)
 │   ├── chartRegistry.ts    # Central chart registry (~49 entries, CSV/share card serialization, domain metadata)
-│   ├── registry/           # Per-domain chart registrations (budget, economy, rbi, states, census, education, employment, healthcare)
+│   ├── registry/           # Per-domain chart registrations (budget, economy, rbi, states, census, education, employment, healthcare, environment, elections)
 │   ├── svgCapture.ts       # SVG→Canvas→PNG capture pipeline (CSS var resolution, font embedding, compositing)
 │   ├── shareCard.ts        # WhatsApp share card Canvas generator (1200×630, <100KB)
 │   ├── csvExport.ts        # RFC 4180 CSV serialization
@@ -187,8 +205,8 @@ src/
 │   ├── dataLoader.ts       # Fetch + cache layer for JSON data (all domains)
 │   ├── stateMapping.ts     # India state ID → name mapping
 │   └── i18n.ts             # i18next configuration
-├── hooks/                  # useScrollTrigger, useIntersection, useUrlState (URL↔Zustand sync), useBudgetData, useEconomyData, useRBIData, useStatesData, useCensusData, useEducationData, useEmploymentData, useHealthcareData, etc.
-├── store/                  # Zustand stores (budgetStore, economyStore, rbiStore, statesStore, censusStore, educationStore, employmentStore, healthcareStore, calculatorStore, emiCalculatorStore, costOfLivingStore, personalizationStore, uiStore)
+├── hooks/                  # useScrollTrigger, useIntersection, useUrlState (URL↔Zustand sync), useBudgetData, useEconomyData, useRBIData, useStatesData, useCensusData, useEducationData, useEmploymentData, useHealthcareData, useEnvironmentData, useElectionsData, etc.
+├── store/                  # Zustand stores (budgetStore, economyStore, rbiStore, statesStore, censusStore, educationStore, employmentStore, healthcareStore, environmentStore, electionsStore, calculatorStore, emiCalculatorStore, costOfLivingStore, personalizationStore, uiStore)
 └── index.css               # Design tokens, CSS layers, keyframes
 
 public/
@@ -200,12 +218,14 @@ public/
 ├── data/education/2025-26/ # 6 structured JSON education datasets
 ├── data/employment/2025-26/ # 6 structured JSON employment datasets
 ├── data/healthcare/2025-26/ # 6 structured JSON healthcare datasets
+├── data/environment/2025-26/ # 7 structured JSON environment datasets
+├── data/elections/2025-26/  # 7 structured JSON elections datasets
 ├── data/emi/               # Curated loan spread data (SBI/HDFC rate cards)
-├── data/questions.json     # 102 citizen questions across 8 domains (powers question-first search)
+├── data/questions.json     # 115 citizen questions across 10 domains (powers question-first search)
 ├── locales/en/             # Translation files
-├── sitemap.xml             # All routes + data endpoints (37 pages + 47 data files)
+├── sitemap.xml             # All routes + data endpoints (45 pages + 54 data files)
 ├── robots.txt              # All bots welcomed (including AI crawlers)
-└── llms.txt                # AI-readable site summary
+└── llms.txt                # AI-readable site summary (10 domains)
 
 pipeline/
 ├── src/
@@ -219,8 +239,10 @@ pipeline/
 │   ├── education/          # Education pipeline (World Bank API + curated UDISE+/ASER → JSON)
 │   ├── employment/         # Employment pipeline (World Bank API + curated PLFS/KLEMS → JSON)
 │   ├── healthcare/         # Healthcare pipeline (World Bank API + curated NHP/NFHS-5 → JSON)
+│   ├── environment/        # Environment pipeline (CPCB + MOEFCC + CEA + CWC → JSON)
+│   ├── elections/          # Elections pipeline (ECI + TCPD + ADR → JSON)
 │   └── publish/            # Shared JSON writer
-├── PIPELINE_DATA_SOURCES.md # Catalog of all 30+ curated data constants across 8 domains
+├── PIPELINE_DATA_SOURCES.md # Catalog of all 30+ curated data constants across 10 domains
 └── pyproject.toml          # Python dependencies
 ```
 
@@ -340,6 +362,34 @@ Healthcare data lives in `public/data/healthcare/2025-26/`:
 | `indicators.json` | All healthcare indicators across 4 categories (infrastructure, spending, immunization, disease) |
 | `glossary.json` | 13 healthcare terms with plain-language explanations |
 
+### Environment Data
+
+Environment data lives in `public/data/environment/2025-26/`:
+
+| File | Contents |
+|------|----------|
+| `summary.json` | Headline environment numbers (AQI, forest cover %, renewable energy share, water stress) |
+| `air-quality.json` | Air quality index trends, state/city-level AQI, pollutant breakdowns |
+| `forest.json` | Forest cover time series, state-wise forest area, tree cover changes |
+| `energy.json` | Energy mix composition, renewable capacity trends, carbon emissions |
+| `water.json` | Water stress indicators, groundwater levels, per capita water availability |
+| `indicators.json` | All environment indicators across categories |
+| `glossary.json` | 15 environment terms with plain-language explanations |
+
+### Elections Data
+
+Elections data lives in `public/data/elections/2025-26/`:
+
+| File | Contents |
+|------|----------|
+| `summary.json` | Headline numbers (turnout 2024, total electors, BJP/INC seats, women MPs, avg assets, criminal %) |
+| `turnout.json` | National turnout trend 1962-2024 (17 elections) + state-wise breakdown for 2024 |
+| `results.json` | Party-wise Lok Sabha seats and vote share across 17 elections (1962-2024) |
+| `candidates.json` | ADR data for 543 Lok Sabha 2024 MPs — criminal cases, assets, education |
+| `representation.json` | Women MPs trend 1962-2024 (count and %) |
+| `indicators.json` | State-level election indicators across 3 categories |
+| `glossary.json` | 15 election terms with plain-language explanations |
+
 ### EMI Calculator Data
 
 EMI data lives in `public/data/emi/`:
@@ -352,9 +402,9 @@ EMI data lives in `public/data/emi/`:
 
 | File | Contents |
 |------|----------|
-| `questions.json` | 102 curated citizen questions across 8 domains with answers and section anchors. Powers question-first Cmd+K search. |
+| `questions.json` | 115 curated citizen questions across 10 domains with answers and section anchors. Powers question-first Cmd+K search. |
 
-Data sourced from [Open Budgets India](https://openbudgetsindia.org), [indiabudget.gov.in](https://www.indiabudget.gov.in), [Economic Survey](https://www.indiabudget.gov.in/economicsurvey/), [RBI DBIE](https://data.rbi.org.in), [RBI Monetary Policy Statements](https://www.rbi.org.in), [RBI Handbook of Statistics on Indian States](https://www.rbi.org.in), [Census of India](https://censusindia.gov.in), [NFHS](http://rchiips.org/nfhs/), [UDISE+](https://udiseplus.gov.in), [ASER](https://asercentre.org), [PLFS](https://mospi.gov.in), [MOSPI eSankhyiki API](https://api.mospi.gov.in), [NHP/CBHI](https://cbhidghs.mohfw.gov.in), [IMF CPI via DBnomics](https://db.nomics.world/IMF/CPI), [SBI/HDFC rate cards](https://sbi.co.in), and [World Bank Open Data API](https://data.worldbank.org) under the [Government Open Data License — India](https://data.gov.in/government-open-data-license-india).
+Data sourced from [Open Budgets India](https://openbudgetsindia.org), [indiabudget.gov.in](https://www.indiabudget.gov.in), [Economic Survey](https://www.indiabudget.gov.in/economicsurvey/), [RBI DBIE](https://data.rbi.org.in), [RBI Monetary Policy Statements](https://www.rbi.org.in), [RBI Handbook of Statistics on Indian States](https://www.rbi.org.in), [Census of India](https://censusindia.gov.in), [NFHS](http://rchiips.org/nfhs/), [UDISE+](https://udiseplus.gov.in), [ASER](https://asercentre.org), [PLFS](https://mospi.gov.in), [MOSPI eSankhyiki API](https://api.mospi.gov.in), [NHP/CBHI](https://cbhidghs.mohfw.gov.in), [CPCB](https://cpcb.nic.in), [MOEFCC](https://moef.gov.in), [CEA](https://cea.nic.in), [CWC](https://cwc.gov.in), [Election Commission of India](https://eci.gov.in), [TCPD Lok Dhaba](https://lokdhaba.ashoka.edu.in), [ADR/MyNeta](https://myneta.info), [IMF CPI via DBnomics](https://db.nomics.world/IMF/CPI), [SBI/HDFC rate cards](https://sbi.co.in), and [World Bank Open Data API](https://data.worldbank.org) under the [Government Open Data License — India](https://data.gov.in/government-open-data-license-india).
 
 ---
 
@@ -373,13 +423,13 @@ See [BRAND.md](./BRAND.md) for the full visual identity guide. Key principles:
 
 The site is built for maximum discoverability:
 
-- **Prerendered HTML** for all 45 routes (37 pages + 8 embed routes, Puppeteer at build time)
-- **JSON-LD** structured data: `WebApplication`, `Dataset` x8 (Budget + Economy + RBI + States + Census + Education + Employment + Healthcare for Google Dataset Search), `BreadcrumbList`
+- **Prerendered HTML** for all 55 routes (45 pages + 10 embed routes, Puppeteer at build time)
+- **JSON-LD** structured data: `WebApplication`, `Dataset` x10 (Budget + Economy + RBI + States + Census + Education + Employment + Healthcare + Environment + Elections for Google Dataset Search), `BreadcrumbList`
 - **Per-route meta tags** via react-helmet-async (title, description, OG image, Twitter card, canonical)
-- **sitemap.xml** covering 45 pages + 47 downloadable data endpoints
+- **sitemap.xml** covering 55 pages + 54 downloadable data endpoints
 - **robots.txt** explicitly welcoming AI crawlers (GPTBot, ClaudeBot, PerplexityBot, Google-Extended)
-- **llms.txt** for AI model discoverability (all 8 domains + glossary terms + embed API)
-- **Noscript fallback** with real content across all eight domains for crawlers that don't execute JS
+- **llms.txt** for AI model discoverability (all 10 domains + glossary terms + embed API)
+- **Noscript fallback** with real content across all ten domains for crawlers that don't execute JS
 - **Embeddable charts** via `/embed/{domain}/{section}` — standalone responsive iframes for journalists and bloggers
 
 ---
@@ -447,7 +497,7 @@ The site is built for maximum discoverability:
 - [x] Employment domain (scrollytelling with 6 sections, indicator explorer, methodology, glossary) — PLFS 2023-24, RBI KLEMS, World Bank
 - [x] Healthcare domain (scrollytelling with 6 sections, indicator explorer, methodology, glossary) — NHP 2022, NFHS-5, World Bank
 - [x] 3 automated pipelines: `education-pipeline.yml`, `employment-pipeline.yml`, `healthcare-pipeline.yml`
-- [x] Hub expanded to 8 domain cards with mini-visualizations
+- [x] Hub expanded to 9 domain cards with mini-visualizations
 - [x] Full SEO layer for all 3 domains (prerender, sitemap, JSON-LD, OG images, llms.txt, noscript)
 - [x] 42 new glossary terms across 3 domains (14 education, 15 employment, 13 healthcare)
 
@@ -463,7 +513,7 @@ The site is built for maximum discoverability:
 - [x] Embed routes (`/embed/{domain}/{section}`) rendering standalone charts for journalist/blogger embedding
 - [x] WhatsApp-optimized share cards (one stat + source, Canvas API, under 100KB) with deep link sharing
 - [x] URL-encoded chart state (explorer filters and selections reflected in shareable URLs, section hash anchors)
-- [x] Central chart registry (`src/lib/chartRegistry.ts`) with ~49 entries across 8 domains
+- [x] Central chart registry (`src/lib/chartRegistry.ts`) with ~59 entries across 10 domains
 - [x] SVG→Canvas→PNG capture pipeline (CSS var resolution, font embedding, Canvas compositing)
 - [x] Mobile bottom sheet for chart sharing on touch devices
 
@@ -471,7 +521,7 @@ The site is built for maximum discoverability:
 - [x] Persistent user context (state, household size) in localStorage via `personalizationStore`
 - [x] RBI EMI impact calculator (`/rbi/calculator`) — repo rate → monthly payment change on home/car/personal loans, rate impact scenarios at ±25/50 bps
 - [x] Economy cost-of-living calculator (`/economy/calculator`) — input expenses by category, compare against CPI over time. Uses category-specific COICOP CPI (food, housing, transport, education, health) with headline fallback.
-- [x] Cross-domain state report card (`/states/your-state`) — 9 domain panels, ~25 metrics, rank badges, quartile coloring. Aggregates data from 12 JSON files across 6 domains.
+- [x] Cross-domain state report card (`/states/your-state`) — 11 domain panels, ~25 metrics, rank badges, quartile coloring. Aggregates data from 16 JSON files across 8 domains.
 - [x] Personalization banner — contextual state bar on scrollytelling pages with domain-specific stat
 - [x] CPI-by-COICOP-division data in economy pipeline: IMF/DBnomics baseline (2014-19) + MOSPI eSankhyiki API (2019+, live) + curated fallback
 - [x] State code standardization — all pipelines use uppercase vehicle registration (RTO) codes
@@ -481,13 +531,18 @@ The site is built for maximum discoverability:
 - [x] Pipeline data sources catalog (`pipeline/PIPELINE_DATA_SOURCES.md`) — all 30+ curated data constants documented
 
 **Phase 9: Key Insights & Question-First Search** ✓
-- [x] "Key Takeaways" stat pill strip on all 8 story pages (4 pills each, runtime-computed, scroll-to-section click, staggered entrance animation)
-- [x] 102 curated citizen questions across 8 domains (`public/data/questions.json`) with one-sentence answers mapped to section anchors
+- [x] "Key Takeaways" stat pill strip on all 10 story pages (4 pills each, runtime-computed, scroll-to-section click, staggered entrance animation)
+- [x] 115 curated citizen questions across 10 domains (`public/data/questions.json`) with one-sentence answers mapped to section anchors
 - [x] Questions indexed in Fuse.js Cmd+K search with amber QUESTION badges ("Why are prices rising?" → `/economy#inflation`)
 
-**Phase 10: New Domains — Environment, Elections**
-- [ ] Environment domain (CPCB air quality, MOEFCC forest cover, CEA energy mix, CWC water resources)
-- [ ] Elections domain (Election Commission data — constituency results overlaid with development indicators)
+**Phase 10: New Domains — Environment, Elections** ✓
+- [x] Environment domain: CPCB air quality, FSI forest cover, CEA energy mix, CWC water resources, World Bank indicators. Teal (#14B8A6) accent. Scrollytelling + explorer + methodology + glossary.
+- [x] Elections domain: TCPD Lok Sabha 1962-2024, ECI turnout history, ADR candidate profiles. Indigo (#6366F1) accent. Pure election data with hemicycle visualization.
+- [x] Phase 7-9 feature extension: ChartActionsWrapper on all env/elections charts, 10 chart registry entries, 2 embed routes, KeyTakeaways pills, 26 citizen questions, personalization banner for both domains
+- [x] State Report Card extension: environment panel (AQI, forest cover, groundwater) + elections panel (voter turnout) added to cross-domain report card
+- [x] Hub expanded to 10 domain cards
+- [x] Full SEO layer for both domains (prerender, sitemap, OG images, llms.txt, noscript, JSON-LD)
+- [x] 2 new GitHub Actions pipelines (environment quarterly, elections semi-annual)
 
 **Phase 11: Topic-Based Cross-Domain Views**
 - [ ] `/topics` page with 10-15 cross-domain topic cards (Agriculture, Borrowing Costs, Education Spending, etc.)
@@ -503,12 +558,12 @@ The site is built for maximum discoverability:
 **Pre-Final: Code-Level QA Audit (Codex)**
 - [ ] End-to-end automated code audit via Codex CLI (`codex exec --full-auto`)
 - [ ] Verify all JSON pipeline outputs match TypeScript schema interfaces (Pydantic ↔ TypeScript alignment)
-- [ ] Check for broken imports, stale references, dead code across all 8 domains + personalization
+- [ ] Check for broken imports, stale references, dead code across all 10 domains + personalization
 - [ ] Validate data integrity: state ID consistency (uppercase vehicle codes), cross-domain ID matching
 - [ ] Audit calculation engines (EMI, cost-of-living, state report card) for edge cases and correctness
 - [ ] Verify all route registrations match (App.tsx, prerender.mjs, sitemap.xml, Header tabs, MobileNav tabs)
 - [ ] Check for security issues: XSS in user inputs, OWASP top 10
-- [ ] Pipeline validation: run all 8 pipelines locally, verify JSON output, cross-check key figures against sources
+- [ ] Pipeline validation: run all 10 pipelines locally, verify JSON output, cross-check key figures against sources
 
 **Final: Citizen-Perspective QA**
 - [ ] Full product review from the perspective of an average Indian citizen (per CLAUDE.md Final QA protocol)
@@ -554,6 +609,8 @@ The underlying budget data is published by the Government of India under the [Go
 - Education data from [UDISE+ 2023-24](https://udiseplus.gov.in), [ASER 2024](https://asercentre.org), and [World Bank Open Data](https://data.worldbank.org)
 - Employment data from [PLFS Quarterly Bulletin](https://mospi.gov.in), [RBI KLEMS Database](https://www.rbi.org.in), and [World Bank Open Data](https://data.worldbank.org)
 - Healthcare data from [National Health Profile 2022](https://cbhidghs.mohfw.gov.in), [NFHS-5](http://rchiips.org/nfhs/), and [World Bank Open Data](https://data.worldbank.org)
+- Environment data from [CPCB](https://cpcb.nic.in) (air quality), [MOEFCC](https://moef.gov.in) (forest cover), [CEA](https://cea.nic.in) (energy mix), and [CWC](https://cwc.gov.in) (water resources)
+- Elections data from [Election Commission of India](https://eci.gov.in), [TCPD Lok Dhaba](https://lokdhaba.ashoka.edu.in) (Lok Sabha results 1962-2024), [ADR/MyNeta](https://myneta.info) (candidate profiles), and [Lok Sabha Secretariat](https://loksabha.nic.in) (women MPs)
 - CPI category data from [MOSPI eSankhyiki API](https://api.mospi.gov.in) (primary, live CPI by COICOP group), [IMF CPI dataset via DBnomics](https://db.nomics.world/IMF/CPI) (historical baseline), and [Economic Survey](https://www.indiabudget.gov.in/economicsurvey/)
 - Loan spread data from [SBI](https://sbi.co.in), [HDFC Bank](https://hdfcbank.com), and [ICICI Bank](https://icicibank.com) published rate cards
 - Design inspired by [Information is Beautiful](https://informationisbeautiful.net), [Visual Cinnamon](https://www.visualcinnamon.com), and [Kasia Siwosz](https://kasiasiwosz.com)
