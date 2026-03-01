@@ -3,6 +3,7 @@ import { useScrollTrigger } from '../../hooks/useScrollTrigger.ts';
 import { TreemapChart } from '../viz/TreemapChart.tsx';
 import { SectionNumber } from '../ui/SectionNumber.tsx';
 import type { TreemapData } from '../../lib/data/schema.ts';
+import { ChartActionsWrapper } from '../share/ChartActionsWrapper.tsx';
 
 interface ExpenditureSectionProps {
   treemap: TreemapData;
@@ -12,7 +13,7 @@ export function ExpenditureSection({ treemap }: ExpenditureSectionProps) {
   const [ref, isVisible] = useScrollTrigger({ threshold: 0.08 });
 
   return (
-    <section ref={ref} className="composition" style={{ background: 'var(--bg-surface)' }}>
+    <section ref={ref} id="expenditure" className="composition" style={{ background: 'var(--bg-surface)' }}>
       <div className="max-w-7xl mx-auto px-6 sm:px-8">
         <SectionNumber number={5} className="mb-6 block" isVisible={isVisible} />
 
@@ -35,7 +36,9 @@ export function ExpenditureSection({ treemap }: ExpenditureSectionProps) {
         </motion.p>
 
         {/* Full-width treemap — no ChartContainer */}
-        <TreemapChart root={treemap.root} isVisible={isVisible} />
+        <ChartActionsWrapper registryKey="budget/expenditure" data={treemap}>
+          <TreemapChart root={treemap.root} isVisible={isVisible} />
+        </ChartActionsWrapper>
 
         <p className="source-attribution">
           {'Source: Union Budget 2025-26, Expenditure Budget'}

@@ -3,6 +3,7 @@ import { useScrollTrigger } from '../../hooks/useScrollTrigger.ts';
 import { SectionNumber } from '../ui/SectionNumber.tsx';
 import { LineChart } from '../viz/LineChart.tsx';
 import type { ForexData } from '../../lib/data/schema.ts';
+import { ChartActionsWrapper } from '../share/ChartActionsWrapper.tsx';
 
 interface ExchangeRateSectionProps {
   data: ForexData;
@@ -16,7 +17,7 @@ export function ExchangeRateSection({ data }: ExchangeRateSectionProps) {
     : '—';
 
   return (
-    <section ref={ref} className="composition" style={{ background: 'var(--bg-surface)' }}>
+    <section ref={ref} id="exchange-rate" className="composition" style={{ background: 'var(--bg-surface)' }}>
       <div className="max-w-7xl mx-auto px-6 sm:px-8">
         <SectionNumber number={6} className="mb-6 block" isVisible={isVisible} />
 
@@ -38,7 +39,8 @@ export function ExchangeRateSection({ data }: ExchangeRateSectionProps) {
           India doesn't peg the rupee, but RBI actively smooths volatility through forex market interventions. The INR/USD exchange rate reflects both market forces and RBI's managed float strategy.
         </motion.p>
 
-        <LineChart
+        <ChartActionsWrapper registryKey="rbi/exchange-rate" data={data}>
+          <LineChart
           series={[
             {
               id: 'exchange-rate',
@@ -51,6 +53,7 @@ export function ExchangeRateSection({ data }: ExchangeRateSectionProps) {
           formatValue={(v) => v.toFixed(1)}
           unit="INR/USD"
         />
+        </ChartActionsWrapper>
 
         <motion.div
           initial={{ opacity: 0, y: 12 }}

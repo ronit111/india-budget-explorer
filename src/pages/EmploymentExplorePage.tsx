@@ -2,6 +2,7 @@ import { useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { useEmploymentStore } from '../store/employmentStore.ts';
 import { useEmploymentData } from '../hooks/useEmploymentData.ts';
+import { useUrlState } from '../hooks/useUrlState.ts';
 import { SEOHead } from '../components/seo/SEOHead.tsx';
 import { SegmentedControl } from '../components/ui/SegmentedControl.tsx';
 import { HorizontalBarChart, type BarItem } from '../components/viz/HorizontalBarChart.tsx';
@@ -56,6 +57,12 @@ export default function EmploymentExplorePage() {
   const selectedIndicatorId = useEmploymentStore((s) => s.selectedIndicatorId);
   const setIndicatorId = useEmploymentStore((s) => s.setSelectedIndicatorId);
   const { indicators, loading, error } = useEmploymentData(year);
+
+  // Sync URL params ↔ store for deep linking
+  useUrlState({
+    category: { get: () => selectedCategory, set: setCategory },
+    indicator: { get: () => selectedIndicatorId, set: setIndicatorId },
+  });
 
   const filteredIndicators = useMemo(() => {
     if (!indicators) return [];

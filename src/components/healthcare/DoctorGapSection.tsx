@@ -4,6 +4,7 @@ import { useScrollTrigger } from '../../hooks/useScrollTrigger.ts';
 import { SectionNumber } from '../ui/SectionNumber.tsx';
 import { HorizontalBarChart, type BarItem } from '../viz/HorizontalBarChart.tsx';
 import type { InfrastructureData } from '../../lib/data/schema.ts';
+import { ChartActionsWrapper } from '../share/ChartActionsWrapper.tsx';
 
 interface DoctorGapSectionProps {
   data: InfrastructureData;
@@ -25,7 +26,7 @@ export function DoctorGapSection({ data }: DoctorGapSectionProps) {
   }, [data]);
 
   return (
-    <section ref={ref} className="composition" style={{ background: 'var(--bg-surface)' }}>
+    <section ref={ref} id="doctor-gap" className="composition" style={{ background: 'var(--bg-surface)' }}>
       <div className="max-w-7xl mx-auto px-6 sm:px-8">
         <SectionNumber number={6} className="mb-6 block" isVisible={isVisible} />
 
@@ -52,7 +53,8 @@ export function DoctorGapSection({ data }: DoctorGapSectionProps) {
             <p className="text-xs font-mono uppercase tracking-wider mb-3" style={{ color: 'var(--text-muted)' }}>
               Doctors per 10,000 population by state
             </p>
-            <HorizontalBarChart
+            <ChartActionsWrapper registryKey="healthcare/doctor-gap" data={data}>
+              <HorizontalBarChart
               items={doctorBarItems}
               isVisible={isVisible}
               formatValue={(v) => v.toFixed(1)}
@@ -60,6 +62,7 @@ export function DoctorGapSection({ data }: DoctorGapSectionProps) {
               labelWidth={140}
               barHeight={24}
             />
+            </ChartActionsWrapper>
           </div>
         )}
 

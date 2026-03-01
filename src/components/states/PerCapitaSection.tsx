@@ -4,6 +4,7 @@ import { useScrollTrigger } from '../../hooks/useScrollTrigger.ts';
 import { SectionNumber } from '../ui/SectionNumber.tsx';
 import { HorizontalBarChart, type BarItem } from '../viz/HorizontalBarChart.tsx';
 import type { GSDPData } from '../../lib/data/schema.ts';
+import { ChartActionsWrapper } from '../share/ChartActionsWrapper.tsx';
 
 interface PerCapitaSectionProps {
   data: GSDPData;
@@ -26,7 +27,7 @@ export function PerCapitaSection({ data }: PerCapitaSectionProps) {
   }, [data]);
 
   return (
-    <section ref={ref} className="composition" style={{ background: 'var(--bg-surface)' }}>
+    <section ref={ref} id="percapita" className="composition" style={{ background: 'var(--bg-surface)' }}>
       <div className="max-w-7xl mx-auto px-6 sm:px-8">
         <SectionNumber number={5} className="mb-6 block" isVisible={isVisible} />
 
@@ -48,7 +49,8 @@ export function PerCapitaSection({ data }: PerCapitaSectionProps) {
           A state's total GDP can be large simply because it has a large population. Per capita GSDP adjusts for population, revealing which states actually produce more per person. Goa and Sikkim outpace much larger states.
         </motion.p>
 
-        <HorizontalBarChart
+        <ChartActionsWrapper registryKey="states/percapita" data={data}>
+          <HorizontalBarChart
           items={items}
           isVisible={isVisible}
           formatValue={(v) => `₹${Math.round(v).toLocaleString('en-IN')}`}
@@ -56,6 +58,7 @@ export function PerCapitaSection({ data }: PerCapitaSectionProps) {
           labelWidth={140}
           barHeight={26}
         />
+        </ChartActionsWrapper>
 
         <p className="source-attribution">
           Source: {data.source} ({data.year})

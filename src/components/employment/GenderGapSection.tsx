@@ -4,6 +4,7 @@ import { useScrollTrigger } from '../../hooks/useScrollTrigger.ts';
 import { SectionNumber } from '../ui/SectionNumber.tsx';
 import { HorizontalBarChart, type BarItem } from '../viz/HorizontalBarChart.tsx';
 import type { ParticipationData } from '../../lib/data/schema.ts';
+import { ChartActionsWrapper } from '../share/ChartActionsWrapper.tsx';
 
 interface GenderGapSectionProps {
   data: ParticipationData;
@@ -27,7 +28,7 @@ export function GenderGapSection({ data }: GenderGapSectionProps) {
   }, [data]);
 
   return (
-    <section ref={ref} className="composition" style={{ background: 'var(--bg-surface)' }}>
+    <section ref={ref} id="gender-gap" className="composition" style={{ background: 'var(--bg-surface)' }}>
       <div className="max-w-7xl mx-auto px-6 sm:px-8">
         <SectionNumber number={4} className="mb-6 block" isVisible={isVisible} />
 
@@ -55,7 +56,8 @@ export function GenderGapSection({ data }: GenderGapSectionProps) {
             <p className="text-xs font-mono uppercase tracking-wider mb-3" style={{ color: 'var(--text-muted)' }}>
               State-Level Female LFPR (%, lowest 15)
             </p>
-            <HorizontalBarChart
+            <ChartActionsWrapper registryKey="employment/gender-gap" data={data}>
+              <HorizontalBarChart
               items={barItems}
               isVisible={isVisible}
               formatValue={(v) => `${v.toFixed(1)}%`}
@@ -63,6 +65,7 @@ export function GenderGapSection({ data }: GenderGapSectionProps) {
               labelWidth={140}
               barHeight={24}
             />
+            </ChartActionsWrapper>
           </div>
         )}
 

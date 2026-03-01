@@ -3,6 +3,7 @@ import { useScrollTrigger } from '../../hooks/useScrollTrigger.ts';
 import { SectionNumber } from '../ui/SectionNumber.tsx';
 import { LineChart } from '../viz/LineChart.tsx';
 import type { CreditData } from '../../lib/data/schema.ts';
+import { ChartActionsWrapper } from '../share/ChartActionsWrapper.tsx';
 
 interface CreditSectionProps {
   data: CreditData;
@@ -12,7 +13,7 @@ export function CreditSection({ data }: CreditSectionProps) {
   const [ref, isVisible] = useScrollTrigger({ threshold: 0.08 });
 
   return (
-    <section ref={ref} className="composition" style={{ background: 'var(--bg-surface)' }}>
+    <section ref={ref} id="credit" className="composition" style={{ background: 'var(--bg-surface)' }}>
       <div className="max-w-7xl mx-auto px-6 sm:px-8">
         <SectionNumber number={4} className="mb-6 block" isVisible={isVisible} />
 
@@ -34,7 +35,8 @@ export function CreditSection({ data }: CreditSectionProps) {
           Private sector credit tracks how much bank lending flows to businesses and individuals — the engine of economic growth. At over 50% of GDP, India's credit-to-GDP ratio reflects a deepening financial system.
         </motion.p>
 
-        <LineChart
+        <ChartActionsWrapper registryKey="rbi/credit" data={data}>
+          <LineChart
           series={[
             {
               id: 'private-credit',
@@ -47,6 +49,7 @@ export function CreditSection({ data }: CreditSectionProps) {
           formatValue={(v) => v.toFixed(1)}
           unit="% GDP"
         />
+        </ChartActionsWrapper>
 
         <p className="source-attribution">
           Source: {data.privateCreditPctGDP.source}

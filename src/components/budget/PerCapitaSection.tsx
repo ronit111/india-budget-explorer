@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { useScrollTrigger } from '../../hooks/useScrollTrigger.ts';
 import { SectionNumber } from '../ui/SectionNumber.tsx';
 import type { BudgetSummary, ExpenditureData } from '../../lib/data/schema.ts';
+import { ChartActionsWrapper } from '../share/ChartActionsWrapper.tsx';
 
 interface PerCapitaSectionProps {
   summary: BudgetSummary;
@@ -76,7 +77,7 @@ export function PerCapitaSection({ summary, expenditure }: PerCapitaSectionProps
   }, [dailyBreakdown]);
 
   return (
-    <section ref={ref} className="composition" style={{ background: 'var(--bg-surface)' }}>
+    <section ref={ref} id="percapita" className="composition" style={{ background: 'var(--bg-surface)' }}>
       <div className="max-w-7xl mx-auto px-6 sm:px-8">
         <SectionNumber number={8} className="mb-6 block" isVisible={isVisible} />
 
@@ -120,7 +121,8 @@ export function PerCapitaSection({ summary, expenditure }: PerCapitaSectionProps
           transition={{ duration: 0.8, ease: EASE_OUT_EXPO, delay: 0.3 }}
           className="max-w-4xl"
         >
-          <svg
+          <ChartActionsWrapper registryKey="budget/percapita" data={expenditure}>
+            <svg
             viewBox="0 0 1000 56"
             className="w-full rounded-lg overflow-visible"
             role="img"
@@ -145,6 +147,7 @@ export function PerCapitaSection({ summary, expenditure }: PerCapitaSectionProps
               />
             ))}
           </svg>
+          </ChartActionsWrapper>
 
           {/* Legend grid */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-4 mt-8">

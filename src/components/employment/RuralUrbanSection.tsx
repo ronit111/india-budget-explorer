@@ -4,6 +4,7 @@ import { useScrollTrigger } from '../../hooks/useScrollTrigger.ts';
 import { SectionNumber } from '../ui/SectionNumber.tsx';
 import { HorizontalBarChart, type BarItem } from '../viz/HorizontalBarChart.tsx';
 import type { UnemploymentData } from '../../lib/data/schema.ts';
+import { ChartActionsWrapper } from '../share/ChartActionsWrapper.tsx';
 
 interface RuralUrbanSectionProps {
   data: UnemploymentData;
@@ -27,7 +28,7 @@ export function RuralUrbanSection({ data }: RuralUrbanSectionProps) {
   }, [data]);
 
   return (
-    <section ref={ref} className="composition" style={{ background: 'var(--bg-surface)' }}>
+    <section ref={ref} id="rural-urban" className="composition" style={{ background: 'var(--bg-surface)' }}>
       <div className="max-w-7xl mx-auto px-6 sm:px-8">
         <SectionNumber number={6} className="mb-6 block" isVisible={isVisible} />
 
@@ -55,7 +56,8 @@ export function RuralUrbanSection({ data }: RuralUrbanSectionProps) {
             <p className="text-xs font-mono uppercase tracking-wider mb-3" style={{ color: 'var(--text-muted)' }}>
               State Unemployment Rate (%, highest 15)
             </p>
-            <HorizontalBarChart
+            <ChartActionsWrapper registryKey="employment/rural-urban" data={data}>
+              <HorizontalBarChart
               items={barItems}
               isVisible={isVisible}
               formatValue={(v) => `${v.toFixed(1)}%`}
@@ -63,6 +65,7 @@ export function RuralUrbanSection({ data }: RuralUrbanSectionProps) {
               labelWidth={140}
               barHeight={24}
             />
+            </ChartActionsWrapper>
           </div>
         )}
 

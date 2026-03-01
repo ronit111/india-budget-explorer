@@ -222,6 +222,46 @@ Indian Data Project is a hub for Indian government data visualization. Each data
 - /data/healthcare/2025-26/disease.json — TB incidence, immunization coverage trends
 - /data/healthcare/2025-26/indicators.json — All healthcare indicators across 4 categories
 
+## Chart sharing & embedding (Phase 7)
+
+Every chart on the portal supports sharing and embedding:
+
+### Chart actions overlay
+Hover over any chart on desktop (or tap the share icon on mobile) to access:
+- **PNG download** — Chart exported as an image with title, source attribution, and branding watermark
+- **CSV download** — Underlying data exported as a comma-separated file
+- **Permalink** — Direct URL with hash anchor to the specific chart section
+- **Embed code** — Ready-to-use iframe snippet for external websites
+
+### Embed routes
+Any chart can be embedded via iframe using the pattern:
+```
+/embed/{domain}/{sectionId}
+```
+
+Available embed URLs (examples):
+- /embed/budget/revenue — Revenue & Receipts waffle chart
+- /embed/budget/flow — Revenue to Expenditure Sankey diagram
+- /embed/economy/growth — Real GDP Growth line chart
+- /embed/economy/inflation — CPI Inflation tracking
+- /embed/rbi/monetary-policy — Repo Rate & Policy History
+- /embed/rbi/forex — Forex Reserves chart
+- /embed/states/gsdp — State GSDP Rankings
+- /embed/census/population — Population & Growth
+- /embed/education/enrollment — Gross Enrollment Ratios
+- /embed/employment/participation — Labour Force Participation
+- /embed/healthcare/infrastructure — Healthcare Infrastructure
+
+Embed pages render with minimal chrome (no header/footer), responsive to container width, dark background, source attribution, and a link back to the full portal.
+
+### Deep linking
+- Scrollytelling sections have hash anchors: `/economy#growth`, `/rbi#forex`, etc.
+- Explorer pages support URL query params: `/economy/explore?category=growth&indicator=gdp-growth`
+- Both formats are shareable and bookmarkable.
+
+### WhatsApp sharing
+Mobile users get a "Share on WhatsApp" option that generates a one-stat image card (1200x630, <100KB) with the chart's hero statistic, source attribution, and a deep link.
+
 ## Tax calculator details
 
 Supports both Old and New tax regimes for AY 2026-27 (FY 2025-26):

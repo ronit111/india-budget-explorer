@@ -4,6 +4,7 @@ import { useScrollTrigger } from '../../hooks/useScrollTrigger.ts';
 import { SectionNumber } from '../ui/SectionNumber.tsx';
 import { LineChart, type LineSeries } from '../viz/LineChart.tsx';
 import type { MonetaryPolicyData } from '../../lib/data/schema.ts';
+import { ChartActionsWrapper } from '../share/ChartActionsWrapper.tsx';
 
 interface MonetaryPolicySectionProps {
   data: MonetaryPolicyData;
@@ -54,7 +55,7 @@ export function MonetaryPolicySection({ data }: MonetaryPolicySectionProps) {
   }, [data]);
 
   return (
-    <section ref={ref} className="composition" style={{ background: 'var(--bg-surface)' }}>
+    <section ref={ref} id="monetary-policy" className="composition" style={{ background: 'var(--bg-surface)' }}>
       <div className="max-w-7xl mx-auto px-6 sm:px-8">
         <SectionNumber number={1} className="mb-6 block" isVisible={isVisible} />
 
@@ -76,12 +77,14 @@ export function MonetaryPolicySection({ data }: MonetaryPolicySectionProps) {
           From easing cycles to emergency COVID cuts to post-pandemic tightening, every repo rate move reflects the RBI's reading of growth versus inflation. The CRR sets how much banks must hold in reserve.
         </motion.p>
 
-        <LineChart
+        <ChartActionsWrapper registryKey="rbi/monetary-policy" data={data}>
+          <LineChart
           series={series}
           isVisible={isVisible}
           formatValue={(v) => v.toFixed(2)}
           unit="%"
         />
+        </ChartActionsWrapper>
 
         <p className="source-attribution">
           Source: {data.source}

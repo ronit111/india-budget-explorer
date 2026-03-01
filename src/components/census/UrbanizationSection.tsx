@@ -5,6 +5,7 @@ import { SectionNumber } from '../ui/SectionNumber.tsx';
 import { LineChart, type LineSeries } from '../viz/LineChart.tsx';
 import { HorizontalBarChart, type BarItem } from '../viz/HorizontalBarChart.tsx';
 import type { DemographicsData } from '../../lib/data/schema.ts';
+import { ChartActionsWrapper } from '../share/ChartActionsWrapper.tsx';
 
 const MIN_POINTS = 3;
 const EASE_OUT_EXPO: [number, number, number, number] = [0.16, 1, 0.3, 1];
@@ -44,7 +45,7 @@ export function UrbanizationSection({ data }: UrbanizationSectionProps) {
   }, [data]);
 
   return (
-    <section ref={ref} className="composition">
+    <section ref={ref} id="urbanization" className="composition">
       <div className="max-w-7xl mx-auto px-6 sm:px-8">
         <SectionNumber number={6} className="mb-6 block" isVisible={isVisible} />
 
@@ -72,12 +73,14 @@ export function UrbanizationSection({ data }: UrbanizationSectionProps) {
             <p className="text-xs font-mono uppercase tracking-wider mb-3" style={{ color: 'var(--text-muted)' }}>
               Urban Population (% of total)
             </p>
-            <LineChart
+            <ChartActionsWrapper registryKey="census/urbanization" data={data}>
+              <LineChart
               series={urbanSeries}
               isVisible={isVisible}
               formatValue={(v) => `${v.toFixed(1)}%`}
               unit="%"
             />
+            </ChartActionsWrapper>
           </div>
         )}
 
@@ -87,7 +90,8 @@ export function UrbanizationSection({ data }: UrbanizationSectionProps) {
             <p className="text-xs font-mono uppercase tracking-wider mb-3" style={{ color: 'var(--text-muted)' }}>
               Urbanization by State — Census 2011 (%)
             </p>
-            <HorizontalBarChart
+            <ChartActionsWrapper registryKey="census/urbanization" data={data}>
+              <HorizontalBarChart
               items={urbanBars}
               isVisible={isVisible}
               formatValue={(v) => `${v.toFixed(1)}%`}
@@ -95,6 +99,7 @@ export function UrbanizationSection({ data }: UrbanizationSectionProps) {
               labelWidth={140}
               barHeight={24}
             />
+            </ChartActionsWrapper>
           </div>
         )}
 

@@ -4,6 +4,7 @@ import { useScrollTrigger } from '../../hooks/useScrollTrigger.ts';
 import { SectionNumber } from '../ui/SectionNumber.tsx';
 import { LineChart, type LineSeries } from '../viz/LineChart.tsx';
 import type { SectoralData } from '../../lib/data/schema.ts';
+import { ChartActionsWrapper } from '../share/ChartActionsWrapper.tsx';
 
 const MIN_POINTS = 3;
 
@@ -44,7 +45,7 @@ export function StructuralShiftSection({ data }: StructuralShiftSectionProps) {
   }, [data]);
 
   return (
-    <section ref={ref} className="composition" style={{ background: 'var(--bg-surface)' }}>
+    <section ref={ref} id="structural" className="composition" style={{ background: 'var(--bg-surface)' }}>
       <div className="max-w-7xl mx-auto px-6 sm:px-8">
         <SectionNumber number={2} className="mb-6 block" isVisible={isVisible} />
 
@@ -72,12 +73,14 @@ export function StructuralShiftSection({ data }: StructuralShiftSectionProps) {
             <p className="text-xs font-mono uppercase tracking-wider mb-3" style={{ color: 'var(--text-muted)' }}>
               Employment by Sector (% of total)
             </p>
-            <LineChart
+            <ChartActionsWrapper registryKey="employment/structural" data={data}>
+              <LineChart
               series={sectorSeries}
               isVisible={isVisible}
               formatValue={(v) => `${v.toFixed(1)}%`}
               unit="%"
             />
+            </ChartActionsWrapper>
           </div>
         )}
 

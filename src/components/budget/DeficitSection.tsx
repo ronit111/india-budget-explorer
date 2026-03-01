@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { useScrollTrigger } from '../../hooks/useScrollTrigger.ts';
 import { SectionNumber } from '../ui/SectionNumber.tsx';
+import { ChartActionsWrapper } from '../share/ChartActionsWrapper.tsx';
 import { formatLakhCrore } from '../../lib/format.ts';
 import type { BudgetSummary } from '../../lib/data/schema.ts';
 
@@ -22,7 +23,7 @@ export function DeficitSection({ summary }: DeficitSectionProps) {
   const borrowedPct = paisaBorrowed;
 
   return (
-    <section ref={ref} className="composition">
+    <section ref={ref} id="deficit" className="composition">
       <div className="max-w-7xl mx-auto px-6 sm:px-8">
         <SectionNumber number={2} className="mb-6 block" isVisible={isVisible} />
 
@@ -64,6 +65,7 @@ export function DeficitSection({ summary }: DeficitSectionProps) {
           transition={{ duration: 0.8, ease: EASE_OUT_EXPO, delay: 0.3 }}
           className="max-w-4xl"
         >
+          <ChartActionsWrapper registryKey="budget/deficit" data={summary}>
           <svg
             viewBox="0 0 1000 100"
             className="w-full"
@@ -130,6 +132,7 @@ export function DeficitSection({ summary }: DeficitSectionProps) {
               {`${paisaBorrowed}p borrowed`}
             </motion.text>
           </svg>
+          </ChartActionsWrapper>
 
           {/* Stat cards */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-8">

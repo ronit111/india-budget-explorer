@@ -5,6 +5,7 @@ import { useScrollTrigger } from '../../hooks/useScrollTrigger.ts';
 import { SectionNumber } from '../ui/SectionNumber.tsx';
 import { Tooltip, TooltipTitle, TooltipRow, useTooltip } from '../ui/Tooltip.tsx';
 import type { BudgetVsActualData } from '../../lib/data/schema.ts';
+import { ChartActionsWrapper } from '../share/ChartActionsWrapper.tsx';
 
 interface BudgetVsActualSectionProps {
   data: BudgetVsActualData;
@@ -71,7 +72,7 @@ export function BudgetVsActualSection({ data }: BudgetVsActualSectionProps) {
   const biggestUnderspend = deviations[deviations.length - 1];
 
   return (
-    <section ref={ref} className="composition">
+    <section ref={ref} id="budget-vs-actual" className="composition">
       <div className="max-w-7xl mx-auto px-6 sm:px-8">
         <SectionNumber number={4} className="mb-6 block" isVisible={isVisible} />
 
@@ -145,7 +146,9 @@ export function BudgetVsActualSection({ data }: BudgetVsActualSectionProps) {
           <p className="text-caption uppercase tracking-wider mb-3" style={{ color: 'var(--text-muted)' }}>
             Actual vs Budget Estimate — % deviation
           </p>
-          <DeviationChart items={deviations} isVisible={isVisible} />
+          <ChartActionsWrapper registryKey="budget/budget-vs-actual" data={data}>
+            <DeviationChart items={deviations} isVisible={isVisible} />
+          </ChartActionsWrapper>
         </motion.div>
 
         {/* Legend */}

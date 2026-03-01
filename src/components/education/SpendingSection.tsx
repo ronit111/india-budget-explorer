@@ -4,6 +4,7 @@ import { useScrollTrigger } from '../../hooks/useScrollTrigger.ts';
 import { SectionNumber } from '../ui/SectionNumber.tsx';
 import { LineChart, type LineSeries } from '../viz/LineChart.tsx';
 import type { SpendingData } from '../../lib/data/schema.ts';
+import { ChartActionsWrapper } from '../share/ChartActionsWrapper.tsx';
 
 const MIN_POINTS = 3;
 
@@ -41,7 +42,7 @@ export function SpendingSection({ data }: SpendingSectionProps) {
   }, [data]);
 
   return (
-    <section ref={ref} className="composition" style={{ background: 'var(--bg-surface)' }}>
+    <section ref={ref} id="spending" className="composition" style={{ background: 'var(--bg-surface)' }}>
       <div className="max-w-7xl mx-auto px-6 sm:px-8">
         <SectionNumber number={6} className="mb-6 block" isVisible={isVisible} />
 
@@ -68,13 +69,15 @@ export function SpendingSection({ data }: SpendingSectionProps) {
             <p className="text-xs font-mono uppercase tracking-wider mb-3" style={{ color: 'var(--text-muted)' }}>
               Education Expenditure (% of GDP)
             </p>
-            <LineChart
+            <ChartActionsWrapper registryKey="education/spending" data={data}>
+              <LineChart
               series={spendingSeries}
               isVisible={isVisible}
               formatValue={(v) => `${v.toFixed(1)}%`}
               unit="% of GDP"
               referenceLine={6}
             />
+            </ChartActionsWrapper>
           </div>
         )}
 
@@ -83,12 +86,14 @@ export function SpendingSection({ data }: SpendingSectionProps) {
             <p className="text-xs font-mono uppercase tracking-wider mb-3" style={{ color: 'var(--text-muted)' }}>
               Education Expenditure (% of Government Spending)
             </p>
-            <LineChart
+            <ChartActionsWrapper registryKey="education/spending" data={data}>
+              <LineChart
               series={govtSpendSeries}
               isVisible={isVisible}
               formatValue={(v) => `${v.toFixed(1)}%`}
               unit="%"
             />
+            </ChartActionsWrapper>
           </div>
         )}
 

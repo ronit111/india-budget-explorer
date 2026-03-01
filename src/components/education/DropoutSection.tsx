@@ -4,6 +4,7 @@ import { useScrollTrigger } from '../../hooks/useScrollTrigger.ts';
 import { SectionNumber } from '../ui/SectionNumber.tsx';
 import { HorizontalBarChart, type BarItem } from '../viz/HorizontalBarChart.tsx';
 import type { EnrollmentData } from '../../lib/data/schema.ts';
+import { ChartActionsWrapper } from '../share/ChartActionsWrapper.tsx';
 
 interface DropoutSectionProps {
   data: EnrollmentData;
@@ -43,7 +44,7 @@ export function DropoutSection({ data }: DropoutSectionProps) {
   }, [data]);
 
   return (
-    <section ref={ref} className="composition" style={{ background: 'var(--bg-surface)' }}>
+    <section ref={ref} id="dropout" className="composition" style={{ background: 'var(--bg-surface)' }}>
       <div className="max-w-7xl mx-auto px-6 sm:px-8">
         <SectionNumber number={3} className="mb-6 block" isVisible={isVisible} />
 
@@ -70,7 +71,8 @@ export function DropoutSection({ data }: DropoutSectionProps) {
             <p className="text-xs font-mono uppercase tracking-wider mb-3" style={{ color: 'var(--text-muted)' }}>
               Average Dropout Rate by Level (%)
             </p>
-            <HorizontalBarChart
+            <ChartActionsWrapper registryKey="education/dropout" data={data}>
+              <HorizontalBarChart
               items={levelComparisonBars}
               isVisible={isVisible}
               formatValue={(v) => `${v.toFixed(1)}%`}
@@ -78,6 +80,7 @@ export function DropoutSection({ data }: DropoutSectionProps) {
               labelWidth={140}
               barHeight={28}
             />
+            </ChartActionsWrapper>
           </div>
         )}
 
@@ -86,7 +89,8 @@ export function DropoutSection({ data }: DropoutSectionProps) {
             <p className="text-xs font-mono uppercase tracking-wider mb-3" style={{ color: 'var(--text-muted)' }}>
               Secondary Dropout Rate by State (%)
             </p>
-            <HorizontalBarChart
+            <ChartActionsWrapper registryKey="education/dropout" data={data}>
+              <HorizontalBarChart
               items={stateDropoutBars}
               isVisible={isVisible}
               formatValue={(v) => `${v.toFixed(1)}%`}
@@ -94,6 +98,7 @@ export function DropoutSection({ data }: DropoutSectionProps) {
               labelWidth={140}
               barHeight={24}
             />
+            </ChartActionsWrapper>
           </div>
         )}
 

@@ -48,6 +48,7 @@ Indian Data Project turns dense government data into interactive visual experien
 | **Healthcare Explorer** (`/healthcare/explore`) | Indicator explorer with 5 categories (All, Infrastructure, Spending, Immunization, Disease), 30 states |
 | **Healthcare Methodology** (`/healthcare/methodology`) | Data sources (NHP 2022, NFHS-5, World Bank), indicator definitions, limitations |
 | **Healthcare Glossary** (`/healthcare/glossary`) | 13 healthcare terms — PHC, CHC, out-of-pocket spending, immunization, TB incidence, hospital beds per 1000, etc. |
+| **Embed Charts** (`/embed/{domain}/{section}`) | Standalone responsive chart pages for iframe embedding — minimal chrome, lazy-loaded charts, ~49 sections available |
 
 ---
 
@@ -60,6 +61,7 @@ Indian Data Project turns dense government data into interactive visual experien
 | Styling | Tailwind CSS v4 (CSS Layers) |
 | State | Zustand |
 | Visualizations | D3.js (layout) + React (rendering) — waffle, treemap, sankey, choropleth, line, area, step charts |
+| Chart Export | Canvas 2D API (SVG→PNG capture, WhatsApp share cards) — zero external dependencies |
 | Animation | Framer Motion |
 | Search | Fuse.js (Cmd+K overlay) |
 | i18n | react-i18next (infrastructure preserved but unwired — relying on browser auto-translate) |
@@ -93,7 +95,7 @@ npm run preview
 | Command | What it does |
 |---------|-------------|
 | `npm run dev` | Start Vite dev server with HMR |
-| `npm run build` | TypeScript check + Vite build + Puppeteer prerender (all 34 routes) |
+| `npm run build` | TypeScript check + Vite build + Puppeteer prerender (42 routes: 34 pages + 8 embed) |
 | `npm run build:no-prerender` | Build without prerendering (used by Vercel) |
 | `npm run lint` | ESLint check |
 | `npm run preview` | Preview production build locally |
@@ -139,7 +141,8 @@ src/
 │   ├── CensusGlossaryPage.tsx # Census glossary wrapper
 │   ├── EducationGlossaryPage.tsx # Education glossary wrapper
 │   ├── EmploymentGlossaryPage.tsx # Employment glossary wrapper
-│   └── HealthcareGlossaryPage.tsx # Healthcare glossary wrapper
+│   ├── HealthcareGlossaryPage.tsx # Healthcare glossary wrapper
+│   └── EmbedPage.tsx          # Standalone embed chart (reads :domain/:section params, renders outside PageShell)
 ├── components/
 │   ├── home/               # Budget story compositions (Hero, Revenue, Expenditure, Flow, Map, CTA)
 │   ├── budget/             # Budget-specific compositions (DeficitSection, TrendsSection, BudgetVsActualSection, PerCapitaSection)
@@ -153,18 +156,25 @@ src/
 │   ├── calculator/         # Tax calculator UI (IncomeInput, DeductionsPanel, TaxBreakdown, ShareCard, SpendingAllocation)
 │   ├── explore/            # DataTable with expandable rows
 │   ├── viz/                # D3 visualizations (TreemapChart, SankeyDiagram, ChoroplethMap, WaffleChart, LineChart, AreaChart, HorizontalBarChart, StepChart, AnimatedCounter)
+│   ├── share/              # Chart sharing (ChartActions toolbar, ChartActionsWrapper overlay, ShareBottomSheet for mobile)
+│   ├── embed/              # Embed components (EmbedShell minimal chrome, ChartRenderer lazy chart loader)
 │   ├── ui/                 # Shared UI (Tooltip, NarrativeBridge, SearchOverlay, FeedbackButton, Skeleton, etc.)
 │   ├── layout/             # Header, Footer, MobileNav, PageShell
 │   ├── seo/                # SEOHead (per-route meta tags + OG images + JSON-LD)
 │   └── i18n/               # Language provider and switcher
 ├── lib/
 │   ├── data/schema.ts      # TypeScript interfaces for all data shapes (Budget, Economy, RBI, States, Census, Education, Employment, Healthcare)
+│   ├── chartRegistry.ts    # Central chart registry (~49 entries, CSV/share card serialization, domain metadata)
+│   ├── registry/           # Per-domain chart registrations (budget, economy, rbi, states, census, education, employment, healthcare)
+│   ├── svgCapture.ts       # SVG→Canvas→PNG capture pipeline (CSS var resolution, font embedding, compositing)
+│   ├── shareCard.ts        # WhatsApp share card Canvas generator (1200×630, <100KB)
+│   ├── csvExport.ts        # RFC 4180 CSV serialization
 │   ├── taxEngine.ts        # Tax computation engine (Old/New regime, deductions, slabs)
 │   ├── format.ts           # Indian number formatting (lakhs/crores)
 │   ├── dataLoader.ts       # Fetch + cache layer for JSON data (all domains)
 │   ├── stateMapping.ts     # India state ID → name mapping
 │   └── i18n.ts             # i18next configuration
-├── hooks/                  # useScrollTrigger, useIntersection, useBudgetData, useEconomyData, useRBIData, useStatesData, useCensusData, useEducationData, useEmploymentData, useHealthcareData, etc.
+├── hooks/                  # useScrollTrigger, useIntersection, useUrlState (URL↔Zustand sync), useBudgetData, useEconomyData, useRBIData, useStatesData, useCensusData, useEducationData, useEmploymentData, useHealthcareData, etc.
 ├── store/                  # Zustand stores (budgetStore, economyStore, rbiStore, statesStore, censusStore, educationStore, employmentStore, healthcareStore, calculatorStore, uiStore)
 └── index.css               # Design tokens, CSS layers, keyframes
 
@@ -331,13 +341,14 @@ See [BRAND.md](./BRAND.md) for the full visual identity guide. Key principles:
 
 The site is built for maximum discoverability:
 
-- **Prerendered HTML** for all 34 routes (Puppeteer at build time)
+- **Prerendered HTML** for all 42 routes (34 pages + 8 embed routes, Puppeteer at build time)
 - **JSON-LD** structured data: `WebApplication`, `Dataset` x8 (Budget + Economy + RBI + States + Census + Education + Employment + Healthcare for Google Dataset Search), `BreadcrumbList`
 - **Per-route meta tags** via react-helmet-async (title, description, OG image, Twitter card, canonical)
-- **sitemap.xml** covering 34 pages + 45 downloadable data endpoints
+- **sitemap.xml** covering 42 pages + 45 downloadable data endpoints
 - **robots.txt** explicitly welcoming AI crawlers (GPTBot, ClaudeBot, PerplexityBot, Google-Extended)
-- **llms.txt** for AI model discoverability (all 8 domains + glossary terms)
+- **llms.txt** for AI model discoverability (all 8 domains + glossary terms + embed API)
 - **Noscript fallback** with real content across all eight domains for crawlers that don't execute JS
+- **Embeddable charts** via `/embed/{domain}/{section}` — standalone responsive iframes for journalists and bloggers
 
 ---
 
@@ -415,11 +426,14 @@ The site is built for maximum discoverability:
 - [x] State GSDP 3-year history for top 10 states (FY 2020-21 through 2022-23)
 - [ ] RBI DBIE direct API integration (bypass World Bank lag for monetary indicators) — deferred
 
-**Phase 7: Chart Shareability & Distribution Infrastructure**
-- [ ] `<ChartActions>` overlay on every chart (PNG download, CSV export, permalink, embed iframe code)
-- [ ] Embed routes (`/embed/{domain}/{section}`) rendering standalone charts for journalist/blogger embedding
-- [ ] WhatsApp-optimized share cards (one stat + source, under 100KB) with deep link sharing
-- [ ] URL-encoded chart state (filters and selections reflected in shareable URLs)
+**Phase 7: Chart Shareability & Distribution Infrastructure** ✓
+- [x] `<ChartActions>` overlay on every chart (PNG download, CSV export, permalink copy, embed iframe code copy)
+- [x] Embed routes (`/embed/{domain}/{section}`) rendering standalone charts for journalist/blogger embedding
+- [x] WhatsApp-optimized share cards (one stat + source, Canvas API, under 100KB) with deep link sharing
+- [x] URL-encoded chart state (explorer filters and selections reflected in shareable URLs, section hash anchors)
+- [x] Central chart registry (`src/lib/chartRegistry.ts`) with ~49 entries across 8 domains
+- [x] SVG→Canvas→PNG capture pipeline (CSS var resolution, font embedding, Canvas compositing)
+- [x] Mobile bottom sheet for chart sharing on touch devices
 
 **Phase 8: "Make It Personal" Engine**
 - [ ] Persistent user context (state, household size) in localStorage — transforms numbers across all domains

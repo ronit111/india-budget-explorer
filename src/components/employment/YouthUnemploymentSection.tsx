@@ -4,6 +4,7 @@ import { useScrollTrigger } from '../../hooks/useScrollTrigger.ts';
 import { SectionNumber } from '../ui/SectionNumber.tsx';
 import { LineChart, type LineSeries } from '../viz/LineChart.tsx';
 import type { UnemploymentData } from '../../lib/data/schema.ts';
+import { ChartActionsWrapper } from '../share/ChartActionsWrapper.tsx';
 
 const MIN_POINTS = 3;
 
@@ -36,7 +37,7 @@ export function YouthUnemploymentSection({ data }: YouthUnemploymentSectionProps
   }, [data]);
 
   return (
-    <section ref={ref} className="composition" style={{ background: 'var(--bg-surface)' }}>
+    <section ref={ref} id="youth" className="composition" style={{ background: 'var(--bg-surface)' }}>
       <div className="max-w-7xl mx-auto px-6 sm:px-8">
         <SectionNumber number={3} className="mb-6 block" isVisible={isVisible} />
 
@@ -64,12 +65,14 @@ export function YouthUnemploymentSection({ data }: YouthUnemploymentSectionProps
             <p className="text-xs font-mono uppercase tracking-wider mb-3" style={{ color: 'var(--text-muted)' }}>
               Unemployment Rate (%)
             </p>
-            <LineChart
+            <ChartActionsWrapper registryKey="employment/youth" data={data}>
+              <LineChart
               series={unemploymentSeries}
               isVisible={isVisible}
               formatValue={(v) => `${v.toFixed(1)}%`}
               unit="%"
             />
+            </ChartActionsWrapper>
           </div>
         )}
 

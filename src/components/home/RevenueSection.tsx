@@ -5,6 +5,7 @@ import { WaffleChart, WaffleLegend } from '../viz/WaffleChart.tsx';
 import { SectionNumber } from '../ui/SectionNumber.tsx';
 import type { ReceiptsData } from '../../lib/data/schema.ts';
 import { formatLakhCrore } from '../../lib/format.ts';
+import { ChartActionsWrapper } from '../share/ChartActionsWrapper.tsx';
 
 interface RevenueSectionProps {
   receipts: ReceiptsData;
@@ -21,7 +22,7 @@ export function RevenueSection({ receipts }: RevenueSectionProps) {
   const borrowingPaise = earnedRevenue > 0 ? Math.round((borrowingAmt / earnedRevenue) * 100) : 0;
 
   return (
-    <section ref={ref} className="composition">
+    <section ref={ref} id="revenue" className="composition">
       <div className="max-w-7xl mx-auto px-6 sm:px-8">
         <SectionNumber number={1} className="mb-6 block" isVisible={isVisible} />
 
@@ -75,11 +76,13 @@ export function RevenueSection({ receipts }: RevenueSectionProps) {
           </div>
 
           {/* Waffle chart — fills the right side */}
-          <WaffleChart
+          <ChartActionsWrapper registryKey="budget/revenue" data={receipts}>
+            <WaffleChart
             categories={receipts.categories}
             isVisible={isVisible}
             highlightCategory={hoveredCat}
           />
+          </ChartActionsWrapper>
         </div>
       </div>
     </section>

@@ -4,6 +4,7 @@ import { useScrollTrigger } from '../../hooks/useScrollTrigger.ts';
 import { SectionNumber } from '../ui/SectionNumber.tsx';
 import { HorizontalBarChart, type BarItem } from '../viz/HorizontalBarChart.tsx';
 import type { FiscalData } from '../../lib/data/schema.ts';
+import { ChartActionsWrapper } from '../share/ChartActionsWrapper.tsx';
 
 interface FiscalSectionProps {
   fiscal: FiscalData;
@@ -24,7 +25,7 @@ export function FiscalSection({ fiscal }: FiscalSectionProps) {
   [fiscal]);
 
   return (
-    <section ref={ref} className="composition" style={{ background: 'var(--bg-surface)' }}>
+    <section ref={ref} id="fiscal" className="composition" style={{ background: 'var(--bg-surface)' }}>
       <div className="max-w-7xl mx-auto px-6 sm:px-8">
         <SectionNumber number={3} className="mb-6 block" isVisible={isVisible} />
 
@@ -47,7 +48,8 @@ export function FiscalSection({ fiscal }: FiscalSectionProps) {
           The FRBM Act sets a long-term target of 3% of GDP. The government is on track but not there yet.
         </motion.p>
 
-        <HorizontalBarChart
+        <ChartActionsWrapper registryKey="economy/fiscal" data={fiscal}>
+          <HorizontalBarChart
           items={items}
           target={{
             value: fiscal.targetFiscalDeficit,
@@ -61,6 +63,7 @@ export function FiscalSection({ fiscal }: FiscalSectionProps) {
           primaryLabel="Fiscal Deficit"
           secondaryLabel="Revenue Deficit"
         />
+        </ChartActionsWrapper>
 
         <p className="source-attribution">
           Source: {fiscal.source}

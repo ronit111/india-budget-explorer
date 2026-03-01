@@ -4,6 +4,7 @@ import { useScrollTrigger } from '../../hooks/useScrollTrigger.ts';
 import { SectionNumber } from '../ui/SectionNumber.tsx';
 import { LineChart, type LineSeries } from '../viz/LineChart.tsx';
 import type { HealthSpendingData } from '../../lib/data/schema.ts';
+import { ChartActionsWrapper } from '../share/ChartActionsWrapper.tsx';
 
 const MIN_POINTS = 3;
 
@@ -28,7 +29,7 @@ export function OutOfPocketSection({ data }: OutOfPocketSectionProps) {
   }, [data]);
 
   return (
-    <section ref={ref} className="composition" style={{ background: 'var(--bg-surface)' }}>
+    <section ref={ref} id="oop" className="composition" style={{ background: 'var(--bg-surface)' }}>
       <div className="max-w-7xl mx-auto px-6 sm:px-8">
         <SectionNumber number={3} className="mb-6 block" isVisible={isVisible} />
 
@@ -55,12 +56,14 @@ export function OutOfPocketSection({ data }: OutOfPocketSectionProps) {
             <p className="text-xs font-mono uppercase tracking-wider mb-3" style={{ color: 'var(--text-muted)' }}>
               Out-of-pocket expenditure as % of total health spending
             </p>
-            <LineChart
+            <ChartActionsWrapper registryKey="healthcare/oop" data={data}>
+              <LineChart
               series={oopSeries}
               isVisible={isVisible}
               formatValue={(v) => `${v.toFixed(1)}%`}
               unit="%"
             />
+            </ChartActionsWrapper>
           </div>
         )}
 

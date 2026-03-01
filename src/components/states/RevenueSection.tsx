@@ -4,6 +4,7 @@ import { useScrollTrigger } from '../../hooks/useScrollTrigger.ts';
 import { SectionNumber } from '../ui/SectionNumber.tsx';
 import { HorizontalBarChart, type BarItem } from '../viz/HorizontalBarChart.tsx';
 import type { RevenueData } from '../../lib/data/schema.ts';
+import { ChartActionsWrapper } from '../share/ChartActionsWrapper.tsx';
 
 interface RevenueSectionProps {
   data: RevenueData;
@@ -29,7 +30,7 @@ export function RevenueSection({ data }: RevenueSectionProps) {
   }, [data]);
 
   return (
-    <section ref={ref} className="composition" style={{ background: 'var(--bg-surface)' }}>
+    <section ref={ref} id="revenue" className="composition" style={{ background: 'var(--bg-surface)' }}>
       <div className="max-w-7xl mx-auto px-6 sm:px-8">
         <SectionNumber number={3} className="mb-6 block" isVisible={isVisible} />
 
@@ -51,7 +52,8 @@ export function RevenueSection({ data }: RevenueSectionProps) {
           Some states raise most of their revenue from their own taxes. Others depend heavily on the Centre for transfers. This ratio shapes a state's fiscal independence.
         </motion.p>
 
-        <HorizontalBarChart
+        <ChartActionsWrapper registryKey="states/revenue" data={data}>
+          <HorizontalBarChart
           items={items}
           isVisible={isVisible}
           showSecondary
@@ -62,6 +64,7 @@ export function RevenueSection({ data }: RevenueSectionProps) {
           labelWidth={140}
           barHeight={24}
         />
+        </ChartActionsWrapper>
 
         <p className="source-attribution">
           Source: {data.source} ({data.year})

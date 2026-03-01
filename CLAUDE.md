@@ -3,7 +3,7 @@
 ## Project Overview
 Open data platform for Indian citizens. V1 of the broader **India Truth Engine** vision — a platform that cross-references Indian government data against primary sources (RBI, World Bank, IMF, NSO, budget documents) and presents evidence in clear, shareable formats. Budget is the starting dataset, not the whole product.
 
-**Stack**: React 19 + TypeScript + Vite 7 + Tailwind v4. Zustand (state), Framer Motion (animation), D3 (visualizations: treemap, sankey, waffle), Canvas API (share card generation). Deployed on Vercel via GitHub push to `main`.
+**Stack**: React 19 + TypeScript + Vite 7 + Tailwind v4. Zustand (state), Framer Motion (animation), D3 (visualizations: treemap, sankey, waffle), Canvas API (share cards + SVG→PNG chart export). Deployed on Vercel via GitHub push to `main`.
 
 ## Site Architecture — Hub + Data Domains
 - **`/` (Hub)**: Visual portal showcasing all data domains. Not a dashboard — a curated data story showcase.
@@ -15,10 +15,18 @@ Open data platform for Indian citizens. V1 of the broader **India Truth Engine**
 - **`/education` (Education Domain)**: Enrollment, quality, dropout, learning outcomes, spending. Sub-routes: `/education/explore`, `/education/methodology`, `/education/glossary`.
 - **`/employment` (Employment Domain)**: LFPR, unemployment, sectoral shifts, informality. Sub-routes: `/employment/explore`, `/employment/methodology`, `/employment/glossary`.
 - **`/healthcare` (Healthcare Domain)**: Infrastructure, spending, immunization, disease burden. Sub-routes: `/healthcare/explore`, `/healthcare/methodology`, `/healthcare/glossary`.
+- **`/embed/{domain}/{section}` (Embed Routes)**: Standalone responsive chart pages for iframe embedding. Renders outside PageShell (no header/footer/nav). ~49 sections available across all 8 domains. Lazy-loaded chart components via `ChartRenderer`.
 - **Future domains** each get their own top-level route with self-contained sub-pages.
 - Header is **context-aware**: hub title + search on `/`, domain title + sub-nav tabs inside a domain.
 - **Back links** (header chevron + footer link) point to `/#stories`. New domains should follow this convention.
 - Old routes (`/explore`, `/calculator`, `/methodology`) redirect to `/budget/*` equivalents.
+
+## Chart Sharing Infrastructure (Phase 7)
+- **Central Chart Registry** (`src/lib/chartRegistry.ts`): Map keyed by `"{domain}/{sectionId}"`. Each entry has title, source, accent color, data files, chartType, `toTabular()` for CSV, `heroStat()` for WhatsApp cards. Registry files in `src/lib/registry/{domain}.ts`.
+- **ChartActionsWrapper** (`src/components/share/ChartActionsWrapper.tsx`): Wraps every chart across all 8 domains. Desktop: hover overlay with 4 action buttons. Mobile: persistent share button → `ShareBottomSheet`. Uses `pointer-events: none` on overlay to preserve chart tooltips/drill-down.
+- **SVG→PNG capture** (`src/lib/svgCapture.ts`): Clones SVG, resolves CSS custom properties, forces opacity:1, serializes to Canvas, composites dark background + accent bar + title + chart + source watermark. No external dependencies.
+- **WhatsApp share cards** (`src/lib/shareCard.ts`): 1200×630 Canvas with hero stat, domain accent, deep link URL. Tries Web Share API, falls back to download.
+- **URL state** (`src/hooks/useUrlState.ts`): Bidirectional Zustand↔URLSearchParams sync. URL wins on mount (deep linking), store wins after. All 8 explorer pages wired. All scrollytelling sections have `id` attributes for `#hash` anchors.
 
 ## Deliberate Decisions
 - **i18n removed**: Infrastructure exists (i18n.ts, LanguageSwitcher, LanguageProvider, Hindi locale files) but is not wired. Browser auto-translate preferred over dev overhead. Don't re-wire without explicit ask.

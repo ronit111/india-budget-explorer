@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { useScrollTrigger } from '../../hooks/useScrollTrigger.ts';
 import { SectionNumber } from '../ui/SectionNumber.tsx';
 import { LineChart, type LineSeries } from '../viz/LineChart.tsx';
+import { ChartActionsWrapper } from '../share/ChartActionsWrapper.tsx';
 import type { InflationData } from '../../lib/data/schema.ts';
 
 interface InflationSectionProps {
@@ -45,7 +46,7 @@ export function InflationSection({ inflation }: InflationSectionProps) {
   const hasBreakdown = series.length > 1;
 
   return (
-    <section ref={ref} className="composition" style={{ background: 'var(--bg-surface)' }}>
+    <section ref={ref} id="inflation" className="composition" style={{ background: 'var(--bg-surface)' }}>
       <div className="max-w-7xl mx-auto px-6 sm:px-8">
         <SectionNumber number={2} className="mb-6 block" isVisible={isVisible} />
 
@@ -69,18 +70,20 @@ export function InflationSection({ inflation }: InflationSectionProps) {
             : 'The RBI targets CPI inflation between 2-6%. After peaking in 2020, headline inflation has moved back within the target band.'}
         </motion.p>
 
-        <LineChart
-          series={series}
-          band={{
-            lower: inflation.targetBand.lower,
-            upper: inflation.targetBand.upper,
-            color: '#4AEADC',
-            label: 'RBI target (2-6%)',
-          }}
-          isVisible={isVisible}
-          formatValue={(v) => v.toFixed(1)}
-          unit="%"
-        />
+        <ChartActionsWrapper registryKey="economy/inflation" data={inflation}>
+          <LineChart
+            series={series}
+            band={{
+              lower: inflation.targetBand.lower,
+              upper: inflation.targetBand.upper,
+              color: '#4AEADC',
+              label: 'RBI target (2-6%)',
+            }}
+            isVisible={isVisible}
+            formatValue={(v) => v.toFixed(1)}
+            unit="%"
+          />
+        </ChartActionsWrapper>
 
         <p className="source-attribution">
           Source: {inflation.source}

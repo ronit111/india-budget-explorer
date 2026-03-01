@@ -3,6 +3,7 @@ import { useScrollTrigger } from '../../hooks/useScrollTrigger.ts';
 import { SankeyDiagram } from '../viz/SankeyDiagram.tsx';
 import { SectionNumber } from '../ui/SectionNumber.tsx';
 import type { SankeyData } from '../../lib/data/schema.ts';
+import { ChartActionsWrapper } from '../share/ChartActionsWrapper.tsx';
 
 interface FlowSectionProps {
   sankey: SankeyData;
@@ -12,7 +13,7 @@ export function FlowSection({ sankey }: FlowSectionProps) {
   const [ref, isVisible] = useScrollTrigger({ threshold: 0.08 });
 
   return (
-    <section ref={ref} className="composition">
+    <section ref={ref} id="flow" className="composition">
       <div className="max-w-7xl mx-auto px-6 sm:px-8">
         <SectionNumber number={6} className="mb-6 block" isVisible={isVisible} />
 
@@ -34,7 +35,9 @@ export function FlowSection({ sankey }: FlowSectionProps) {
           {'Revenue sources flow through the Central Government to spending heads. Wider bands mean larger amounts.'}
         </motion.p>
 
-        <SankeyDiagram data={sankey} isVisible={isVisible} />
+        <ChartActionsWrapper registryKey="budget/flow" data={sankey}>
+          <SankeyDiagram data={sankey} isVisible={isVisible} />
+        </ChartActionsWrapper>
 
         <p className="source-attribution">
           {'Source: Union Budget 2025-26, Budget at a Glance'}

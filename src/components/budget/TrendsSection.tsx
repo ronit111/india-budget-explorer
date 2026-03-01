@@ -3,6 +3,7 @@ import { useScrollTrigger } from '../../hooks/useScrollTrigger.ts';
 import { SectionNumber } from '../ui/SectionNumber.tsx';
 import { LineChart, type LineSeries } from '../viz/LineChart.tsx';
 import type { BudgetTrendsData } from '../../lib/data/schema.ts';
+import { ChartActionsWrapper } from '../share/ChartActionsWrapper.tsx';
 
 interface TrendsSectionProps {
   trends: BudgetTrendsData;
@@ -67,7 +68,7 @@ export function TrendsSection({ trends }: TrendsSectionProps) {
   const growthMultiple = (lastExp / firstExp).toFixed(1);
 
   return (
-    <section ref={ref} className="composition">
+    <section ref={ref} id="trends" className="composition">
       <div className="max-w-7xl mx-auto px-6 sm:px-8">
         <SectionNumber number={3} className="mb-6 block" isVisible={isVisible} />
 
@@ -112,12 +113,14 @@ export function TrendsSection({ trends }: TrendsSectionProps) {
           <p className="text-caption uppercase tracking-wider mb-3" style={{ color: 'var(--text-muted)' }}>
             Expenditure vs Receipts (Rs lakh crore)
           </p>
-          <LineChart
+          <ChartActionsWrapper registryKey="budget/trends" data={trends}>
+            <LineChart
             series={[expenditureSeries, receiptsSeries]}
             isVisible={isVisible}
             formatValue={(v) => `${v.toFixed(0)}`}
             unit="L Cr"
           />
+          </ChartActionsWrapper>
         </motion.div>
 
         {/* Chart 2: Deficit as % of GDP */}
@@ -129,13 +132,15 @@ export function TrendsSection({ trends }: TrendsSectionProps) {
           <p className="text-caption uppercase tracking-wider mb-3" style={{ color: 'var(--text-muted)' }}>
             Deficit as % of GDP
           </p>
-          <LineChart
+          <ChartActionsWrapper registryKey="budget/trends" data={trends}>
+            <LineChart
             series={[deficitSeries, revenueDeficitSeries]}
             isVisible={isVisible}
             formatValue={(v) => `${v.toFixed(1)}`}
             unit="%"
             height={280}
           />
+          </ChartActionsWrapper>
         </motion.div>
 
         {/* Stat row */}

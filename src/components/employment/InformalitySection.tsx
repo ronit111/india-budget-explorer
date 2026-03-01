@@ -4,6 +4,7 @@ import { useScrollTrigger } from '../../hooks/useScrollTrigger.ts';
 import { SectionNumber } from '../ui/SectionNumber.tsx';
 import { HorizontalBarChart, type BarItem } from '../viz/HorizontalBarChart.tsx';
 import type { SectoralData } from '../../lib/data/schema.ts';
+import { ChartActionsWrapper } from '../share/ChartActionsWrapper.tsx';
 
 interface InformalitySectionProps {
   data: SectoralData;
@@ -26,7 +27,7 @@ export function InformalitySection({ data }: InformalitySectionProps) {
   }, [data]);
 
   return (
-    <section ref={ref} className="composition" style={{ background: 'var(--bg-surface)' }}>
+    <section ref={ref} id="informality" className="composition" style={{ background: 'var(--bg-surface)' }}>
       <div className="max-w-7xl mx-auto px-6 sm:px-8">
         <SectionNumber number={5} className="mb-6 block" isVisible={isVisible} />
 
@@ -54,7 +55,8 @@ export function InformalitySection({ data }: InformalitySectionProps) {
             <p className="text-xs font-mono uppercase tracking-wider mb-3" style={{ color: 'var(--text-muted)' }}>
               Employment by Sector (% share)
             </p>
-            <HorizontalBarChart
+            <ChartActionsWrapper registryKey="employment/informality" data={data}>
+              <HorizontalBarChart
               items={barItems}
               isVisible={isVisible}
               formatValue={(v) => `${v.toFixed(1)}%`}
@@ -62,6 +64,7 @@ export function InformalitySection({ data }: InformalitySectionProps) {
               labelWidth={140}
               barHeight={28}
             />
+            </ChartActionsWrapper>
           </div>
         )}
 

@@ -2,6 +2,7 @@ import { useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { useRBIStore } from '../store/rbiStore.ts';
 import { useRBIData } from '../hooks/useRBIData.ts';
+import { useUrlState } from '../hooks/useUrlState.ts';
 import { SEOHead } from '../components/seo/SEOHead.tsx';
 import { SegmentedControl } from '../components/ui/SegmentedControl.tsx';
 import { LineChart } from '../components/viz/LineChart.tsx';
@@ -49,6 +50,12 @@ export default function RBIExplorePage() {
   const selectedIndicatorId = useRBIStore((s) => s.selectedIndicatorId);
   const setIndicatorId = useRBIStore((s) => s.setSelectedIndicatorId);
   const { indicators, loading, error } = useRBIData(year);
+
+  // Sync URL params ↔ store for deep linking
+  useUrlState({
+    category: { get: () => selectedCategory, set: setCategory },
+    indicator: { get: () => selectedIndicatorId, set: setIndicatorId },
+  });
 
   const filteredIndicators = useMemo(() => {
     if (!indicators) return [];

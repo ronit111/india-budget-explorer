@@ -1,8 +1,11 @@
+import { lazy, Suspense, useEffect } from 'react';
 import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import { PageShell } from './components/layout/PageShell.tsx';
 import { LanguageProvider } from './components/i18n/LanguageProvider.tsx';
 import HubPage from './pages/HubPage.tsx';
+
+const EmbedPage = lazy(() => import('./pages/EmbedPage.tsx'));
 import BudgetPage from './pages/BudgetPage.tsx';
 import ExplorePage from './pages/ExplorePage.tsx';
 import FindYourSharePage from './pages/FindYourSharePage.tsx';
@@ -83,6 +86,27 @@ const REDIRECTS = [
 
 export default function App() {
   const location = useLocation();
+
+  // Scroll to hash anchor after React renders (SPA deep link support)
+  useEffect(() => {
+    if (!location.hash) return;
+    const id = location.hash.slice(1);
+    const timer = setTimeout(() => {
+      document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+    }, 800);
+    return () => clearTimeout(timer);
+  }, [location.hash, location.pathname]);
+
+  // Embed routes render outside PageShell (no header/footer/nav)
+  if (location.pathname.startsWith('/embed/')) {
+    return (
+      <Suspense fallback={<div style={{ background: '#06080f', minHeight: '100vh' }} />}>
+        <Routes location={location}>
+          <Route path="/embed/:domain/:section" element={<EmbedPage />} />
+        </Routes>
+      </Suspense>
+    );
+  }
 
   return (
     <PageShell>

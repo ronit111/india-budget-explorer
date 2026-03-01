@@ -4,6 +4,7 @@ import { useScrollTrigger } from '../../hooks/useScrollTrigger.ts';
 import { SectionNumber } from '../ui/SectionNumber.tsx';
 import { LineChart, type LineSeries } from '../viz/LineChart.tsx';
 import type { DiseaseData } from '../../lib/data/schema.ts';
+import { ChartActionsWrapper } from '../share/ChartActionsWrapper.tsx';
 
 const MIN_POINTS = 3;
 
@@ -39,7 +40,7 @@ export function DiseaseBurdenSection({ data }: DiseaseBurdenSectionProps) {
   const hasHIV = data.hivTimeSeries.length >= MIN_POINTS;
 
   return (
-    <section ref={ref} className="composition" style={{ background: 'var(--bg-surface)' }}>
+    <section ref={ref} id="disease" className="composition" style={{ background: 'var(--bg-surface)' }}>
       <div className="max-w-7xl mx-auto px-6 sm:px-8">
         <SectionNumber number={5} className="mb-6 block" isVisible={isVisible} />
 
@@ -70,12 +71,14 @@ export function DiseaseBurdenSection({ data }: DiseaseBurdenSectionProps) {
             <p className="text-xs font-mono uppercase tracking-wider mb-3" style={{ color: 'var(--text-muted)' }}>
               Disease burden trends
             </p>
-            <LineChart
+            <ChartActionsWrapper registryKey="healthcare/disease" data={data}>
+              <LineChart
               series={diseaseSeries}
               isVisible={isVisible}
               formatValue={(v) => v.toFixed(1)}
               unit=""
             />
+            </ChartActionsWrapper>
           </div>
         )}
 

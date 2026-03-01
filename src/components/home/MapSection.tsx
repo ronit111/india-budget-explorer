@@ -5,6 +5,7 @@ import { ChoroplethMap } from '../viz/ChoroplethMap.tsx';
 import { SectionNumber } from '../ui/SectionNumber.tsx';
 import type { StatewiseData } from '../../lib/data/schema.ts';
 import { formatLakhCrore, formatIndianNumber } from '../../lib/format.ts';
+import { ChartActionsWrapper } from '../share/ChartActionsWrapper.tsx';
 
 interface MapSectionProps {
   statewise: StatewiseData;
@@ -23,7 +24,7 @@ export function MapSection({ statewise }: MapSectionProps) {
   );
 
   return (
-    <section ref={ref} className="composition relative overflow-hidden" style={{ background: 'var(--bg-surface)' }}>
+    <section ref={ref} id="map" className="composition relative overflow-hidden" style={{ background: 'var(--bg-surface)' }}>
       {/* Atmospheric glow behind the map */}
       <div
         className="absolute top-1/2 right-1/4 -translate-y-1/2 pointer-events-none"
@@ -88,7 +89,9 @@ export function MapSection({ statewise }: MapSectionProps) {
           </div>
 
           {/* Full-width choropleth */}
-          <ChoroplethMap states={statewise.states} isVisible={isVisible} />
+          <ChartActionsWrapper registryKey="budget/map" data={statewise}>
+            <ChoroplethMap states={statewise.states} isVisible={isVisible} />
+          </ChartActionsWrapper>
         </div>
       </div>
     </section>

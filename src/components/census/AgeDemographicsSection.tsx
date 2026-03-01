@@ -4,6 +4,7 @@ import { useScrollTrigger } from '../../hooks/useScrollTrigger.ts';
 import { SectionNumber } from '../ui/SectionNumber.tsx';
 import { LineChart, type LineSeries } from '../viz/LineChart.tsx';
 import type { DemographicsData } from '../../lib/data/schema.ts';
+import { ChartActionsWrapper } from '../share/ChartActionsWrapper.tsx';
 
 const MIN_POINTS = 3;
 const EASE_OUT_EXPO: [number, number, number, number] = [0.16, 1, 0.3, 1];
@@ -111,7 +112,7 @@ export function AgeDemographicsSection({ data }: AgeDemographicsSectionProps) {
   }, [data]);
 
   return (
-    <section ref={ref} className="composition">
+    <section ref={ref} id="age" className="composition">
       <div className="max-w-7xl mx-auto px-6 sm:px-8">
         <SectionNumber number={2} className="mb-6 block" isVisible={isVisible} />
 
@@ -157,12 +158,14 @@ export function AgeDemographicsSection({ data }: AgeDemographicsSectionProps) {
             <p className="text-xs font-mono uppercase tracking-wider mb-3" style={{ color: 'var(--text-muted)' }}>
               Age composition over time (% of population)
             </p>
-            <LineChart
+            <ChartActionsWrapper registryKey="census/age" data={data}>
+              <LineChart
               series={ageSeries}
               isVisible={isVisible}
               formatValue={(v) => `${v.toFixed(1)}%`}
               unit="%"
             />
+            </ChartActionsWrapper>
           </div>
         )}
 

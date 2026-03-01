@@ -5,6 +5,7 @@ import { SectionNumber } from '../ui/SectionNumber.tsx';
 import { LineChart, type LineSeries } from '../viz/LineChart.tsx';
 import { HorizontalBarChart, type BarItem } from '../viz/HorizontalBarChart.tsx';
 import type { InfrastructureData } from '../../lib/data/schema.ts';
+import { ChartActionsWrapper } from '../share/ChartActionsWrapper.tsx';
 
 const MIN_POINTS = 3;
 
@@ -58,7 +59,7 @@ export function InfrastructureSection({ data }: InfrastructureSectionProps) {
   }, [data]);
 
   return (
-    <section ref={ref} className="composition" style={{ background: 'var(--bg-surface)' }}>
+    <section ref={ref} id="infrastructure" className="composition" style={{ background: 'var(--bg-surface)' }}>
       <div className="max-w-7xl mx-auto px-6 sm:px-8">
         <SectionNumber number={1} className="mb-6 block" isVisible={isVisible} />
 
@@ -85,12 +86,14 @@ export function InfrastructureSection({ data }: InfrastructureSectionProps) {
             <p className="text-xs font-mono uppercase tracking-wider mb-3" style={{ color: 'var(--text-muted)' }}>
               Health workforce &amp; infrastructure (per 1,000 people)
             </p>
-            <LineChart
+            <ChartActionsWrapper registryKey="healthcare/infrastructure" data={data}>
+              <LineChart
               series={timeSeriesSeries}
               isVisible={isVisible}
               formatValue={(v) => v.toFixed(2)}
               unit="per 1,000"
             />
+            </ChartActionsWrapper>
           </div>
         )}
 
@@ -99,7 +102,8 @@ export function InfrastructureSection({ data }: InfrastructureSectionProps) {
             <p className="text-xs font-mono uppercase tracking-wider mb-3" style={{ color: 'var(--text-muted)' }}>
               Hospital beds per lakh population (top 15 states)
             </p>
-            <HorizontalBarChart
+            <ChartActionsWrapper registryKey="healthcare/infrastructure" data={data}>
+              <HorizontalBarChart
               items={stateBarItems}
               isVisible={isVisible}
               formatValue={(v) => v.toFixed(0)}
@@ -107,6 +111,7 @@ export function InfrastructureSection({ data }: InfrastructureSectionProps) {
               labelWidth={140}
               barHeight={24}
             />
+            </ChartActionsWrapper>
           </div>
         )}
 

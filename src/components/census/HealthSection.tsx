@@ -5,6 +5,7 @@ import { SectionNumber } from '../ui/SectionNumber.tsx';
 import { LineChart, type LineSeries } from '../viz/LineChart.tsx';
 import { HorizontalBarChart, type BarItem } from '../viz/HorizontalBarChart.tsx';
 import type { HealthData } from '../../lib/data/schema.ts';
+import { ChartActionsWrapper } from '../share/ChartActionsWrapper.tsx';
 
 const MIN_POINTS = 3;
 const EASE_OUT_EXPO: [number, number, number, number] = [0.16, 1, 0.3, 1];
@@ -42,7 +43,7 @@ export function HealthSection({ data }: HealthSectionProps) {
   }, [data]);
 
   return (
-    <section ref={ref} className="composition">
+    <section ref={ref} id="health" className="composition">
       <div className="max-w-7xl mx-auto px-6 sm:px-8">
         <SectionNumber number={4} className="mb-6 block" isVisible={isVisible} />
 
@@ -70,12 +71,14 @@ export function HealthSection({ data }: HealthSectionProps) {
             <p className="text-xs font-mono uppercase tracking-wider mb-3" style={{ color: 'var(--text-muted)' }}>
               Infant & Under-5 Mortality (per 1,000 live births)
             </p>
-            <LineChart
+            <ChartActionsWrapper registryKey="census/health" data={data}>
+              <LineChart
               series={imrSeries}
               isVisible={isVisible}
               formatValue={(v) => v.toFixed(0)}
               unit="per 1000"
             />
+            </ChartActionsWrapper>
           </div>
         )}
 
@@ -85,7 +88,8 @@ export function HealthSection({ data }: HealthSectionProps) {
             <p className="text-xs font-mono uppercase tracking-wider mb-3" style={{ color: 'var(--text-muted)' }}>
               Infant Mortality by State — SRS 2023 (per 1,000 live births)
             </p>
-            <HorizontalBarChart
+            <ChartActionsWrapper registryKey="census/health" data={data}>
+              <HorizontalBarChart
               items={stateImrBars}
               isVisible={isVisible}
               formatValue={(v) => `${v}`}
@@ -93,6 +97,7 @@ export function HealthSection({ data }: HealthSectionProps) {
               labelWidth={140}
               barHeight={24}
             />
+            </ChartActionsWrapper>
           </div>
         )}
 

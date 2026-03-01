@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { useScrollTrigger } from '../../hooks/useScrollTrigger.ts';
 import { SectionNumber } from '../ui/SectionNumber.tsx';
 import { LineChart } from '../viz/LineChart.tsx';
+import { ChartActionsWrapper } from '../share/ChartActionsWrapper.tsx';
 import type { GDPGrowthData } from '../../lib/data/schema.ts';
 
 interface GrowthSectionProps {
@@ -12,7 +13,7 @@ export function GrowthSection({ gdp }: GrowthSectionProps) {
   const [ref, isVisible] = useScrollTrigger({ threshold: 0.08 });
 
   return (
-    <section ref={ref} className="composition" style={{ background: 'var(--bg-surface)' }}>
+    <section ref={ref} id="growth" className="composition" style={{ background: 'var(--bg-surface)' }}>
       <div className="max-w-7xl mx-auto px-6 sm:px-8">
         <SectionNumber number={1} className="mb-6 block" isVisible={isVisible} />
 
@@ -34,20 +35,22 @@ export function GrowthSection({ gdp }: GrowthSectionProps) {
           A decade of GDP growth, from the pre-pandemic boom through the COVID contraction to a strong recovery. The 2020-21 dip marks the sharpest contraction in India's history.
         </motion.p>
 
-        <LineChart
-          series={[
-            {
-              id: 'gdp-growth',
-              name: 'Real GDP Growth',
-              color: 'var(--cyan)',
-              data: gdp.series,
-            },
-          ]}
-          referenceLine={0}
-          isVisible={isVisible}
-          formatValue={(v) => v.toFixed(1)}
-          unit="%"
-        />
+        <ChartActionsWrapper registryKey="economy/growth" data={gdp}>
+          <LineChart
+            series={[
+              {
+                id: 'gdp-growth',
+                name: 'Real GDP Growth',
+                color: 'var(--cyan)',
+                data: gdp.series,
+              },
+            ]}
+            referenceLine={0}
+            isVisible={isVisible}
+            formatValue={(v) => v.toFixed(1)}
+            unit="%"
+          />
+        </ChartActionsWrapper>
 
         <p className="source-attribution">
           Source: {gdp.source}

@@ -5,6 +5,7 @@ import { SectionNumber } from '../ui/SectionNumber.tsx';
 import { LineChart, type LineSeries } from '../viz/LineChart.tsx';
 import { HorizontalBarChart, type BarItem } from '../viz/HorizontalBarChart.tsx';
 import type { QualityData } from '../../lib/data/schema.ts';
+import { ChartActionsWrapper } from '../share/ChartActionsWrapper.tsx';
 
 const MIN_POINTS = 3;
 
@@ -50,7 +51,7 @@ export function TeacherSection({ data }: TeacherSectionProps) {
   }, [data]);
 
   return (
-    <section ref={ref} className="composition" style={{ background: 'var(--bg-surface)' }}>
+    <section ref={ref} id="teacher" className="composition" style={{ background: 'var(--bg-surface)' }}>
       <div className="max-w-7xl mx-auto px-6 sm:px-8">
         <SectionNumber number={5} className="mb-6 block" isVisible={isVisible} />
 
@@ -77,12 +78,14 @@ export function TeacherSection({ data }: TeacherSectionProps) {
             <p className="text-xs font-mono uppercase tracking-wider mb-3" style={{ color: 'var(--text-muted)' }}>
               Pupil-Teacher Ratio Over Time
             </p>
-            <LineChart
+            <ChartActionsWrapper registryKey="education/teacher" data={data}>
+              <LineChart
               series={ptrSeries}
               isVisible={isVisible}
               formatValue={(v) => `${v.toFixed(0)}`}
               unit="students/teacher"
             />
+            </ChartActionsWrapper>
           </div>
         )}
 
@@ -91,7 +94,8 @@ export function TeacherSection({ data }: TeacherSectionProps) {
             <p className="text-xs font-mono uppercase tracking-wider mb-3" style={{ color: 'var(--text-muted)' }}>
               Pupil-Teacher Ratio by State
             </p>
-            <HorizontalBarChart
+            <ChartActionsWrapper registryKey="education/teacher" data={data}>
+              <HorizontalBarChart
               items={statePtrBars}
               isVisible={isVisible}
               formatValue={(v) => `${v.toFixed(0)}`}
@@ -99,6 +103,7 @@ export function TeacherSection({ data }: TeacherSectionProps) {
               labelWidth={140}
               barHeight={24}
             />
+            </ChartActionsWrapper>
           </div>
         )}
 

@@ -2,6 +2,7 @@ import { useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { useHealthcareStore } from '../store/healthcareStore.ts';
 import { useHealthcareData } from '../hooks/useHealthcareData.ts';
+import { useUrlState } from '../hooks/useUrlState.ts';
 import { SEOHead } from '../components/seo/SEOHead.tsx';
 import { SegmentedControl } from '../components/ui/SegmentedControl.tsx';
 import { HorizontalBarChart, type BarItem } from '../components/viz/HorizontalBarChart.tsx';
@@ -63,6 +64,12 @@ export default function HealthcareExplorePage() {
   const selectedIndicatorId = useHealthcareStore((s) => s.selectedIndicatorId);
   const setIndicatorId = useHealthcareStore((s) => s.setSelectedIndicatorId);
   const { indicators, loading, error } = useHealthcareData(year);
+
+  // Sync URL params ↔ store for deep linking
+  useUrlState({
+    category: { get: () => selectedCategory, set: setCategory },
+    indicator: { get: () => selectedIndicatorId, set: setIndicatorId },
+  });
 
   const filteredIndicators = useMemo(() => {
     if (!indicators) return [];

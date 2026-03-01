@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { useScrollTrigger } from '../../hooks/useScrollTrigger.ts';
 import { SectionNumber } from '../ui/SectionNumber.tsx';
 import { HorizontalBarChart, type BarItem } from '../viz/HorizontalBarChart.tsx';
+import { ChartActionsWrapper } from '../share/ChartActionsWrapper.tsx';
 import type { GSDPData } from '../../lib/data/schema.ts';
 
 interface GSDPSectionProps {
@@ -26,7 +27,7 @@ export function GSDPSection({ data }: GSDPSectionProps) {
   }, [data]);
 
   return (
-    <section ref={ref} className="composition" style={{ background: 'var(--bg-surface)' }}>
+    <section ref={ref} id="gsdp" className="composition" style={{ background: 'var(--bg-surface)' }}>
       <div className="max-w-7xl mx-auto px-6 sm:px-8">
         <SectionNumber number={1} className="mb-6 block" isVisible={isVisible} />
 
@@ -48,14 +49,16 @@ export function GSDPSection({ data }: GSDPSectionProps) {
           Maharashtra, Tamil Nadu, and Karnataka together produce more GDP than many countries. But the gap between top and bottom tells the story of India's uneven development.
         </motion.p>
 
-        <HorizontalBarChart
-          items={items}
-          isVisible={isVisible}
-          formatValue={(v) => `₹${(v / 100000).toFixed(2)}L Cr`}
-          unit=""
-          labelWidth={140}
-          barHeight={26}
-        />
+        <ChartActionsWrapper registryKey="states/gsdp" data={data}>
+          <HorizontalBarChart
+            items={items}
+            isVisible={isVisible}
+            formatValue={(v) => `₹${(v / 100000).toFixed(2)}L Cr`}
+            unit=""
+            labelWidth={140}
+            barHeight={26}
+          />
+        </ChartActionsWrapper>
 
         <p className="source-attribution">
           Source: {data.source} ({data.year})

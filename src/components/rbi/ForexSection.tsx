@@ -4,6 +4,7 @@ import { useScrollTrigger } from '../../hooks/useScrollTrigger.ts';
 import { SectionNumber } from '../ui/SectionNumber.tsx';
 import { AreaChart, type AreaSeries } from '../viz/AreaChart.tsx';
 import type { ForexData } from '../../lib/data/schema.ts';
+import { ChartActionsWrapper } from '../share/ChartActionsWrapper.tsx';
 
 interface ForexSectionProps {
   data: ForexData;
@@ -26,7 +27,7 @@ export function ForexSection({ data }: ForexSectionProps) {
     : '—';
 
   return (
-    <section ref={ref} className="composition" style={{ background: 'var(--bg-surface)' }}>
+    <section ref={ref} id="forex" className="composition" style={{ background: 'var(--bg-surface)' }}>
       <div className="max-w-7xl mx-auto px-6 sm:px-8">
         <SectionNumber number={5} className="mb-6 block" isVisible={isVisible} />
 
@@ -48,12 +49,14 @@ export function ForexSection({ data }: ForexSectionProps) {
           Forex reserves are the safety net against external shocks. India's reserves include foreign currency assets, gold, SDRs, and the IMF reserve tranche. A larger reserve means more room to defend the rupee.
         </motion.p>
 
-        <AreaChart
+        <ChartActionsWrapper registryKey="rbi/forex" data={data}>
+          <AreaChart
           series={areaSeries}
           isVisible={isVisible}
           formatValue={(v) => `$${v.toFixed(0)}`}
           unit="US$ billion"
         />
+        </ChartActionsWrapper>
 
         <motion.div
           initial={{ opacity: 0, y: 12 }}

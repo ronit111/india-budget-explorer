@@ -4,6 +4,7 @@ import { useScrollTrigger } from '../../hooks/useScrollTrigger.ts';
 import { SectionNumber } from '../ui/SectionNumber.tsx';
 import { HorizontalBarChart, type BarItem } from '../viz/HorizontalBarChart.tsx';
 import type { FiscalHealthData } from '../../lib/data/schema.ts';
+import { ChartActionsWrapper } from '../share/ChartActionsWrapper.tsx';
 
 interface FiscalHealthSectionProps {
   data: FiscalHealthData;
@@ -29,7 +30,7 @@ export function FiscalHealthSection({ data }: FiscalHealthSectionProps) {
   }, [data]);
 
   return (
-    <section ref={ref} className="composition" style={{ background: 'var(--bg-surface)' }}>
+    <section ref={ref} id="fiscal-health" className="composition" style={{ background: 'var(--bg-surface)' }}>
       <div className="max-w-7xl mx-auto px-6 sm:px-8">
         <SectionNumber number={4} className="mb-6 block" isVisible={isVisible} />
 
@@ -51,7 +52,8 @@ export function FiscalHealthSection({ data }: FiscalHealthSectionProps) {
           Outstanding debt as a share of GSDP varies wildly. The FRBM Act recommends states keep fiscal deficits below 3% of GSDP, but many exceed this threshold.
         </motion.p>
 
-        <HorizontalBarChart
+        <ChartActionsWrapper registryKey="states/fiscal-health" data={data}>
+          <HorizontalBarChart
           items={items}
           isVisible={isVisible}
           showSecondary
@@ -63,6 +65,7 @@ export function FiscalHealthSection({ data }: FiscalHealthSectionProps) {
           labelWidth={140}
           barHeight={24}
         />
+        </ChartActionsWrapper>
 
         <p className="source-attribution">
           Source: {data.source} ({data.year})

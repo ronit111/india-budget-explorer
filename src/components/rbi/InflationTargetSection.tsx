@@ -8,6 +8,7 @@ import { useRBIStore } from '../../store/rbiStore.ts';
 import { loadRBIIndicators } from '../../lib/dataLoader.ts';
 import { useState, useEffect } from 'react';
 import type { RBIIndicatorsData } from '../../lib/data/schema.ts';
+import { ChartActionsWrapper } from '../share/ChartActionsWrapper.tsx';
 
 interface InflationTargetSectionProps {
   monetaryPolicy: MonetaryPolicyData | null;
@@ -70,7 +71,7 @@ export function InflationTargetSection({ monetaryPolicy }: InflationTargetSectio
   }, [indicators, monetaryPolicy]);
 
   return (
-    <section ref={ref} className="composition" style={{ background: 'var(--bg-surface)' }}>
+    <section ref={ref} id="inflation-target" className="composition" style={{ background: 'var(--bg-surface)' }}>
       <div className="max-w-7xl mx-auto px-6 sm:px-8">
         <SectionNumber number={2} className="mb-6 block" isVisible={isVisible} />
 
@@ -93,7 +94,8 @@ export function InflationTargetSection({ monetaryPolicy }: InflationTargetSectio
         </motion.p>
 
         {series.length > 0 && (
-          <LineChart
+          <ChartActionsWrapper registryKey="rbi/inflation-target" data={monetaryPolicy}>
+            <LineChart
             series={series}
             band={{
               lower: 2,
@@ -106,6 +108,7 @@ export function InflationTargetSection({ monetaryPolicy }: InflationTargetSectio
             formatValue={(v) => v.toFixed(1)}
             unit="%"
           />
+          </ChartActionsWrapper>
         )}
 
         <p className="source-attribution">

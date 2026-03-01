@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { useBudgetStore } from '../store/budgetStore.ts';
 import { useBudgetData } from '../hooks/useBudgetData.ts';
+import { useUrlState } from '../hooks/useUrlState.ts';
 import { SEOHead } from '../components/seo/SEOHead.tsx';
 import { DataTable } from '../components/explore/DataTable.tsx';
 import { SkeletonText } from '../components/ui/Skeleton.tsx';
@@ -18,7 +19,14 @@ const fadeUp = {
 
 export default function ExplorePage() {
   const year = useBudgetStore((s) => s.selectedYear);
+  const selectedIndicatorId = useBudgetStore((s) => s.selectedMinistryId);
+  const setIndicatorId = useBudgetStore((s) => s.setSelectedMinistryId);
   const { expenditure, loading, error } = useBudgetData(year);
+
+  // Sync URL params ↔ store for deep linking
+  useUrlState({
+    indicator: { get: () => selectedIndicatorId, set: setIndicatorId },
+  });
 
   return (
     <motion.div

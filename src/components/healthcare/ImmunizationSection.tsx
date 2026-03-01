@@ -5,6 +5,7 @@ import { SectionNumber } from '../ui/SectionNumber.tsx';
 import { LineChart, type LineSeries } from '../viz/LineChart.tsx';
 import { HorizontalBarChart, type BarItem } from '../viz/HorizontalBarChart.tsx';
 import type { DiseaseData } from '../../lib/data/schema.ts';
+import { ChartActionsWrapper } from '../share/ChartActionsWrapper.tsx';
 
 const MIN_POINTS = 3;
 
@@ -50,7 +51,7 @@ export function ImmunizationSection({ data }: ImmunizationSectionProps) {
   }, [data]);
 
   return (
-    <section ref={ref} className="composition" style={{ background: 'var(--bg-surface)' }}>
+    <section ref={ref} id="immunization" className="composition" style={{ background: 'var(--bg-surface)' }}>
       <div className="max-w-7xl mx-auto px-6 sm:px-8">
         <SectionNumber number={4} className="mb-6 block" isVisible={isVisible} />
 
@@ -77,12 +78,14 @@ export function ImmunizationSection({ data }: ImmunizationSectionProps) {
             <p className="text-xs font-mono uppercase tracking-wider mb-3" style={{ color: 'var(--text-muted)' }}>
               National immunization coverage (%)
             </p>
-            <LineChart
+            <ChartActionsWrapper registryKey="healthcare/immunization" data={data}>
+              <LineChart
               series={immunizationSeries}
               isVisible={isVisible}
               formatValue={(v) => `${v.toFixed(1)}%`}
               unit="%"
             />
+            </ChartActionsWrapper>
           </div>
         )}
 
@@ -91,7 +94,8 @@ export function ImmunizationSection({ data }: ImmunizationSectionProps) {
             <p className="text-xs font-mono uppercase tracking-wider mb-3" style={{ color: 'var(--text-muted)' }}>
               Full immunization by state (% of children 12-23 months)
             </p>
-            <HorizontalBarChart
+            <ChartActionsWrapper registryKey="healthcare/immunization" data={data}>
+              <HorizontalBarChart
               items={stateBarItems}
               isVisible={isVisible}
               formatValue={(v) => `${v.toFixed(1)}%`}
@@ -99,6 +103,7 @@ export function ImmunizationSection({ data }: ImmunizationSectionProps) {
               labelWidth={140}
               barHeight={24}
             />
+            </ChartActionsWrapper>
           </div>
         )}
 

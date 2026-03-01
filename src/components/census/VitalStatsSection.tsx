@@ -4,6 +4,7 @@ import { useScrollTrigger } from '../../hooks/useScrollTrigger.ts';
 import { SectionNumber } from '../ui/SectionNumber.tsx';
 import { LineChart, type LineSeries } from '../viz/LineChart.tsx';
 import type { DemographicsData } from '../../lib/data/schema.ts';
+import { ChartActionsWrapper } from '../share/ChartActionsWrapper.tsx';
 
 const MIN_POINTS = 3;
 const EASE_OUT_EXPO: [number, number, number, number] = [0.16, 1, 0.3, 1];
@@ -49,7 +50,7 @@ export function VitalStatsSection({ data }: VitalStatsSectionProps) {
   }, [data]);
 
   return (
-    <section ref={ref} className="composition" style={{ background: 'var(--bg-surface)' }}>
+    <section ref={ref} id="vital-stats" className="composition" style={{ background: 'var(--bg-surface)' }}>
       <div className="max-w-7xl mx-auto px-6 sm:px-8">
         <SectionNumber number={3} className="mb-6 block" isVisible={isVisible} />
 
@@ -77,12 +78,14 @@ export function VitalStatsSection({ data }: VitalStatsSectionProps) {
             <p className="text-xs font-mono uppercase tracking-wider mb-3" style={{ color: 'var(--text-muted)' }}>
               Birth Rate vs Death Rate (per 1,000 people)
             </p>
-            <LineChart
+            <ChartActionsWrapper registryKey="census/vital-stats" data={data}>
+              <LineChart
               series={vitalSeries}
               isVisible={isVisible}
               formatValue={(v) => v.toFixed(1)}
               unit="per 1000"
             />
+            </ChartActionsWrapper>
           </div>
         )}
 
@@ -92,13 +95,15 @@ export function VitalStatsSection({ data }: VitalStatsSectionProps) {
             <p className="text-xs font-mono uppercase tracking-wider mb-3" style={{ color: 'var(--text-muted)' }}>
               Total Fertility Rate (children per woman)
             </p>
-            <LineChart
+            <ChartActionsWrapper registryKey="census/vital-stats" data={data}>
+              <LineChart
               series={fertilitySeries}
               isVisible={isVisible}
               referenceLine={2.1}
               formatValue={(v) => v.toFixed(2)}
               unit="children"
             />
+            </ChartActionsWrapper>
             <p className="text-xs mt-2" style={{ color: 'var(--text-muted)' }}>
               Dashed line = replacement level (2.1)
             </p>
@@ -111,12 +116,14 @@ export function VitalStatsSection({ data }: VitalStatsSectionProps) {
             <p className="text-xs font-mono uppercase tracking-wider mb-3" style={{ color: 'var(--text-muted)' }}>
               Life Expectancy at Birth (years)
             </p>
-            <LineChart
+            <ChartActionsWrapper registryKey="census/vital-stats" data={data}>
+              <LineChart
               series={lifeSeries}
               isVisible={isVisible}
               formatValue={(v) => v.toFixed(1)}
               unit="years"
             />
+            </ChartActionsWrapper>
           </div>
         )}
 

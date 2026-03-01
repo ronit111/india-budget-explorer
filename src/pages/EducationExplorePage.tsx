@@ -2,6 +2,7 @@ import { useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { useEducationStore } from '../store/educationStore.ts';
 import { useEducationData } from '../hooks/useEducationData.ts';
+import { useUrlState } from '../hooks/useUrlState.ts';
 import { SEOHead } from '../components/seo/SEOHead.tsx';
 import { SegmentedControl } from '../components/ui/SegmentedControl.tsx';
 import { HorizontalBarChart, type BarItem } from '../components/viz/HorizontalBarChart.tsx';
@@ -56,6 +57,12 @@ export default function EducationExplorePage() {
   const selectedIndicatorId = useEducationStore((s) => s.selectedIndicatorId);
   const setIndicatorId = useEducationStore((s) => s.setSelectedIndicatorId);
   const { indicators, loading, error } = useEducationData(year);
+
+  // Sync URL params ↔ store for deep linking
+  useUrlState({
+    category: { get: () => selectedCategory, set: setCategory },
+    indicator: { get: () => selectedIndicatorId, set: setIndicatorId },
+  });
 
   const filteredIndicators = useMemo(() => {
     if (!indicators) return [];

@@ -2,6 +2,7 @@ import { useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { useStatesStore } from '../store/statesStore.ts';
 import { useStatesData } from '../hooks/useStatesData.ts';
+import { useUrlState } from '../hooks/useUrlState.ts';
 import { SEOHead } from '../components/seo/SEOHead.tsx';
 import { SegmentedControl } from '../components/ui/SegmentedControl.tsx';
 import { HorizontalBarChart, type BarItem } from '../components/viz/HorizontalBarChart.tsx';
@@ -54,6 +55,12 @@ export default function StatesExplorePage() {
   const selectedIndicatorId = useStatesStore((s) => s.selectedIndicatorId);
   const setIndicatorId = useStatesStore((s) => s.setSelectedIndicatorId);
   const { indicators, loading, error } = useStatesData(year);
+
+  // Sync URL params ↔ store for deep linking
+  useUrlState({
+    category: { get: () => selectedCategory, set: setCategory },
+    indicator: { get: () => selectedIndicatorId, set: setIndicatorId },
+  });
 
   const filteredIndicators = useMemo(() => {
     if (!indicators) return [];

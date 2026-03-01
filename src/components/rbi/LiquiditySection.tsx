@@ -3,6 +3,7 @@ import { useScrollTrigger } from '../../hooks/useScrollTrigger.ts';
 import { SectionNumber } from '../ui/SectionNumber.tsx';
 import { LineChart } from '../viz/LineChart.tsx';
 import type { LiquidityData } from '../../lib/data/schema.ts';
+import { ChartActionsWrapper } from '../share/ChartActionsWrapper.tsx';
 
 interface LiquiditySectionProps {
   data: LiquidityData;
@@ -12,7 +13,7 @@ export function LiquiditySection({ data }: LiquiditySectionProps) {
   const [ref, isVisible] = useScrollTrigger({ threshold: 0.08 });
 
   return (
-    <section ref={ref} className="composition" style={{ background: 'var(--bg-surface)' }}>
+    <section ref={ref} id="liquidity" className="composition" style={{ background: 'var(--bg-surface)' }}>
       <div className="max-w-7xl mx-auto px-6 sm:px-8">
         <SectionNumber number={3} className="mb-6 block" isVisible={isVisible} />
 
@@ -39,7 +40,8 @@ export function LiquiditySection({ data }: LiquiditySectionProps) {
           <h3 className="text-caption uppercase tracking-wider mb-3" style={{ color: 'var(--gold)' }}>
             M3 Growth Rate (year-over-year)
           </h3>
-          <LineChart
+          <ChartActionsWrapper registryKey="rbi/liquidity" data={data}>
+            <LineChart
             series={[
               {
                 id: 'broad-money-growth',
@@ -53,6 +55,7 @@ export function LiquiditySection({ data }: LiquiditySectionProps) {
             unit="%"
             height={260}
           />
+          </ChartActionsWrapper>
         </div>
 
         {/* M3 as % of GDP — structural depth of money in the economy */}
@@ -60,7 +63,8 @@ export function LiquiditySection({ data }: LiquiditySectionProps) {
           <h3 className="text-caption uppercase tracking-wider mb-3" style={{ color: 'var(--cyan)' }}>
             Broad Money as % of GDP
           </h3>
-          <LineChart
+          <ChartActionsWrapper registryKey="rbi/liquidity" data={data}>
+            <LineChart
             series={[
               {
                 id: 'broad-money-gdp',
@@ -74,6 +78,7 @@ export function LiquiditySection({ data }: LiquiditySectionProps) {
             unit="%"
             height={260}
           />
+          </ChartActionsWrapper>
         </div>
 
         <p className="source-attribution mt-4">

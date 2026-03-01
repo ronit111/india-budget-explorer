@@ -4,6 +4,7 @@ import { useScrollTrigger } from '../../hooks/useScrollTrigger.ts';
 import { SectionNumber } from '../ui/SectionNumber.tsx';
 import { HorizontalBarChart, type BarItem } from '../viz/HorizontalBarChart.tsx';
 import type { GSDPData } from '../../lib/data/schema.ts';
+import { ChartActionsWrapper } from '../share/ChartActionsWrapper.tsx';
 
 interface GrowthSectionProps {
   data: GSDPData;
@@ -26,7 +27,7 @@ export function GrowthSection({ data }: GrowthSectionProps) {
   }, [data]);
 
   return (
-    <section ref={ref} className="composition" style={{ background: 'var(--bg-surface)' }}>
+    <section ref={ref} id="growth" className="composition" style={{ background: 'var(--bg-surface)' }}>
       <div className="max-w-7xl mx-auto px-6 sm:px-8">
         <SectionNumber number={2} className="mb-6 block" isVisible={isVisible} />
 
@@ -48,7 +49,8 @@ export function GrowthSection({ data }: GrowthSectionProps) {
           Growth rates reveal a different picture than absolute size. Some smaller states are growing faster than the giants, narrowing the gap year by year.
         </motion.p>
 
-        <HorizontalBarChart
+        <ChartActionsWrapper registryKey="states/growth" data={data}>
+          <HorizontalBarChart
           items={items}
           isVisible={isVisible}
           formatValue={(v) => `${v.toFixed(1)}%`}
@@ -56,6 +58,7 @@ export function GrowthSection({ data }: GrowthSectionProps) {
           labelWidth={140}
           barHeight={26}
         />
+        </ChartActionsWrapper>
 
         <p className="source-attribution">
           Source: {data.source} ({data.year})

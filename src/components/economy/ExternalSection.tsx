@@ -4,6 +4,7 @@ import { useScrollTrigger } from '../../hooks/useScrollTrigger.ts';
 import { SectionNumber } from '../ui/SectionNumber.tsx';
 import { AreaChart, type AreaSeries, type OverlayLine } from '../viz/AreaChart.tsx';
 import type { ExternalData } from '../../lib/data/schema.ts';
+import { ChartActionsWrapper } from '../share/ChartActionsWrapper.tsx';
 
 interface ExternalSectionProps {
   external: ExternalData;
@@ -36,7 +37,7 @@ export function ExternalSection({ external }: ExternalSectionProps) {
   }), [external]);
 
   return (
-    <section ref={ref} className="composition" style={{ background: 'var(--bg-surface)' }}>
+    <section ref={ref} id="external" className="composition" style={{ background: 'var(--bg-surface)' }}>
       <div className="max-w-7xl mx-auto px-6 sm:px-8">
         <SectionNumber number={4} className="mb-6 block" isVisible={isVisible} />
 
@@ -58,13 +59,15 @@ export function ExternalSection({ external }: ExternalSectionProps) {
           India imports more than it exports, creating a persistent trade deficit. The current account deficit (CAD) measures the full external balance including services and remittances.
         </motion.p>
 
-        <AreaChart
+        <ChartActionsWrapper registryKey="economy/external" data={external}>
+          <AreaChart
           series={areaSeries}
           overlay={overlay}
           isVisible={isVisible}
           formatValue={(v) => v.toFixed(1)}
           unit="% GDP"
         />
+        </ChartActionsWrapper>
 
         {/* Forex reserves callout */}
         <motion.div

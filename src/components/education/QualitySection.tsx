@@ -4,6 +4,7 @@ import { useScrollTrigger } from '../../hooks/useScrollTrigger.ts';
 import { SectionNumber } from '../ui/SectionNumber.tsx';
 import { HorizontalBarChart, type BarItem } from '../viz/HorizontalBarChart.tsx';
 import type { QualityData } from '../../lib/data/schema.ts';
+import { ChartActionsWrapper } from '../share/ChartActionsWrapper.tsx';
 
 interface QualitySectionProps {
   data: QualityData;
@@ -25,7 +26,7 @@ export function QualitySection({ data }: QualitySectionProps) {
   }, [data]);
 
   return (
-    <section ref={ref} className="composition" style={{ background: 'var(--bg-surface)' }}>
+    <section ref={ref} id="quality" className="composition" style={{ background: 'var(--bg-surface)' }}>
       <div className="max-w-7xl mx-auto px-6 sm:px-8">
         <SectionNumber number={4} className="mb-6 block" isVisible={isVisible} />
 
@@ -52,7 +53,8 @@ export function QualitySection({ data }: QualitySectionProps) {
             <p className="text-xs font-mono uppercase tracking-wider mb-3" style={{ color: 'var(--text-muted)' }}>
               % Children in Std III Who Can Read Std II Text (by State)
             </p>
-            <HorizontalBarChart
+            <ChartActionsWrapper registryKey="education/quality" data={data}>
+              <HorizontalBarChart
               items={readingBars}
               isVisible={isVisible}
               formatValue={(v) => `${v.toFixed(1)}%`}
@@ -60,6 +62,7 @@ export function QualitySection({ data }: QualitySectionProps) {
               labelWidth={140}
               barHeight={24}
             />
+            </ChartActionsWrapper>
           </div>
         )}
 

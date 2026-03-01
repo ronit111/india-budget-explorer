@@ -4,6 +4,7 @@ import { useScrollTrigger } from '../../hooks/useScrollTrigger.ts';
 import { SectionNumber } from '../ui/SectionNumber.tsx';
 import { LineChart, type LineSeries } from '../viz/LineChart.tsx';
 import type { PopulationData } from '../../lib/data/schema.ts';
+import { ChartActionsWrapper } from '../share/ChartActionsWrapper.tsx';
 
 const MIN_POINTS = 3;
 
@@ -44,7 +45,7 @@ export function PopulationSection({ data }: PopulationSectionProps) {
   }, [data]);
 
   return (
-    <section ref={ref} className="composition" style={{ background: 'var(--bg-surface)' }}>
+    <section ref={ref} id="population" className="composition" style={{ background: 'var(--bg-surface)' }}>
       <div className="max-w-7xl mx-auto px-6 sm:px-8">
         <SectionNumber number={1} className="mb-6 block" isVisible={isVisible} />
 
@@ -71,12 +72,14 @@ export function PopulationSection({ data }: PopulationSectionProps) {
             <p className="text-xs font-mono uppercase tracking-wider mb-3" style={{ color: 'var(--text-muted)' }}>
               Total Population (billions)
             </p>
-            <LineChart
+            <ChartActionsWrapper registryKey="census/population" data={data}>
+              <LineChart
               series={popSeries}
               isVisible={isVisible}
               formatValue={(v) => `${v.toFixed(2)}B`}
               unit="billion"
             />
+            </ChartActionsWrapper>
           </div>
         )}
 
@@ -85,12 +88,14 @@ export function PopulationSection({ data }: PopulationSectionProps) {
             <p className="text-xs font-mono uppercase tracking-wider mb-3" style={{ color: 'var(--text-muted)' }}>
               Annual Growth Rate (%)
             </p>
-            <LineChart
+            <ChartActionsWrapper registryKey="census/population" data={data}>
+              <LineChart
               series={growthSeries}
               isVisible={isVisible}
               formatValue={(v) => `${v.toFixed(2)}%`}
               unit="%"
             />
+            </ChartActionsWrapper>
           </div>
         )}
 

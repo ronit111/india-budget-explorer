@@ -1,0 +1,99 @@
+/**
+ * Wraps any chart to provide a hover overlay with share/export actions.
+ *
+ * - Finds the SVG via containerRef.querySelector('svg')
+ * - Desktop: hover fade-in, positioned top-right
+ * - Mobile: persistent small share icon → bottom sheet
+ * - pointer-events: none on overlay, auto on buttons only
+ */
+import { useRef, useState, type ReactNode } from 'react';
+import { getChartEntry } from '../../lib/chartRegistry.ts';
+import { ChartActions } from './ChartActions.tsx';
+import { ShareBottomSheet } from './ShareBottomSheet.tsx';
+
+interface ChartActionsWrapperProps {
+  /** Registry key: "domain/sectionId" e.g. "economy/growth" */
+  registryKey: string;
+  /** Domain data to pass to toTabular/heroStat */
+  data: unknown;
+  children: ReactNode;
+}
+
+export function ChartActionsWrapper({ registryKey, data, children }: ChartActionsWrapperProps) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const svgRef = useRef<SVGSVGElement | null>(null);
+  const [hovered, setHovered] = useState(false);
+  const [sheetOpen, setSheetOpen] = useState(false);
+
+  const entry = getChartEntry(registryKey);
+  if (!entry) return <>{children}</>;
+
+  const handleMouseEnter = () => {
+    // Lazily grab SVG reference on first hover
+    if (!svgRef.current && containerRef.current) {
+      svgRef.current = containerRef.current.querySelector('svg');
+    }
+    setHovered(true);
+  };
+
+  const handleMobileTap = () => {
+    if (!svgRef.current && containerRef.current) {
+      svgRef.current = containerRef.current.querySelector('svg');
+    }
+    setSheetOpen(true);
+  };
+
+  return (
+    <div
+      ref={containerRef}
+      className="relative group"
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={() => setHovered(false)}
+    >
+      {children}
+
+      {/* Desktop: hover overlay */}
+      <div
+        className="absolute top-2 right-2 z-10 hidden md:flex items-center gap-1 rounded-lg px-1.5 py-1 transition-opacity duration-200"
+        style={{
+          pointerEvents: 'none',
+          opacity: hovered ? 1 : 0,
+          background: 'rgba(6, 8, 15, 0.85)',
+          backdropFilter: 'blur(8px)',
+          border: '1px solid rgba(255, 255, 255, 0.06)',
+        }}
+      >
+        <ChartActions entry={entry} data={data} svgRef={svgRef} />
+      </div>
+
+      {/* Mobile: persistent share button */}
+      <button
+        onClick={handleMobileTap}
+        className="absolute top-2 right-2 z-10 md:hidden p-2 rounded-lg cursor-pointer"
+        style={{
+          background: 'rgba(6, 8, 15, 0.85)',
+          backdropFilter: 'blur(8px)',
+          border: '1px solid rgba(255, 255, 255, 0.06)',
+          color: 'var(--text-muted)',
+        }}
+        title="Share chart"
+      >
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M4 8v5a1 1 0 001 1h6a1 1 0 001-1V8" />
+          <path d="M8 2v8" />
+          <path d="M5 5l3-3 3 3" />
+        </svg>
+      </button>
+
+      {/* Mobile bottom sheet */}
+      {sheetOpen && (
+        <ShareBottomSheet
+          entry={entry}
+          data={data}
+          svgRef={svgRef}
+          onClose={() => setSheetOpen(false)}
+        />
+      )}
+    </div>
+  );
+}

@@ -1,5 +1,70 @@
 # Changelog
 
+## [0.11.0] - 2026-03-01
+
+### Phase 7: Chart Shareability & Distribution Infrastructure
+
+**ChartActions Overlay** — Every chart across all 8 domains now has a hover/tap toolbar
+- PNG download: SVG→Canvas→PNG pipeline clones the chart SVG, resolves CSS custom properties (`var(--saffron)` → `#FF6B35`), composites dark background + accent bar + title + chart + source watermark. No external dependencies — pure SVG serialization + Canvas 2D API.
+- CSV export: RFC 4180-compliant CSV serialization from chart registry's `toTabular()` function. Proper escaping for commas, quotes, and newlines.
+- Permalink copy: `#{sectionId}` hash anchor + clipboard API. Each scrollytelling section now has a stable `id` attribute.
+- Embed code copy: generates `<iframe>` snippet pointing to `/embed/{domain}/{section}` with responsive styling.
+- Desktop: hover fade-in overlay (glass background, top-right). Mobile: persistent share button → bottom sheet with 2×2 action grid + WhatsApp CTA.
+- Pointer-events layering (`pointer-events: none` on overlay, `auto` only on buttons) preserves chart tooltips and treemap drill-down.
+
+**Embed Routes** (`/embed/{domain}/{section}`)
+- Standalone responsive chart pages for iframe embedding by journalists, bloggers, educators
+- Minimal chrome: accent bar, title, chart area, source attribution, branding link back to full portal
+- `ChartRenderer` component lazy-loads only the needed chart component (LineChart, AreaChart, HorizontalBarChart, TreemapChart, SankeyDiagram, WaffleChart, ChoroplethMap) — small embed bundle
+- Generic series builders detect time series fields by naming convention (`*TimeSeries`)
+- Renders outside PageShell (no header/footer/nav chrome)
+- 8 representative embed routes prerendered for SEO
+
+**WhatsApp Share Cards**
+- One-stat image (1200×630, Canvas API) with domain accent color, hero stat value + context, deep link URL, branding strip
+- Tries Web Share API first (mobile native share sheet), falls back to PNG download
+- Under 100KB target for fast WhatsApp compression
+
+**URL-Encoded Chart State**
+- Bidirectional `useUrlState` hook syncs Zustand store ↔ URLSearchParams
+- URL wins on mount (enables deep linking), store wins after (no infinite loops)
+- Uses `replace: true` to avoid polluting browser history
+- All 8 explorer pages wired: `?category=growth&indicator=gdp-real` becomes a shareable deep link
+- Scrollytelling sections: `#sectionId` hash anchors for all ~49 sections
+
+**Central Chart Registry** (`src/lib/chartRegistry.ts`)
+- Map-based registry keyed by `"{domain}/{sectionId}"` (e.g., `"economy/growth"`)
+- Each entry: title, source, accent color, data files, chartType, `toTabular()` for CSV, `heroStat()` for share cards
+- `DOMAIN_META` for all 8 domains (accent colors, labels, base paths)
+- 8 registration files (`src/lib/registry/{domain}.ts`) covering ~49 chart sections
+- Lookup functions: `getChartEntry()`, `getChartsByDomain()`, `getAllCharts()`
+- Permalink and embed URL builder utilities
+
+**New Files**
+- `src/lib/chartRegistry.ts` — Registry types, Map, lookup functions
+- `src/lib/svgCapture.ts` — SVG→Canvas→PNG capture pipeline
+- `src/lib/shareCard.ts` — WhatsApp share card Canvas generator
+- `src/lib/csvExport.ts` — CSV serialization utility
+- `src/hooks/useUrlState.ts` — Zustand↔URL bidirectional sync
+- `src/components/share/ChartActions.tsx` — Action bar (4 buttons)
+- `src/components/share/ChartActionsWrapper.tsx` — Hover overlay container
+- `src/components/share/ShareBottomSheet.tsx` — Mobile bottom sheet
+- `src/components/embed/EmbedShell.tsx` — Minimal embed chrome
+- `src/components/embed/ChartRenderer.tsx` — Lazy chart component switch
+- `src/pages/EmbedPage.tsx` — Route component for `/embed/:domain/:section`
+- `src/lib/registry/index.ts` + 8 domain files
+
+**Modified Files**
+- `src/main.tsx` — Registry import at startup
+- `src/App.tsx` — Embed route handling outside PageShell
+- ~49 scrollytelling section files — Added `id` attributes and `ChartActionsWrapper`
+- 8 explorer pages — Added `useUrlState` hook
+- `scripts/prerender.mjs` — 8 embed routes added
+- `public/sitemap.xml` — Embed route URLs added
+- `public/llms.txt` — Embed API documentation section
+
+---
+
 ## [0.10.0] - 2026-03-01
 
 ### Phase 6: Historical Data & Depth

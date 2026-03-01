@@ -5,6 +5,7 @@ import { SectionNumber } from '../ui/SectionNumber.tsx';
 import { LineChart, type LineSeries } from '../viz/LineChart.tsx';
 import { HorizontalBarChart, type BarItem } from '../viz/HorizontalBarChart.tsx';
 import type { LiteracyData } from '../../lib/data/schema.ts';
+import { ChartActionsWrapper } from '../share/ChartActionsWrapper.tsx';
 
 const MIN_POINTS = 3;
 const EASE_OUT_EXPO: [number, number, number, number] = [0.16, 1, 0.3, 1];
@@ -131,7 +132,7 @@ export function LiteracySection({ data }: LiteracySectionProps) {
   const hasTimeSeries = literacySeries.length > 0;
 
   return (
-    <section ref={ref} className="composition" style={{ background: 'var(--bg-surface)' }}>
+    <section ref={ref} id="literacy" className="composition" style={{ background: 'var(--bg-surface)' }}>
       <div className="max-w-7xl mx-auto px-6 sm:px-8">
         <SectionNumber number={5} className="mb-6 block" isVisible={isVisible} />
 
@@ -159,12 +160,14 @@ export function LiteracySection({ data }: LiteracySectionProps) {
             <p className="text-xs font-mono uppercase tracking-wider mb-3" style={{ color: 'var(--text-muted)' }}>
               Literacy Rate Trend (% of adults 15+)
             </p>
-            <LineChart
+            <ChartActionsWrapper registryKey="census/literacy" data={data}>
+              <LineChart
               series={literacySeries}
               isVisible={isVisible}
               formatValue={(v) => `${v.toFixed(1)}%`}
               unit="%"
             />
+            </ChartActionsWrapper>
           </div>
         )}
 
@@ -174,7 +177,9 @@ export function LiteracySection({ data }: LiteracySectionProps) {
             <p className="text-xs font-mono uppercase tracking-wider mb-4" style={{ color: 'var(--text-muted)' }}>
               Gender Literacy Gap by State — Census 2011 (percentage points)
             </p>
-            <GenderGapChart states={data.states} isVisible={isVisible} />
+            <ChartActionsWrapper registryKey="census/literacy" data={data}>
+              <GenderGapChart states={data.states} isVisible={isVisible} />
+            </ChartActionsWrapper>
           </div>
         )}
 
@@ -184,7 +189,8 @@ export function LiteracySection({ data }: LiteracySectionProps) {
             <p className="text-xs font-mono uppercase tracking-wider mb-3" style={{ color: 'var(--text-muted)' }}>
               Overall Literacy Rate by State — Census 2011
             </p>
-            <HorizontalBarChart
+            <ChartActionsWrapper registryKey="census/literacy" data={data}>
+              <HorizontalBarChart
               items={stateRankBars}
               isVisible={isVisible}
               formatValue={(v) => `${v.toFixed(1)}%`}
@@ -192,6 +198,7 @@ export function LiteracySection({ data }: LiteracySectionProps) {
               labelWidth={140}
               barHeight={24}
             />
+            </ChartActionsWrapper>
           </div>
         )}
 
