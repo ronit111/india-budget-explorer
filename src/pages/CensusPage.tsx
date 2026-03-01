@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { SEOHead } from '../components/seo/SEOHead.tsx';
 import { SkeletonChart } from '../components/ui/Skeleton.tsx';
+import { KeyTakeaways } from '../components/ui/KeyTakeaways.tsx';
 import { NarrativeBridge } from '../components/ui/NarrativeBridge.tsx';
 import { useCensusStore } from '../store/censusStore.ts';
 import { useCensusData } from '../hooks/useCensusData.ts';
@@ -56,6 +57,16 @@ export default function CensusPage() {
       />
 
       <CensusHeroSection summary={summary} />
+
+      <KeyTakeaways
+        accent="#8B5CF6"
+        pills={[
+          { value: String(summary.sexRatio), label: 'Girls per 1,000 boys — 57 are "missing"', sectionId: 'health' },
+          { value: '1 in 4', label: "Indians who can't read or write", sectionId: 'literacy' },
+          { value: `${summary.populationGrowthRate}%`, label: 'Population growth — at a historic low', sectionId: 'population' },
+          { value: `${Math.round(summary.urbanizationRate)}%`, label: 'Only 1 in 3 Indians lives in a city', sectionId: 'urbanization' },
+        ]}
+      />
 
       <div className="composition-divider" />
 

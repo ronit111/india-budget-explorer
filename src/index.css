@@ -206,6 +206,13 @@
     background-clip: text;
   }
 
+  .gradient-text-tricolor {
+    background: linear-gradient(135deg, #FF9933 0%, #FFFFFF 50%, #138808 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
   .gradient-text-cyan {
     background: linear-gradient(135deg, var(--cyan), #7CF5E9);
     -webkit-background-clip: text;

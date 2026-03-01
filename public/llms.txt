@@ -230,8 +230,31 @@ Indian Data Project is a hub for Indian government data visualization. Each data
 - /data/healthcare/2025-26/disease.json — TB incidence, immunization coverage trends
 - /data/healthcare/2025-26/indicators.json — All healthcare indicators across 4 categories
 
+### Citizen Questions
+- /data/questions.json — 102 curated citizen questions across 8 domains with answers and section anchors. Used by Cmd+K search.
+
 ### EMI Calculator
 - /data/emi/loan-spreads.json — Curated loan spreads over repo rate for home (2.75%), car (3.5%), personal (8%) loans. Sources: SBI EBLR, HDFC, ICICI published rate cards.
+
+## Key Takeaways & Question-First Search (Phase 9)
+
+### Key Takeaways
+Every story page has a "Key Takeaways" strip between the hero section and the first scrollytelling section. Four stat pills per domain, computed at runtime from source data. Each pill shows a headline number with a citizen-friendly label and scrolls to the relevant section on click.
+
+Examples:
+- Budget: "₹96/day — What govt. spends on you, daily", "31 paise — Of every rupee spent, borrowed"
+- Economy: "6.5% — How fast the economy grew", "4.0% — How much prices rose (inflation)"
+- RBI: "5.25% — The rate that decides your EMI", "$643B — India's forex safety net"
+- States: "₹1.72L — Average state income per person", "31 — States and UTs, 31 different economies"
+- Census: "943 — Girls per 1,000 boys, 57 are 'missing'", "1 in 4 — Indians who can't read or write"
+- Education: "24.8 Cr — Students, more than Brazil's population", "26:1 — Students per teacher"
+- Employment: "~13% — Youth unemployment, 3× the national rate", "~35% — Only 1 in 3 women in workforce"
+- Healthcare: "~48% — You pay half your medical bills from your pocket", "0.5 beds — Per 1,000 (WHO says 3.5)"
+
+### Question-First Search
+The Cmd+K search overlay indexes 102 curated citizen questions across all 8 domains. Questions are phrased in natural language ("Why are prices rising?", "How much does the government spend on me per day?") and map to specific story page sections with one-sentence answers.
+
+Question results appear with an amber QUESTION badge. Selecting a question navigates directly to the relevant section (e.g., "Why are prices rising?" → /economy#inflation).
 
 ## Chart sharing & embedding (Phase 7)
 

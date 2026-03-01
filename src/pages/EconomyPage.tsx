@@ -12,6 +12,8 @@ import { OutlookSection } from '../components/economy/OutlookSection.tsx';
 import { EconomyCTASection } from '../components/economy/EconomyCTASection.tsx';
 import { NarrativeBridge } from '../components/ui/NarrativeBridge.tsx';
 import { SkeletonChart } from '../components/ui/Skeleton.tsx';
+import { KeyTakeaways } from '../components/ui/KeyTakeaways.tsx';
+import { formatIndianNumber } from '../lib/format.ts';
 
 export default function EconomyPage() {
   const year = useEconomyStore((s) => s.selectedYear);
@@ -76,6 +78,17 @@ export default function EconomyPage() {
 
       {/* Hero — the headline GDP growth number */}
       <EconomyHeroSection summary={summary} />
+
+      {/* Key Takeaways — quick-scan stat pills */}
+      <KeyTakeaways
+        accent="#4AEADC"
+        pills={[
+          { value: `₹${formatIndianNumber(summary.perCapitaGDP)}`, label: 'Average income per Indian, per year', sectionId: 'sectors' },
+          { value: `${summary.realGDPGrowth}%`, label: 'How fast the economy grew', sectionId: 'growth' },
+          { value: `${summary.cpiInflation}%`, label: 'How much prices rose (inflation)', sectionId: 'inflation' },
+          { value: `${summary.currentAccountDeficitPercentGDP}% of GDP`, label: 'We import more than we export', sectionId: 'external' },
+        ]}
+      />
 
       {/* 01 Growth — the GDP story */}
       <div className="composition-divider" />

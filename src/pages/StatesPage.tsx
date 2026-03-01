@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { SEOHead } from '../components/seo/SEOHead.tsx';
 import { SkeletonChart } from '../components/ui/Skeleton.tsx';
+import { KeyTakeaways } from '../components/ui/KeyTakeaways.tsx';
 import { NarrativeBridge } from '../components/ui/NarrativeBridge.tsx';
 import { useStatesStore } from '../store/statesStore.ts';
 import { useStatesData } from '../hooks/useStatesData.ts';
@@ -11,6 +12,7 @@ import { RevenueSection } from '../components/states/RevenueSection.tsx';
 import { FiscalHealthSection } from '../components/states/FiscalHealthSection.tsx';
 import { PerCapitaSection } from '../components/states/PerCapitaSection.tsx';
 import { StatesCTASection } from '../components/states/StatesCTASection.tsx';
+import { formatIndianNumber } from '../lib/format.ts';
 
 export default function StatesPage() {
   const year = useStatesStore((s) => s.selectedYear);
@@ -55,6 +57,16 @@ export default function StatesPage() {
       />
 
       <StatesHeroSection summary={summary} />
+
+      <KeyTakeaways
+        accent="#4ADE80"
+        pills={[
+          { value: `₹${formatIndianNumber(summary.averagePerCapita)}`, label: 'Average state income per person', sectionId: 'percapita' },
+          { value: summary.growthRange, label: 'Growth gap: slowest to fastest state', sectionId: 'growth' },
+          { value: `₹${summary.topGsdpValue}L Cr`, label: 'Maharashtra alone, bigger than many nations', sectionId: 'gsdp' },
+          { value: String(summary.stateCount), label: 'States and UTs — 31 different economies', sectionId: 'fiscal-health' },
+        ]}
+      />
 
       <div className="composition-divider" />
 

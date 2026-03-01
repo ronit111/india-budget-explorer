@@ -525,6 +525,14 @@
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>
   </url>
+  <!-- Citizen questions data -->
+  <url>
+    <loc>https://indiandataproject.org/data/questions.json</loc>
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
   <!-- Embed routes (representative, one per domain) -->
   <url>
     <loc>https://indiandataproject.org/embed/budget/revenue</loc>

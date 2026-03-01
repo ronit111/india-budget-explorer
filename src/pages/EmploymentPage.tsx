@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { SEOHead } from '../components/seo/SEOHead.tsx';
 import { SkeletonChart } from '../components/ui/Skeleton.tsx';
+import { KeyTakeaways } from '../components/ui/KeyTakeaways.tsx';
 import { NarrativeBridge } from '../components/ui/NarrativeBridge.tsx';
 import { useEmploymentStore } from '../store/employmentStore.ts';
 import { useEmploymentData } from '../hooks/useEmploymentData.ts';
@@ -56,6 +57,16 @@ export default function EmploymentPage() {
       />
 
       <EmploymentHeroSection summary={summary} />
+
+      <KeyTakeaways
+        accent="#F59E0B"
+        pills={[
+          { value: `${summary.youthUnemployment}%`, label: 'Youth unemployment — 3× the national rate', sectionId: 'youth' },
+          { value: `${summary.selfEmployedPct}%`, label: 'Self-employed — most Indians are their own boss', sectionId: 'informality' },
+          { value: `${summary.femaleLfpr}%`, label: 'Only 1 in 3 women in the workforce', sectionId: 'gender-gap' },
+          { value: `${summary.workforceTotal} Cr`, label: "India's total workforce", sectionId: 'participation' },
+        ]}
+      />
 
       <div className="composition-divider" />
 

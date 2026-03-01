@@ -52,6 +52,7 @@ import type {
   HealthcareIndicatorsData,
   GlossaryData,
   LoanSpreadsData,
+  CitizenQuestion,
 } from './data/schema.ts';
 
 const cache = new Map<string, unknown>();
@@ -231,3 +232,7 @@ export const loadLoanSpreads = () =>
 // ─── Glossary (shared across domains) ──────────────────────────
 export const loadGlossary = (domain: string, year: string) =>
   fetchJson<GlossaryData>(`/data/${domain}/${year}/glossary.json`);
+
+// ─── Citizen Questions (search) ─────────────────────────────────
+export const loadQuestions = () =>
+  fetchJson<CitizenQuestion[]>('/data/questions.json');

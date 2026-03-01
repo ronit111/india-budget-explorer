@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { SEOHead } from '../components/seo/SEOHead.tsx';
 import { SkeletonChart } from '../components/ui/Skeleton.tsx';
+import { KeyTakeaways } from '../components/ui/KeyTakeaways.tsx';
 import { NarrativeBridge } from '../components/ui/NarrativeBridge.tsx';
 import { useHealthcareStore } from '../store/healthcareStore.ts';
 import { useHealthcareData } from '../hooks/useHealthcareData.ts';
@@ -56,6 +57,16 @@ export default function HealthcarePage() {
       />
 
       <HealthcareHeroSection summary={summary} />
+
+      <KeyTakeaways
+        accent="#F43F5E"
+        pills={[
+          { value: `${summary.outOfPocketPct}%`, label: 'You pay half your medical bills from your pocket', sectionId: 'oop' },
+          { value: `${summary.hospitalBedsPer1000} beds`, label: 'Hospital beds per 1,000 (WHO says 3.5)', sectionId: 'infrastructure' },
+          { value: `${summary.healthExpGDP}% of GDP`, label: 'What India spends on your health', sectionId: 'spending' },
+          { value: `${summary.tbIncidence}/lakh`, label: 'TB cases — highest burden in the world', sectionId: 'disease' },
+        ]}
+      />
 
       <div className="composition-divider" />
 

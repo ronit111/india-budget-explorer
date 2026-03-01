@@ -1,0 +1,818 @@
+[
+  {
+    "id": "budget-how-much-spend",
+    "domain": "budget",
+    "question": "How much does the government spend in a year?",
+    "answer": "India's total budget expenditure for 2025-26 is \u20b950.65 lakh crore.",
+    "sectionId": "expenditure",
+    "route": "/budget#expenditure"
+  },
+  {
+    "id": "budget-revenue-sources",
+    "domain": "budget",
+    "question": "Where does the government get its money from?",
+    "answer": "Income tax, GST, corporate tax, and borrowing \u2014 31 paise of every rupee is borrowed.",
+    "sectionId": "revenue",
+    "route": "/budget#revenue"
+  },
+  {
+    "id": "budget-why-borrow",
+    "domain": "budget",
+    "question": "Why does the government borrow so much?",
+    "answer": "Tax revenue doesn't cover all spending \u2014 the fiscal deficit is 4.4% of GDP.",
+    "sectionId": "deficit",
+    "route": "/budget#deficit"
+  },
+  {
+    "id": "budget-spend-per-day",
+    "domain": "budget",
+    "question": "How much does the government spend on me per day?",
+    "answer": "About \u20b996 per day per citizen, covering everything from defence to subsidies.",
+    "sectionId": "percapita",
+    "route": "/budget#percapita"
+  },
+  {
+    "id": "budget-defence-vs-education",
+    "domain": "budget",
+    "question": "How much of my tax money goes to defence vs education?",
+    "answer": "Defence gets the largest share of central spending; see the full rupee breakdown.",
+    "sectionId": "flow",
+    "route": "/budget#flow"
+  },
+  {
+    "id": "budget-promises-reality",
+    "domain": "budget",
+    "question": "Does the government actually spend what it promises in the budget?",
+    "answer": "Not always \u2014 budget vs actual tracking shows gaps between allocation and spending.",
+    "sectionId": "budget-vs-actual",
+    "route": "/budget#budget-vs-actual"
+  },
+  {
+    "id": "budget-size-over-time",
+    "domain": "budget",
+    "question": "How has the budget size changed over the years?",
+    "answer": "Total expenditure has grown from \u20b917L Cr in 2014-15 to \u20b950.65L Cr in 2025-26.",
+    "sectionId": "trends",
+    "route": "/budget#trends"
+  },
+  {
+    "id": "budget-top-ministry",
+    "domain": "budget",
+    "question": "Which ministry gets the most money?",
+    "answer": "Explore the full ministry-wise expenditure breakdown in the interactive treemap.",
+    "sectionId": "expenditure",
+    "route": "/budget#expenditure"
+  },
+  {
+    "id": "budget-state-allocation",
+    "domain": "budget",
+    "question": "How much does my state get from the central budget?",
+    "answer": "State allocations vary \u2014 explore the state-wise distribution map to find yours.",
+    "sectionId": "map",
+    "route": "/budget#map"
+  },
+  {
+    "id": "budget-fiscal-deficit-simple",
+    "domain": "budget",
+    "question": "What is fiscal deficit in simple terms?",
+    "answer": "It means the government spends more than it earns \u2014 the gap is 4.4% of GDP.",
+    "sectionId": "deficit",
+    "route": "/budget#deficit"
+  },
+  {
+    "id": "budget-subsidies",
+    "domain": "budget",
+    "question": "How much money goes to subsidies?",
+    "answer": "Food, fertilizer, and fuel subsidies are a major expenditure head \u2014 see the flow.",
+    "sectionId": "flow",
+    "route": "/budget#flow"
+  },
+  {
+    "id": "budget-deficit-trend",
+    "domain": "budget",
+    "question": "Is the budget deficit getting better or worse?",
+    "answer": "It has improved from 6.4% in 2021-22 to 4.4% in 2025-26 \u2014 a declining trend.",
+    "sectionId": "trends",
+    "route": "/budget#trends"
+  },
+  {
+    "id": "budget-31-paise",
+    "domain": "budget",
+    "question": "31 paise borrowed per rupee \u2014 what does that mean?",
+    "answer": "For every rupee the government spends, 31 paise comes from borrowing, not taxes.",
+    "sectionId": "revenue",
+    "route": "/budget#revenue"
+  },
+  {
+    "id": "economy-growth-rate",
+    "domain": "economy",
+    "question": "How fast is India's economy growing?",
+    "answer": "India's GDP grew at 6.5% in the latest year, with 7.4% projected next year.",
+    "sectionId": "growth",
+    "route": "/economy#growth"
+  },
+  {
+    "id": "economy-prices-rising",
+    "domain": "economy",
+    "question": "Why are prices going up?",
+    "answer": "CPI inflation is at 4.0% \u2014 food prices and supply shocks are key drivers.",
+    "sectionId": "inflation",
+    "route": "/economy#inflation"
+  },
+  {
+    "id": "economy-what-is-gdp",
+    "domain": "economy",
+    "question": "What is GDP and why should I care?",
+    "answer": "GDP measures total economic output \u2014 higher growth means more jobs and income.",
+    "sectionId": "growth",
+    "route": "/economy#growth"
+  },
+  {
+    "id": "economy-india-vs-china",
+    "domain": "economy",
+    "question": "Is India's economy doing better than China's?",
+    "answer": "India's 6.5% growth is among the fastest for large economies globally.",
+    "sectionId": "growth",
+    "route": "/economy#growth"
+  },
+  {
+    "id": "economy-cad",
+    "domain": "economy",
+    "question": "What is current account deficit?",
+    "answer": "India imports more than it exports \u2014 the gap (CAD) is -0.8% of GDP currently.",
+    "sectionId": "external",
+    "route": "/economy#external"
+  },
+  {
+    "id": "economy-sectors",
+    "domain": "economy",
+    "question": "Which sectors are driving India's growth?",
+    "answer": "Services dominate India's economy, followed by industry and agriculture.",
+    "sectionId": "sectors",
+    "route": "/economy#sectors"
+  },
+  {
+    "id": "economy-inflation-control",
+    "domain": "economy",
+    "question": "Is inflation under control right now?",
+    "answer": "CPI inflation is at 4.0%, within RBI's target band of 2-6%.",
+    "sectionId": "inflation",
+    "route": "/economy#inflation"
+  },
+  {
+    "id": "economy-trade",
+    "domain": "economy",
+    "question": "How much does India import and export?",
+    "answer": "India runs a trade deficit \u2014 imports exceed exports, contributing to -0.8% CAD.",
+    "sectionId": "external",
+    "route": "/economy#external"
+  },
+  {
+    "id": "economy-agriculture-gdp",
+    "domain": "economy",
+    "question": "What percentage of GDP comes from agriculture?",
+    "answer": "Agriculture contributes about 15% of GDP but employs over 40% of workers.",
+    "sectionId": "sectors",
+    "route": "/economy#sectors"
+  },
+  {
+    "id": "economy-debt",
+    "domain": "economy",
+    "question": "Is India's debt sustainable?",
+    "answer": "The fiscal deficit has been narrowing, but total debt remains a long-term concern.",
+    "sectionId": "fiscal",
+    "route": "/economy#fiscal"
+  },
+  {
+    "id": "economy-tomatoes",
+    "domain": "economy",
+    "question": "Why are tomatoes and onions so expensive?",
+    "answer": "Food inflation spikes are driven by supply shocks \u2014 overall CPI is 4.0%.",
+    "sectionId": "inflation",
+    "route": "/economy#inflation"
+  },
+  {
+    "id": "economy-survey-future",
+    "domain": "economy",
+    "question": "What does the Economic Survey say about India's future?",
+    "answer": "The 2025-26 Survey projects 7.4% growth driven by services and investment.",
+    "sectionId": "growth",
+    "route": "/economy#growth"
+  },
+  {
+    "id": "economy-govt-debt",
+    "domain": "economy",
+    "question": "How much does the government owe in total?",
+    "answer": "Central government debt and the fiscal deficit path are tracked in fiscal data.",
+    "sectionId": "fiscal",
+    "route": "/economy#fiscal"
+  },
+  {
+    "id": "rbi-repo-rate",
+    "domain": "rbi",
+    "question": "What is the current repo rate?",
+    "answer": "The RBI repo rate is 5.25% with a neutral monetary policy stance.",
+    "sectionId": "monetary-policy",
+    "route": "/rbi#monetary-policy"
+  },
+  {
+    "id": "rbi-emi-impact",
+    "domain": "rbi",
+    "question": "How does repo rate affect my home loan EMI?",
+    "answer": "When repo rate falls, banks cut lending rates \u2014 your floating EMI drops too.",
+    "sectionId": "monetary-policy",
+    "route": "/rbi#monetary-policy"
+  },
+  {
+    "id": "rbi-why-change-rates",
+    "domain": "rbi",
+    "question": "Why does RBI keep changing interest rates?",
+    "answer": "RBI adjusts the repo rate to balance inflation control with economic growth.",
+    "sectionId": "monetary-policy",
+    "route": "/rbi#monetary-policy"
+  },
+  {
+    "id": "rbi-printing-money",
+    "domain": "rbi",
+    "question": "Is RBI printing too much money?",
+    "answer": "RBI manages liquidity carefully \u2014 excess money causes inflation, too little slows growth.",
+    "sectionId": "liquidity",
+    "route": "/rbi#liquidity"
+  },
+  {
+    "id": "rbi-forex",
+    "domain": "rbi",
+    "question": "How much foreign reserves does India have?",
+    "answer": "India holds $643 billion in forex reserves, covering months of imports.",
+    "sectionId": "forex",
+    "route": "/rbi#forex"
+  },
+  {
+    "id": "rbi-rupee-falling",
+    "domain": "rbi",
+    "question": "Why is the rupee falling against the dollar?",
+    "answer": "Exchange rate depends on trade flows, capital movement, and global dollar strength.",
+    "sectionId": "exchange-rate",
+    "route": "/rbi#exchange-rate"
+  },
+  {
+    "id": "rbi-crr",
+    "domain": "rbi",
+    "question": "What is CRR and why does it matter?",
+    "answer": "Banks must keep 3.0% of deposits with RBI \u2014 this controls money supply.",
+    "sectionId": "liquidity",
+    "route": "/rbi#liquidity"
+  },
+  {
+    "id": "rbi-inflation-target",
+    "domain": "rbi",
+    "question": "What is RBI's inflation target?",
+    "answer": "RBI targets 4% CPI inflation with a tolerance band of 2% to 6%.",
+    "sectionId": "inflation-target",
+    "route": "/rbi#inflation-target"
+  },
+  {
+    "id": "rbi-bank-lending",
+    "domain": "rbi",
+    "question": "Are banks lending enough to businesses?",
+    "answer": "Credit growth data shows how much banks are lending to different sectors.",
+    "sectionId": "credit",
+    "route": "/rbi#credit"
+  },
+  {
+    "id": "rbi-how-control-inflation",
+    "domain": "rbi",
+    "question": "How does RBI control inflation?",
+    "answer": "Primarily through the repo rate \u2014 higher rates make borrowing expensive, cooling demand.",
+    "sectionId": "inflation-target",
+    "route": "/rbi#inflation-target"
+  },
+  {
+    "id": "rbi-repo-vs-reverse",
+    "domain": "rbi",
+    "question": "What is the difference between repo rate and reverse repo?",
+    "answer": "Repo is what banks pay to borrow; reverse repo is what they earn parking money.",
+    "sectionId": "monetary-policy",
+    "route": "/rbi#monetary-policy"
+  },
+  {
+    "id": "rbi-fd-rates",
+    "domain": "rbi",
+    "question": "Will my FD interest rate go up or down?",
+    "answer": "FD rates follow repo rate trends \u2014 with the neutral stance, rates are stabilizing.",
+    "sectionId": "monetary-policy",
+    "route": "/rbi#monetary-policy"
+  },
+  {
+    "id": "rbi-rupee-stability",
+    "domain": "rbi",
+    "question": "How stable is the Indian rupee?",
+    "answer": "The rupee has gradually depreciated against the dollar but remains RBI-managed.",
+    "sectionId": "exchange-rate",
+    "route": "/rbi#exchange-rate"
+  },
+  {
+    "id": "states-richest",
+    "domain": "states",
+    "question": "Which is the richest state in India?",
+    "answer": "Maharashtra has the highest GSDP at \u20b935.28 lakh crore.",
+    "sectionId": "gsdp",
+    "route": "/states#gsdp"
+  },
+  {
+    "id": "states-fair-share",
+    "domain": "states",
+    "question": "Is my state getting its fair share of money?",
+    "answer": "State revenue comes from own taxes plus central transfers \u2014 compare your state's share.",
+    "sectionId": "revenue",
+    "route": "/states#revenue"
+  },
+  {
+    "id": "states-fastest-growing",
+    "domain": "states",
+    "question": "Which states are growing the fastest?",
+    "answer": "State growth rates range from 2.9% to 25.4% \u2014 see which ones are leading.",
+    "sectionId": "growth",
+    "route": "/states#growth"
+  },
+  {
+    "id": "states-own-revenue",
+    "domain": "states",
+    "question": "How much does my state earn on its own?",
+    "answer": "Own tax revenue vs central transfers varies widely \u2014 some states are heavily dependent.",
+    "sectionId": "revenue",
+    "route": "/states#revenue"
+  },
+  {
+    "id": "states-most-debt",
+    "domain": "states",
+    "question": "Which states have the most debt?",
+    "answer": "Fiscal health varies \u2014 some states run deficits above 3% while others are in surplus.",
+    "sectionId": "fiscal-health",
+    "route": "/states#fiscal-health"
+  },
+  {
+    "id": "states-up-vs-tn",
+    "domain": "states",
+    "question": "How does UP's economy compare to Tamil Nadu?",
+    "answer": "Compare GSDP, growth rates, and per capita income across all states side by side.",
+    "sectionId": "gsdp",
+    "route": "/states#gsdp"
+  },
+  {
+    "id": "states-per-capita",
+    "domain": "states",
+    "question": "What is per capita income in my state?",
+    "answer": "Average per capita GSDP is \u20b91.72 lakh, but varies from \u20b950K to \u20b95L+.",
+    "sectionId": "percapita",
+    "route": "/states#percapita"
+  },
+  {
+    "id": "states-rich-poor-gap",
+    "domain": "states",
+    "question": "Why are some states so much richer than others?",
+    "answer": "Industrialization, services growth, and governance drive massive per capita differences.",
+    "sectionId": "percapita",
+    "route": "/states#percapita"
+  },
+  {
+    "id": "states-bihar-income",
+    "domain": "states",
+    "question": "Does Bihar really have the lowest per capita income?",
+    "answer": "Bihar and UP rank among the lowest in per capita GSDP \u2014 see the full state ranking.",
+    "sectionId": "percapita",
+    "route": "/states#percapita"
+  },
+  {
+    "id": "states-central-dependence",
+    "domain": "states",
+    "question": "Are states becoming more dependent on central funds?",
+    "answer": "Revenue composition shows the split between own earnings and central transfers.",
+    "sectionId": "revenue",
+    "route": "/states#revenue"
+  },
+  {
+    "id": "states-fiscally-healthy",
+    "domain": "states",
+    "question": "Which states are fiscally healthy?",
+    "answer": "States with low fiscal deficit and high own revenue are the most financially stable.",
+    "sectionId": "fiscal-health",
+    "route": "/states#fiscal-health"
+  },
+  {
+    "id": "states-my-growth",
+    "domain": "states",
+    "question": "How fast is my state's economy growing?",
+    "answer": "State-wise GSDP growth rates show who is accelerating and who is falling behind.",
+    "sectionId": "growth",
+    "route": "/states#growth"
+  },
+  {
+    "id": "states-south-north",
+    "domain": "states",
+    "question": "Why do southern states complain about tax redistribution?",
+    "answer": "High-income states contribute more tax but receive less per capita from central transfers.",
+    "sectionId": "revenue",
+    "route": "/states#revenue"
+  },
+  {
+    "id": "census-population",
+    "domain": "census",
+    "question": "What is India's current population?",
+    "answer": "India's population is approximately 1.45 billion, the world's most populous country.",
+    "sectionId": "population",
+    "route": "/census#population"
+  },
+  {
+    "id": "census-literacy",
+    "domain": "census",
+    "question": "What is the literacy rate in India?",
+    "answer": "India's literacy rate is 74% as of Census 2011, with wide state-level variation.",
+    "sectionId": "literacy",
+    "route": "/census#literacy"
+  },
+  {
+    "id": "census-sex-ratio",
+    "domain": "census",
+    "question": "How many men vs women are there in India?",
+    "answer": "The sex ratio is 943 females per 1000 males \u2014 improving but still below parity.",
+    "sectionId": "population",
+    "route": "/census#population"
+  },
+  {
+    "id": "census-aging",
+    "domain": "census",
+    "question": "Is India getting older?",
+    "answer": "India's median age is rising \u2014 the demographic dividend window is narrowing.",
+    "sectionId": "age",
+    "route": "/census#age"
+  },
+  {
+    "id": "census-urban-rural",
+    "domain": "census",
+    "question": "How many people live in cities vs villages?",
+    "answer": "35.4% of India is urban \u2014 urbanization is accelerating every decade.",
+    "sectionId": "urbanization",
+    "route": "/census#urbanization"
+  },
+  {
+    "id": "census-birth-death",
+    "domain": "census",
+    "question": "What is India's birth rate and death rate?",
+    "answer": "Birth rate has fallen steadily while life expectancy has risen \u2014 see vital statistics.",
+    "sectionId": "vital-stats",
+    "route": "/census#vital-stats"
+  },
+  {
+    "id": "census-top-literacy",
+    "domain": "census",
+    "question": "Which state has the highest literacy rate?",
+    "answer": "Kerala leads with over 94% literacy; states like Bihar lag below 65%.",
+    "sectionId": "literacy",
+    "route": "/census#literacy"
+  },
+  {
+    "id": "census-young-country",
+    "domain": "census",
+    "question": "Is India still a young country?",
+    "answer": "Yes, but the age structure is shifting \u2014 the working-age share is peaking now.",
+    "sectionId": "age",
+    "route": "/census#age"
+  },
+  {
+    "id": "census-births-per-year",
+    "domain": "census",
+    "question": "How many babies are born every year in India?",
+    "answer": "Birth and fertility rates have been declining steadily \u2014 explore the vital statistics.",
+    "sectionId": "vital-stats",
+    "route": "/census#vital-stats"
+  },
+  {
+    "id": "census-peak-population",
+    "domain": "census",
+    "question": "When will India's population stop growing?",
+    "answer": "Projections suggest India's population will peak around 2060-2065.",
+    "sectionId": "population",
+    "route": "/census#population"
+  },
+  {
+    "id": "census-imr",
+    "domain": "census",
+    "question": "What is the infant mortality rate?",
+    "answer": "IMR has improved significantly but remains above global benchmarks.",
+    "sectionId": "health",
+    "route": "/census#health"
+  },
+  {
+    "id": "census-worst-sex-ratio",
+    "domain": "census",
+    "question": "Which state has the worst sex ratio?",
+    "answer": "Haryana and Punjab have historically low sex ratios, though improving recently.",
+    "sectionId": "population",
+    "route": "/census#population"
+  },
+  {
+    "id": "census-urbanizing-fast",
+    "domain": "census",
+    "question": "Is India urbanizing too fast?",
+    "answer": "At 35.4% urban, India is less urbanized than most peers \u2014 but cities are straining.",
+    "sectionId": "urbanization",
+    "route": "/census#urbanization"
+  },
+  {
+    "id": "education-spending",
+    "domain": "education",
+    "question": "How much does India spend on education?",
+    "answer": "India spends about 4.1% of GDP on education \u2014 NEP 2020 targets 6%.",
+    "sectionId": "spending",
+    "route": "/education#spending"
+  },
+  {
+    "id": "education-learning",
+    "domain": "education",
+    "question": "Are children actually learning in school?",
+    "answer": "ASER data shows many children can't read grade-level text \u2014 quality is a crisis.",
+    "sectionId": "quality",
+    "route": "/education#quality"
+  },
+  {
+    "id": "education-dropout",
+    "domain": "education",
+    "question": "How many kids drop out of school?",
+    "answer": "Dropout rates spike at secondary level, especially for girls in rural areas.",
+    "sectionId": "dropout",
+    "route": "/education#dropout"
+  },
+  {
+    "id": "education-gender",
+    "domain": "education",
+    "question": "Do girls get equal access to education?",
+    "answer": "Gender parity has improved in enrollment but gaps persist in higher education.",
+    "sectionId": "gender",
+    "route": "/education#gender"
+  },
+  {
+    "id": "education-enrollment",
+    "domain": "education",
+    "question": "How many children are enrolled in school?",
+    "answer": "Near-universal enrollment at primary level, but secondary enrollment drops significantly.",
+    "sectionId": "enrollment",
+    "route": "/education#enrollment"
+  },
+  {
+    "id": "education-teachers",
+    "domain": "education",
+    "question": "Are there enough teachers in government schools?",
+    "answer": "Pupil-teacher ratios vary widely \u2014 many rural schools are severely understaffed.",
+    "sectionId": "teacher",
+    "route": "/education#teacher"
+  },
+  {
+    "id": "education-why-dropout",
+    "domain": "education",
+    "question": "Why do children drop out after class 8?",
+    "answer": "Economic pressure, early marriage, and lack of secondary schools drive dropout.",
+    "sectionId": "dropout",
+    "route": "/education#dropout"
+  },
+  {
+    "id": "education-quality-improving",
+    "domain": "education",
+    "question": "Is the quality of education improving?",
+    "answer": "Learning outcomes remain poor \u2014 many Class 5 students can't do Class 2 level math.",
+    "sectionId": "quality",
+    "route": "/education#quality"
+  },
+  {
+    "id": "education-global-compare",
+    "domain": "education",
+    "question": "How does India's education spending compare globally?",
+    "answer": "At 4.1% of GDP, India spends less than the global average and its own 6% target.",
+    "sectionId": "spending",
+    "route": "/education#spending"
+  },
+  {
+    "id": "education-private-govt",
+    "domain": "education",
+    "question": "Are private schools better than government schools?",
+    "answer": "ASER shows learning gaps exist in both \u2014 the quality challenge is systemic.",
+    "sectionId": "quality",
+    "route": "/education#quality"
+  },
+  {
+    "id": "education-total-schools",
+    "domain": "education",
+    "question": "How many schools are there in India?",
+    "answer": "Over 15 lakh schools serve India's children \u2014 explore enrollment data by level.",
+    "sectionId": "enrollment",
+    "route": "/education#enrollment"
+  },
+  {
+    "id": "education-ptr",
+    "domain": "education",
+    "question": "What is the pupil-teacher ratio in India?",
+    "answer": "National PTR has improved but hides severe shortages in specific states and levels.",
+    "sectionId": "teacher",
+    "route": "/education#teacher"
+  },
+  {
+    "id": "employment-unemployment",
+    "domain": "employment",
+    "question": "What is India's unemployment rate?",
+    "answer": "Overall unemployment has declined, but youth unemployment remains stubbornly high.",
+    "sectionId": "participation",
+    "route": "/employment#participation"
+  },
+  {
+    "id": "employment-youth-jobs",
+    "domain": "employment",
+    "question": "Why can't young people find jobs?",
+    "answer": "Youth unemployment is far higher than the national average \u2014 education-job mismatch is key.",
+    "sectionId": "youth",
+    "route": "/employment#youth"
+  },
+  {
+    "id": "employment-how-many-work",
+    "domain": "employment",
+    "question": "How many people in India actually work?",
+    "answer": "Labour force participation rate shows what fraction of working-age Indians are employed.",
+    "sectionId": "participation",
+    "route": "/employment#participation"
+  },
+  {
+    "id": "employment-women",
+    "domain": "employment",
+    "question": "Why don't more Indian women work?",
+    "answer": "Female LFPR is among the world's lowest \u2014 social norms and safety are major barriers.",
+    "sectionId": "gender-gap",
+    "route": "/employment#gender-gap"
+  },
+  {
+    "id": "employment-formal-informal",
+    "domain": "employment",
+    "question": "Are most Indians in formal or informal jobs?",
+    "answer": "About 8 out of 10 Indian workers are in informal employment without social security.",
+    "sectionId": "informality",
+    "route": "/employment#informality"
+  },
+  {
+    "id": "employment-agriculture",
+    "domain": "employment",
+    "question": "Is agriculture still the biggest employer?",
+    "answer": "Agriculture's GDP share has fallen but it still employs the largest workforce segment.",
+    "sectionId": "structural",
+    "route": "/employment#structural"
+  },
+  {
+    "id": "employment-farms-factories",
+    "domain": "employment",
+    "question": "Are jobs moving from farms to factories?",
+    "answer": "India's structural shift has been from farms to services, largely skipping manufacturing.",
+    "sectionId": "structural",
+    "route": "/employment#structural"
+  },
+  {
+    "id": "employment-urban-rural",
+    "domain": "employment",
+    "question": "Is there a difference in urban vs rural employment?",
+    "answer": "Rural areas have higher LFPR but more informal work; urban areas face open unemployment.",
+    "sectionId": "rural-urban",
+    "route": "/employment#rural-urban"
+  },
+  {
+    "id": "employment-educated",
+    "domain": "employment",
+    "question": "Do educated people have better job prospects?",
+    "answer": "Paradoxically, unemployment is highest among graduates \u2014 a skills mismatch problem.",
+    "sectionId": "youth",
+    "route": "/employment#youth"
+  },
+  {
+    "id": "employment-job-creation",
+    "domain": "employment",
+    "question": "How many jobs is India creating every year?",
+    "answer": "Formal job creation is tracked through EPFO payroll data and PLFS surveys.",
+    "sectionId": "participation",
+    "route": "/employment#participation"
+  },
+  {
+    "id": "employment-top-sectors",
+    "domain": "employment",
+    "question": "What sectors employ the most people?",
+    "answer": "Agriculture, trade, construction, and manufacturing are the top employment sectors.",
+    "sectionId": "structural",
+    "route": "/employment#structural"
+  },
+  {
+    "id": "employment-gig-work",
+    "domain": "employment",
+    "question": "Is gig work growing in India?",
+    "answer": "Platform and gig work is expanding but most workers remain informal without benefits.",
+    "sectionId": "informality",
+    "route": "/employment#informality"
+  },
+  {
+    "id": "employment-rural-different",
+    "domain": "employment",
+    "question": "Why is rural employment different from urban?",
+    "answer": "Rural work is more seasonal and agricultural; urban work is more formal and service-based.",
+    "sectionId": "rural-urban",
+    "route": "/employment#rural-urban"
+  },
+  {
+    "id": "healthcare-beds",
+    "domain": "healthcare",
+    "question": "How many hospital beds does India have?",
+    "answer": "India has only 0.5 beds per 1,000 people \u2014 WHO recommends 3.5 per 1,000.",
+    "sectionId": "infrastructure",
+    "route": "/healthcare#infrastructure"
+  },
+  {
+    "id": "healthcare-spending",
+    "domain": "healthcare",
+    "question": "How much does India spend on healthcare?",
+    "answer": "Government health spending is about 2.1% of GDP \u2014 among the lowest globally.",
+    "sectionId": "spending",
+    "route": "/healthcare#spending"
+  },
+  {
+    "id": "healthcare-bankrupt",
+    "domain": "healthcare",
+    "question": "Why do people go bankrupt from hospital bills?",
+    "answer": "Over 60% of health spending is out-of-pocket \u2014 families bear the cost directly.",
+    "sectionId": "oop",
+    "route": "/healthcare#oop"
+  },
+  {
+    "id": "healthcare-vaccination",
+    "domain": "healthcare",
+    "question": "Are enough children getting vaccinated?",
+    "answer": "Full immunization coverage has improved but varies sharply by state.",
+    "sectionId": "immunization",
+    "route": "/healthcare#immunization"
+  },
+  {
+    "id": "healthcare-diseases",
+    "domain": "healthcare",
+    "question": "What diseases kill the most Indians?",
+    "answer": "Non-communicable diseases (heart, diabetes, cancer) now cause the majority of deaths.",
+    "sectionId": "disease",
+    "route": "/healthcare#disease"
+  },
+  {
+    "id": "healthcare-doctors",
+    "domain": "healthcare",
+    "question": "Is there a doctor shortage in India?",
+    "answer": "India's doctor-to-population ratio is below WHO norms, especially in rural areas.",
+    "sectionId": "doctor-gap",
+    "route": "/healthcare#doctor-gap"
+  },
+  {
+    "id": "healthcare-crowded",
+    "domain": "healthcare",
+    "question": "Why are government hospitals so crowded?",
+    "answer": "With 0.5 beds per 1,000 and concentrated urban facilities, demand far exceeds supply.",
+    "sectionId": "infrastructure",
+    "route": "/healthcare#infrastructure"
+  },
+  {
+    "id": "healthcare-ayushman",
+    "domain": "healthcare",
+    "question": "Does Ayushman Bharat actually help?",
+    "answer": "Insurance coverage has expanded but out-of-pocket spending remains over 60%.",
+    "sectionId": "oop",
+    "route": "/healthcare#oop"
+  },
+  {
+    "id": "healthcare-global-compare",
+    "domain": "healthcare",
+    "question": "How does India's healthcare compare to other countries?",
+    "answer": "India spends 2.1% of GDP on health vs. 5-10% in peer countries.",
+    "sectionId": "spending",
+    "route": "/healthcare#spending"
+  },
+  {
+    "id": "healthcare-best-states",
+    "domain": "healthcare",
+    "question": "Which states have the best healthcare?",
+    "answer": "Kerala and Tamil Nadu lead in health outcomes; UP and Bihar lag significantly.",
+    "sectionId": "infrastructure",
+    "route": "/healthcare#infrastructure"
+  },
+  {
+    "id": "healthcare-malnutrition",
+    "domain": "healthcare",
+    "question": "Are Indian children malnourished?",
+    "answer": "Stunting and wasting remain high \u2014 nutrition is a major child health challenge.",
+    "sectionId": "disease",
+    "route": "/healthcare#disease"
+  },
+  {
+    "id": "healthcare-preventable",
+    "domain": "healthcare",
+    "question": "How many people die from preventable diseases?",
+    "answer": "Communicable diseases still cause significant deaths despite being largely preventable.",
+    "sectionId": "disease",
+    "route": "/healthcare#disease"
+  }
+]

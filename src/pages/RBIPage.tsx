@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { SEOHead } from '../components/seo/SEOHead.tsx';
 import { SkeletonChart } from '../components/ui/Skeleton.tsx';
+import { KeyTakeaways } from '../components/ui/KeyTakeaways.tsx';
 import { NarrativeBridge } from '../components/ui/NarrativeBridge.tsx';
 import { useRBIStore } from '../store/rbiStore.ts';
 import { useRBIData } from '../hooks/useRBIData.ts';
@@ -56,6 +57,16 @@ export default function RBIPage() {
       />
 
       <RBIHeroSection summary={summary} />
+
+      <KeyTakeaways
+        accent="#4AEADC"
+        pills={[
+          { value: `${summary.repoRate}%`, label: 'The rate that decides your EMI', sectionId: 'monetary-policy' },
+          { value: `$${summary.forexReservesUSD ? Math.round(summary.forexReservesUSD) : '—'}B`, label: "India's forex safety net", sectionId: 'forex' },
+          { value: `${summary.cpiLatest ?? '—'}%`, label: 'Current inflation — within target?', sectionId: 'inflation-target' },
+          { value: `${summary.slr}%`, label: 'Of every bank deposit, locked by RBI', sectionId: 'liquidity' },
+        ]}
+      />
 
       <div className="composition-divider" />
 

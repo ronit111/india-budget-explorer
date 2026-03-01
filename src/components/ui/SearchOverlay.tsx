@@ -4,11 +4,11 @@ import Fuse from 'fuse.js';
 import { useUIStore } from '../../store/uiStore.ts';
 import { useBudgetStore } from '../../store/budgetStore.ts';
 import { useBudgetData } from '../../hooks/useBudgetData.ts';
-import { loadGlossary } from '../../lib/dataLoader.ts';
-import type { GlossaryTerm } from '../../lib/data/schema.ts';
+import { loadGlossary, loadQuestions } from '../../lib/dataLoader.ts';
+import type { GlossaryTerm, CitizenQuestion } from '../../lib/data/schema.ts';
 
 interface SearchItem {
-  type: 'ministry' | 'scheme' | 'page' | 'term';
+  type: 'ministry' | 'scheme' | 'page' | 'term' | 'question';
   id: string;
   name: string;
   subtitle: string;
@@ -20,6 +20,7 @@ const BADGE_STYLES: Record<SearchItem['type'], { bg: string; color: string }> = 
   scheme: { bg: 'rgba(16,185,129,0.15)', color: 'var(--positive)' },
   page: { bg: 'rgba(59,130,246,0.15)', color: '#3B82F6' },
   term: { bg: 'rgba(167,139,250,0.15)', color: '#a78bfa' },
+  question: { bg: 'rgba(251,191,36,0.15)', color: '#FBBF24' },
 };
 
 function glossaryTermToSearchItem(term: GlossaryTerm, domain: string): SearchItem {
@@ -32,6 +33,16 @@ function glossaryTermToSearchItem(term: GlossaryTerm, domain: string): SearchIte
   };
 }
 
+function questionToSearchItem(q: CitizenQuestion): SearchItem {
+  return {
+    type: 'question',
+    id: q.id,
+    name: q.question,
+    subtitle: q.answer,
+    route: q.route,
+  };
+}
+
 export function SearchOverlay() {
   const { searchOpen, setSearchOpen } = useUIStore();
   const year = useBudgetStore((s) => s.selectedYear);
@@ -41,8 +52,9 @@ export function SearchOverlay() {
   const [query, setQuery] = useState('');
   const [results, setResults] = useState<SearchItem[]>([]);
   const [glossaryTerms, setGlossaryTerms] = useState<SearchItem[]>([]);
+  const [questionItems, setQuestionItems] = useState<SearchItem[]>([]);
 
-  // Load glossary terms once
+  // Load glossary terms and citizen questions once
   useEffect(() => {
     Promise.all([
       loadGlossary('budget', '2025-26').catch(() => null),
@@ -65,6 +77,10 @@ export function SearchOverlay() {
       if (healthcare) items.push(...healthcare.terms.map((t) => glossaryTermToSearchItem(t, 'healthcare')));
       setGlossaryTerms(items);
     });
+
+    loadQuestions()
+      .then((questions) => setQuestionItems(questions.map(questionToSearchItem)))
+      .catch(() => {});
   }, []);
 
   // Build search index
@@ -131,8 +147,9 @@ export function SearchOverlay() {
     { type: 'page', id: 'cost-of-living', name: 'Cost of Living Calculator', subtitle: 'How inflation changed your spending power', route: '/economy/calculator' },
     { type: 'page', id: 'state-report-card', name: 'State Report Card', subtitle: 'Your state ranked across 6 domains', route: '/states/your-state' },
   );
-  // Glossary terms
+  // Glossary terms + citizen questions
   searchItems.push(...glossaryTerms);
+  searchItems.push(...questionItems);
 
   const fuse = new Fuse(searchItems, {
     keys: ['name', 'subtitle'],
@@ -148,7 +165,7 @@ export function SearchOverlay() {
         setResults(fuse.search(q).map((r) => r.item).slice(0, 10));
       }
     },
-    [expenditure, schemes, glossaryTerms]
+    [expenditure, schemes, glossaryTerms, questionItems]
   );
 
   // Keyboard shortcut
@@ -199,7 +216,7 @@ export function SearchOverlay() {
             type="text"
             value={query}
             onChange={(e) => handleSearch(e.target.value)}
-            placeholder="Search terms, ministries, schemes, pages..."
+            placeholder="Ask a question, or search ministries, schemes, terms..."
             className="w-full px-3 py-4 bg-transparent border-none outline-none text-sm"
             style={{ color: 'var(--text-primary)' }}
           />

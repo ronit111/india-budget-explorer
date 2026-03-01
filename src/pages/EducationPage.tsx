@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { SEOHead } from '../components/seo/SEOHead.tsx';
 import { SkeletonChart } from '../components/ui/Skeleton.tsx';
+import { KeyTakeaways } from '../components/ui/KeyTakeaways.tsx';
 import { NarrativeBridge } from '../components/ui/NarrativeBridge.tsx';
 import { useEducationStore } from '../store/educationStore.ts';
 import { useEducationData } from '../hooks/useEducationData.ts';
@@ -56,6 +57,16 @@ export default function EducationPage() {
       />
 
       <EducationHeroSection summary={summary} />
+
+      <KeyTakeaways
+        accent="#3B82F6"
+        pills={[
+          { value: `${(summary.totalStudents / 10000000).toFixed(1)} Cr`, label: "Students — more than Brazil's population", sectionId: 'enrollment' },
+          { value: `${summary.ptrNational}:1`, label: 'Students per teacher, in every classroom', sectionId: 'teacher' },
+          { value: `${summary.gerSecondary?.toFixed(0) ?? '—'}%`, label: 'Secondary enrollment — 1 in 5 teens not in school', sectionId: 'dropout' },
+          { value: `${summary.educationSpendGDP}% of GDP`, label: 'What India spends on education', sectionId: 'spending' },
+        ]}
+      />
 
       <div className="composition-divider" />
 

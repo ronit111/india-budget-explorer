@@ -168,7 +168,7 @@ src/
 │   ├── viz/                # D3 visualizations (TreemapChart, SankeyDiagram, ChoroplethMap, WaffleChart, LineChart, AreaChart, HorizontalBarChart, StepChart, AnimatedCounter)
 │   ├── share/              # Chart sharing (ChartActions toolbar, ChartActionsWrapper overlay, ShareBottomSheet for mobile)
 │   ├── embed/              # Embed components (EmbedShell minimal chrome, ChartRenderer lazy chart loader)
-│   ├── ui/                 # Shared UI (Tooltip, NarrativeBridge, SearchOverlay, FeedbackButton, Skeleton, etc.)
+│   ├── ui/                 # Shared UI (Tooltip, NarrativeBridge, SearchOverlay, KeyTakeaways, FeedbackButton, Skeleton, etc.)
 │   ├── layout/             # Header, Footer, MobileNav, PageShell
 │   ├── seo/                # SEOHead (per-route meta tags + OG images + JSON-LD)
 │   └── i18n/               # Language provider and switcher
@@ -201,8 +201,9 @@ public/
 ├── data/employment/2025-26/ # 6 structured JSON employment datasets
 ├── data/healthcare/2025-26/ # 6 structured JSON healthcare datasets
 ├── data/emi/               # Curated loan spread data (SBI/HDFC rate cards)
+├── data/questions.json     # 102 citizen questions across 8 domains (powers question-first search)
 ├── locales/en/             # Translation files
-├── sitemap.xml             # All routes + data endpoints (37 pages + 46 data files)
+├── sitemap.xml             # All routes + data endpoints (37 pages + 47 data files)
 ├── robots.txt              # All bots welcomed (including AI crawlers)
 └── llms.txt                # AI-readable site summary
 
@@ -347,6 +348,12 @@ EMI data lives in `public/data/emi/`:
 |------|----------|
 | `loan-spreads.json` | Curated loan spreads over repo rate for home (2.75%), car (3.5%), personal (8%) loans. Sources: SBI EBLR, HDFC, ICICI published rate cards. |
 
+### Citizen Questions
+
+| File | Contents |
+|------|----------|
+| `questions.json` | 102 curated citizen questions across 8 domains with answers and section anchors. Powers question-first Cmd+K search. |
+
 Data sourced from [Open Budgets India](https://openbudgetsindia.org), [indiabudget.gov.in](https://www.indiabudget.gov.in), [Economic Survey](https://www.indiabudget.gov.in/economicsurvey/), [RBI DBIE](https://data.rbi.org.in), [RBI Monetary Policy Statements](https://www.rbi.org.in), [RBI Handbook of Statistics on Indian States](https://www.rbi.org.in), [Census of India](https://censusindia.gov.in), [NFHS](http://rchiips.org/nfhs/), [UDISE+](https://udiseplus.gov.in), [ASER](https://asercentre.org), [PLFS](https://mospi.gov.in), [MOSPI eSankhyiki API](https://api.mospi.gov.in), [NHP/CBHI](https://cbhidghs.mohfw.gov.in), [IMF CPI via DBnomics](https://db.nomics.world/IMF/CPI), [SBI/HDFC rate cards](https://sbi.co.in), and [World Bank Open Data API](https://data.worldbank.org) under the [Government Open Data License — India](https://data.gov.in/government-open-data-license-india).
 
 ---
@@ -369,7 +376,7 @@ The site is built for maximum discoverability:
 - **Prerendered HTML** for all 45 routes (37 pages + 8 embed routes, Puppeteer at build time)
 - **JSON-LD** structured data: `WebApplication`, `Dataset` x8 (Budget + Economy + RBI + States + Census + Education + Employment + Healthcare for Google Dataset Search), `BreadcrumbList`
 - **Per-route meta tags** via react-helmet-async (title, description, OG image, Twitter card, canonical)
-- **sitemap.xml** covering 45 pages + 46 downloadable data endpoints
+- **sitemap.xml** covering 45 pages + 47 downloadable data endpoints
 - **robots.txt** explicitly welcoming AI crawlers (GPTBot, ClaudeBot, PerplexityBot, Google-Extended)
 - **llms.txt** for AI model discoverability (all 8 domains + glossary terms + embed API)
 - **Noscript fallback** with real content across all eight domains for crawlers that don't execute JS
@@ -473,10 +480,10 @@ The site is built for maximum discoverability:
 - [x] States pipeline workflow (`states-pipeline.yml`) — semi-annual schedule with RBI Handbook reminder issues
 - [x] Pipeline data sources catalog (`pipeline/PIPELINE_DATA_SOURCES.md`) — all 30+ curated data constants documented
 
-**Phase 9: Key Insights & Question-First Search**
-- [ ] "Key Takeaways" card at top of each story page (3-5 stat pills with one-line annotations before scrollytelling)
-- [ ] Question-first search: curate 100 citizen questions mapped to section anchors + one-sentence answers
-- [ ] Add questions to Fuse.js search index ("Why are prices rising?" → Economy/Inflation section)
+**Phase 9: Key Insights & Question-First Search** ✓
+- [x] "Key Takeaways" stat pill strip on all 8 story pages (4 pills each, runtime-computed, scroll-to-section click, staggered entrance animation)
+- [x] 102 curated citizen questions across 8 domains (`public/data/questions.json`) with one-sentence answers mapped to section anchors
+- [x] Questions indexed in Fuse.js Cmd+K search with amber QUESTION badges ("Why are prices rising?" → `/economy#inflation`)
 
 **Phase 10: New Domains — Environment, Elections**
 - [ ] Environment domain (CPCB air quality, MOEFCC forest cover, CEA energy mix, CWC water resources)

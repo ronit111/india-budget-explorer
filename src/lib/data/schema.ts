@@ -892,3 +892,12 @@ export interface GlossaryData {
   year: string;
   terms: GlossaryTerm[];
 }
+
+export interface CitizenQuestion {
+  id: string;
+  domain: string;
+  question: string;
+  answer: string;
+  sectionId: string;
+  route: string;
+}

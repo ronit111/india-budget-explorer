@@ -14,6 +14,9 @@ import { PerCapitaSection } from '../components/budget/PerCapitaSection.tsx';
 import { CTASection } from '../components/home/CTASection.tsx';
 import { NarrativeBridge } from '../components/ui/NarrativeBridge.tsx';
 import { SkeletonChart } from '../components/ui/Skeleton.tsx';
+import { KeyTakeaways } from '../components/ui/KeyTakeaways.tsx';
+import type { TakeawayPill } from '../components/ui/KeyTakeaways.tsx';
+import { formatIndianNumber } from '../lib/format.ts';
 
 export default function BudgetPage() {
   const year = useBudgetStore((s) => s.selectedYear);
@@ -78,6 +81,22 @@ export default function BudgetPage() {
 
       {/* Hero — the headline number */}
       <HeroSection summary={summary} />
+
+      {/* Key Takeaways — quick-scan stat pills */}
+      <KeyTakeaways
+        accent="#FF6B35"
+        pills={(() => {
+          const paisaBorrowed = 100 - Math.round((summary.totalReceipts / summary.totalExpenditure) * 100);
+          const perCapitaTax = Math.round((summary.totalReceipts * 10000000) / summary.population);
+          const lakhCr = (summary.totalExpenditure / 100000).toFixed(2);
+          return [
+            { value: `₹${Math.round(summary.perCapitaDailyExpenditure)}/day`, label: 'What govt. spends on you, daily', sectionId: 'percapita' },
+            { value: `${paisaBorrowed} paise`, label: 'Of every rupee spent, borrowed', sectionId: 'deficit' },
+            { value: `₹${lakhCr}L Cr`, label: 'The whole budget, in one number', sectionId: 'flow' },
+            { value: `₹${formatIndianNumber(perCapitaTax)}/yr`, label: 'Your average tax contribution', sectionId: 'revenue' },
+          ] as TakeawayPill[];
+        })()}
+      />
 
       {/* 01 Revenue — where money comes from */}
       <div className="composition-divider" />

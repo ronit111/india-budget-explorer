@@ -16,7 +16,7 @@ function HubHero() {
   const subtitleOpacity = useTransform(scrollY, [0, 300], [1, 0]);
 
   return (
-    <section className="min-h-screen flex flex-col justify-center relative overflow-hidden">
+    <section className="min-h-screen flex flex-col justify-center relative overflow-hidden pt-16">
       {/* Radial glow */}
       <div
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none"

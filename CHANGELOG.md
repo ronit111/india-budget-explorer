@@ -1,5 +1,35 @@
 # Changelog
 
+## [0.13.0] - 2026-03-01
+
+### Phase 9: Key Insights & Question-First Search
+
+**Key Takeaways Component**
+- New `KeyTakeaways` component (`src/components/ui/KeyTakeaways.tsx`) — stat pill strip between Hero and first scrollytelling section on all 8 story pages
+- 4 pills per domain (32 total), each showing a headline stat with citizen-friendly label and scroll-to-section click behavior
+- All values computed at runtime from summary data (never hardcoded)
+- Staggered fade-in entrance animation via `useScrollTrigger` + Framer Motion
+- Domain accent color on left border (saffron for Budget, cyan for Economy/RBI, emerald for States, violet for Census, blue for Education, amber for Employment, rose for Healthcare)
+- Responsive: 2-column grid on mobile, flex-wrap row on desktop
+
+**Question-First Search**
+- 102 curated citizen questions across 8 domains (`public/data/questions.json`)
+- Questions phrased in natural citizen language: "Why are prices rising?", "How much does the government spend on me per day?", "Which is the richest state in India?"
+- Each question mapped to a specific story page section with a one-sentence answer grounded in actual portal data
+- `CitizenQuestion` interface added to `schema.ts`, `loadQuestions()` added to `dataLoader.ts`
+- Search overlay (`SearchOverlay.tsx`) extended with `'question'` type, amber badge styling, and question indexing via Fuse.js
+- Updated search placeholder: "Ask a question, or search ministries, schemes, terms..."
+
+**Coverage by domain:**
+- Budget: 13 questions (expenditure, revenue, deficit, per-capita, trends, subsidies)
+- Economy: 13 questions (GDP, inflation, sectors, trade, debt sustainability)
+- RBI: 13 questions (repo rate, EMI impact, forex, CRR, inflation targeting)
+- States: 13 questions (GSDP, per capita, growth, fiscal health, tax redistribution)
+- Census: 13 questions (population, literacy, sex ratio, urbanization, mortality)
+- Education: 12 questions (spending, learning quality, dropout, teachers, enrollment)
+- Employment: 13 questions (unemployment, youth, gender gap, informality, sectoral)
+- Healthcare: 12 questions (hospital beds, spending, OOP costs, vaccination, disease burden)
+
 ## [0.12.0] - 2026-03-01
 
 ### Phase 8: "Make It Personal" Engine
