@@ -95,6 +95,36 @@ const VARIANTS = [
     cornerBR: 'rgba(251,113,133,0.2)',
     glowColor: 'rgba(244,63,94,0.08)',
   },
+  {
+    filename: 'og-emi-calculator.png',
+    title: 'EMI Impact Calculator',
+    tagline: 'How RBI repo rate changes affect your home, car, or personal loan EMI',
+    accentFrom: '#FFC857',
+    accentTo: '#FF6B35',
+    cornerTL: 'rgba(255,200,87,0.25)',
+    cornerBR: 'rgba(255,107,53,0.2)',
+    glowColor: 'rgba(255,200,87,0.08)',
+  },
+  {
+    filename: 'og-cost-of-living.png',
+    title: 'Cost of Living Calculator',
+    tagline: 'How CPI inflation has changed what your money buys — by expense category',
+    accentFrom: '#4AEADC',
+    accentTo: '#FFC857',
+    cornerTL: 'rgba(74,234,220,0.25)',
+    cornerBR: 'rgba(255,200,87,0.2)',
+    glowColor: 'rgba(74,234,220,0.08)',
+  },
+  {
+    filename: 'og-state-report-card.png',
+    title: 'State Report Card',
+    tagline: 'How does your state rank across economy, education, health, and more?',
+    accentFrom: '#4ADE80',
+    accentTo: '#86EFAC',
+    cornerTL: 'rgba(74,222,128,0.25)',
+    cornerBR: 'rgba(134,239,172,0.2)',
+    glowColor: 'rgba(74,222,128,0.08)',
+  },
 ];
 
 function buildHTML(variant) {

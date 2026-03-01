@@ -127,6 +127,9 @@ export function SearchOverlay() {
     { type: 'page', id: 'healthcare-explore', name: 'Healthcare Explorer', subtitle: 'Browse health indicators by state', route: '/healthcare/explore' },
     { type: 'page', id: 'healthcare-methodology', name: 'Healthcare Methodology', subtitle: 'NHP, NFHS-5, and World Bank data sources', route: '/healthcare/methodology' },
     { type: 'page', id: 'healthcare-glossary', name: 'Healthcare Glossary', subtitle: 'Healthcare terms in plain language', route: '/healthcare/glossary' },
+    { type: 'page', id: 'emi-calculator', name: 'EMI Calculator', subtitle: 'How repo rate changes affect your loan EMI', route: '/rbi/calculator' },
+    { type: 'page', id: 'cost-of-living', name: 'Cost of Living Calculator', subtitle: 'How inflation changed your spending power', route: '/economy/calculator' },
+    { type: 'page', id: 'state-report-card', name: 'State Report Card', subtitle: 'Your state ranked across 6 domains', route: '/states/your-state' },
   );
   // Glossary terms
   searchItems.push(...glossaryTerms);

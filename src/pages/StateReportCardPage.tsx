@@ -20,6 +20,7 @@ import {
 import { StateSelector } from '../components/personalization/StateSelector.tsx';
 import { ReportCardGrid } from '../components/report-card/ReportCardGrid.tsx';
 import { SEOHead } from '../components/seo/SEOHead.tsx';
+import { ReportShareCard } from '../components/report-card/ReportShareCard.tsx';
 import { SkeletonChart, SkeletonText } from '../components/ui/Skeleton.tsx';
 
 const stagger = {
@@ -100,7 +101,7 @@ export default function StateReportCardPage() {
         title={`${report.state.name} — State Report Card`}
         description={`How does ${report.state.name} compare to other states? See rankings across economy, budget, education, healthcare, and more.`}
         path="/states/your-state"
-        image="/og-states.png"
+        image="/og-state-report-card.png"
       />
 
       {/* Page header */}
@@ -168,6 +169,10 @@ export default function StateReportCardPage() {
       {/* Report card grid */}
       <div className="max-w-4xl mx-auto px-6 sm:px-8 pb-16">
         <ReportCardGrid report={report} />
+
+        <div className="flex justify-center mt-8">
+          <ReportShareCard report={report} />
+        </div>
 
         <p className="text-xs text-center mt-12" style={{ color: 'var(--text-muted)' }}>
           Sources: RBI Handbook (GSDP, Revenue, Fiscal Health), Census 2011 + NPC 2026 (Demographics),

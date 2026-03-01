@@ -8,6 +8,7 @@ import type { InflationData } from '../lib/data/schema.ts';
 import { SEOHead } from '../components/seo/SEOHead.tsx';
 import { ExpenseInput } from '../components/cost-of-living/ExpenseInput.tsx';
 import { InflationImpactDisplay } from '../components/cost-of-living/InflationImpactDisplay.tsx';
+import { CostShareCard } from '../components/cost-of-living/CostShareCard.tsx';
 import { SkeletonChart, SkeletonText } from '../components/ui/Skeleton.tsx';
 
 const stagger = {
@@ -86,7 +87,7 @@ export default function CostOfLivingPage() {
         title="Cost of Living Calculator — How Inflation Affects Your Expenses"
         description="See how CPI inflation has changed the real cost of your monthly expenses. Compare your spending power across years."
         path="/economy/calculator"
-        image="/og-economy.png"
+        image="/og-cost-of-living.png"
       />
 
       {/* Page header */}
@@ -189,6 +190,10 @@ export default function CostOfLivingPage() {
               />
             </div>
           </motion.div>
+
+          <div className="flex justify-center mt-8">
+            <CostShareCard result={result} fromYear={comparisonYear} toYear={latestYear} />
+          </div>
 
           <p className="text-xs text-center mt-12" style={{ color: 'var(--text-muted)' }}>
             Source: CPI (Combined) from MOSPI via World Bank + IMF CPI by COICOP division (db.nomics.world).

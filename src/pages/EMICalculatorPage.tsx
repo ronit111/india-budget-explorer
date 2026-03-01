@@ -8,6 +8,7 @@ import { SEOHead } from '../components/seo/SEOHead.tsx';
 import { EMIInputPanel } from '../components/emi/EMIInputPanel.tsx';
 import { EMIBreakdownDisplay } from '../components/emi/EMIBreakdownDisplay.tsx';
 import { RateImpactViz } from '../components/emi/RateImpactViz.tsx';
+import { EMIShareCard } from '../components/emi/EMIShareCard.tsx';
 import { SkeletonChart, SkeletonText } from '../components/ui/Skeleton.tsx';
 
 const stagger = {
@@ -73,7 +74,7 @@ export default function EMICalculatorPage() {
         title="EMI Impact Calculator — How RBI Rate Changes Affect Your Loan"
         description="See how repo rate changes affect your home, car, or personal loan EMI. Calculate monthly payments and understand the real cost of borrowing."
         path="/rbi/calculator"
-        image="/og-rbi.png"
+        image="/og-emi-calculator.png"
       />
 
       {/* Page header */}
@@ -166,6 +167,16 @@ export default function EMICalculatorPage() {
               <RateImpactViz impact={rateImpact} />
             </div>
           </motion.div>
+        </div>
+
+        <div className="flex justify-center mt-8">
+          <EMIShareCard
+            breakdown={breakdown}
+            loanType={loanType}
+            loanAmount={loanAmount}
+            tenureYears={tenureYears}
+            repoRate={repoRate}
+          />
         </div>
 
         <p className="text-xs text-center mt-12" style={{ color: 'var(--text-muted)' }}>

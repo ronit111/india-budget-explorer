@@ -79,6 +79,18 @@ Nine GitHub Actions workflows keep data fresh without manual intervention:
 
 Never report a fix as complete based only on build + grep.
 
+## Pre-Final: Code-Level QA Audit (Codex)
+Before the citizen-perspective review, run a comprehensive automated code audit using Codex CLI (`codex exec --full-auto`). This catches structural issues that are invisible during browser QA:
+1. **Schema alignment**: Verify every Pydantic validation schema in `pipeline/src/*/validate/schemas.py` matches its TypeScript counterpart in `src/lib/data/schema.ts`. Mismatches cause silent data loss.
+2. **State ID consistency**: All state IDs across all 14 JSON files must use uppercase vehicle registration (RTO) codes. Grep for lowercase IDs or ISO codes (`or`, `ct`, `tg`).
+3. **Route registration**: Cross-check `App.tsx` routes, `prerender.mjs` ROUTES, `sitemap.xml` URLs, `Header.tsx` tabs, and `MobileNav.tsx` tabs are all in sync.
+4. **Import integrity**: Check for broken imports, circular dependencies, and stale references (components that reference deleted files or renamed exports).
+5. **Calculation engine correctness**: Audit `emiEngine.ts`, `costOfLivingEngine.ts`, `stateReportEngine.ts` for edge cases (zero values, missing data, division by zero).
+6. **Pipeline validation**: Run all 8 pipelines locally and verify JSON output passes Pydantic validation. Cross-check 3-5 key figures per domain against authoritative sources.
+7. **Security**: Check user-facing inputs (sliders, selects, text fields) for XSS, injection, or OWASP top 10 vulnerabilities.
+
+This is a one-time audit run by Codex, not a per-change check. It sits between feature completion and the citizen-perspective review.
+
 ## Final QA — Citizen Perspective (when project scope is complete)
 When all planned data domains are built and the project is considered "done," run a comprehensive QA pass from the perspective of an average Indian citizen visiting the portal for the first time. Evaluate:
 1. **Clarity**: Is every section, label, and number understandable without domain expertise? Would a non-economist understand what "fiscal deficit" or "repo rate" means in context?

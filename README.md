@@ -493,6 +493,16 @@ The site is built for maximum discoverability:
 - [ ] "For Teachers" section (lesson plans, classroom mode with larger fonts and slide-by-slide navigation)
 - [ ] Contributor guide for data journalists and civic organizations
 
+**Pre-Final: Code-Level QA Audit (Codex)**
+- [ ] End-to-end automated code audit via Codex CLI (`codex exec --full-auto`)
+- [ ] Verify all JSON pipeline outputs match TypeScript schema interfaces (Pydantic ↔ TypeScript alignment)
+- [ ] Check for broken imports, stale references, dead code across all 8 domains + personalization
+- [ ] Validate data integrity: state ID consistency (uppercase vehicle codes), cross-domain ID matching
+- [ ] Audit calculation engines (EMI, cost-of-living, state report card) for edge cases and correctness
+- [ ] Verify all route registrations match (App.tsx, prerender.mjs, sitemap.xml, Header tabs, MobileNav tabs)
+- [ ] Check for security issues: XSS in user inputs, OWASP top 10
+- [ ] Pipeline validation: run all 8 pipelines locally, verify JSON output, cross-check key figures against sources
+
 **Final: Citizen-Perspective QA**
 - [ ] Full product review from the perspective of an average Indian citizen (per CLAUDE.md Final QA protocol)
 

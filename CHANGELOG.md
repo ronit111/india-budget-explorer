@@ -67,6 +67,16 @@
 - `src/pages/CostOfLivingPage.tsx` — Route component for `/economy/calculator`
 - `src/pages/StateReportCardPage.tsx` — Route component for `/states/your-state`
 - `public/data/emi/loan-spreads.json` — Curated loan spreads from bank rate cards
+- `src/components/emi/EMIShareCard.tsx` — Canvas 1200x630 share card: loan details, EMI, rate impact scenarios
+- `src/components/cost-of-living/CostShareCard.tsx` — Canvas share card: then vs now, cumulative inflation, category breakdown
+- `src/components/report-card/ReportShareCard.tsx` — Canvas share card: state name, key metrics with rank badges
+
+**SEO & Discoverability**
+- 3 dedicated OG images: `og-emi-calculator.png`, `og-cost-of-living.png`, `og-state-report-card.png`
+- SearchOverlay: 3 calculator pages added to search index (EMI Calculator, Cost of Living, State Report Card)
+- Noscript fallback: personalization tools section added to `index.html` with calculator links
+- JSON-LD BreadcrumbList: 3 calculator entries added (positions 35-37)
+- JSON-LD WebApplication featureList: 3 personalization feature descriptions added
 
 **Modified Files**
 - `src/lib/stateMapping.ts` — `OR→OD` for Odisha in `ALL_STATE_CODES` and `BUDGET_CODE_TO_TOPO_NAME`
