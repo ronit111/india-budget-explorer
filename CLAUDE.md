@@ -217,17 +217,14 @@ These are recurring polish tasks that should be checked after every domain build
 
 ## Future Phases — Planned Audits
 
-### Creative Visualization Audit
-After all data domains are built, conduct a full audit of every visualization across the portal. The goal: ensure the portal doesn't skew toward a monotonous wall of charts. For each section, ask: "Is a standard bar/line chart the best way to tell this story, or would a waffle, cartogram, unit chart, radial, slope chart, or novel approach create more engagement?"
+### Design & Visualization Overhaul (Phase 13)
+**Full brief in `BRAND.md` → "Design & Visualization Audit Brief" section.** This is a full overhaul covering:
+1. **Typography**: Replace Inter with a warm humanist sans-serif. Evaluate on actual portal sections, not abstract specimens. Direction: warm + accessible (Guardian data section vibe).
+2. **Visualization density**: Audit every section across all 10 domains. Replace low-density charts (>8 items in bar charts creating endless scroll) with high-density alternatives — choropleths, dot strips, scatter plots, small multiples, treemaps. Principle: a viz should show a pattern in 2 seconds that takes 30 seconds to read from a list.
+3. **Brand consistency**: Spacing tokens, card styles, hero patterns, accent harmony, source attributions — holistic audit across all domains.
+4. **New components needed**: Choropleth, DotStrip, ScatterChart, BumpChart, SmallMultiples, BulletChart.
 
-Audit scope:
-- [ ] Budget: treemap, sankey, waffle already creative. Check if any sections could benefit from alternatives.
-- [ ] Economy: currently line/area charts. GDP composition could use a waffle or stacked waterfall.
-- [ ] RBI: monetary policy timeline could be a connected dot plot or decision tree instead of a line chart.
-- [ ] States: horizontal bars are functional but repetitive across 5 sections. Consider choropleth maps, slope charts (growth leaders vs. laggards), butterfly charts (revenue: own vs. central), or scatter plots (per capita vs. growth).
-- [ ] Census (when built): population cartogram, literacy gender gap butterfly chart, urbanization shift sankey.
-
-This audit should happen as a dedicated phase, not piecemeal. Document findings in a `VISUALIZATION_AUDIT.md` and implement changes domain by domain.
+This happens after Phase 12 (Multiplier Infrastructure) and before the Codex QA audit. Use design agents (`frontend-design` skill + agent-router for UI/UX specialists) for typography selection and visualization proposals.
 
 ### Cross-Domain Linking Audit
 Evaluate opportunities to weave connections between domains so users can naturally navigate related data. Examples:

@@ -555,6 +555,13 @@ The site is built for maximum discoverability:
 - [ ] "For Teachers" section (lesson plans, classroom mode with larger fonts and slide-by-slide navigation)
 - [ ] Contributor guide for data journalists and civic organizations
 
+**Phase 13: Design & Visualization Overhaul** *(see BRAND.md audit brief)*
+- [ ] Typography overhaul: replace Inter with warm humanist sans-serif (warm + accessible direction). Evaluate body + heading + mono combinations on actual portal sections.
+- [ ] Visualization density audit: walk every section of every domain, identify low-density charts (>8 items in bar charts), propose high-density alternatives (choropleths, dot strips, scatter plots, small multiples, treemaps)
+- [ ] New viz components: `Choropleth.tsx` (India state map), `DotStrip.tsx`, `ScatterChart.tsx`, `BumpChart.tsx`, `SmallMultiples.tsx`, `BulletChart.tsx`
+- [ ] Brand consistency pass: audit spacing, card styles, hero patterns, accent harmony, source attributions, mobile consistency across all 10 domains
+- [ ] Implementation + browser QA for every changed section
+
 **Pre-Final: Code-Level QA Audit (Codex)**
 - [ ] End-to-end automated code audit via Codex CLI (`codex exec --full-auto`)
 - [ ] Verify all JSON pipeline outputs match TypeScript schema interfaces (Pydantic ↔ TypeScript alignment)
