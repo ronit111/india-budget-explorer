@@ -47,10 +47,23 @@ class InflationSeries(BaseModel):
     cpiCore: float | None = None
 
 
+class CPICategoryPoint(BaseModel):
+    period: str
+    value: float
+
+
+class CPICategoryEntry(BaseModel):
+    division: str  # COICOP code: '01', '04', '06', '07', '10'
+    name: str
+    source: str
+    series: list[CPICategoryPoint]
+
+
 class InflationData(BaseModel):
     year: str
     targetBand: dict  # {lower: float, upper: float}
     series: list[InflationSeries]
+    cpiByCategory: list[CPICategoryEntry] = []
     source: str
 
 

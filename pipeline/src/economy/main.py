@@ -16,6 +16,7 @@ from pathlib import Path
 # Set up path so we can import our modules
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent))
 
+from src.economy.sources.mospi import fetch_cpi_by_category
 from src.economy.sources.world_bank import fetch_multiple
 from src.economy.transform.gdp import build_gdp_growth
 from src.economy.transform.inflation import build_inflation
@@ -80,8 +81,16 @@ def run_economy_pipeline():
     gdp_growth_data = build_gdp_growth(wb_data.get("gdp_growth", []), SURVEY_YEAR)
     logger.info(f"  gdp-growth.json: {len(gdp_growth_data['series'])} data points")
 
-    # 2b. Inflation
-    inflation_data = build_inflation(wb_data.get("inflation_cpi", []), SURVEY_YEAR)
+    # 2b. Inflation (+ MOSPI group-wise CPI for cost-of-living calculator)
+    logger.info("  Fetching MOSPI eSankhyiki CPI by category...")
+    mospi_cpi = fetch_cpi_by_category(start_fy="2019-20")
+    if mospi_cpi:
+        logger.info(f"  MOSPI: {len(mospi_cpi)} COICOP divisions fetched from API")
+    else:
+        logger.info("  MOSPI: API unavailable, using curated fallback")
+    inflation_data = build_inflation(
+        wb_data.get("inflation_cpi", []), SURVEY_YEAR, mospi_cpi
+    )
     logger.info(f"  inflation.json: {len(inflation_data['series'])} data points")
 
     # 2c. Fiscal (curated from Survey/Budget documents)

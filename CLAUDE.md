@@ -8,9 +8,9 @@ Open data platform for Indian citizens. V1 of the broader **India Truth Engine**
 ## Site Architecture — Hub + Data Domains
 - **`/` (Hub)**: Visual portal showcasing all data domains. Not a dashboard — a curated data story showcase.
 - **`/budget` (Budget Domain)**: Union Budget 2025-26 scrollytelling. Sub-routes: `/budget/explore`, `/budget/calculator`, `/budget/methodology`, `/budget/glossary`.
-- **`/economy` (Economy Domain)**: Economic Survey 2025-26 scrollytelling. Sub-routes: `/economy/explore`, `/economy/methodology`, `/economy/glossary`.
-- **`/rbi` (RBI Domain)**: RBI monetary policy and financial data. Sub-routes: `/rbi/explore`, `/rbi/methodology`, `/rbi/glossary`.
-- **`/states` (State Finances Domain)**: State-level GSDP, revenue, fiscal health. Sub-routes: `/states/explore`, `/states/methodology`, `/states/glossary`.
+- **`/economy` (Economy Domain)**: Economic Survey 2025-26 scrollytelling. Sub-routes: `/economy/explore`, `/economy/calculator`, `/economy/methodology`, `/economy/glossary`.
+- **`/rbi` (RBI Domain)**: RBI monetary policy and financial data. Sub-routes: `/rbi/explore`, `/rbi/calculator`, `/rbi/methodology`, `/rbi/glossary`.
+- **`/states` (State Finances Domain)**: State-level GSDP, revenue, fiscal health. Sub-routes: `/states/explore`, `/states/your-state`, `/states/methodology`, `/states/glossary`.
 - **`/census` (Census & Demographics Domain)**: Population, literacy, health, age structure, urbanization. Sub-routes: `/census/explore`, `/census/methodology`, `/census/glossary`.
 - **`/education` (Education Domain)**: Enrollment, quality, dropout, learning outcomes, spending. Sub-routes: `/education/explore`, `/education/methodology`, `/education/glossary`.
 - **`/employment` (Employment Domain)**: LFPR, unemployment, sectoral shifts, informality. Sub-routes: `/employment/explore`, `/employment/methodology`, `/employment/glossary`.
@@ -28,6 +28,15 @@ Open data platform for Indian citizens. V1 of the broader **India Truth Engine**
 - **WhatsApp share cards** (`src/lib/shareCard.ts`): 1200×630 Canvas with hero stat, domain accent, deep link URL. Tries Web Share API, falls back to download.
 - **URL state** (`src/hooks/useUrlState.ts`): Bidirectional Zustand↔URLSearchParams sync. URL wins on mount (deep linking), store wins after. All 8 explorer pages wired. All scrollytelling sections have `id` attributes for `#hash` anchors.
 
+## Personalization Engine (Phase 8)
+- **Personalization store** (`src/store/personalizationStore.ts`): Global Zustand store with `persist` middleware (localStorage). Holds `selectedStateId` (uppercase vehicle code), `selectedStateName`, `householdSize`. All calculators and the banner read from this store.
+- **State ID standard**: All pipelines use uppercase vehicle registration (RTO) codes (MH, UP, KA). Three differ from ISO 3166-2: Odisha=OD, Chhattisgarh=CG, Telangana=TS. Mapping in `src/lib/stateMapping.ts`.
+- **EMI engine** (`src/lib/emiEngine.ts`): Pure functions — `calculateEMI()`, `calculateRateImpact()`, `getEffectiveRate()`. Standard formula with edge cases (zero principal, zero rate). Rate impact generates 5 scenarios at ±50/25/0 bps.
+- **Cost-of-living engine** (`src/lib/costOfLivingEngine.ts`): CPI-based deflation using cumulative multiplier. Category-specific COICOP CPI where available (Food 01, Housing 04, Health 06, Transport 07, Education 10), headline CPI fallback. Gap detection in `cumulativeMultiplier` prevents incorrect computation for non-consecutive years.
+- **State report engine** (`src/lib/stateReportEngine.ts`): Cross-domain aggregation from 12 JSON files. `buildReportCard()` returns 9 domain panels with ~25 metrics, ranks, quartiles. `Promise.allSettled` for partial data loading.
+- **CPI by category**: `inflation.json` includes `cpiByCategory` array with 5 COICOP divisions. Three-tier sourcing: IMF/DBnomics baseline (2014-19), MOSPI eSankhyiki API live data (2019+, `api.mospi.gov.in/api/cpi/getCPIIndex`, no auth), curated fallback if API unreachable.
+- **Personalization banner** (`src/components/personalization/PersonalizationBanner.tsx`): 40px bar below header on scrollytelling pages. Shows state + domain-specific stat. Dismissable via localStorage.
+
 ## Deliberate Decisions
 - **i18n removed**: Infrastructure exists (i18n.ts, LanguageSwitcher, LanguageProvider, Hindi locale files) but is not wired. Browser auto-translate preferred over dev overhead. Don't re-wire without explicit ask.
 - **No decorative chrome**: Data IS the design. No card wrappers around visualizations, no unnecessary UI furniture.
@@ -39,15 +48,18 @@ Open data platform for Indian citizens. V1 of the broader **India Truth Engine**
 - If data doesn't exist for a planned feature, the feature waits. No exceptions.
 
 ## Automated Data Pipelines
-Four GitHub Actions workflows keep data fresh without manual intervention:
+Nine GitHub Actions workflows keep data fresh without manual intervention:
 - **Budget** (`data-pipeline.yml`): Daily cron + Budget Day polling (Feb 1). Source: CKAN API.
-- **Economy** (`economy-pipeline.yml`): Quarterly (Feb, Mar, Jun, Dec) aligned to NSO/Survey/WB release cycles. Source: World Bank API + curated Economic Survey figures.
+- **Economy** (`economy-pipeline.yml`): Quarterly (Feb, Mar, Jun, Dec) aligned to NSO/Survey/WB release cycles. Source: World Bank API + MOSPI eSankhyiki CPI API + curated Economic Survey figures.
 - **RBI** (`rbi-pipeline.yml`): Bi-monthly (10th of Feb/Apr/Jun/Aug/Oct/Dec) aligned to MPC meeting schedule. Source: World Bank API + curated MPC decisions.
+- **States** (`states-pipeline.yml`): Semi-annual (Jan 15, Jul 15) aligned to RBI Handbook publication (~Aug-Sep). Source: curated RBI Handbook data. Creates GitHub reminder issues in July for upcoming Handbook releases.
 - **Census** (`census-pipeline.yml`): Quarterly (15th of Jan/Apr/Jul/Oct). Source: World Bank API + curated Census 2011/NPC 2026/NFHS-5/SRS 2022. Curated data (NFHS-5, SRS, Census 2011) is static until new surveys publish.
 - **Education** (`education-pipeline.yml`): Quarterly (15th of Jan/Apr/Jul/Oct). Source: World Bank API + curated UDISE+ 2023-24 + ASER 2024.
 - **Employment** (`employment-pipeline.yml`): Quarterly (1st of Mar/Jun/Sep/Dec) aligned to PLFS release schedule. Source: World Bank API + curated PLFS state data + RBI KLEMS.
 - **Healthcare** (`healthcare-pipeline.yml`): Quarterly (15th of Feb/May/Aug/Nov). Source: World Bank API + curated NHP 2022 + NFHS-5 immunization.
 - **Freshness Monitor** (`data-freshness-monitor.yml`): Monthly check. Auto-creates GitHub issues for stale data, MPC decision reminders, Survey/Budget prep reminders. Covers all 8 domains.
+
+**Shared pipeline infrastructure**: All 6 World Bank-sourced pipelines share `pipeline/src/common/world_bank.py` (retry with exponential backoff, HTTPError handling, configurable precision). Domain-specific files in `pipeline/src/{domain}/sources/world_bank.py` are thin wrappers with only `INDICATORS` dict and precision config. See `pipeline/PIPELINE_DATA_SOURCES.md` for the full catalog of 30+ curated data constants.
 
 **Curated data** (MPC decisions in `monetary_policy.py`, fiscal deficit series in `fiscal.py`, Economic Survey headline numbers in `main.py`, NFHS-5/SRS health data in `curated.py`) requires human updates when government publications drop. The freshness monitor creates reminder issues for these.
 

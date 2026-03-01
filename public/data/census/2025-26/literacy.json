@@ -140,7 +140,7 @@
   ],
   "states": [
     {
-      "id": "up",
+      "id": "UP",
       "name": "Uttar Pradesh",
       "overallRate": 67.68,
       "maleRate": 77.28,
@@ -148,7 +148,7 @@
       "genderGap": 20.1
     },
     {
-      "id": "mh",
+      "id": "MH",
       "name": "Maharashtra",
       "overallRate": 82.34,
       "maleRate": 88.38,
@@ -156,7 +156,7 @@
       "genderGap": 12.51
     },
     {
-      "id": "br",
+      "id": "BR",
       "name": "Bihar",
       "overallRate": 61.8,
       "maleRate": 71.2,
@@ -164,7 +164,7 @@
       "genderGap": 19.7
     },
     {
-      "id": "wb",
+      "id": "WB",
       "name": "West Bengal",
       "overallRate": 76.26,
       "maleRate": 81.69,
@@ -172,7 +172,7 @@
       "genderGap": 11.15
     },
     {
-      "id": "mp",
+      "id": "MP",
       "name": "Madhya Pradesh",
       "overallRate": 69.32,
       "maleRate": 78.73,
@@ -180,7 +180,7 @@
       "genderGap": 19.49
     },
     {
-      "id": "tn",
+      "id": "TN",
       "name": "Tamil Nadu",
       "overallRate": 80.09,
       "maleRate": 86.77,
@@ -188,7 +188,7 @@
       "genderGap": 13.33
     },
     {
-      "id": "rj",
+      "id": "RJ",
       "name": "Rajasthan",
       "overallRate": 66.11,
       "maleRate": 79.19,
@@ -196,7 +196,7 @@
       "genderGap": 27.07
     },
     {
-      "id": "ka",
+      "id": "KA",
       "name": "Karnataka",
       "overallRate": 75.36,
       "maleRate": 82.47,
@@ -204,7 +204,7 @@
       "genderGap": 14.39
     },
     {
-      "id": "gj",
+      "id": "GJ",
       "name": "Gujarat",
       "overallRate": 78.03,
       "maleRate": 85.75,
@@ -212,7 +212,7 @@
       "genderGap": 16.07
     },
     {
-      "id": "ap",
+      "id": "AP",
       "name": "Andhra Pradesh",
       "overallRate": 67.02,
       "maleRate": 74.88,
@@ -220,7 +220,7 @@
       "genderGap": 15.73
     },
     {
-      "id": "od",
+      "id": "OD",
       "name": "Odisha",
       "overallRate": 72.87,
       "maleRate": 81.59,
@@ -228,7 +228,7 @@
       "genderGap": 17.58
     },
     {
-      "id": "tg",
+      "id": "TS",
       "name": "Telangana",
       "overallRate": 66.46,
       "maleRate": 74.95,
@@ -236,7 +236,7 @@
       "genderGap": 17.03
     },
     {
-      "id": "kl",
+      "id": "KL",
       "name": "Kerala",
       "overallRate": 93.91,
       "maleRate": 96.02,
@@ -244,7 +244,7 @@
       "genderGap": 4.04
     },
     {
-      "id": "jh",
+      "id": "JH",
       "name": "Jharkhand",
       "overallRate": 66.41,
       "maleRate": 76.84,
@@ -252,7 +252,7 @@
       "genderGap": 21.42
     },
     {
-      "id": "as",
+      "id": "AS",
       "name": "Assam",
       "overallRate": 72.19,
       "maleRate": 77.85,
@@ -260,7 +260,7 @@
       "genderGap": 11.58
     },
     {
-      "id": "pb",
+      "id": "PB",
       "name": "Punjab",
       "overallRate": 75.84,
       "maleRate": 80.44,
@@ -268,7 +268,7 @@
       "genderGap": 9.71
     },
     {
-      "id": "ct",
+      "id": "CG",
       "name": "Chhattisgarh",
       "overallRate": 70.28,
       "maleRate": 80.27,
@@ -276,7 +276,7 @@
       "genderGap": 20.03
     },
     {
-      "id": "hr",
+      "id": "HR",
       "name": "Haryana",
       "overallRate": 75.55,
       "maleRate": 84.06,
@@ -284,7 +284,7 @@
       "genderGap": 18.12
     },
     {
-      "id": "jk",
+      "id": "JK",
       "name": "Jammu & Kashmir",
       "overallRate": 67.16,
       "maleRate": 76.75,
@@ -292,7 +292,7 @@
       "genderGap": 20.32
     },
     {
-      "id": "uk",
+      "id": "UK",
       "name": "Uttarakhand",
       "overallRate": 78.82,
       "maleRate": 87.4,
@@ -300,7 +300,7 @@
       "genderGap": 17.39
     },
     {
-      "id": "hp",
+      "id": "HP",
       "name": "Himachal Pradesh",
       "overallRate": 82.8,
       "maleRate": 89.53,
@@ -308,7 +308,7 @@
       "genderGap": 13.6
     },
     {
-      "id": "tr",
+      "id": "TR",
       "name": "Tripura",
       "overallRate": 87.22,
       "maleRate": 91.53,
@@ -316,7 +316,7 @@
       "genderGap": 8.8
     },
     {
-      "id": "ml",
+      "id": "ML",
       "name": "Meghalaya",
       "overallRate": 74.43,
       "maleRate": 76.0,
@@ -324,7 +324,7 @@
       "genderGap": 3.11
     },
     {
-      "id": "mn",
+      "id": "MN",
       "name": "Manipur",
       "overallRate": 79.85,
       "maleRate": 86.49,
@@ -332,7 +332,7 @@
       "genderGap": 13.32
     },
     {
-      "id": "nl",
+      "id": "NL",
       "name": "Nagaland",
       "overallRate": 79.55,
       "maleRate": 82.75,
@@ -340,7 +340,7 @@
       "genderGap": 6.64
     },
     {
-      "id": "ga",
+      "id": "GA",
       "name": "Goa",
       "overallRate": 88.7,
       "maleRate": 92.65,
@@ -348,7 +348,7 @@
       "genderGap": 7.99
     },
     {
-      "id": "ar",
+      "id": "AR",
       "name": "Arunachal Pradesh",
       "overallRate": 65.38,
       "maleRate": 72.55,
@@ -356,7 +356,7 @@
       "genderGap": 14.85
     },
     {
-      "id": "mz",
+      "id": "MZ",
       "name": "Mizoram",
       "overallRate": 91.33,
       "maleRate": 93.35,
@@ -364,7 +364,7 @@
       "genderGap": 4.08
     },
     {
-      "id": "sk",
+      "id": "SK",
       "name": "Sikkim",
       "overallRate": 81.42,
       "maleRate": 86.55,
@@ -372,7 +372,7 @@
       "genderGap": 10.94
     },
     {
-      "id": "dl",
+      "id": "DL",
       "name": "Delhi",
       "overallRate": 86.21,
       "maleRate": 90.94,
@@ -380,7 +380,7 @@
       "genderGap": 10.18
     },
     {
-      "id": "py",
+      "id": "PY",
       "name": "Puducherry",
       "overallRate": 85.85,
       "maleRate": 91.26,
@@ -388,7 +388,7 @@
       "genderGap": 10.59
     },
     {
-      "id": "ch",
+      "id": "CH",
       "name": "Chandigarh",
       "overallRate": 86.05,
       "maleRate": 90.54,
@@ -396,7 +396,7 @@
       "genderGap": 9.16
     },
     {
-      "id": "an",
+      "id": "AN",
       "name": "Andaman & Nicobar",
       "overallRate": 86.27,
       "maleRate": 90.11,
@@ -404,7 +404,7 @@
       "genderGap": 8.27
     },
     {
-      "id": "dn",
+      "id": "DN",
       "name": "Dadra & Nagar Haveli",
       "overallRate": 76.24,
       "maleRate": 85.17,
@@ -412,7 +412,7 @@
       "genderGap": 20.85
     },
     {
-      "id": "dd",
+      "id": "DD",
       "name": "Daman & Diu",
       "overallRate": 87.07,
       "maleRate": 91.48,
@@ -420,7 +420,7 @@
       "genderGap": 11.89
     },
     {
-      "id": "ld",
+      "id": "LD",
       "name": "Lakshadweep",
       "overallRate": 91.85,
       "maleRate": 95.56,

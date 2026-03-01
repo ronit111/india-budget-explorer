@@ -68,7 +68,7 @@ jobs:
           git add public/data/economy/
           git commit -m "data: update economy data $(date +%Y-%m-%d)
 
-          Automated pipeline run. Sources: World Bank API + Economic Survey.
+          Automated pipeline run. Sources: World Bank API + Economic Survey + MOSPI eSankhyiki CPI.
           Triggered by: ${{ github.event_name }}"
           git push
 

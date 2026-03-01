@@ -1,0 +1,126 @@
+name: State Finances Pipeline
+
+# ── Schedule: semi-annual — aligned to RBI Handbook release ──────────
+# State fiscal data comes from the RBI Handbook of Statistics on Indian
+# States, published annually (typically August-September). No API exists;
+# data is manually curated from the PDF publication.
+#
+# Semi-annual runs serve as reminders + catch any curated data commits.
+# Jan 15: Post-publication check (Handbook released ~Aug-Sep of prior year)
+# Jul 15: Pre-publication check (new Handbook expected soon)
+
+on:
+  schedule:
+    # Jan 15 — check if new Handbook data has been curated
+    - cron: '0 6 15 1 *'
+    # Jul 15 — pre-release reminder / mid-year check
+    - cron: '0 6 15 7 *'
+  workflow_dispatch:
+    inputs:
+      force_refresh:
+        description: 'Force re-process all data'
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  update-states-data:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install pipeline dependencies
+        run: |
+          cd pipeline
+          pip install requests pydantic
+
+      - name: Run states pipeline
+        run: |
+          cd pipeline
+          python src/states/main.py
+
+      - name: Check for data changes
+        id: changes
+        run: |
+          git diff --quiet public/data/states/ && echo "changed=false" >> $GITHUB_OUTPUT || echo "changed=true" >> $GITHUB_OUTPUT
+
+      - name: Commit updated data
+        if: steps.changes.outputs.changed == 'true'
+        run: |
+          git config user.name "India Data Pipeline"
+          git config user.email "pipeline@india-data-portal.dev"
+          git add public/data/states/
+          git commit -m "data: update State Finances data $(date +%Y-%m-%d)
+
+          Automated pipeline run. Source: RBI Handbook of Statistics (curated).
+          Triggered by: ${{ github.event_name }}"
+          git push
+
+      - name: Create reminder issue if no changes
+        if: steps.changes.outputs.changed == 'false'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const now = new Date();
+            const month = now.getMonth() + 1;
+
+            // Only create reminder in July (pre-Handbook release)
+            if (month !== 7) return;
+
+            // Check if a reminder issue already exists this year
+            const year = now.getFullYear();
+            const existingIssues = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              labels: 'pipeline,states-data',
+              state: 'open',
+            });
+
+            const hasReminder = existingIssues.data.some(i =>
+              i.title.includes(`${year}`) && i.title.includes('RBI Handbook')
+            );
+
+            if (!hasReminder) {
+              await github.rest.issues.create({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                title: `State Finances: check for ${year} RBI Handbook update`,
+                body: `## Reminder\n\n` +
+                      `The RBI Handbook of Statistics on Indian States is typically published in August-September.\n\n` +
+                      `**Action required:**\n` +
+                      `1. Check [rbi.org.in](https://rbi.org.in/Scripts/AnnualPublications.aspx?head=Handbook+of+Statistics+on+Indian+Economy) for the latest Handbook\n` +
+                      `2. If new data is available, update \`pipeline/src/states/sources/curated.py\`\n` +
+                      `3. Run the pipeline locally: \`cd pipeline && python src/states/main.py\`\n` +
+                      `4. Commit the updated JSON files\n\n` +
+                      `Current data vintage: FY 2022-23\n\n` +
+                      `*This issue was created automatically by the States pipeline workflow.*`,
+                labels: ['pipeline', 'states-data', 'automated']
+              });
+            }
+
+      - name: Open issue on failure
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: `States pipeline failure: ${new Date().toISOString().slice(0,10)}`,
+              body: `The State Finances data pipeline failed.\n\n` +
+                    `**Trigger:** ${context.eventName}\n` +
+                    `**Run:** ${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}\n\n` +
+                    `The frontend continues serving the last known good data.`,
+              labels: ['pipeline', 'automated']
+            });

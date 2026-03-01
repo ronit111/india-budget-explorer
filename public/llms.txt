@@ -60,6 +60,11 @@ Indian Data Project is a hub for Indian government data visualization. Each data
 - /healthcare/methodology — Data sources (NHP 2022, NFHS-5, World Bank), indicator definitions, limitations
 - /healthcare/glossary — Plain-language definitions of healthcare terms: PHC, CHC, out-of-pocket spending, immunization, TB incidence, hospital beds per 1000, and more.
 
+### Personalization Calculators
+- /rbi/calculator — EMI Impact Calculator: See how repo rate changes affect your monthly EMI. Choose home/car/personal loan, set amount and tenure, view rate impact at ±25/50 bps scenarios. Uses live repo rate (currently 5.25%) and bank spreads (SBI EBLR).
+- /economy/calculator — Cost-of-Living Calculator: Input your monthly expenses by category (rent, groceries, transport, education, healthcare, utilities). Compare against any year from 2014+. Uses category-specific CPI by COICOP division (food, housing, health, transport, education) where available, headline CPI as fallback.
+- /states/your-state — State Report Card: Select any Indian state to see performance across 6 domains (Economy, Budget, Census, Education, Employment, Healthcare). ~25 metrics with ranks, quartile badges (top/middle/bottom 25%), and national average comparison.
+
 ## Key data points
 
 ### Budget (Budget Estimate 2025-26)
@@ -153,6 +158,9 @@ Indian Data Project is a hub for Indian government data visualization. Each data
 - RBI KLEMS Database — sectoral employment and output data
 - National Health Profile 2022 (cbhidghs.mohfw.gov.in) — hospital infrastructure, PHCs, CHCs, doctors
 - NFHS-5 (rchiips.org/nfhs) — immunization coverage, health indicators by state
+- MOSPI eSankhyiki CPI API (api.mospi.gov.in/api/cpi/getCPIIndex) — group-wise monthly CPI indices and YoY inflation rates, Base 2012=100. Primary source for CPI by COICOP division (FY 2019+)
+- IMF CPI dataset via DBnomics (db.nomics.world/IMF/CPI) — historical CPI by COICOP division (Food, Housing, Health, Transport, Education) for India, CY 2014-2018
+- SBI/HDFC/ICICI published rate cards — loan spreads over repo rate (home, car, personal loans)
 
 ## Downloadable datasets (JSON)
 
@@ -172,7 +180,7 @@ Indian Data Project is a hub for Indian government data visualization. Each data
 ### Economy
 - /data/economy/2025-26/summary.json — Economic headline numbers
 - /data/economy/2025-26/gdp-growth.json — GDP growth time series
-- /data/economy/2025-26/inflation.json — CPI and WPI inflation data
+- /data/economy/2025-26/inflation.json — CPI and WPI inflation data + CPI by COICOP division (Food, Housing, Health, Transport, Education)
 - /data/economy/2025-26/fiscal.json — Fiscal deficit and government finances
 - /data/economy/2025-26/external.json — Trade balance, exports, imports
 - /data/economy/2025-26/sectors.json — Sectoral GDP composition
@@ -221,6 +229,9 @@ Indian Data Project is a hub for Indian government data visualization. Each data
 - /data/healthcare/2025-26/spending.json — Health expenditure trends (% GDP, per capita, OOP)
 - /data/healthcare/2025-26/disease.json — TB incidence, immunization coverage trends
 - /data/healthcare/2025-26/indicators.json — All healthcare indicators across 4 categories
+
+### EMI Calculator
+- /data/emi/loan-spreads.json — Curated loan spreads over repo rate for home (2.75%), car (3.5%), personal (8%) loans. Sources: SBI EBLR, HDFC, ICICI published rate cards.
 
 ## Chart sharing & embedding (Phase 7)
 

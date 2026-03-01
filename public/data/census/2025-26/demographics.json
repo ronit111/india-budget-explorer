@@ -1104,252 +1104,252 @@
   ],
   "states": [
     {
-      "id": "up",
+      "id": "UP",
       "name": "Uttar Pradesh",
       "sexRatio": 912,
       "urbanizationRate": 22.27,
       "growthRate": 20.23
     },
     {
-      "id": "mh",
+      "id": "MH",
       "name": "Maharashtra",
       "sexRatio": 929,
       "urbanizationRate": 45.23,
       "growthRate": 15.99
     },
     {
-      "id": "br",
+      "id": "BR",
       "name": "Bihar",
       "sexRatio": 918,
       "urbanizationRate": 11.3,
       "growthRate": 25.42
     },
     {
-      "id": "wb",
+      "id": "WB",
       "name": "West Bengal",
       "sexRatio": 950,
       "urbanizationRate": 31.89,
       "growthRate": 13.84
     },
     {
-      "id": "mp",
+      "id": "MP",
       "name": "Madhya Pradesh",
       "sexRatio": 931,
       "urbanizationRate": 27.63,
       "growthRate": 20.35
     },
     {
-      "id": "tn",
+      "id": "TN",
       "name": "Tamil Nadu",
       "sexRatio": 996,
       "urbanizationRate": 48.45,
       "growthRate": 15.61
     },
     {
-      "id": "rj",
+      "id": "RJ",
       "name": "Rajasthan",
       "sexRatio": 928,
       "urbanizationRate": 24.89,
       "growthRate": 21.31
     },
     {
-      "id": "ka",
+      "id": "KA",
       "name": "Karnataka",
       "sexRatio": 973,
       "urbanizationRate": 38.57,
       "growthRate": 15.6
     },
     {
-      "id": "gj",
+      "id": "GJ",
       "name": "Gujarat",
       "sexRatio": 919,
       "urbanizationRate": 42.58,
       "growthRate": 19.28
     },
     {
-      "id": "ap",
+      "id": "AP",
       "name": "Andhra Pradesh",
       "sexRatio": 993,
       "urbanizationRate": 29.47,
       "growthRate": 11.1
     },
     {
-      "id": "od",
+      "id": "OD",
       "name": "Odisha",
       "sexRatio": 979,
       "urbanizationRate": 16.68,
       "growthRate": 14.05
     },
     {
-      "id": "tg",
+      "id": "TS",
       "name": "Telangana",
       "sexRatio": 988,
       "urbanizationRate": 38.89,
       "growthRate": 13.58
     },
     {
-      "id": "kl",
+      "id": "KL",
       "name": "Kerala",
       "sexRatio": 1084,
       "urbanizationRate": 47.72,
       "growthRate": 4.91
     },
     {
-      "id": "jh",
+      "id": "JH",
       "name": "Jharkhand",
       "sexRatio": 948,
       "urbanizationRate": 24.05,
       "growthRate": 22.42
     },
     {
-      "id": "as",
+      "id": "AS",
       "name": "Assam",
       "sexRatio": 958,
       "urbanizationRate": 14.08,
       "growthRate": 17.07
     },
     {
-      "id": "pb",
+      "id": "PB",
       "name": "Punjab",
       "sexRatio": 895,
       "urbanizationRate": 37.49,
       "growthRate": 13.89
     },
     {
-      "id": "ct",
+      "id": "CG",
       "name": "Chhattisgarh",
       "sexRatio": 991,
       "urbanizationRate": 23.24,
       "growthRate": 22.61
     },
     {
-      "id": "hr",
+      "id": "HR",
       "name": "Haryana",
       "sexRatio": 879,
       "urbanizationRate": 34.79,
       "growthRate": 19.9
     },
     {
-      "id": "jk",
+      "id": "JK",
       "name": "Jammu & Kashmir",
       "sexRatio": 889,
       "urbanizationRate": 27.21,
       "growthRate": 23.64
     },
     {
-      "id": "uk",
+      "id": "UK",
       "name": "Uttarakhand",
       "sexRatio": 963,
       "urbanizationRate": 30.55,
       "growthRate": 18.81
     },
     {
-      "id": "hp",
+      "id": "HP",
       "name": "Himachal Pradesh",
       "sexRatio": 972,
       "urbanizationRate": 10.04,
       "growthRate": 12.94
     },
     {
-      "id": "tr",
+      "id": "TR",
       "name": "Tripura",
       "sexRatio": 960,
       "urbanizationRate": 26.18,
       "growthRate": 14.84
     },
     {
-      "id": "ml",
+      "id": "ML",
       "name": "Meghalaya",
       "sexRatio": 989,
       "urbanizationRate": 20.08,
       "growthRate": 27.95
     },
     {
-      "id": "mn",
+      "id": "MN",
       "name": "Manipur",
       "sexRatio": 985,
       "urbanizationRate": 32.45,
       "growthRate": 18.65
     },
     {
-      "id": "nl",
+      "id": "NL",
       "name": "Nagaland",
       "sexRatio": 931,
       "urbanizationRate": 28.97,
       "growthRate": -0.58
     },
     {
-      "id": "ga",
+      "id": "GA",
       "name": "Goa",
       "sexRatio": 973,
       "urbanizationRate": 62.17,
       "growthRate": 8.23
     },
     {
-      "id": "ar",
+      "id": "AR",
       "name": "Arunachal Pradesh",
       "sexRatio": 938,
       "urbanizationRate": 22.67,
       "growthRate": 26.03
     },
     {
-      "id": "mz",
+      "id": "MZ",
       "name": "Mizoram",
       "sexRatio": 976,
       "urbanizationRate": 52.11,
       "growthRate": 23.48
     },
     {
-      "id": "sk",
+      "id": "SK",
       "name": "Sikkim",
       "sexRatio": 890,
       "urbanizationRate": 24.97,
       "growthRate": 12.89
     },
     {
-      "id": "dl",
+      "id": "DL",
       "name": "Delhi",
       "sexRatio": 868,
       "urbanizationRate": 97.5,
       "growthRate": 21.21
     },
     {
-      "id": "py",
+      "id": "PY",
       "name": "Puducherry",
       "sexRatio": 1037,
       "urbanizationRate": 68.31,
       "growthRate": 28.08
     },
     {
-      "id": "ch",
+      "id": "CH",
       "name": "Chandigarh",
       "sexRatio": 818,
       "urbanizationRate": 97.25,
       "growthRate": 17.19
     },
     {
-      "id": "an",
+      "id": "AN",
       "name": "Andaman & Nicobar",
       "sexRatio": 876,
       "urbanizationRate": 37.7,
       "growthRate": 6.86
     },
     {
-      "id": "dn",
+      "id": "DN",
       "name": "Dadra & Nagar Haveli",
       "sexRatio": 774,
       "urbanizationRate": 46.72,
       "growthRate": 55.88
     },
     {
-      "id": "dd",
+      "id": "DD",
       "name": "Daman & Diu",
       "sexRatio": 618,
       "urbanizationRate": 75.16,
       "growthRate": 53.76
     },
     {
-      "id": "ld",
+      "id": "LD",
       "name": "Lakshadweep",
       "sexRatio": 946,
       "urbanizationRate": 78.07,

@@ -5,15 +5,13 @@ No authentication required. Returns JSON directly.
 API docs: https://datahelpdesk.worldbank.org/knowledgebase/articles/898599
 """
 
-import logging
-from typing import Any
+import sys
+from pathlib import Path
 
-import requests
+# Ensure pipeline root is importable
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent.parent))
 
-logger = logging.getLogger(__name__)
-
-BASE_URL = "https://api.worldbank.org/v2/country/ind/indicator"
-TIMEOUT = 30
+from src.common.world_bank import fetch_indicator as _fetch_indicator, fetch_multiple as _fetch_multiple
 
 # Key indicator codes for India
 INDICATORS = {
@@ -36,67 +34,13 @@ INDICATORS = {
 }
 
 
-def fetch_indicator(
-    code: str,
-    start_year: int = 2000,
-    end_year: int = 2025,
-) -> list[dict[str, Any]]:
-    """
-    Fetch a single indicator from the World Bank API.
-
-    Returns list of {year: str, value: float} dicts, sorted by year ascending.
-    Null values are filtered out.
-    """
-    url = f"{BASE_URL}/{code}"
-    params = {
-        "date": f"{start_year}:{end_year}",
-        "format": "json",
-        "per_page": 100,
-    }
-
-    logger.info(f"Fetching {code} from World Bank API...")
-    resp = requests.get(url, params=params, timeout=TIMEOUT)
-    resp.raise_for_status()
-    data = resp.json()
-
-    # World Bank returns [metadata, data_array]
-    if not isinstance(data, list) or len(data) < 2:
-        logger.warning(f"Unexpected response format for {code}")
-        return []
-
-    records = data[1]
-    if records is None:
-        logger.warning(f"No data returned for {code}")
-        return []
-
-    result = []
-    for item in records:
-        if item["value"] is not None:
-            result.append({
-                "year": item["date"],
-                "value": round(item["value"], 4),
-            })
-
-    # Sort ascending by year
-    result.sort(key=lambda x: x["year"])
-
-    logger.info(f"  Got {len(result)} data points for {code} ({result[0]['year']}–{result[-1]['year']})" if result else f"  No data for {code}")
-    return result
+def fetch_indicator(code: str, start_year: int = 2000, end_year: int = 2025):
+    return _fetch_indicator(code, start_year, end_year, precision=4)
 
 
 def fetch_multiple(
     indicator_keys: list[str],
     start_year: int = 2000,
     end_year: int = 2025,
-) -> dict[str, list[dict[str, Any]]]:
-    """
-    Fetch multiple indicators. Returns dict mapping indicator key to data points.
-    """
-    results = {}
-    for key in indicator_keys:
-        code = INDICATORS.get(key)
-        if not code:
-            logger.warning(f"Unknown indicator key: {key}")
-            continue
-        results[key] = fetch_indicator(code, start_year, end_year)
-    return results
+):
+    return _fetch_multiple(INDICATORS, indicator_keys, start_year, end_year, precision=4)

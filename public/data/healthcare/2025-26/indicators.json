@@ -8,152 +8,152 @@
       "unit": "per lakh",
       "states": [
         {
-          "id": "up",
+          "id": "UP",
           "name": "Uttar Pradesh",
           "value": 32
         },
         {
-          "id": "mh",
+          "id": "MH",
           "name": "Maharashtra",
           "value": 58
         },
         {
-          "id": "br",
+          "id": "BR",
           "name": "Bihar",
           "value": 11
         },
         {
-          "id": "wb",
+          "id": "WB",
           "name": "West Bengal",
           "value": 52
         },
         {
-          "id": "mp",
+          "id": "MP",
           "name": "Madhya Pradesh",
           "value": 28
         },
         {
-          "id": "tn",
+          "id": "TN",
           "name": "Tamil Nadu",
           "value": 86
         },
         {
-          "id": "rj",
+          "id": "RJ",
           "name": "Rajasthan",
           "value": 36
         },
         {
-          "id": "ka",
+          "id": "KA",
           "name": "Karnataka",
           "value": 68
         },
         {
-          "id": "gj",
+          "id": "GJ",
           "name": "Gujarat",
           "value": 42
         },
         {
-          "id": "ap",
+          "id": "AP",
           "name": "Andhra Pradesh",
           "value": 48
         },
         {
-          "id": "tg",
+          "id": "TS",
           "name": "Telangana",
           "value": 56
         },
         {
-          "id": "od",
+          "id": "OD",
           "name": "Odisha",
           "value": 24
         },
         {
-          "id": "kl",
+          "id": "KL",
           "name": "Kerala",
           "value": 94
         },
         {
-          "id": "jh",
+          "id": "JH",
           "name": "Jharkhand",
           "value": 18
         },
         {
-          "id": "as",
+          "id": "AS",
           "name": "Assam",
           "value": 22
         },
         {
-          "id": "pb",
+          "id": "PB",
           "name": "Punjab",
           "value": 62
         },
         {
-          "id": "ct",
+          "id": "CG",
           "name": "Chhattisgarh",
           "value": 20
         },
         {
-          "id": "hr",
+          "id": "HR",
           "name": "Haryana",
           "value": 38
         },
         {
-          "id": "uk",
+          "id": "UK",
           "name": "Uttarakhand",
           "value": 42
         },
         {
-          "id": "jk",
+          "id": "JK",
           "name": "Jammu & Kashmir",
           "value": 34
         },
         {
-          "id": "hp",
+          "id": "HP",
           "name": "Himachal Pradesh",
           "value": 68
         },
         {
-          "id": "dl",
+          "id": "DL",
           "name": "Delhi",
           "value": 124
         },
         {
-          "id": "ga",
+          "id": "GA",
           "name": "Goa",
           "value": 148
         },
         {
-          "id": "tr",
+          "id": "TR",
           "name": "Tripura",
           "value": 28
         },
         {
-          "id": "mn",
+          "id": "MN",
           "name": "Manipur",
           "value": 24
         },
         {
-          "id": "ml",
+          "id": "ML",
           "name": "Meghalaya",
           "value": 18
         },
         {
-          "id": "nl",
+          "id": "NL",
           "name": "Nagaland",
           "value": 16
         },
         {
-          "id": "mz",
+          "id": "MZ",
           "name": "Mizoram",
           "value": 22
         },
         {
-          "id": "sk",
+          "id": "SK",
           "name": "Sikkim",
           "value": 54
         },
         {
-          "id": "ar",
+          "id": "AR",
           "name": "Arunachal Pradesh",
           "value": 14
         }
@@ -167,152 +167,152 @@
       "unit": "per 10K",
       "states": [
         {
-          "id": "up",
+          "id": "UP",
           "name": "Uttar Pradesh",
           "value": 3.8
         },
         {
-          "id": "mh",
+          "id": "MH",
           "name": "Maharashtra",
           "value": 10.2
         },
         {
-          "id": "br",
+          "id": "BR",
           "name": "Bihar",
           "value": 2.4
         },
         {
-          "id": "wb",
+          "id": "WB",
           "name": "West Bengal",
           "value": 7.8
         },
         {
-          "id": "mp",
+          "id": "MP",
           "name": "Madhya Pradesh",
           "value": 4.2
         },
         {
-          "id": "tn",
+          "id": "TN",
           "name": "Tamil Nadu",
           "value": 12.4
         },
         {
-          "id": "rj",
+          "id": "RJ",
           "name": "Rajasthan",
           "value": 5.6
         },
         {
-          "id": "ka",
+          "id": "KA",
           "name": "Karnataka",
           "value": 9.8
         },
         {
-          "id": "gj",
+          "id": "GJ",
           "name": "Gujarat",
           "value": 7.4
         },
         {
-          "id": "ap",
+          "id": "AP",
           "name": "Andhra Pradesh",
           "value": 8.6
         },
         {
-          "id": "tg",
+          "id": "TS",
           "name": "Telangana",
           "value": 10.8
         },
         {
-          "id": "od",
+          "id": "OD",
           "name": "Odisha",
           "value": 4.8
         },
         {
-          "id": "kl",
+          "id": "KL",
           "name": "Kerala",
           "value": 18.6
         },
         {
-          "id": "jh",
+          "id": "JH",
           "name": "Jharkhand",
           "value": 3.2
         },
         {
-          "id": "as",
+          "id": "AS",
           "name": "Assam",
           "value": 4.6
         },
         {
-          "id": "pb",
+          "id": "PB",
           "name": "Punjab",
           "value": 11.4
         },
         {
-          "id": "ct",
+          "id": "CG",
           "name": "Chhattisgarh",
           "value": 3.4
         },
         {
-          "id": "hr",
+          "id": "HR",
           "name": "Haryana",
           "value": 8.2
         },
         {
-          "id": "uk",
+          "id": "UK",
           "name": "Uttarakhand",
           "value": 7.6
         },
         {
-          "id": "jk",
+          "id": "JK",
           "name": "Jammu & Kashmir",
           "value": 6.2
         },
         {
-          "id": "hp",
+          "id": "HP",
           "name": "Himachal Pradesh",
           "value": 12.8
         },
         {
-          "id": "dl",
+          "id": "DL",
           "name": "Delhi",
           "value": 24.6
         },
         {
-          "id": "ga",
+          "id": "GA",
           "name": "Goa",
           "value": 22.4
         },
         {
-          "id": "tr",
+          "id": "TR",
           "name": "Tripura",
           "value": 5.4
         },
         {
-          "id": "mn",
+          "id": "MN",
           "name": "Manipur",
           "value": 5.8
         },
         {
-          "id": "ml",
+          "id": "ML",
           "name": "Meghalaya",
           "value": 4.2
         },
         {
-          "id": "nl",
+          "id": "NL",
           "name": "Nagaland",
           "value": 3.8
         },
         {
-          "id": "mz",
+          "id": "MZ",
           "name": "Mizoram",
           "value": 6.4
         },
         {
-          "id": "sk",
+          "id": "SK",
           "name": "Sikkim",
           "value": 8.8
         },
         {
-          "id": "ar",
+          "id": "AR",
           "name": "Arunachal Pradesh",
           "value": 3.2
         }
@@ -326,152 +326,152 @@
       "unit": "",
       "states": [
         {
-          "id": "up",
+          "id": "UP",
           "name": "Uttar Pradesh",
           "value": 3621
         },
         {
-          "id": "mh",
+          "id": "MH",
           "name": "Maharashtra",
           "value": 1814
         },
         {
-          "id": "br",
+          "id": "BR",
           "name": "Bihar",
           "value": 1883
         },
         {
-          "id": "wb",
+          "id": "WB",
           "name": "West Bengal",
           "value": 909
         },
         {
-          "id": "mp",
+          "id": "MP",
           "name": "Madhya Pradesh",
           "value": 1171
         },
         {
-          "id": "tn",
+          "id": "TN",
           "name": "Tamil Nadu",
           "value": 1682
         },
         {
-          "id": "rj",
+          "id": "RJ",
           "name": "Rajasthan",
           "value": 2080
         },
         {
-          "id": "ka",
+          "id": "KA",
           "name": "Karnataka",
           "value": 2310
         },
         {
-          "id": "gj",
+          "id": "GJ",
           "name": "Gujarat",
           "value": 1516
         },
         {
-          "id": "ap",
+          "id": "AP",
           "name": "Andhra Pradesh",
           "value": 1147
         },
         {
-          "id": "tg",
+          "id": "TS",
           "name": "Telangana",
           "value": 762
         },
         {
-          "id": "od",
+          "id": "OD",
           "name": "Odisha",
           "value": 1226
         },
         {
-          "id": "kl",
+          "id": "KL",
           "name": "Kerala",
           "value": 847
         },
         {
-          "id": "jh",
+          "id": "JH",
           "name": "Jharkhand",
           "value": 327
         },
         {
-          "id": "as",
+          "id": "AS",
           "name": "Assam",
           "value": 975
         },
         {
-          "id": "pb",
+          "id": "PB",
           "name": "Punjab",
           "value": 427
         },
         {
-          "id": "ct",
+          "id": "CG",
           "name": "Chhattisgarh",
           "value": 790
         },
         {
-          "id": "hr",
+          "id": "HR",
           "name": "Haryana",
           "value": 473
         },
         {
-          "id": "uk",
+          "id": "UK",
           "name": "Uttarakhand",
           "value": 257
         },
         {
-          "id": "jk",
+          "id": "JK",
           "name": "Jammu & Kashmir",
           "value": 692
         },
         {
-          "id": "hp",
+          "id": "HP",
           "name": "Himachal Pradesh",
           "value": 522
         },
         {
-          "id": "dl",
+          "id": "DL",
           "name": "Delhi",
           "value": 8
         },
         {
-          "id": "ga",
+          "id": "GA",
           "name": "Goa",
           "value": 25
         },
         {
-          "id": "tr",
+          "id": "TR",
           "name": "Tripura",
           "value": 112
         },
         {
-          "id": "mn",
+          "id": "MN",
           "name": "Manipur",
           "value": 86
         },
         {
-          "id": "ml",
+          "id": "ML",
           "name": "Meghalaya",
           "value": 118
         },
         {
-          "id": "nl",
+          "id": "NL",
           "name": "Nagaland",
           "value": 126
         },
         {
-          "id": "mz",
+          "id": "MZ",
           "name": "Mizoram",
           "value": 57
         },
         {
-          "id": "sk",
+          "id": "SK",
           "name": "Sikkim",
           "value": 24
         },
         {
-          "id": "ar",
+          "id": "AR",
           "name": "Arunachal Pradesh",
           "value": 118
         }
@@ -485,152 +485,152 @@
       "unit": "",
       "states": [
         {
-          "id": "up",
+          "id": "UP",
           "name": "Uttar Pradesh",
           "value": 773
         },
         {
-          "id": "mh",
+          "id": "MH",
           "name": "Maharashtra",
           "value": 364
         },
         {
-          "id": "br",
+          "id": "BR",
           "name": "Bihar",
           "value": 252
         },
         {
-          "id": "wb",
+          "id": "WB",
           "name": "West Bengal",
           "value": 348
         },
         {
-          "id": "mp",
+          "id": "MP",
           "name": "Madhya Pradesh",
           "value": 334
         },
         {
-          "id": "tn",
+          "id": "TN",
           "name": "Tamil Nadu",
           "value": 385
         },
         {
-          "id": "rj",
+          "id": "RJ",
           "name": "Rajasthan",
           "value": 579
         },
         {
-          "id": "ka",
+          "id": "KA",
           "name": "Karnataka",
           "value": 207
         },
         {
-          "id": "gj",
+          "id": "GJ",
           "name": "Gujarat",
           "value": 363
         },
         {
-          "id": "ap",
+          "id": "AP",
           "name": "Andhra Pradesh",
           "value": 194
         },
         {
-          "id": "tg",
+          "id": "TS",
           "name": "Telangana",
           "value": 116
         },
         {
-          "id": "od",
+          "id": "OD",
           "name": "Odisha",
           "value": 377
         },
         {
-          "id": "kl",
+          "id": "KL",
           "name": "Kerala",
           "value": 234
         },
         {
-          "id": "jh",
+          "id": "JH",
           "name": "Jharkhand",
           "value": 188
         },
         {
-          "id": "as",
+          "id": "AS",
           "name": "Assam",
           "value": 151
         },
         {
-          "id": "pb",
+          "id": "PB",
           "name": "Punjab",
           "value": 150
         },
         {
-          "id": "ct",
+          "id": "CG",
           "name": "Chhattisgarh",
           "value": 169
         },
         {
-          "id": "hr",
+          "id": "HR",
           "name": "Haryana",
           "value": 119
         },
         {
-          "id": "uk",
+          "id": "UK",
           "name": "Uttarakhand",
           "value": 69
         },
         {
-          "id": "jk",
+          "id": "JK",
           "name": "Jammu & Kashmir",
           "value": 87
         },
         {
-          "id": "hp",
+          "id": "HP",
           "name": "Himachal Pradesh",
           "value": 79
         },
         {
-          "id": "dl",
+          "id": "DL",
           "name": "Delhi",
           "value": 2
         },
         {
-          "id": "ga",
+          "id": "GA",
           "name": "Goa",
           "value": 4
         },
         {
-          "id": "tr",
+          "id": "TR",
           "name": "Tripura",
           "value": 22
         },
         {
-          "id": "mn",
+          "id": "MN",
           "name": "Manipur",
           "value": 16
         },
         {
-          "id": "ml",
+          "id": "ML",
           "name": "Meghalaya",
           "value": 29
         },
         {
-          "id": "nl",
+          "id": "NL",
           "name": "Nagaland",
           "value": 21
         },
         {
-          "id": "mz",
+          "id": "MZ",
           "name": "Mizoram",
           "value": 9
         },
         {
-          "id": "sk",
+          "id": "SK",
           "name": "Sikkim",
           "value": 2
         },
         {
-          "id": "ar",
+          "id": "AR",
           "name": "Arunachal Pradesh",
           "value": 62
         }
@@ -644,152 +644,152 @@
       "unit": "",
       "states": [
         {
-          "id": "up",
+          "id": "UP",
           "name": "Uttar Pradesh",
           "value": 20521
         },
         {
-          "id": "mh",
+          "id": "MH",
           "name": "Maharashtra",
           "value": 10580
         },
         {
-          "id": "br",
+          "id": "BR",
           "name": "Bihar",
           "value": 9729
         },
         {
-          "id": "wb",
+          "id": "WB",
           "name": "West Bengal",
           "value": 10356
         },
         {
-          "id": "mp",
+          "id": "MP",
           "name": "Madhya Pradesh",
           "value": 9192
         },
         {
-          "id": "tn",
+          "id": "TN",
           "name": "Tamil Nadu",
           "value": 8706
         },
         {
-          "id": "rj",
+          "id": "RJ",
           "name": "Rajasthan",
           "value": 14407
         },
         {
-          "id": "ka",
+          "id": "KA",
           "name": "Karnataka",
           "value": 8143
         },
         {
-          "id": "gj",
+          "id": "GJ",
           "name": "Gujarat",
           "value": 7274
         },
         {
-          "id": "ap",
+          "id": "AP",
           "name": "Andhra Pradesh",
           "value": 7458
         },
         {
-          "id": "tg",
+          "id": "TS",
           "name": "Telangana",
           "value": 4742
         },
         {
-          "id": "od",
+          "id": "OD",
           "name": "Odisha",
           "value": 6688
         },
         {
-          "id": "kl",
+          "id": "KL",
           "name": "Kerala",
           "value": 5094
         },
         {
-          "id": "jh",
+          "id": "JH",
           "name": "Jharkhand",
           "value": 3958
         },
         {
-          "id": "as",
+          "id": "AS",
           "name": "Assam",
           "value": 4621
         },
         {
-          "id": "pb",
+          "id": "PB",
           "name": "Punjab",
           "value": 2950
         },
         {
-          "id": "ct",
+          "id": "CG",
           "name": "Chhattisgarh",
           "value": 5211
         },
         {
-          "id": "hr",
+          "id": "HR",
           "name": "Haryana",
           "value": 2630
         },
         {
-          "id": "uk",
+          "id": "UK",
           "name": "Uttarakhand",
           "value": 1847
         },
         {
-          "id": "jk",
+          "id": "JK",
           "name": "Jammu & Kashmir",
           "value": 1949
         },
         {
-          "id": "hp",
+          "id": "HP",
           "name": "Himachal Pradesh",
           "value": 2065
         },
         {
-          "id": "dl",
+          "id": "DL",
           "name": "Delhi",
           "value": 18
         },
         {
-          "id": "ga",
+          "id": "GA",
           "name": "Goa",
           "value": 210
         },
         {
-          "id": "tr",
+          "id": "TR",
           "name": "Tripura",
           "value": 1062
         },
         {
-          "id": "mn",
+          "id": "MN",
           "name": "Manipur",
           "value": 420
         },
         {
-          "id": "ml",
+          "id": "ML",
           "name": "Meghalaya",
           "value": 582
         },
         {
-          "id": "nl",
+          "id": "NL",
           "name": "Nagaland",
           "value": 396
         },
         {
-          "id": "mz",
+          "id": "MZ",
           "name": "Mizoram",
           "value": 370
         },
         {
-          "id": "sk",
+          "id": "SK",
           "name": "Sikkim",
           "value": 147
         },
         {
-          "id": "ar",
+          "id": "AR",
           "name": "Arunachal Pradesh",
           "value": 404
         }
@@ -803,152 +803,152 @@
       "unit": "%",
       "states": [
         {
-          "id": "up",
+          "id": "UP",
           "name": "Uttar Pradesh",
           "value": 67.0
         },
         {
-          "id": "mh",
+          "id": "MH",
           "name": "Maharashtra",
           "value": 77.4
         },
         {
-          "id": "br",
+          "id": "BR",
           "name": "Bihar",
           "value": 54.2
         },
         {
-          "id": "wb",
+          "id": "WB",
           "name": "West Bengal",
           "value": 74.8
         },
         {
-          "id": "mp",
+          "id": "MP",
           "name": "Madhya Pradesh",
           "value": 68.4
         },
         {
-          "id": "tn",
+          "id": "TN",
           "name": "Tamil Nadu",
           "value": 82.6
         },
         {
-          "id": "rj",
+          "id": "RJ",
           "name": "Rajasthan",
           "value": 66.8
         },
         {
-          "id": "ka",
+          "id": "KA",
           "name": "Karnataka",
           "value": 76.8
         },
         {
-          "id": "gj",
+          "id": "GJ",
           "name": "Gujarat",
           "value": 72.4
         },
         {
-          "id": "ap",
+          "id": "AP",
           "name": "Andhra Pradesh",
           "value": 73.6
         },
         {
-          "id": "tg",
+          "id": "TS",
           "name": "Telangana",
           "value": 75.4
         },
         {
-          "id": "od",
+          "id": "OD",
           "name": "Odisha",
           "value": 73.2
         },
         {
-          "id": "kl",
+          "id": "KL",
           "name": "Kerala",
           "value": 84.2
         },
         {
-          "id": "jh",
+          "id": "JH",
           "name": "Jharkhand",
           "value": 61.8
         },
         {
-          "id": "as",
+          "id": "AS",
           "name": "Assam",
           "value": 58.4
         },
         {
-          "id": "pb",
+          "id": "PB",
           "name": "Punjab",
           "value": 79.2
         },
         {
-          "id": "ct",
+          "id": "CG",
           "name": "Chhattisgarh",
           "value": 70.2
         },
         {
-          "id": "hr",
+          "id": "HR",
           "name": "Haryana",
           "value": 74.6
         },
         {
-          "id": "uk",
+          "id": "UK",
           "name": "Uttarakhand",
           "value": 74.8
         },
         {
-          "id": "jk",
+          "id": "JK",
           "name": "Jammu & Kashmir",
           "value": 72.4
         },
         {
-          "id": "hp",
+          "id": "HP",
           "name": "Himachal Pradesh",
           "value": 82.4
         },
         {
-          "id": "dl",
+          "id": "DL",
           "name": "Delhi",
           "value": 73.8
         },
         {
-          "id": "ga",
+          "id": "GA",
           "name": "Goa",
           "value": 80.4
         },
         {
-          "id": "tr",
+          "id": "TR",
           "name": "Tripura",
           "value": 62.6
         },
         {
-          "id": "mn",
+          "id": "MN",
           "name": "Manipur",
           "value": 55.8
         },
         {
-          "id": "ml",
+          "id": "ML",
           "name": "Meghalaya",
           "value": 46.2
         },
         {
-          "id": "nl",
+          "id": "NL",
           "name": "Nagaland",
           "value": 39.8
         },
         {
-          "id": "mz",
+          "id": "MZ",
           "name": "Mizoram",
           "value": 52.4
         },
         {
-          "id": "sk",
+          "id": "SK",
           "name": "Sikkim",
           "value": 76.4
         },
         {
-          "id": "ar",
+          "id": "AR",
           "name": "Arunachal Pradesh",
           "value": 38.6
         }
@@ -962,152 +962,152 @@
       "unit": "%",
       "states": [
         {
-          "id": "up",
+          "id": "UP",
           "name": "Uttar Pradesh",
           "value": 92.4
         },
         {
-          "id": "mh",
+          "id": "MH",
           "name": "Maharashtra",
           "value": 96.8
         },
         {
-          "id": "br",
+          "id": "BR",
           "name": "Bihar",
           "value": 87.6
         },
         {
-          "id": "wb",
+          "id": "WB",
           "name": "West Bengal",
           "value": 98.2
         },
         {
-          "id": "mp",
+          "id": "MP",
           "name": "Madhya Pradesh",
           "value": 94.2
         },
         {
-          "id": "tn",
+          "id": "TN",
           "name": "Tamil Nadu",
           "value": 98.4
         },
         {
-          "id": "rj",
+          "id": "RJ",
           "name": "Rajasthan",
           "value": 93.6
         },
         {
-          "id": "ka",
+          "id": "KA",
           "name": "Karnataka",
           "value": 97.4
         },
         {
-          "id": "gj",
+          "id": "GJ",
           "name": "Gujarat",
           "value": 95.8
         },
         {
-          "id": "ap",
+          "id": "AP",
           "name": "Andhra Pradesh",
           "value": 97.2
         },
         {
-          "id": "tg",
+          "id": "TS",
           "name": "Telangana",
           "value": 97.8
         },
         {
-          "id": "od",
+          "id": "OD",
           "name": "Odisha",
           "value": 96.4
         },
         {
-          "id": "kl",
+          "id": "KL",
           "name": "Kerala",
           "value": 99.2
         },
         {
-          "id": "jh",
+          "id": "JH",
           "name": "Jharkhand",
           "value": 92.8
         },
         {
-          "id": "as",
+          "id": "AS",
           "name": "Assam",
           "value": 90.6
         },
         {
-          "id": "pb",
+          "id": "PB",
           "name": "Punjab",
           "value": 97.6
         },
         {
-          "id": "ct",
+          "id": "CG",
           "name": "Chhattisgarh",
           "value": 95.4
         },
         {
-          "id": "hr",
+          "id": "HR",
           "name": "Haryana",
           "value": 96.8
         },
         {
-          "id": "uk",
+          "id": "UK",
           "name": "Uttarakhand",
           "value": 97.2
         },
         {
-          "id": "jk",
+          "id": "JK",
           "name": "Jammu & Kashmir",
           "value": 96.4
         },
         {
-          "id": "hp",
+          "id": "HP",
           "name": "Himachal Pradesh",
           "value": 98.6
         },
         {
-          "id": "dl",
+          "id": "DL",
           "name": "Delhi",
           "value": 96.2
         },
         {
-          "id": "ga",
+          "id": "GA",
           "name": "Goa",
           "value": 98.4
         },
         {
-          "id": "tr",
+          "id": "TR",
           "name": "Tripura",
           "value": 93.8
         },
         {
-          "id": "mn",
+          "id": "MN",
           "name": "Manipur",
           "value": 88.4
         },
         {
-          "id": "ml",
+          "id": "ML",
           "name": "Meghalaya",
           "value": 84.6
         },
         {
-          "id": "nl",
+          "id": "NL",
           "name": "Nagaland",
           "value": 78.4
         },
         {
-          "id": "mz",
+          "id": "MZ",
           "name": "Mizoram",
           "value": 86.8
         },
         {
-          "id": "sk",
+          "id": "SK",
           "name": "Sikkim",
           "value": 97.8
         },
         {
-          "id": "ar",
+          "id": "AR",
           "name": "Arunachal Pradesh",
           "value": 76.2
         }
@@ -1121,152 +1121,152 @@
       "unit": "%",
       "states": [
         {
-          "id": "up",
+          "id": "UP",
           "name": "Uttar Pradesh",
           "value": 80.2
         },
         {
-          "id": "mh",
+          "id": "MH",
           "name": "Maharashtra",
           "value": 88.6
         },
         {
-          "id": "br",
+          "id": "BR",
           "name": "Bihar",
           "value": 68.4
         },
         {
-          "id": "wb",
+          "id": "WB",
           "name": "West Bengal",
           "value": 88.4
         },
         {
-          "id": "mp",
+          "id": "MP",
           "name": "Madhya Pradesh",
           "value": 82.6
         },
         {
-          "id": "tn",
+          "id": "TN",
           "name": "Tamil Nadu",
           "value": 92.8
         },
         {
-          "id": "rj",
+          "id": "RJ",
           "name": "Rajasthan",
           "value": 80.4
         },
         {
-          "id": "ka",
+          "id": "KA",
           "name": "Karnataka",
           "value": 88.2
         },
         {
-          "id": "gj",
+          "id": "GJ",
           "name": "Gujarat",
           "value": 84.6
         },
         {
-          "id": "ap",
+          "id": "AP",
           "name": "Andhra Pradesh",
           "value": 86.4
         },
         {
-          "id": "tg",
+          "id": "TS",
           "name": "Telangana",
           "value": 88.2
         },
         {
-          "id": "od",
+          "id": "OD",
           "name": "Odisha",
           "value": 86.8
         },
         {
-          "id": "kl",
+          "id": "KL",
           "name": "Kerala",
           "value": 94.6
         },
         {
-          "id": "jh",
+          "id": "JH",
           "name": "Jharkhand",
           "value": 76.4
         },
         {
-          "id": "as",
+          "id": "AS",
           "name": "Assam",
           "value": 72.8
         },
         {
-          "id": "pb",
+          "id": "PB",
           "name": "Punjab",
           "value": 90.4
         },
         {
-          "id": "ct",
+          "id": "CG",
           "name": "Chhattisgarh",
           "value": 84.2
         },
         {
-          "id": "hr",
+          "id": "HR",
           "name": "Haryana",
           "value": 86.4
         },
         {
-          "id": "uk",
+          "id": "UK",
           "name": "Uttarakhand",
           "value": 88.6
         },
         {
-          "id": "jk",
+          "id": "JK",
           "name": "Jammu & Kashmir",
           "value": 84.8
         },
         {
-          "id": "hp",
+          "id": "HP",
           "name": "Himachal Pradesh",
           "value": 92.4
         },
         {
-          "id": "dl",
+          "id": "DL",
           "name": "Delhi",
           "value": 86.2
         },
         {
-          "id": "ga",
+          "id": "GA",
           "name": "Goa",
           "value": 92.8
         },
         {
-          "id": "tr",
+          "id": "TR",
           "name": "Tripura",
           "value": 78.4
         },
         {
-          "id": "mn",
+          "id": "MN",
           "name": "Manipur",
           "value": 72.6
         },
         {
-          "id": "ml",
+          "id": "ML",
           "name": "Meghalaya",
           "value": 62.4
         },
         {
-          "id": "nl",
+          "id": "NL",
           "name": "Nagaland",
           "value": 56.8
         },
         {
-          "id": "mz",
+          "id": "MZ",
           "name": "Mizoram",
           "value": 68.4
         },
         {
-          "id": "sk",
+          "id": "SK",
           "name": "Sikkim",
           "value": 88.6
         },
         {
-          "id": "ar",
+          "id": "AR",
           "name": "Arunachal Pradesh",
           "value": 54.6
         }
@@ -1280,152 +1280,152 @@
       "unit": "%",
       "states": [
         {
-          "id": "up",
+          "id": "UP",
           "name": "Uttar Pradesh",
           "value": 72.8
         },
         {
-          "id": "mh",
+          "id": "MH",
           "name": "Maharashtra",
           "value": 82.4
         },
         {
-          "id": "br",
+          "id": "BR",
           "name": "Bihar",
           "value": 62.8
         },
         {
-          "id": "wb",
+          "id": "WB",
           "name": "West Bengal",
           "value": 80.6
         },
         {
-          "id": "mp",
+          "id": "MP",
           "name": "Madhya Pradesh",
           "value": 74.2
         },
         {
-          "id": "tn",
+          "id": "TN",
           "name": "Tamil Nadu",
           "value": 88.2
         },
         {
-          "id": "rj",
+          "id": "RJ",
           "name": "Rajasthan",
           "value": 72.4
         },
         {
-          "id": "ka",
+          "id": "KA",
           "name": "Karnataka",
           "value": 82.8
         },
         {
-          "id": "gj",
+          "id": "GJ",
           "name": "Gujarat",
           "value": 78.2
         },
         {
-          "id": "ap",
+          "id": "AP",
           "name": "Andhra Pradesh",
           "value": 79.8
         },
         {
-          "id": "tg",
+          "id": "TS",
           "name": "Telangana",
           "value": 80.6
         },
         {
-          "id": "od",
+          "id": "OD",
           "name": "Odisha",
           "value": 78.4
         },
         {
-          "id": "kl",
+          "id": "KL",
           "name": "Kerala",
           "value": 90.4
         },
         {
-          "id": "jh",
+          "id": "JH",
           "name": "Jharkhand",
           "value": 68.6
         },
         {
-          "id": "as",
+          "id": "AS",
           "name": "Assam",
           "value": 66.2
         },
         {
-          "id": "pb",
+          "id": "PB",
           "name": "Punjab",
           "value": 84.6
         },
         {
-          "id": "ct",
+          "id": "CG",
           "name": "Chhattisgarh",
           "value": 76.8
         },
         {
-          "id": "hr",
+          "id": "HR",
           "name": "Haryana",
           "value": 80.2
         },
         {
-          "id": "uk",
+          "id": "UK",
           "name": "Uttarakhand",
           "value": 80.8
         },
         {
-          "id": "jk",
+          "id": "JK",
           "name": "Jammu & Kashmir",
           "value": 78.6
         },
         {
-          "id": "hp",
+          "id": "HP",
           "name": "Himachal Pradesh",
           "value": 88.2
         },
         {
-          "id": "dl",
+          "id": "DL",
           "name": "Delhi",
           "value": 79.4
         },
         {
-          "id": "ga",
+          "id": "GA",
           "name": "Goa",
           "value": 86.4
         },
         {
-          "id": "tr",
+          "id": "TR",
           "name": "Tripura",
           "value": 70.2
         },
         {
-          "id": "mn",
+          "id": "MN",
           "name": "Manipur",
           "value": 64.8
         },
         {
-          "id": "ml",
+          "id": "ML",
           "name": "Meghalaya",
           "value": 54.8
         },
         {
-          "id": "nl",
+          "id": "NL",
           "name": "Nagaland",
           "value": 48.2
         },
         {
-          "id": "mz",
+          "id": "MZ",
           "name": "Mizoram",
           "value": 60.2
         },
         {
-          "id": "sk",
+          "id": "SK",
           "name": "Sikkim",
           "value": 82.4
         },
         {
-          "id": "ar",
+          "id": "AR",
           "name": "Arunachal Pradesh",
           "value": 46.8
         }

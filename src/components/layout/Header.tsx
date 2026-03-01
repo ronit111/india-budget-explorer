@@ -69,6 +69,7 @@ export function Header() {
       ? [
           { to: '/economy', label: 'Story' },
           { to: '/economy/explore', label: 'Explore' },
+          { to: '/economy/calculator', label: 'Your Cost' },
           { to: '/economy/methodology', label: 'Methodology' },
           { to: '/economy/glossary', label: 'Glossary' },
         ]
@@ -76,6 +77,7 @@ export function Header() {
         ? [
             { to: '/rbi', label: 'Story' },
             { to: '/rbi/explore', label: 'Explore' },
+            { to: '/rbi/calculator', label: 'EMI Calc' },
             { to: '/rbi/methodology', label: 'Methodology' },
             { to: '/rbi/glossary', label: 'Glossary' },
           ]
@@ -83,6 +85,7 @@ export function Header() {
           ? [
               { to: '/states', label: 'Story' },
               { to: '/states/explore', label: 'Explore' },
+              { to: '/states/your-state', label: 'Your State' },
               { to: '/states/methodology', label: 'Methodology' },
               { to: '/states/glossary', label: 'Glossary' },
             ]

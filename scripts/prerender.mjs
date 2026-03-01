@@ -23,9 +23,9 @@ const PORT = 4173;
 const ROUTES = [
   '/',
   '/budget', '/budget/explore', '/budget/calculator', '/budget/methodology', '/budget/glossary',
-  '/economy', '/economy/explore', '/economy/methodology', '/economy/glossary',
-  '/rbi', '/rbi/explore', '/rbi/methodology', '/rbi/glossary',
-  '/states', '/states/explore', '/states/methodology', '/states/glossary',
+  '/economy', '/economy/explore', '/economy/calculator', '/economy/methodology', '/economy/glossary',
+  '/rbi', '/rbi/explore', '/rbi/calculator', '/rbi/methodology', '/rbi/glossary',
+  '/states', '/states/explore', '/states/your-state', '/states/methodology', '/states/glossary',
   '/census', '/census/explore', '/census/methodology', '/census/glossary',
   '/education', '/education/explore', '/education/methodology', '/education/glossary',
   '/employment', '/employment/explore', '/employment/methodology', '/employment/glossary',

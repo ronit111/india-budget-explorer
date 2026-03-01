@@ -271,6 +271,7 @@ export interface InflationData {
   year: string;
   targetBand: { lower: number; upper: number };
   series: InflationSeries[];
+  cpiByCategory?: CPICategoryEntry[];
   source: string;
 }
 
@@ -846,6 +847,33 @@ export interface HealthcareIndicator {
 export interface HealthcareIndicatorsData {
   year: string;
   indicators: HealthcareIndicator[];
+}
+
+// ─── CPI Category Data (for cost-of-living calculator) ──────────
+
+export interface CPICategoryEntry {
+  division: string;  // COICOP code: '01', '04', '06', '07', '10'
+  name: string;
+  series: { period: string; value: number }[];
+}
+
+// ─── Loan Spreads (for EMI calculator) ──────────────────────────
+
+export interface LoanSpread {
+  minSpread: number;
+  typicalSpread: number;
+  maxSpread: number;
+  source: string;
+}
+
+export interface LoanSpreadsData {
+  year: string;
+  lastUpdated: string;
+  spreads: {
+    home: LoanSpread;
+    car: LoanSpread;
+    personal: LoanSpread;
+  };
 }
 
 // ─── Glossary (shared across domains) ──────────────────────────

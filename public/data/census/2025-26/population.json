@@ -206,7 +206,7 @@
   ],
   "states": [
     {
-      "id": "up",
+      "id": "UP",
       "name": "Uttar Pradesh",
       "population": 243466000,
       "density": 829,
@@ -215,7 +215,7 @@
       "decadalGrowth": 20.23
     },
     {
-      "id": "mh",
+      "id": "MH",
       "name": "Maharashtra",
       "population": 129584000,
       "density": 365,
@@ -224,7 +224,7 @@
       "decadalGrowth": 15.99
     },
     {
-      "id": "br",
+      "id": "BR",
       "name": "Bihar",
       "population": 132850000,
       "density": 1106,
@@ -233,7 +233,7 @@
       "decadalGrowth": 25.42
     },
     {
-      "id": "wb",
+      "id": "WB",
       "name": "West Bengal",
       "population": 100631000,
       "density": 1028,
@@ -242,7 +242,7 @@
       "decadalGrowth": 13.84
     },
     {
-      "id": "mp",
+      "id": "MP",
       "name": "Madhya Pradesh",
       "population": 89965000,
       "density": 236,
@@ -251,7 +251,7 @@
       "decadalGrowth": 20.35
     },
     {
-      "id": "tn",
+      "id": "TN",
       "name": "Tamil Nadu",
       "population": 77582000,
       "density": 555,
@@ -260,7 +260,7 @@
       "decadalGrowth": 15.61
     },
     {
-      "id": "rj",
+      "id": "RJ",
       "name": "Rajasthan",
       "population": 83879000,
       "density": 200,
@@ -269,7 +269,7 @@
       "decadalGrowth": 21.31
     },
     {
-      "id": "ka",
+      "id": "KA",
       "name": "Karnataka",
       "population": 69074000,
       "density": 319,
@@ -278,7 +278,7 @@
       "decadalGrowth": 15.6
     },
     {
-      "id": "gj",
+      "id": "GJ",
       "name": "Gujarat",
       "population": 74343000,
       "density": 308,
@@ -287,7 +287,7 @@
       "decadalGrowth": 19.28
     },
     {
-      "id": "ap",
+      "id": "AP",
       "name": "Andhra Pradesh",
       "population": 53740000,
       "density": 308,
@@ -296,7 +296,7 @@
       "decadalGrowth": 11.1
     },
     {
-      "id": "od",
+      "id": "OD",
       "name": "Odisha",
       "population": 47221000,
       "density": 270,
@@ -305,7 +305,7 @@
       "decadalGrowth": 14.05
     },
     {
-      "id": "tg",
+      "id": "TS",
       "name": "Telangana",
       "population": 38665000,
       "density": 312,
@@ -314,7 +314,7 @@
       "decadalGrowth": 13.58
     },
     {
-      "id": "kl",
+      "id": "KL",
       "name": "Kerala",
       "population": 36239000,
       "density": 860,
@@ -323,7 +323,7 @@
       "decadalGrowth": 4.91
     },
     {
-      "id": "jh",
+      "id": "JH",
       "name": "Jharkhand",
       "population": 41108000,
       "density": 414,
@@ -332,7 +332,7 @@
       "decadalGrowth": 22.42
     },
     {
-      "id": "as",
+      "id": "AS",
       "name": "Assam",
       "population": 36815000,
       "density": 398,
@@ -341,7 +341,7 @@
       "decadalGrowth": 17.07
     },
     {
-      "id": "pb",
+      "id": "PB",
       "name": "Punjab",
       "population": 31370000,
       "density": 551,
@@ -350,7 +350,7 @@
       "decadalGrowth": 13.89
     },
     {
-      "id": "ct",
+      "id": "CG",
       "name": "Chhattisgarh",
       "population": 31311000,
       "density": 189,
@@ -359,7 +359,7 @@
       "decadalGrowth": 22.61
     },
     {
-      "id": "hr",
+      "id": "HR",
       "name": "Haryana",
       "population": 31409000,
       "density": 573,
@@ -368,7 +368,7 @@
       "decadalGrowth": 19.9
     },
     {
-      "id": "jk",
+      "id": "JK",
       "name": "Jammu & Kashmir",
       "population": 14233000,
       "density": 56,
@@ -377,7 +377,7 @@
       "decadalGrowth": 23.64
     },
     {
-      "id": "uk",
+      "id": "UK",
       "name": "Uttarakhand",
       "population": 12028000,
       "density": 189,
@@ -386,7 +386,7 @@
       "decadalGrowth": 18.81
     },
     {
-      "id": "hp",
+      "id": "HP",
       "name": "Himachal Pradesh",
       "population": 7588000,
       "density": 123,
@@ -395,7 +395,7 @@
       "decadalGrowth": 12.94
     },
     {
-      "id": "tr",
+      "id": "TR",
       "name": "Tripura",
       "population": 4268000,
       "density": 350,
@@ -404,7 +404,7 @@
       "decadalGrowth": 14.84
     },
     {
-      "id": "ml",
+      "id": "ML",
       "name": "Meghalaya",
       "population": 3447000,
       "density": 132,
@@ -413,7 +413,7 @@
       "decadalGrowth": 27.95
     },
     {
-      "id": "mn",
+      "id": "MN",
       "name": "Manipur",
       "population": 3318000,
       "density": 128,
@@ -422,7 +422,7 @@
       "decadalGrowth": 18.65
     },
     {
-      "id": "nl",
+      "id": "NL",
       "name": "Nagaland",
       "population": 2299000,
       "density": 119,
@@ -431,7 +431,7 @@
       "decadalGrowth": -0.58
     },
     {
-      "id": "ga",
+      "id": "GA",
       "name": "Goa",
       "population": 1601000,
       "density": 394,
@@ -440,7 +440,7 @@
       "decadalGrowth": 8.23
     },
     {
-      "id": "ar",
+      "id": "AR",
       "name": "Arunachal Pradesh",
       "population": 1608000,
       "density": 17,
@@ -449,7 +449,7 @@
       "decadalGrowth": 26.03
     },
     {
-      "id": "mz",
+      "id": "MZ",
       "name": "Mizoram",
       "population": 1275000,
       "density": 52,
@@ -458,7 +458,7 @@
       "decadalGrowth": 23.48
     },
     {
-      "id": "sk",
+      "id": "SK",
       "name": "Sikkim",
       "population": 709000,
       "density": 86,
@@ -467,7 +467,7 @@
       "decadalGrowth": 12.89
     },
     {
-      "id": "dl",
+      "id": "DL",
       "name": "Delhi",
       "population": 22674000,
       "density": 11320,
@@ -476,7 +476,7 @@
       "decadalGrowth": 21.21
     },
     {
-      "id": "py",
+      "id": "PY",
       "name": "Puducherry",
       "population": 1771000,
       "density": 2598,
@@ -485,7 +485,7 @@
       "decadalGrowth": 28.08
     },
     {
-      "id": "ch",
+      "id": "CH",
       "name": "Chandigarh",
       "population": 1270000,
       "density": 9258,
@@ -494,7 +494,7 @@
       "decadalGrowth": 17.19
     },
     {
-      "id": "an",
+      "id": "AN",
       "name": "Andaman & Nicobar",
       "population": 406000,
       "density": 46,
@@ -503,7 +503,7 @@
       "decadalGrowth": 6.86
     },
     {
-      "id": "dn",
+      "id": "DN",
       "name": "Dadra & Nagar Haveli",
       "population": 933000,
       "density": 700,
@@ -512,7 +512,7 @@
       "decadalGrowth": 55.88
     },
     {
-      "id": "dd",
+      "id": "DD",
       "name": "Daman & Diu",
       "population": 660000,
       "density": 2169,
@@ -521,7 +521,7 @@
       "decadalGrowth": 53.76
     },
     {
-      "id": "ld",
+      "id": "LD",
       "name": "Lakshadweep",
       "population": 70000,
       "density": 2013,

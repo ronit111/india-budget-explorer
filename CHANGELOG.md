@@ -1,5 +1,100 @@
 # Changelog
 
+## [0.12.0] - 2026-03-01
+
+### Phase 8: "Make It Personal" Engine
+
+**Personalization Infrastructure**
+- Global `personalizationStore` (Zustand + localStorage persist) — holds selected state ID, name, and household size
+- `StateSelector` component — dropdown with 28 states + 8 UTs, grouped and sorted alphabetically, reads/writes personalization store
+- State ID standardization: all pipelines (census, education, employment, healthcare) now use uppercase vehicle registration (RTO) codes (e.g., MH, UP, KA). Three codes differ from ISO 3166-2: Odisha=OD (not OR), Chhattisgarh=CG (not CT), Telangana=TS (not TG).
+- CPI-by-COICOP-division data added to economy pipeline: Food (01), Housing (04), Health (06), Transport (07), Education (10). Three-tier sourcing: IMF/DBnomics baseline (FY 2014-19), MOSPI eSankhyiki API live data (FY 2019+, `api.mospi.gov.in/api/cpi/getCPIIndex`), curated fallback if API is down. Gap detection in `cumulativeMultiplier` prevents incorrect inflation computation when category series have missing years.
+
+**EMI Impact Calculator** (`/rbi/calculator`)
+- Pure calculation engine (`emiEngine.ts`): standard EMI formula `P * r * (1+r)^n / ((1+r)^n - 1)`, rate impact scenarios at -50/-25/current/+25/+50 bps
+- Three loan types: Home (repo + 2.75%), Car (repo + 3.5%), Personal (repo + 8%) — spreads sourced from SBI/HDFC published EBLR rate cards
+- Curated loan spreads data (`public/data/emi/loan-spreads.json`) with explicit source attribution
+- Interactive inputs: segmented control for loan type, slider for amount (with Indian number formatting), slider for tenure
+- Rate impact visualization: horizontal diverging bar chart showing monthly EMI change and total tenure difference per scenario
+- Reads current repo rate from `monetary-policy.json` (5.25% as of Feb 2026)
+
+**Cost-of-Living Calculator** (`/economy/calculator`)
+- Inflation impact engine (`costOfLivingEngine.ts`): CPI-based deflation using cumulative multiplier math. Category-specific CPI (COICOP division) where available, headline CPI fallback otherwise.
+- Seven expense categories mapped to COICOP divisions: Rent/Housing (04), Groceries (01), Transport (07), Education (10), Healthcare (06), Utilities (04), Other (headline)
+- Expense presets: "Single (Rs 25K)" and "Family (Rs 50K)" with category-proportional multipliers
+- Comparison year selector: dropdown from inflation series (2014+). Default: 2019-20
+- "Then vs Now" display: cumulative CPI change %, annualized rate, purchasing power loss in Rs, per-category breakdown showing which used division-specific CPI vs headline fallback
+- Gap detection: `cumulativeMultiplier` verifies no missing years in category series — returns null for ranges containing non-consecutive years, triggering headline CPI fallback
+
+**Cross-Domain State Report Card** (`/states/your-state`)
+- State report engine (`stateReportEngine.ts`): aggregates data from 12 JSON files across 6 domains (States, Budget, Census, Education, Employment, Healthcare)
+- 9 domain panels with ~25 metrics: Economy (per capita GSDP, growth, total GSDP), Budget (central transfer, per capita), Revenue (self-sufficiency), Fiscal Health (deficit, debt), Demographics (population, density, urban %, literacy, gender gap), Education (GER secondary, dropout), Employment (unemployment rate), Healthcare (beds per lakh, doctors per 10K), Health/NFHS-5 (IMR, immunization, stunting)
+- Rank computation with quartile coloring: green (top 25%), amber (middle), red (bottom 25%). Rank direction flags (`higherIsBetter`) ensure correct ordering.
+- `Promise.allSettled` for partial data loading — if a domain's file fails, that panel shows "Data unavailable" rather than blocking the page
+- State ID matching uses uppercase vehicle codes (after Step 0A standardization)
+
+**Personalization Banner**
+- 40px bar below header on all scrollytelling pages when a state is selected
+- Shows state name + domain-specific contextual stat (e.g., "GSDP growth: 16.4%" on States, "Unemployment: 3.2%" on Employment)
+- Dismissable (stores dismissal key in localStorage), reappears when state changes
+- "Full report" link navigates to `/states/your-state`
+
+**Navigation & Routing**
+- 3 new routes: `/rbi/calculator`, `/economy/calculator`, `/states/your-state`
+- Header tabs: "EMI Calc" under RBI, "Your Cost" under Economy, "Your State" under States
+- Mobile bottom nav: corresponding tab entries added
+- 3 routes added to prerender script (45 routes total: 37 pages + 8 embed)
+- Sitemap updated with 3 new page URLs + 1 data file URL (loan-spreads.json)
+
+**New Files**
+- `src/store/personalizationStore.ts` — Global state/household Zustand store with localStorage persist
+- `src/store/emiCalculatorStore.ts` — EMI calculator state (loan type, amount, tenure, custom rate)
+- `src/store/costOfLivingStore.ts` — Cost-of-living calculator state (expenses, comparison year)
+- `src/lib/emiEngine.ts` — EMI calculation + rate impact scenarios
+- `src/lib/costOfLivingEngine.ts` — CPI-based inflation impact calculator
+- `src/lib/stateReportEngine.ts` — Cross-domain state data aggregation + rank computation
+- `src/components/personalization/StateSelector.tsx` — State/UT dropdown
+- `src/components/personalization/PersonalizationBanner.tsx` — Contextual state banner
+- `src/components/emi/EMIInputPanel.tsx` — Loan type, amount, tenure inputs
+- `src/components/emi/EMIBreakdownDisplay.tsx` — Monthly EMI, total payment, interest ratio
+- `src/components/emi/RateImpactViz.tsx` — Diverging bar chart for rate scenarios
+- `src/components/cost-of-living/ExpenseInput.tsx` — Category sliders with preset buttons
+- `src/components/cost-of-living/InflationImpactDisplay.tsx` — Then vs Now comparison
+- `src/components/report-card/ReportCardGrid.tsx` — Multi-domain panel layout
+- `src/components/report-card/DomainPanel.tsx` — Domain icon + metrics
+- `src/components/report-card/MetricRow.tsx` — Value + national avg + rank badge + range gauge
+- `src/pages/EMICalculatorPage.tsx` — Route component for `/rbi/calculator`
+- `src/pages/CostOfLivingPage.tsx` — Route component for `/economy/calculator`
+- `src/pages/StateReportCardPage.tsx` — Route component for `/states/your-state`
+- `public/data/emi/loan-spreads.json` — Curated loan spreads from bank rate cards
+
+**Modified Files**
+- `src/lib/stateMapping.ts` — `OR→OD` for Odisha in `ALL_STATE_CODES` and `BUDGET_CODE_TO_TOPO_NAME`
+- `pipeline/src/census/sources/curated.py` — All state IDs uppercase vehicle codes
+- `pipeline/src/education/sources/curated.py` — All state IDs uppercase vehicle codes
+- `pipeline/src/employment/sources/curated.py` — All state IDs uppercase vehicle codes
+- `pipeline/src/healthcare/sources/curated.py` — All state IDs uppercase vehicle codes
+- `pipeline/src/economy/transform/inflation.py` — Added `_build_cpi_by_category()` with curated COICOP CPI data
+- `pipeline/src/economy/validate/schemas.py` — Added `CPICategoryEntry`, `CPICategoryPoint` models
+- `src/lib/data/schema.ts` — Added `cpiByCategory` to `InflationData`, `LoanSpreadsData` interface
+- `src/lib/dataLoader.ts` — Added `loadLoanSpreads()` function
+- `pipeline/src/economy/sources/mospi.py` — MOSPI eSankhyiki CPI API client (no auth, fetches group-wise monthly CPI, computes FY averages)
+- `pipeline/src/economy/transform/inflation.py` — Three-tier CPI data: IMF baseline (2014-19) + MOSPI API (2019+) + curated fallback
+- `pipeline/src/economy/main.py` — Added MOSPI CPI fetch call before inflation transform
+- `pipeline/src/common/world_bank.py` — Shared World Bank API client (retry, backoff, error handling)
+- `pipeline/src/*/sources/world_bank.py` (x6) — Refactored to thin wrappers over shared client
+- `.github/workflows/states-pipeline.yml` — Semi-annual schedule (Jan/Jul) with RBI Handbook reminder issues
+- `.github/workflows/economy-pipeline.yml` — Updated commit message to include MOSPI source
+- `pipeline/PIPELINE_DATA_SOURCES.md` — Comprehensive catalog of all 30+ curated data constants
+- `src/App.tsx` — 3 new routes + lang-prefixed variants
+- `src/components/layout/Header.tsx` — Calculator tabs for RBI, Economy, States
+- `src/components/layout/MobileNav.tsx` — Tab entries for 3 new routes
+- `src/components/layout/PageShell.tsx` — `PersonalizationBanner` rendered below header
+- `scripts/prerender.mjs` — 3 routes added
+- `public/sitemap.xml` — 3 page URLs + 1 data file URL added
+
+---
+
 ## [0.11.0] - 2026-03-01
 
 ### Phase 7: Chart Shareability & Distribution Infrastructure

@@ -492,119 +492,119 @@
   ],
   "stateImr": [
     {
-      "id": "mp",
+      "id": "MP",
       "name": "Madhya Pradesh",
       "value": 35
     },
     {
-      "id": "up",
+      "id": "UP",
       "name": "Uttar Pradesh",
       "value": 33
     },
     {
-      "id": "ct",
+      "id": "CG",
       "name": "Chhattisgarh",
       "value": 32
     },
     {
-      "id": "od",
+      "id": "OD",
       "name": "Odisha",
       "value": 30
     },
     {
-      "id": "as",
+      "id": "AS",
       "name": "Assam",
       "value": 30
     },
     {
-      "id": "rj",
+      "id": "RJ",
       "name": "Rajasthan",
       "value": 29
     },
     {
-      "id": "br",
+      "id": "BR",
       "name": "Bihar",
       "value": 27
     },
     {
-      "id": "jh",
+      "id": "JH",
       "name": "Jharkhand",
       "value": 25
     },
     {
-      "id": "hr",
+      "id": "HR",
       "name": "Haryana",
       "value": 24
     },
     {
-      "id": "gj",
+      "id": "GJ",
       "name": "Gujarat",
       "value": 23
     },
     {
-      "id": "ap",
+      "id": "AP",
       "name": "Andhra Pradesh",
       "value": 21
     },
     {
-      "id": "wb",
+      "id": "WB",
       "name": "West Bengal",
       "value": 19
     },
     {
-      "id": "uk",
+      "id": "UK",
       "name": "Uttarakhand",
       "value": 19
     },
     {
-      "id": "pb",
+      "id": "PB",
       "name": "Punjab",
       "value": 18
     },
     {
-      "id": "tg",
+      "id": "TS",
       "name": "Telangana",
       "value": 17
     },
     {
-      "id": "mh",
+      "id": "MH",
       "name": "Maharashtra",
       "value": 15
     },
     {
-      "id": "ka",
+      "id": "KA",
       "name": "Karnataka",
       "value": 15
     },
     {
-      "id": "jk",
+      "id": "JK",
       "name": "Jammu & Kashmir",
       "value": 14
     },
     {
-      "id": "hp",
+      "id": "HP",
       "name": "Himachal Pradesh",
       "value": 14
     },
     {
-      "id": "tn",
+      "id": "TN",
       "name": "Tamil Nadu",
       "value": 12
     },
     {
-      "id": "dl",
+      "id": "DL",
       "name": "Delhi",
       "value": 11
     },
     {
-      "id": "kl",
+      "id": "KL",
       "name": "Kerala",
       "value": 5
     }
   ],
   "stateHealth": [
     {
-      "id": "up",
+      "id": "UP",
       "name": "Uttar Pradesh",
       "tfr": 2.4,
       "imr": 50.4,
@@ -614,7 +614,7 @@
       "fullImmunization": 69.6
     },
     {
-      "id": "mh",
+      "id": "MH",
       "name": "Maharashtra",
       "tfr": 1.7,
       "imr": 23.2,
@@ -624,7 +624,7 @@
       "fullImmunization": 73.5
     },
     {
-      "id": "br",
+      "id": "BR",
       "name": "Bihar",
       "tfr": 3.0,
       "imr": 46.8,
@@ -634,7 +634,7 @@
       "fullImmunization": 71.0
     },
     {
-      "id": "wb",
+      "id": "WB",
       "name": "West Bengal",
       "tfr": 1.6,
       "imr": 22.0,
@@ -644,7 +644,7 @@
       "fullImmunization": 87.8
     },
     {
-      "id": "mp",
+      "id": "MP",
       "name": "Madhya Pradesh",
       "tfr": 2.0,
       "imr": 41.3,
@@ -654,7 +654,7 @@
       "fullImmunization": 77.1
     },
     {
-      "id": "tn",
+      "id": "TN",
       "name": "Tamil Nadu",
       "tfr": 1.8,
       "imr": 18.6,
@@ -664,7 +664,7 @@
       "fullImmunization": 89.2
     },
     {
-      "id": "rj",
+      "id": "RJ",
       "name": "Rajasthan",
       "tfr": 2.0,
       "imr": 30.3,
@@ -674,7 +674,7 @@
       "fullImmunization": 80.4
     },
     {
-      "id": "ka",
+      "id": "KA",
       "name": "Karnataka",
       "tfr": 1.7,
       "imr": 25.4,
@@ -684,7 +684,7 @@
       "fullImmunization": 84.1
     },
     {
-      "id": "gj",
+      "id": "GJ",
       "name": "Gujarat",
       "tfr": 1.9,
       "imr": 31.2,
@@ -694,7 +694,7 @@
       "fullImmunization": 76.3
     },
     {
-      "id": "ap",
+      "id": "AP",
       "name": "Andhra Pradesh",
       "tfr": 1.7,
       "imr": 30.3,
@@ -704,7 +704,7 @@
       "fullImmunization": 73.0
     },
     {
-      "id": "od",
+      "id": "OD",
       "name": "Odisha",
       "tfr": 1.8,
       "imr": 36.3,
@@ -714,7 +714,7 @@
       "fullImmunization": 90.5
     },
     {
-      "id": "tg",
+      "id": "TS",
       "name": "Telangana",
       "tfr": 1.8,
       "imr": 26.4,
@@ -724,7 +724,7 @@
       "fullImmunization": 79.1
     },
     {
-      "id": "kl",
+      "id": "KL",
       "name": "Kerala",
       "tfr": 1.8,
       "imr": 4.4,
@@ -734,7 +734,7 @@
       "fullImmunization": 77.8
     },
     {
-      "id": "jh",
+      "id": "JH",
       "name": "Jharkhand",
       "tfr": 2.3,
       "imr": 37.9,
@@ -744,7 +744,7 @@
       "fullImmunization": 73.9
     },
     {
-      "id": "as",
+      "id": "AS",
       "name": "Assam",
       "tfr": 1.9,
       "imr": 31.9,
@@ -754,7 +754,7 @@
       "fullImmunization": 66.4
     },
     {
-      "id": "pb",
+      "id": "PB",
       "name": "Punjab",
       "tfr": 1.6,
       "imr": 28.0,
@@ -764,7 +764,7 @@
       "fullImmunization": 76.2
     },
     {
-      "id": "ct",
+      "id": "CG",
       "name": "Chhattisgarh",
       "tfr": 1.8,
       "imr": 44.3,
@@ -774,7 +774,7 @@
       "fullImmunization": 79.7
     },
     {
-      "id": "hr",
+      "id": "HR",
       "name": "Haryana",
       "tfr": 1.9,
       "imr": 33.3,
@@ -784,7 +784,7 @@
       "fullImmunization": 76.9
     },
     {
-      "id": "jk",
+      "id": "JK",
       "name": "Jammu & Kashmir",
       "tfr": 1.4,
       "imr": 16.3,
@@ -794,7 +794,7 @@
       "fullImmunization": 86.2
     },
     {
-      "id": "uk",
+      "id": "UK",
       "name": "Uttarakhand",
       "tfr": 1.9,
       "imr": 39.1,
@@ -804,7 +804,7 @@
       "fullImmunization": 80.8
     },
     {
-      "id": "hp",
+      "id": "HP",
       "name": "Himachal Pradesh",
       "tfr": 1.7,
       "imr": 25.6,
@@ -814,7 +814,7 @@
       "fullImmunization": 89.3
     },
     {
-      "id": "dl",
+      "id": "DL",
       "name": "Delhi",
       "tfr": 1.6,
       "imr": 24.5,
@@ -824,7 +824,7 @@
       "fullImmunization": 76.0
     },
     {
-      "id": "ga",
+      "id": "GA",
       "name": "Goa",
       "tfr": 1.3,
       "imr": 5.6,

@@ -51,6 +51,7 @@ import type {
   DiseaseData,
   HealthcareIndicatorsData,
   GlossaryData,
+  LoanSpreadsData,
 } from './data/schema.ts';
 
 const cache = new Map<string, unknown>();
@@ -222,6 +223,10 @@ export const loadDisease = (year: string) =>
 
 export const loadHealthcareIndicators = (year: string) =>
   fetchJson<HealthcareIndicatorsData>(`/data/healthcare/${year}/indicators.json`);
+
+// ─── EMI Calculator ────────────────────────────────────────────
+export const loadLoanSpreads = () =>
+  fetchJson<LoanSpreadsData>('/data/emi/loan-spreads.json');
 
 // ─── Glossary (shared across domains) ──────────────────────────
 export const loadGlossary = (domain: string, year: string) =>

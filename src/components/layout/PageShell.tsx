@@ -6,6 +6,7 @@ import { MobileNav } from './MobileNav.tsx';
 import { Footer } from './Footer.tsx';
 import { SearchOverlay } from '../ui/SearchOverlay.tsx';
 import { FeedbackButton } from '../ui/FeedbackButton.tsx';
+import { PersonalizationBanner } from '../personalization/PersonalizationBanner.tsx';
 
 export function PageShell({ children }: { children: ReactNode }) {
   const location = useLocation();
@@ -32,6 +33,7 @@ export function PageShell({ children }: { children: ReactNode }) {
         />
       )}
 
+      <PersonalizationBanner />
       <main className="flex-1 pt-16 overflow-y-auto">{children}</main>
       <Footer />
       <FeedbackButton />

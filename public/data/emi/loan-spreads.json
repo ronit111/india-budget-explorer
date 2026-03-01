@@ -1,0 +1,24 @@
+{
+  "year": "2025-26",
+  "lastUpdated": "2026-03-01",
+  "spreads": {
+    "home": {
+      "minSpread": 2.25,
+      "typicalSpread": 2.75,
+      "maxSpread": 3.50,
+      "source": "SBI EBLR home loan: repo + 2.65% base, +0.10-0.85% credit risk premium (sbi.co.in). Typical effective spread ~2.75% for 750+ CIBIL score."
+    },
+    "car": {
+      "minSpread": 3.00,
+      "typicalSpread": 3.50,
+      "maxSpread": 4.50,
+      "source": "SBI new car loan: 8.75%-9.75% (repo 5.25% + 3.50-4.50% spread). bankbazaar.com/sbi-car-loan-interest-rates"
+    },
+    "personal": {
+      "minSpread": 4.80,
+      "typicalSpread": 8.00,
+      "maxSpread": 12.00,
+      "source": "SBI personal loan: 10.05%-15.05% (repo 5.25% + 4.80-9.80% spread). Major banks range up to 17%. paisabazaar.com/personal-loan/sbi-personal-loan-interest-rates"
+    }
+  }
+}

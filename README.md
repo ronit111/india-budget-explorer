@@ -1,6 +1,6 @@
 # Indian Data Project
 
-Open Indian government data made accessible, visual, and shareable. Eight data domains live: Union Budget 2025-26, Economic Survey 2025-26, RBI Data, State Finances, Census & Demographics, Education, Employment, and Healthcare. Each gets its own visual story with explorable breakdowns.
+Open Indian government data made accessible, visual, and shareable. Eight data domains live: Union Budget 2025-26, Economic Survey 2025-26, RBI Data, State Finances, Census & Demographics, Education, Employment, and Healthcare. Each gets its own visual story with explorable breakdowns. Three personalization calculators let citizens see how national data applies to their own lives.
 
 **Live:** [indiandataproject.org](https://indiandataproject.org)
 
@@ -10,7 +10,7 @@ Open Indian government data made accessible, visual, and shareable. Eight data d
 
 Indian Data Project turns dense government data into interactive visual experiences. The site is a hub — each data domain gets its own self-contained visual story with explorable breakdowns.
 
-**Hub + 8 data domains:**
+**Hub + 8 data domains + 3 personalization calculators:**
 
 | Page | What it shows |
 |------|---------------|
@@ -48,6 +48,9 @@ Indian Data Project turns dense government data into interactive visual experien
 | **Healthcare Explorer** (`/healthcare/explore`) | Indicator explorer with 5 categories (All, Infrastructure, Spending, Immunization, Disease), 30 states |
 | **Healthcare Methodology** (`/healthcare/methodology`) | Data sources (NHP 2022, NFHS-5, World Bank), indicator definitions, limitations |
 | **Healthcare Glossary** (`/healthcare/glossary`) | 13 healthcare terms — PHC, CHC, out-of-pocket spending, immunization, TB incidence, hospital beds per 1000, etc. |
+| **EMI Calculator** (`/rbi/calculator`) | How repo rate changes affect your EMI — choose home/car/personal loan, set amount and tenure, see monthly EMI + rate impact scenarios at ±25/50 bps. Reads live repo rate from RBI data. |
+| **Cost-of-Living Calculator** (`/economy/calculator`) | How inflation has changed what your money buys — input monthly expenses by category, compare against any year from 2014+. Uses category-specific CPI (food, housing, transport, education, health) where available, headline CPI fallback otherwise. |
+| **State Report Card** (`/states/your-state`) | Your state's performance across 6 domains — 9 panels with ~25 metrics (GSDP, budget, revenue, fiscal health, demographics, education, employment, healthcare). Ranks, quartile badges, and national average comparison. |
 | **Embed Charts** (`/embed/{domain}/{section}`) | Standalone responsive chart pages for iframe embedding — minimal chrome, lazy-loaded charts, ~49 sections available |
 
 ---
@@ -95,7 +98,7 @@ npm run preview
 | Command | What it does |
 |---------|-------------|
 | `npm run dev` | Start Vite dev server with HMR |
-| `npm run build` | TypeScript check + Vite build + Puppeteer prerender (42 routes: 34 pages + 8 embed) |
+| `npm run build` | TypeScript check + Vite build + Puppeteer prerender (45 routes: 37 pages + 8 embed) |
 | `npm run build:no-prerender` | Build without prerendering (used by Vercel) |
 | `npm run lint` | ESLint check |
 | `npm run preview` | Preview production build locally |
@@ -142,6 +145,9 @@ src/
 │   ├── EducationGlossaryPage.tsx # Education glossary wrapper
 │   ├── EmploymentGlossaryPage.tsx # Employment glossary wrapper
 │   ├── HealthcareGlossaryPage.tsx # Healthcare glossary wrapper
+│   ├── EMICalculatorPage.tsx    # EMI impact calculator (repo rate → monthly payment)
+│   ├── CostOfLivingPage.tsx     # Cost-of-living inflation calculator (CPI by category)
+│   ├── StateReportCardPage.tsx  # Cross-domain state report card (6 domains, ~25 metrics)
 │   └── EmbedPage.tsx          # Standalone embed chart (reads :domain/:section params, renders outside PageShell)
 ├── components/
 │   ├── home/               # Budget story compositions (Hero, Revenue, Expenditure, Flow, Map, CTA)
@@ -153,6 +159,10 @@ src/
 │   ├── education/           # Education compositions (EnrollmentSection, GenderSection, DropoutSection, QualitySection, TeacherSection, SpendingSection)
 │   ├── employment/          # Employment compositions (ParticipationSection, StructuralSection, YouthSection, GenderGapSection, InformalitySection, RuralUrbanSection)
 │   ├── healthcare/          # Healthcare compositions (InfrastructureSection, SpendingSection, OOPSection, ImmunizationSection, DiseaseSection, DoctorGapSection)
+│   ├── personalization/     # Personalization components (StateSelector dropdown, PersonalizationBanner)
+│   ├── emi/                 # EMI calculator components (EMIInputPanel, EMIBreakdownDisplay, RateImpactViz)
+│   ├── cost-of-living/      # Cost-of-living components (ExpenseInput, InflationImpactDisplay)
+│   ├── report-card/         # State report card components (ReportCardGrid, DomainPanel, MetricRow)
 │   ├── calculator/         # Tax calculator UI (IncomeInput, DeductionsPanel, TaxBreakdown, ShareCard, SpendingAllocation)
 │   ├── explore/            # DataTable with expandable rows
 │   ├── viz/                # D3 visualizations (TreemapChart, SankeyDiagram, ChoroplethMap, WaffleChart, LineChart, AreaChart, HorizontalBarChart, StepChart, AnimatedCounter)
@@ -170,12 +180,15 @@ src/
 │   ├── shareCard.ts        # WhatsApp share card Canvas generator (1200×630, <100KB)
 │   ├── csvExport.ts        # RFC 4180 CSV serialization
 │   ├── taxEngine.ts        # Tax computation engine (Old/New regime, deductions, slabs)
+│   ├── emiEngine.ts        # EMI calculation + rate impact scenarios (home/car/personal loans)
+│   ├── costOfLivingEngine.ts # CPI-based inflation impact (category-specific COICOP CPI + fallback)
+│   ├── stateReportEngine.ts # Cross-domain state data aggregation + rank computation
 │   ├── format.ts           # Indian number formatting (lakhs/crores)
 │   ├── dataLoader.ts       # Fetch + cache layer for JSON data (all domains)
 │   ├── stateMapping.ts     # India state ID → name mapping
 │   └── i18n.ts             # i18next configuration
 ├── hooks/                  # useScrollTrigger, useIntersection, useUrlState (URL↔Zustand sync), useBudgetData, useEconomyData, useRBIData, useStatesData, useCensusData, useEducationData, useEmploymentData, useHealthcareData, etc.
-├── store/                  # Zustand stores (budgetStore, economyStore, rbiStore, statesStore, censusStore, educationStore, employmentStore, healthcareStore, calculatorStore, uiStore)
+├── store/                  # Zustand stores (budgetStore, economyStore, rbiStore, statesStore, censusStore, educationStore, employmentStore, healthcareStore, calculatorStore, emiCalculatorStore, costOfLivingStore, personalizationStore, uiStore)
 └── index.css               # Design tokens, CSS layers, keyframes
 
 public/
@@ -187,15 +200,18 @@ public/
 ├── data/education/2025-26/ # 6 structured JSON education datasets
 ├── data/employment/2025-26/ # 6 structured JSON employment datasets
 ├── data/healthcare/2025-26/ # 6 structured JSON healthcare datasets
+├── data/emi/               # Curated loan spread data (SBI/HDFC rate cards)
 ├── locales/en/             # Translation files
-├── sitemap.xml             # All routes + data endpoints (34 pages + 43 data files)
+├── sitemap.xml             # All routes + data endpoints (37 pages + 46 data files)
 ├── robots.txt              # All bots welcomed (including AI crawlers)
 └── llms.txt                # AI-readable site summary
 
 pipeline/
 ├── src/
 │   ├── main.py             # Budget pipeline (CKAN API → JSON)
-│   ├── economy/            # Economy pipeline (World Bank API → JSON)
+│   ├── common/             # Shared pipeline utilities
+│   │   └── world_bank.py   # World Bank API client (retry, backoff, error handling) — used by all 6 domain pipelines
+│   ├── economy/            # Economy pipeline (World Bank API + MOSPI CPI API → JSON)
 │   ├── rbi/                # RBI pipeline (World Bank + curated MPC data → JSON)
 │   ├── states/             # States pipeline (curated RBI Handbook data → JSON)
 │   ├── census/             # Census pipeline (World Bank API + curated Census/NFHS/SRS → JSON)
@@ -203,6 +219,7 @@ pipeline/
 │   ├── employment/         # Employment pipeline (World Bank API + curated PLFS/KLEMS → JSON)
 │   ├── healthcare/         # Healthcare pipeline (World Bank API + curated NHP/NFHS-5 → JSON)
 │   └── publish/            # Shared JSON writer
+├── PIPELINE_DATA_SOURCES.md # Catalog of all 30+ curated data constants across 8 domains
 └── pyproject.toml          # Python dependencies
 ```
 
@@ -235,7 +252,7 @@ Economy data lives in `public/data/economy/2025-26/`:
 |------|----------|
 | `summary.json` | Headline economic indicators (GDP growth, inflation, deficit) |
 | `gdp-growth.json` | Real and nominal GDP growth time series |
-| `inflation.json` | CPI and WPI inflation data |
+| `inflation.json` | CPI and WPI inflation data + CPI by COICOP division (Food, Housing, Health, Transport, Education) |
 | `fiscal.json` | Fiscal deficit and government finance trends |
 | `external.json` | Trade balance, exports, imports |
 | `sectors.json` | Sectoral GDP composition (agriculture, industry, services) |
@@ -322,7 +339,15 @@ Healthcare data lives in `public/data/healthcare/2025-26/`:
 | `indicators.json` | All healthcare indicators across 4 categories (infrastructure, spending, immunization, disease) |
 | `glossary.json` | 13 healthcare terms with plain-language explanations |
 
-Data sourced from [Open Budgets India](https://openbudgetsindia.org), [indiabudget.gov.in](https://www.indiabudget.gov.in), [Economic Survey](https://www.indiabudget.gov.in/economicsurvey/), [RBI DBIE](https://data.rbi.org.in), [RBI Monetary Policy Statements](https://www.rbi.org.in), [RBI Handbook of Statistics on Indian States](https://www.rbi.org.in), [Census of India](https://censusindia.gov.in), [NFHS](http://rchiips.org/nfhs/), [UDISE+](https://udiseplus.gov.in), [ASER](https://asercentre.org), [PLFS](https://mospi.gov.in), [NHP/CBHI](https://cbhidghs.mohfw.gov.in), and [World Bank Open Data API](https://data.worldbank.org) under the [Government Open Data License — India](https://data.gov.in/government-open-data-license-india).
+### EMI Calculator Data
+
+EMI data lives in `public/data/emi/`:
+
+| File | Contents |
+|------|----------|
+| `loan-spreads.json` | Curated loan spreads over repo rate for home (2.75%), car (3.5%), personal (8%) loans. Sources: SBI EBLR, HDFC, ICICI published rate cards. |
+
+Data sourced from [Open Budgets India](https://openbudgetsindia.org), [indiabudget.gov.in](https://www.indiabudget.gov.in), [Economic Survey](https://www.indiabudget.gov.in/economicsurvey/), [RBI DBIE](https://data.rbi.org.in), [RBI Monetary Policy Statements](https://www.rbi.org.in), [RBI Handbook of Statistics on Indian States](https://www.rbi.org.in), [Census of India](https://censusindia.gov.in), [NFHS](http://rchiips.org/nfhs/), [UDISE+](https://udiseplus.gov.in), [ASER](https://asercentre.org), [PLFS](https://mospi.gov.in), [MOSPI eSankhyiki API](https://api.mospi.gov.in), [NHP/CBHI](https://cbhidghs.mohfw.gov.in), [IMF CPI via DBnomics](https://db.nomics.world/IMF/CPI), [SBI/HDFC rate cards](https://sbi.co.in), and [World Bank Open Data API](https://data.worldbank.org) under the [Government Open Data License — India](https://data.gov.in/government-open-data-license-india).
 
 ---
 
@@ -341,10 +366,10 @@ See [BRAND.md](./BRAND.md) for the full visual identity guide. Key principles:
 
 The site is built for maximum discoverability:
 
-- **Prerendered HTML** for all 42 routes (34 pages + 8 embed routes, Puppeteer at build time)
+- **Prerendered HTML** for all 45 routes (37 pages + 8 embed routes, Puppeteer at build time)
 - **JSON-LD** structured data: `WebApplication`, `Dataset` x8 (Budget + Economy + RBI + States + Census + Education + Employment + Healthcare for Google Dataset Search), `BreadcrumbList`
 - **Per-route meta tags** via react-helmet-async (title, description, OG image, Twitter card, canonical)
-- **sitemap.xml** covering 42 pages + 45 downloadable data endpoints
+- **sitemap.xml** covering 45 pages + 46 downloadable data endpoints
 - **robots.txt** explicitly welcoming AI crawlers (GPTBot, ClaudeBot, PerplexityBot, Google-Extended)
 - **llms.txt** for AI model discoverability (all 8 domains + glossary terms + embed API)
 - **Noscript fallback** with real content across all eight domains for crawlers that don't execute JS
@@ -435,12 +460,18 @@ The site is built for maximum discoverability:
 - [x] SVG→Canvas→PNG capture pipeline (CSS var resolution, font embedding, Canvas compositing)
 - [x] Mobile bottom sheet for chart sharing on touch devices
 
-**Phase 8: "Make It Personal" Engine**
-- [ ] Persistent user context (state, household size) in localStorage — transforms numbers across all domains
-- [ ] RBI EMI impact calculator (repo rate → monthly payment change on home/car loans)
-- [ ] Economy cost-of-living calculator (input expenses, see change vs CPI over time)
-- [ ] States "Your state's report card" (per-capita spending vs national average)
-- [ ] Census "Your district profile" (population, literacy, health metrics for your area)
+**Phase 8: "Make It Personal" Engine** ✓
+- [x] Persistent user context (state, household size) in localStorage via `personalizationStore`
+- [x] RBI EMI impact calculator (`/rbi/calculator`) — repo rate → monthly payment change on home/car/personal loans, rate impact scenarios at ±25/50 bps
+- [x] Economy cost-of-living calculator (`/economy/calculator`) — input expenses by category, compare against CPI over time. Uses category-specific COICOP CPI (food, housing, transport, education, health) with headline fallback.
+- [x] Cross-domain state report card (`/states/your-state`) — 9 domain panels, ~25 metrics, rank badges, quartile coloring. Aggregates data from 12 JSON files across 6 domains.
+- [x] Personalization banner — contextual state bar on scrollytelling pages with domain-specific stat
+- [x] CPI-by-COICOP-division data in economy pipeline: IMF/DBnomics baseline (2014-19) + MOSPI eSankhyiki API (2019+, live) + curated fallback
+- [x] State code standardization — all pipelines use uppercase vehicle registration (RTO) codes
+- [x] MOSPI eSankhyiki CPI API integration — no auth, monthly group-wise CPI → fiscal year averages. Three-tier strategy: API primary, curated fallback if unreachable
+- [x] Shared World Bank API client (`pipeline/src/common/world_bank.py`) — retry, backoff, error handling. 6 domain clients refactored to thin wrappers
+- [x] States pipeline workflow (`states-pipeline.yml`) — semi-annual schedule with RBI Handbook reminder issues
+- [x] Pipeline data sources catalog (`pipeline/PIPELINE_DATA_SOURCES.md`) — all 30+ curated data constants documented
 
 **Phase 9: Key Insights & Question-First Search**
 - [ ] "Key Takeaways" card at top of each story page (3-5 stat pills with one-line annotations before scrollytelling)
@@ -506,5 +537,7 @@ The underlying budget data is published by the Government of India under the [Go
 - Education data from [UDISE+ 2023-24](https://udiseplus.gov.in), [ASER 2024](https://asercentre.org), and [World Bank Open Data](https://data.worldbank.org)
 - Employment data from [PLFS Quarterly Bulletin](https://mospi.gov.in), [RBI KLEMS Database](https://www.rbi.org.in), and [World Bank Open Data](https://data.worldbank.org)
 - Healthcare data from [National Health Profile 2022](https://cbhidghs.mohfw.gov.in), [NFHS-5](http://rchiips.org/nfhs/), and [World Bank Open Data](https://data.worldbank.org)
+- CPI category data from [MOSPI eSankhyiki API](https://api.mospi.gov.in) (primary, live CPI by COICOP group), [IMF CPI dataset via DBnomics](https://db.nomics.world/IMF/CPI) (historical baseline), and [Economic Survey](https://www.indiabudget.gov.in/economicsurvey/)
+- Loan spread data from [SBI](https://sbi.co.in), [HDFC Bank](https://hdfcbank.com), and [ICICI Bank](https://icicibank.com) published rate cards
 - Design inspired by [Information is Beautiful](https://informationisbeautiful.net), [Visual Cinnamon](https://www.visualcinnamon.com), and [Kasia Siwosz](https://kasiasiwosz.com)
 - Built with React, D3, Framer Motion, and Tailwind CSS

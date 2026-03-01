@@ -39,6 +39,9 @@ import HealthcarePage from './pages/HealthcarePage.tsx';
 import HealthcareExplorePage from './pages/HealthcareExplorePage.tsx';
 import HealthcareMethodologyPage from './pages/HealthcareMethodologyPage.tsx';
 import HealthcareGlossaryPage from './pages/HealthcareGlossaryPage.tsx';
+import EMICalculatorPage from './pages/EMICalculatorPage.tsx';
+import CostOfLivingPage from './pages/CostOfLivingPage.tsx';
+import StateReportCardPage from './pages/StateReportCardPage.tsx';
 
 const PAGE_ROUTES = [
   { path: '/', element: <HubPage /> },
@@ -49,14 +52,17 @@ const PAGE_ROUTES = [
   { path: '/budget/glossary', element: <BudgetGlossaryPage /> },
   { path: '/economy', element: <EconomyPage /> },
   { path: '/economy/explore', element: <EconomyExplorePage /> },
+  { path: '/economy/calculator', element: <CostOfLivingPage /> },
   { path: '/economy/methodology', element: <EconomyMethodologyPage /> },
   { path: '/economy/glossary', element: <EconomyGlossaryPage /> },
   { path: '/rbi', element: <RBIPage /> },
   { path: '/rbi/explore', element: <RBIExplorePage /> },
+  { path: '/rbi/calculator', element: <EMICalculatorPage /> },
   { path: '/rbi/methodology', element: <RBIMethodologyPage /> },
   { path: '/rbi/glossary', element: <RBIGlossaryPage /> },
   { path: '/states', element: <StatesPage /> },
   { path: '/states/explore', element: <StatesExplorePage /> },
+  { path: '/states/your-state', element: <StateReportCardPage /> },
   { path: '/states/methodology', element: <StatesMethodologyPage /> },
   { path: '/states/glossary', element: <StatesGlossaryPage /> },
   { path: '/census', element: <CensusPage /> },

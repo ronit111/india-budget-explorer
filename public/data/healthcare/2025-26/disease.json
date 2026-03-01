@@ -340,7 +340,7 @@
   ],
   "stateImmunization": [
     {
-      "id": "up",
+      "id": "UP",
       "name": "Uttar Pradesh",
       "fullImmunization": 67.0,
       "bcg": 92.4,
@@ -348,7 +348,7 @@
       "dpt3": 72.8
     },
     {
-      "id": "mh",
+      "id": "MH",
       "name": "Maharashtra",
       "fullImmunization": 77.4,
       "bcg": 96.8,
@@ -356,7 +356,7 @@
       "dpt3": 82.4
     },
     {
-      "id": "br",
+      "id": "BR",
       "name": "Bihar",
       "fullImmunization": 54.2,
       "bcg": 87.6,
@@ -364,7 +364,7 @@
       "dpt3": 62.8
     },
     {
-      "id": "wb",
+      "id": "WB",
       "name": "West Bengal",
       "fullImmunization": 74.8,
       "bcg": 98.2,
@@ -372,7 +372,7 @@
       "dpt3": 80.6
     },
     {
-      "id": "mp",
+      "id": "MP",
       "name": "Madhya Pradesh",
       "fullImmunization": 68.4,
       "bcg": 94.2,
@@ -380,7 +380,7 @@
       "dpt3": 74.2
     },
     {
-      "id": "tn",
+      "id": "TN",
       "name": "Tamil Nadu",
       "fullImmunization": 82.6,
       "bcg": 98.4,
@@ -388,7 +388,7 @@
       "dpt3": 88.2
     },
     {
-      "id": "rj",
+      "id": "RJ",
       "name": "Rajasthan",
       "fullImmunization": 66.8,
       "bcg": 93.6,
@@ -396,7 +396,7 @@
       "dpt3": 72.4
     },
     {
-      "id": "ka",
+      "id": "KA",
       "name": "Karnataka",
       "fullImmunization": 76.8,
       "bcg": 97.4,
@@ -404,7 +404,7 @@
       "dpt3": 82.8
     },
     {
-      "id": "gj",
+      "id": "GJ",
       "name": "Gujarat",
       "fullImmunization": 72.4,
       "bcg": 95.8,
@@ -412,7 +412,7 @@
       "dpt3": 78.2
     },
     {
-      "id": "ap",
+      "id": "AP",
       "name": "Andhra Pradesh",
       "fullImmunization": 73.6,
       "bcg": 97.2,
@@ -420,7 +420,7 @@
       "dpt3": 79.8
     },
     {
-      "id": "tg",
+      "id": "TS",
       "name": "Telangana",
       "fullImmunization": 75.4,
       "bcg": 97.8,
@@ -428,7 +428,7 @@
       "dpt3": 80.6
     },
     {
-      "id": "od",
+      "id": "OD",
       "name": "Odisha",
       "fullImmunization": 73.2,
       "bcg": 96.4,
@@ -436,7 +436,7 @@
       "dpt3": 78.4
     },
     {
-      "id": "kl",
+      "id": "KL",
       "name": "Kerala",
       "fullImmunization": 84.2,
       "bcg": 99.2,
@@ -444,7 +444,7 @@
       "dpt3": 90.4
     },
     {
-      "id": "jh",
+      "id": "JH",
       "name": "Jharkhand",
       "fullImmunization": 61.8,
       "bcg": 92.8,
@@ -452,7 +452,7 @@
       "dpt3": 68.6
     },
     {
-      "id": "as",
+      "id": "AS",
       "name": "Assam",
       "fullImmunization": 58.4,
       "bcg": 90.6,
@@ -460,7 +460,7 @@
       "dpt3": 66.2
     },
     {
-      "id": "pb",
+      "id": "PB",
       "name": "Punjab",
       "fullImmunization": 79.2,
       "bcg": 97.6,
@@ -468,7 +468,7 @@
       "dpt3": 84.6
     },
     {
-      "id": "ct",
+      "id": "CG",
       "name": "Chhattisgarh",
       "fullImmunization": 70.2,
       "bcg": 95.4,
@@ -476,7 +476,7 @@
       "dpt3": 76.8
     },
     {
-      "id": "hr",
+      "id": "HR",
       "name": "Haryana",
       "fullImmunization": 74.6,
       "bcg": 96.8,
@@ -484,7 +484,7 @@
       "dpt3": 80.2
     },
     {
-      "id": "uk",
+      "id": "UK",
       "name": "Uttarakhand",
       "fullImmunization": 74.8,
       "bcg": 97.2,
@@ -492,7 +492,7 @@
       "dpt3": 80.8
     },
     {
-      "id": "jk",
+      "id": "JK",
       "name": "Jammu & Kashmir",
       "fullImmunization": 72.4,
       "bcg": 96.4,
@@ -500,7 +500,7 @@
       "dpt3": 78.6
     },
     {
-      "id": "hp",
+      "id": "HP",
       "name": "Himachal Pradesh",
       "fullImmunization": 82.4,
       "bcg": 98.6,
@@ -508,7 +508,7 @@
       "dpt3": 88.2
     },
     {
-      "id": "dl",
+      "id": "DL",
       "name": "Delhi",
       "fullImmunization": 73.8,
       "bcg": 96.2,
@@ -516,7 +516,7 @@
       "dpt3": 79.4
     },
     {
-      "id": "ga",
+      "id": "GA",
       "name": "Goa",
       "fullImmunization": 80.4,
       "bcg": 98.4,
@@ -524,7 +524,7 @@
       "dpt3": 86.4
     },
     {
-      "id": "tr",
+      "id": "TR",
       "name": "Tripura",
       "fullImmunization": 62.6,
       "bcg": 93.8,
@@ -532,7 +532,7 @@
       "dpt3": 70.2
     },
     {
-      "id": "mn",
+      "id": "MN",
       "name": "Manipur",
       "fullImmunization": 55.8,
       "bcg": 88.4,
@@ -540,7 +540,7 @@
       "dpt3": 64.8
     },
     {
-      "id": "ml",
+      "id": "ML",
       "name": "Meghalaya",
       "fullImmunization": 46.2,
       "bcg": 84.6,
@@ -548,7 +548,7 @@
       "dpt3": 54.8
     },
     {
-      "id": "nl",
+      "id": "NL",
       "name": "Nagaland",
       "fullImmunization": 39.8,
       "bcg": 78.4,
@@ -556,7 +556,7 @@
       "dpt3": 48.2
     },
     {
-      "id": "mz",
+      "id": "MZ",
       "name": "Mizoram",
       "fullImmunization": 52.4,
       "bcg": 86.8,
@@ -564,7 +564,7 @@
       "dpt3": 60.2
     },
     {
-      "id": "sk",
+      "id": "SK",
       "name": "Sikkim",
       "fullImmunization": 76.4,
       "bcg": 97.8,
@@ -572,7 +572,7 @@
       "dpt3": 82.4
     },
     {
-      "id": "ar",
+      "id": "AR",
       "name": "Arunachal Pradesh",
       "fullImmunization": 38.6,
       "bcg": 76.2,
