@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { useScrollTrigger } from '../../hooks/useScrollTrigger.ts';
 import { SectionNumber } from '../ui/SectionNumber.tsx';
+import { RelatedTopics } from '../ui/RelatedTopics.tsx';
 import { LineChart } from '../viz/LineChart.tsx';
 import { ChartActionsWrapper } from '../share/ChartActionsWrapper.tsx';
 import type { GDPGrowthData } from '../../lib/data/schema.ts';
@@ -51,6 +52,9 @@ export function GrowthSection({ gdp }: GrowthSectionProps) {
             unit="%"
           />
         </ChartActionsWrapper>
+
+        <RelatedTopics sectionId="growth" domain="economy" />
+
 
         <p className="source-attribution">
           Source: {gdp.source}

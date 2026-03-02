@@ -136,6 +136,16 @@ const VARIANTS = [
     glowColor: 'rgba(74,234,220,0.08)',
   },
   {
+    filename: 'og-topics.png',
+    title: 'Cross-Domain Insights',
+    tagline: '12 topics weaving data across domains — from women in India to the water crisis',
+    accentFrom: '#A78BFA',
+    accentTo: '#818CF8',
+    cornerTL: 'rgba(167,139,250,0.25)',
+    cornerBR: 'rgba(129,140,248,0.2)',
+    glowColor: 'rgba(167,139,250,0.08)',
+  },
+  {
     filename: 'og-state-report-card.png',
     title: 'State Report Card',
     tagline: 'How does your state rank across economy, education, health, and more?',

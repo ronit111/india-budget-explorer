@@ -2,6 +2,7 @@ import { useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { useScrollTrigger } from '../../hooks/useScrollTrigger.ts';
 import { SectionNumber } from '../ui/SectionNumber.tsx';
+import { RelatedTopics } from '../ui/RelatedTopics.tsx';
 import { LineChart, type LineSeries } from '../viz/LineChart.tsx';
 import type { EnergyData } from '../../lib/data/schema.ts';
 import { ChartActionsWrapper } from '../share/ChartActionsWrapper.tsx';
@@ -132,6 +133,9 @@ export function CarbonFootprintSection({ data }: CarbonFootprintSectionProps) {
             CO₂ per capita time series data is currently unavailable from the World Bank API. The curated national figure (1.9 tonnes) is shown above.
           </motion.p>
         )}
+
+        <RelatedTopics sectionId="carbon" domain="environment" />
+
 
         <p className="source-attribution">
           Source: {data.source}

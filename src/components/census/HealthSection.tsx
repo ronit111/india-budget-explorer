@@ -2,6 +2,7 @@ import { useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { useScrollTrigger } from '../../hooks/useScrollTrigger.ts';
 import { SectionNumber } from '../ui/SectionNumber.tsx';
+import { RelatedTopics } from '../ui/RelatedTopics.tsx';
 import { LineChart, type LineSeries } from '../viz/LineChart.tsx';
 import { HorizontalBarChart, type BarItem } from '../viz/HorizontalBarChart.tsx';
 import type { HealthData } from '../../lib/data/schema.ts';
@@ -100,6 +101,9 @@ export function HealthSection({ data }: HealthSectionProps) {
             </ChartActionsWrapper>
           </div>
         )}
+
+        <RelatedTopics sectionId="health" domain="census" />
+
 
         <p className="source-attribution">
           Source: {data.source}

@@ -2,6 +2,7 @@ import { useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { useScrollTrigger } from '../../hooks/useScrollTrigger.ts';
 import { SectionNumber } from '../ui/SectionNumber.tsx';
+import { RelatedTopics } from '../ui/RelatedTopics.tsx';
 import { LineChart, type LineSeries } from '../viz/LineChart.tsx';
 import { HorizontalBarChart, type BarItem } from '../viz/HorizontalBarChart.tsx';
 import type { InfrastructureData } from '../../lib/data/schema.ts';
@@ -114,6 +115,9 @@ export function InfrastructureSection({ data }: InfrastructureSectionProps) {
             </ChartActionsWrapper>
           </div>
         )}
+
+        <RelatedTopics sectionId="infrastructure" domain="healthcare" />
+
 
         <p className="source-attribution">
           Source: {data.source}

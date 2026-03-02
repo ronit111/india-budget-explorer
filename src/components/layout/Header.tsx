@@ -20,7 +20,8 @@ export function Header() {
   const isHealthcareSection = location.pathname.startsWith('/healthcare');
   const isEnvironmentSection = location.pathname.startsWith('/environment');
   const isElectionsSection = location.pathname.startsWith('/elections');
-  const isDataDomain = isBudgetSection || isEconomySection || isRBISection || isStatesSection || isCensusSection || isEducationSection || isEmploymentSection || isHealthcareSection || isEnvironmentSection || isElectionsSection;
+  const isTopicsSection = location.pathname.startsWith('/topics');
+  const isDataDomain = isBudgetSection || isEconomySection || isRBISection || isStatesSection || isCensusSection || isEducationSection || isEmploymentSection || isHealthcareSection || isEnvironmentSection || isElectionsSection || isTopicsSection;
 
   // Context-aware title: show story name when inside a data story
   const headerTitle = isBudgetSection
@@ -43,6 +44,8 @@ export function Header() {
                     ? 'Environment'
                     : isElectionsSection
                       ? 'Elections'
+                      : isTopicsSection
+                        ? 'Cross-Domain Insights'
                   : 'Indian Data Project';
   const headerLink = isBudgetSection
     ? '/budget'
@@ -64,6 +67,8 @@ export function Header() {
                     ? '/environment'
                     : isElectionsSection
                       ? '/elections'
+                      : isTopicsSection
+                        ? '/topics'
                   : '/';
 
   // Only show nav links inside a data story (domain sub-pages)
@@ -141,6 +146,10 @@ export function Header() {
                           { to: '/elections/methodology', label: 'Methodology' },
                           { to: '/elections/glossary', label: 'Glossary' },
                         ]
+                      : isTopicsSection
+                        ? [
+                            { to: '/topics', label: 'All Topics' },
+                          ]
                   : [];
 
   const isActiveLink = (linkTo: string) => {
@@ -154,6 +163,7 @@ export function Header() {
     if (linkTo === '/healthcare') return location.pathname === '/healthcare';
     if (linkTo === '/environment') return location.pathname === '/environment';
     if (linkTo === '/elections') return location.pathname === '/elections';
+    if (linkTo === '/topics') return location.pathname === '/topics';
     return location.pathname === linkTo;
   };
 

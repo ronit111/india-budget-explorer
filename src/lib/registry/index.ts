@@ -12,3 +12,4 @@ import './employment.ts';
 import './healthcare.ts';
 import './environment.ts';
 import './elections.ts';
+import './topics.ts';

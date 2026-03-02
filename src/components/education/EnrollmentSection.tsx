@@ -2,6 +2,7 @@ import { useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { useScrollTrigger } from '../../hooks/useScrollTrigger.ts';
 import { SectionNumber } from '../ui/SectionNumber.tsx';
+import { RelatedTopics } from '../ui/RelatedTopics.tsx';
 import { LineChart, type LineSeries } from '../viz/LineChart.tsx';
 import type { EnrollmentData } from '../../lib/data/schema.ts';
 import { ChartActionsWrapper } from '../share/ChartActionsWrapper.tsx';
@@ -82,6 +83,9 @@ export function EnrollmentSection({ data }: EnrollmentSectionProps) {
             </ChartActionsWrapper>
           </div>
         )}
+
+        <RelatedTopics sectionId="enrollment" domain="education" />
+
 
         <p className="source-attribution">
           Source: {data.source}

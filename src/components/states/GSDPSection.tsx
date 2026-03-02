@@ -2,6 +2,7 @@ import { useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { useScrollTrigger } from '../../hooks/useScrollTrigger.ts';
 import { SectionNumber } from '../ui/SectionNumber.tsx';
+import { RelatedTopics } from '../ui/RelatedTopics.tsx';
 import { HorizontalBarChart, type BarItem } from '../viz/HorizontalBarChart.tsx';
 import { ChartActionsWrapper } from '../share/ChartActionsWrapper.tsx';
 import type { GSDPData } from '../../lib/data/schema.ts';
@@ -59,6 +60,9 @@ export function GSDPSection({ data }: GSDPSectionProps) {
             barHeight={26}
           />
         </ChartActionsWrapper>
+
+        <RelatedTopics sectionId="gsdp" domain="states" />
+
 
         <p className="source-attribution">
           Source: {data.source} ({data.year})

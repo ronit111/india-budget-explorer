@@ -6,6 +6,9 @@ import { SEOHead } from '../components/seo/SEOHead.tsx';
 import { loadSummary, loadEconomySummary, loadRBISummary, loadStatesSummary, loadCensusSummary, loadEducationSummary, loadEmploymentSummary, loadHealthcareSummary, loadEnvironmentSummary, loadElectionsSummary } from '../lib/dataLoader.ts';
 import { formatLakhCrore, formatIndianNumber } from '../lib/format.ts';
 import type { BudgetSummary, EconomySummary, RBISummary, StatesSummary, CensusSummary, EducationSummary, EmploymentSummary, HealthcareSummary, EnvironmentSummary, ElectionsSummary } from '../lib/data/schema.ts';
+import { TopicCard } from '../components/topics/TopicCard.tsx';
+import { TOPIC_CONFIGS, FEATURED_TOPIC_IDS } from '../lib/topicConfigs/index.ts';
+import type { TopicDataBag } from '../lib/topicConfig.ts';
 
 const EASE_OUT_EXPO: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
@@ -1347,6 +1350,59 @@ function ElectionsDomainCard({ summary }: { summary: ElectionsSummary | null }) 
   );
 }
 
+function CrossDomainInsights({ summaryBag }: { summaryBag: TopicDataBag }) {
+  const [ref, isVisible] = useScrollTrigger<HTMLElement>({ threshold: 0.1 });
+  const featuredTopics = FEATURED_TOPIC_IDS
+    .map((id) => TOPIC_CONFIGS[id])
+    .filter(Boolean);
+
+  return (
+    <section ref={ref} id="topics" className="max-w-5xl mx-auto px-6 sm:px-8 pb-24 scroll-mt-20">
+      <motion.p
+        initial={{ opacity: 0, y: 12 }}
+        animate={isVisible ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.6, ease: EASE_OUT_EXPO }}
+        className="text-section-num tracking-[0.15em] uppercase mb-4"
+      >
+        Cross-Domain Insights
+      </motion.p>
+      <motion.p
+        initial={{ opacity: 0, y: 12 }}
+        animate={isVisible ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.6, delay: 0.05, ease: EASE_OUT_EXPO }}
+        className="text-sm mb-8"
+        style={{ color: 'var(--text-muted)' }}
+      >
+        Questions that span multiple datasets, answered with cross-domain data.
+      </motion.p>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+        {featuredTopics.map((topic, i) => (
+          <TopicCard key={topic.id} topic={topic} bag={summaryBag} index={i} isVisible={isVisible} />
+        ))}
+      </div>
+
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={isVisible ? { opacity: 1 } : {}}
+        transition={{ duration: 0.5, delay: 0.3 }}
+        className="text-center"
+      >
+        <Link
+          to="/topics"
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium no-underline transition-colors hover:bg-[var(--bg-raised)]"
+          style={{ color: 'var(--saffron)' }}
+        >
+          View all 12 topics
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M6 3l5 5-5 5" />
+          </svg>
+        </Link>
+      </motion.div>
+    </section>
+  );
+}
+
 export default function HubPage() {
   const location = useLocation();
   const [summary, setSummary] = useState<BudgetSummary | null>(null);
@@ -1430,6 +1486,22 @@ export default function HubPage() {
 
         <ElectionsDomainCard summary={electionsSummary} />
       </section>
+
+      {/* Cross-Domain Insights */}
+      <CrossDomainInsights
+        summaryBag={{
+          'budget/summary': summary,
+          'economy/summary': economySummary,
+          'rbi/summary': rbiSummary,
+          'states/summary': statesSummary,
+          'census/summary': censusSummary,
+          'education/summary': educationSummary,
+          'employment/summary': employmentSummary,
+          'healthcare/summary': healthcareSummary,
+          'environment/summary': environmentSummary,
+          'elections/summary': electionsSummary,
+        } as TopicDataBag}
+      />
     </motion.div>
   );
 }

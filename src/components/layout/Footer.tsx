@@ -12,7 +12,8 @@ export function Footer() {
   const isHealthcare = location.pathname.startsWith('/healthcare');
   const isEnvironment = location.pathname.startsWith('/environment');
   const isElections = location.pathname.startsWith('/elections');
-  const isDataDomain = isBudget || isEconomy || isRBI || isStates || isCensus || isEducation || isEmployment || isHealthcare || isEnvironment || isElections;
+  const isTopics = location.pathname.startsWith('/topics');
+  const isDataDomain = isBudget || isEconomy || isRBI || isStates || isCensus || isEducation || isEmployment || isHealthcare || isEnvironment || isElections || isTopics;
 
   return (
     <footer className="relative py-8 pb-24 md:pb-8" style={{ background: 'var(--bg-surface)' }}>
@@ -348,6 +349,10 @@ export function Footer() {
             </a>
             {' '}&middot; Not affiliated with ECI or GoI
           </p>
+        ) : isTopics ? (
+          <p className="text-caption text-center md:text-left">
+            Cross-domain analysis from multiple government sources &middot; Not affiliated with GoI
+          </p>
         ) : (
           <p className="text-caption text-center md:text-left">
             Open-source civic tech. Real government data, made accessible.
@@ -374,6 +379,8 @@ export function Footer() {
             'Environment 2025-26'
           ) : isElections ? (
             'Elections 2025-26'
+          ) : isTopics ? (
+            'Cross-Domain Insights'
           ) : (
             <a
               href="https://github.com/ronit111/indian-data-project"

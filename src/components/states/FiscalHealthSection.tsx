@@ -2,6 +2,7 @@ import { useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { useScrollTrigger } from '../../hooks/useScrollTrigger.ts';
 import { SectionNumber } from '../ui/SectionNumber.tsx';
+import { RelatedTopics } from '../ui/RelatedTopics.tsx';
 import { HorizontalBarChart, type BarItem } from '../viz/HorizontalBarChart.tsx';
 import type { FiscalHealthData } from '../../lib/data/schema.ts';
 import { ChartActionsWrapper } from '../share/ChartActionsWrapper.tsx';
@@ -66,6 +67,9 @@ export function FiscalHealthSection({ data }: FiscalHealthSectionProps) {
           barHeight={24}
         />
         </ChartActionsWrapper>
+
+        <RelatedTopics sectionId="fiscal-health" domain="states" />
+
 
         <p className="source-attribution">
           Source: {data.source} ({data.year})

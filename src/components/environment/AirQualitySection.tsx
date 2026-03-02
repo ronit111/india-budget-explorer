@@ -2,6 +2,7 @@ import { useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { useScrollTrigger } from '../../hooks/useScrollTrigger.ts';
 import { SectionNumber } from '../ui/SectionNumber.tsx';
+import { RelatedTopics } from '../ui/RelatedTopics.tsx';
 import { LineChart, type LineSeries } from '../viz/LineChart.tsx';
 import { HorizontalBarChart, type BarItem } from '../viz/HorizontalBarChart.tsx';
 import type { AirQualityData } from '../../lib/data/schema.ts';
@@ -93,6 +94,9 @@ export function AirQualitySection({ data }: AirQualitySectionProps) {
             </ChartActionsWrapper>
           </div>
         )}
+
+        <RelatedTopics sectionId="air-quality" domain="environment" />
+
 
         <p className="source-attribution">
           Source: {data.source}

@@ -122,6 +122,13 @@ export const DOMAIN_META: Record<string, DomainMeta> = {
     basePath: '/elections',
     defaultYear: '2025-26',
   },
+  topics: {
+    name: 'Cross-Domain Topics',
+    accent: '#A78BFA',
+    accentLight: '#C4B5FD',
+    basePath: '/topics',
+    defaultYear: '',
+  },
 };
 
 // ─── Registry Map ────────────────────────────────────────────────────

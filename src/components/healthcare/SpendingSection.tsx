@@ -2,6 +2,7 @@ import { useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { useScrollTrigger } from '../../hooks/useScrollTrigger.ts';
 import { SectionNumber } from '../ui/SectionNumber.tsx';
+import { RelatedTopics } from '../ui/RelatedTopics.tsx';
 import { LineChart, type LineSeries } from '../viz/LineChart.tsx';
 import type { HealthSpendingData } from '../../lib/data/schema.ts';
 import { ChartActionsWrapper } from '../share/ChartActionsWrapper.tsx';
@@ -74,6 +75,9 @@ export function SpendingSection({ data }: SpendingSectionProps) {
             </ChartActionsWrapper>
           </div>
         )}
+
+        <RelatedTopics sectionId="spending" domain="healthcare" />
+
 
         <p className="source-attribution">
           Source: {data.source}

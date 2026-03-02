@@ -32,6 +32,12 @@ const ROUTES = [
   '/healthcare', '/healthcare/explore', '/healthcare/methodology', '/healthcare/glossary',
   '/environment', '/environment/explore', '/environment/methodology', '/environment/glossary',
   '/elections', '/elections/explore', '/elections/methodology', '/elections/glossary',
+  // Topics hub + 12 topic detail pages
+  '/topics',
+  '/topics/women-in-india', '/topics/fiscal-health', '/topics/inflation-cost',
+  '/topics/education-employment', '/topics/health-outcomes', '/topics/regional-inequality',
+  '/topics/climate-energy', '/topics/youth-jobs', '/topics/urban-rural',
+  '/topics/democratic-health', '/topics/agriculture-food', '/topics/water-crisis',
   // Representative embed routes (one per domain)
   '/embed/budget/revenue', '/embed/economy/growth', '/embed/rbi/monetary-policy',
   '/embed/states/gsdp', '/embed/census/population', '/embed/education/enrollment',

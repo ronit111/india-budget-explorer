@@ -50,6 +50,8 @@ import ElectionsGlossaryPage from './pages/ElectionsGlossaryPage.tsx';
 import EMICalculatorPage from './pages/EMICalculatorPage.tsx';
 import CostOfLivingPage from './pages/CostOfLivingPage.tsx';
 import StateReportCardPage from './pages/StateReportCardPage.tsx';
+import TopicsPage from './pages/TopicsPage.tsx';
+import TopicDetailPage from './pages/TopicDetailPage.tsx';
 
 const PAGE_ROUTES = [
   { path: '/', element: <HubPage /> },
@@ -97,6 +99,8 @@ const PAGE_ROUTES = [
   { path: '/elections/explore', element: <ElectionsExplorePage /> },
   { path: '/elections/methodology', element: <ElectionsMethodologyPage /> },
   { path: '/elections/glossary', element: <ElectionsGlossaryPage /> },
+  { path: '/topics', element: <TopicsPage /> },
+  { path: '/topics/:topicId', element: <TopicDetailPage /> },
 ] as const;
 
 // Old routes redirect to new /budget/* paths

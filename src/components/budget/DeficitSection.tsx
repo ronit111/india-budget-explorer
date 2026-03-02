@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { useScrollTrigger } from '../../hooks/useScrollTrigger.ts';
 import { SectionNumber } from '../ui/SectionNumber.tsx';
+import { RelatedTopics } from '../ui/RelatedTopics.tsx';
 import { ChartActionsWrapper } from '../share/ChartActionsWrapper.tsx';
 import { formatLakhCrore } from '../../lib/format.ts';
 import type { BudgetSummary } from '../../lib/data/schema.ts';
@@ -159,6 +160,9 @@ export function DeficitSection({ summary }: DeficitSectionProps) {
             />
           </div>
         </motion.div>
+
+        <RelatedTopics sectionId="flow" domain="budget" />
+
 
         <p className="source-attribution">
           {'Source: Union Budget 2025-26, Budget at a Glance'}

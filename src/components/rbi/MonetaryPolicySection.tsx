@@ -2,6 +2,7 @@ import { useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { useScrollTrigger } from '../../hooks/useScrollTrigger.ts';
 import { SectionNumber } from '../ui/SectionNumber.tsx';
+import { RelatedTopics } from '../ui/RelatedTopics.tsx';
 import { LineChart, type LineSeries } from '../viz/LineChart.tsx';
 import type { MonetaryPolicyData } from '../../lib/data/schema.ts';
 import { ChartActionsWrapper } from '../share/ChartActionsWrapper.tsx';
@@ -85,6 +86,9 @@ export function MonetaryPolicySection({ data }: MonetaryPolicySectionProps) {
           unit="%"
         />
         </ChartActionsWrapper>
+
+        <RelatedTopics sectionId="monetary-policy" domain="rbi" />
+
 
         <p className="source-attribution">
           Source: {data.source}

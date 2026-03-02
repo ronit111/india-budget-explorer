@@ -2,6 +2,7 @@ import { useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { useScrollTrigger } from '../../hooks/useScrollTrigger.ts';
 import { SectionNumber } from '../ui/SectionNumber.tsx';
+import { RelatedTopics } from '../ui/RelatedTopics.tsx';
 import { HorizontalBarChart, type BarItem } from '../viz/HorizontalBarChart.tsx';
 import type { CandidatesData } from '../../lib/data/schema.ts';
 import { ChartActionsWrapper } from '../share/ChartActionsWrapper.tsx';
@@ -179,6 +180,9 @@ export function MoneyMuscleSection({ data }: MoneyMuscleSectionProps) {
             </span>
           </div>
         </motion.div>
+
+        <RelatedTopics sectionId="candidates" domain="elections" />
+
 
         <p className="source-attribution">
           Source: {data.source}

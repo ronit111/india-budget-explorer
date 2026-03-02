@@ -113,6 +113,19 @@ export function SearchOverlay() {
   }
   // Pages
   searchItems.push(
+    { type: 'page', id: 'topics', name: 'Cross-Domain Topics', subtitle: '12 topics weaving data across domains', route: '/topics' },
+    { type: 'page', id: 'topic-women', name: 'Women in India', subtitle: 'Political voice, economic participation, education & health', route: '/topics/women-in-india' },
+    { type: 'page', id: 'topic-fiscal', name: "India's Fiscal Health", subtitle: 'Growth engine, spending vs borrowing, monetary lever', route: '/topics/fiscal-health' },
+    { type: 'page', id: 'topic-inflation', name: 'Inflation & Cost of Living', subtitle: 'Price trajectory, RBI response, fiscal connection', route: '/topics/inflation-cost' },
+    { type: 'page', id: 'topic-edu-emp', name: 'Education to Employment Pipeline', subtitle: 'Enrollment, jobs crisis, spending gap', route: '/topics/education-employment' },
+    { type: 'page', id: 'topic-health', name: 'Health Outcomes', subtitle: 'Infrastructure, disease burden, spending gap', route: '/topics/health-outcomes' },
+    { type: 'page', id: 'topic-regional', name: 'Regional Inequality', subtitle: 'Economic divergence, human development, fiscal', route: '/topics/regional-inequality' },
+    { type: 'page', id: 'topic-climate', name: 'Climate & Energy Transition', subtitle: 'Energy mix, carbon footprint, forest cover', route: '/topics/climate-energy' },
+    { type: 'page', id: 'topic-youth', name: 'Youth & Jobs', subtitle: 'Youth unemployment, structural shift, education gap', route: '/topics/youth-jobs' },
+    { type: 'page', id: 'topic-urban', name: 'Urban vs Rural Divide', subtitle: 'Urbanization wave, access gap', route: '/topics/urban-rural' },
+    { type: 'page', id: 'topic-democracy', name: "India's Democratic Health", subtitle: 'Participation arc, quality of representation', route: '/topics/democratic-health' },
+    { type: 'page', id: 'topic-agri', name: 'Agriculture & Food Security', subtitle: 'Productivity paradox, food prices, sustainability', route: '/topics/agriculture-food' },
+    { type: 'page', id: 'topic-water', name: 'Water Crisis', subtitle: 'Groundwater stress, quality deficit, urban challenge', route: '/topics/water-crisis' },
     { type: 'page', id: 'home', name: 'Home', subtitle: 'Data domain portal and stories', route: '/' },
     { type: 'page', id: 'budget', name: 'Budget Story', subtitle: 'Union Budget 2025-26 visual narrative', route: '/budget' },
     { type: 'page', id: 'budget-explore', name: 'Budget Explorer', subtitle: 'Sortable table of all ministries', route: '/budget/explore' },

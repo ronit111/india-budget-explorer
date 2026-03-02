@@ -32,6 +32,7 @@ export function MobileNav() {
   const isHealthcareSection = location.pathname.startsWith('/healthcare');
   const isEnvironmentSection = location.pathname.startsWith('/environment');
   const isElectionsSection = location.pathname.startsWith('/elections');
+  const isTopicsSection = location.pathname.startsWith('/topics');
 
   const hubTabs = [
     { to: '/', label: 'Home', icon: ICONS.home },
@@ -39,7 +40,12 @@ export function MobileNav() {
     { to: '/economy', label: 'Economy', icon: ICONS.economy },
     { to: '/rbi', label: 'RBI', icon: ICONS.rbi },
     { to: '/states', label: 'States', icon: ICONS.states },
-    { to: '/census', label: 'Census', icon: ICONS.census },
+    { to: '/topics', label: 'Topics', icon: 'M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1' },
+  ];
+
+  const topicsTabs = [
+    { to: '/', label: 'Hub', icon: ICONS.home },
+    { to: '/topics', label: 'Topics', icon: 'M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1' },
   ];
 
   const budgetTabs = [
@@ -146,6 +152,8 @@ export function MobileNav() {
                     ? environmentTabs
                     : isElectionsSection
                       ? electionsTabs
+                      : isTopicsSection
+                        ? topicsTabs
                   : hubTabs;
 
   const isActiveTab = (tabTo: string) => {
@@ -160,6 +168,7 @@ export function MobileNav() {
     if (tabTo === '/healthcare') return location.pathname === '/healthcare';
     if (tabTo === '/environment') return location.pathname === '/environment';
     if (tabTo === '/elections') return location.pathname === '/elections';
+    if (tabTo === '/topics') return location.pathname === '/topics';
     return location.pathname === tabTo;
   };
 

@@ -72,6 +72,21 @@ Indian Data Project is a hub for Indian government data visualization. Each data
 - /elections/methodology — Data sources (ECI, TCPD Lok Dhaba, ADR/MyNeta, Lok Sabha Secretariat), party grouping methodology, data vintage, limitations
 - /elections/glossary — Plain-language definitions of election terms: Lok Sabha, FPTP, constituency, EVM, NOTA, ECI, MCC, affidavit, ADR, delimitation, coalition, Nari Shakti Vandan Adhiniyam.
 
+### Cross-Domain Topics
+- /topics — Hub page with 12 curated cross-domain topic cards. Each topic weaves data from 2-5 domains into a narrative view.
+- /topics/women-in-india — Women in India: political voice (women MPs 1952-2024), economic participation (female LFPR), education & health gaps. Domains: Elections, Employment, Education, Census, Healthcare.
+- /topics/fiscal-health — India's Fiscal Health: GDP growth engine, spending vs borrowing (fiscal deficit % GDP), RBI monetary policy lever. Domains: Budget, Economy, RBI, States.
+- /topics/inflation-cost — Inflation & Cost of Living: CPI price trajectory, RBI rate response, fiscal connection. Domains: Economy, RBI, Budget.
+- /topics/education-employment — Education to Employment Pipeline: enrollment scale (secondary GER), jobs gap (unemployment rate), education spending. Domains: Education, Employment, Census, Budget.
+- /topics/health-outcomes — Health Outcomes: child health (IMR trends), infrastructure gap (hospital beds, doctors), health spending (% GDP). Domains: Healthcare, Census, Budget, States.
+- /topics/regional-inequality — Regional Inequality: income divide (per capita GSDP by state), education disparity, fiscal transfer mechanisms. Domains: States, Budget, Census, Education, Healthcare.
+- /topics/climate-energy — Climate & Energy Transition: energy mix (renewables growth), carbon footprint, forest cover by state. Domains: Environment, Economy, Budget.
+- /topics/youth-jobs — Youth & Jobs: youth unemployment (3x national rate), structural shift (sectoral employment), quality of work. Domains: Employment, Education, Census, Economy.
+- /topics/urban-rural — Urban vs Rural Divide: urbanization wave (population growth rate), access gap (healthcare, literacy). Domains: Census, Employment, Healthcare, Environment, Education.
+- /topics/democratic-health — India's Democratic Health: turnout arc (1952-2024), quality of representation (criminal cases, women MPs, assets). Domains: Elections, Census, Education.
+- /topics/agriculture-food — Agriculture & Food Security: productivity paradox (42% workforce, 15% GDP), food-inflation link, sustainability pressures. Domains: Budget, Economy, Employment, Environment.
+- /topics/water-crisis — Water Crisis: groundwater stress by state, depletion facts, water-health connection. Domains: Environment, Census, Healthcare.
+
 ### Personalization Calculators
 - /rbi/calculator — EMI Impact Calculator: See how repo rate changes affect your monthly EMI. Choose home/car/personal loan, set amount and tenure, view rate impact at ±25/50 bps scenarios. Uses live repo rate (currently 5.25%) and bank spreads (SBI EBLR).
 - /economy/calculator — Cost-of-Living Calculator: Input your monthly expenses by category (rent, groceries, transport, education, healthcare, utilities). Compare against any year from 2014+. Uses category-specific CPI by COICOP division (food, housing, health, transport, education) where available, headline CPI as fallback.

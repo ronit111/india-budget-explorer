@@ -2,6 +2,7 @@ import { useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { useScrollTrigger } from '../../hooks/useScrollTrigger.ts';
 import { SectionNumber } from '../ui/SectionNumber.tsx';
+import { RelatedTopics } from '../ui/RelatedTopics.tsx';
 import { HorizontalBarChart, type BarItem } from '../viz/HorizontalBarChart.tsx';
 import type { FiscalData } from '../../lib/data/schema.ts';
 import { ChartActionsWrapper } from '../share/ChartActionsWrapper.tsx';
@@ -64,6 +65,9 @@ export function FiscalSection({ fiscal }: FiscalSectionProps) {
           secondaryLabel="Revenue Deficit"
         />
         </ChartActionsWrapper>
+
+        <RelatedTopics sectionId="fiscal" domain="economy" />
+
 
         <p className="source-attribution">
           Source: {fiscal.source}
